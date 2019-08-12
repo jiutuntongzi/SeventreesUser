@@ -57,6 +57,8 @@
 		84DD3FDF23015B04001171F1 /* UITextField+Chain.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD3FC423015B04001171F1 /* UITextField+Chain.m */; };
 		84DD3FE023015B04001171F1 /* UIView+Chain.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD3FC623015B04001171F1 /* UIView+Chain.m */; };
 		84DD3FE123015B04001171F1 /* UIView+Seek.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD3FC923015B04001171F1 /* UIView+Seek.m */; };
+		84DD40E723016436001171F1 /* FMModel+RuntimeCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD40E623016436001171F1 /* FMModel+RuntimeCopy.m */; };
+		84DD40EB2301645C001171F1 /* FMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD40EA2301645C001171F1 /* FMModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +164,10 @@
 		84DD3FC823015B04001171F1 /* UIView+Seek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Seek.h"; sourceTree = "<group>"; };
 		84DD3FC923015B04001171F1 /* UIView+Seek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Seek.m"; sourceTree = "<group>"; };
 		84DD3FCA23015B04001171F1 /* ChainKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChainKit.h; sourceTree = "<group>"; };
+		84DD40E523016436001171F1 /* FMModel+RuntimeCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMModel+RuntimeCopy.h"; sourceTree = "<group>"; };
+		84DD40E623016436001171F1 /* FMModel+RuntimeCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMModel+RuntimeCopy.m"; sourceTree = "<group>"; };
+		84DD40E92301645C001171F1 /* FMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMModel.h; sourceTree = "<group>"; };
+		84DD40EA2301645C001171F1 /* FMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMModel.m; sourceTree = "<group>"; };
 		9061A6A03D5FF6522BD79287 /* Pods-SeventreesUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeventreesUser.debug.xcconfig"; path = "Target Support Files/Pods-SeventreesUser/Pods-SeventreesUser.debug.xcconfig"; sourceTree = "<group>"; };
 		E526D20361804ADF582EE2C0 /* libPods-SeventreesUser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SeventreesUser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -232,9 +238,9 @@
 				84D7281123014D1B002D387A /* Basic */,
 				849CBFB523011732003821E4 /* Common */,
 				84D7273723014D1B002D387A /* MVVM */,
-				849CBFAA230113B2003821E4 /* AppDelegate */,
-				84D7273023014D1B002D387A /* MacroHeader */,
 				84D7274723014D1B002D387A /* ThreeLibs */,
+				84D7273023014D1B002D387A /* MacroHeader */,
+				849CBFAA230113B2003821E4 /* AppDelegate */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 				84D7273823014D1B002D387A /* View */,
 				84D7273F23014D1B002D387A /* ViewController */,
 				84D7274323014D1B002D387A /* ViewModel */,
+				84DD40E82301645C001171F1 /* Model */,
 			);
 			path = MVVM;
 			sourceTree = "<group>";
@@ -398,6 +405,7 @@
 		84D7281123014D1B002D387A /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				84DD40E423016436001171F1 /* Category */,
 				84D7281223014D1B002D387A /* CommonManager */,
 				84D7281823014D1B002D387A /* PlatformConfig */,
 				84D7281B23014D1B002D387A /* Utility */,
@@ -541,6 +549,24 @@
 				84DD3FC923015B04001171F1 /* UIView+Seek.m */,
 			);
 			path = "UIView+Seek";
+			sourceTree = "<group>";
+		};
+		84DD40E423016436001171F1 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				84DD40E523016436001171F1 /* FMModel+RuntimeCopy.h */,
+				84DD40E623016436001171F1 /* FMModel+RuntimeCopy.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		84DD40E82301645C001171F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84DD40E92301645C001171F1 /* FMModel.h */,
+				84DD40EA2301645C001171F1 /* FMModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		975B52EF50DC2D036D6E1494 /* Pods */ = {
@@ -726,10 +752,12 @@
 				84DD3FD023015B04001171F1 /* NSObject+CheckNull.m in Sources */,
 				84DD3FD623015B04001171F1 /* UICollectionViewCell+Chain.m in Sources */,
 				84D7282423014D1B002D387A /* FMView.m in Sources */,
+				84DD40EB2301645C001171F1 /* FMModel.m in Sources */,
 				84DD3FDF23015B04001171F1 /* UITextField+Chain.m in Sources */,
 				84D7287923014D1B002D387A /* UIImage+Zirkfied.m in Sources */,
 				84D7282623014D1B002D387A /* FMViewModel.m in Sources */,
 				84DD3FD323015B04001171F1 /* UIBarButtonItem+Chain.m in Sources */,
+				84DD40E723016436001171F1 /* FMModel+RuntimeCopy.m in Sources */,
 				84DD3FCF23015B04001171F1 /* NSObject+Chain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

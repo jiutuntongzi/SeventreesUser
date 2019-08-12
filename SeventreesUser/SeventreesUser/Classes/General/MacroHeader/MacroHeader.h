@@ -9,12 +9,11 @@
 #ifndef MacroHeader_h
 #define MacroHeader_h
 
+#import "ChainKit.h" // 原创链式UI布局
 
 #import "CommonManager.h"
 
 #import "ThreeLibHeader.h"
-
-#import "ChainKit.h"
 
 //#import "WeakifyHeader.h"  已引用YYKit的了
 

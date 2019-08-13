@@ -37,14 +37,14 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
   - IQKeyboardManager (~> 6.4.0)
-  - Masonry
-  - MJExtension
-  - MJRefresh
+  - Masonry (~> 1.1.0)
+  - MJExtension (~> 3.1.0)
+  - MJRefresh (~> 3.2.0)
   - ReactiveCocoa (from `https://github.com/zhao0/ReactiveCocoa.git`, tag `2.5.2`)
   - SDWebImage (~> 5.1.0)
-  - SVProgressHUD
-  - TZImagePickerController
-  - YYKit
+  - SVProgressHUD (~> 2.2.5)
+  - TZImagePickerController (~> 3.2.1)
+  - YYKit (~> 1.0.9)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -80,6 +80,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: b6b1f31923fad57eaae612decb9e5786f9165bfc
+PODFILE CHECKSUM: 5cd10d0b903a512d979478618487f901ff28dde3
 
 COCOAPODS: 1.6.1

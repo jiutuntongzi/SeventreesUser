@@ -68,4 +68,8 @@
 /** 刷新数据 */
 - (void)fm_refreshData { }
 
+- (void)dealloc {
+    DLog(@"销毁了");
+}
+
 @end

@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FMModel : NSObject
 
+- (instancetype)initWithDict:(NSDictionary *)dict;
+
++ (instancetype)modelWithDict:(NSDictionary *)dict;
+
 @end
 
 NS_ASSUME_NONNULL_END

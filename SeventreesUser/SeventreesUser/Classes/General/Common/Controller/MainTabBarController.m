@@ -7,6 +7,7 @@
 //
 
 #import "MainTabBarController.h"
+#import "BaseNavigationController.h"
 
 static const NSUInteger _itemCount = 4;
 
@@ -54,7 +55,7 @@ typedef NS_ENUM(NSUInteger, MainTabBarType) {
         UIViewController *controller = [[clazz alloc] init];
         controller.hidesBottomBarWhenPushed = NO;
         
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+        UINavigationController *navigationController = [[BaseNavigationController alloc] initWithRootViewController:controller];
         navigationController.tabBarItem = [self tabBarItemWithTitle:title normalImageName:normalImageName selectedImageName:selectedImageName];
         navigationController.tabBarItem.tag = idx;
         [childControllers addObject:navigationController];
@@ -86,28 +87,28 @@ typedef NS_ENUM(NSUInteger, MainTabBarType) {
     if (!_configs) {
         _configs = @{
                      @(MainTabBarType1) : @{
-                             _tabBarVCKey               : @"",
-                             _tabBarTitleKey            : @"TabBar1",
-                             _tabBarNormalImageKey      : @"icon_message_normal",
-                             _tabBarSelectedImageKey    : @"icon_message_pressed",
+                             _tabBarVCKey               : @"FMHomeViewController",
+                             _tabBarTitleKey            : @"首页",
+                             _tabBarNormalImageKey      : @"homebarItem_normal_icon",
+                             _tabBarSelectedImageKey    : @"homebarItem_selected_icon",
                              },
                      @(MainTabBarType2) : @{
-                             _tabBarVCKey               : @"",
-                             _tabBarTitleKey            : @"TabBar2",
-                             _tabBarNormalImageKey      : @"icon_contact_normal",
-                             _tabBarSelectedImageKey    : @"icon_contact_pressed",
+                             _tabBarVCKey               : @"FMMenuController",
+                             _tabBarTitleKey            : @"分类",
+                             _tabBarNormalImageKey      : @"menubarItem_normal_icon",
+                             _tabBarSelectedImageKey    : @"menubarItem_selected_icon",
                              },
                       @(MainTabBarType3) : @{
-                             _tabBarVCKey               : @"",
-                             _tabBarTitleKey            : @"TabBar3",
-                             _tabBarNormalImageKey      : @"icon_chatroom_normal",
-                             _tabBarSelectedImageKey    : @"icon_chatroom_pressed",
+                             _tabBarVCKey               : @"FMShoppingController",
+                             _tabBarTitleKey            : @"购物车",
+                             _tabBarNormalImageKey      : @"shoppingbarItem_normal_icon",
+                             _tabBarSelectedImageKey    : @"shoppingbarItem_selected_icon",
                       },
                      @(MainTabBarType4) : @{
-                             _tabBarVCKey               : @"",
-                             _tabBarTitleKey            : @"TabBar4",
-                             _tabBarNormalImageKey      : @"icon_setting_normal",
-                             _tabBarSelectedImageKey    : @"icon_setting_pressed",
+                             _tabBarVCKey               : @"FMMeController",
+                             _tabBarTitleKey            : @"我的",
+                             _tabBarNormalImageKey      : @"mebarItem_normal_icon",
+                             _tabBarSelectedImageKey    : @"mebarItem_selected_icon",
                              }
                      };
         

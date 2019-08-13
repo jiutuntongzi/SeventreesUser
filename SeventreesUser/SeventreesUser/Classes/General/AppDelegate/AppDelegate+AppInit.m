@@ -8,6 +8,7 @@
 
 #import "AppDelegate+AppInit.h"
 #import <objc/runtime.h>
+#import "MainTabBarController.h"
 
 @implementation AppDelegate (AppInit)
 
@@ -47,7 +48,7 @@
 #pragma mark ——— <Private method>
 
 - (void)fm_loadWindowRootController {
-    self.rootViewController = nil;
+    self.rootViewController = [[MainTabBarController alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.rootViewController;
     self.window.backgroundColor = [UIColor whiteColor];

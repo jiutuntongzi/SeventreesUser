@@ -10,6 +10,15 @@
 
 @implementation FMModel
 
-    
+- (instancetype)initWithDict:(NSDictionary *)dict {
+    if (self = [super init]) {
+        [self setValuesForKeysWithDictionary:dict];
+    }
+    return self;
+}
+
++ (instancetype)modelWithDict:(NSDictionary *)dict {
+    return [[self alloc] initWithDictionary:dict];
+}
     
 @end

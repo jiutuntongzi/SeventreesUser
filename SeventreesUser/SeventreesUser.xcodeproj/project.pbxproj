@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		08045B351A189E7F959DD3B6 /* libPods-SeventreesUser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E526D20361804ADF582EE2C0 /* libPods-SeventreesUser.a */; };
+		84468D40230253E30073D640 /* FMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84468D3F230253E30073D640 /* FMHomeViewController.m */; };
+		84468D43230253F80073D640 /* FMMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84468D42230253F80073D640 /* FMMenuController.m */; };
+		84468D46230254280073D640 /* FMShoppingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84468D45230254280073D640 /* FMShoppingController.m */; };
+		84468D49230254350073D640 /* FMMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84468D48230254350073D640 /* FMMeController.m */; };
+		84468D4C230256B20073D640 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84468D4B230256B20073D640 /* BaseNavigationController.m */; };
 		849CBFB1230113B2003821E4 /* AppDelegate+AppInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 849CBFAC230113B2003821E4 /* AppDelegate+AppInit.m */; };
 		849CBFB2230113B2003821E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 849CBFAE230113B2003821E4 /* AppDelegate.m */; };
 		849CBFB3230113B2003821E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 849CBFAF230113B2003821E4 /* main.m */; };
@@ -63,6 +68,16 @@
 
 /* Begin PBXFileReference section */
 		54B961E7B741464645FB273E /* Pods-SeventreesUser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeventreesUser.release.xcconfig"; path = "Target Support Files/Pods-SeventreesUser/Pods-SeventreesUser.release.xcconfig"; sourceTree = "<group>"; };
+		84468D3E230253E30073D640 /* FMHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMHomeViewController.h; sourceTree = "<group>"; };
+		84468D3F230253E30073D640 /* FMHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMHomeViewController.m; sourceTree = "<group>"; };
+		84468D41230253F80073D640 /* FMMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMMenuController.h; sourceTree = "<group>"; };
+		84468D42230253F80073D640 /* FMMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMMenuController.m; sourceTree = "<group>"; };
+		84468D44230254280073D640 /* FMShoppingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMShoppingController.h; sourceTree = "<group>"; };
+		84468D45230254280073D640 /* FMShoppingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMShoppingController.m; sourceTree = "<group>"; };
+		84468D47230254350073D640 /* FMMeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMMeController.h; sourceTree = "<group>"; };
+		84468D48230254350073D640 /* FMMeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMMeController.m; sourceTree = "<group>"; };
+		84468D4A230256B20073D640 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		84468D4B230256B20073D640 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		849CBF8A2300FBAA003821E4 /* SeventreesUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeventreesUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849CBF9B2300FBAC003821E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		849CBFAB230113B2003821E4 /* AppDelegate+AppInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+AppInit.h"; sourceTree = "<group>"; };
@@ -184,6 +199,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84468D382302517B0073D640 /* Shopping */ = {
+			isa = PBXGroup;
+			children = (
+				84468D44230254280073D640 /* FMShoppingController.h */,
+				84468D45230254280073D640 /* FMShoppingController.m */,
+			);
+			path = Shopping;
+			sourceTree = "<group>";
+		};
+		84468D3A230251AB0073D640 /* FMSection */ = {
+			isa = PBXGroup;
+			children = (
+				84468D3C230253210073D640 /* Home */,
+				84468D3B230252E90073D640 /* Menu */,
+				84468D382302517B0073D640 /* Shopping */,
+				84468D3D230253260073D640 /* Me */,
+			);
+			path = FMSection;
+			sourceTree = "<group>";
+		};
+		84468D3B230252E90073D640 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				84468D41230253F80073D640 /* FMMenuController.h */,
+				84468D42230253F80073D640 /* FMMenuController.m */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		84468D3C230253210073D640 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				84468D3E230253E30073D640 /* FMHomeViewController.h */,
+				84468D3F230253E30073D640 /* FMHomeViewController.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		84468D3D230253260073D640 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				84468D47230254350073D640 /* FMMeController.h */,
+				84468D48230254350073D640 /* FMMeController.m */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
 		849CBF812300FBAA003821E4 = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				849CBFB0230113B2003821E4 /* General */,
+				84468D3A230251AB0073D640 /* FMSection */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -258,6 +321,8 @@
 			children = (
 				849CBFB72301176F003821E4 /* MainTabBarController.h */,
 				849CBFB82301176F003821E4 /* MainTabBarController.m */,
+				84468D4A230256B20073D640 /* BaseNavigationController.h */,
+				84468D4B230256B20073D640 /* BaseNavigationController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -726,17 +791,20 @@
 				84DD3FD923015B04001171F1 /* UIImage+Chain.m in Sources */,
 				84DD3FCD23015B04001171F1 /* UIViewController+Chain.m in Sources */,
 				84D7282323014D1B002D387A /* FMTableViewCell.m in Sources */,
+				84468D40230253E30073D640 /* FMHomeViewController.m in Sources */,
 				84D7287823014D1B002D387A /* UIColor+Zirkfied.m in Sources */,
 				84D7288523014D1B002D387A /* CommonManager.m in Sources */,
 				84DD3FDB23015B04001171F1 /* UINavigationItem+Chain.m in Sources */,
 				84D7287B23014D1B002D387A /* ZFConst.m in Sources */,
 				84DD3FD523015B04001171F1 /* UICollectionView+Chain.m in Sources */,
 				84DD3FD723015B04001171F1 /* UIColor+Chain.m in Sources */,
+				84468D49230254350073D640 /* FMMeController.m in Sources */,
 				84DD3FDE23015B04001171F1 /* UITableViewCell+Chain.m in Sources */,
 				84D7287A23014D1B002D387A /* ZFMaskView.m in Sources */,
 				84DD3FD123015B04001171F1 /* NSString+Chain.m in Sources */,
 				84D7288723014D1B002D387A /* PlatformConfig.mm in Sources */,
 				84D7288623014D1B002D387A /* GCDDispatchManager.m in Sources */,
+				84468D43230253F80073D640 /* FMMenuController.m in Sources */,
 				84DD3FDC23015B04001171F1 /* UIScrollView+Chain.m in Sources */,
 				84DD3FD423015B04001171F1 /* UIButton+Chain.m in Sources */,
 				84D7288423014D1B002D387A /* ZFScanViewController.m in Sources */,
@@ -744,6 +812,7 @@
 				84DD3FCC23015B04001171F1 /* UINavigationController+Chain.m in Sources */,
 				849CBFB92301176F003821E4 /* MainTabBarController.m in Sources */,
 				84DD3FCB23015B04001171F1 /* UIAlertController+Chain.m in Sources */,
+				84468D46230254280073D640 /* FMShoppingController.m in Sources */,
 				849CBFB1230113B2003821E4 /* AppDelegate+AppInit.m in Sources */,
 				84DD3FE023015B04001171F1 /* UIView+Chain.m in Sources */,
 				84DD3FDA23015B04001171F1 /* UILabel+Chain.m in Sources */,
@@ -758,6 +827,7 @@
 				84D7282623014D1B002D387A /* FMViewModel.m in Sources */,
 				84DD3FD323015B04001171F1 /* UIBarButtonItem+Chain.m in Sources */,
 				84DD40E723016436001171F1 /* FMModel+RuntimeCopy.m in Sources */,
+				84468D4C230256B20073D640 /* BaseNavigationController.m in Sources */,
 				84DD3FCF23015B04001171F1 /* NSObject+Chain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

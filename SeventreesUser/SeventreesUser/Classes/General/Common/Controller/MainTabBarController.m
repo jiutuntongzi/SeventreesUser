@@ -87,7 +87,7 @@ typedef NS_ENUM(NSUInteger, MainTabBarType) {
     if (!_configs) {
         _configs = @{
                      @(MainTabBarType1) : @{
-                             _tabBarVCKey               : @"FMHomeViewController",
+                             _tabBarVCKey               : @"FMHomeController",
                              _tabBarTitleKey            : @"首页",
                              _tabBarNormalImageKey      : @"homebarItem_normal_icon",
                              _tabBarSelectedImageKey    : @"homebarItem_selected_icon",

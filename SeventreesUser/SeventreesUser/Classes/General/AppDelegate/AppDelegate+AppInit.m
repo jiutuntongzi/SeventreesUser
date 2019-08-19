@@ -48,11 +48,19 @@
 #pragma mark ——— <Private method>
 
 - (void)fm_loadWindowRootController {
-    self.rootViewController = [[MainTabBarController alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = self.rootViewController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    BOOL isLogged = YES;
+    if (isLogged) {
+        self.rootViewController = [[MainTabBarController alloc] init];
+        self.window.rootViewController = self.rootViewController;
+        
+    } else {
+        UIViewController *loginVC = [[NSClassFromString(@"FMSetPasswordController") alloc] init];
+        self.window.rootViewController = loginVC;
+    }
 }
 
 - (void)nonHandle {

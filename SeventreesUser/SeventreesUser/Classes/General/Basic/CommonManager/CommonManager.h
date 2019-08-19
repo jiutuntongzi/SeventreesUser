@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "GCDDispatchManager.h"
-
 #define      commonMgr       [CommonManager shareCommonManager]
 
 NS_ASSUME_NONNULL_BEGIN
@@ -26,10 +24,6 @@ typedef void (^ __nullable CMFailureErrorBlock)(NSString * __nullable);
 
 
 + (instancetype)shareCommonManager;
-
-/** GCD管理单例 */
-- (GCDDispatchManager *)gcdDispatchInstance;
-
 
 /** 获取窗口最顶部(当前显示)的控制器 */
 - (UIViewController * (^)(void))topViewController;

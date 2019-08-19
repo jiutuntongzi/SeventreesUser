@@ -23,4 +23,6 @@ pod 'SVProgressHUD', '~> 2.2.5'
 
 pod 'TZImagePickerController', '~> 3.2.1'
 
+pod 'SDCycleScrollView', '~> 1.80'
+
 end

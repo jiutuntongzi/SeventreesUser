@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FMGoodsView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lQU-1y-4kK" userLabel="contentView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
+                    <subviews>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RYR-xe-APV" userLabel="titleView">
+                            <rect key="frame" x="135" y="12" width="105" height="48"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_jknfback" translatesAutoresizingMaskIntoConstraints="NO" id="XHt-Cl-bhd">
+                                    <rect key="frame" x="0.0" y="0.0" width="105" height="48"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进口奶粉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0f-xV-AZp">
+                                    <rect key="frame" x="21.666666666666657" y="12" width="62" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.19215686274509802" green="0.18823529411764706" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="e0f-xV-AZp" firstAttribute="top" secondItem="RYR-xe-APV" secondAttribute="top" constant="12" id="3H5-Wh-LOL"/>
+                                <constraint firstAttribute="trailing" secondItem="XHt-Cl-bhd" secondAttribute="trailing" id="8mv-la-DcH"/>
+                                <constraint firstItem="XHt-Cl-bhd" firstAttribute="top" secondItem="RYR-xe-APV" secondAttribute="top" id="BPl-cB-xtD"/>
+                                <constraint firstItem="e0f-xV-AZp" firstAttribute="centerX" secondItem="RYR-xe-APV" secondAttribute="centerX" id="Hdq-mH-7zq"/>
+                                <constraint firstAttribute="bottom" secondItem="XHt-Cl-bhd" secondAttribute="bottom" id="Jf8-Cp-EBf"/>
+                                <constraint firstAttribute="width" constant="105" id="WJp-rd-HdG"/>
+                                <constraint firstItem="XHt-Cl-bhd" firstAttribute="leading" secondItem="RYR-xe-APV" secondAttribute="leading" id="Y95-bL-BN4"/>
+                                <constraint firstAttribute="height" constant="48" id="vlF-Wp-70w"/>
+                            </constraints>
+                        </view>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7S-9C-DrZ" userLabel="goodsListView">
+                            <rect key="frame" x="10" y="50" width="355" height="417"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="CnA-VU-gSj">
+                                    <rect key="frame" x="0.0" y="0.0" width="355" height="417"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MOM-A6-D4G">
+                                        <size key="itemSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="UQu-Fd-l1d"/>
+                                        <outlet property="delegate" destination="-1" id="UIp-vx-416"/>
+                                    </connections>
+                                </collectionView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="CnA-VU-gSj" firstAttribute="leading" secondItem="y7S-9C-DrZ" secondAttribute="leading" id="FlC-d7-OC8"/>
+                                <constraint firstAttribute="bottom" secondItem="CnA-VU-gSj" secondAttribute="bottom" id="PI4-aB-NpD"/>
+                                <constraint firstAttribute="trailing" secondItem="CnA-VU-gSj" secondAttribute="trailing" id="SaI-ho-g8x"/>
+                                <constraint firstItem="CnA-VU-gSj" firstAttribute="top" secondItem="y7S-9C-DrZ" secondAttribute="top" id="u7d-OR-tMu"/>
+                                <constraint firstAttribute="width" constant="355" id="xIE-5n-EXt"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="y7S-9C-DrZ" secondAttribute="bottom" id="GZP-sb-T5q"/>
+                        <constraint firstItem="RYR-xe-APV" firstAttribute="top" secondItem="lQU-1y-4kK" secondAttribute="top" constant="12" id="KLe-EO-GRF"/>
+                        <constraint firstItem="y7S-9C-DrZ" firstAttribute="top" secondItem="lQU-1y-4kK" secondAttribute="top" constant="50" id="cU9-Nj-UU2"/>
+                        <constraint firstItem="RYR-xe-APV" firstAttribute="centerX" secondItem="lQU-1y-4kK" secondAttribute="centerX" id="d83-ic-cSa"/>
+                        <constraint firstItem="y7S-9C-DrZ" firstAttribute="centerX" secondItem="lQU-1y-4kK" secondAttribute="centerX" id="x2P-mk-Huz"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="lQU-1y-4kK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0qU-gg-U8Q"/>
+                <constraint firstItem="lQU-1y-4kK" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="940-P3-fjC"/>
+                <constraint firstItem="lQU-1y-4kK" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Xhi-BO-Qht"/>
+                <constraint firstItem="lQU-1y-4kK" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="jYh-jf-auh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="38.405797101449281" y="-48.505434782608702"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_jknfback" width="105.66666412353516" height="48.666667938232422"/>
+    </resources>
+</document>

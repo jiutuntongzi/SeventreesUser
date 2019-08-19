@@ -40,11 +40,6 @@ static CommonManager * _instance = nil;
 
 #pragma mark ——— Public Interface
 
-- (GCDDispatchManager *)gcdDispatchInstance {
-    return [GCDDispatchManager shareManager];
-}
-
-
 - (UIViewController * (^)(void))topViewController {
     return ^() {
         UIViewController *resultVC = nil;

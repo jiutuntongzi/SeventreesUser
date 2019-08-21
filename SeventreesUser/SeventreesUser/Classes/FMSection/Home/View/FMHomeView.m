@@ -12,6 +12,7 @@
 #import "LMJVerticalScrollText.h"
 #import "FMMenuView.h"
 #import "FMStoreView.h"
+#import "FMGoodsView.h"
 
 @interface FMHomeView () <SDCycleScrollViewDelegate, LMJVerticalScrollTextDelegate>
 
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) FMStoreView *storeView;
 
 @property (weak, nonatomic) IBOutlet UIView *goodsContentView;
+@property (strong, nonatomic) FMGoodsView *goodsView;
 
 @end
 
@@ -59,6 +61,7 @@
     _storeView.cv_frame(_storeContentView.bounds);
     
 //    _securityCodeInputView.cv_frame(_inputContentView2.bounds);
+    _goodsView.cv_frame(_goodsContentView.bounds);
     
     [super updateConstraints];
 }
@@ -120,7 +123,6 @@
     
     [_textScrollView startScrollBottomToTopWithNoSpace];
     
-    
     /// 菜单s
     FMMenuView *menuView = FMMenuView.cv_viewFromNibLoad();
     _menuView = menuView;
@@ -130,6 +132,11 @@
     FMStoreView *storeView = FMStoreView.cv_viewFromNibLoad();
     _storeView = storeView;
     [_storeContentView addSubview:storeView];
+    
+    /// 商品列表
+    FMGoodsView *goodsView = FMGoodsView.cv_viewFromNibLoad();
+    _goodsView = goodsView;
+    [_goodsContentView addSubview:goodsView];
     
     [self setNeedsUpdateConstraints];
     [self updateConstraintsIfNeeded];

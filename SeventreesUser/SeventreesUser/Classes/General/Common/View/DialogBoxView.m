@@ -20,7 +20,7 @@
 
 @property (nonatomic, copy) NSString *inputText;
 
-@property (nonatomic, copy) void(^affirmCallback)(NSString * __nullable) ;
+@property (nonatomic, copy) void(^affirmCallback)(NSString * __nullable);
 
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;

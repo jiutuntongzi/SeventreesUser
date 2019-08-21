@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.cvc_automaticallyAdjustsScrollViewInsets(NO);
 }
 
 - (void)updateViewConstraints {

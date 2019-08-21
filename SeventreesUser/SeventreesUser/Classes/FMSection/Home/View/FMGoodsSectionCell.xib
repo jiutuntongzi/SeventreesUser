@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="527" id="KGk-i7-Jjw" customClass="FMGoodsSectionCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="527"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="526.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7az-Ft-jSx" userLabel="contentView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="526.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMk-jp-weg" userLabel="titleView">
+                                <rect key="frame" x="107.5" y="17" width="105" height="48"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_jknfback" translatesAutoresizingMaskIntoConstraints="NO" id="g9Y-D3-MqW">
+                                        <rect key="frame" x="0.0" y="0.0" width="105" height="48"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进口奶粉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHg-WL-FV6">
+                                        <rect key="frame" x="21.5" y="12" width="62" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.19215686269999999" green="0.18823529410000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="g9Y-D3-MqW" secondAttribute="bottom" id="0TN-mn-rEt"/>
+                                    <constraint firstItem="JHg-WL-FV6" firstAttribute="top" secondItem="AMk-jp-weg" secondAttribute="top" constant="12" id="8FQ-O6-OTz"/>
+                                    <constraint firstAttribute="height" constant="48" id="8m5-6g-YHH"/>
+                                    <constraint firstItem="JHg-WL-FV6" firstAttribute="centerX" secondItem="AMk-jp-weg" secondAttribute="centerX" id="AhR-Ht-xGR"/>
+                                    <constraint firstItem="g9Y-D3-MqW" firstAttribute="top" secondItem="AMk-jp-weg" secondAttribute="top" id="Qho-Ov-NAd"/>
+                                    <constraint firstAttribute="trailing" secondItem="g9Y-D3-MqW" secondAttribute="trailing" id="d9o-GA-rGx"/>
+                                    <constraint firstItem="g9Y-D3-MqW" firstAttribute="leading" secondItem="AMk-jp-weg" secondAttribute="leading" id="lZw-bD-plb"/>
+                                    <constraint firstAttribute="width" constant="105" id="sVb-8h-GAu"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VYu-XB-CdO" userLabel="goodsListView">
+                                <rect key="frame" x="0.0" y="57" width="320" height="469.5"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RFL-nF-Nsg">
+                                        <rect key="frame" x="15" y="0.0" width="290" height="469.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t2q-lp-6kE">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="RFL-nF-Nsg" secondAttribute="trailing" constant="15" id="7hN-Qg-IOL"/>
+                                    <constraint firstAttribute="bottom" secondItem="RFL-nF-Nsg" secondAttribute="bottom" id="YQl-jS-rhR"/>
+                                    <constraint firstItem="RFL-nF-Nsg" firstAttribute="top" secondItem="VYu-XB-CdO" secondAttribute="top" id="pYA-qn-ROK"/>
+                                    <constraint firstItem="RFL-nF-Nsg" firstAttribute="leading" secondItem="VYu-XB-CdO" secondAttribute="leading" constant="15" id="qfg-dQ-Vvl"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AMk-jp-weg" firstAttribute="top" secondItem="7az-Ft-jSx" secondAttribute="top" constant="17" id="G6B-Cx-1OT"/>
+                            <constraint firstItem="AMk-jp-weg" firstAttribute="centerX" secondItem="7az-Ft-jSx" secondAttribute="centerX" id="XU0-wf-Vo4"/>
+                            <constraint firstItem="VYu-XB-CdO" firstAttribute="top" secondItem="7az-Ft-jSx" secondAttribute="top" constant="57" id="aj8-1u-svu"/>
+                            <constraint firstItem="VYu-XB-CdO" firstAttribute="leading" secondItem="7az-Ft-jSx" secondAttribute="leading" id="jBk-zL-jDl"/>
+                            <constraint firstAttribute="bottom" secondItem="VYu-XB-CdO" secondAttribute="bottom" id="ls5-SJ-CXa"/>
+                            <constraint firstAttribute="trailing" secondItem="VYu-XB-CdO" secondAttribute="trailing" id="rEd-cn-ajj"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="7az-Ft-jSx" secondAttribute="trailing" id="4zR-jm-yRH"/>
+                    <constraint firstItem="7az-Ft-jSx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="EDK-pe-bAx"/>
+                    <constraint firstItem="7az-Ft-jSx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="I1Q-MS-NvM"/>
+                    <constraint firstAttribute="bottom" secondItem="7az-Ft-jSx" secondAttribute="bottom" id="mhM-ig-Jcz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="collectionView" destination="RFL-nF-Nsg" id="U7O-gO-gxs"/>
+                <outlet property="flowLayout" destination="t2q-lp-6kE" id="mqY-VX-kfB"/>
+            </connections>
+            <point key="canvasLocation" x="132.80000000000001" y="371.96401799100454"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_jknfback" width="105.5" height="48.5"/>
+    </resources>
+</document>

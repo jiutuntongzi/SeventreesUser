@@ -105,6 +105,11 @@
 		84DD3FE123015B04001171F1 /* UIView+Seek.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD3FC923015B04001171F1 /* UIView+Seek.m */; };
 		84DD40E723016436001171F1 /* FMModel+RuntimeCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD40E623016436001171F1 /* FMModel+RuntimeCopy.m */; };
 		84DD40EB2301645C001171F1 /* FMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD40EA2301645C001171F1 /* FMModel.m */; };
+		84FE047E230B8AAE00E83754 /* FMGoodsSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE047C230B8AAE00E83754 /* FMGoodsSectionCell.m */; };
+		84FE047F230B8AAE00E83754 /* FMGoodsSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FE047D230B8AAE00E83754 /* FMGoodsSectionCell.xib */; };
+		84FE0482230BC3AE00E83754 /* FMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE0481230BC3AE00E83754 /* FMCollectionViewCell.m */; };
+		84FE0489230BC72300E83754 /* FMMeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE0488230BC72300E83754 /* FMMeView.m */; };
+		84FE048B230BC72D00E83754 /* FMMeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FE048A230BC72D00E83754 /* FMMeView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -293,6 +298,15 @@
 		84DD40E623016436001171F1 /* FMModel+RuntimeCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMModel+RuntimeCopy.m"; sourceTree = "<group>"; };
 		84DD40E92301645C001171F1 /* FMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMModel.h; sourceTree = "<group>"; };
 		84DD40EA2301645C001171F1 /* FMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMModel.m; sourceTree = "<group>"; };
+		84FE047B230B8AAE00E83754 /* FMGoodsSectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMGoodsSectionCell.h; sourceTree = "<group>"; };
+		84FE047C230B8AAE00E83754 /* FMGoodsSectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMGoodsSectionCell.m; sourceTree = "<group>"; };
+		84FE047D230B8AAE00E83754 /* FMGoodsSectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMGoodsSectionCell.xib; sourceTree = "<group>"; };
+		84FE0480230BC3AE00E83754 /* FMCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMCollectionViewCell.h; sourceTree = "<group>"; };
+		84FE0481230BC3AE00E83754 /* FMCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMCollectionViewCell.m; sourceTree = "<group>"; };
+		84FE0483230BC40400E83754 /* FMCollectionViewCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMCollectionViewCellProtocol.h; sourceTree = "<group>"; };
+		84FE0487230BC72300E83754 /* FMMeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMMeView.h; sourceTree = "<group>"; };
+		84FE0488230BC72300E83754 /* FMMeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMMeView.m; sourceTree = "<group>"; };
+		84FE048A230BC72D00E83754 /* FMMeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMMeView.xib; sourceTree = "<group>"; };
 		9061A6A03D5FF6522BD79287 /* Pods-SeventreesUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeventreesUser.debug.xcconfig"; path = "Target Support Files/Pods-SeventreesUser/Pods-SeventreesUser.debug.xcconfig"; sourceTree = "<group>"; };
 		E526D20361804ADF582EE2C0 /* libPods-SeventreesUser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SeventreesUser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -337,6 +351,9 @@
 				844776AA230ACB97008AE242 /* FMGoodsView.h */,
 				844776AB230ACB97008AE242 /* FMGoodsView.m */,
 				844776AD230ACBA0008AE242 /* FMGoodsView.xib */,
+				84FE047B230B8AAE00E83754 /* FMGoodsSectionCell.h */,
+				84FE047C230B8AAE00E83754 /* FMGoodsSectionCell.m */,
+				84FE047D230B8AAE00E83754 /* FMGoodsSectionCell.xib */,
 				844776AF230AD1A6008AE242 /* FMGoodsCell.h */,
 				844776B0230AD1A6008AE242 /* FMGoodsCell.m */,
 				844776B1230AD1A6008AE242 /* FMGoodsCell.xib */,
@@ -386,8 +403,9 @@
 		84468D3D230253260073D640 /* Me */ = {
 			isa = PBXGroup;
 			children = (
-				84468D47230254350073D640 /* FMMeController.h */,
-				84468D48230254350073D640 /* FMMeController.m */,
+				84FE0485230BC67400E83754 /* Controller */,
+				84FE0484230BC66500E83754 /* View */,
+				84FE0486230BC69B00E83754 /* ViewModel */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -554,7 +572,7 @@
 		84D42D33230403F700249356 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				84D42D3A230403F700249356 /* ViewController */,
+				84D42D3A230403F700249356 /* Controller */,
 				84D42D37230403F700249356 /* View */,
 				84D42D3D230403F700249356 /* ViewModel */,
 				84D42D34230403F700249356 /* Model */,
@@ -588,7 +606,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		84D42D3A230403F700249356 /* ViewController */ = {
+		84D42D3A230403F700249356 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				84D42D3B230403F700249356 /* FMLoginController.h */,
@@ -598,7 +616,7 @@
 				84BAC5952306B6F20062B812 /* FMRegisterController.h */,
 				84BAC5962306B6F20062B812 /* FMRegisterController.m */,
 			);
-			path = ViewController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		84D42D3D230403F700249356 /* ViewModel */ = {
@@ -647,6 +665,9 @@
 				84D7273923014D1B002D387A /* FMTableViewCell.h */,
 				84D7273A23014D1B002D387A /* FMTableViewCell.m */,
 				84D7273B23014D1B002D387A /* FMTableViewCellProtocol.h */,
+				84FE0480230BC3AE00E83754 /* FMCollectionViewCell.h */,
+				84FE0481230BC3AE00E83754 /* FMCollectionViewCell.m */,
+				84FE0483230BC40400E83754 /* FMCollectionViewCellProtocol.h */,
 				84D7273C23014D1B002D387A /* FMView.h */,
 				84D7273D23014D1B002D387A /* FMView.m */,
 				84D7273E23014D1B002D387A /* FMViewProtocol.h */,
@@ -917,6 +938,32 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		84FE0484230BC66500E83754 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84FE0487230BC72300E83754 /* FMMeView.h */,
+				84FE0488230BC72300E83754 /* FMMeView.m */,
+				84FE048A230BC72D00E83754 /* FMMeView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84FE0485230BC67400E83754 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				84468D47230254350073D640 /* FMMeController.h */,
+				84468D48230254350073D640 /* FMMeController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		84FE0486230BC69B00E83754 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		975B52EF50DC2D036D6E1494 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1012,9 +1059,11 @@
 				84D7288323014D1B002D387A /* ScanQR4@2x.png in Resources */,
 				84D42D452304066E00249356 /* FMLoginView.xib in Resources */,
 				84BAC582230685CF0062B812 /* FMSecurityCodeInputView.xib in Resources */,
+				84FE047F230B8AAE00E83754 /* FMGoodsSectionCell.xib in Resources */,
 				846A490A230A830400D2EAFB /* FMHomeView.xib in Resources */,
 				84D7287F23014D1B002D387A /* QRCodeScanLine@2x.png in Resources */,
 				84D7288023014D1B002D387A /* ScanQR1@2x.png in Resources */,
+				84FE048B230BC72D00E83754 /* FMMeView.xib in Resources */,
 				844776B3230AD1A6008AE242 /* FMGoodsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1086,6 +1135,7 @@
 				84BAC58523069E950062B812 /* FMPhoneNumberInputView.m in Sources */,
 				84DD3FE123015B04001171F1 /* UIView+Seek.m in Sources */,
 				84D7282523014D1B002D387A /* FMViewController.m in Sources */,
+				84FE0482230BC3AE00E83754 /* FMCollectionViewCell.m in Sources */,
 				84DD3FD923015B04001171F1 /* UIImage+Chain.m in Sources */,
 				84DD3FCD23015B04001171F1 /* UIViewController+Chain.m in Sources */,
 				84BAC5802306859A0062B812 /* FMSecurityCodeInputView.m in Sources */,
@@ -1127,6 +1177,7 @@
 				84DD3FCB23015B04001171F1 /* UIAlertController+Chain.m in Sources */,
 				846A4908230A82FA00D2EAFB /* FMHomeView.m in Sources */,
 				84468D46230254280073D640 /* FMShoppingController.m in Sources */,
+				84FE0489230BC72300E83754 /* FMMeView.m in Sources */,
 				846A4915230A913200D2EAFB /* LMJVerticalScrollText.m in Sources */,
 				84D42D41230403F700249356 /* FMLoginView.m in Sources */,
 				849CBFB1230113B2003821E4 /* AppDelegate+AppInit.m in Sources */,
@@ -1148,6 +1199,7 @@
 				84D7287923014D1B002D387A /* UIImage+Zirkfied.m in Sources */,
 				84D7282623014D1B002D387A /* FMViewModel.m in Sources */,
 				84DD3FD323015B04001171F1 /* UIBarButtonItem+Chain.m in Sources */,
+				84FE047E230B8AAE00E83754 /* FMGoodsSectionCell.m in Sources */,
 				84DD40E723016436001171F1 /* FMModel+RuntimeCopy.m in Sources */,
 				84468D4C230256B20073D640 /* BaseNavigationController.m in Sources */,
 				84D42D482304E88100249356 /* UIView+Frame.m in Sources */,

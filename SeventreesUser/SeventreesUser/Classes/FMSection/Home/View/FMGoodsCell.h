@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMCollectionViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FMGoodsCell : UICollectionViewCell
+@interface FMGoodsCell : FMCollectionViewCell
 
 @end
 

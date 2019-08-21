@@ -26,6 +26,10 @@
 
 #import "UITableViewCell+Chain.h"
 
+#import "UICollectionViewCell+Chain.h"
+
+#import "UICollectionView+Chain.h"
+
 #import "UINavigationItem+Chain.h"
 
 #import "UIBarButtonItem+Chain.h"

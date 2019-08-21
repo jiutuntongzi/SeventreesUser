@@ -71,12 +71,12 @@ typedef NS_ENUM(NSUInteger, MainTabBarType) {
     
     /// item标题选中/未选中富文本色
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = [UIColor grayColor];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor colorWithRed:153.f / 255.f green:153.f / 255.f blue:153.f / 255.f alpha:1.f];
     textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:12.f];
     [tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     
     NSMutableDictionary *selectTextAttrs = [NSMutableDictionary dictionary];
-    selectTextAttrs[NSForegroundColorAttributeName] = [UIColor darkGrayColor];
+    selectTextAttrs[NSForegroundColorAttributeName] = [UIColor colorWithRed:247.f / 255.f green:111.f / 255.f blue:111.f / 255.f alpha:1.f];
     selectTextAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:12.f];
     [tabBarItem setTitleTextAttributes:selectTextAttrs forState:UIControlStateSelected];
     

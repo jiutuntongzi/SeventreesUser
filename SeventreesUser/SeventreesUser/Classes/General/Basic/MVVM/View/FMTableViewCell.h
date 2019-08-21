@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MacroHeader.h"
+
 #import "FMTableViewCellProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN

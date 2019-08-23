@@ -25,30 +25,26 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O4o-zl-7jd" userLabel="contentView">
                                 <rect key="frame" x="0.0" y="0.0" width="170" height="240"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="bXF-eN-6LD">
-                                        <rect key="frame" x="5.5" y="0.0" width="159" height="159"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="159" id="iS1-R3-n3B"/>
-                                            <constraint firstAttribute="width" constant="159" id="ulD-i7-Egc"/>
-                                        </constraints>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goodstest" translatesAutoresizingMaskIntoConstraints="NO" id="bXF-eN-6LD">
+                                        <rect key="frame" x="10" y="10" width="150" height="162"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1T-Lh-gWu" userLabel="goodsInfoView">
-                                        <rect key="frame" x="0.0" y="159" width="170" height="81"/>
+                                        <rect key="frame" x="0.0" y="180" width="170" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="美可卓蓝胖子奶粉-脱脂" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOX-qO-avN">
-                                                <rect key="frame" x="0.0" y="22" width="170" height="16"/>
+                                                <rect key="frame" x="0.0" y="1" width="170" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥180" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4D-hc-mkJ">
-                                                <rect key="frame" x="10" y="48" width="42" height="18"/>
+                                                <rect key="frame" x="10" y="27" width="42" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <color key="textColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7L5-jQ-h3M">
-                                                <rect key="frame" x="138" y="48" width="22" height="22"/>
+                                                <rect key="frame" x="138" y="27" width="22" height="22"/>
                                                 <state key="normal" image="icon_shoppingCar"/>
                                             </button>
                                         </subviews>
@@ -61,16 +57,18 @@
                                             <constraint firstAttribute="bottom" secondItem="y4D-hc-mkJ" secondAttribute="bottom" constant="15" id="djq-Ln-PMd"/>
                                             <constraint firstAttribute="trailing" secondItem="hOX-qO-avN" secondAttribute="trailing" id="nWn-hr-giG"/>
                                             <constraint firstItem="y4D-hc-mkJ" firstAttribute="top" secondItem="hOX-qO-avN" secondAttribute="bottom" constant="10" id="pJM-DU-RLt"/>
+                                            <constraint firstAttribute="height" constant="60" id="sZ9-t0-JZ2"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="bXF-eN-6LD" firstAttribute="top" secondItem="O4o-zl-7jd" secondAttribute="top" id="0pa-Dk-OXc"/>
+                                    <constraint firstItem="bXF-eN-6LD" firstAttribute="top" secondItem="O4o-zl-7jd" secondAttribute="top" constant="10" id="0pa-Dk-OXc"/>
+                                    <constraint firstItem="bXF-eN-6LD" firstAttribute="centerX" secondItem="O4o-zl-7jd" secondAttribute="centerX" id="M5X-z8-u3i"/>
+                                    <constraint firstItem="h1T-Lh-gWu" firstAttribute="top" secondItem="bXF-eN-6LD" secondAttribute="bottom" constant="8" id="Mg4-Is-PRZ"/>
                                     <constraint firstAttribute="trailing" secondItem="h1T-Lh-gWu" secondAttribute="trailing" id="OHM-ud-YcS"/>
+                                    <constraint firstItem="bXF-eN-6LD" firstAttribute="width" secondItem="O4o-zl-7jd" secondAttribute="width" constant="-20" id="P4L-tN-Uuv"/>
                                     <constraint firstItem="h1T-Lh-gWu" firstAttribute="leading" secondItem="O4o-zl-7jd" secondAttribute="leading" id="SLQ-SC-UiE"/>
-                                    <constraint firstItem="bXF-eN-6LD" firstAttribute="centerX" secondItem="O4o-zl-7jd" secondAttribute="centerX" id="W1f-lo-RFz"/>
-                                    <constraint firstItem="h1T-Lh-gWu" firstAttribute="top" secondItem="bXF-eN-6LD" secondAttribute="bottom" id="fLq-NT-EPe"/>
                                     <constraint firstAttribute="bottom" secondItem="h1T-Lh-gWu" secondAttribute="bottom" id="jdL-Wn-fFU"/>
                                 </constraints>
                             </view>
@@ -105,7 +103,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="1" width="752" height="320"/>
+        <image name="goodstest" width="318" height="320"/>
         <image name="icon_shoppingCar" width="22.5" height="22.5"/>
     </resources>
 </document>

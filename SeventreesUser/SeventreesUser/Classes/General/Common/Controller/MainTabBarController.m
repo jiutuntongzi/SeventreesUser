@@ -39,6 +39,7 @@ typedef NS_ENUM(NSUInteger, MainTabBarType) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [UITabBar appearance].translucent = NO;
     
     [self setupTabBarItems];
 }
@@ -93,7 +94,7 @@ typedef NS_ENUM(NSUInteger, MainTabBarType) {
                              _tabBarSelectedImageKey    : @"homebarItem_selected_icon",
                              },
                      @(MainTabBarType2) : @{
-                             _tabBarVCKey               : @"FMMenuController",
+                             _tabBarVCKey               : @"FenLeiViewController",
                              _tabBarTitleKey            : @"分类",
                              _tabBarNormalImageKey      : @"menubarItem_normal_icon",
                              _tabBarSelectedImageKey    : @"menubarItem_selected_icon",

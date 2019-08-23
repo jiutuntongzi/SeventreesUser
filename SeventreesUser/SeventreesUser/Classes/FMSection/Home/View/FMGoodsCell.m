@@ -29,6 +29,7 @@
     
     [[_shoppingCarButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id button) {
         DLog(@"button == %@", button);
+        [[UIApplication sharedApplication].keyWindow endEditing:YES];
     }];
 };
 

@@ -36,7 +36,7 @@
     
     /// 导航栏不透明
     navBar.barStyle = UIBarStyleDefault;   // UIBarStyleBlackTranslucent ;
-    navBar.translucent = YES;    // NO
+    navBar.translucent = NO;    // NO
     
     navBar.tintColor = [UIColor darkTextColor]; // 导航栏白色
 }
@@ -46,10 +46,9 @@
 }
 
 /*
-
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if (self.viewControllers.count > 0) {
-        viewController.navigationItem.leftBarButtonItem = [self barButtonItemWithImageName:@"nav_back" title:nil action:@selector(backAction) left:YES];
+//        viewController.navigationItem.leftBarButtonItem = [self barButtonItemWithImageName:@"nav_back" title:nil action:@selector(backAction) left:YES];
         
         viewController.hidesBottomBarWhenPushed = YES;
     }

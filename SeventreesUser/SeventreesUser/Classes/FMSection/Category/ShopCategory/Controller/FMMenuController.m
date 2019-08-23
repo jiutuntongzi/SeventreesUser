@@ -7,6 +7,9 @@
 //
 
 #import "FMMenuController.h"
+#import "BaseNavigationController.h"
+#import "FMTypePageController.h"
+
 
 @interface FMMenuController ()
 
@@ -15,6 +18,15 @@
 @implementation FMMenuController
 
 #pragma mark - System Functions
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    FMTypePageController *nextVC = [[FMTypePageController alloc] init];
+//    nextVC.hidesBottomBarWhenPushed = YES;
+//    UINavigationController *navigationController = [[BaseNavigationController alloc] initWithRootViewController:nextVC];
+//    self.cvc_presentVCAnimatedCompletion(navigationController, YES, nil);
+    self.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

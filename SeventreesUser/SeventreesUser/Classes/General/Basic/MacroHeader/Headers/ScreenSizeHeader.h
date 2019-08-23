@@ -14,6 +14,7 @@
 #define      SCREEN_W        ([[UIScreen mainScreen] bounds].size.width)
 #define      SCREEN_H        ([[UIScreen mainScreen] bounds].size.height)
 
+#define      kFixedHeight 44.f
 
 #define      kNavBarHeight        self.navigationController.navigationBar.frame.size.height + [[UIApplication sharedApplication] statusBarFrame].size.height
 

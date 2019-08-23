@@ -10,13 +10,20 @@
 
 @implementation FMViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = UIColor.whiteColor;
+    self.automaticallyAdjustsScrollViewInsets = YES;
+}
+
 + (instancetype)allocWithZone:(struct _NSZone *)zone {
     FMViewController *viewController = [super allocWithZone:zone];
     
     @weakify(viewController);
     [[viewController rac_signalForSelector:@selector(viewDidLoad)] subscribeNext:^(id x) {
         @strongify(viewController);
-        viewController.view.cv_backColor(UIColor.whiteColor);
+        
         [viewController fm_addSubviews];
         [viewController fm_bindViewModel];
     }];
@@ -69,7 +76,7 @@
 - (void)fm_refreshData { }
 
 - (void)dealloc {
-    DLog(@"销毁了");
+    DLog(@"VC销毁了");
 }
 
 @end

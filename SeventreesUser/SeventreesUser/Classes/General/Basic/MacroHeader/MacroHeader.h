@@ -17,7 +17,7 @@
 
 #import "ThreeLibHeader.h"
 
-//#import "WeakifyHeader.h"  已引用YYKit的了
+#import "WeakifyHeader.h"  
 
 #import "ScreenSizeHeader.h"
 
@@ -32,9 +32,10 @@
 
 #import "UIView+Visuals.h"
 
+#import "NSString+Size.h"
+
+#import "UIView+ORIBProperty.h"
+
 #import "UITableView+FDTemplateLayoutCell.h"
-
-
-
 
 #endif /* MacroHeader_h */

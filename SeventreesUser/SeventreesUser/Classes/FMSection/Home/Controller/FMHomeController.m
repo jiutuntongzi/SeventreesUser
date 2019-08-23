@@ -24,8 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.cvc_automaticallyAdjustsScrollViewInsets(NO);
 }
 
 - (void)updateViewConstraints {
@@ -48,7 +46,7 @@
 }
 
 - (void)fm_setupNavbar {
-    self.navigationItem.title = @"首页";
+    self.navigationItem.title = @"SEVEN TREES";
 }
 
 - (void)fm_refreshData {

@@ -11,7 +11,7 @@
 @implementation FMView
 
 - (instancetype)init {
-    if (self = [super init]) {
+    if (self = [super init]) {        
         [self fm_setupSubviews];
         [self fm_bindViewModel];
     }

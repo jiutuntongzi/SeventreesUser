@@ -58,8 +58,16 @@
 
 /** 设置导航栏 */
 - (void)fm_setupNavbar {
-    static NSString * const _returnImageName = @"ic_return";
+    static NSString * const _returnImageName = @"icon_navBack";
+    __weak typeof(self) weakSelf = self;
+    UIBarButtonItem *returnItem = UIBarButtonItem.cbi_initWithImageStyleForTouchCallback(_returnImageName, 1, ^(UIBarButtonItem *leftItem) {
+        if ([weakSelf.navigationController popViewControllerAnimated:YES] == nil) {
+            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }
+    });
+    self.navigationItem.cni_leftBarButtonItem(returnItem);
     
+    /*
     UIButton *customButton = UIButton.cb_button();
     customButton.cv_frameOf(0.f, 0.f, kNavBarHeight, kNavBarHeight);
     customButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -70,6 +78,7 @@
             [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
         }
     });
+    */
 }
 
 /** 刷新数据 */

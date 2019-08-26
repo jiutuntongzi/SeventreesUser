@@ -25,7 +25,7 @@
     /// 导航栏背景图
     //    UIImage *img =  [UIImage imageNamed:@"nav_bg"];
     //    [navBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
-    [navBar setShadowImage:[[UIImage alloc] init]]; // 去阴影
+//    [navBar setShadowImage:[[UIImage alloc] init]]; // 去阴影线
     [navBar setBarTintColor:UIColor.whiteColor]; // 背景色
     
     /// 导航栏标题富文本字体大小/颜色样式

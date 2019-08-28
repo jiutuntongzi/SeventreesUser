@@ -32,13 +32,13 @@
 		84089E6E2313905600D7EF7D /* FMEvaluationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84089E6D2313905600D7EF7D /* FMEvaluationModel.m */; };
 		84089E852313BD1800D7EF7D /* FMEvaluationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84089E822313BD1800D7EF7D /* FMEvaluationCell.xib */; };
 		84089E862313BD1800D7EF7D /* FMEvaluationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84089E832313BD1800D7EF7D /* FMEvaluationCell.m */; };
-		84089E922313BFC000D7EF7D /* FMEvaluationListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84089E8E2313BFC000D7EF7D /* FMEvaluationListView.m */; };
-		84089E932313BFC000D7EF7D /* FMPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84089E902313BFC000D7EF7D /* FMPictureCell.m */; };
 		840B827E2310CC3A004DBFC9 /* FMPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B827D2310CC3A004DBFC9 /* FMPayController.m */; };
 		840B82872310CE19004DBFC9 /* FMPayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B82862310CE19004DBFC9 /* FMPayView.m */; };
 		840B828A2310CECA004DBFC9 /* FMPayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B82892310CECA004DBFC9 /* FMPayViewModel.m */; };
 		840B828C2310CFB2004DBFC9 /* FMPayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B828B2310CFB2004DBFC9 /* FMPayView.xib */; };
 		840B828F2310D0AA004DBFC9 /* FMPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B828E2310D0AA004DBFC9 /* FMPayModel.m */; };
+		842F0AED231655C400D78028 /* FMImageEyeListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842F0AEA231655C400D78028 /* FMImageEyeListView.m */; };
+		842F0AF02316572D00D78028 /* FMImageEyeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842F0AEE2316572D00D78028 /* FMImageEyeCell.m */; };
 		84464C1A230FED7300ED9069 /* FMShoppingGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84464C18230FED7300ED9069 /* FMShoppingGoodsCell.m */; };
 		84464C1B230FED7300ED9069 /* FMShoppingGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84464C19230FED7300ED9069 /* FMShoppingGoodsCell.xib */; };
 		84464C1E230FF0F400ED9069 /* UIView+ORIBProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 84464C1C230FF0F300ED9069 /* UIView+ORIBProperty.m */; };
@@ -207,10 +207,6 @@
 		84089E822313BD1800D7EF7D /* FMEvaluationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMEvaluationCell.xib; sourceTree = "<group>"; };
 		84089E832313BD1800D7EF7D /* FMEvaluationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEvaluationCell.m; sourceTree = "<group>"; };
 		84089E842313BD1800D7EF7D /* FMEvaluationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMEvaluationCell.h; sourceTree = "<group>"; };
-		84089E8D2313BFC000D7EF7D /* FMEvaluationListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMEvaluationListView.h; sourceTree = "<group>"; };
-		84089E8E2313BFC000D7EF7D /* FMEvaluationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEvaluationListView.m; sourceTree = "<group>"; };
-		84089E8F2313BFC000D7EF7D /* FMPictureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMPictureCell.h; sourceTree = "<group>"; };
-		84089E902313BFC000D7EF7D /* FMPictureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMPictureCell.m; sourceTree = "<group>"; };
 		840B827C2310CC3A004DBFC9 /* FMPayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMPayController.h; sourceTree = "<group>"; };
 		840B827D2310CC3A004DBFC9 /* FMPayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMPayController.m; sourceTree = "<group>"; };
 		840B82852310CE19004DBFC9 /* FMPayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMPayView.h; sourceTree = "<group>"; };
@@ -220,6 +216,10 @@
 		840B828B2310CFB2004DBFC9 /* FMPayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMPayView.xib; sourceTree = "<group>"; };
 		840B828D2310D0AA004DBFC9 /* FMPayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMPayModel.h; sourceTree = "<group>"; };
 		840B828E2310D0AA004DBFC9 /* FMPayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMPayModel.m; sourceTree = "<group>"; };
+		842F0AE9231655C400D78028 /* FMImageEyeListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMImageEyeListView.h; sourceTree = "<group>"; };
+		842F0AEA231655C400D78028 /* FMImageEyeListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMImageEyeListView.m; sourceTree = "<group>"; };
+		842F0AEE2316572D00D78028 /* FMImageEyeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMImageEyeCell.m; sourceTree = "<group>"; };
+		842F0AEF2316572D00D78028 /* FMImageEyeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMImageEyeCell.h; sourceTree = "<group>"; };
 		84464C17230FED7300ED9069 /* FMShoppingGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMShoppingGoodsCell.h; sourceTree = "<group>"; };
 		84464C18230FED7300ED9069 /* FMShoppingGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMShoppingGoodsCell.m; sourceTree = "<group>"; };
 		84464C19230FED7300ED9069 /* FMShoppingGoodsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMShoppingGoodsCell.xib; sourceTree = "<group>"; };
@@ -611,11 +611,8 @@
 		84089E5B23138FBE00D7EF7D /* AllEvaluation */ = {
 			isa = PBXGroup;
 			children = (
-				84089E8A2313BFC000D7EF7D /* EvaluationList */,
-				84089E5C23138FBE00D7EF7D /* Controller */,
-				84089E5E23138FBE00D7EF7D /* View */,
-				84089E5F23138FBE00D7EF7D /* ViewModel */,
-				84089E5D23138FBE00D7EF7D /* Model */,
+				842F0AD923164F7F00D78028 /* EvaluationList */,
+				842F0AE4231655C400D78028 /* EvaluationPictureList */,
 			);
 			path = AllEvaluation;
 			sourceTree = "<group>";
@@ -655,41 +652,6 @@
 			children = (
 				84089E692313904300D7EF7D /* FMEvaluationViewModel.h */,
 				84089E6A2313904300D7EF7D /* FMEvaluationViewModel.m */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		84089E8A2313BFC000D7EF7D /* EvaluationList */ = {
-			isa = PBXGroup;
-			children = (
-				84089E8B2313BFC000D7EF7D /* Model */,
-				84089E8C2313BFC000D7EF7D /* View */,
-				84089E912313BFC000D7EF7D /* ViewModel */,
-			);
-			path = EvaluationList;
-			sourceTree = "<group>";
-		};
-		84089E8B2313BFC000D7EF7D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		84089E8C2313BFC000D7EF7D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				84089E8D2313BFC000D7EF7D /* FMEvaluationListView.h */,
-				84089E8E2313BFC000D7EF7D /* FMEvaluationListView.m */,
-				84089E8F2313BFC000D7EF7D /* FMPictureCell.h */,
-				84089E902313BFC000D7EF7D /* FMPictureCell.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		84089E912313BFC000D7EF7D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -790,6 +752,52 @@
 				84F9D817230FDD0600158496 /* Model */,
 			);
 			path = Shopping;
+			sourceTree = "<group>";
+		};
+		842F0AD923164F7F00D78028 /* EvaluationList */ = {
+			isa = PBXGroup;
+			children = (
+				84089E5C23138FBE00D7EF7D /* Controller */,
+				84089E5E23138FBE00D7EF7D /* View */,
+				84089E5F23138FBE00D7EF7D /* ViewModel */,
+				84089E5D23138FBE00D7EF7D /* Model */,
+			);
+			path = EvaluationList;
+			sourceTree = "<group>";
+		};
+		842F0AE4231655C400D78028 /* EvaluationPictureList */ = {
+			isa = PBXGroup;
+			children = (
+				842F0AE5231655C400D78028 /* Model */,
+				842F0AE6231655C400D78028 /* View */,
+				842F0AEB231655C400D78028 /* ViewModel */,
+			);
+			path = EvaluationPictureList;
+			sourceTree = "<group>";
+		};
+		842F0AE5231655C400D78028 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		842F0AE6231655C400D78028 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				842F0AE9231655C400D78028 /* FMImageEyeListView.h */,
+				842F0AEA231655C400D78028 /* FMImageEyeListView.m */,
+				842F0AEF2316572D00D78028 /* FMImageEyeCell.h */,
+				842F0AEE2316572D00D78028 /* FMImageEyeCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		842F0AEB231655C400D78028 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		84464C15230FE50100ED9069 /* Settlement */ = {
@@ -1748,6 +1756,7 @@
 				84D7282523014D1B002D387A /* FMViewController.m in Sources */,
 				84464C1A230FED7300ED9069 /* FMShoppingGoodsCell.m in Sources */,
 				84001CA6230CE5E10010DE0B /* FMPriceController.m in Sources */,
+				842F0AED231655C400D78028 /* FMImageEyeListView.m in Sources */,
 				84FE0482230BC3AE00E83754 /* FMCollectionViewCell.m in Sources */,
 				84DD3FD923015B04001171F1 /* UIImage+Chain.m in Sources */,
 				84DD3FCD23015B04001171F1 /* UIViewController+Chain.m in Sources */,
@@ -1775,7 +1784,6 @@
 				84DD3FDE23015B04001171F1 /* UITableViewCell+Chain.m in Sources */,
 				84D7287A23014D1B002D387A /* ZFMaskView.m in Sources */,
 				84DD3FD123015B04001171F1 /* NSString+Chain.m in Sources */,
-				84089E922313BFC000D7EF7D /* FMEvaluationListView.m in Sources */,
 				84D7288723014D1B002D387A /* PlatformConfig.mm in Sources */,
 				84D7288623014D1B002D387A /* GCDDispatchManager.m in Sources */,
 				846A490D230A8F1C00D2EAFB /* FMHomeController.m in Sources */,
@@ -1827,6 +1835,7 @@
 				84DD3FD823015B04001171F1 /* UIControl+Chain.m in Sources */,
 				844776B2230AD1A6008AE242 /* FMGoodsCell.m in Sources */,
 				84065CFE230A386600D39225 /* DialogBoxView.m in Sources */,
+				842F0AF02316572D00D78028 /* FMImageEyeCell.m in Sources */,
 				84BAC5972306B6F20062B812 /* FMRegisterController.m in Sources */,
 				84DD3FD223015B04001171F1 /* NSTimer+Chain.m in Sources */,
 				84F9D821230FE14200158496 /* FMShoppingGoodsModel.m in Sources */,
@@ -1838,7 +1847,6 @@
 				84D7287923014D1B002D387A /* UIImage+Zirkfied.m in Sources */,
 				84089E862313BD1800D7EF7D /* FMEvaluationCell.m in Sources */,
 				84F9D811230E9C2200158496 /* DCClassMianItem.m in Sources */,
-				84089E932313BFC000D7EF7D /* FMPictureCell.m in Sources */,
 				84D7282623014D1B002D387A /* FMViewModel.m in Sources */,
 				840B828A2310CECA004DBFC9 /* FMPayViewModel.m in Sources */,
 				84F9D81E230FE07A00158496 /* FMShoppingViewModel.m in Sources */,

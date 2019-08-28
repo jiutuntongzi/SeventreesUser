@@ -8,6 +8,7 @@
 
 #import "FMGoodsSectionCell.h"
 #import "FMGoodsCell.h"
+#import "MacroHeader.h"
 
 @interface FMGoodsSectionCell () <UICollectionViewDataSource, UICollectionViewDelegate>
 

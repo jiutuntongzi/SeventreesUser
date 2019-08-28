@@ -1,15 +1,15 @@
 //
-//  FMEvaluationListView.m
+//  FMImageEyeListView.m
 //  SeventreesUser
 //
 //  Created by wushiye on 2019/8/26.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import "FMEvaluationListView.h"
-#import "FMPictureCell.m"
+#import "FMImageEyeListView.h"
+#import "FMImageEyeCell.h"
 
-@interface FMEvaluationListView () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface FMImageEyeListView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UICollectionView *collectionView;
 
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation FMEvaluationListView
+@implementation FMImageEyeListView
 
 /** 设置子views */
 - (void)fm_setupSubviews {
@@ -34,7 +34,9 @@
     _collectionView.backgroundColor = UIColor.cc_colorByHexString(@"#EEEEEE");
     //    _collectionView.contentOffset = CGPointMake(0, 0);
     //    _collectionView.contentSize = CGSizeMake(self.width, 0);
-    [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([FMPictureCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([FMPictureCell class])];
+//    _collectionView.ccv_registerClass();
+    
+    [_collectionView registerClass:[FMImageEyeCell class] forCellWithReuseIdentifier:NSStringFromClass([FMImageEyeCell class])];
     [self addSubview:_collectionView];
     
     [self setNeedsUpdateConstraints];
@@ -48,21 +50,22 @@
 
 - (void)setupCollectionViewFlowLayout {
     // 每组Cell四边的边距
-    //    _flowLayout.sectionInset = UIEdgeInsetsMake(marginValue, marginValue, marginValue, marginValue);
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical]; // 水流方向
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal]; // 水流方向(横向)
     _flowLayout = flowLayout;
-    CGFloat margin = 10.f;
-    
-    //最小两行之间的间距     （列间距）
-    flowLayout.minimumInteritemSpacing = margin;
-    //同一行相邻两个cell的最小间距 （行间距）
-    flowLayout.minimumLineSpacing = margin;
     
     /// itemCell 宽/高
-    CGFloat itemWidth = (kScreenWidth - margin) * 0.5;
-    CGFloat itemHeight = itemWidth * 1.28f;
-    flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    CGFloat itemWH = FMImageEyeCellSize; // 固定值
+    //    CGFloat itemWidth = (kScreenWidth - 15.f * 2.f - (horItemCount - 1) * margin) / 4.0f; // 动态高度
+    CGFloat horItemCount = 4.f; // 水平方向4张图片
+    CGFloat horMargin = (kScreenWidth - (15.f * 2.f) - itemWH * horItemCount) / 3.f; // 计算横向间隔
+    
+    // 列间距）
+    flowLayout.minimumInteritemSpacing = 0;
+    // 行间距）
+    flowLayout.minimumLineSpacing = horMargin;
+
+    flowLayout.itemSize = CGSizeMake(itemWH, itemWH);
 }
 
 - (void)updateConstraints {
@@ -80,7 +83,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    FMPictureCell *cell = FMPictureCell.ccc_cellReuseForCollectionViewIndexPath(collectionView, indexPath);
+    FMImageEyeCell *cell = FMImageEyeCell.ccc_cellReuseForCollectionViewIndexPath(collectionView, indexPath);
     return cell;
 }
 

@@ -9,6 +9,11 @@
 #import "FMImageEyeListView.h"
 #import "FMImageEyeCell.h"
 
+//#import "TZImagePickerController.h"
+
+#import "YBImageBrowser.h"      // 图片浏览器
+
+
 @interface FMImageEyeListView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UICollectionView *collectionView;
@@ -93,8 +98,22 @@
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
     DLog(@"indexPath == %@", indexPath);
-    
-    [[UIApplication sharedApplication].keyWindow endEditing:YES];
+
+    NSMutableArray *selectedPhotos = [[NSMutableArray alloc] initWithCapacity:9];
+    NSMutableArray *datas = [NSMutableArray array];
+    for (UInt8 idx = 0; idx != 9; idx ++) {
+        [selectedPhotos addObject:UIImage.ci_imageNamed(@"test80")];
+        
+        YBIBImageData *data = [YBIBImageData new];
+        data.imageName = @"test80";
+        
+        [datas addObject:data];
+    }
+    // 本地图片
+    YBImageBrowser *browser = [YBImageBrowser new];
+    browser.dataSourceArray = datas;
+    browser.currentPage = 1; // 当前图片索引
+    [browser show];
 }
 
 

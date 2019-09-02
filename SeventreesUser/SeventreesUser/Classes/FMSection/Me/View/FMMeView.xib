@@ -22,7 +22,7 @@
                         <constraint firstAttribute="height" constant="199" id="7Jb-nO-lmU"/>
                     </constraints>
                 </imageView>
-                <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeU-ac-iBF">
+                <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeU-ac-iBF">
                     <rect key="frame" x="0.0" y="44" width="375" height="658"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMg-iO-pX8" userLabel="ContentView">
@@ -785,6 +785,7 @@
                 <constraint firstItem="jeU-ac-iBF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="J46-SD-lUe"/>
                 <constraint firstAttribute="trailing" secondItem="jeU-ac-iBF" secondAttribute="trailing" id="YRL-Go-HTs"/>
                 <constraint firstItem="r88-RB-TQJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="g1L-at-eKv"/>
+                <constraint firstItem="jeU-ac-iBF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lT8-41-O0i"/>
                 <constraint firstAttribute="trailing" secondItem="r88-RB-TQJ" secondAttribute="trailing" id="zfG-Nz-zv1"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

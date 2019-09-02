@@ -19,6 +19,10 @@
 
 #pragma mark - System Functions
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -46,7 +50,13 @@
 - (void)fm_setupNavbar {
     [super fm_setupNavbar];
     
-    self.navigationItem.title = @"全部";
+    self.navigationItem.title = @"商品评价";
+    
+    @weakify(self)
+    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"预览图片", 1, ^(UIBarButtonItem *rightItem) {
+
+    });
+    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (void)fm_refreshData {

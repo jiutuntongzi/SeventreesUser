@@ -33,14 +33,14 @@
 #import "Masonry.h"
 
 
+#pragma mark ——— <本地库>
+
+#import "ZFScanViewController.h" // 二维码扫描
+#import "UIImage+Zirkfied.h" // 二维码图片识别
+
+#import "LMJVerticalScrollText.h" // 纵向跑马灯
 
 
-#pragma mark ——— <本地二维码扫描/识别工具>
-
-#import "ZFScanViewController.h"
-#import "UIImage+Zirkfied.h"
-
-#import "LMJVerticalScrollText.h"
 
 
 #endif /* ThreeLibHeader_h */

@@ -12,9 +12,7 @@
 
 + (instancetype)allocWithZone:(struct _NSZone *)zone {
     FMViewModel *viewModel = [super allocWithZone:zone];
-    if (viewModel) {
-        [viewModel fm_initialize];
-    }
+    if (viewModel) [viewModel fm_initialize];
     return viewModel;
 }
 

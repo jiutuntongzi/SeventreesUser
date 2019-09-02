@@ -25,7 +25,6 @@
                             <state key="normal" title="   全选" image="icon_check_normal">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <state key="selected" image="login_gou"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计：￥0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqw-RJ-Evi">
                             <rect key="frame" x="186" y="16" width="71" height="18"/>
@@ -70,6 +69,5 @@
     </objects>
     <resources>
         <image name="icon_check_normal" width="20" height="20"/>
-        <image name="login_gou" width="16" height="16"/>
     </resources>
 </document>

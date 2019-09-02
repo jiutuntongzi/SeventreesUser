@@ -93,6 +93,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     tableView.ct_deselectRowAtIndexPathAnimated(indexPath, YES);
+    UIViewController *nextVC = [[NSClassFromString(@"FMBrandGoodsController") alloc] init];
+    self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     
     NSLog(@"indexPath.section == %ld indexPath.row == %ld", indexPath.section, indexPath.row);
 }

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FMStoreIntroView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="268"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFX-PL-mI6" userLabel="ContentView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="268"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dda-n5-qg1" userLabel="topContainerView">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_store_bianse" translatesAutoresizingMaskIntoConstraints="NO" id="E7j-mN-nlf">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="95" id="qlg-LS-EcQ"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goodstest" translatesAutoresizingMaskIntoConstraints="NO" id="0uS-Hz-2Uj">
+                                    <rect key="frame" x="13" y="63" width="64" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="64" id="BTm-EL-Iwf"/>
+                                        <constraint firstAttribute="height" constant="64" id="qlN-D3-JoI"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="巴拉巴拉官方旗舰店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQi-Kv-BDb">
+                                    <rect key="frame" x="87" y="69" width="255" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共9件商品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZ3-0m-1V0">
+                                    <rect key="frame" x="87" y="103" width="61.5" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wY8-Jz-MSJ">
+                                    <rect key="frame" x="312" y="103" width="50" height="24"/>
+                                    <color key="backgroundColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="24" id="Loh-kz-Yp3"/>
+                                        <constraint firstAttribute="width" constant="50" id="f3C-cD-pq1"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="收藏">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="wY8-Jz-MSJ" firstAttribute="top" secondItem="E7j-mN-nlf" secondAttribute="bottom" constant="8" id="0h4-OA-veM"/>
+                                <constraint firstAttribute="trailing" secondItem="E7j-mN-nlf" secondAttribute="trailing" id="1m9-YT-HuR"/>
+                                <constraint firstItem="VZ3-0m-1V0" firstAttribute="bottom" secondItem="0uS-Hz-2Uj" secondAttribute="bottom" constant="-8" id="KJS-lt-nhA"/>
+                                <constraint firstAttribute="height" constant="136" id="LRe-iq-jVu"/>
+                                <constraint firstItem="0uS-Hz-2Uj" firstAttribute="leading" secondItem="Dda-n5-qg1" secondAttribute="leading" constant="13" id="Pgw-kg-Tra"/>
+                                <constraint firstItem="0uS-Hz-2Uj" firstAttribute="bottom" secondItem="E7j-mN-nlf" secondAttribute="bottom" constant="32" id="aIG-WZ-rR8"/>
+                                <constraint firstItem="iQi-Kv-BDb" firstAttribute="top" secondItem="0uS-Hz-2Uj" secondAttribute="top" constant="6" id="ae5-ee-FhO"/>
+                                <constraint firstItem="E7j-mN-nlf" firstAttribute="leading" secondItem="Dda-n5-qg1" secondAttribute="leading" id="f3J-Cy-tWg"/>
+                                <constraint firstItem="E7j-mN-nlf" firstAttribute="top" secondItem="Dda-n5-qg1" secondAttribute="top" id="fLq-8q-oiF"/>
+                                <constraint firstAttribute="trailing" secondItem="wY8-Jz-MSJ" secondAttribute="trailing" constant="13" id="jgL-S6-IBZ"/>
+                                <constraint firstItem="VZ3-0m-1V0" firstAttribute="leading" secondItem="iQi-Kv-BDb" secondAttribute="leading" id="kP1-wg-qZg"/>
+                                <constraint firstAttribute="trailing" secondItem="iQi-Kv-BDb" secondAttribute="trailing" constant="33" id="ylK-2c-Fcl"/>
+                                <constraint firstItem="iQi-Kv-BDb" firstAttribute="leading" secondItem="0uS-Hz-2Uj" secondAttribute="trailing" constant="10" id="yyh-eY-hwf"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bh-AX-gYN" userLabel="textContainerView">
+                            <rect key="frame" x="0.0" y="136" width="375" height="132"/>
+                            <subviews>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" editable="NO" text="巴拉巴拉童装有限公司全权代理该公司balabala巴拉巴拉童装品牌在中国大陆地区的生产、销售和特许经营。温州市巴拉巴拉童装有限公司自创立之初就拥有原森马企业的强势资源…" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmR-J7-8TX">
+                                    <rect key="frame" x="13" y="0.0" width="349" height="80"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="80" id="ayl-Nv-IBW"/>
+                                    </constraints>
+                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T12-kT-Xd2">
+                                    <rect key="frame" x="152.5" y="97" width="70" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="TrM-C1-hrd"/>
+                                        <constraint firstAttribute="width" constant="70" id="opa-Mn-BsM"/>
+                                    </constraints>
+                                    <state key="normal" image="icon_store_xiala"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="CmR-J7-8TX" firstAttribute="leading" secondItem="7bh-AX-gYN" secondAttribute="leading" constant="13" id="5Of-cy-0dA"/>
+                                <constraint firstAttribute="bottom" secondItem="T12-kT-Xd2" secondAttribute="bottom" id="S5b-es-NV1"/>
+                                <constraint firstAttribute="trailing" secondItem="CmR-J7-8TX" secondAttribute="trailing" constant="13" id="dKD-sT-BtI"/>
+                                <constraint firstItem="T12-kT-Xd2" firstAttribute="centerX" secondItem="7bh-AX-gYN" secondAttribute="centerX" id="eTX-zz-ZX6"/>
+                                <constraint firstItem="CmR-J7-8TX" firstAttribute="top" secondItem="7bh-AX-gYN" secondAttribute="top" id="fJO-wN-cfX"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="7bh-AX-gYN" firstAttribute="leading" secondItem="vFX-PL-mI6" secondAttribute="leading" id="Dbt-LH-pI3"/>
+                        <constraint firstAttribute="trailing" secondItem="7bh-AX-gYN" secondAttribute="trailing" id="H2K-Tl-zQZ"/>
+                        <constraint firstAttribute="trailing" secondItem="Dda-n5-qg1" secondAttribute="trailing" id="MYx-ZX-HEu"/>
+                        <constraint firstItem="Dda-n5-qg1" firstAttribute="top" secondItem="vFX-PL-mI6" secondAttribute="top" id="SDY-3R-rGx"/>
+                        <constraint firstItem="7bh-AX-gYN" firstAttribute="top" secondItem="Dda-n5-qg1" secondAttribute="bottom" id="ngL-fo-7yp"/>
+                        <constraint firstAttribute="bottom" secondItem="7bh-AX-gYN" secondAttribute="bottom" id="rac-M4-Zb8"/>
+                        <constraint firstItem="Dda-n5-qg1" firstAttribute="leading" secondItem="vFX-PL-mI6" secondAttribute="leading" id="zYP-I2-jAO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vFX-PL-mI6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EdM-Jb-Gza"/>
+                <constraint firstAttribute="trailing" secondItem="vFX-PL-mI6" secondAttribute="trailing" id="ePC-bf-gAn"/>
+                <constraint firstItem="vFX-PL-mI6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mXb-wu-60Y"/>
+                <constraint firstAttribute="bottom" secondItem="vFX-PL-mI6" secondAttribute="bottom" id="yGA-kv-6FM"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="136.80000000000001" y="-0.44977511244377816"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="goodstest" width="318" height="320"/>
+        <image name="icon_store_bianse" width="376" height="95"/>
+        <image name="icon_store_xiala" width="17.5" height="17.5"/>
+    </resources>
+</document>

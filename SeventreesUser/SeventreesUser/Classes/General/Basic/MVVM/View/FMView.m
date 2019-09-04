@@ -10,8 +10,8 @@
 
 @implementation FMView
 
-- (instancetype)init {
-    if (self = [super init]) {        
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
         [self fm_setupSubviews];
         [self fm_bindViewModel];
     }

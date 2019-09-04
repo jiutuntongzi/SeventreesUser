@@ -1,36 +1,35 @@
 //
-//  FMShopCarToolView.m
+//  FMGoodsEvaluationView.m
 //  SeventreesUser
 //
 //  Created by wushiye on 2019/8/29.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import "FMShopCarToolView.h"
-#import "FMStoreIntroView.h"
-#import "ScrollerMenuView.h"
-#import "FMGoodsCell.h"
+#import "FMGoodsEvaluationView.h"
 
-@interface FMShopCarToolView ()
+const CGFloat FMGoodsEvaluationViewHeight = 206.f;
 
-@property (weak, nonatomic) IBOutlet UIButton *button;
+@interface FMGoodsEvaluationView ()
+
+@property (weak, nonatomic) IBOutlet UIButton *arrowButton;
 
 @end
 
-@implementation FMShopCarToolView
+@implementation FMGoodsEvaluationView
 
 @synthesize viewModel = _viewModel;
 
 #pragma mark - Private Functions
 
-- (void)setViewModel:(FMShopCarToolViewModel *)viewModel {
+- (void)setViewModel:(FMGoodsEvaluationViewModel *)viewModel {
     _viewModel = viewModel;
     
     
 }
 
 - (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel {
-    _viewModel = (FMShopCarToolViewModel *)_viewModel;
+    _viewModel = (FMGoodsEvaluationViewModel *)_viewModel;
     
     return [super initWithViewModel:viewModel];
 }
@@ -49,7 +48,7 @@
 - (void)fm_bindViewModel {
     @weakify(self);
     
-    [[_button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+    [[_arrowButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
         
         [self.viewModel.actionSubject sendNext:self.viewModel.model];
@@ -66,9 +65,9 @@
 
 #pragma mark - Lazyload
 
-- (FMShopCarToolViewModel *)viewModel {
+- (FMGoodsEvaluationViewModel *)viewModel {
     if (!_viewModel) {
-        _viewModel = [[FMShopCarToolViewModel alloc] init];
+        _viewModel = [[FMGoodsEvaluationViewModel alloc] init];
     }
     return _viewModel;
 }

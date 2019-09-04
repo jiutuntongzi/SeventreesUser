@@ -103,8 +103,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     tableView.ct_deselectRowAtIndexPathAnimated(indexPath, YES);
     
-    // test
-    UIViewController *nextVC = [[NSClassFromString(@"FMEvaluationController") alloc] init];
+    // test FMGoodsDetailsController FMEvaluationController
+    UIViewController *nextVC = [[NSClassFromString(@"FMGoodsDetailsController") alloc] init];
+    nextVC.hidesBottomBarWhenPushed = YES;
     [self.viewController.navigationController pushViewController:nextVC animated:YES];
     
     NSLog(@"indexPath.section == %ld indexPath.row == %ld", indexPath.section, indexPath.row);

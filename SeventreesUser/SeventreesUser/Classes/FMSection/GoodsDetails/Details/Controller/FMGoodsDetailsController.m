@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -44,7 +44,7 @@
 #pragma mark - Private Functions
 
 - (void)fm_addSubviews {
-    _mainView = [[FMGoodsDetailsView alloc] init];
+    _mainView = [[FMGoodsDetailsView alloc] initWithFrame:self.view.bounds];;
     [self.view addSubview:_mainView];
 }
 

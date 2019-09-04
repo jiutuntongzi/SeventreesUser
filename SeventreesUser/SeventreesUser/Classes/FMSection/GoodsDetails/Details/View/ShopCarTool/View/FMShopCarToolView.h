@@ -11,6 +11,8 @@
 #import "FMShopCarToolViewModel.h"
 #import "FMShopCarToolModel.h"
 
+extern const CGFloat FMShopCarToolViewHeight;
+
 @interface FMShopCarToolView : FMView
 
 @property (nonatomic, strong) FMShopCarToolViewModel *viewModel;

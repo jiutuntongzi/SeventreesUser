@@ -124,17 +124,17 @@
     [_textScrollView startScrollBottomToTopWithNoSpace];
     
     /// 菜单s
-    FMMenuView *menuView = FMMenuView.cv_viewFromNibLoad();
+    FMMenuView *menuView = (FMMenuView *)FMMenuView.cv_viewFromNibLoad();
     _menuView = menuView;
     [_menuContentView addSubview:menuView];
     
     /// 店铺
-    FMStoreView *storeView = FMStoreView.cv_viewFromNibLoad();
+    FMStoreView *storeView = (FMStoreView *)FMStoreView.cv_viewFromNibLoad();
     _storeView = storeView;
     [_storeContentView addSubview:storeView];
     
     /// 商品列表
-    FMGoodsView *goodsView = FMGoodsView.cv_viewFromNibLoad();
+    FMGoodsView *goodsView = (FMGoodsView *)FMGoodsView.cv_viewFromNibLoad();
     _goodsView = goodsView;
     [_goodsContentView addSubview:goodsView];
     
@@ -153,17 +153,17 @@
 #pragma mark - SDCycleScrollViewDelegate
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
-    NSLog(@"---点击了第%ld张图片", (long)index);
+//    NSLog(@"---点击了第%ld张图片", (long)index);
 
 }
 
 #pragma mark - LMJScrollTextViewDelegate
 
 - (void)verticalScrollText:(LMJVerticalScrollText *)scrollText currentTextIndex:(NSInteger)index{
-    NSLog(@"当前是信息%ld",index);
+//    NSLog(@"当前是信息%ld",index);
 }
 - (void)verticalScrollText:(LMJVerticalScrollText *)scrollText clickIndex:(NSInteger)index content:(NSString *)content{
-    NSLog(@"#####点击的是：第%ld条信息 内容：%@",index,content);
+//    NSLog(@"#####点击的是：第%ld条信息 内容：%@",index,content);
 }
 
 - (void)dealloc {

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FMSpellGroupView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="678"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fqx-Xu-3zh" userLabel="ContentView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="678"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test4" translatesAutoresizingMaskIntoConstraints="NO" id="vMD-03-Eie">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="150" id="CO0-VS-B3D"/>
+                            </constraints>
+                        </imageView>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="165" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nqm-Qh-X7c">
+                            <rect key="frame" x="0.0" y="150" width="375" height="528"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <outlet property="dataSource" destination="iN0-l3-epB" id="dv1-Nk-sf2"/>
+                                <outlet property="delegate" destination="iN0-l3-epB" id="uSJ-c3-eNj"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="vMD-03-Eie" secondAttribute="trailing" id="RV2-YG-JBH"/>
+                        <constraint firstAttribute="bottom" secondItem="Nqm-Qh-X7c" secondAttribute="bottom" id="W0g-82-f6N"/>
+                        <constraint firstItem="vMD-03-Eie" firstAttribute="top" secondItem="Fqx-Xu-3zh" secondAttribute="top" id="Xzr-TN-kiz"/>
+                        <constraint firstAttribute="trailing" secondItem="Nqm-Qh-X7c" secondAttribute="trailing" id="Zmr-Je-3OC"/>
+                        <constraint firstItem="Nqm-Qh-X7c" firstAttribute="top" secondItem="vMD-03-Eie" secondAttribute="bottom" id="hqd-Aa-0Nn"/>
+                        <constraint firstItem="vMD-03-Eie" firstAttribute="leading" secondItem="Fqx-Xu-3zh" secondAttribute="leading" id="nGv-af-FY0"/>
+                        <constraint firstItem="Nqm-Qh-X7c" firstAttribute="leading" secondItem="Fqx-Xu-3zh" secondAttribute="leading" id="tL1-jr-dpT"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Fqx-Xu-3zh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1vK-vx-cST"/>
+                <constraint firstItem="Fqx-Xu-3zh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Fhq-bg-In6"/>
+                <constraint firstAttribute="bottom" secondItem="Fqx-Xu-3zh" secondAttribute="bottom" id="GNa-Fc-Vub"/>
+                <constraint firstAttribute="trailing" secondItem="Fqx-Xu-3zh" secondAttribute="trailing" id="qSx-Rv-Dbd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bigImgView" destination="vMD-03-Eie" id="5eX-13-Cee"/>
+                <outlet property="bigImgViewHeightConst" destination="CO0-VS-B3D" id="FGZ-Rs-T6l"/>
+                <outlet property="tableView" destination="Nqm-Qh-X7c" id="VR6-Ay-ByT"/>
+            </connections>
+            <point key="canvasLocation" x="-423.19999999999999" y="64.767616191904054"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="test4" width="381" height="155"/>
+    </resources>
+</document>

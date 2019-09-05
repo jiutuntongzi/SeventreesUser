@@ -39,9 +39,8 @@
     self.cv_backColor(UIColor.whiteColor);
     
     _tableView = [[FMPictureTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    _tableView.scrollEnabled = NO;
     _tableView.dataSource = self;
-    _tableView.estimatedRowHeight = 255.f;
+    _tableView.rowHeight = 234.f;
     [self addSubview:_tableView];
     
     [self setNeedsUpdateConstraints];

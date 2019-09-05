@@ -15,8 +15,6 @@
 
 @interface FMShoppingView () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) FMShoppingViewModel *viewModel;
-
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) FMSettlementView *settlementView;
@@ -73,13 +71,17 @@
 
 - (void (^)(void))setupSettlementView {
     return ^{
-        self->_settlementView = FMSettlementView.cv_viewFromNibLoad();
+        self->_settlementView = (FMSettlementView *)FMSettlementView.cv_viewFromNibLoad();
+        self->_settlementView.viewModel = [[FMSettlementViewModel alloc] init];
         self.cv_addSubview(self->_settlementView);
     };
 }
 
 - (void)fm_bindViewModel {
     
+    [self->_settlementView.viewModel.settleActionSubject subscribeNext:^(id x) {
+        [self.viewModel.settleActionSubject sendNext:nil];
+    }];
 }
 
 - (void)refreshUI {
@@ -103,9 +105,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     tableView.ct_deselectRowAtIndexPathAnimated(indexPath, YES);
     
-    // test FMGoodsDetailsController FMEvaluationController
     UIViewController *nextVC = [[NSClassFromString(@"FMGoodsDetailsController") alloc] init];
-    nextVC.hidesBottomBarWhenPushed = YES;
+//    nextVC.hidesBottomBarWhenPushed = YES;
     [self.viewController.navigationController pushViewController:nextVC animated:YES];
     
     NSLog(@"indexPath.section == %ld indexPath.row == %ld", indexPath.section, indexPath.row);

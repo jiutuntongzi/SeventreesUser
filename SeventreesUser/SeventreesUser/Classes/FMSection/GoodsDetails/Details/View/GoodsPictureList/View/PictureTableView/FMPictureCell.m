@@ -48,7 +48,7 @@
 - (void)setupSubviews {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     UIImageView *imgView = [[UIImageView alloc] init];
-    imgView.contentMode = UIViewContentModeScaleToFill;
+    imgView.contentMode = UIViewContentModeScaleAspectFit;
     _imgView = imgView;
     [self addSubview:imgView];
     

@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FMEvaluationTotalView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -32,21 +32,33 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全部评价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ha-DV-PTG">
-                            <rect key="frame" x="297.5" y="14.5" width="49.5" height="15"/>
+                            <rect key="frame" x="298.5" y="14.5" width="49.5" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_shopCar_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="MCv-tc-jue">
+                            <rect key="frame" x="354" y="16" width="7" height="12"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHD-6m-ld2">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="MCv-tc-jue" firstAttribute="leading" secondItem="0ha-DV-PTG" secondAttribute="trailing" constant="6" id="Adp-ns-DFC"/>
                         <constraint firstItem="pGj-Ss-BZX" firstAttribute="centerY" secondItem="leX-nR-MHy" secondAttribute="centerY" id="Fjg-8b-Ll5"/>
+                        <constraint firstItem="iHD-6m-ld2" firstAttribute="leading" secondItem="leX-nR-MHy" secondAttribute="leading" id="Hbh-Rd-kiZ"/>
                         <constraint firstItem="khR-40-s5o" firstAttribute="leading" secondItem="pGj-Ss-BZX" secondAttribute="trailing" constant="6" id="IeD-CW-CFk"/>
+                        <constraint firstAttribute="trailing" secondItem="MCv-tc-jue" secondAttribute="trailing" constant="14" id="JBs-I9-ZwO"/>
                         <constraint firstItem="khR-40-s5o" firstAttribute="centerY" secondItem="leX-nR-MHy" secondAttribute="centerY" id="SHL-k7-0y2"/>
                         <constraint firstAttribute="trailing" secondItem="khR-40-s5o" secondAttribute="trailing" constant="100" id="VZB-Kq-xO2"/>
-                        <constraint firstAttribute="trailing" secondItem="0ha-DV-PTG" secondAttribute="trailing" constant="28" id="dpO-Jb-dxf"/>
+                        <constraint firstAttribute="bottom" secondItem="iHD-6m-ld2" secondAttribute="bottom" id="fSK-B2-6kg"/>
+                        <constraint firstItem="iHD-6m-ld2" firstAttribute="top" secondItem="leX-nR-MHy" secondAttribute="top" id="nt0-KK-EDV"/>
                         <constraint firstItem="0ha-DV-PTG" firstAttribute="centerY" secondItem="leX-nR-MHy" secondAttribute="centerY" id="o8H-JN-yjl"/>
                         <constraint firstItem="pGj-Ss-BZX" firstAttribute="leading" secondItem="leX-nR-MHy" secondAttribute="leading" constant="15" id="sYb-eE-eFx"/>
+                        <constraint firstAttribute="trailing" secondItem="iHD-6m-ld2" secondAttribute="trailing" id="uTD-Bb-EnC"/>
+                        <constraint firstItem="MCv-tc-jue" firstAttribute="centerY" secondItem="leX-nR-MHy" secondAttribute="centerY" id="z82-lb-WVL"/>
                     </constraints>
                 </view>
             </subviews>
@@ -58,10 +70,14 @@
                 <constraint firstAttribute="trailing" secondItem="leX-nR-MHy" secondAttribute="trailing" id="rFT-fv-a0X"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="arrowButton" destination="iHD-6m-ld2" id="l3F-fI-P5Q"/>
+            </connections>
             <point key="canvasLocation" x="40.799999999999997" y="310.34482758620692"/>
         </view>
     </objects>
     <resources>
         <image name="icon_redVerLine" width="3" height="15.5"/>
+        <image name="icon_shopCar_arrow" width="7.5" height="12.5"/>
     </resources>
 </document>

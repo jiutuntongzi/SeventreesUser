@@ -41,7 +41,11 @@
 }
 
 - (void)fm_bindViewModel {
-    
+    @weakify(self);
+    [_mainView.viewModel.settleActionSubject subscribeNext:^(id x) {
+        @strongify(self);
+        self.navigationController.cnc_pushViewControllerDidAnimated([[NSClassFromString(@"FMPayController") alloc] init], YES);
+    }];
 }
 
 - (void)fm_setupNavbar {
@@ -49,8 +53,18 @@
     self.navigationItem.title = @"购物车";
     
     __weak typeof(self) weakSelf = self;
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"编辑", 1, ^(UIBarButtonItem *leftItem) {
-        weakSelf.navigationController.cnc_pushViewControllerDidAnimated([[NSClassFromString(@"FMPayController") alloc] init], YES);
+    
+    // test
+    UIBarButtonItem *leftItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"拼团专区", 1, ^(UIBarButtonItem *leftItem) {
+        UIViewController *nextVC = [[NSClassFromString(@"FMSpellGroupController") alloc] init];
+        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    });
+    self.navigationItem.cni_leftBarButtonItem(leftItem);
+    
+    // test
+    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"品牌商品", 1, ^(UIBarButtonItem *leftItem) {
+        UIViewController *nextVC = [[NSClassFromString(@"FMBrandGoodsController") alloc] init];
+        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     });
     self.navigationItem.cni_rightBarButtonItem(rightItem);
     

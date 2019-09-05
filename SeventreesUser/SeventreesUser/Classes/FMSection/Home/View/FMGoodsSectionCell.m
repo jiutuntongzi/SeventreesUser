@@ -23,7 +23,7 @@
 /** 设置子views */
 - (void)fm_setupSubviews {
 
-    _collectionView.dataSource = self;  // _collectionView.delegate = self;
+    _collectionView.dataSource = self;   _collectionView.delegate = self;
     [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([FMGoodsCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([FMGoodsCell class])];
     
     [self setupCollectionViewFlowLayout];
@@ -55,6 +55,12 @@
     //  [_flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical]; // 水流方向
 }
 
+- (void)enterNextVC:(NSString *)aClassName {
+    UIViewController *nextVC = [[NSClassFromString(aClassName) alloc] init];
+    nextVC.hidesBottomBarWhenPushed = YES;
+    [self.viewController.navigationController pushViewController:nextVC animated:YES];
+}
+
 #pragma mark - <UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -63,16 +69,29 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FMGoodsCell *cell = FMGoodsCell.ccc_cellReuseForCollectionViewIndexPath(collectionView, indexPath);
+    FMGoodsViewModel *viewModel = [[FMGoodsViewModel alloc] init];
+    
+    cell.viewModel = viewModel;
+    @weakify(self)
+    [cell.viewModel.addActionSubject subscribeNext:^(id x) {
+        @strongify(self);
+        [self enterNextVC:@"FMShoppingController"];
+    }];
+    
+    [cell.viewModel.selectActionSubject subscribeNext:^(id x) {
+        @strongify(self)
+        [self enterNextVC:@"FMGoodsDetailsController"];
+    }];
+    
     return cell;
 }
 
 #pragma mark - <UICollectionViewDelegate>
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-//
-//    DLog(@"indexPath == %@", indexPath);
-//}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    DLog(@"indexPath == %@", indexPath);
+}
 
 
 @end

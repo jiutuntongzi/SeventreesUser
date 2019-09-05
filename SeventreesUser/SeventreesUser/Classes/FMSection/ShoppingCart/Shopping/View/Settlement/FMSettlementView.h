@@ -7,10 +7,13 @@
 //
 
 #import "FMView.h"
+#import "FMSettlementViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FMSettlementView : FMView
+
+@property (nonatomic, strong) FMSettlementViewModel *viewModel;
 
 @end
 

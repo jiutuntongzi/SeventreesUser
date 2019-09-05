@@ -53,8 +53,8 @@
     self.navigationItem.title = @"商品评价";
     
     @weakify(self)
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"预览图片", 1, ^(UIBarButtonItem *rightItem) {
-
+    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"", 1, ^(UIBarButtonItem *rightItem) {
+        
     });
     self.navigationItem.cni_rightBarButtonItem(rightItem);
 }

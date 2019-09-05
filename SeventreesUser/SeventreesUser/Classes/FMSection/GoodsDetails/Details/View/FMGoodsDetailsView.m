@@ -81,7 +81,7 @@
     UIScrollView *mainScrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     mainScrollView.bounces = YES;
     mainScrollView.backgroundColor = UIColor.cc_colorByRGBA(247.f, 247.f, 247.f, 1.f);
-    mainScrollView.contentSize = CGSizeMake(0.f, 2000.f);
+    mainScrollView.contentSize = CGSizeMake(0.f, 2100.f);
     mainScrollView.scrollEnabled = YES;
     _mainScrollView = mainScrollView;
     [self addSubview:_mainScrollView];
@@ -127,7 +127,7 @@
 #pragma mark - System Functions
 
 - (void)updateConstraints {
-    CGFloat contentVHeight = 2000.f; // test
+    CGFloat contentVHeight = 2100.f; // test
     
     [_mainScrollView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
@@ -176,7 +176,7 @@
         make.top.equalTo(self->_contentView).offset(offsetY);
         make.left.equalTo(self->_contentView);
         make.width.equalTo(self->_contentView);
-        make.height.equalTo(1087.f );
+        make.height.equalTo(1165.f);
     }];
     
     [super updateConstraints];

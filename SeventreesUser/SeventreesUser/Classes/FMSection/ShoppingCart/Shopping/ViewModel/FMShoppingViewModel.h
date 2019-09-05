@@ -20,6 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
+
+@property (nonatomic, strong) RACSubject *ActionSubject;
+
+@property (nonatomic, strong) RACSubject *settleActionSubject;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -20,7 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awq-Yx-fzJ">
-                            <rect key="frame" x="16" y="15" width="60" height="20"/>
+                            <rect key="frame" x="16" y="0.0" width="60" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="   全选" image="icon_check_normal">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,6 +47,7 @@
                         <constraint firstItem="60P-LF-igc" firstAttribute="leading" secondItem="Dqw-RJ-Evi" secondAttribute="trailing" constant="8" id="6hk-MJ-nKe"/>
                         <constraint firstAttribute="height" constant="50" id="7jd-Yj-lyt"/>
                         <constraint firstItem="60P-LF-igc" firstAttribute="top" secondItem="5FT-jn-YYm" secondAttribute="top" id="H4u-2Q-zV7"/>
+                        <constraint firstItem="awq-Yx-fzJ" firstAttribute="height" secondItem="5FT-jn-YYm" secondAttribute="height" id="LDh-CE-FlN"/>
                         <constraint firstAttribute="bottom" secondItem="60P-LF-igc" secondAttribute="bottom" id="NMk-Oe-j3A"/>
                         <constraint firstAttribute="trailing" secondItem="60P-LF-igc" secondAttribute="trailing" id="Pj2-Mu-L3b"/>
                         <constraint firstItem="awq-Yx-fzJ" firstAttribute="centerY" secondItem="5FT-jn-YYm" secondAttribute="centerY" id="Tlo-FL-clX"/>
@@ -64,6 +65,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="checkAllButton" destination="awq-Yx-fzJ" id="w4I-od-PhJ"/>
+                <outlet property="settleCarButton" destination="60P-LF-igc" id="JWV-n1-P4M"/>
+                <outlet property="totalPriceLabel" destination="Dqw-RJ-Evi" id="B2c-an-I6o"/>
+            </connections>
             <point key="canvasLocation" x="132" y="-76.011994002998506"/>
         </view>
     </objects>

@@ -66,4 +66,19 @@
     return _refreshUISubject;
 }
 
+
+- (RACSubject *)ActionSubject {
+    if (!_ActionSubject) {
+        _ActionSubject = [[RACSubject alloc] init];
+    }
+    return _ActionSubject;
+}
+
+- (RACSubject *)settleActionSubject {
+    if (!_settleActionSubject) {
+        _settleActionSubject = [[RACSubject alloc] init];
+    }
+    return _settleActionSubject;
+}
+
 @end

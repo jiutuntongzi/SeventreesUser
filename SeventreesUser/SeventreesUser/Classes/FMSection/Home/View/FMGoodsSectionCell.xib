@@ -96,7 +96,7 @@
                 <outlet property="collectionView" destination="RFL-nF-Nsg" id="U7O-gO-gxs"/>
                 <outlet property="flowLayout" destination="t2q-lp-6kE" id="mqY-VX-kfB"/>
             </connections>
-            <point key="canvasLocation" x="132.80000000000001" y="371.96401799100454"/>
+            <point key="canvasLocation" x="-562" y="367"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *shoppingCarButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *selectButton;
+
 @end
 
 @implementation FMGoodsCell
@@ -28,8 +30,13 @@
 - (void)fm_bindViewModel {
     
     [[_shoppingCarButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id button) {
-        DLog(@"button == %@", button);
         [[UIApplication sharedApplication].keyWindow endEditing:YES];
+        [self.viewModel.addActionSubject sendNext:nil];
+    }];
+    
+    [[_selectButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id button) {
+        [[UIApplication sharedApplication].keyWindow endEditing:YES];
+        [self.viewModel.selectActionSubject sendNext:nil];
     }];
 };
 

@@ -6,8 +6,9 @@
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "FMViewController.h"
+
+#import "FMGoodsDetailsPageStyle.h"
 
 @interface FMGoodsDetailsController : FMViewController
 

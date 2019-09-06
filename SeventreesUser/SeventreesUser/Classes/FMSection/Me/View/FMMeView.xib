@@ -791,8 +791,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="bargainButton" destination="mC7-x3-PlT" id="vOW-mN-Ft2"/>
+                <outlet property="collectButton" destination="Xqv-2B-Qt4" id="pGo-GS-Wo1"/>
                 <outlet property="contentTopMarginCons" destination="J46-SD-lUe" id="5We-AA-GSA"/>
                 <outlet property="headImgView" destination="P0F-mM-36H" id="Dpw-Sj-LRd"/>
+                <outlet property="spellButton" destination="m0f-ha-bEW" id="N1R-wn-oWb"/>
                 <outlet property="totalContentView" destination="O5Y-Zq-aLk" id="Qgn-Ku-mqf"/>
             </connections>
             <point key="canvasLocation" x="-567.20000000000005" y="75.562218890554732"/>

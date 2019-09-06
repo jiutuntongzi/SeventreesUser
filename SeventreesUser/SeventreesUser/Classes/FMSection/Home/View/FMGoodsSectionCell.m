@@ -9,6 +9,7 @@
 #import "FMGoodsSectionCell.h"
 #import "FMGoodsCell.h"
 #import "MacroHeader.h"
+#import "FMGoodsDetailsController.h"
 
 @interface FMGoodsSectionCell () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -80,7 +81,11 @@
     
     [cell.viewModel.selectActionSubject subscribeNext:^(id x) {
         @strongify(self)
-        [self enterNextVC:@"FMGoodsDetailsController"];
+        
+        global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleSpell;
+        FMGoodsDetailsController *nextVC = [[FMGoodsDetailsController alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        [self.viewController.navigationController pushViewController:nextVC animated:YES];
     }];
     
     return cell;

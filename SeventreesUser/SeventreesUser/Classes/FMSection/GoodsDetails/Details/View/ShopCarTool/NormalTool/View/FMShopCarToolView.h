@@ -9,7 +9,6 @@
 #import "FMView.h"
 
 #import "FMShopCarToolViewModel.h"
-#import "FMShopCarToolModel.h"
 
 extern const CGFloat FMShopCarToolViewHeight;
 

@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="differLabel" destination="wcS-Rr-Hlh" id="gqM-7w-3OP"/>
                 <outlet property="inviteFriendButton" destination="Ut5-pz-L0X" id="BJy-fo-lcU"/>
+                <outlet property="sellLabel" destination="sfz-El-IRD" id="gkD-q7-LOU"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ePR-Kd-lq7"/>
             </connections>
         </placeholder>
@@ -87,17 +88,30 @@
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_spell_chat" translatesAutoresizingMaskIntoConstraints="NO" id="zrc-Ln-2yg">
+                                                    <rect key="frame" x="128.5" y="94.5" width="161.5" height="23"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="再售23337件后恢复1212.8起" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfz-El-IRD">
+                                                    <rect key="frame" x="136" y="95" width="146.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="zrc-Ln-2yg" firstAttribute="centerX" secondItem="sfz-El-IRD" secondAttribute="centerX" id="0PX-Me-NPF"/>
                                                 <constraint firstAttribute="bottom" secondItem="Epa-07-yu0" secondAttribute="bottom" constant="20" id="22r-18-sts"/>
                                                 <constraint firstAttribute="width" constant="347" id="4gu-mw-jaJ"/>
                                                 <constraint firstItem="bIF-yb-Cy5" firstAttribute="centerY" secondItem="nWl-xf-9p9" secondAttribute="centerY" id="9Dc-HT-m1k"/>
                                                 <constraint firstItem="wEO-lO-gCc" firstAttribute="leading" secondItem="xUm-Es-EWn" secondAttribute="leading" id="9h2-fn-Ea9"/>
                                                 <constraint firstItem="JHb-uh-L6U" firstAttribute="top" secondItem="xUm-Es-EWn" secondAttribute="bottom" constant="5" id="AKv-oP-f2H"/>
+                                                <constraint firstItem="zrc-Ln-2yg" firstAttribute="centerY" secondItem="sfz-El-IRD" secondAttribute="centerY" constant="2" id="BME-CP-USW"/>
+                                                <constraint firstItem="zrc-Ln-2yg" firstAttribute="height" secondItem="sfz-El-IRD" secondAttribute="height" constant="5" id="GVe-ST-z9X"/>
                                                 <constraint firstItem="bIF-yb-Cy5" firstAttribute="top" secondItem="nWl-xf-9p9" secondAttribute="top" constant="26" id="GrW-sA-5I9"/>
                                                 <constraint firstItem="bIF-yb-Cy5" firstAttribute="leading" secondItem="nWl-xf-9p9" secondAttribute="leading" constant="10" id="Ilm-FB-rxc"/>
                                                 <constraint firstAttribute="height" constant="162" id="MZ4-Uq-BoL"/>
+                                                <constraint firstItem="zrc-Ln-2yg" firstAttribute="width" secondItem="sfz-El-IRD" secondAttribute="width" constant="15" id="O2U-eF-Jwg"/>
                                                 <constraint firstItem="Epa-07-yu0" firstAttribute="leading" secondItem="nWl-xf-9p9" secondAttribute="leading" constant="20" id="RqI-KF-zkK"/>
                                                 <constraint firstItem="Epa-07-yu0" firstAttribute="top" secondItem="nWl-xf-9p9" secondAttribute="top" constant="20" id="T9J-1E-05V"/>
                                                 <constraint firstItem="JHb-uh-L6U" firstAttribute="leading" secondItem="xUm-Es-EWn" secondAttribute="leading" id="XMz-qW-VLG"/>
@@ -105,7 +119,9 @@
                                                 <constraint firstItem="xUm-Es-EWn" firstAttribute="leading" secondItem="bIF-yb-Cy5" secondAttribute="trailing" constant="16" id="Xtp-00-8NQ"/>
                                                 <constraint firstItem="WOX-TD-B29" firstAttribute="centerY" secondItem="wEO-lO-gCc" secondAttribute="centerY" id="dih-fP-Wj3"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="xUm-Es-EWn" secondAttribute="trailing" constant="20" id="rEh-Nv-Kah"/>
+                                                <constraint firstItem="wEO-lO-gCc" firstAttribute="top" secondItem="sfz-El-IRD" secondAttribute="bottom" constant="5" id="rYk-S3-Yd6"/>
                                                 <constraint firstItem="WOX-TD-B29" firstAttribute="leading" secondItem="wEO-lO-gCc" secondAttribute="trailing" constant="8" id="tbC-P3-Qfd"/>
+                                                <constraint firstItem="sfz-El-IRD" firstAttribute="leading" secondItem="wEO-lO-gCc" secondAttribute="leading" id="vSB-xa-wvG"/>
                                                 <constraint firstItem="wEO-lO-gCc" firstAttribute="bottom" secondItem="bIF-yb-Cy5" secondAttribute="bottom" id="wzZ-zj-ij7"/>
                                             </constraints>
                                         </view>
@@ -144,7 +160,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="g5r-sF-V6M"/>
                                     </constraints>
-                                    <state key="normal" title="邀请好友拼单">
+                                    <state key="normal" title="参与midux的拼单">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
@@ -172,6 +188,10 @@
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="test44" translatesAutoresizingMaskIntoConstraints="NO" id="kvW-bc-z33">
+                                    <rect key="frame" x="110" y="17" width="140" height="65"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -207,12 +227,14 @@
                 <constraint firstAttribute="bottom" secondItem="nlb-TZ-lMe" secondAttribute="bottom" id="kqH-IA-ts3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-263.19999999999999" y="-364.7676161919041"/>
+            <point key="canvasLocation" x="-687.20000000000005" y="-391.75412293853077"/>
         </view>
     </objects>
     <resources>
         <image name="2" width="752" height="320"/>
         <image name="icon_check_normal" width="20" height="20"/>
         <image name="icon_spell_box" width="347" height="162.5"/>
+        <image name="icon_spell_chat" width="143.5" height="23.5"/>
+        <image name="test44" width="140" height="65"/>
     </resources>
 </document>

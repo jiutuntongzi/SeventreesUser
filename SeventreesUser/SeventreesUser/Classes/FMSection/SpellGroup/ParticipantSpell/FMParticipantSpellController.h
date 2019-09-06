@@ -9,10 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "FMViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMParticipantSpellController : FMViewController
 
 @end
-
-NS_ASSUME_NONNULL_END

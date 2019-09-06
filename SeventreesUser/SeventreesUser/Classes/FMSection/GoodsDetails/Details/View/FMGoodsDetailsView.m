@@ -9,6 +9,7 @@
 #import "FMGoodsDetailsView.h"
 
 #import "FMShopCarToolView.h"
+#import "FMSpellShopCarToolView.h"
 
 #import "FMShopDetailView.h"
 #import "FMStoreInfoView.h"
@@ -18,7 +19,7 @@
 
 @interface FMGoodsDetailsView ()
 
-@property (nonatomic, strong) FMShopCarToolView *shopCarToolView;
+@property (nonatomic, strong) UIView *shopCarToolView;
 
 @property (nonatomic, strong) IBOutlet UIScrollView *mainScrollView;
 @property (nonatomic, strong) IBOutlet UIView *contentView;
@@ -72,8 +73,13 @@
 }
 
 - (void)setupShopCarToolView {
-    _shopCarToolView = (FMShopCarToolView *)FMShopCarToolView.cv_viewFromNibLoad();
+    if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell) {
+        _shopCarToolView = (FMSpellShopCarToolView *)FMSpellShopCarToolView.cv_viewFromNibLoad();
+    } else {
+        _shopCarToolView = (FMShopCarToolView *)FMShopCarToolView.cv_viewFromNibLoad();
+    }
     [self addSubview:_shopCarToolView];
+    
 }
 
 /** 主Scroller */
@@ -81,7 +87,7 @@
     UIScrollView *mainScrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     mainScrollView.bounces = YES;
     mainScrollView.backgroundColor = UIColor.cc_colorByRGBA(247.f, 247.f, 247.f, 1.f);
-    mainScrollView.contentSize = CGSizeMake(0.f, 2100.f);
+    mainScrollView.contentSize = CGSizeMake(0.f, 2130.f);
     mainScrollView.scrollEnabled = YES;
     _mainScrollView = mainScrollView;
     [self addSubview:_mainScrollView];
@@ -127,7 +133,7 @@
 #pragma mark - System Functions
 
 - (void)updateConstraints {
-    CGFloat contentVHeight = 2100.f; // test
+    CGFloat contentVHeight = 2130.f; // test
     
     [_mainScrollView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
@@ -147,17 +153,24 @@
     
     
     /// subviewContents
-    const CGFloat margin = 15.f;    CGFloat offsetY = 0.f;
+    const CGFloat margin = 15.f;
+    CGFloat offsetY = 0.f;
+    CGFloat shopDetailViewHeight = 0.f;
     
+    if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell) {
+        shopDetailViewHeight = FMSpellShopDetailViewHeight;
+    } else {
+        shopDetailViewHeight = FMShopDetailViewHeight;
+    }
     [_shopDetailView makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(self->_contentView);
         make.width.equalTo(self->_contentView);
-        make.height.equalTo(FMShopDetailViewHeight);
+        make.height.equalTo(shopDetailViewHeight);
     }];
     
-    offsetY += (FMShopDetailViewHeight + margin);
+    offsetY += (shopDetailViewHeight + margin);
     [_storeInfoView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self->_contentView).offset(FMShopDetailViewHeight + margin);
+        make.top.equalTo(self->_contentView).offset(offsetY);
         make.left.equalTo(self->_contentView);
         make.width.equalTo(self->_contentView);
         make.height.equalTo(FMStoreInfoViewHeight);

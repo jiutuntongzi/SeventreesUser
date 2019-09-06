@@ -1,35 +1,35 @@
 //
-//  FMShopCarToolView.m
+//  FMSpellShopCarToolView.m
 //  SeventreesUser
 //
 //  Created by wushiye on 2019/8/29.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import "FMShopCarToolView.h"
+#import "FMSpellShopCarToolView.h"
 
-const CGFloat FMShopCarToolViewHeight = 44.f;
+const CGFloat FMSpellShopCarToolViewHeight = 44.f;
 
-@interface FMShopCarToolView ()
+@interface FMSpellShopCarToolView ()
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
 
 @end
 
-@implementation FMShopCarToolView
+@implementation FMSpellShopCarToolView
 
 @synthesize viewModel = _viewModel;
 
 #pragma mark - Private Functions
 
-- (void)setViewModel:(FMShopCarToolViewModel *)viewModel {
+- (void)setViewModel:(FMSpellShopCarToolViewModel *)viewModel {
     _viewModel = viewModel;
     
     
 }
 
 - (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel {
-    _viewModel = (FMShopCarToolViewModel *)_viewModel;
+    _viewModel = (FMSpellShopCarToolViewModel *)_viewModel;
     
     return [super initWithViewModel:viewModel];
 }
@@ -51,7 +51,7 @@ const CGFloat FMShopCarToolViewHeight = 44.f;
     [[_button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
         
-        [self.viewModel.actionSubject sendNext:self.viewModel.model];
+        
     }];
 }
 
@@ -65,9 +65,9 @@ const CGFloat FMShopCarToolViewHeight = 44.f;
 
 #pragma mark - Lazyload
 
-- (FMShopCarToolViewModel *)viewModel {
+- (FMSpellShopCarToolViewModel *)viewModel {
     if (!_viewModel) {
-        _viewModel = [[FMShopCarToolViewModel alloc] init];
+        _viewModel = [[FMSpellShopCarToolViewModel alloc] init];
     }
     return _viewModel;
 }

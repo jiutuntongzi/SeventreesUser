@@ -7,7 +7,6 @@
 //
 
 #import "FMGoodsDetailsController.h"
-
 #import "FMGoodsDetailsView.h"
 #import "FMGoodsDetailsViewModel.h"
 

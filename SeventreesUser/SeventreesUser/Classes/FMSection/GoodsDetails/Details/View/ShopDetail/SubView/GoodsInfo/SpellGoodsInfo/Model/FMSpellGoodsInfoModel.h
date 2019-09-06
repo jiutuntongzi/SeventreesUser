@@ -1,5 +1,5 @@
 //
-//  FMShopCarToolModel.h
+//  FMSpellGoodsInfoModel.h
 //  SeventreesUser
 //
 //  Created by wushiye on 2019/8/29.
@@ -8,7 +8,7 @@
 
 #import "FMModel.h"
 
-@interface FMShopCarToolModel : FMModel
+@interface FMSpellGoodsInfoModel : FMModel
 
 
 

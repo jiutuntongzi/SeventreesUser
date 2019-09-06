@@ -10,6 +10,9 @@
 
 @interface FMParticipantSpellController ()
 
+/** 再售23337件后恢复1212.8起 */
+@property (weak, nonatomic) IBOutlet UILabel *sellLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *differLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *inviteFriendButton;
@@ -35,7 +38,12 @@
 #pragma mark - Private Functions
 
 - (void)fm_addSubviews {
-    
+    /// 物流标签富文本颜色
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"仅剩1个名额，23:57:04.7后结束" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15.f], NSForegroundColorAttributeName: [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0]}];
+    if (string.length > 2) {
+        [string addAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:247/255.0 green:111/255.0 blue:111/255.0 alpha:1.0]} range:NSMakeRange(2, 1)]; // 2：位置， 1：名额数量的字符长度（不能写死）
+    }
+    _differLabel.attributedText = string;
 }
 
 - (void)fm_bindViewModel {

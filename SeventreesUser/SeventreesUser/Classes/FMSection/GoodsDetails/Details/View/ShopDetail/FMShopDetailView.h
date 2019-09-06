@@ -7,9 +7,13 @@
 //
 
 #import "FMView.h"
+#import "FMGoodsDetailsPageStyle.h"
 
 extern const CGFloat FMShopDetailViewHeight;
 
+extern const CGFloat FMSpellShopDetailViewHeight;
+
 @interface FMShopDetailView : FMView
+
 
 @end

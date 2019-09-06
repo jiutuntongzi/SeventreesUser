@@ -8,6 +8,8 @@
 
 #import "FMMeView.h"
 
+#import "FMBargainTypeController.h"
+
 @interface FMMeView ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentTopMarginCons;
@@ -15,7 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headImgView;
 @property (weak, nonatomic) IBOutlet UIView *totalContentView;
 
-
+@property (weak, nonatomic) IBOutlet UIButton *spellButton;
+@property (weak, nonatomic) IBOutlet UIButton *bargainButton;
+@property (weak, nonatomic) IBOutlet UIButton *collectButton;
 
 @end
 
@@ -37,7 +41,23 @@
 
 /** 绑定ViewModel */
 - (void)fm_bindViewModel {
+    @weakify(self);
+    [[_spellButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self);
+        
+    }];
     
+    [[_bargainButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self);
+        // test
+        UIViewController *nextVC = [[FMBargainTypeController alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    }];
+    
+    [[_collectButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self);
+    }];
 };
 
 @end

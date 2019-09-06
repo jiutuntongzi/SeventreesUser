@@ -13,6 +13,8 @@
 
 #import "FMSettlementView.h"
 
+#import "FMGoodsDetailsController.h"
+
 @interface FMShoppingView () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -105,8 +107,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     tableView.ct_deselectRowAtIndexPathAnimated(indexPath, YES);
     
-    UIViewController *nextVC = [[NSClassFromString(@"FMGoodsDetailsController") alloc] init];
-//    nextVC.hidesBottomBarWhenPushed = YES;
+    global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleSpell;
+    FMGoodsDetailsController *nextVC = [[FMGoodsDetailsController alloc] init];
+    nextVC.hidesBottomBarWhenPushed = YES;
     [self.viewController.navigationController pushViewController:nextVC animated:YES];
     
     NSLog(@"indexPath.section == %ld indexPath.row == %ld", indexPath.section, indexPath.row);

@@ -37,7 +37,7 @@ const CGFloat FMSpellGoodsInfoViewHeight = 150.f;
 - (void)fm_setupSubviews {
     /// 物流标签富文本颜色
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"该商品支持快递配送、门店自提" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12.f], NSForegroundColorAttributeName: [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0]}];
-    [string addAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:247/255.0 green:111/255.0 blue:111/255.0 alpha:1.0]} range:NSMakeRange(5, string.length)];
+    [string addAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:247/255.0 green:111/255.0 blue:111/255.0 alpha:1.0]} range:NSMakeRange(5, string.length - 5)];
     _logisLabel.attributedText = string;
     
     [self setNeedsUpdateConstraints];

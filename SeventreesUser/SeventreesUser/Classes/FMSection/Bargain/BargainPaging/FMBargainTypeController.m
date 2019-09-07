@@ -54,7 +54,9 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 
 //    [self.navigationController setNavigationBarHidden:YES animated:NO];
 //    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"砍到爽";
+    
+    [self setupNavbar];
+    
     
     [self reloadData];
 }
@@ -82,6 +84,7 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 - (void)configTypeMenu {
     self.showOnNavigationBar = NO;     //在导航栏上展示
     self.automaticallyCalculatesItemWidths = YES;
+    
     self.menuViewStyle = WMMenuViewStyleLine;
     self.scrollEnable = YES;
     self.titleSizeSelected = 15.f;
@@ -113,17 +116,26 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 }
 
 - (void)setupNavbar {
-    NSString * const _returnImageName = @"icon_navBack";
-    UIButton *customButton = UIButton.cb_button();
-    customButton.cv_frameOf(0.f, 0.f, 40.f, 40.f);
-    customButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    self.navigationItem.cni_leftBarButtonItem(UIBarButtonItem.cbi_initWithCustomView(customButton));
+//    NSString * const _returnImageName = @"icon_navBack";
+//    UIButton *customButton = UIButton.cb_button();
+//    customButton.cv_frameOf(0.f, 0.f, 40.f, 40.f);
+//    customButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//    self.navigationItem.cni_leftBarButtonItem(UIBarButtonItem.cbi_initWithCustomView(customButton));
+//    __weak typeof(self) weakSelf = self;
+//    customButton.cb_setImageOfNamed(_returnImageName).cc_setActionEventsCallback(UIControlEventTouchUpInside, ^(UIButton *button) {
+//        if ([weakSelf.navigationController popViewControllerAnimated:YES] == nil) {
+//            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
+//        }
+//    });
+
+    self.navigationItem.title = @"砍到爽";
+    
     __weak typeof(self) weakSelf = self;
-    customButton.cb_setImageOfNamed(_returnImageName).cc_setActionEventsCallback(UIControlEventTouchUpInside, ^(UIButton *button) {
-        if ([weakSelf.navigationController popViewControllerAnimated:YES] == nil) {
-            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
-        }
+    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
+        UIViewController *nextVC = [[NSClassFromString(@"FMBargainDetailsController") alloc] init];
+        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     });
+    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (void)refreshData {
@@ -186,7 +198,7 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 
 - (CGFloat)menuView:(WMMenuView *)menu widthForItemAtIndex:(NSInteger)index {
     CGFloat width = [super menuView:menu widthForItemAtIndex:index];
-    return width + 20.f;
+    return width + 10.f;
 }
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForMenuView:(WMMenuView *)menuView {
@@ -196,7 +208,7 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForContentView:(WMScrollView *)contentView {
 //    CGFloat originY = CGRectGetMaxY([self pageController:pageController preferredFrameForMenuView:self.menuView]);
-    return CGRectMake(0.f, kFixedHeight, self.view.width, self.view.height - kFixedHeight * 2.f);
+    return CGRectMake(0.f, kFixedHeight, self.view.width, self.view.height - kFixedHeight);
 }
 
 @end

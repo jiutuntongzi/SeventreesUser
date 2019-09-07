@@ -19,7 +19,7 @@
 - (void)fm_addSubviews {
     __weak typeof(self) weakSelf = self;
 
-    PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:@"" params:@{@"userId": @"1059"} requestDataHandler:^(NSDictionary *result) {
+    PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:@"" rowHeight:152.f params:@{@"userId": @"1059"} requestDataHandler:^(NSDictionary *result) {
 //        NSArray *dictArray = [result[@"list"] copy];
 //        NSArray *resultEntitys = [[FMStoredRecord mj_objectArrayWithKeyValuesArray:dictArray] copy];
 //        return resultEntitys;
@@ -33,7 +33,14 @@
     } cellDidSelectHandler:^(id rowEntity) {
         DLog(@"rowEntity == %@", rowEntity);
     }];
-    self.view.cv_addSubview(pagingView.cv_frame(self.view.bounds));
+    pagingView.cv_frame(CGRectMake(0.f, 0.f, self.view.width, self.view.height - kNavBarHeight - kFixedHeight - 40.f));
+    self.view.cv_addSubview(pagingView);
+}
+
+- (void)updateViewConstraints {
+    [super updateViewConstraints];
+
+    
 }
 
 @end

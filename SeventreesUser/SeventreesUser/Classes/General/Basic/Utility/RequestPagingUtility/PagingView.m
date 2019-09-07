@@ -27,6 +27,9 @@
 
 @property (nonatomic, copy) PVTableViewCellDidSelectHandler cellDidSelectHandler;
 
+/** 表格行高 */
+@property (nonatomic, assign) CGFloat rowHeight;
+
 /** 分页限制 (默认：limit = 10) */
 @property (nonatomic, assign) NSUInteger limit;
 
@@ -40,12 +43,14 @@
 
 @implementation PagingView
 
-- (instancetype)initWithLimit:(NSUInteger)limit uriPath:(NSString *)uriPath params:(NSDictionary *)params requestDataHandler:(PVNetworkRequestDataHandler)requestDataHandler cellConfig:(PVTableViewCellConfigHandler)cellConfig cellDidSelectHandler:(PVTableViewCellDidSelectHandler)cellDidSelectHandler
+- (instancetype)initWithLimit:(NSUInteger)limit uriPath:(NSString *)uriPath rowHeight:(CGFloat)rowHeight params:(NSDictionary *)params requestDataHandler:(PVNetworkRequestDataHandler)requestDataHandler cellConfig:(PVTableViewCellConfigHandler)cellConfig cellDidSelectHandler:(PVTableViewCellDidSelectHandler)cellDidSelectHandler
 {
     if (self = [super init]) {
         _limit = limit;
         _uriPath = [uriPath copy];
         _params = params;
+        
+        _rowHeight = rowHeight;
         
         _requestDataHandler = requestDataHandler;
         _cellConfigCallback = cellConfig;
@@ -67,7 +72,7 @@
         CGFloat width = self.bounds.size.width, height = self.bounds.size.height;
         UITableView *tableView = UITableView.ct_tableViewWithFrameStyle(0.f, 0.f, width, height, UITableViewStylePlain)\
         .ct_dataSource(self).ct_delegate(self)\
-        .ct_rowHeight(135.f).ct_separatorStyle(UITableViewCellSeparatorStyleSingleLine).ct_separatorColor(nil)\
+        .ct_rowHeight(self->_rowHeight).ct_separatorStyle(UITableViewCellSeparatorStyleNone).ct_separatorColor(nil)\
         .ct_separatorInset(UIEdgeInsetsZero).ct_tableFooterView(UIView.cv_viewWithFrame(CGRectZero));
         self->_tableView = tableView;
         

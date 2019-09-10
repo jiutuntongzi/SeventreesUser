@@ -19,14 +19,17 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)fm_setupNavbar {
+    [super fm_setupNavbar];
+    
+    self.navigationItem.title = @"砍价免费拿";
+    
+    __weak typeof(self) weakSelf = self;
+    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
+        UIViewController *nextVC = [[NSClassFromString(@"FMBargainFreeController") alloc] init];
+        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    });
+    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
-*/
 
 @end

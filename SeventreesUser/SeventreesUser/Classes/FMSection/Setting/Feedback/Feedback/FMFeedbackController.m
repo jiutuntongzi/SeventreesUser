@@ -7,6 +7,7 @@
 //
 
 #import "FMFeedbackController.h"
+#import "FMFeedbackRecordController.h"
 
 @interface FMFeedbackController () <UITextViewDelegate>
 
@@ -71,8 +72,7 @@
     
     __weak typeof(self) weakSelf = self;
     UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"反馈记录", 1, ^(UIBarButtonItem *rightItem) {
-        DLog(@"点了导航栏右");
-        UIViewController *nextVC = [[UIViewController alloc] init];
+        UIViewController *nextVC = [[FMFeedbackRecordController alloc] init];
         weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     });
     self.navigationItem.cni_rightBarButtonItem(rightItem);

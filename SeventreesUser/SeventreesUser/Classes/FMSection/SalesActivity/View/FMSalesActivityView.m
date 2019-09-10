@@ -8,14 +8,12 @@
 
 #import "FMSalesActivityView.h"
 
-#import "FMSpellGoodsCell.h"
+#import "FMActivityGoodsCell.h"
 
 @interface FMSalesActivityView () <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *bigImgView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bigImgViewHeightConst;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIImageView *headerImgView;
 
 @end
 
@@ -65,18 +63,31 @@
 #pragma mark ——— <UITableViewDataSource>
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    FMSpellGoodsCell *cell = FMSpellGoodsCell.ctc_cellReuseNibLoadForTableView(tableView);
+    FMActivityGoodsCell *cell = FMActivityGoodsCell.ctc_cellReuseNibLoadForTableView(tableView);
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 6;
 }
 
 #pragma mark ——— <UITableViewDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     DLog(@"点了第%ld行", indexPath.row);
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectZero];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"test123"]];
+    _headerImgView = imgView;
+    imgView.frame = CGRectMake(0.f, 0.f, self.width, 149.f);
+    [headerView addSubview:imgView];
+    return headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 149.f;
 }
 
 #pragma mark - Lazyload

@@ -53,11 +53,11 @@
 - (void)fm_setupNavbar {
     [super fm_setupNavbar];
     
-    self.navigationItem.title = @"拼团专区";
+    self.navigationItem.title = @"促销活动";
     
     __weak typeof(self) weakSelf = self;
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"拼团结果", 1, ^(UIBarButtonItem *rightItem) {
-        UIViewController *nextVC = [[NSClassFromString(@"FMSpellResultController") alloc] init];
+    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
+        UIViewController *nextVC = [[NSClassFromString(@"") alloc] init];
         weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     });
     self.navigationItem.cni_rightBarButtonItem(rightItem);

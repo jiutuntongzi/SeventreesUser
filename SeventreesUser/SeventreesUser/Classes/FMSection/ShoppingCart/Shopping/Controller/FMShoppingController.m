@@ -55,13 +55,6 @@
     __weak typeof(self) weakSelf = self;
     
     // test
-    UIBarButtonItem *leftItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"拼团专区", 1, ^(UIBarButtonItem *leftItem) {
-        UIViewController *nextVC = [[NSClassFromString(@"FMSpellGroupController") alloc] init];
-        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-    });
-    self.navigationItem.cni_leftBarButtonItem(leftItem);
-    
-    // test
     UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"品牌商品", 1, ^(UIBarButtonItem *leftItem) {
         UIViewController *nextVC = [[NSClassFromString(@"FMBrandGoodsController") alloc] init];
         weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);

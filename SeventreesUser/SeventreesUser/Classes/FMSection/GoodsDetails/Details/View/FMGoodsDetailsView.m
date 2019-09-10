@@ -76,7 +76,9 @@
     if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell) {
         _shopCarToolView = (FMSpellShopCarToolView *)FMSpellShopCarToolView.cv_viewFromNibLoad();
     } else {
-        _shopCarToolView = (FMShopCarToolView *)FMShopCarToolView.cv_viewFromNibLoad();
+        if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleNormal || global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleActivity) {
+            _shopCarToolView = (FMShopCarToolView *)FMShopCarToolView.cv_viewFromNibLoad();
+        }
     }
     [self addSubview:_shopCarToolView];
     
@@ -157,7 +159,7 @@
     CGFloat offsetY = 0.f;
     CGFloat shopDetailViewHeight = 0.f;
     
-    if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell) {
+    if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell || global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleActivity) {
         shopDetailViewHeight = FMSpellShopDetailViewHeight;
     } else {
         shopDetailViewHeight = FMShopDetailViewHeight;

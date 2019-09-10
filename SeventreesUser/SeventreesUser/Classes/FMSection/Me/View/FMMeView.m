@@ -9,6 +9,8 @@
 #import "FMMeView.h"
 
 #import "FMBargainTypeController.h"
+#import "FMSpellGroupController.h"
+#import "FMSettingController.h"
 
 @interface FMMeView ()
 
@@ -20,6 +22,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *spellButton;
 @property (weak, nonatomic) IBOutlet UIButton *bargainButton;
 @property (weak, nonatomic) IBOutlet UIButton *collectButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *myQRCodeButton;
+@property (weak, nonatomic) IBOutlet UIButton *messageButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
 @end
 
@@ -41,10 +49,24 @@
 
 /** 绑定ViewModel */
 - (void)fm_bindViewModel {
+    _headImgView.cv_addTouchEventCallback(^(UIImageView *imageView) {
+        
+    });
+    
+    [[_settingButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        UIViewController *nextVC = [[FMSettingController alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    }];
+    
+    
     @weakify(self);
     [[_spellButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
-        
+        // test
+        UIViewController *nextVC = [[FMSpellGroupController alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
     
     [[_bargainButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {

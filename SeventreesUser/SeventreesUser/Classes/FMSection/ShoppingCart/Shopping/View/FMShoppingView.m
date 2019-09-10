@@ -107,7 +107,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     tableView.ct_deselectRowAtIndexPathAnimated(indexPath, YES);
     
-    global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleSpell;
+    global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleActivity;
     FMGoodsDetailsController *nextVC = [[FMGoodsDetailsController alloc] init];
     nextVC.hidesBottomBarWhenPushed = YES;
     [self.viewController.navigationController pushViewController:nextVC animated:YES];

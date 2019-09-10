@@ -795,6 +795,10 @@
                 <outlet property="collectButton" destination="Xqv-2B-Qt4" id="pGo-GS-Wo1"/>
                 <outlet property="contentTopMarginCons" destination="J46-SD-lUe" id="5We-AA-GSA"/>
                 <outlet property="headImgView" destination="P0F-mM-36H" id="Dpw-Sj-LRd"/>
+                <outlet property="messageButton" destination="2dM-da-Q1l" id="NJ7-4V-Qim"/>
+                <outlet property="myQRCodeButton" destination="3Px-Fp-vAk" id="G5P-Iq-1l1"/>
+                <outlet property="settingButton" destination="yL9-3h-REf" id="6LA-1Q-drC"/>
+                <outlet property="shareButton" destination="M1J-pi-pLn" id="ekr-fR-bkP"/>
                 <outlet property="spellButton" destination="m0f-ha-bEW" id="N1R-wn-oWb"/>
                 <outlet property="totalContentView" destination="O5Y-Zq-aLk" id="Qgn-Ku-mqf"/>
             </connections>

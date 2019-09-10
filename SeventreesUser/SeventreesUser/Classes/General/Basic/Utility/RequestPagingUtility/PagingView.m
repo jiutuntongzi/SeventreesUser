@@ -113,9 +113,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = UITableViewCell.ctc_cellReuseForTableView(tableView); // 占位Cell防空
+    cell.ctc_selectedColor(nil);
     if (_cellConfigCallback) {
         cell = _cellConfigCallback(tableView, indexPath, _entitys);
-        cell.ctc_selectedColor(nil);
     }
     return cell;
 }

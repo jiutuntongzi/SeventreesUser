@@ -64,7 +64,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="la2-ba-Bze" userLabel="imgListView" customClass="FMImageEyeListView">
-                            <rect key="frame" x="-15" y="111" width="375" height="80"/>
+                            <rect key="frame" x="0.0" y="111" width="345" height="80"/>
                             <color key="backgroundColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="xji-S5-Oop"/>
@@ -74,13 +74,13 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="la2-ba-Bze" firstAttribute="top" secondItem="xez-Li-k3Z" secondAttribute="bottom" constant="12" id="Ks3-DZ-S9r"/>
-                        <constraint firstItem="la2-ba-Bze" firstAttribute="leading" secondItem="lYu-9F-hKY" secondAttribute="leading" constant="-15" id="MnQ-Zj-yY7"/>
+                        <constraint firstItem="la2-ba-Bze" firstAttribute="leading" secondItem="lYu-9F-hKY" secondAttribute="leading" id="MnQ-Zj-yY7"/>
                         <constraint firstItem="xez-Li-k3Z" firstAttribute="leading" secondItem="lYu-9F-hKY" secondAttribute="leading" id="SF6-Th-gX6"/>
                         <constraint firstAttribute="trailing" secondItem="xez-Li-k3Z" secondAttribute="trailing" id="V5f-hP-f6p"/>
                         <constraint firstItem="Pgr-DP-Kht" firstAttribute="leading" secondItem="lYu-9F-hKY" secondAttribute="leading" id="Yr0-9C-Rp7"/>
                         <constraint firstItem="xez-Li-k3Z" firstAttribute="top" secondItem="Pgr-DP-Kht" secondAttribute="bottom" id="hua-Aw-fS3"/>
                         <constraint firstItem="Pgr-DP-Kht" firstAttribute="top" secondItem="lYu-9F-hKY" secondAttribute="top" constant="10" id="iRF-mN-OVA"/>
-                        <constraint firstAttribute="trailing" secondItem="la2-ba-Bze" secondAttribute="trailing" constant="-15" id="j4o-6j-BVd"/>
+                        <constraint firstAttribute="trailing" secondItem="la2-ba-Bze" secondAttribute="trailing" id="j4o-6j-BVd"/>
                         <constraint firstAttribute="trailing" secondItem="Pgr-DP-Kht" secondAttribute="trailing" id="pW7-Ns-aVZ"/>
                         <constraint firstAttribute="bottom" secondItem="la2-ba-Bze" secondAttribute="bottom" constant="15" id="th4-Il-56v"/>
                     </constraints>
@@ -94,7 +94,7 @@
                 <constraint firstAttribute="bottom" secondItem="lYu-9F-hKY" secondAttribute="bottom" id="jrH-nm-qc9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-393" y="59"/>
+            <point key="canvasLocation" x="-242" y="60"/>
         </view>
     </objects>
     <resources>

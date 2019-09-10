@@ -44,7 +44,7 @@
 #pragma mark - Private Functions
 
 - (void)fm_addSubviews {
-    FMMeView *meView = FMMeView.cv_viewFromNibLoad();
+    FMMeView *meView = (FMMeView *)FMMeView.cv_viewFromNibLoad();
     _mainView = meView;
     [self.view addSubview:meView];
 }

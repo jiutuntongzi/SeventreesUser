@@ -24,7 +24,7 @@
     
     __weak typeof(self) weakSelf = self;
     UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-        UIViewController *nextVC = [[NSClassFromString(@"") alloc] init];
+        UIViewController *nextVC = [[NSClassFromString(@"FMBargainFreeController") alloc] init];
         weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     });
     self.navigationItem.cni_rightBarButtonItem(rightItem);

@@ -46,12 +46,12 @@ const CGFloat FMSpellShopDetailViewHeight = 400.f + 150.f;
 
 /** 商品详情信息 */
 - (void)setupGoodsInfoView {
-    if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell) {
-        FMSpellGoodsInfoView *spellGoodsInfoView = FMSpellGoodsInfoView.cv_viewFromNibLoad();
+    if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell || global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleActivity) {
+        FMSpellGoodsInfoView *spellGoodsInfoView = (FMSpellGoodsInfoView *)FMSpellGoodsInfoView.cv_viewFromNibLoad();
         _goodsInfoView = spellGoodsInfoView;
         [self addSubview:spellGoodsInfoView];
     } else {
-        FMGoodsInfoView *normalGoodsInfoView = FMGoodsInfoView.cv_viewFromNibLoad();
+        FMGoodsInfoView *normalGoodsInfoView = (FMGoodsInfoView *)FMGoodsInfoView.cv_viewFromNibLoad();
         _goodsInfoView = normalGoodsInfoView;
         [self addSubview:normalGoodsInfoView];
     }
@@ -68,7 +68,7 @@ const CGFloat FMSpellShopDetailViewHeight = 400.f + 150.f;
     }];
     
     CGFloat height = FMGoodsInfoViewHeight;
-    if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell) {
+    if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell || global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleActivity) {
         height = FMSpellGoodsInfoViewHeight;
     }
     [_goodsInfoView makeConstraints:^(MASConstraintMaker *make) {

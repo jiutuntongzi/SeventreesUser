@@ -10,6 +10,8 @@
 
 @interface FMSelectItemModel : FMModel
 
+@property (nonatomic, copy) NSString *className;
+
 @property (nonatomic, copy) NSString *title;
 
 @property (nonatomic, copy) NSString *subTitle;

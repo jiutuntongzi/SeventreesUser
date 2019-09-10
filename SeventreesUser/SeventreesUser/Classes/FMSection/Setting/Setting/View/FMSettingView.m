@@ -9,7 +9,11 @@
 #import "FMSettingView.h"
 #import "FMSelectItemCell.h"
 
+static const NSUInteger _rowCount = 8;
+
 @interface FMSettingView () <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) NSDictionary *selectItems;
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -24,6 +28,58 @@
 @synthesize viewModel = _viewModel;
 
 #pragma mark - Private Functions
+
+- (NSDictionary *)itemInfoForIndex:(NSUInteger)index {
+    if (! _selectItems) {
+        NSString * const controller = @"className";
+        NSString * const title = @"title";
+        NSString * const subTitle = @"subTitle";
+        _selectItems = @{
+                     @(0) : @{
+                             controller      : @"FMFeedbackController",
+                             title           : @"意见反馈",
+                             subTitle        : @"",
+                             },
+                     @(1) : @{
+                             controller      : @"FMInputController",
+                             title           : @"修改手机号",
+                             subTitle        : @"",
+                             },
+                     @(2) : @{
+                             controller      : @"FMFeedbackController",
+                             title           : @"修改登录密码",
+                             subTitle        : @"",
+                             },
+                     @(3) : @{
+                             controller      : @"FMFeedbackController",
+                             title           : @"换绑门店",
+                             subTitle        : @"",
+                             },
+                     @(4) : @{
+                             controller      : @"FMFeedbackController",
+                             title           : @"清除缓存",
+                             subTitle        : @"1.82M",
+                             },
+                     @(5) : @{
+                             controller      : @"FMFeedbackController",
+                             title           : @"检查版本",
+                             subTitle        : @"当前版本1.4.2",
+                             },
+                     @(6) : @{
+                             controller      : @"FMFeedbackController",
+                             title           : @"联系客服",
+                             subTitle        : @"0731-123142",
+                             },
+                     @(7) : @{
+                             controller      : @"FMFeedbackController",
+                             title           : @"关于seventrees",
+                             subTitle        : @"",
+                             }
+                     };
+        
+    }
+    return _selectItems[@(index)];
+}
 
 - (void)fm_setupSubviews {
     _rowHeight = 44.f;
@@ -88,11 +144,12 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     FMSelectItemCell *cell = FMSelectItemCell.ctc_cellReuseNibLoadForTableView(tableView);
+    cell.itemModel = [FMSelectItemModel modelWithDictionary:[self itemInfoForIndex:indexPath.row]];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 9;
+    return _rowCount;
 }
 
 #pragma mark ——— <UITableViewDelegate>
@@ -100,6 +157,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DLog(@"点了第%ld行", indexPath.row);
+    //         清除缓存       丨       检查版本      丨       联系客服
+    if (indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6) {
+        return;
+    }
+    
+    FMSelectItemModel *itemModel = [FMSelectItemModel modelWithDictionary:[self itemInfoForIndex:indexPath.row]];
+    
+    UIViewController *nextVC = [[NSClassFromString(itemModel.className) alloc] init];
+    self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {

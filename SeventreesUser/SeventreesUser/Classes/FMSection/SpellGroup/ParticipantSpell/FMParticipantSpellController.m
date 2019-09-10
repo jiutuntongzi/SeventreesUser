@@ -58,8 +58,8 @@
     self.navigationItem.title = @"SEVEN TREES";
     
     __weak typeof(self) weakSelf = self;
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-        UIViewController *nextVC = [[NSClassFromString(@"") alloc] init];
+    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"促销活动", 1, ^(UIBarButtonItem *rightItem) {
+        UIViewController *nextVC = [[NSClassFromString(@"FMSalesActivityController") alloc] init];
         weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     });
     self.navigationItem.cni_rightBarButtonItem(rightItem);

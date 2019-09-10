@@ -15,6 +15,9 @@
 
 @property (nonatomic, strong) FMPictureTableView *tableView;
 
+@property (nonatomic, strong) UIView *titleView;
+
+
 @end
 
 @implementation FMGoodsPictureListView
@@ -37,6 +40,15 @@
 
 - (void)fm_setupSubviews {
     self.cv_backColor(UIColor.whiteColor);
+    
+    UIView *titleView = UIView.cv_view();
+    _titleView = titleView;
+    self.cv_addSubview(titleView);
+    
+    
+    UILabel *titleLabel = UILabel.cl_label();
+    titleLabel.cl_text(@"商品详情").cl_textAlignment(NSTextAlignmentCenter).cl_fontSize(14.f).cl_textColor(UIColor.cc_colorByHexString(@"#333333"));
+    titleView.cv_addSubview(titleLabel);
     
     _tableView = [[FMPictureTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableView.dataSource = self;
@@ -67,8 +79,20 @@
 #pragma mark - System Functions
 
 - (void)updateConstraints {
+    CGFloat height = 44.f;
+    [_titleView makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(height);
+        make.left.top.right.equalTo(self);
+    }];
+    
+    UILabel *titleLabel = _titleView.subviews.firstObject;
+    [titleLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self->_titleView);
+    }];
+    
     [_tableView makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
+        make.top.equalTo(self).offset(height);
+        make.left.right.bottom.equalTo(self);
     }];
     
     [super updateConstraints];

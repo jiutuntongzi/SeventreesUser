@@ -10,6 +10,7 @@
 
 #import "FMInputView.h"
 #import "FMInputViewModel.h"
+#import "FMStoreListController.h"
 
 @interface FMInputController ()
 
@@ -42,7 +43,7 @@
     
     [_mainView.viewModel.nextPageSubject subscribeNext:^(id x) {
         FMInputController *nextVC = [[FMInputController alloc] init];
-        nextVC.type = FMInputControllerTypeBindPhone;
+        nextVC.type = FMInputControllerTypeBindStore;
         weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
 }
@@ -62,14 +63,12 @@
     }
     self.navigationItem.title = title;
     
-    // test
-//    __weak typeof(self) weakSelf = self;
-//    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-//        FMInputController *nextVC = [[FMInputController alloc] init];
-//        nextVC.type = FMInputControllerTypeBindStore;
-//        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-//    });
-//    self.navigationItem.cni_rightBarButtonItem(rightItem);
+    __weak typeof(self) weakSelf = self;
+    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
+        FMStoreListController *nextVC = [[FMStoreListController alloc] init];
+        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    });
+    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (void)fm_refreshData {

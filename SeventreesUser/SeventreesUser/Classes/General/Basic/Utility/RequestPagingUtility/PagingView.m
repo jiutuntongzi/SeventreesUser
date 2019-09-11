@@ -72,9 +72,10 @@
         CGFloat width = self.bounds.size.width, height = self.bounds.size.height;
         UITableView *tableView = UITableView.ct_tableViewWithFrameStyle(0.f, 0.f, width, height, UITableViewStylePlain)\
         .ct_dataSource(self).ct_delegate(self)\
-        .ct_rowHeight(self->_rowHeight).ct_separatorStyle(UITableViewCellSeparatorStyleNone).ct_separatorColor(nil)\
+        .ct_separatorStyle(UITableViewCellSeparatorStyleNone).ct_separatorColor(nil)\
         .ct_separatorInset(UIEdgeInsetsZero).ct_tableFooterView(UIView.cv_viewWithFrame(CGRectZero));
         tableView.cv_backColor(UIColor.clearColor);
+        if (self->_rowHeight != 0.f) tableView.ct_rowHeight(self->_rowHeight);
         self->_tableView = tableView;
         
         tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

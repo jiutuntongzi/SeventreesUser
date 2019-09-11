@@ -23,27 +23,27 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDq-JV-1vd">
-                                    <rect key="frame" x="15" y="18" width="335" height="14.5"/>
+                                    <rect key="frame" x="15" y="22" width="335" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FD5-uY-qCi" userLabel="InputView">
-                                    <rect key="frame" x="15" y="62.5" width="345" height="40"/>
-                                    <color key="backgroundColor" red="1" green="0.5409764051" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FD5-uY-qCi" userLabel="InputView">
+                                    <rect key="frame" x="15" y="66.5" width="345" height="40"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="Zx0-fC-IBU"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5k-jw-rFu" userLabel="InputView">
-                                    <rect key="frame" x="15" y="132.5" width="345" height="40"/>
-                                    <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5k-jw-rFu" userLabel="InputView">
+                                    <rect key="frame" x="15" y="136.5" width="345" height="40"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="NfN-Lc-hgp"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMO-Hq-chl">
-                                    <rect key="frame" x="15" y="197.5" width="345" height="44"/>
+                                    <rect key="frame" x="15" y="201.5" width="345" height="44"/>
                                     <color key="backgroundColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="u36-pS-Lv2"/>
@@ -66,7 +66,7 @@
                                 <constraint firstAttribute="trailing" secondItem="FD5-uY-qCi" secondAttribute="trailing" constant="15" id="NbQ-IR-Cok"/>
                                 <constraint firstItem="mDq-JV-1vd" firstAttribute="leading" secondItem="eS6-RV-oeI" secondAttribute="leading" constant="15" id="OL0-GA-lve"/>
                                 <constraint firstAttribute="trailing" secondItem="wMO-Hq-chl" secondAttribute="trailing" constant="15" id="OP6-Q9-nj1"/>
-                                <constraint firstItem="mDq-JV-1vd" firstAttribute="top" secondItem="eS6-RV-oeI" secondAttribute="top" constant="18" id="arF-JF-20G"/>
+                                <constraint firstItem="mDq-JV-1vd" firstAttribute="top" secondItem="eS6-RV-oeI" secondAttribute="top" constant="22" id="arF-JF-20G"/>
                                 <constraint firstItem="k5k-jw-rFu" firstAttribute="leading" secondItem="eS6-RV-oeI" secondAttribute="leading" constant="15" id="elZ-ij-Ew1"/>
                                 <constraint firstAttribute="trailing" secondItem="k5k-jw-rFu" secondAttribute="trailing" constant="15" id="ljg-Sg-XyZ"/>
                                 <constraint firstAttribute="trailing" secondItem="mDq-JV-1vd" secondAttribute="trailing" constant="25" id="m0X-kv-HFw"/>
@@ -96,6 +96,8 @@
                 <outlet property="hintLabel" destination="mDq-JV-1vd" id="26Z-iv-fTi"/>
                 <outlet property="inputContainerView1" destination="FD5-uY-qCi" id="g97-D5-8Jh"/>
                 <outlet property="inputContainerView2" destination="k5k-jw-rFu" id="qME-Cj-9eF"/>
+                <outlet property="inputHeightCons" destination="Zx0-fC-IBU" id="5RM-gF-3uo"/>
+                <outlet property="inputTopCons" destination="xR0-Ip-kCL" id="5zo-XO-h8s"/>
                 <outlet property="nextButton" destination="wMO-Hq-chl" id="Tpt-sd-pRF"/>
             </connections>
             <point key="canvasLocation" x="-1" y="103"/>

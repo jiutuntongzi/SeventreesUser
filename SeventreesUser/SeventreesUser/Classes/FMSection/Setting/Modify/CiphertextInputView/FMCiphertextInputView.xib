@@ -76,7 +76,7 @@
                 <outlet property="cleartextButton" destination="njm-8g-hJv" id="G8p-Gj-y31"/>
                 <outlet property="passwordTextField" destination="pUT-Lr-yUh" id="dYW-If-Bw5"/>
             </connections>
-            <point key="canvasLocation" x="-218" y="181"/>
+            <point key="canvasLocation" x="-218.40000000000001" y="180.80959520239881"/>
         </view>
     </objects>
     <resources>

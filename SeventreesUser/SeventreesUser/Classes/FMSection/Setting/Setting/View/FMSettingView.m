@@ -8,6 +8,7 @@
 
 #import "FMSettingView.h"
 #import "FMSelectItemCell.h"
+#import "FMInputController.h"
 
 static const NSUInteger _rowCount = 8;
 
@@ -46,32 +47,32 @@ static const NSUInteger _rowCount = 8;
                              subTitle        : @"",
                              },
                      @(2) : @{
-                             controller      : @"FMFeedbackController",
+                             controller      : @"FMInputController",
                              title           : @"修改登录密码",
                              subTitle        : @"",
                              },
                      @(3) : @{
-                             controller      : @"FMFeedbackController",
+                             controller      : @"FMInputController",
                              title           : @"换绑门店",
                              subTitle        : @"",
                              },
                      @(4) : @{
-                             controller      : @"FMFeedbackController",
+                             controller      : @"",
                              title           : @"清除缓存",
                              subTitle        : @"1.82M",
                              },
                      @(5) : @{
-                             controller      : @"FMFeedbackController",
+                             controller      : @"",
                              title           : @"检查版本",
                              subTitle        : @"当前版本1.4.2",
                              },
                      @(6) : @{
-                             controller      : @"FMFeedbackController",
+                             controller      : @"",
                              title           : @"联系客服",
                              subTitle        : @"0731-123142",
                              },
                      @(7) : @{
-                             controller      : @"FMFeedbackController",
+                             controller      : @"",
                              title           : @"关于seventrees",
                              subTitle        : @"",
                              }
@@ -157,6 +158,7 @@ static const NSUInteger _rowCount = 8;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DLog(@"点了第%ld行", indexPath.row);
+    
     //         清除缓存       丨       检查版本      丨       联系客服
     if (indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6) {
         return;
@@ -164,6 +166,21 @@ static const NSUInteger _rowCount = 8;
     
     FMSelectItemModel *itemModel = [FMSelectItemModel modelWithDictionary:[self itemInfoForIndex:indexPath.row]];
     
+    if (!itemModel.className.length) return;
+    
+    if ([itemModel.className isEqualToString:@"FMInputController"]) {
+        FMInputController *inputVC = [[FMInputController alloc] init];
+        if (indexPath.row == 1) {
+            inputVC.type = FMInputControllerTypeModifyPhone;
+        } else if (indexPath.row == 2) {
+            inputVC.type = FMInputControllerTypeModifyPassword;
+        } else if (indexPath.row == 3) {
+            inputVC.type = FMInputControllerTypeBindStore;
+        }
+        [self.viewController.navigationController pushViewController:inputVC animated:YES];
+        return;
+    }
+
     UIViewController *nextVC = [[NSClassFromString(itemModel.className) alloc] init];
     self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
 }

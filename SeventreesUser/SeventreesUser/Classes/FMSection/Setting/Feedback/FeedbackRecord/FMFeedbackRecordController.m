@@ -54,6 +54,7 @@
     }];
     // self.view.height - kNavBarHeight - kFixedHeight - 40.f
     pagingView.cv_frame(CGRectMake(0.f, 0.f, self.view.width, self.view.height - kNavBarHeight - kFixedHeight - 20.f));
+    pagingView.cv_backColorByHexString(@"#EEEEEE");
     _pagingListView = pagingView;
     self.view.cv_addSubview(pagingView);
 }

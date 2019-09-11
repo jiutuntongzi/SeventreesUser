@@ -74,6 +74,7 @@
         .ct_dataSource(self).ct_delegate(self)\
         .ct_rowHeight(self->_rowHeight).ct_separatorStyle(UITableViewCellSeparatorStyleNone).ct_separatorColor(nil)\
         .ct_separatorInset(UIEdgeInsetsZero).ct_tableFooterView(UIView.cv_viewWithFrame(CGRectZero));
+        tableView.cv_backColor(UIColor.clearColor);
         self->_tableView = tableView;
         
         tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

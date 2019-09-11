@@ -8,8 +8,16 @@
 
 #import "FMViewModel.h"
 
+typedef NS_ENUM(NSUInteger, FMInputViewType) {
+    FMInputViewTypeModifyPhone = 0,      //  修改手机号
+    FMInputViewTypeModifyPassword,       //  修改登录密码
+    FMInputViewTypeBindPhone,            //  绑定新手机号
+    FMInputViewTypeBindStore,            //  换绑门店
+};
 
 @interface FMInputViewModel : FMViewModel
+
+@property (nonatomic, assign) FMInputViewType type;
 
 @property (nonatomic, copy) NSString *hintText;
 

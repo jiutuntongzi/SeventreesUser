@@ -906,14 +906,14 @@
 			path = CiphertextInputView;
 			sourceTree = "<group>";
 		};
-		8401E2E423279958006C111B /* InputPage */ = {
+		8401E2E423279958006C111B /* ProfileInput */ = {
 			isa = PBXGroup;
 			children = (
 				8401E2E523279958006C111B /* Controller */,
 				8401E2E823279958006C111B /* View */,
 				8401E2EB23279958006C111B /* ViewModel */,
 			);
-			path = InputPage;
+			path = ProfileInput;
 			sourceTree = "<group>";
 		};
 		8401E2E523279958006C111B /* Controller */ = {
@@ -2889,7 +2889,7 @@
 		84FF217F232750C7001AFE30 /* Modify */ = {
 			isa = PBXGroup;
 			children = (
-				8401E2E423279958006C111B /* InputPage */,
+				8401E2E423279958006C111B /* ProfileInput */,
 				84FF2181232752C9001AFE30 /* PhoneInputView */,
 				84FF218C23275679001AFE30 /* VerifyInputView */,
 				8401E2D623278F76006C111B /* CiphertextInputView */,

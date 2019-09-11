@@ -7,7 +7,6 @@
 //
 
 #import "FMView.h"
-
 #import "FMInputViewModel.h"
 
 @interface FMInputView : FMView

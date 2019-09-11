@@ -33,6 +33,7 @@
 
 - (void)fm_addSubviews {
     _mainView = (FMInputView *)FMInputView.cv_viewFromNibLoad();
+    _mainView.viewModel.type = (FMInputViewType)_type; // 通用枚举类型
     [self.view addSubview:_mainView];
 }
 
@@ -47,22 +48,32 @@
 }
 
 - (void)fm_setupNavbar {
+    [super fm_setupNavbar];
+    
+    NSString *title;
     if (_type == FMInputControllerTypeBindPhone) {
-        self.navigationItem.title = @"绑定新手机号";
+        title = @"绑定新手机号";
+    } else if (_type == FMInputControllerTypeModifyPassword) {
+        title = @"修改登录密码";
+    } else if (_type == FMInputControllerTypeBindStore) {
+        title = @"换绑门店";
     } else {
-        self.navigationItem.title = @"修改手机号";
+        title = @"修改手机号";
     }
+    self.navigationItem.title = title;
+    
+    // test
+//    __weak typeof(self) weakSelf = self;
+//    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
+//        FMInputController *nextVC = [[FMInputController alloc] init];
+//        nextVC.type = FMInputControllerTypeBindStore;
+//        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+//    });
+//    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (void)fm_refreshData {
-    NSString *hintText = @"为了您的账号安全，请先验证您的旧手机号码";
-    NSString *buttonTitle = @"下一步";
-    if (_type == FMInputControllerTypeBindPhone) {
-        hintText = @"请输入您的手机号码，修改成功后，您可使用新手机号码登录，原消费记录将保留到新手机账号中";
-        buttonTitle = @"确认绑定";
-    }
-    _mainView.viewModel.hintText = hintText;
-    _mainView.viewModel.buttonTitle = buttonTitle;
+    
 }
 
 #pragma mark - Lazyload

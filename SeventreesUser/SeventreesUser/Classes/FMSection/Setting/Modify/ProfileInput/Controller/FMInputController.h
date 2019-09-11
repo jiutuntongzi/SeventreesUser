@@ -10,8 +10,10 @@
 #import "FMViewController.h"
 
 typedef NS_ENUM(NSUInteger, FMInputControllerType) {
-    FMInputControllerTypeModifyPhone = 0,    // 修改手机号
-    FMInputControllerTypeBindPhone = 1,    // 绑定新手机号
+    FMInputControllerTypeModifyPhone = 0,        //  修改手机号
+    FMInputControllerTypeModifyPassword,         //  修改登录密码
+    FMInputControllerTypeBindPhone,              //  绑定新手机号
+    FMInputControllerTypeBindStore,              //  换绑门店
 };
 
 @interface FMInputController : FMViewController

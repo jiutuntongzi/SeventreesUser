@@ -103,7 +103,13 @@
     _message = message;
     
     _textView.text = message;
+    
     _hintMsgLabel.text = message;
+    
+    if (message.length < 20) {
+        _textView.textAlignment = NSTextAlignmentCenter;
+        _hintMsgLabel.textAlignment = NSTextAlignmentCenter;
+    }
 }
 
 - (void)setAffirmTitle:(NSString *)affirmTitle {

@@ -68,6 +68,14 @@
                                     <constraint firstItem="5VQ-XC-nS0" firstAttribute="leading" secondItem="MF1-Ww-WuX" secondAttribute="leading" id="wRa-nz-kXw"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDi-rs-Stt" userLabel="CheckButton">
+                                <rect key="frame" x="0.0" y="61.5" width="45" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="JGh-Qj-FIU"/>
+                                    <constraint firstAttribute="height" constant="44" id="jMS-wA-4wl"/>
+                                </constraints>
+                                <state key="normal" image="icon_store_check_normal"/>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="电话：13212341234" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJp-uz-KwA">
                                 <rect key="frame" x="52" y="55" width="285" height="20"/>
                                 <constraints>
@@ -83,6 +91,9 @@
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRk-1M-OGT" userLabel="itemButton">
+                                <rect key="frame" x="0.0" y="0.0" width="345" height="132.5"/>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kE0-mX-PNN" userLabel="BottomView">
                                 <rect key="frame" x="0.0" y="132.5" width="345" height="44"/>
                                 <subviews>
@@ -134,18 +145,13 @@
                                     <constraint firstAttribute="bottom" secondItem="0kf-Ye-dqQ" secondAttribute="bottom" id="zyg-O1-T2b"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDi-rs-Stt" userLabel="CheckButton">
-                                <rect key="frame" x="0.0" y="61.5" width="45" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="JGh-Qj-FIU"/>
-                                    <constraint firstAttribute="height" constant="44" id="jMS-wA-4wl"/>
-                                </constraints>
-                                <state key="normal" image="icon_store_check_selected"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="aRk-1M-OGT" firstAttribute="top" secondItem="f8h-IF-9tl" secondAttribute="top" id="2yN-bV-3rg"/>
+                            <constraint firstItem="kE0-mX-PNN" firstAttribute="top" secondItem="aRk-1M-OGT" secondAttribute="bottom" id="5L6-lD-cYd"/>
                             <constraint firstAttribute="bottom" secondItem="kE0-mX-PNN" secondAttribute="bottom" id="6tr-2w-b4U"/>
+                            <constraint firstAttribute="trailing" secondItem="aRk-1M-OGT" secondAttribute="trailing" id="74g-w3-EFM"/>
                             <constraint firstItem="mDi-rs-Stt" firstAttribute="centerY" secondItem="CAS-IV-KtL" secondAttribute="centerY" constant="-15" id="9Xq-c2-Z3L"/>
                             <constraint firstAttribute="bottom" secondItem="CAS-IV-KtL" secondAttribute="bottom" constant="60" id="CH8-bN-Qfs"/>
                             <constraint firstItem="CAS-IV-KtL" firstAttribute="top" secondItem="PJp-uz-KwA" secondAttribute="bottom" constant="5" id="Cve-gE-vON"/>
@@ -156,6 +162,7 @@
                             <constraint firstItem="MF1-Ww-WuX" firstAttribute="top" secondItem="f8h-IF-9tl" secondAttribute="top" id="fid-bo-wFP"/>
                             <constraint firstItem="PJp-uz-KwA" firstAttribute="top" secondItem="MF1-Ww-WuX" secondAttribute="bottom" id="gLE-b8-qCT"/>
                             <constraint firstAttribute="trailing" secondItem="PJp-uz-KwA" secondAttribute="trailing" constant="8" id="k04-D0-AcO"/>
+                            <constraint firstItem="aRk-1M-OGT" firstAttribute="leading" secondItem="f8h-IF-9tl" secondAttribute="leading" id="pvV-Jq-imh"/>
                             <constraint firstAttribute="trailing" secondItem="MF1-Ww-WuX" secondAttribute="trailing" id="svA-Av-Sdh"/>
                             <constraint firstAttribute="trailing" secondItem="kE0-mX-PNN" secondAttribute="trailing" id="tuw-bF-PSN"/>
                             <constraint firstAttribute="trailing" secondItem="CAS-IV-KtL" secondAttribute="trailing" constant="8" id="u0U-8v-Cup"/>
@@ -176,11 +183,22 @@
                     <constraint firstItem="f8h-IF-9tl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ma0-hp-FGC"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="addressButton" destination="ceg-AS-WAP" id="nhx-Qq-Hnv"/>
+                <outlet property="addressLabel" destination="CAS-IV-KtL" id="HvX-9y-XeF"/>
+                <outlet property="checkIconButton" destination="mDi-rs-Stt" id="V02-sL-SOT"/>
+                <outlet property="distanceLabel" destination="A26-vd-89l" id="7cd-G8-Whn"/>
+                <outlet property="haedImgView" destination="GyV-Ll-tqv" id="30h-4p-gWq"/>
+                <outlet property="storeItemButton" destination="aRk-1M-OGT" id="AVZ-KF-210"/>
+                <outlet property="storeNameLabel" destination="0R6-dD-B0g" id="76s-n0-9Wz"/>
+                <outlet property="telephoneButton" destination="0kf-Ye-dqQ" id="JVv-Y3-LCi"/>
+                <outlet property="telephoneLabel" destination="PJp-uz-KwA" id="xux-eG-igU"/>
+            </connections>
             <point key="canvasLocation" x="-151.19999999999999" y="94.902548725637189"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_store_check_selected" width="20" height="20"/>
+        <image name="icon_store_check_normal" width="20" height="20"/>
         <image name="test123" width="375" height="150"/>
     </resources>
 </document>

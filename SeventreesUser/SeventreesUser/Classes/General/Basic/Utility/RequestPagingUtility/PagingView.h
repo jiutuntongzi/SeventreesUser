@@ -17,7 +17,11 @@ typedef void (^PVTableViewCellDidSelectHandler)(id rowEntity);
 
 @interface PagingView : UIView
 
+@property (nonatomic, copy) NSArray *entitys;
+
 - (instancetype)initWithLimit:(NSUInteger)limit uriPath:(NSString *)uriPath rowHeight:(CGFloat)rowHeight params:(NSDictionary *)params requestDataHandler:(PVNetworkRequestDataHandler)requestDataHandler cellConfig:(PVTableViewCellConfigHandler)cellConfig cellDidSelectHandler:(PVTableViewCellDidSelectHandler)cellDidSelectHandler;
+
+- (void)reloadDataForTableView;
 
 @end
 

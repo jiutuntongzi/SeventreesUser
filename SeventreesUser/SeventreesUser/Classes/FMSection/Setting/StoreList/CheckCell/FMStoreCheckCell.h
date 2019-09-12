@@ -7,11 +7,12 @@
 //
 
 #import "FMTableViewCell.h"
-
-NS_ASSUME_NONNULL_BEGIN
+#import "FMStoreCheckViewModel.h"
 
 @interface FMStoreCheckCell : FMTableViewCell
 
-@end
+@property (nonatomic, strong) FMStoreCheckViewModel *viewModel;
 
-NS_ASSUME_NONNULL_END
+- (void)selectCurrentCell;
+
+@end

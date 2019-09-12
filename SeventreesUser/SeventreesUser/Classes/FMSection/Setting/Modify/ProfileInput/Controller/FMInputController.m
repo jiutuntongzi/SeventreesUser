@@ -39,12 +39,25 @@
 }
 
 - (void)fm_bindViewModel {
-    __weak typeof(self) weakSelf = self;
-    
+    @weakify(self)
     [_mainView.viewModel.nextPageSubject subscribeNext:^(id x) {
-        FMInputController *nextVC = [[FMInputController alloc] init];
-        nextVC.type = FMInputControllerTypeBindStore;
-        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+        @strongify(self)
+        
+        if (self->_type == FMInputControllerTypeBindPhone) {
+            
+            
+        } else if (self->_type == FMInputControllerTypeModifyPassword) {
+            
+            
+        } else if (self->_type == FMInputControllerTypeBindStore) {
+            UIViewController *nextVC = [[FMStoreListController alloc] init];
+            [self.navigationController pushViewController:nextVC animated:YES];
+            
+        } else {
+            FMInputController *nextVC = [[FMInputController alloc] init];
+            nextVC.type = FMInputControllerTypeBindPhone;
+            [self.navigationController pushViewController:nextVC animated:YES];
+        }
     }];
 }
 
@@ -62,13 +75,6 @@
         title = @"修改手机号";
     }
     self.navigationItem.title = title;
-    
-    __weak typeof(self) weakSelf = self;
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-        FMStoreListController *nextVC = [[FMStoreListController alloc] init];
-        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (void)fm_refreshData {

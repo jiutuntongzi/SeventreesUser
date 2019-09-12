@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FMAboutController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbd-cM-DW8" userLabel="ContainerView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_about_logo" translatesAutoresizingMaskIntoConstraints="NO" id="3D3-gM-bG7">
+                            <rect key="frame" x="144" y="139" width="87" height="89"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="89" id="bg5-02-lVG"/>
+                                <constraint firstAttribute="width" constant="87" id="grd-Q9-wlg"/>
+                            </constraints>
+                        </imageView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="SEVENTREES是一款打通线上线下，实现多元化场景与服务的购物平台，我们为每个会员提供一对一专属导购，365天24消失零距离在线服务，在这里您可以享有平台专属优惠特权和足不出户预约特色服务。我们只有一个目标：为母婴群体提供更好、更优、更全的服务！" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPK-8m-jDI">
+                            <rect key="frame" x="15" y="248" width="345" height="389"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="FPK-8m-jDI" firstAttribute="top" secondItem="3D3-gM-bG7" secondAttribute="bottom" constant="20" id="2zj-2p-IHR"/>
+                        <constraint firstItem="3D3-gM-bG7" firstAttribute="centerX" secondItem="fbd-cM-DW8" secondAttribute="centerX" id="3ch-j7-iOj"/>
+                        <constraint firstItem="3D3-gM-bG7" firstAttribute="centerY" secondItem="fbd-cM-DW8" secondAttribute="centerY" constant="-150" id="5HZ-zf-er3"/>
+                        <constraint firstAttribute="trailing" secondItem="FPK-8m-jDI" secondAttribute="trailing" constant="15" id="I99-zz-uSm"/>
+                        <constraint firstAttribute="bottom" secondItem="FPK-8m-jDI" secondAttribute="bottom" constant="30" id="JeG-Ei-2oA"/>
+                        <constraint firstItem="FPK-8m-jDI" firstAttribute="leading" secondItem="fbd-cM-DW8" secondAttribute="leading" constant="15" id="rmp-12-lRZ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fbd-cM-DW8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9Xj-a2-Dyc"/>
+                <constraint firstItem="fbd-cM-DW8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JO1-4r-bu3"/>
+                <constraint firstAttribute="bottom" secondItem="fbd-cM-DW8" secondAttribute="bottom" id="XxF-Qm-kvu"/>
+                <constraint firstAttribute="trailing" secondItem="fbd-cM-DW8" secondAttribute="trailing" id="lve-74-gd7"/>
+            </constraints>
+            <point key="canvasLocation" x="-194.40000000000001" y="89.505247376311857"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_about_logo" width="87.5" height="89.5"/>
+    </resources>
+</document>

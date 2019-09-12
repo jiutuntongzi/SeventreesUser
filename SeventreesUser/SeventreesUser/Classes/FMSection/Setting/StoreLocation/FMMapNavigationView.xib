@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5g-IJ-sGu" userLabel="ContainerView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEVENTREES长沙香樟新都店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHt-o9-v16">
+                            <rect key="frame" x="13" y="15" width="202" height="18"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="香樟新都湖南省长沙市雨花区圭塘路264号106" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlS-fO-vuC">
+                            <rect key="frame" x="13" y="38.5" width="252" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFC-rJ-q0q" userLabel="rightLineView">
+                            <rect key="frame" x="289" y="12" width="1" height="46"/>
+                            <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="OfK-3p-B4i"/>
+                                <constraint firstAttribute="width" constant="1" id="feD-eF-SxC"/>
+                            </constraints>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_mapNavigation" translatesAutoresizingMaskIntoConstraints="NO" id="Xl4-aH-u40">
+                            <rect key="frame" x="321" y="17" width="20" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="dhH-Go-i1G"/>
+                                <constraint firstAttribute="height" constant="18" id="jGE-g8-xAu"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="导航" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbF-cl-V2U">
+                            <rect key="frame" x="318.5" y="37.5" width="25" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VyY-H6-VVc">
+                            <rect key="frame" x="300" y="13" width="70" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="W1g-P3-8kP"/>
+                                <constraint firstAttribute="width" constant="70" id="ydc-SA-TE1"/>
+                            </constraints>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="PlS-fO-vuC" firstAttribute="top" secondItem="GHt-o9-v16" secondAttribute="bottom" constant="5.5" id="Dym-WL-6vP"/>
+                        <constraint firstItem="GHt-o9-v16" firstAttribute="centerY" secondItem="K5g-IJ-sGu" secondAttribute="centerY" constant="-11" id="FSc-Jl-dIn"/>
+                        <constraint firstItem="XbF-cl-V2U" firstAttribute="centerX" secondItem="Xl4-aH-u40" secondAttribute="centerX" id="KYz-Ww-af3"/>
+                        <constraint firstItem="Xl4-aH-u40" firstAttribute="centerY" secondItem="K5g-IJ-sGu" secondAttribute="centerY" constant="-9" id="fJO-zf-qRx"/>
+                        <constraint firstAttribute="trailing" secondItem="Xl4-aH-u40" secondAttribute="trailing" constant="34" id="nEn-8r-VQ6"/>
+                        <constraint firstItem="VyY-H6-VVc" firstAttribute="centerY" secondItem="K5g-IJ-sGu" secondAttribute="centerY" id="rXg-DP-z1y"/>
+                        <constraint firstItem="PlS-fO-vuC" firstAttribute="leading" secondItem="GHt-o9-v16" secondAttribute="leading" id="sYT-b3-Ndm"/>
+                        <constraint firstAttribute="trailing" secondItem="VyY-H6-VVc" secondAttribute="trailing" constant="5" id="smz-tR-eFu"/>
+                        <constraint firstItem="wFC-rJ-q0q" firstAttribute="centerY" secondItem="K5g-IJ-sGu" secondAttribute="centerY" id="tel-1x-jKc"/>
+                        <constraint firstAttribute="trailing" secondItem="wFC-rJ-q0q" secondAttribute="trailing" constant="85" id="uEC-cj-8IS"/>
+                        <constraint firstItem="XbF-cl-V2U" firstAttribute="top" secondItem="Xl4-aH-u40" secondAttribute="bottom" constant="2.5" id="xXz-RX-NyZ"/>
+                        <constraint firstItem="GHt-o9-v16" firstAttribute="leading" secondItem="K5g-IJ-sGu" secondAttribute="leading" constant="13" id="zpw-JG-qpf"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="K5g-IJ-sGu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iz8-D6-Umy"/>
+                <constraint firstAttribute="trailing" secondItem="K5g-IJ-sGu" secondAttribute="trailing" id="nJs-36-Xgf"/>
+                <constraint firstItem="K5g-IJ-sGu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tm6-9Z-mUD"/>
+                <constraint firstAttribute="bottom" secondItem="K5g-IJ-sGu" secondAttribute="bottom" id="zEe-8H-d7H"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-82.400000000000006" y="-178.11094452773614"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_mapNavigation" width="20.5" height="18.5"/>
+    </resources>
+</document>

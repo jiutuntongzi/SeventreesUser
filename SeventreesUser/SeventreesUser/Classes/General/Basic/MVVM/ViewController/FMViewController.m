@@ -84,8 +84,4 @@
 /** 刷新数据 */
 - (void)fm_refreshData { }
 
-- (void)dealloc {
-    DLog(@"VC销毁了");
-}
-
 @end

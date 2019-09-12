@@ -57,13 +57,13 @@
     
     self.navigationItem.title = @"设置";
     
-    __weak typeof(self) weakSelf = self;
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-        DLog(@"点了导航栏右");
-        UIViewController *nextVC = [[FMFeedbackController alloc] init];
-        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
+//    __weak typeof(self) weakSelf = self;
+//    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
+//        DLog(@"点了导航栏右");
+//        UIViewController *nextVC = [[FMFeedbackController alloc] init];
+//        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+//    });
+//    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 #pragma mark - Lazyload

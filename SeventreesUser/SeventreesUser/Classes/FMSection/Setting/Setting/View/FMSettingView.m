@@ -10,6 +10,11 @@
 #import "FMSelectItemCell.h"
 #import "FMInputController.h"
 
+#import "DialogBoxView.h"
+
+#define     kServiceTelephone       @"0731123142"
+#define     kServiceTelText         @"07311-23142"
+
 static const NSUInteger _rowCount = 8;
 
 @interface FMSettingView () <UITableViewDataSource, UITableViewDelegate>
@@ -35,6 +40,11 @@ static const NSUInteger _rowCount = 8;
         NSString * const controller = @"className";
         NSString * const title = @"title";
         NSString * const subTitle = @"subTitle";
+        
+        
+        NSString *appVersionText = [NSString stringWithFormat:@"当前版本%@", [UIApplication sharedApplication].appVersion];
+
+        
         _selectItems = @{
                      @(0) : @{
                              controller      : @"FMFeedbackController",
@@ -59,20 +69,20 @@ static const NSUInteger _rowCount = 8;
                      @(4) : @{
                              controller      : @"",
                              title           : @"清除缓存",
-                             subTitle        : @"1.82M",
+                             subTitle        : @"",
                              },
                      @(5) : @{
                              controller      : @"",
                              title           : @"检查版本",
-                             subTitle        : @"当前版本1.4.2",
+                             subTitle        : appVersionText ?: @"",
                              },
                      @(6) : @{
                              controller      : @"",
                              title           : @"联系客服",
-                             subTitle        : @"0731-123142",
+                             subTitle        : kServiceTelText,
                              },
                      @(7) : @{
-                             controller      : @"",
+                             controller      : @"FMAboutController",
                              title           : @"关于seventrees",
                              subTitle        : @"",
                              }
@@ -122,6 +132,54 @@ static const NSUInteger _rowCount = 8;
     }];
 }
 
+/**
+ * 拨打电话，弹出提示，拨打完电话回到原来的应用
+ *
+ * @param telephone 电话号码字符串
+ */
+- (void)callTelephone1:(NSString *)telephone {
+    UIWebView * callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", telephone]]]];
+    [self addSubview:callWebview];
+}
+
+/**
+ * 拨打电话，弹出提示，拨打完电话回到原来的应用
+ * 注意这里是 telprompt://
+ * @param telephone 电话号码字符串
+ */
+- (void)callTelephone:(NSString *)telephone {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",telephone]]];
+}
+
+/** SDWebImage 清理图片缓存 */
+- (void)clearCacheTempPics {
+    [DialogBoxView showByTitle:@"清除缓存" message:@"\n\n确认清空缓存？" affirmButtonTitle:@"清除" forStyle:DialogBoxViewStyleAffirm affirmHandler:^(NSString * _Nullable text) {
+        [[[SDWebImageManager sharedManager] imageCache] clearWithCacheType:SDImageCacheTypeDisk completion:^{
+            [SVProgressHUD showSuccessWithStatus:@"清除成功"];
+            [SVProgressHUD dismissWithDelay:1.0f];
+        }];
+    }];
+    /*
+    self.viewController.cvc_showAlertControllerByTitleDescrConfirmCompleted(@"清除缓存", @"确认清除缓存？", @"清除", ^{
+        [[[SDWebImageManager sharedManager] imageCache] clearWithCacheType:SDImageCacheTypeDisk completion:^{
+            [SVProgressHUD showSuccessWithStatus:@"清除成功"];
+            [SVProgressHUD dismissWithDelay:1.5f];
+        }];
+    });
+    */
+}
+
+/** 检查版本 */
+- (void)checkVersion {
+    NSString *message = @"\n是否跳转至苹果应用商店(App Store)查看/安装最新版本？";
+    [DialogBoxView showByTitle:@"新版本" message:message affirmButtonTitle:@"更新" forStyle:DialogBoxViewStyleAffirm affirmHandler:^(NSString * _Nullable text) {
+        NSString *appId = @"1344037247";
+        NSString *URLString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/jie-zou-da-shi/id%@?mt=8", appId];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URLString]];
+    }];
+}
+
 #pragma mark - System Functions
 
 - (void)updateConstraints {
@@ -157,10 +215,20 @@ static const NSUInteger _rowCount = 8;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    DLog(@"点了第%ld行", indexPath.row);
+    DLog(@"点了第%ld行", (long)indexPath.row);
     
     //         清除缓存       丨       检查版本      丨       联系客服
     if (indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6) {
+        
+        if (indexPath.row == 6) {
+            [self callTelephone:kServiceTelephone];
+            
+        } else if (indexPath.row == 4) {
+            [self clearCacheTempPics];
+            
+        } else if (indexPath.row == 5) {
+            [self checkVersion];
+        }
         return;
     }
     

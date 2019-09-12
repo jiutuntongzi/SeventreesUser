@@ -18,8 +18,6 @@
 
 @property (nonatomic, strong) PagingCalculateUtility *pagingUtility;
 
-@property (nonatomic, copy) NSArray *entitys;
-
 
 @property (nonatomic, copy) PVNetworkRequestDataHandler requestDataHandler;
 

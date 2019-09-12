@@ -11,11 +11,7 @@
 
 #import "FMViewControllerProtocol.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMViewController : UIViewController <FMViewControllerProtocol>
 
 
 @end
-
-NS_ASSUME_NONNULL_END

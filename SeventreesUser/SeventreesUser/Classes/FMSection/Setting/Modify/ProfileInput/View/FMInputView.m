@@ -97,7 +97,7 @@
     
     [self.viewModel.refreshUISubject subscribeNext:^(NSDictionary *result) {
         @strongify(self);
-        [SVProgressHUD showSuccessWithStatus:@"修改成功"]; // result[@"msg"]
+        [SVProgressHUD showSuccessWithStatus:@"操作成功"]; // result[@"msg"]
         [self.viewModel.nextPageSubject sendNext:nil];
     }];
 }

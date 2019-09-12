@@ -14,7 +14,7 @@
     
     return ^(NSString * title, NSString * descr, NSString *cancelTitle, NSString *confirmTitle, CHandleCallback confirmCallback) {
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:descr preferredStyle:UIAlertControllerStyleAlert];
         [alertController addAction:[UIAlertAction actionWithTitle:confirmTitle ?: @"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             if (confirmCallback) confirmCallback();
         }]];

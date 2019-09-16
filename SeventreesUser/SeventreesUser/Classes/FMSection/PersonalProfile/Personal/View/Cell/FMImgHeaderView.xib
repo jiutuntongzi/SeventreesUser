@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FMImgHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJI-6C-ClP" userLabel="ContainerView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="头像" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk6-7V-fI3">
+                            <rect key="frame" x="14" y="21.5" width="29" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_personalHead" translatesAutoresizingMaskIntoConstraints="NO" id="pWV-nY-pMK" userLabel="head Image View">
+                            <rect key="frame" x="291" y="8" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="N26-8X-MCB"/>
+                                <constraint firstAttribute="height" constant="44" id="pyO-j2-2hQ"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="22"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="OSi-Ah-mJw">
+                            <rect key="frame" x="349" y="24" width="6" height="12"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdP-jf-8KM" userLabel="LineView">
+                            <rect key="frame" x="0.0" y="59" width="375" height="1"/>
+                            <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="CbJ-hq-70U"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="pWV-nY-pMK" firstAttribute="centerY" secondItem="DJI-6C-ClP" secondAttribute="centerY" id="2ac-Ui-gs5"/>
+                        <constraint firstItem="vdP-jf-8KM" firstAttribute="leading" secondItem="DJI-6C-ClP" secondAttribute="leading" id="6WT-7i-oC4"/>
+                        <constraint firstAttribute="trailing" secondItem="OSi-Ah-mJw" secondAttribute="trailing" constant="20" id="8QY-cX-Qod"/>
+                        <constraint firstAttribute="trailing" secondItem="vdP-jf-8KM" secondAttribute="trailing" id="XCt-P2-9Xt"/>
+                        <constraint firstItem="dk6-7V-fI3" firstAttribute="centerY" secondItem="DJI-6C-ClP" secondAttribute="centerY" id="aZp-Un-q38"/>
+                        <constraint firstAttribute="trailing" secondItem="pWV-nY-pMK" secondAttribute="trailing" constant="40" id="oiI-MG-mdC"/>
+                        <constraint firstAttribute="bottom" secondItem="vdP-jf-8KM" secondAttribute="bottom" id="skH-Ih-qIa"/>
+                        <constraint firstItem="dk6-7V-fI3" firstAttribute="leading" secondItem="DJI-6C-ClP" secondAttribute="leading" constant="14" id="uBQ-JI-1yR"/>
+                        <constraint firstItem="OSi-Ah-mJw" firstAttribute="centerY" secondItem="DJI-6C-ClP" secondAttribute="centerY" id="yUA-vh-oLS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DJI-6C-ClP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FBL-iZ-TSO"/>
+                <constraint firstAttribute="bottom" secondItem="DJI-6C-ClP" secondAttribute="bottom" id="f5N-Hc-JnD"/>
+                <constraint firstAttribute="trailing" secondItem="DJI-6C-ClP" secondAttribute="trailing" id="jXr-xz-a4f"/>
+                <constraint firstItem="DJI-6C-ClP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lwp-n0-R2h"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="39.200000000000003" y="-226.6866566716642"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_arrow" width="6.5" height="12"/>
+        <image name="icon_personalHead" width="42.5" height="42.5"/>
+    </resources>
+</document>

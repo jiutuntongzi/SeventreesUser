@@ -11,6 +11,7 @@
 #import "FMBargainTypeController.h"
 #import "FMSpellGroupController.h"
 #import "FMSettingController.h"
+#import "FMPersonalProfileController.h"
 
 @interface FMMeView ()
 
@@ -49,18 +50,23 @@
 
 /** 绑定ViewModel */
 - (void)fm_bindViewModel {
+    __weak typeof(self) weakSelf = self;
     _headImgView.cv_addTouchEventCallback(^(UIImageView *imageView) {
-        
+        UIViewController *nextVC = [[FMPersonalProfileController alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        weakSelf.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     });
     
+    @weakify(self);
+    
     [[_settingButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self);
+        
         UIViewController *nextVC = [[FMSettingController alloc] init];
         nextVC.hidesBottomBarWhenPushed = YES;
         self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
     
-    
-    @weakify(self);
     [[_spellButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
         // test

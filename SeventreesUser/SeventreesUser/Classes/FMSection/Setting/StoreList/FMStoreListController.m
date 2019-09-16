@@ -30,17 +30,10 @@
     
 }
 
-- (void)updateViewConstraints {
-    [_pagingListView makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
-    }];
-
-    [super updateViewConstraints];
-}
-
 #pragma mark - Private Functions
 
 - (void)fm_addSubviews {
+    __weak typeof(self) weakSelf = self;
     PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:@"" rowHeight:0.f params:@{@"userId": @"1059"} requestDataHandler:^(NSDictionary *result) {
 //        NSArray *dictArray = [result[@"list"] copy];
 //        NSArray *resultEntitys = [[FMStoredRecord mj_objectArrayWithKeyValuesArray:dictArray] copy];
@@ -81,16 +74,17 @@
         [cell.viewModel.addressActionSubject subscribeNext:^(FMStoreCheckModel *storeEntity) {
             DLog(@"点了地址 storeEntity == %@", storeEntity);
             FMStoreLocationController *nextVC = [[FMStoreLocationController alloc] init];
-            [self.navigationController pushViewController:nextVC animated:YES];
+            [weakSelf.navigationController pushViewController:nextVC animated:YES];
         }];
         return cell;
         
     } cellDidSelectHandler:^(FMStoreCheckModel *storeEntity) {
         DLog(@"storeEntity == %@", storeEntity);
     }];
-    pagingView.cv_frame(CGRectMake(0.f, 0.f, self.view.width, self.view.height - kNavBarHeight - kFixedHeight));
+    pagingView.cv_frame(CGRectMake(0.f, 0.f, self.view.width, self.view.height - kNavBarHeight - 40.f));
     pagingView.cv_backColorByHexString(@"#EEEEEE");
     _pagingListView = pagingView;
+    
     self.view.cv_addSubview(pagingView);
 }
 

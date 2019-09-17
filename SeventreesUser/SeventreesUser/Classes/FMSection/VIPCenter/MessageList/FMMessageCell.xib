@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="FMMessageCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8h-IF-9tl" userLabel="ContainerView">
+                        <rect key="frame" x="5" y="5" width="365" height="89.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="系统升级通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0R6-dD-B0g">
+                                <rect key="frame" x="12" y="12" width="92" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019-08-01  14:28:43" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A26-vd-89l">
+                                <rect key="frame" x="229.5" y="13.5" width="125.5" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="安卓最新版本1.2.2已发布，更新内容如下：1.修复若干bug，2.新增优惠券模块，用户支付订单可选择优惠券进行支付" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAS-IV-KtL">
+                                <rect key="frame" x="12" y="44" width="341" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0R6-dD-B0g" firstAttribute="top" secondItem="f8h-IF-9tl" secondAttribute="top" constant="12" id="3g2-bs-Cra"/>
+                            <constraint firstItem="0R6-dD-B0g" firstAttribute="leading" secondItem="f8h-IF-9tl" secondAttribute="leading" constant="12" id="6CC-ht-CQp"/>
+                            <constraint firstAttribute="bottom" secondItem="CAS-IV-KtL" secondAttribute="bottom" constant="12" id="Bzc-SU-HAD"/>
+                            <constraint firstItem="A26-vd-89l" firstAttribute="centerY" secondItem="0R6-dD-B0g" secondAttribute="centerY" id="Cx9-QV-YYO"/>
+                            <constraint firstAttribute="trailing" secondItem="A26-vd-89l" secondAttribute="trailing" constant="10" id="Jw1-Na-zR1"/>
+                            <constraint firstItem="CAS-IV-KtL" firstAttribute="top" secondItem="f8h-IF-9tl" secondAttribute="top" constant="44" id="TAN-1o-uVp"/>
+                            <constraint firstItem="CAS-IV-KtL" firstAttribute="leading" secondItem="f8h-IF-9tl" secondAttribute="leading" constant="12" id="jc0-Fr-wAc"/>
+                            <constraint firstAttribute="trailing" secondItem="CAS-IV-KtL" secondAttribute="trailing" constant="12" id="xWw-Cb-Dv6"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAZ-zh-NdZ" userLabel="lineView">
+                        <rect key="frame" x="0.0" y="98.5" width="375" height="1"/>
+                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="oWk-LX-iQO"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="mAZ-zh-NdZ" secondAttribute="trailing" id="2OR-dn-AJG"/>
+                    <constraint firstAttribute="bottom" secondItem="mAZ-zh-NdZ" secondAttribute="bottom" id="AO6-aK-X0P"/>
+                    <constraint firstAttribute="bottom" secondItem="f8h-IF-9tl" secondAttribute="bottom" constant="5" id="N4K-4V-KJ1"/>
+                    <constraint firstAttribute="trailing" secondItem="f8h-IF-9tl" secondAttribute="trailing" constant="5" id="Zdw-c7-63C"/>
+                    <constraint firstItem="mAZ-zh-NdZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="cIO-LC-bXj"/>
+                    <constraint firstItem="f8h-IF-9tl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="gTD-hC-i98"/>
+                    <constraint firstItem="f8h-IF-9tl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ma0-hp-FGC"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-698.39999999999998" y="116.04197901049476"/>
+        </tableViewCell>
+    </objects>
+</document>

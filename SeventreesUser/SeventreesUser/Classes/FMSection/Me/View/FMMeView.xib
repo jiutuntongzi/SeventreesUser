@@ -801,8 +801,9 @@
                 <outlet property="shareButton" destination="M1J-pi-pLn" id="ekr-fR-bkP"/>
                 <outlet property="spellButton" destination="m0f-ha-bEW" id="N1R-wn-oWb"/>
                 <outlet property="totalContentView" destination="O5Y-Zq-aLk" id="Qgn-Ku-mqf"/>
+                <outlet property="vipButton" destination="g3G-Ex-m92" id="P4P-Jb-GLq"/>
             </connections>
-            <point key="canvasLocation" x="-567.20000000000005" y="75.562218890554732"/>
+            <point key="canvasLocation" x="-950" y="67"/>
         </view>
     </objects>
     <resources>

@@ -8,7 +8,13 @@
 
 #import "FMNewAddressController.h"
 
+#import "CZHAddressPickerView.h"
+
 @interface FMNewAddressController ()
+
+@property (nonatomic, weak) IBOutlet UIButton *pullMenuButton;
+
+@property (nonatomic, weak) IBOutlet UIButton *defaultSwitchButton;
 
 @property (nonatomic, weak) IBOutlet UIButton *saveButton;
 
@@ -19,14 +25,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self addActions];
 }
 
 - (void)fm_addSubviews {
+    
+}
+
+- (void)addActions {
     @weakify(self)
     [[_saveButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)    if (!self) return;
         
     }];
+    
+    // 省市区：三级菜单下拉框
+    [[_pullMenuButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)    if (!self) return;
+        
+        [CZHAddressPickerView areaPickerViewWithAreaBlock:^(NSString *province, NSString *city, NSString *area) {
+            NSString *address = [NSString stringWithFormat:@"%@%@%@", province, city, area];
+            DLog(@"address == %@", address);
+        }];
+    }];
+    
+    
+    
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    self.view.cv_endEditing();
 }
 
 - (void)fm_setupNavbar {

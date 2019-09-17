@@ -10,8 +10,13 @@
 
 #import "FMBargainTypeController.h"
 #import "FMSpellGroupController.h"
-#import "FMSettingController.h"
+
 #import "FMPersonalProfileController.h"
+#import "FMMemberCenterController.h"
+
+#import "FMSettingController.h"
+#import "FMMessageListController.h"
+#import "FMVIPQRCodeBoxView.h"
 
 @interface FMMeView ()
 
@@ -19,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImgView;
 @property (weak, nonatomic) IBOutlet UIView *totalContentView;
+@property (weak, nonatomic) IBOutlet UIButton *vipButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *spellButton;
 @property (weak, nonatomic) IBOutlet UIButton *bargainButton;
@@ -51,6 +57,7 @@
 /** 绑定ViewModel */
 - (void)fm_bindViewModel {
     __weak typeof(self) weakSelf = self;
+    
     _headImgView.cv_addTouchEventCallback(^(UIImageView *imageView) {
         UIViewController *nextVC = [[FMPersonalProfileController alloc] init];
         nextVC.hidesBottomBarWhenPushed = YES;
@@ -59,6 +66,15 @@
     
     @weakify(self);
     
+    [[_vipButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self);
+        
+        UIViewController *nextVC = [[FMMemberCenterController alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    }];
+    
+    
     [[_settingButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
         
@@ -66,6 +82,23 @@
         nextVC.hidesBottomBarWhenPushed = YES;
         self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
+    
+    [[_myQRCodeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+//        @strongify(self);
+        
+        [FMVIPQRCodeBoxView showByInfo:nil];
+    }];
+    
+    [[_messageButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self);
+        
+        UIViewController *nextVC = [[FMMessageListController alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    }];
+    
+    
+    
     
     [[_spellButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);

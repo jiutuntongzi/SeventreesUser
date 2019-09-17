@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FMNewAddressController">
             <connections>
+                <outlet property="defaultSwitchButton" destination="f3N-B0-2m9" id="uUx-xe-cOT"/>
+                <outlet property="pullMenuButton" destination="OSX-Qk-fPQ" id="87i-G3-nkK"/>
+                <outlet property="saveButton" destination="5Qt-ZD-qcX" id="dBO-Lf-kPJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -217,9 +220,10 @@
                                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_switchOff" translatesAutoresizingMaskIntoConstraints="NO" id="BRG-8Z-Uxx">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3N-B0-2m9">
                                                             <rect key="frame" x="303" y="8.5" width="57" height="27"/>
-                                                        </imageView>
+                                                            <state key="normal" image="icon_switchOff"/>
+                                                        </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUQ-jI-oLS" userLabel="LineView">
                                                             <rect key="frame" x="14" y="43" width="361" height="1"/>
                                                             <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
@@ -230,14 +234,14 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="BRG-8Z-Uxx" secondAttribute="trailing" constant="15" id="5am-Kl-2lh"/>
                                                         <constraint firstItem="sUQ-jI-oLS" firstAttribute="leading" secondItem="Jg4-ow-Bo1" secondAttribute="leading" constant="14" id="Anh-7H-b9E"/>
                                                         <constraint firstItem="2xE-8L-M36" firstAttribute="leading" secondItem="Jg4-ow-Bo1" secondAttribute="leading" constant="15" id="R3Y-io-G5u"/>
                                                         <constraint firstAttribute="trailing" secondItem="sUQ-jI-oLS" secondAttribute="trailing" id="YUI-gA-mZk"/>
                                                         <constraint firstAttribute="bottom" secondItem="sUQ-jI-oLS" secondAttribute="bottom" id="c8G-uN-YXu"/>
                                                         <constraint firstItem="2xE-8L-M36" firstAttribute="centerY" secondItem="Jg4-ow-Bo1" secondAttribute="centerY" id="cJ3-vK-CSQ"/>
-                                                        <constraint firstItem="BRG-8Z-Uxx" firstAttribute="centerY" secondItem="Jg4-ow-Bo1" secondAttribute="centerY" id="hc1-lz-dIC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="f3N-B0-2m9" secondAttribute="trailing" constant="15" id="dlV-os-9gP"/>
                                                         <constraint firstAttribute="height" constant="44" id="xTu-2k-5pb"/>
+                                                        <constraint firstItem="f3N-B0-2m9" firstAttribute="centerY" secondItem="Jg4-ow-Bo1" secondAttribute="centerY" id="yZc-uG-cUK"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -316,7 +320,7 @@
                 <constraint firstAttribute="trailing" secondItem="6eN-ma-diH" secondAttribute="trailing" id="ukY-Ei-8qO"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="-314.39999999999998" y="71.514242878560722"/>
+            <point key="canvasLocation" x="-449" y="71"/>
         </view>
     </objects>
     <resources>

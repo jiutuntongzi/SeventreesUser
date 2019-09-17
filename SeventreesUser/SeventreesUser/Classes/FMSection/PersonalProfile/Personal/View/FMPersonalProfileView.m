@@ -14,7 +14,10 @@
 #import "FMImgHeaderView.h"
 #import "FMSelectFooterView.h"
 
+
 #import "DialogBoxView.h"
+#import "BRPickerView.h"
+#import "BRStringPickerView.h"
 
 @interface FMPersonalProfileView () <UITableViewDataSource, UITableViewDelegate>
 
@@ -131,6 +134,7 @@ static const NSUInteger _rowCount = 4;
 #pragma mark ——— <UITableViewDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    DLog(@"点了第%ld行", (long)indexPath.row);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSString *placeholder = @"最多可输入6位中文字符", *affirmTitle = @"确认保存";
@@ -152,15 +156,26 @@ static const NSUInteger _rowCount = 4;
                 [SVProgressHUD dismissWithDelay:1.f];
                 return;
             }
+            
         }];
     } else if (indexPath.row == 2) {
+        NSDate *minDate = [NSDate br_setYear:1900 month:0 day:0];
+        NSDate *maxDate = [NSDate distantFuture];
+        [BRDatePickerView showDatePickerWithTitle:@"" dateType:BRDatePickerModeYMD defaultSelValue:nil minDate:minDate maxDate:maxDate isAutoSelect:YES themeColor:nil resultBlock:^(NSString *selectTime) {
+            DLog(@"selectTime == %@", selectTime);
+        } cancelBlock:^{
+            
+        }];
         
     } else if (indexPath.row == 3) {
-        self.viewController.cvc_showSheetControllerByTitleNamesCompleted(nil, @[@"男", @"女"], ^(NSUInteger index) {
+//        self.viewController.cvc_showSheetControllerByTitleNamesCompleted(nil, @[@"男", @"女"], ^(NSUInteger index) {
+//        });
+        [BRStringPickerView showStringPickerWithTitle:@"" dataSource:@[@"男", @"女"] defaultSelValue:@"" isAutoSelect:NO themeColor:nil resultBlock:^(NSString *selectText, NSInteger selectIdx) {
             
-        });
+        } cancelBlock:^{
+            DLog(@"取消");
+        }];
     }
-    DLog(@"点了第%ld行", (long)indexPath.row);
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

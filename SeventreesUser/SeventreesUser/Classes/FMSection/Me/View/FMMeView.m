@@ -11,6 +11,9 @@
 #import "FMBargainTypeController.h"
 #import "FMSpellGroupController.h"
 
+#import "FMScoreController.h"
+#import "FMCouponPagingController.h"
+
 #import "FMPersonalProfileController.h"
 #import "FMMemberCenterController.h"
 
@@ -25,6 +28,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headImgView;
 @property (weak, nonatomic) IBOutlet UIView *totalContentView;
 @property (weak, nonatomic) IBOutlet UIButton *vipButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *couponListButton;
+@property (weak, nonatomic) IBOutlet UIButton *scoreCenterButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *spellButton;
 @property (weak, nonatomic) IBOutlet UIButton *bargainButton;
@@ -97,7 +103,19 @@
         self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
     
+    [[_couponListButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self);
+        UIViewController *nextVC = [[FMCouponPagingController alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    }];
     
+    [[_scoreCenterButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self);
+        UIViewController *nextVC = [[FMScoreController alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    }];
     
     
     [[_spellButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {

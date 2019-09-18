@@ -1,5 +1,5 @@
 //
-//  FMBargainTypeController.h
+//  FMCouponPagingController.h
 //  SeventreesUser
 //
 //  Created by wushiye on 2019/8/21.
@@ -8,6 +8,6 @@
 
 #import "WMPageController.h"
 
-@interface FMBargainTypeController : WMPageController
+@interface FMCouponPagingController : WMPageController
 
 @end

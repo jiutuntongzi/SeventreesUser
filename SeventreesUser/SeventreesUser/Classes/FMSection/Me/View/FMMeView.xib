@@ -156,13 +156,22 @@
                                                             <color key="textColor" red="0.96862745098039216" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keG-TN-FDw">
+                                                            <rect key="frame" x="44" y="10" width="85" height="55"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="85" id="HSU-KR-9Q7"/>
+                                                                <constraint firstAttribute="height" constant="55" id="gfW-rs-dTf"/>
+                                                            </constraints>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="keG-TN-FDw" firstAttribute="centerX" secondItem="4SW-XK-NrR" secondAttribute="centerX" id="0H2-ZR-k4i"/>
                                                         <constraint firstItem="Sc9-S9-g7T" firstAttribute="centerY" secondItem="4SW-XK-NrR" secondAttribute="centerY" constant="-11" id="2Gv-JW-ayb"/>
                                                         <constraint firstItem="Sc9-S9-g7T" firstAttribute="centerX" secondItem="4SW-XK-NrR" secondAttribute="centerX" id="3Lj-IJ-1mm"/>
                                                         <constraint firstItem="Gz5-6n-bOV" firstAttribute="centerY" secondItem="4SW-XK-NrR" secondAttribute="centerY" constant="11" id="6tF-LZ-StP"/>
                                                         <constraint firstItem="Gz5-6n-bOV" firstAttribute="centerX" secondItem="4SW-XK-NrR" secondAttribute="centerX" id="Qrb-5n-56D"/>
+                                                        <constraint firstItem="keG-TN-FDw" firstAttribute="top" secondItem="4SW-XK-NrR" secondAttribute="top" constant="10" id="YAI-Bs-lsU"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hkf-rI-ZBp" userLabel="itemView">
@@ -180,12 +189,21 @@
                                                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gmn-0J-IBs">
+                                                            <rect key="frame" x="44" y="10" width="85" height="55"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="85" id="gkd-Tw-paa"/>
+                                                                <constraint firstAttribute="height" constant="55" id="wHj-xo-UGM"/>
+                                                            </constraints>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="HVg-G8-wAF" firstAttribute="centerY" secondItem="Hkf-rI-ZBp" secondAttribute="centerY" constant="11" id="9EE-oh-fEF"/>
                                                         <constraint firstItem="HVg-G8-wAF" firstAttribute="centerX" secondItem="Hkf-rI-ZBp" secondAttribute="centerX" id="C6J-Ms-vJO"/>
                                                         <constraint firstItem="MHJ-YK-hqB" firstAttribute="centerY" secondItem="Hkf-rI-ZBp" secondAttribute="centerY" constant="-11" id="Fy0-gL-I8o"/>
+                                                        <constraint firstItem="gmn-0J-IBs" firstAttribute="top" secondItem="Hkf-rI-ZBp" secondAttribute="top" constant="10" id="PJh-O3-aEM"/>
+                                                        <constraint firstItem="gmn-0J-IBs" firstAttribute="centerX" secondItem="Hkf-rI-ZBp" secondAttribute="centerX" id="jCH-eg-Nfk"/>
                                                         <constraint firstItem="MHJ-YK-hqB" firstAttribute="centerX" secondItem="Hkf-rI-ZBp" secondAttribute="centerX" id="uKU-LK-MOb"/>
                                                     </constraints>
                                                 </view>
@@ -794,16 +812,18 @@
                 <outlet property="bargainButton" destination="mC7-x3-PlT" id="vOW-mN-Ft2"/>
                 <outlet property="collectButton" destination="Xqv-2B-Qt4" id="pGo-GS-Wo1"/>
                 <outlet property="contentTopMarginCons" destination="J46-SD-lUe" id="5We-AA-GSA"/>
+                <outlet property="couponListButton" destination="keG-TN-FDw" id="xrw-bn-32o"/>
                 <outlet property="headImgView" destination="P0F-mM-36H" id="Dpw-Sj-LRd"/>
                 <outlet property="messageButton" destination="2dM-da-Q1l" id="NJ7-4V-Qim"/>
                 <outlet property="myQRCodeButton" destination="3Px-Fp-vAk" id="G5P-Iq-1l1"/>
+                <outlet property="scoreCenterButton" destination="gmn-0J-IBs" id="SfT-pn-LiA"/>
                 <outlet property="settingButton" destination="yL9-3h-REf" id="6LA-1Q-drC"/>
                 <outlet property="shareButton" destination="M1J-pi-pLn" id="ekr-fR-bkP"/>
                 <outlet property="spellButton" destination="m0f-ha-bEW" id="N1R-wn-oWb"/>
                 <outlet property="totalContentView" destination="O5Y-Zq-aLk" id="Qgn-Ku-mqf"/>
                 <outlet property="vipButton" destination="g3G-Ex-m92" id="P4P-Jb-GLq"/>
             </connections>
-            <point key="canvasLocation" x="-950" y="67"/>
+            <point key="canvasLocation" x="-1550" y="40"/>
         </view>
     </objects>
     <resources>

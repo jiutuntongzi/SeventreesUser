@@ -9,10 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "FMView.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMMeView : FMView
 
 @end
-
-NS_ASSUME_NONNULL_END

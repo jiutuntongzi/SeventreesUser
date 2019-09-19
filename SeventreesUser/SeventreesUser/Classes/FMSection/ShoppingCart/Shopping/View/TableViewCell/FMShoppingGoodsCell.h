@@ -8,10 +8,6 @@
 
 #import "FMTableViewCell.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMShoppingGoodsCell : FMTableViewCell
 
 @end
-
-NS_ASSUME_NONNULL_END

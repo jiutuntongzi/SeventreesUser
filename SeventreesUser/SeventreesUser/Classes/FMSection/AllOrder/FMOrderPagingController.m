@@ -1,24 +1,20 @@
 //
-//  FMCouponPagingController.m
+//  FMOrderPagingController.m
 //  SeventreesUser
 //
 //  Created by wushiye on 2019/8/21.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import "FMCouponPagingController.h"
+#import "FMOrderPagingController.h"
 #import "MacroHeader.h"
+
+#import "FMFragmentBarView.h"
 
 #define     kClassNameVCKey      @"classNameVCKey"
 #define     kTitleKey            @"titleKey"
 
-typedef NS_ENUM(NSUInteger, FMItemPageType) {
-    FMItemPageTypeNoget,        // 未领取(0)
-    FMItemPageTypeNouser,       // 未使用(1)
-    FMItemPageTypeUsed,         // 已使用(2)
-};
-
-@interface FMCouponPagingController ()
+@interface FMOrderPagingController ()
 
 @property (copy, nonatomic) NSArray<UIViewController *> *childControllers;
 @property (copy, nonatomic) NSArray<NSString *> *itemTitles;
@@ -26,7 +22,7 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 
 @end
 
-@implementation FMCouponPagingController
+@implementation FMOrderPagingController
 
 #pragma mark - System Functions
 
@@ -40,15 +36,15 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self setupUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-//    [self.navigationController setNavigationBarHidden:YES animated:NO];
-//    self.tabBarController.tabBar.hidden = YES;
+    
+    //    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    //    self.tabBarController.tabBar.hidden = YES;
     
     [self setupNavbar];
     
@@ -112,14 +108,15 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 
 - (void)setupNavbar {
     
-    self.navigationItem.title = @"全部券";
+    FMFragmentBarView *fragmentBarView = (FMFragmentBarView *)FMFragmentBarView.cv_viewFromNibLoad();
+    fragmentBarView.frame = CGRectMake(0.f, 0.f, 170.f, 30.f);
+    self.navigationItem.titleView = fragmentBarView;
     
     __weak typeof(self) weakSelf = self;
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithImageStyleForTouchCallback(@"icon_coupon_rightItem", 1, ^(UIBarButtonItem *rightItem) {
+    fragmentBarView.actionCallback = ^(UInt8 type) {
         UIViewController *nextVC = [[NSClassFromString(@"") alloc] init];
         weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
+    };
 }
 
 - (void)refreshData {
@@ -130,11 +127,13 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 
 - (NSArray *)pageItems {
     if (! _pageItems) {
-        NSString * const classNameVC = @"FMCouponListController";
+        NSString * const classNameVC = @"FMOrderListController";
         _pageItems = @[
-                       @{kClassNameVCKey : classNameVC, kTitleKey : @"未领取"},
-                       @{kClassNameVCKey : classNameVC, kTitleKey : @"未使用"},
-                       @{kClassNameVCKey : classNameVC, kTitleKey : @"已使用"},
+                       @{kClassNameVCKey : classNameVC, kTitleKey : @"全部"},
+                       @{kClassNameVCKey : classNameVC, kTitleKey : @"待付款"},
+                       @{kClassNameVCKey : classNameVC, kTitleKey : @"待发货"},
+                       @{kClassNameVCKey : classNameVC, kTitleKey : @"待收货"},
+                       @{kClassNameVCKey : classNameVC, kTitleKey : @"待评价"}
                        ];
     }
     return _pageItems;
@@ -154,7 +153,7 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index {
     
     
-     return _itemTitles[index];
+    return _itemTitles[index];
 }
 
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
@@ -163,6 +162,10 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 }
 
 - (CGFloat)menuView:(WMMenuView *)menu widthForItemAtIndex:(NSInteger)index {
+    UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0.f, menu.height - 2.f, menu.width, 2.f)];
+    bottomLineView.backgroundColor = UIColor.cc_colorByHexString(@"#E5E5E5");
+    [menu insertSubview:bottomLineView atIndex:0];
+    
     CGFloat width = [super menuView:menu widthForItemAtIndex:index];
     return width + 10.f;
 }
@@ -173,7 +176,7 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 }
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForContentView:(WMScrollView *)contentView {
-//    CGFloat originY = CGRectGetMaxY([self pageController:pageController preferredFrameForMenuView:self.menuView]);
+    //    CGFloat originY = CGRectGetMaxY([self pageController:pageController preferredFrameForMenuView:self.menuView]);
     return CGRectMake(0.f, kFixedHeight, self.view.width, self.view.height - kFixedHeight);
 }
 

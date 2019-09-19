@@ -21,6 +21,8 @@
 #import "FMMessageListController.h"
 #import "FMVIPQRCodeBoxView.h"
 
+#import "FMOrderPagingController.h"
+
 @interface FMMeView ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentTopMarginCons;
@@ -31,6 +33,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *couponListButton;
 @property (weak, nonatomic) IBOutlet UIButton *scoreCenterButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *moreOrderButton;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *orderTypeButtons;
 
 @property (weak, nonatomic) IBOutlet UIButton *spellButton;
 @property (weak, nonatomic) IBOutlet UIButton *bargainButton;
@@ -137,6 +142,28 @@
     [[_collectButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
     }];
+    
+    [[_moreOrderButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self);
+        // test
+        UIViewController *nextVC = [[FMOrderPagingController alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    }];
+    
+    
+    for (UInt8 idx = 0; idx != 5; idx++) {
+        UIButton *orderTypeButton = _orderTypeButtons[idx];
+        orderTypeButton.tag = idx;
+       
+        [[orderTypeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *orderTypeButton) {
+            @strongify(self);
+            UIViewController *nextVC = [[FMOrderPagingController alloc] init];
+            global_orderType = (unsigned int)orderTypeButton.tag;
+            nextVC.hidesBottomBarWhenPushed = YES;
+            self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+        }];
+    }
 };
 
 @end

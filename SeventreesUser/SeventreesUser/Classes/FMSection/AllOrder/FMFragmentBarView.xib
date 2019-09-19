@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FMFragmentBarView">
+            <rect key="frame" x="0.0" y="0.0" width="170" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thb-LZ-0RX">
+                    <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="线上订单">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70m-Yi-wi3">
+                    <rect key="frame" x="85" y="0.0" width="85" height="30"/>
+                    <state key="normal" title="门店消费">
+                        <color key="titleColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="70m-Yi-wi3" secondAttribute="trailing" id="1zK-uf-FGe"/>
+                <constraint firstItem="thb-LZ-0RX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ABQ-EC-lsC"/>
+                <constraint firstItem="thb-LZ-0RX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="TIO-MD-aZE"/>
+                <constraint firstAttribute="bottom" secondItem="70m-Yi-wi3" secondAttribute="bottom" id="ZGp-H1-2De"/>
+                <constraint firstAttribute="bottom" secondItem="thb-LZ-0RX" secondAttribute="bottom" id="aGY-wD-Wlq"/>
+                <constraint firstItem="70m-Yi-wi3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hCA-3g-mOb"/>
+                <constraint firstItem="70m-Yi-wi3" firstAttribute="width" secondItem="thb-LZ-0RX" secondAttribute="width" id="iyb-Tb-Lcb"/>
+                <constraint firstItem="70m-Yi-wi3" firstAttribute="leading" secondItem="thb-LZ-0RX" secondAttribute="trailing" id="uo7-WL-lLI"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="offlineButton" destination="70m-Yi-wi3" id="XQ7-zj-i0Q"/>
+                <outlet property="onLineOrderButton" destination="thb-LZ-0RX" id="Wqq-DM-oHE"/>
+            </connections>
+            <point key="canvasLocation" x="-1306" y="-155"/>
+        </view>
+    </objects>
+</document>

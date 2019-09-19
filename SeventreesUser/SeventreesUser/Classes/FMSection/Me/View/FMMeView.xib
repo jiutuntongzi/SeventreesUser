@@ -260,17 +260,17 @@
                                                     <rect key="frame" x="255" y="0.0" width="120" height="40"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_me_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="q34-om-gBc">
-                                                            <rect key="frame" x="104" y="19" width="6" height="12"/>
+                                                            <rect key="frame" x="104" y="22.5" width="6" height="12"/>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJs-dX-GDl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看更多订单" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cd8-F0-9wG">
-                                                            <rect key="frame" x="24" y="17.5" width="74" height="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看全部订单" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cd8-F0-9wG">
+                                                            <rect key="frame" x="24" y="21" width="74" height="15"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJs-dX-GDl">
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -278,11 +278,11 @@
                                                         <constraint firstItem="q34-om-gBc" firstAttribute="leading" secondItem="Cd8-F0-9wG" secondAttribute="trailing" constant="6" id="3Wr-s3-fSb"/>
                                                         <constraint firstItem="RJs-dX-GDl" firstAttribute="leading" secondItem="FJG-FS-PJb" secondAttribute="leading" id="brp-Xw-jUS"/>
                                                         <constraint firstAttribute="bottom" secondItem="RJs-dX-GDl" secondAttribute="bottom" id="cCG-Vn-xgy"/>
-                                                        <constraint firstItem="q34-om-gBc" firstAttribute="centerY" secondItem="FJG-FS-PJb" secondAttribute="centerY" constant="5" id="dwf-Xk-mlP"/>
                                                         <constraint firstItem="RJs-dX-GDl" firstAttribute="top" secondItem="FJG-FS-PJb" secondAttribute="top" id="gKc-Ai-TxE"/>
+                                                        <constraint firstItem="q34-om-gBc" firstAttribute="centerY" secondItem="Cd8-F0-9wG" secondAttribute="centerY" id="jvM-hl-XDQ"/>
                                                         <constraint firstAttribute="width" constant="120" id="ovT-uf-ucU"/>
                                                         <constraint firstAttribute="trailing" secondItem="q34-om-gBc" secondAttribute="trailing" constant="10" id="qRN-wc-vBS"/>
-                                                        <constraint firstItem="Cd8-F0-9wG" firstAttribute="centerY" secondItem="FJG-FS-PJb" secondAttribute="centerY" constant="5" id="saV-RM-oBD"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Cd8-F0-9wG" secondAttribute="bottom" constant="4" id="tc6-AQ-M3F"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -815,6 +815,7 @@
                 <outlet property="couponListButton" destination="keG-TN-FDw" id="xrw-bn-32o"/>
                 <outlet property="headImgView" destination="P0F-mM-36H" id="Dpw-Sj-LRd"/>
                 <outlet property="messageButton" destination="2dM-da-Q1l" id="NJ7-4V-Qim"/>
+                <outlet property="moreOrderButton" destination="RJs-dX-GDl" id="Fj2-wM-ASp"/>
                 <outlet property="myQRCodeButton" destination="3Px-Fp-vAk" id="G5P-Iq-1l1"/>
                 <outlet property="scoreCenterButton" destination="gmn-0J-IBs" id="SfT-pn-LiA"/>
                 <outlet property="settingButton" destination="yL9-3h-REf" id="6LA-1Q-drC"/>
@@ -822,8 +823,13 @@
                 <outlet property="spellButton" destination="m0f-ha-bEW" id="N1R-wn-oWb"/>
                 <outlet property="totalContentView" destination="O5Y-Zq-aLk" id="Qgn-Ku-mqf"/>
                 <outlet property="vipButton" destination="g3G-Ex-m92" id="P4P-Jb-GLq"/>
+                <outletCollection property="orderTypeButtons" destination="4Io-wV-kbD" id="asI-um-yTm"/>
+                <outletCollection property="orderTypeButtons" destination="Lzv-gJ-wcL" id="9Se-He-FVQ"/>
+                <outletCollection property="orderTypeButtons" destination="6Vw-4m-1Vt" id="5ol-zf-Hw9"/>
+                <outletCollection property="orderTypeButtons" destination="cVP-FL-KAV" id="eI7-nl-O9V"/>
+                <outletCollection property="orderTypeButtons" destination="GfN-cB-pRa" id="cl8-Xb-er2"/>
             </connections>
-            <point key="canvasLocation" x="-1550" y="40"/>
+            <point key="canvasLocation" x="-2118" y="-28"/>
         </view>
     </objects>
     <resources>

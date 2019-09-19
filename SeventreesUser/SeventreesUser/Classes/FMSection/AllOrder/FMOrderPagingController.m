@@ -109,7 +109,8 @@
 - (void)setupNavbar {
     
     FMFragmentBarView *fragmentBarView = (FMFragmentBarView *)FMFragmentBarView.cv_viewFromNibLoad();
-    fragmentBarView.frame = CGRectMake(0.f, 0.f, 170.f, 30.f);
+    fragmentBarView.type = 0;
+    fragmentBarView.frame = CGRectMake(0.f, 0.f, 200.f, 30.f);
     self.navigationItem.titleView = fragmentBarView;
     
     __weak typeof(self) weakSelf = self;

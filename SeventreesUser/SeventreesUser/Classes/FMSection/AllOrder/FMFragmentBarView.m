@@ -20,6 +20,8 @@
 #define     kRedColor    [UIColor colorWithRed:247.f/255.f green:111.f/255.f blue:111.f/255.f alpha:1.0f]
 
 - (void)setType:(UInt8)type {
+    _type = type;
+    
     UIColor *selectedTitleColor = UIColor.whiteColor;
     UIColor *selectedBackColor = kRedColor;
     UIColor *normalTitleColor = kRedColor;
@@ -31,18 +33,19 @@
     void (^setTitleColorBlock)(UIButton *, UIColor *) = ^(UIButton *button, UIColor *color) {
         [button setTitleColor:color forState:UIControlStateNormal];
     };
+    
     if (type == 1) {
-        setTitleColorBlock(_onLineOrderButton, selectedTitleColor);
-        setBackColorBlock(_onLineOrderButton, selectedBackColor);
+        setTitleColorBlock(_offlineButton,selectedTitleColor);
+        setBackColorBlock(_offlineButton,selectedBackColor);
         
-        setTitleColorBlock(_offlineButton, normalTitleColor);
-        setBackColorBlock(_offlineButton, normalBackColor);
+        setTitleColorBlock(_onLineOrderButton, normalTitleColor);
+        setBackColorBlock(_onLineOrderButton, normalBackColor);
     } else {
-        setTitleColorBlock(_offlineButton, normalTitleColor);
-        setBackColorBlock(_offlineButton, normalBackColor);
-        
         setTitleColorBlock(_onLineOrderButton, selectedTitleColor);
         setBackColorBlock(_onLineOrderButton, selectedBackColor);
+        
+        setTitleColorBlock(_offlineButton, normalTitleColor);
+        setBackColorBlock(_offlineButton, normalBackColor);
     }
 }
 
@@ -57,12 +60,16 @@
     
     self.type = 0;
     
+    _onLineOrderButton.tag = 0;
     [_onLineOrderButton addTarget:self action:@selector(typeButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _offlineButton.tag = 1;
+    [_offlineButton addTarget:self action:@selector(typeButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
 - (void)typeButtonDidClick:(UIButton *)btn {
-    self.type = btn.tag;
+    self.type = (UInt8)btn.tag;
     
     if (_actionCallback) _actionCallback(_type);
 }

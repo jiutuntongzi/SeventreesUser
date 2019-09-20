@@ -47,7 +47,7 @@
                 <outlet property="offlineButton" destination="70m-Yi-wi3" id="XQ7-zj-i0Q"/>
                 <outlet property="onLineOrderButton" destination="thb-LZ-0RX" id="Wqq-DM-oHE"/>
             </connections>
-            <point key="canvasLocation" x="-1306" y="-155"/>
+            <point key="canvasLocation" x="-1981" y="-208"/>
         </view>
     </objects>
 </document>

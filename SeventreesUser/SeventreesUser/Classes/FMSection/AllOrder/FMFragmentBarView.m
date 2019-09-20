@@ -65,7 +65,6 @@
     
     _offlineButton.tag = 1;
     [_offlineButton addTarget:self action:@selector(typeButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 - (void)typeButtonDidClick:(UIButton *)btn {

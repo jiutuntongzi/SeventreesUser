@@ -10,6 +10,7 @@
 #import "MacroHeader.h"
 
 #import "FMFragmentBarView.h"
+#import "FMStoreConsumeController.h"
 
 #define     kClassNameVCKey      @"classNameVCKey"
 #define     kTitleKey            @"titleKey"
@@ -42,25 +43,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    //    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    //    self.tabBarController.tabBar.hidden = YES;
-    
+
     [self setupNavbar];
-    
     
     [self reloadData];
 }
 
-//- (void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:animated];
-//
-//    self.tabBarController.tabBar.hidden = NO;
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
-//}
-
 - (void)updateViewConstraints {
-    
     
     [super updateViewConstraints];
 }
@@ -107,16 +96,22 @@
 }
 
 - (void)setupNavbar {
+    __weak typeof(self) weakSelf = self;
+    
+    UIBarButtonItem *returnItem = UIBarButtonItem.cbi_initWithImageStyleForTouchCallback(@"icon_navBack", 1, ^(UIBarButtonItem *leftItem) {
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    });
+    self.navigationItem.cni_leftBarButtonItem(returnItem);
     
     FMFragmentBarView *fragmentBarView = (FMFragmentBarView *)FMFragmentBarView.cv_viewFromNibLoad();
     fragmentBarView.type = 0;
     fragmentBarView.frame = CGRectMake(0.f, 0.f, 200.f, 30.f);
     self.navigationItem.titleView = fragmentBarView;
-    
-    __weak typeof(self) weakSelf = self;
     fragmentBarView.actionCallback = ^(UInt8 type) {
-        UIViewController *nextVC = [[NSClassFromString(@"") alloc] init];
-        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+        if (type == 1) {
+            FMStoreConsumeController *nextVC = [[FMStoreConsumeController alloc] init];
+            weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, NO);
+        }
     };
 }
 

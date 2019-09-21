@@ -8,8 +8,11 @@
 
 #import "FMView.h"
 
-#define      FMOrderAddressViewHeight    130.f
+#define      FMOrderAddressViewHeight    134.f
 
 @interface FMOrderExplainView : FMView
+
+@property (nonatomic, copy) NSString *orderInfoText;
+
 
 @end

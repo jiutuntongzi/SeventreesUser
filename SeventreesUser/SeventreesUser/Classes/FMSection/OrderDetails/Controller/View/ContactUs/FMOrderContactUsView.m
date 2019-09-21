@@ -8,14 +8,33 @@
 
 #import "FMOrderContactUsView.h"
 
+@interface FMOrderContactUsView ()
+
+@property (nonatomic, weak) IBOutlet UIButton *guideButton;
+
+@property (nonatomic, weak) IBOutlet UIButton *serverButton;
+
+@end
+
 @implementation FMOrderContactUsView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)fm_setupSubviews {
+    void (^setStyleBlock)(UIView *) = ^(UIView *view) {
+        view.layer.cornerRadius = 5.f;
+        view.layer.borderWidth = 1.f;
+        view.layer.borderColor = UIColor.cc_colorByHexString(@"#E5E5E5").CGColor;
+    };
+    setStyleBlock(_guideButton);
+    setStyleBlock(_serverButton);
 }
-*/
+
+- (void)fm_bindViewModel {
+    [[_guideButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *button) {
+        
+    }];
+    [[_serverButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *button) {
+        
+    }];
+}
 
 @end

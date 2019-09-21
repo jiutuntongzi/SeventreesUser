@@ -386,6 +386,16 @@
 		84FF219423275679001AFE30 /* FMVerifyInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF218F23275679001AFE30 /* FMVerifyInputView.m */; };
 		84FF219523275679001AFE30 /* FMVerifyInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF219023275679001AFE30 /* FMVerifyInputView.xib */; };
 		84FF219623275679001AFE30 /* FMVerifyInputViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF219323275679001AFE30 /* FMVerifyInputViewModel.m */; };
+		84FF2F122335B39100E34550 /* FMOrderContacUsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF2F112335B39100E34550 /* FMOrderContacUsViewModel.m */; };
+		84FF2F192335B71D00E34550 /* FMOrderPayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF2F152335B71D00E34550 /* FMOrderPayView.m */; };
+		84FF2F1A2335B71D00E34550 /* FMOrderPayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF2F162335B71D00E34550 /* FMOrderPayView.xib */; };
+		84FF2F1B2335B71D00E34550 /* FMOrderPayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF2F182335B71D00E34550 /* FMOrderPayViewModel.m */; };
+		84FF2F262335BD2800E34550 /* FMGoodsFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF2F1F2335BD2800E34550 /* FMGoodsFooterView.m */; };
+		84FF2F272335BD2800E34550 /* FMGoodsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF2F202335BD2800E34550 /* FMGoodsFooterView.xib */; };
+		84FF2F282335BD2800E34550 /* FMGoodsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF2F232335BD2800E34550 /* FMGoodsHeaderView.m */; };
+		84FF2F292335BD2800E34550 /* FMGoodsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF2F242335BD2800E34550 /* FMGoodsHeaderView.xib */; };
+		84FF2F2C2335BDF200E34550 /* FMGoodsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF2F2B2335BDF200E34550 /* FMGoodsTableView.m */; };
+		84FF2F2F2335C18F00E34550 /* FMGoodsTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF2F2E2335C18F00E34550 /* FMGoodsTableViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -709,6 +719,8 @@
 		84868512233350570057A16E /* FMGoodsInDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGoodsInDetailsCell.m; sourceTree = "<group>"; };
 		84868513233350570057A16E /* FMGoodsInDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGoodsInDetailsCell.h; sourceTree = "<group>"; };
 		84868515233350600057A16E /* FMGoodsInDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMGoodsInDetailsCell.xib; sourceTree = "<group>"; };
+		8498D47D2335D496009EBB2A /* OrderDetailsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailsHeader.h; sourceTree = "<group>"; };
+		8498D47E2335D4F6009EBB2A /* GoodsListHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsListHeader.h; sourceTree = "<group>"; };
 		8498F58423307D4E00D5ACF9 /* AddressPickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerHeader.h; sourceTree = "<group>"; };
 		8498F58523307D4E00D5ACF9 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		8498F58623307D4E00D5ACF9 /* CZHAddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZHAddressPickerView.h; sourceTree = "<group>"; };
@@ -1092,6 +1104,23 @@
 		84FF219023275679001AFE30 /* FMVerifyInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMVerifyInputView.xib; sourceTree = "<group>"; };
 		84FF219223275679001AFE30 /* FMVerifyInputViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMVerifyInputViewModel.h; sourceTree = "<group>"; };
 		84FF219323275679001AFE30 /* FMVerifyInputViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMVerifyInputViewModel.m; sourceTree = "<group>"; };
+		84FF2F102335B39100E34550 /* FMOrderContacUsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMOrderContacUsViewModel.h; sourceTree = "<group>"; };
+		84FF2F112335B39100E34550 /* FMOrderContacUsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMOrderContacUsViewModel.m; sourceTree = "<group>"; };
+		84FF2F142335B71D00E34550 /* FMOrderPayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMOrderPayView.h; sourceTree = "<group>"; };
+		84FF2F152335B71D00E34550 /* FMOrderPayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMOrderPayView.m; sourceTree = "<group>"; };
+		84FF2F162335B71D00E34550 /* FMOrderPayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMOrderPayView.xib; sourceTree = "<group>"; };
+		84FF2F172335B71D00E34550 /* FMOrderPayViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMOrderPayViewModel.h; sourceTree = "<group>"; };
+		84FF2F182335B71D00E34550 /* FMOrderPayViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMOrderPayViewModel.m; sourceTree = "<group>"; };
+		84FF2F1E2335BD2800E34550 /* FMGoodsFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGoodsFooterView.h; sourceTree = "<group>"; };
+		84FF2F1F2335BD2800E34550 /* FMGoodsFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGoodsFooterView.m; sourceTree = "<group>"; };
+		84FF2F202335BD2800E34550 /* FMGoodsFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMGoodsFooterView.xib; sourceTree = "<group>"; };
+		84FF2F222335BD2800E34550 /* FMGoodsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGoodsHeaderView.h; sourceTree = "<group>"; };
+		84FF2F232335BD2800E34550 /* FMGoodsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGoodsHeaderView.m; sourceTree = "<group>"; };
+		84FF2F242335BD2800E34550 /* FMGoodsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMGoodsHeaderView.xib; sourceTree = "<group>"; };
+		84FF2F2A2335BDF200E34550 /* FMGoodsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMGoodsTableView.h; sourceTree = "<group>"; };
+		84FF2F2B2335BDF200E34550 /* FMGoodsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMGoodsTableView.m; sourceTree = "<group>"; };
+		84FF2F2D2335C18F00E34550 /* FMGoodsTableViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMGoodsTableViewModel.h; sourceTree = "<group>"; };
+		84FF2F2E2335C18F00E34550 /* FMGoodsTableViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMGoodsTableViewModel.m; sourceTree = "<group>"; };
 		9061A6A03D5FF6522BD79287 /* Pods-SeventreesUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeventreesUser.debug.xcconfig"; path = "Target Support Files/Pods-SeventreesUser/Pods-SeventreesUser.debug.xcconfig"; sourceTree = "<group>"; };
 		E526D20361804ADF582EE2C0 /* libPods-SeventreesUser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SeventreesUser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1286,10 +1315,13 @@
 		8405B8A22334CB610065965F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8498D47D2335D496009EBB2A /* OrderDetailsHeader.h */,
 				8405B8B62334CE5E0065965F /* StatusView */,
 				8405B8BC2334D16F0065965F /* AddressView */,
+				84FF2F1C2335BD2800E34550 /* GoodsList */,
 				8405B8C42334D2B20065965F /* ExplainView */,
 				8405B8CA2334D64B0065965F /* ContactUs */,
+				84FF2F132335B71D00E34550 /* OrderPay */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1371,6 +1403,8 @@
 				8405B8CB2334D6A80065965F /* FMOrderContactUsView.h */,
 				8405B8CC2334D6A80065965F /* FMOrderContactUsView.m */,
 				8405B8CE2334D6B10065965F /* FMOrderContactUsView.xib */,
+				84FF2F102335B39100E34550 /* FMOrderContacUsViewModel.h */,
+				84FF2F112335B39100E34550 /* FMOrderContacUsViewModel.m */,
 			);
 			path = ContactUs;
 			sourceTree = "<group>";
@@ -2340,7 +2374,6 @@
 			isa = PBXGroup;
 			children = (
 				8467B56E2331D5510062B33F /* MyScore */,
-				84E7F54D23320BDC002C6915 /* ScoreExplain */,
 			);
 			path = ScoreCenter;
 			sourceTree = "<group>";
@@ -3222,13 +3255,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		84E7F54D23320BDC002C6915 /* ScoreExplain */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ScoreExplain;
-			sourceTree = "<group>";
-		};
 		84E7F54E233211B3002C6915 /* AllCoupon */ = {
 			isa = PBXGroup;
 			children = (
@@ -3875,6 +3901,60 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		84FF2F132335B71D00E34550 /* OrderPay */ = {
+			isa = PBXGroup;
+			children = (
+				84FF2F142335B71D00E34550 /* FMOrderPayView.h */,
+				84FF2F152335B71D00E34550 /* FMOrderPayView.m */,
+				84FF2F162335B71D00E34550 /* FMOrderPayView.xib */,
+				84FF2F172335B71D00E34550 /* FMOrderPayViewModel.h */,
+				84FF2F182335B71D00E34550 /* FMOrderPayViewModel.m */,
+			);
+			path = OrderPay;
+			sourceTree = "<group>";
+		};
+		84FF2F1C2335BD2800E34550 /* GoodsList */ = {
+			isa = PBXGroup;
+			children = (
+				84FF2F252335BD2800E34550 /* TableView */,
+				84FF2F212335BD2800E34550 /* HeaderView */,
+				84FF2F1D2335BD2800E34550 /* FooterView */,
+			);
+			path = GoodsList;
+			sourceTree = "<group>";
+		};
+		84FF2F1D2335BD2800E34550 /* FooterView */ = {
+			isa = PBXGroup;
+			children = (
+				84FF2F1E2335BD2800E34550 /* FMGoodsFooterView.h */,
+				84FF2F1F2335BD2800E34550 /* FMGoodsFooterView.m */,
+				84FF2F202335BD2800E34550 /* FMGoodsFooterView.xib */,
+			);
+			path = FooterView;
+			sourceTree = "<group>";
+		};
+		84FF2F212335BD2800E34550 /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				84FF2F222335BD2800E34550 /* FMGoodsHeaderView.h */,
+				84FF2F232335BD2800E34550 /* FMGoodsHeaderView.m */,
+				84FF2F242335BD2800E34550 /* FMGoodsHeaderView.xib */,
+			);
+			path = HeaderView;
+			sourceTree = "<group>";
+		};
+		84FF2F252335BD2800E34550 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				84FF2F2A2335BDF200E34550 /* FMGoodsTableView.h */,
+				84FF2F2B2335BDF200E34550 /* FMGoodsTableView.m */,
+				84FF2F2D2335C18F00E34550 /* FMGoodsTableViewModel.h */,
+				84FF2F2E2335C18F00E34550 /* FMGoodsTableViewModel.m */,
+				8498D47E2335D4F6009EBB2A /* GoodsListHeader.h */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		975B52EF50DC2D036D6E1494 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3958,6 +4038,7 @@
 				84C3DF4B231E0DCF008147C6 /* FMStoreInfoView.xib in Resources */,
 				849CBFBE23014544003821E4 /* Assets.xcassets in Resources */,
 				84BAC58C2306A5290062B812 /* FMPasswordInputView.xib in Resources */,
+				84FF2F272335BD2800E34550 /* FMGoodsFooterView.xib in Resources */,
 				8405B8C32334D16F0065965F /* FMOrderAddressView.xib in Resources */,
 				844776AE230ACBA0008AE242 /* FMGoodsView.xib in Resources */,
 				84FDEF6E232905DB0030196A /* FMStoreCheckCell.xib in Resources */,
@@ -3981,6 +4062,7 @@
 				8409B8AF232638B6009CD45B /* FMFeedbackController.xib in Resources */,
 				841150D32320F658004DF4CD /* FMSpellGroupView.xib in Resources */,
 				84464C1B230FED7300ED9069 /* FMShoppingGoodsCell.xib in Resources */,
+				84FF2F1A2335B71D00E34550 /* FMOrderPayView.xib in Resources */,
 				84D7287C23014D1B002D387A /* Down@2x.png in Resources */,
 				8403F76123238A4D00A3B347 /* FMBargainDetailsController.xib in Resources */,
 				843B6BBA23337BDF003473F4 /* FMFragmentBarView.xib in Resources */,
@@ -3989,6 +4071,7 @@
 				84D7288123014D1B002D387A /* ScanQR2@2x.png in Resources */,
 				84D7288223014D1B002D387A /* ScanQR3@2x.png in Resources */,
 				8498F58C23307D4E00D5ACF9 /* city.plist in Resources */,
+				84FF2F292335BD2800E34550 /* FMGoodsHeaderView.xib in Resources */,
 				84065D06230A73DE00D39225 /* SearchBarView.xib in Resources */,
 				8456BAC7232F5D2A00E59966 /* FMSelectFooterView.xib in Resources */,
 				8498F5A6233082EA00D5ACF9 /* BRPickerView.bundle in Resources */,
@@ -4118,6 +4201,7 @@
 				84868514233350580057A16E /* FMGoodsInDetailsCell.m in Sources */,
 				84089E6223138FD300D7EF7D /* FMEvaluationController.m in Sources */,
 				84001C93230CD4EB0010DE0B /* WMProgressView.m in Sources */,
+				84FF2F122335B39100E34550 /* FMOrderContacUsViewModel.m in Sources */,
 				8401E2EF23279958006C111B /* FMInputView.m in Sources */,
 				840B828F2310D0AA004DBFC9 /* FMPayModel.m in Sources */,
 				8486850323332F5B0057A16E /* FMOrderPagingType.c in Sources */,
@@ -4127,6 +4211,7 @@
 				84BAC58523069E950062B812 /* FMPhoneNumberInputView.m in Sources */,
 				84497BFA231D0F8800D3A79B /* FMGoodsDetailsModel.m in Sources */,
 				84497BFB231D0F8800D3A79B /* FMGoodsDetailsView.m in Sources */,
+				84FF2F2F2335C18F00E34550 /* FMGoodsTableViewModel.m in Sources */,
 				8406E4762325FA7500E167BD /* FMSalesActivityModel.m in Sources */,
 				84DD3FE123015B04001171F1 /* UIView+Seek.m in Sources */,
 				848684FA233325080057A16E /* FMOrderPagingController.m in Sources */,
@@ -4214,6 +4299,7 @@
 				84DD3FD523015B04001171F1 /* UICollectionView+Chain.m in Sources */,
 				846A4917230A913200D2EAFB /* UIView+ForLMJVerticalScrollText.m in Sources */,
 				84FC445B231CF4E200DF9799 /* YBIBDefaultWebImageMediator.m in Sources */,
+				84FF2F2C2335BDF200E34550 /* FMGoodsTableView.m in Sources */,
 				84DD3FD723015B04001171F1 /* UIColor+Chain.m in Sources */,
 				84F80BB1232F87F60031674F /* FMNewAddressController.m in Sources */,
 				8406E4892326246B00E167BD /* FMSettingController.m in Sources */,
@@ -4314,6 +4400,7 @@
 				8498F58F23307D4E00D5ACF9 /* UIView+CZHExtension.m in Sources */,
 				841C55F0231E4A3C008B5A91 /* FMPictureCell.m in Sources */,
 				84F9D80A230E9B3A00158496 /* DCBrandSortCell.m in Sources */,
+				84FF2F262335BD2800E34550 /* FMGoodsFooterView.m in Sources */,
 				84F9D7FB230E946C00158496 /* CatogeryList.m in Sources */,
 				84FC444F231CF4E200DF9799 /* YBIBSentinel.m in Sources */,
 				84D42D4B2304F16800249356 /* UIView+Visuals.m in Sources */,
@@ -4342,6 +4429,7 @@
 				84F045412330CC330002B5B3 /* FMMemberLevelCell.m in Sources */,
 				84DD3FD023015B04001171F1 /* NSObject+CheckNull.m in Sources */,
 				8438B1C4231E60F000E5F819 /* FMGoodsPictureView.m in Sources */,
+				84FF2F282335BD2800E34550 /* FMGoodsHeaderView.m in Sources */,
 				84DD3FD623015B04001171F1 /* UICollectionViewCell+Chain.m in Sources */,
 				84F045292330BDF70002B5B3 /* FMMessageModel.m in Sources */,
 				8411604623222EEB00C3443D /* FMSpellShopCarToolViewModel.m in Sources */,
@@ -4358,6 +4446,7 @@
 				84D7287923014D1B002D387A /* UIImage+Zirkfied.m in Sources */,
 				84089E862313BD1800D7EF7D /* FMEvaluationCell.m in Sources */,
 				84F9D811230E9C2200158496 /* DCClassMianItem.m in Sources */,
+				84FF2F192335B71D00E34550 /* FMOrderPayView.m in Sources */,
 				84D7282623014D1B002D387A /* FMViewModel.m in Sources */,
 				84FC4458231CF4E200DF9799 /* YBIBSheetView.m in Sources */,
 				840B828A2310CECA004DBFC9 /* FMPayViewModel.m in Sources */,
@@ -4369,6 +4458,7 @@
 				84FC4447231CF4E200DF9799 /* YBIBCollectionView.m in Sources */,
 				84FC4449231CF4E200DF9799 /* YBIBContainerView.m in Sources */,
 				84FAECA92317A2BF00E8CA3F /* FMStoreIntroViewModel.m in Sources */,
+				84FF2F1B2335B71D00E34550 /* FMOrderPayViewModel.m in Sources */,
 				84F9D7EA230E8F1B00158496 /* FenLeiViewController.m in Sources */,
 				840B82872310CE19004DBFC9 /* FMPayView.m in Sources */,
 				84DD3FD323015B04001171F1 /* UIBarButtonItem+Chain.m in Sources */,

@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FMOrderExplainView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -49,6 +49,10 @@
                 <constraint firstAttribute="trailing" secondItem="OMn-CC-EkQ" secondAttribute="trailing" constant="12" id="fXH-PR-ZL3"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="fuzhiButton" destination="rpk-4g-sSU" id="W0K-g7-q3N"/>
+                <outlet property="textView" destination="OMn-CC-EkQ" id="ieH-He-SxE"/>
+            </connections>
             <point key="canvasLocation" x="-255.19999999999999" y="286.50674662668666"/>
         </view>
     </objects>

@@ -23,6 +23,9 @@
 /** 添加子views */
 - (void)fm_addSubviews;
 
+/** 添加布局约束 */
+- (void)fm_makeConstraints;
+
 /** 设置导航栏 */
 - (void)fm_setupNavbar;
 

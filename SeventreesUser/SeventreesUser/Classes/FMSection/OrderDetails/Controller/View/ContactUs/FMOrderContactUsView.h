@@ -7,11 +7,15 @@
 //
 
 #import "FMView.h"
+#import "FMOrderContacUsViewModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
+#define     FMOrderContactUsViewHeight      60.f
+
 
 @interface FMOrderContactUsView : FMView
 
+@property (nonatomic, strong) FMOrderContacUsViewModel *viewModel;
+
+
 @end
 
-NS_ASSUME_NONNULL_END

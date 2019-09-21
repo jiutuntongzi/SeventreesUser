@@ -25,6 +25,7 @@
         @strongify(viewController);
         
         [viewController fm_addSubviews];
+        [viewController fm_makeConstraints];
         [viewController fm_bindViewModel];
     }];
     
@@ -52,6 +53,9 @@
 
 /** 添加子views */
 - (void)fm_addSubviews { }
+
+/** 添加布局约束 */
+- (void)fm_makeConstraints { }
 
 /** 绑定ViewModel */
 - (void)fm_bindViewModel { }

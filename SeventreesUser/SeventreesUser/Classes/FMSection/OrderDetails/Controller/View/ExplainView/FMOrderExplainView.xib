@@ -53,7 +53,7 @@
                 <outlet property="fuzhiButton" destination="rpk-4g-sSU" id="W0K-g7-q3N"/>
                 <outlet property="textView" destination="OMn-CC-EkQ" id="ieH-He-SxE"/>
             </connections>
-            <point key="canvasLocation" x="-255.19999999999999" y="286.50674662668666"/>
+            <point key="canvasLocation" x="-774" y="287"/>
         </view>
     </objects>
 </document>

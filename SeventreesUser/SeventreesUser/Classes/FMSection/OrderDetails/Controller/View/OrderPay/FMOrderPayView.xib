@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,23 +15,30 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSe-Cb-xva" userLabel="SeparateView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="a41-Br-roa"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeq-8H-LV6" userLabel="ContainerView">
-                    <rect key="frame" x="82.5" y="12.5" width="210" height="30"/>
+                    <rect key="frame" x="150" y="12.5" width="210" height="30"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjl-UZ-et9">
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjl-UZ-et9">
                             <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="A 联系导购">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="取消订单">
                                 <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xE-Hm-oVn">
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xE-Hm-oVn">
                             <rect key="frame" x="110" y="0.0" width="100" height="30"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="B 联系客服">
-                                <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="去付款">
+                                <color key="titleColor" red="0.96862745098039216" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
                     </subviews>
@@ -49,17 +57,20 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="yeq-8H-LV6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="A4E-qj-cdo"/>
+                <constraint firstAttribute="trailing" secondItem="hSe-Cb-xva" secondAttribute="trailing" id="GXA-58-XPQ"/>
+                <constraint firstAttribute="trailing" secondItem="yeq-8H-LV6" secondAttribute="trailing" constant="15" id="PRc-0U-J1k"/>
+                <constraint firstItem="hSe-Cb-xva" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="U1d-ad-eSD"/>
+                <constraint firstItem="hSe-Cb-xva" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cl5-oK-Uar"/>
                 <constraint firstItem="yeq-8H-LV6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vjU-mt-EDs"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="guideButton" destination="fjl-UZ-et9" id="ngM-KB-gWv"/>
-                <outlet property="serverButton" destination="9xE-Hm-oVn" id="1ej-A5-wcd"/>
+                <outlet property="cancelButton" destination="fjl-UZ-et9" id="XGg-K1-T4g"/>
+                <outlet property="goPayButton" destination="9xE-Hm-oVn" id="ZUl-4s-k48"/>
             </connections>
-            <point key="canvasLocation" x="-97" y="-121"/>
+            <point key="canvasLocation" x="-903" y="-162"/>
         </view>
     </objects>
 </document>

@@ -22,6 +22,7 @@ const CGFloat FMImageEyeCellSize = 80.f;
 /** 设置子views */
 - (void)fm_setupSubviews {
     UIImageView *imgView = [[UIImageView alloc] initWithImage:UIImage.ci_imageNamed(@"test80")];
+    imgView.contentMode = UIViewContentModeScaleToFill;
     self.cv_addSubview(imgView);
     
     [self setNeedsUpdateConstraints];

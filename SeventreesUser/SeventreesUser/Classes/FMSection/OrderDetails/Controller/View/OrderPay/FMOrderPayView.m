@@ -19,13 +19,14 @@
 @implementation FMOrderPayView
 
 - (void)fm_setupSubviews {
-    void (^setStyleBlock)(UIView *) = ^(UIView *view) {
+    void (^setStyleBlock)(UIView *, UIColor *) = ^(UIView *view, UIColor *color) {
         view.layer.cornerRadius = 15.f;
         view.layer.borderWidth = 1.f;
-        view.layer.borderColor = UIColor.cc_colorByHexString(@"#F76F6F").CGColor;
+        view.layer.borderColor = color.CGColor;
+        [view clipsToBounds];
     };
-    setStyleBlock(_cancelButton);
-    setStyleBlock(_goPayButton);
+    setStyleBlock(_cancelButton, UIColor.cc_colorByHexString(@"#DCDCDC"));
+    setStyleBlock(_goPayButton, UIColor.cc_colorByHexString(@"#F76F6F"));
 }
 
 - (void)fm_bindViewModel {

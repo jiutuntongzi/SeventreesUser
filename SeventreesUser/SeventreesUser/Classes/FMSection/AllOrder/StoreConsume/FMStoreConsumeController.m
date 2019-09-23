@@ -123,7 +123,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+//    UIViewController *nextVC = [FMOrderDetailsController new];
+//    [self.navigationController pushViewController:nextVC animated:YES];
     DLog(@"indexPath == %@", indexPath);
 }
 

@@ -18,9 +18,8 @@
     };
 }
     
-+ (UIView* (^)(void))cv_viewFromNibLoad {
++ (id (^)(void))cv_viewFromNibLoad {
     return ^{
-//        NSString * const className = NSStringFromClass([self class]);
         return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil].lastObject;
     };
 }

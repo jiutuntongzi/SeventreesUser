@@ -9,6 +9,8 @@
 #import "FMView.h"
 #import "FMGoodsTableViewModel.h"
 
+#define         FMGoodsTableViewHeight        420.f
+
 @interface FMGoodsTableView : FMView
 
 @property (nonatomic, strong) FMGoodsTableViewModel *viewModel;

@@ -19,6 +19,6 @@ typedef NS_ENUM(NSUInteger, FMOrderDetailsPageStyle) {
 
 @interface FMOrderDetailsController : FMViewController
 
-@property (nonatomic, assign) FMOrderDetailsPageStyle *type;
+@property (nonatomic, assign) FMOrderDetailsPageStyle type;
 
 @end

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIView* (^)(void))cv_view;
     
-+ (UIView* (^)(void))cv_viewFromNibLoad;
++ (id (^)(void))cv_viewFromNibLoad;
 
 + (UIView* (^)(CGRect))cv_viewWithFrame;
 

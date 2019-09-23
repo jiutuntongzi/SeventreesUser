@@ -18,24 +18,19 @@
 
 @property (nonatomic, strong) FMGoodsFooterView *footerView;
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation FMGoodsTableView
 
 - (void)fm_setupSubviews {
-    
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.scrollEnabled = NO;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.rowHeight = FMGoodsInDetailsCellRowHeight;
     _tableView.backgroundColor = UIColor.cc_colorByHexString(@"#F7F7F7");
-    _tableView.frame = self.bounds;
-    
-    [self setNeedsUpdateConstraints];
-    [self updateConstraintsIfNeeded];
 }
 
 - (void)fm_bindViewModel {
@@ -44,12 +39,10 @@
 
 #pragma mark - System Functions
 
-- (void)updateConstraints {
-    [_tableView makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
-    }];
+- (void)layoutSubviews {
+    [super layoutSubviews];
     
-    [super updateConstraints];
+    _tableView.frame = self.bounds;
 }
 
 #pragma mark - <UITableViewDataSource, UITableViewDelegate>
@@ -61,11 +54,11 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 2;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,7 +68,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    FMGoodsHeaderView *headerView = (FMGoodsHeaderView *)FMGoodsHeaderView.cv_viewFromNibLoad();
+    FMGoodsHeaderView *headerView = FMGoodsHeaderView.cv_viewFromNibLoad();
     headerView.frame = CGRectZero;
     return headerView;
 }
@@ -84,7 +77,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    FMGoodsFooterView *footerView = (FMGoodsFooterView *)FMGoodsFooterView.cv_viewFromNibLoad();
+    FMGoodsFooterView *footerView = FMGoodsFooterView.cv_viewFromNibLoad();
     footerView.frame = CGRectZero;
     return footerView;
 }

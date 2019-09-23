@@ -9,6 +9,9 @@
 #import "FMOrderListController.h"
 #import "PagingView.h"
 #import "FMOrderCell.h"
+#import "FMOrderDetailsController.h"
+
+
 
 @interface FMOrderListController ()
 
@@ -34,14 +37,12 @@
         
     } cellDidSelectHandler:^(id rowEntity) {
         DLog(@"rowEntity == %@", rowEntity);
+        FMOrderDetailsController *nextVC = [[FMOrderDetailsController alloc] init];
+        nextVC.type = FMOrderDetailsPageStyleWaitPay;
+        [self.navigationController pushViewController:nextVC animated:YES];
     }];
     pagingView.cv_frame(CGRectMake(0.f, 0.f, self.view.width, self.view.height - kNavBarHeight - kFixedHeight - 40.f));
     self.view.cv_addSubview(pagingView);
-}
-
-- (void)updateViewConstraints {
-    [super updateViewConstraints];
-
     
 }
 

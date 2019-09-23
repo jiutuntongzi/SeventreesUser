@@ -44,8 +44,8 @@
                         <constraint firstItem="Ncu-Hz-lNR" firstAttribute="leading" secondItem="1IM-qW-DiW" secondAttribute="leading" id="J0y-Bp-hfs"/>
                         <constraint firstAttribute="trailing" secondItem="Ncu-Hz-lNR" secondAttribute="trailing" constant="15" id="W0X-ry-U1n"/>
                         <constraint firstItem="aNO-Je-GNu" firstAttribute="leading" secondItem="PKi-Fq-jO4" secondAttribute="leading" constant="15" id="Z4m-0t-Pxu"/>
+                        <constraint firstItem="aNO-Je-GNu" firstAttribute="top" secondItem="PKi-Fq-jO4" secondAttribute="top" constant="27" id="baU-ta-63a"/>
                         <constraint firstAttribute="trailing" secondItem="1IM-qW-DiW" secondAttribute="trailing" constant="15" id="cbp-wn-27i"/>
-                        <constraint firstItem="aNO-Je-GNu" firstAttribute="centerY" secondItem="PKi-Fq-jO4" secondAttribute="centerY" id="iNJ-Ug-VqZ"/>
                         <constraint firstItem="1IM-qW-DiW" firstAttribute="top" secondItem="PKi-Fq-jO4" secondAttribute="top" constant="16.5" id="mSb-Ra-tLg"/>
                         <constraint firstItem="1IM-qW-DiW" firstAttribute="leading" secondItem="PKi-Fq-jO4" secondAttribute="leading" constant="42" id="x7b-af-gC7"/>
                     </constraints>

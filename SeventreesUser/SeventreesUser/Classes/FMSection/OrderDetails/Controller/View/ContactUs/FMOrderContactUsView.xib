@@ -60,7 +60,7 @@
                 <outlet property="guideButton" destination="fjl-UZ-et9" id="ngM-KB-gWv"/>
                 <outlet property="serverButton" destination="9xE-Hm-oVn" id="1ej-A5-wcd"/>
             </connections>
-            <point key="canvasLocation" x="-97" y="-121"/>
+            <point key="canvasLocation" x="-292" y="-139"/>
         </view>
     </objects>
 </document>

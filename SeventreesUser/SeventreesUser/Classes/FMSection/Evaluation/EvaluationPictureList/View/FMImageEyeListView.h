@@ -1,5 +1,5 @@
 //
-//  FMEvaluationView.h
+//  FMImageEyeListView
 //  SeventreesUser
 //
 //  Created by wushiye on 2019/8/26.
@@ -8,10 +8,6 @@
 
 #import "FMView.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface FMEvaluationView : FMView
+@interface FMImageEyeListView : FMView
 
 @end
-
-NS_ASSUME_NONNULL_END

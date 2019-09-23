@@ -8,7 +8,7 @@
 
 #import "FMView.h"
 
-#define      FMOrderAddressViewHeight    134.f
+#define      FMOrderExplainViewHeight    134.f
 
 @interface FMOrderExplainView : FMView
 

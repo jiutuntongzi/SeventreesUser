@@ -10,6 +10,8 @@
 
 @implementation FMOrderStatusView
 
-
+- (void)fm_setupSubviews {
+    self.cv_backColorByHexString(@"#F76F6F");
+}
 
 @end

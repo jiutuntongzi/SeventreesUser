@@ -73,6 +73,9 @@
         .ct_separatorStyle(UITableViewCellSeparatorStyleNone).ct_separatorColor(nil)\
         .ct_separatorInset(UIEdgeInsetsZero).ct_tableFooterView(UIView.cv_viewWithFrame(CGRectZero));
         tableView.cv_backColor(UIColor.clearColor);
+        tableView.cs_showsHorizontalScrollIndicator(NO);
+        tableView.cs_showsVerticalScrollIndicator(NO);
+        
         if (self->_rowHeight != 0.f) tableView.ct_rowHeight(self->_rowHeight);
         self->_tableView = tableView;
         
@@ -115,7 +118,6 @@
     UITableViewCell *cell = UITableViewCell.ctc_cellReuseForTableView(tableView); // 占位Cell防空
     if (_cellConfigCallback) {
         cell = _cellConfigCallback(tableView, indexPath, _entitys);
-        cell.ctc_selectedColor(nil);
     }
     return cell;
 }

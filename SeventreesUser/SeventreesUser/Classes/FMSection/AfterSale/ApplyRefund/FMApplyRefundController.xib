@@ -12,7 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FMApplyRefundController">
             <connections>
+                <outlet property="causeBoxButton" destination="V8o-5T-DuW" id="UD0-gy-Svs"/>
+                <outlet property="collectionView" destination="857-mL-Jfi" id="7Ot-5i-Rrm"/>
+                <outlet property="commitButton" destination="E0L-Cj-3GG" id="dv9-6f-F9v"/>
                 <outlet property="contentHeightCons" destination="DXD-wU-Noa" id="xaU-B8-cHQ"/>
+                <outlet property="flowLayout" destination="veH-4t-Xza" id="ydq-fd-PK9"/>
                 <outlet property="goodsListHeightCons" destination="VI9-S6-x7A" id="pT6-cz-W65"/>
                 <outlet property="tableView" destination="0Xu-HS-dno" id="2Co-TA-JGH"/>
                 <outlet property="view" destination="iN0-l3-epB" id="cOH-lR-JPr"/>
@@ -82,10 +86,17 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="VwU-6w-UW2">
                                                             <rect key="frame" x="354" y="16" width="6" height="12"/>
                                                         </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8o-5T-DuW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="V8o-5T-DuW" firstAttribute="top" secondItem="NGb-jY-mau" secondAttribute="top" id="3Pd-Kc-7Vt"/>
+                                                        <constraint firstItem="V8o-5T-DuW" firstAttribute="leading" secondItem="NGb-jY-mau" secondAttribute="leading" id="3ht-EF-74I"/>
                                                         <constraint firstItem="Ktp-tS-sES" firstAttribute="centerY" secondItem="NGb-jY-mau" secondAttribute="centerY" id="6EP-2K-9yi"/>
+                                                        <constraint firstAttribute="trailing" secondItem="V8o-5T-DuW" secondAttribute="trailing" id="BYX-cY-rdo"/>
+                                                        <constraint firstAttribute="bottom" secondItem="V8o-5T-DuW" secondAttribute="bottom" id="DDu-Pk-gYw"/>
                                                         <constraint firstItem="VwU-6w-UW2" firstAttribute="leading" secondItem="Ktp-tS-sES" secondAttribute="trailing" constant="6" id="a8p-11-6q7"/>
                                                         <constraint firstItem="rUT-G8-1fJ" firstAttribute="centerY" secondItem="NGb-jY-mau" secondAttribute="centerY" id="k3P-Og-gv9"/>
                                                         <constraint firstItem="VwU-6w-UW2" firstAttribute="centerY" secondItem="NGb-jY-mau" secondAttribute="centerY" id="luh-Zc-dOr"/>
@@ -174,8 +185,27 @@
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dc-EV-ihB" userLabel="pictureListContainerView">
                                                     <rect key="frame" x="15" y="40" width="345" height="85"/>
+                                                    <subviews>
+                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="857-mL-Jfi" userLabel="pictureCollectionView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="85"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="85" id="2wP-2n-ZPp"/>
+                                                            </constraints>
+                                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="veH-4t-Xza">
+                                                                <size key="itemSize" width="50" height="50"/>
+                                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            </collectionViewFlowLayout>
+                                                        </collectionView>
+                                                    </subviews>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
+                                                        <constraint firstItem="857-mL-Jfi" firstAttribute="leading" secondItem="5dc-EV-ihB" secondAttribute="leading" id="GTG-wl-RId"/>
+                                                        <constraint firstAttribute="trailing" secondItem="857-mL-Jfi" secondAttribute="trailing" id="K0S-3L-LjP"/>
+                                                        <constraint firstAttribute="bottom" secondItem="857-mL-Jfi" secondAttribute="bottom" id="KtV-mX-EwQ"/>
+                                                        <constraint firstItem="857-mL-Jfi" firstAttribute="top" secondItem="5dc-EV-ihB" secondAttribute="top" id="W7f-k8-z2Y"/>
                                                         <constraint firstAttribute="height" constant="85" id="dWU-4v-2HX"/>
                                                     </constraints>
                                                 </view>
@@ -249,7 +279,7 @@
                 <constraint firstAttribute="trailing" secondItem="KUA-7b-ttu" secondAttribute="trailing" id="tg7-l5-QAD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-932" y="-255"/>
+            <point key="canvasLocation" x="-831.20000000000005" y="-254.12293853073464"/>
         </view>
     </objects>
     <resources>

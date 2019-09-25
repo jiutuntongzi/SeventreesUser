@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FMRefundStatusView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKi-Fq-jO4" userLabel="StatusView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="审核通过，待用户发货" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IM-qW-DiW">
+                            <rect key="frame" x="15" y="23" width="153" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019-05-23  15:59:28" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncu-Hz-lNR">
+                            <rect key="frame" x="15" y="46" width="126.5" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test232" translatesAutoresizingMaskIntoConstraints="NO" id="gBU-Ha-Yua">
+                            <rect key="frame" x="309" y="10" width="54" height="60"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjY-Jt-4er">
+                            <rect key="frame" x="274" y="18" width="86" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="86" id="JCd-3D-nCZ"/>
+                                <constraint firstAttribute="height" constant="25" id="a8V-Yx-qDZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="填写发货信息">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="Ncu-Hz-lNR" firstAttribute="top" secondItem="1IM-qW-DiW" secondAttribute="bottom" constant="5" id="Akl-i4-3KT"/>
+                        <constraint firstItem="gBU-Ha-Yua" firstAttribute="centerY" secondItem="PKi-Fq-jO4" secondAttribute="centerY" id="EUW-VW-XwV"/>
+                        <constraint firstItem="Ncu-Hz-lNR" firstAttribute="leading" secondItem="1IM-qW-DiW" secondAttribute="leading" id="J0y-Bp-hfs"/>
+                        <constraint firstAttribute="trailing" secondItem="gBU-Ha-Yua" secondAttribute="trailing" constant="12" id="mRx-sj-18c"/>
+                        <constraint firstItem="1IM-qW-DiW" firstAttribute="top" secondItem="PKi-Fq-jO4" secondAttribute="top" constant="23" id="mSb-Ra-tLg"/>
+                        <constraint firstAttribute="trailing" secondItem="DjY-Jt-4er" secondAttribute="trailing" constant="15" id="oXm-oW-bFb"/>
+                        <constraint firstItem="DjY-Jt-4er" firstAttribute="top" secondItem="PKi-Fq-jO4" secondAttribute="top" constant="18" id="rpw-0m-enn"/>
+                        <constraint firstItem="1IM-qW-DiW" firstAttribute="leading" secondItem="PKi-Fq-jO4" secondAttribute="leading" constant="15" id="x7b-af-gC7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="PKi-Fq-jO4" secondAttribute="bottom" id="7Yo-PS-R8a"/>
+                <constraint firstItem="PKi-Fq-jO4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QdG-N6-PTy"/>
+                <constraint firstAttribute="trailing" secondItem="PKi-Fq-jO4" secondAttribute="trailing" id="UzB-4C-P6c"/>
+                <constraint firstItem="PKi-Fq-jO4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ofv-gq-UT1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="shipmentsButton" destination="DjY-Jt-4er" id="RZS-W5-3km"/>
+                <outlet property="statusImgView" destination="gBU-Ha-Yua" id="jel-R0-5Ay"/>
+                <outlet property="statusLabel" destination="1IM-qW-DiW" id="jZ5-jB-BEo"/>
+                <outlet property="timeLabel" destination="Ncu-Hz-lNR" id="o84-rb-Z3Y"/>
+            </connections>
+            <point key="canvasLocation" x="-78" y="-14"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="test232" width="54" height="60"/>
+    </resources>
+</document>

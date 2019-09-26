@@ -12,10 +12,13 @@
 #import "FMRefundStatusView.h"
 #import "FMAftersaleInfoView.h"
 #import "FMMarkTitleView.h"
+#import "FMMoneyView.h"
+#import "FMAddressView.h"
+#import "FMTitleView.h"
 
 #define      kSpaceValue      15.f
 
-CGFloat FMRefundHeaderView_height = FMRefundStatusView_height + FMAftersaleInfoView_height + FMMarkTitleView_height + kSpaceValue;
+CGFloat FMRefundHeaderView_height = 0.f;
 
 @interface FMRefundHeaderView ()
 
@@ -25,7 +28,13 @@ CGFloat FMRefundHeaderView_height = FMRefundStatusView_height + FMAftersaleInfoV
 
 @property (nonatomic, strong) FMAftersaleInfoView *refundInfoView;
 
+@property (nonatomic, strong) FMMoneyView *moneyView;
+
+@property (nonatomic, strong) FMAddressView *addressView;
+
 @property (nonatomic, strong) FMMarkTitleView *titleView;
+
+@property (nonatomic, strong) FMTitleView *terraceTitleView;
 
 @end
 
@@ -33,7 +42,7 @@ CGFloat FMRefundHeaderView_height = FMRefundStatusView_height + FMAftersaleInfoV
 
 - (instancetype)initWithStyle:(FMRefundHeaderViewStyle)style {
     if (self = [super init]) {
-        self.style = style;
+        _style = style;
         
         [self setupSubviews];
     }
@@ -41,27 +50,120 @@ CGFloat FMRefundHeaderView_height = FMRefundStatusView_height + FMAftersaleInfoV
 }
 
 - (void)setupSubviews {
-    switch (_style) {
-        case FMRefundHeaderViewStyleRefunding: {
-            
-            _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
-            // code..
-            
-            _refundInfoView = FMAftersaleInfoView.cv_viewFromNibLoad();
-            // code..
-            
-            _titleView = FMMarkTitleView.cv_viewFromNibLoad();
-            // code..
-            
-            self.cv_addSubviews(@[_refundStatusView, _refundInfoView, _titleView]);
-            
-            FMRefundHeaderView_height = FMRefundStatusView_height + FMAftersaleInfoView_height + FMMarkTitleView_height + kSpaceValue;
-            
-            break;
+    if (_style == FMRefundHeaderViewStyleWaitSend || _style == FMRefundHeaderViewStyleWaitReceive) {
+        _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
+        _refundStatusView.style = (_style == FMRefundHeaderViewStyleWaitSend);
+
+        // code..
+        
+        _refundInfoView = FMAftersaleInfoView.cv_viewFromNibLoad();
+        if (_style == FMRefundHeaderViewStyleWaitSend) {
+            _refundInfoView.style = FMAftersaleInfoViewStyleWaitSend;
+        } else if (_style == FMRefundHeaderViewStyleWaitReceive) {
+            _refundInfoView.style = FMAftersaleInfoViewStyleWaitReceive;
         }
-        default: {
-            break;
-        }
+        // code..
+        
+        _addressView = FMAddressView.cv_viewFromNibLoad();
+        // code..
+        
+        _titleView = FMMarkTitleView.cv_viewFromNibLoad();
+        // code..
+        
+        self.cv_addSubviews(@[_refundStatusView, _refundInfoView, _addressView, _titleView]);
+        
+        FMRefundHeaderView_height = FMRefundStatusView_height + FMAftersaleInfoView_height + FMAddressViewHeight + kSpaceValue + FMMarkTitleView_height + kSpaceValue;
+        
+    } else if (_style == FMRefundHeaderViewStyleRefundFailure) {
+        _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
+        
+        // code..
+        
+        _refundInfoView = FMAftersaleInfoView.cv_viewFromNibLoad();
+        _refundInfoView.style = FMAftersaleInfoViewStyleRefundFailure;
+        // code..
+        
+        _moneyView = FMMoneyView.cv_viewFromNibLoad();
+        
+        _titleView = FMMarkTitleView.cv_viewFromNibLoad();
+        // code..
+        
+        self.cv_addSubviews(@[_refundStatusView, _refundInfoView, _moneyView, _titleView]);
+        
+        FMRefundHeaderView_height = FMRefundStatusView_height + FMAftersaleInfoView_height + FMMoneyView_height + kSpaceValue + FMMarkTitleView_height + kSpaceValue;
+        
+    } else if (_style == FMRefundHeaderViewStyleSalesFailure) {
+        _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
+        
+        // code..
+        
+        _refundInfoView = FMAftersaleInfoView.cv_viewFromNibLoad();
+        _refundInfoView.style = FMAftersaleInfoViewStyleRefundFailure;
+        // code..
+        
+        _moneyView = FMMoneyView.cv_viewFromNibLoad();
+        
+        _addressView = FMAddressView.cv_viewFromNibLoad();
+        // code..
+        
+        _titleView = FMMarkTitleView.cv_viewFromNibLoad();
+        // code..
+        
+        self.cv_addSubviews(@[_refundStatusView, _refundInfoView, _moneyView, _addressView, _titleView]);
+        
+        FMRefundHeaderView_height = FMRefundStatusView_height + FMAftersaleInfoView_height + FMMoneyView_height + kSpaceValue + FMAddressViewHeight + kSpaceValue + FMMarkTitleView_height + kSpaceValue;
+        
+    } else if (_style == FMRefundHeaderViewStyleSalesSuccess) {
+        _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
+        // code..
+        
+        _moneyView = FMMoneyView.cv_viewFromNibLoad();
+        // code..
+        
+        _terraceTitleView = FMTitleView.cv_viewFromNibLoad();
+        // code..
+        
+        _addressView = FMAddressView.cv_viewFromNibLoad();
+        // code..
+        
+        _titleView = FMMarkTitleView.cv_viewFromNibLoad();
+        // code..
+        
+        self.cv_addSubviews(@[_refundStatusView, _moneyView, _terraceTitleView, _addressView, _titleView]);
+        
+        FMRefundHeaderView_height = FMRefundStatusView_height + FMMoneyView_height + kSpaceValue + FMTitleView_height + kSpaceValue + FMAddressViewHeight + kSpaceValue + FMMarkTitleView_height;
+        
+    } else if (_style == FMRefundHeaderViewStyleRefundSuccess) {
+        _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
+        // code..
+        
+        _moneyView = FMMoneyView.cv_viewFromNibLoad();
+        // code..
+        
+        _terraceTitleView = FMTitleView.cv_viewFromNibLoad();
+        // code..
+        
+        _titleView = FMMarkTitleView.cv_viewFromNibLoad();
+        // code..
+        
+        self.cv_addSubviews(@[_refundStatusView, _moneyView, _terraceTitleView, _titleView]);
+        
+        FMRefundHeaderView_height = FMRefundStatusView_height + FMMoneyView_height + kSpaceValue + FMTitleView_height + kSpaceValue + FMMarkTitleView_height;
+        
+    } else { // FMRefundHeaderViewStyleRefunding
+        _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
+        // code..
+        
+        _refundInfoView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([FMAftersaleInfoView class]) owner:nil options:nil].firstObject;
+        _refundInfoView.style = FMAftersaleInfoViewStyleRefunding;
+        // code..
+        
+        _titleView = FMMarkTitleView.cv_viewFromNibLoad();
+        // code..
+        
+        self.cv_addSubviews(@[_refundStatusView, _refundInfoView, _titleView]);
+        
+        FMRefundHeaderView_height = FMRefundStatusView_height + FMAftersaleInfoView_height + FMMarkTitleView_height + kSpaceValue;
     }
     
     [self setNeedsUpdateConstraints];
@@ -69,36 +171,131 @@ CGFloat FMRefundHeaderView_height = FMRefundStatusView_height + FMAftersaleInfoV
 }
 
 - (void)updateConstraints {
-    switch (_style) {
-        case FMRefundHeaderViewStyleRefunding: {
-            __block CGFloat spaceValue = kSpaceValue;
-            __block CGFloat offsetY = 0.f;
-            [_refundStatusView makeConstraints:^(MASConstraintMaker *make) {
-                make.left.right.top.equalTo(self);
-                make.height.equalTo(FMRefundStatusView_height);
-            }];
-            offsetY += FMRefundStatusView_height;
-            [_refundInfoView makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(self->_refundStatusView.bottom);
-                make.left.right.equalTo(self);
-                make.height.equalTo(FMAftersaleInfoView_height);
-            }];
-            offsetY += FMAftersaleInfoView_height + spaceValue;
-            [_titleView makeConstraints:^(MASConstraintMaker *make) {
+    if (_style == FMRefundHeaderViewStyleWaitSend || _style == FMRefundHeaderViewStyleWaitReceive) {
+        __block CGFloat spaceValue = kSpaceValue, offsetY = 0.f;
+        
+        [_refundStatusView makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.equalTo(self);
+            make.height.equalTo(FMRefundStatusView_height);
+        }];
+        offsetY += FMRefundStatusView_height;
+        [_refundInfoView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self->_refundStatusView.bottom);
+            make.left.right.equalTo(self);
+            make.height.equalTo(FMAftersaleInfoView_height);
+        }];
+        offsetY += FMAftersaleInfoView_height + spaceValue;
+        [_addressView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(offsetY);
+            make.left.right.equalTo(self);
+            make.height.equalTo(FMAddressViewHeight);
+        }];
+        offsetY += FMAddressViewHeight + spaceValue;
+        [_titleView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(offsetY);
+            make.left.right.equalTo(self);
+            make.height.equalTo(FMMarkTitleView_height);
+        }];
+        
+    } else if (_style == FMRefundHeaderViewStyleRefundFailure || _style == FMRefundHeaderViewStyleSalesFailure) {
+        __block CGFloat spaceValue = kSpaceValue, offsetY = 0.f;
+        
+        [_refundStatusView makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.equalTo(self);
+            make.height.equalTo(FMRefundStatusView_height);
+        }];
+        
+        offsetY += FMRefundStatusView_height;
+        [_refundInfoView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self->_refundStatusView.bottom);
+            make.left.right.equalTo(self);
+            make.height.equalTo(FMAftersaleInfoView_height);
+        }];
+        
+        offsetY += FMAftersaleInfoView_height + spaceValue;
+        [_moneyView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(offsetY);
+            make.left.right.equalTo(self);
+            make.height.equalTo(FMMoneyView_height);
+        }];
+        
+        offsetY += FMMoneyView_height + spaceValue;
+        
+        if (_style == FMRefundHeaderViewStyleSalesFailure) {
+            [_addressView makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(offsetY);
                 make.left.right.equalTo(self);
-                make.height.equalTo(FMMarkTitleView_height);
+                make.height.equalTo(FMAddressViewHeight);
             }];
-            
-            
-            
-            break;
+            offsetY += FMAddressViewHeight + spaceValue;
         }
-        default: {
-            break;
+        
+        [_titleView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(offsetY);
+            make.left.right.equalTo(self);
+            make.height.equalTo(FMMarkTitleView_height);
+        }];
+        
+    } else if (_style == FMRefundHeaderViewStyleSalesSuccess || _style == FMRefundHeaderViewStyleRefundSuccess) {
+        __block CGFloat spaceValue = kSpaceValue, offsetY = 0.f;
+        
+        [_refundStatusView makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.equalTo(self);
+            make.height.equalTo(FMRefundStatusView_height);
+        }];
+        offsetY += FMRefundStatusView_height;
+
+        [_moneyView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(offsetY);
+            make.left.right.equalTo(self);
+            make.height.equalTo(FMMoneyView_height);
+        }];
+        
+        offsetY += FMMoneyView_height + spaceValue;
+        [_terraceTitleView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(offsetY);
+            make.left.right.equalTo(self);
+            make.height.equalTo(FMTitleView_height);
+        }];
+        
+        offsetY += FMTitleView_height + spaceValue;
+        
+        if (_style == FMRefundHeaderViewStyleSalesSuccess) {
+            [_addressView makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(offsetY);
+                make.left.right.equalTo(self);
+                make.height.equalTo(FMAddressViewHeight);
+            }];
+            offsetY += FMAddressViewHeight + spaceValue;
         }
+        
+        [_titleView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(offsetY);
+            make.left.right.equalTo(self);
+            make.height.equalTo(FMMarkTitleView_height);
+        }];
+        
+    } else { // FMRefundHeaderViewStyleRefunding
+        __block CGFloat spaceValue = kSpaceValue, offsetY = 0.f;
+        
+        [_refundStatusView makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.equalTo(self);
+            make.height.equalTo(FMRefundStatusView_height);
+        }];
+        offsetY += FMRefundStatusView_height;
+        [_refundInfoView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self->_refundStatusView.bottom);
+            make.left.right.equalTo(self);
+            make.height.equalTo(FMAftersaleInfoView_height);
+        }];
+        offsetY += FMAftersaleInfoView_height + spaceValue;
+        [_titleView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(offsetY);
+            make.left.right.equalTo(self);
+            make.height.equalTo(FMMarkTitleView_height);
+        }];
     }
-    
+
     [super updateConstraints];
 }
 

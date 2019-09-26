@@ -84,7 +84,6 @@
 		84094E85233AFF40008BF38B /* FMAftersaleDetailsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84094E83233AFF3F008BF38B /* FMAftersaleDetailsViewModel.m */; };
 		84094E88233AFF79008BF38B /* FMAftersaleDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84094E87233AFF79008BF38B /* FMAftersaleDetailsModel.m */; };
 		84094E94233B0981008BF38B /* FMMoneyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84094E93233B0981008BF38B /* FMMoneyView.m */; };
-		84094E96233B099D008BF38B /* FMMoneyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84094E95233B099D008BF38B /* FMMoneyView.xib */; };
 		84094E9A233B0B98008BF38B /* FMTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84094E98233B0B98008BF38B /* FMTitleView.m */; };
 		84094E9B233B0B98008BF38B /* FMTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84094E99233B0B98008BF38B /* FMTitleView.xib */; };
 		84094E9F233B10E3008BF38B /* FMMarkTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84094E9D233B10E2008BF38B /* FMMarkTitleView.xib */; };
@@ -127,6 +126,7 @@
 		84187418233A153A0083FE1E /* FMRefundInGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84187413233A153A0083FE1E /* FMRefundInGoodsCell.m */; };
 		84187419233A153A0083FE1E /* FMRefundInGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84187414233A153A0083FE1E /* FMRefundInGoodsCell.xib */; };
 		84187420233A162C0083FE1E /* FMRefundInGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8418741E233A162C0083FE1E /* FMRefundInGoodsModel.m */; };
+		8418F9A8233CAAFF00D179CF /* FMMoneyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8418F9A7233CAAFF00D179CF /* FMMoneyView.xib */; };
 		841C55EC231E48A6008B5A91 /* FMPictureTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C55EB231E48A6008B5A91 /* FMPictureTableView.m */; };
 		841C55F0231E4A3C008B5A91 /* FMPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C55EF231E4A3C008B5A91 /* FMPictureCell.m */; };
 		842F0AED231655C400D78028 /* FMImageEyeListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842F0AEA231655C400D78028 /* FMImageEyeListView.m */; };
@@ -570,7 +570,6 @@
 		84094E87233AFF79008BF38B /* FMAftersaleDetailsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMAftersaleDetailsModel.m; sourceTree = "<group>"; };
 		84094E92233B0981008BF38B /* FMMoneyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMMoneyView.h; sourceTree = "<group>"; };
 		84094E93233B0981008BF38B /* FMMoneyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMMoneyView.m; sourceTree = "<group>"; };
-		84094E95233B099D008BF38B /* FMMoneyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMMoneyView.xib; sourceTree = "<group>"; };
 		84094E97233B0B98008BF38B /* FMTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMTitleView.h; sourceTree = "<group>"; };
 		84094E98233B0B98008BF38B /* FMTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMTitleView.m; sourceTree = "<group>"; };
 		84094E99233B0B98008BF38B /* FMTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMTitleView.xib; sourceTree = "<group>"; };
@@ -641,6 +640,7 @@
 		84187414233A153A0083FE1E /* FMRefundInGoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMRefundInGoodsCell.xib; sourceTree = "<group>"; };
 		8418741E233A162C0083FE1E /* FMRefundInGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMRefundInGoodsModel.m; sourceTree = "<group>"; };
 		8418741F233A162C0083FE1E /* FMRefundInGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMRefundInGoodsModel.h; sourceTree = "<group>"; };
+		8418F9A7233CAAFF00D179CF /* FMMoneyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMMoneyView.xib; sourceTree = "<group>"; };
 		841C55EA231E48A6008B5A91 /* FMPictureTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMPictureTableView.h; sourceTree = "<group>"; };
 		841C55EB231E48A6008B5A91 /* FMPictureTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMPictureTableView.m; sourceTree = "<group>"; };
 		841C55EE231E4A3C008B5A91 /* FMPictureCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMPictureCell.h; sourceTree = "<group>"; };
@@ -2428,7 +2428,7 @@
 				84D38B61233B3AD500DEF36D /* FMAftersaleInfoView.xib */,
 				84094E92233B0981008BF38B /* FMMoneyView.h */,
 				84094E93233B0981008BF38B /* FMMoneyView.m */,
-				84094E95233B099D008BF38B /* FMMoneyView.xib */,
+				8418F9A7233CAAFF00D179CF /* FMMoneyView.xib */,
 				84094E97233B0B98008BF38B /* FMTitleView.h */,
 				84094E98233B0B98008BF38B /* FMTitleView.m */,
 				84094E99233B0B98008BF38B /* FMTitleView.xib */,
@@ -4403,6 +4403,7 @@
 				84D7287F23014D1B002D387A /* QRCodeScanLine@2x.png in Resources */,
 				8467B5832331D5520062B33F /* FMScoreHeaderView.xib in Resources */,
 				84094E9F233B10E3008BF38B /* FMMarkTitleView.xib in Resources */,
+				8418F9A8233CAAFF00D179CF /* FMMoneyView.xib in Resources */,
 				84D7288023014D1B002D387A /* ScanQR1@2x.png in Resources */,
 				84FAECAB2317A32200E8CA3F /* FMStoreIntroView.xib in Resources */,
 				84464C23230FF55E00ED9069 /* FMSettlementView.xib in Resources */,
@@ -4410,7 +4411,6 @@
 				84FE048B230BC72D00E83754 /* FMMeView.xib in Resources */,
 				843FC53F232A48A30096639F /* FMMapNavigationView.xib in Resources */,
 				84D38B63233B3AD500DEF36D /* FMAftersaleInfoView.xib in Resources */,
-				84094E96233B099D008BF38B /* FMMoneyView.xib in Resources */,
 				847E58DA23225D520022FF1F /* FMBargainGoodsCell.xib in Resources */,
 				844776B3230AD1A6008AE242 /* FMGoodsCell.xib in Resources */,
 				84F64E11231F8BAC005E477D /* FMEvaluationTotalView.xib in Resources */,

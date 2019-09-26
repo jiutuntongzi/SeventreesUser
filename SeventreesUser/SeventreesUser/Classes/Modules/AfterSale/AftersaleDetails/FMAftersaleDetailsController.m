@@ -31,6 +31,8 @@
 }
 
 - (void)fm_addSubviews {
+    [self headerView]; // 先做初始化，用Style计算高度(FMRefundHeaderView_height)
+    
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
@@ -117,7 +119,7 @@
 #pragma mark - Lazyload
 - (FMRefundHeaderView *)headerView {
     if (! _headerView) {
-        _headerView = [[FMRefundHeaderView alloc] initWithStyle:FMRefundHeaderViewStyleRefunding];
+        _headerView = [[FMRefundHeaderView alloc] initWithStyle:FMRefundHeaderViewStyleWaitSend];
     }
     return _headerView;
 }

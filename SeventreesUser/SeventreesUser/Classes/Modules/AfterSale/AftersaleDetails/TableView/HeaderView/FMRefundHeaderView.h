@@ -11,12 +11,13 @@
 extern CGFloat FMRefundHeaderView_height;
 
 typedef NS_ENUM(NSUInteger, FMRefundHeaderViewStyle) {
-    FMRefundHeaderViewStyleRefunding,           // 退款中
-    FMRefundHeaderViewStyle1,
-    FMRefundHeaderViewStyle2,
-    FMRefundHeaderViewStyle3,
-    FMRefundHeaderViewStyle4,
-    FMRefundHeaderViewStyle5,
+    FMRefundHeaderViewStyleRefunding,        // 退款中
+    FMRefundHeaderViewStyleWaitSend,         // 审核通过，待用户发货
+    FMRefundHeaderViewStyleWaitReceive,      // 审核通过，待商家验收
+    FMRefundHeaderViewStyleRefundFailure,    // 退款失败
+    FMRefundHeaderViewStyleSalesFailure,     // 退货失败
+    FMRefundHeaderViewStyleRefundSuccess,    // 退款成功
+    FMRefundHeaderViewStyleSalesSuccess,     // 退货成功
 };
 
 @interface FMRefundHeaderView : UIView

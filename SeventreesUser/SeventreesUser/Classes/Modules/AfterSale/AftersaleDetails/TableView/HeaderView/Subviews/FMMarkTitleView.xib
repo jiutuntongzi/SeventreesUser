@@ -26,7 +26,7 @@
                 </label>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ic0-Hq-Vlb" userLabel="lineView">
                     <rect key="frame" x="0.0" y="43" width="375" height="1"/>
-                    <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="RdB-Z9-8zI"/>
                     </constraints>
@@ -44,7 +44,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="titleLabel" destination="hBD-1X-a7w" id="ALx-iW-rl8"/>
+                <outlet property="titleLabel" destination="hBD-1X-a7w" id="3Sq-rd-O05"/>
             </connections>
             <point key="canvasLocation" x="489" y="80"/>
         </view>

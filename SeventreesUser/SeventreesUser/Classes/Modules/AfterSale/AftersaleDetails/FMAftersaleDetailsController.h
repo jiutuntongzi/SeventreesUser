@@ -10,8 +10,8 @@
 
 typedef NS_ENUM(NSUInteger, FMAftersaleDetailsControllerStyle) {
     FMAftersaleDetailsControllerStyleRefunding,           // 退款中
-    FMAftersaleDetailsControllerStyle1,
-    FMAftersaleDetailsControllerStyle2,
+    FMAftersaleDetailsControllerStyleWaitSend,            // 待发货
+    FMAftersaleDetailsControllerStyleWaitReceive,         // 待验收
     FMAftersaleDetailsControllerStyle3,
     FMAftersaleDetailsControllerStyle4,
     FMAftersaleDetailsControllerStyle5,

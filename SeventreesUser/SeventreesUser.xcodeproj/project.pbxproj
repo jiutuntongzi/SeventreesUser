@@ -258,6 +258,7 @@
 		84BAC59F2306C6400062B812 /* FMRegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BAC59E2306C6400062B812 /* FMRegisterView.m */; };
 		84BAC5A12306C8AC0062B812 /* FMRegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BAC5A02306C8AC0062B812 /* FMRegisterView.xib */; };
 		84BAC5A42306CD3D0062B812 /* FMPhoneNumberInputViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BAC5A32306CD3D0062B812 /* FMPhoneNumberInputViewModel.m */; };
+		84BEADDD233E0BF000B4D6E1 /* FMSpellGroupPagingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEADDC233E0BF000B4D6E1 /* FMSpellGroupPagingController.m */; };
 		84C3DF49231E0DCF008147C6 /* FMStoreInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C3DF41231E0DCF008147C6 /* FMStoreInfoModel.m */; };
 		84C3DF4A231E0DCF008147C6 /* FMStoreInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C3DF44231E0DCF008147C6 /* FMStoreInfoView.m */; };
 		84C3DF4B231E0DCF008147C6 /* FMStoreInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C3DF45231E0DCF008147C6 /* FMStoreInfoView.xib */; };
@@ -882,6 +883,8 @@
 		84BAC5A02306C8AC0062B812 /* FMRegisterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMRegisterView.xib; sourceTree = "<group>"; };
 		84BAC5A22306CD3D0062B812 /* FMPhoneNumberInputViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMPhoneNumberInputViewModel.h; sourceTree = "<group>"; };
 		84BAC5A32306CD3D0062B812 /* FMPhoneNumberInputViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMPhoneNumberInputViewModel.m; sourceTree = "<group>"; };
+		84BEADDB233E0BF000B4D6E1 /* FMSpellGroupPagingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSpellGroupPagingController.h; sourceTree = "<group>"; };
+		84BEADDC233E0BF000B4D6E1 /* FMSpellGroupPagingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSpellGroupPagingController.m; sourceTree = "<group>"; };
 		84C3DF40231E0DCF008147C6 /* FMStoreInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMStoreInfoModel.h; sourceTree = "<group>"; };
 		84C3DF41231E0DCF008147C6 /* FMStoreInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMStoreInfoModel.m; sourceTree = "<group>"; };
 		84C3DF43231E0DCF008147C6 /* FMStoreInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMStoreInfoView.h; sourceTree = "<group>"; };
@@ -1951,7 +1954,7 @@
 		841150C12320F461004DF4CD /* SpellGroup */ = {
 			isa = PBXGroup;
 			children = (
-				8469E336233E04E900362168 /* SpellList */,
+				84BEADDA233E0BF000B4D6E1 /* SpellGroupPaging */,
 				841150DC23210106004DF4CD /* PeopleSpell */,
 				841150DD2321034F004DF4CD /* SpellResult */,
 				841150E323210A24004DF4CD /* ParticipantSpell */,
@@ -3134,6 +3137,16 @@
 				84BAC58B2306A5290062B812 /* FMPasswordInputView.xib */,
 			);
 			path = InputViewFactory;
+			sourceTree = "<group>";
+		};
+		84BEADDA233E0BF000B4D6E1 /* SpellGroupPaging */ = {
+			isa = PBXGroup;
+			children = (
+				84BEADDB233E0BF000B4D6E1 /* FMSpellGroupPagingController.h */,
+				84BEADDC233E0BF000B4D6E1 /* FMSpellGroupPagingController.m */,
+				8469E336233E04E900362168 /* SpellList */,
+			);
+			path = SpellGroupPaging;
 			sourceTree = "<group>";
 		};
 		84C3DF3E231E0DCF008147C6 /* StoreInfoView */ = {
@@ -4600,6 +4613,7 @@
 				84089E6E2313905600D7EF7D /* FMEvaluationModel.m in Sources */,
 				8405B8B42334CE0A0065965F /* FMOrderDetailsViewModel.m in Sources */,
 				8456BAC5232F5D1000E59966 /* FMSelectFooterView.m in Sources */,
+				84BEADDD233E0BF000B4D6E1 /* FMSpellGroupPagingController.m in Sources */,
 				840942D1233470E700E60D53 /* FMServerConsumeCell.m in Sources */,
 				8405B8C22334D16F0065965F /* FMOrderAddressView.m in Sources */,
 				84FC4459231CF4E200DF9799 /* YBIBToolViewHandler.m in Sources */,

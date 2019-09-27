@@ -9,7 +9,8 @@
 #import "FMMeView.h"
 
 #import "FMBargainTypeController.h"
-#import "FMSpellListController.h" // test
+#import "FMSpellGroupPagingController.h"
+//#import "FMSpellListController.h"
 #import "FMSpellGroupController.h"
 
 #import "FMScoreController.h"
@@ -132,7 +133,7 @@
         @strongify(self);
         // test
 //        UIViewController *nextVC = [[FMSpellGroupController alloc] init];
-        UIViewController *nextVC = [[FMSpellListController alloc] init];
+        UIViewController *nextVC = [[FMSpellGroupPagingController alloc] init];
         nextVC.hidesBottomBarWhenPushed = YES;
         self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];

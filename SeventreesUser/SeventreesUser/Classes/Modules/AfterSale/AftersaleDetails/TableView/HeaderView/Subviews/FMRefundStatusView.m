@@ -7,6 +7,7 @@
 //
 
 #import "FMRefundStatusView.h"
+#import "DialogBoxView.h"
 
 @interface FMRefundStatusView ()
 
@@ -42,6 +43,7 @@
         _statusLabel.text = @"审核通过，待用户发货";
 //        _statusImgView.image = UIImage.ci_imageNamed(@"icon_afterSale_waitSend");
         _timeLabel.text = @"2019-05-23  15:59:23"; // test
+        [self hiddenImgStatus:YES];
         
     } else if (status == FMRefundStatusViewStyleWaitReceive) {
         _statusLabel.text = @"审核通过，待商家验收";
@@ -70,10 +72,7 @@
     }
 }
 
-- (void)setStyle:(NSInteger)style {
-    _style = style;
-    
-    BOOL isHidden = style == 1;
+- (void)hiddenImgStatus:(BOOL)isHidden {
     _statusImgView.hidden = isHidden;
     _shipmentsButton.hidden = !isHidden;
 }
@@ -84,11 +83,15 @@
     _shipmentsButton.layer.borderColor = UIColor.whiteColor.CGColor;
     _shipmentsButton.layer.borderWidth = 1.f;
     
-    self.style = _style;
+    [self hiddenImgStatus:NO];
 }
 
 - (void)fm_bindViewModel {
-    
+    [[_shipmentsButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [DialogBoxView showByTitle:@"请填写发货信息" message:@"" affirmButtonTitle:@"确定" forStyle:DialogBoxViewStyleInput affirmHandler:^(NSString * _Nullable text) {
+            
+        }];
+    }];
 }
 
 @end

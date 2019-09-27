@@ -13,9 +13,11 @@
 
 #define     kSpaceValue      15.f
 
-CGFloat FMRefundFooterView_height = kSpaceValue + FMRefundExplainView_height + FMOrderContactUsViewHeight;
+CGFloat FMRefundFooterView_height = kSpaceValue + FMRefundExplainViewHeight + FMOrderContactUsViewHeight;
 
 @interface FMRefundFooterView ()
+
+@property (nonatomic, assign) UInt8 style;
 
 @property (nonatomic, strong) FMRefundExplainView *explainView;
 
@@ -25,7 +27,23 @@ CGFloat FMRefundFooterView_height = kSpaceValue + FMRefundExplainView_height + F
 
 @implementation FMRefundFooterView
 
-- (void)fm_setupSubviews {
+- (instancetype)initWithStyle:(UInt8)style {
+    if (self = [super init]) {
+        _style = style;
+        
+        [self setupSubviews];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self setupSubviews];
+    }
+    return self;
+}
+
+- (void)setupSubviews {
     
     _explainView = FMRefundExplainView.cv_viewFromNibLoad();
     [self addSubview:_explainView];
@@ -38,26 +56,26 @@ CGFloat FMRefundFooterView_height = kSpaceValue + FMRefundExplainView_height + F
 
 - (void)makeConstraints {
     __block CGFloat offsetY = 0.f;
+    __block CGFloat explainHeight = FMRefundExplainViewHeight;
+    
     offsetY += kSpaceValue;
     [_explainView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(offsetY);
         make.left.equalTo(self);
         make.width.equalTo(self);
-        make.height.equalTo(FMRefundExplainView_height);
+        if (self->_style == 1) explainHeight = FMRefundExplainViewMaxHeight;
+        make.height.equalTo(explainHeight);
     }];
     
-    offsetY += FMRefundExplainView_height;
+    offsetY += explainHeight;
     [_contactUsView makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self->_explainView.bottom);
         make.top.equalTo(offsetY);
         make.left.equalTo(self);
         make.width.equalTo(self);
         make.height.equalTo(FMOrderContactUsViewHeight);
     }];
-}
-
-- (void)fm_bindViewModel {
     
+    FMRefundFooterView_height = kSpaceValue + explainHeight + FMOrderContactUsViewHeight;
 }
 
 @end

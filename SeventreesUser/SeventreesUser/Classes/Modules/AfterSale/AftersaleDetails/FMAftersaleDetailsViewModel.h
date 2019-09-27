@@ -11,12 +11,13 @@
 
 @interface FMAftersaleDetailsViewModel : FMViewModel
 
-@property (nonatomic, strong) FMAftersaleDetailsModel *aftersalemodel;
+@property (nonatomic, strong, readonly) FMAftersaleDetailsModel *aftersalemodel;
 
-@property (nonatomic, strong) RACSubject *refreshUISubject;
 
-@property (nonatomic, strong) RACSubject *actionSubject;
+@property (nonatomic, strong, readonly) RACSubject *refreshUISubject;
 
-@property (nonatomic, strong) RACCommand *requestDataCommand;
+@property (nonatomic, strong, readonly) RACSubject *actionSubject;
+
+@property (nonatomic, strong, readonly) RACCommand *requestDataCommand;
 
 @end

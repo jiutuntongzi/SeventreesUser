@@ -9,6 +9,7 @@
 #import "FMMeView.h"
 
 #import "FMBargainTypeController.h"
+#import "FMSpellListController.h" // test
 #import "FMSpellGroupController.h"
 
 #import "FMScoreController.h"
@@ -24,6 +25,8 @@
 #import "FMOrderPagingController.h"
 
 #import "FMAftersaleDetailsController.h"
+
+
 
 @interface FMMeView ()
 
@@ -128,7 +131,8 @@
     [[_spellButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
         // test
-        UIViewController *nextVC = [[FMSpellGroupController alloc] init];
+//        UIViewController *nextVC = [[FMSpellGroupController alloc] init];
+        UIViewController *nextVC = [[FMSpellListController alloc] init];
         nextVC.hidesBottomBarWhenPushed = YES;
         self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
@@ -142,7 +146,7 @@
     }];
     
     [[_collectButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self);
+//        @strongify(self);
     }];
     
     [[_moreOrderButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -154,10 +158,10 @@
 //        
         // test
         FMAftersaleDetailsController *nextVC = [[FMAftersaleDetailsController alloc] init];
+        nextVC.style = FMAftersaleDetailsControllerStyleWaitReceive;
         nextVC.hidesBottomBarWhenPushed = YES;
         [self.viewController.navigationController pushViewController:nextVC animated:YES];
     }];
-    
     
     for (UInt8 idx = 0; idx != 5; idx++) {
         UIButton *orderTypeButton = _orderTypeButtons[idx];

@@ -26,12 +26,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
+
 }
 
 - (void)fm_addSubviews {
     [self headerView]; // 先做初始化，用Style计算高度(FMRefundHeaderView_height)
+    [self footerView]; // 先做初始化，用Style计算高度(FMRefundFooterView_height)
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
@@ -119,14 +119,21 @@
 #pragma mark - Lazyload
 - (FMRefundHeaderView *)headerView {
     if (! _headerView) {
-        _headerView = [[FMRefundHeaderView alloc] initWithStyle:FMRefundHeaderViewStyleWaitSend];
+        _headerView = [[FMRefundHeaderView alloc] initWithStyle:(FMRefundHeaderViewStyle)_style];
     }
     return _headerView;
 }
 
 - (FMRefundFooterView *)footerView {
     if (! _footerView) {
-        _footerView = [FMRefundFooterView new];
+        UInt8 footerStyle = 0;
+        if (_style == FMAftersaleDetailsControllerStyleWaitReceive ||
+            _style == FMAftersaleDetailsControllerStyleSalesSuccess ||
+            _style == FMAftersaleDetailsControllerStyleSalesFailure
+            ) {
+            footerStyle = 1;
+        }
+        _footerView = [[FMRefundFooterView alloc] initWithStyle:footerStyle];
     }
     return _footerView;
 }

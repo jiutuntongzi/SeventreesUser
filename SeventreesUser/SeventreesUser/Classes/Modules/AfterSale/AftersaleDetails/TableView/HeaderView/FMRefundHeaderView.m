@@ -50,10 +50,15 @@ CGFloat FMRefundHeaderView_height = 0.f;
 }
 
 - (void)setupSubviews {
+    
     if (_style == FMRefundHeaderViewStyleWaitSend || _style == FMRefundHeaderViewStyleWaitReceive) {
         _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
-        _refundStatusView.style = (_style == FMRefundHeaderViewStyleWaitSend);
-
+        _refundStatusView.status = (FMRefundStatusViewStyle)_style;
+//        if (_style == FMRefundHeaderViewStyleWaitSend) {
+//            _refundStatusView.status = FMRefundStatusViewStyleWaitSend;
+//        } else if (_style == FMRefundHeaderViewStyleWaitReceive) {
+//            _refundStatusView.status = FMRefundStatusViewStyleWaitReceive;
+//        }
         // code..
         
         _refundInfoView = FMAftersaleInfoView.cv_viewFromNibLoad();
@@ -76,7 +81,7 @@ CGFloat FMRefundHeaderView_height = 0.f;
         
     } else if (_style == FMRefundHeaderViewStyleRefundFailure) {
         _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
-        
+        _refundStatusView.status = FMRefundStatusViewStyleRefundFailure;
         // code..
         
         _refundInfoView = FMAftersaleInfoView.cv_viewFromNibLoad();
@@ -94,7 +99,7 @@ CGFloat FMRefundHeaderView_height = 0.f;
         
     } else if (_style == FMRefundHeaderViewStyleSalesFailure) {
         _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
-        
+        _refundStatusView.status = FMRefundStatusViewStyleSalesFailure;
         // code..
         
         _refundInfoView = FMAftersaleInfoView.cv_viewFromNibLoad();
@@ -115,6 +120,7 @@ CGFloat FMRefundHeaderView_height = 0.f;
         
     } else if (_style == FMRefundHeaderViewStyleSalesSuccess) {
         _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
+        _refundStatusView.status = FMRefundStatusViewStyleSalesSuccess;
         // code..
         
         _moneyView = FMMoneyView.cv_viewFromNibLoad();
@@ -135,6 +141,7 @@ CGFloat FMRefundHeaderView_height = 0.f;
         
     } else if (_style == FMRefundHeaderViewStyleRefundSuccess) {
         _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
+        _refundStatusView.status = FMRefundStatusViewStyleRefundSuccess;
         // code..
         
         _moneyView = FMMoneyView.cv_viewFromNibLoad();
@@ -152,6 +159,7 @@ CGFloat FMRefundHeaderView_height = 0.f;
         
     } else { // FMRefundHeaderViewStyleRefunding
         _refundStatusView = FMRefundStatusView.cv_viewFromNibLoad();
+        _refundStatusView.status = FMRefundStatusViewStyleRefunding;
         // code..
         
         _refundInfoView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([FMAftersaleInfoView class]) owner:nil options:nil].firstObject;

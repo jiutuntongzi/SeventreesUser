@@ -12,15 +12,15 @@ typedef NS_ENUM(NSUInteger, FMAftersaleDetailsControllerStyle) {
     FMAftersaleDetailsControllerStyleRefunding,           // 退款中
     FMAftersaleDetailsControllerStyleWaitSend,            // 待发货
     FMAftersaleDetailsControllerStyleWaitReceive,         // 待验收
-    FMAftersaleDetailsControllerStyle3,
-    FMAftersaleDetailsControllerStyle4,
-    FMAftersaleDetailsControllerStyle5,
+    FMAftersaleDetailsControllerStyleRefundFailure,       // 退款失败
+    FMAftersaleDetailsControllerStyleSalesFailure,        // 退货失败
+    FMAftersaleDetailsControllerStyleRefundSuccess,       // 退款成功
+    FMAftersaleDetailsControllerStyleSalesSuccess,        // 退货成功
 };
 
 @interface FMAftersaleDetailsController : FMViewController
 
 @property (nonatomic, assign) FMAftersaleDetailsControllerStyle style;
-
 
 @end
 

@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#define      FMRefundExplainView_height    165.f
+#define      FMRefundExplainViewHeight    138.f
+
+#define      FMRefundExplainViewMaxHeight    194.f
 
 @interface FMRefundExplainView : UIView
 
 @property (nonatomic, copy) NSString *infoText;
-
 
 @end

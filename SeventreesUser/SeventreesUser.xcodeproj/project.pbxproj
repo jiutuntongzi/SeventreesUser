@@ -194,6 +194,12 @@
 		8467B5862331D5520062B33F /* FMScoreRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467B57B2331D5520062B33F /* FMScoreRecordModel.m */; };
 		8467B5872331D5520062B33F /* FMScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467B57D2331D5520062B33F /* FMScoreView.m */; };
 		8467B5882331D5520062B33F /* FMScoreViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467B5802331D5520062B33F /* FMScoreViewModel.m */; };
+		8469E343233E04E900362168 /* FMSpellListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8469E338233E04E900362168 /* FMSpellListController.m */; };
+		8469E344233E04E900362168 /* FMSpellListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8469E339233E04E900362168 /* FMSpellListController.xib */; };
+		8469E345233E04E900362168 /* FMButtonFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8469E33D233E04E900362168 /* FMButtonFooterView.m */; };
+		8469E346233E04E900362168 /* FMButtonFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8469E33E233E04E900362168 /* FMButtonFooterView.xib */; };
+		8469E347233E04E900362168 /* FMSpellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8469E341233E04E900362168 /* FMSpellHeaderView.m */; };
+		8469E348233E04E900362168 /* FMSpellHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8469E342233E04E900362168 /* FMSpellHeaderView.xib */; };
 		846A4908230A82FA00D2EAFB /* FMHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A4907230A82FA00D2EAFB /* FMHomeView.m */; };
 		846A490A230A830400D2EAFB /* FMHomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846A4909230A830400D2EAFB /* FMHomeView.xib */; };
 		846A490D230A8F1C00D2EAFB /* FMHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A490C230A8F1B00D2EAFB /* FMHomeController.m */; };
@@ -758,6 +764,15 @@
 		8467B57D2331D5520062B33F /* FMScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMScoreView.m; sourceTree = "<group>"; };
 		8467B57F2331D5520062B33F /* FMScoreViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMScoreViewModel.h; sourceTree = "<group>"; };
 		8467B5802331D5520062B33F /* FMScoreViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMScoreViewModel.m; sourceTree = "<group>"; };
+		8469E337233E04E900362168 /* FMSpellListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSpellListController.h; sourceTree = "<group>"; };
+		8469E338233E04E900362168 /* FMSpellListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSpellListController.m; sourceTree = "<group>"; };
+		8469E339233E04E900362168 /* FMSpellListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMSpellListController.xib; sourceTree = "<group>"; };
+		8469E33C233E04E900362168 /* FMButtonFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMButtonFooterView.h; sourceTree = "<group>"; };
+		8469E33D233E04E900362168 /* FMButtonFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMButtonFooterView.m; sourceTree = "<group>"; };
+		8469E33E233E04E900362168 /* FMButtonFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMButtonFooterView.xib; sourceTree = "<group>"; };
+		8469E340233E04E900362168 /* FMSpellHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSpellHeaderView.h; sourceTree = "<group>"; };
+		8469E341233E04E900362168 /* FMSpellHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSpellHeaderView.m; sourceTree = "<group>"; };
+		8469E342233E04E900362168 /* FMSpellHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMSpellHeaderView.xib; sourceTree = "<group>"; };
 		846A4906230A82FA00D2EAFB /* FMHomeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMHomeView.h; sourceTree = "<group>"; };
 		846A4907230A82FA00D2EAFB /* FMHomeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMHomeView.m; sourceTree = "<group>"; };
 		846A4909230A830400D2EAFB /* FMHomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMHomeView.xib; sourceTree = "<group>"; };
@@ -1936,6 +1951,7 @@
 		841150C12320F461004DF4CD /* SpellGroup */ = {
 			isa = PBXGroup;
 			children = (
+				8469E336233E04E900362168 /* SpellList */,
 				841150DC23210106004DF4CD /* PeopleSpell */,
 				841150DD2321034F004DF4CD /* SpellResult */,
 				841150E323210A24004DF4CD /* ParticipantSpell */,
@@ -2734,6 +2750,46 @@
 				8467B5802331D5520062B33F /* FMScoreViewModel.m */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8469E336233E04E900362168 /* SpellList */ = {
+			isa = PBXGroup;
+			children = (
+				8469E337233E04E900362168 /* FMSpellListController.h */,
+				8469E338233E04E900362168 /* FMSpellListController.m */,
+				8469E339233E04E900362168 /* FMSpellListController.xib */,
+				8469E33A233E04E900362168 /* Section */,
+			);
+			path = SpellList;
+			sourceTree = "<group>";
+		};
+		8469E33A233E04E900362168 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				8469E33F233E04E900362168 /* HeaderView */,
+				8469E33B233E04E900362168 /* FooterView */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		8469E33B233E04E900362168 /* FooterView */ = {
+			isa = PBXGroup;
+			children = (
+				8469E33C233E04E900362168 /* FMButtonFooterView.h */,
+				8469E33D233E04E900362168 /* FMButtonFooterView.m */,
+				8469E33E233E04E900362168 /* FMButtonFooterView.xib */,
+			);
+			path = FooterView;
+			sourceTree = "<group>";
+		};
+		8469E33F233E04E900362168 /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				8469E340233E04E900362168 /* FMSpellHeaderView.h */,
+				8469E341233E04E900362168 /* FMSpellHeaderView.m */,
+				8469E342233E04E900362168 /* FMSpellHeaderView.xib */,
+			);
+			path = HeaderView;
 			sourceTree = "<group>";
 		};
 		846A4905230A826000D2EAFB /* Controller */ = {
@@ -4345,6 +4401,7 @@
 				849CBFBE23014544003821E4 /* Assets.xcassets in Resources */,
 				84BAC58C2306A5290062B812 /* FMPasswordInputView.xib in Resources */,
 				84094E9B233B0B98008BF38B /* FMTitleView.xib in Resources */,
+				8469E346233E04E900362168 /* FMButtonFooterView.xib in Resources */,
 				84FF2F272335BD2800E34550 /* FMGoodsFooterView.xib in Resources */,
 				84D38B58233B173E00DEF36D /* FMRefundStatusView.xib in Resources */,
 				8405B8C32334D16F0065965F /* FMOrderAddressView.xib in Resources */,
@@ -4382,6 +4439,7 @@
 				84BAC58723069EA50062B812 /* FMPhoneNumberInputView.xib in Resources */,
 				840B828C2310CFB2004DBFC9 /* FMPayView.xib in Resources */,
 				84D7288123014D1B002D387A /* ScanQR2@2x.png in Resources */,
+				8469E344233E04E900362168 /* FMSpellListController.xib in Resources */,
 				84D7288223014D1B002D387A /* ScanQR3@2x.png in Resources */,
 				8498F58C23307D4E00D5ACF9 /* city.plist in Resources */,
 				84FF2F292335BD2800E34550 /* FMGoodsHeaderView.xib in Resources */,
@@ -4416,6 +4474,7 @@
 				84F64E11231F8BAC005E477D /* FMEvaluationTotalView.xib in Resources */,
 				84E7F55A233211B4002C6915 /* FMCouponCell.xib in Resources */,
 				841150DB2320FF49004DF4CD /* FMSpellGoodsCell.xib in Resources */,
+				8469E348233E04E900362168 /* FMSpellHeaderView.xib in Resources */,
 				8406E4912326252800E167BD /* FMSelectItemCell.xib in Resources */,
 				84C3DF5B231E16B4008147C6 /* FMGoodsInfoView.xib in Resources */,
 				8406E47A2325FA7500E167BD /* FMSalesActivityView.xib in Resources */,
@@ -4511,6 +4570,7 @@
 				8401E2EE23279958006C111B /* FMInputController.m in Sources */,
 				84C3DF4A231E0DCF008147C6 /* FMStoreInfoView.m in Sources */,
 				84FAEC97231763D800E8CA3F /* FMBrandGoodsController.m in Sources */,
+				8469E343233E04E900362168 /* FMSpellListController.m in Sources */,
 				8406E4772325FA7500E167BD /* FMActivityGoodsCell.m in Sources */,
 				848684FD233325080057A16E /* FMOrderCellViewModel.m in Sources */,
 				84FAEC9A23176A7A00E8CA3F /* FMBrandGoodsView.m in Sources */,
@@ -4663,6 +4723,7 @@
 				8467B5822331D5520062B33F /* FMScoreHeaderView.m in Sources */,
 				841150D02320F461004DF4CD /* FMSpellGroupView.m in Sources */,
 				84FC444D231CF4E200DF9799 /* YBIBIconManager.m in Sources */,
+				8469E345233E04E900362168 /* FMButtonFooterView.m in Sources */,
 				8405B8B12334CDD00065965F /* FMOrderDetailsModel.m in Sources */,
 				84FDEF6F232905DB0030196A /* FMStoreListController.m in Sources */,
 				84001C95230CD4EB0010DE0B /* WMPageController.m in Sources */,
@@ -4681,6 +4742,7 @@
 				84001CAA230D3DAA0010DE0B /* FMDefaultView.m in Sources */,
 				8409B8AE232638B6009CD45B /* FMFeedbackController.m in Sources */,
 				84D42D40230403F700249356 /* FMLoginModel.m in Sources */,
+				8469E347233E04E900362168 /* FMSpellHeaderView.m in Sources */,
 				84F9D7E6230E272000158496 /* FMNavSearchBarView.m in Sources */,
 				84F045242330BDCC0002B5B3 /* FMMessageCell.m in Sources */,
 				84D7288423014D1B002D387A /* ZFScanViewController.m in Sources */,

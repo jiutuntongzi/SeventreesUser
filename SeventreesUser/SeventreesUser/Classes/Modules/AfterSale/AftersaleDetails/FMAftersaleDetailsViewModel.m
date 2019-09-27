@@ -10,6 +10,10 @@
 
 @implementation FMAftersaleDetailsViewModel
 
+@synthesize requestDataCommand = _requestDataCommand;
+@synthesize refreshUISubject = _refreshUISubject;
+@synthesize actionSubject = _actionSubject;
+
 - (void)fm_initialize {
     @weakify(self)
 

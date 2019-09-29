@@ -36,7 +36,7 @@
         DLog(@"rowEntity == %@", rowEntity);
         
         FMSlashDetailsController *nextVC = [[FMSlashDetailsController alloc] init];
-        nextVC.style = FMSlashDetailsControllerStyleSlashFailure;
+        nextVC.style = FMSlashDetailsControllerStyleSlashing;
         [self.navigationController pushViewController:nextVC animated:YES];
     }];
     pagingView.cv_frame(CGRectMake(0.f, 0.f, self.view.width, self.view.height - kNavBarHeight - kFixedHeight - 40.f));

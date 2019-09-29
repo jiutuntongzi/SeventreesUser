@@ -28,6 +28,8 @@
 
 #import "FMAftersaleDetailsController.h"
 
+#import "FMCollectPagingController.h"
+//#import "FMCollectBrandListController.h"
 
 
 @interface FMMeView ()
@@ -152,7 +154,10 @@
     }];
     
     [[_collectButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        @strongify(self);
+        @strongify(self)
+        UIViewController *nextVC = [[FMCollectPagingController alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
     
     [[_moreOrderButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {

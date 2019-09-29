@@ -97,7 +97,7 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
     self.menuViewLayoutMode = WMMenuViewLayoutModeScatter;
 }
 
-/** 配置分类菜单栏 */
+/** 配置子页VC */
 - (void)configSubPages {
     NSMutableArray *mChildControllers = [[NSMutableArray alloc] initWithCapacity:4];
     NSMutableArray *mTitles = [[NSMutableArray alloc] initWithCapacity:4];

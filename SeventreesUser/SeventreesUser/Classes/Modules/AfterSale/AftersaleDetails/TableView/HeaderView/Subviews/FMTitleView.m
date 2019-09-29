@@ -21,11 +21,14 @@
 - (void)setLeftTitle:(NSString *)leftTitle {
     _leftTitle = leftTitle;
     
+    _leftLabel.text = leftTitle;
+    
 }
 
 - (void)setRightTitle:(NSString *)rightTitle {
     _rightTitle = rightTitle;
     
+    _rightLabel.text = rightTitle;
 }
 
 - (void)awakeFromNib {

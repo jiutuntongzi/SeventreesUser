@@ -31,26 +31,41 @@
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共209件商品" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfY-FQ-Iir">
-                        <rect key="frame" x="90" y="52.5" width="215" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="件商品" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfY-FQ-Iir">
+                        <rect key="frame" x="125" y="53.5" width="37" height="15"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWG-vg-IEI">
+                        <rect key="frame" x="90" y="53.5" width="12.5" height="15"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="209" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psa-o6-l9f">
+                        <rect key="frame" x="102.5" y="53.5" width="22.5" height="15"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
+                        <color key="textColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="NfY-FQ-Iir" firstAttribute="trailing" secondItem="ODc-3Q-JB5" secondAttribute="trailing" id="15e-Oj-mra"/>
-                    <constraint firstItem="NfY-FQ-Iir" firstAttribute="leading" secondItem="ODc-3Q-JB5" secondAttribute="leading" id="2kP-3H-Jkc"/>
+                    <constraint firstItem="Psa-o6-l9f" firstAttribute="bottom" secondItem="JWG-vg-IEI" secondAttribute="bottom" id="4cV-RH-XHK"/>
+                    <constraint firstItem="JWG-vg-IEI" firstAttribute="leading" secondItem="1Lm-Ja-Vp4" secondAttribute="trailing" constant="15" id="G6J-SR-c9D"/>
+                    <constraint firstItem="NfY-FQ-Iir" firstAttribute="leading" secondItem="Psa-o6-l9f" secondAttribute="trailing" id="JZW-N5-SDX"/>
                     <constraint firstItem="1Lm-Ja-Vp4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KiX-M5-fuX"/>
                     <constraint firstItem="ODc-3Q-JB5" firstAttribute="top" secondItem="1Lm-Ja-Vp4" secondAttribute="top" constant="12" id="Mag-1T-IS6"/>
+                    <constraint firstItem="Psa-o6-l9f" firstAttribute="leading" secondItem="JWG-vg-IEI" secondAttribute="trailing" id="VuL-J1-egV"/>
                     <constraint firstAttribute="trailing" secondItem="ODc-3Q-JB5" secondAttribute="trailing" constant="15" id="XYn-cf-JVH"/>
-                    <constraint firstItem="NfY-FQ-Iir" firstAttribute="top" secondItem="ODc-3Q-JB5" secondAttribute="bottom" constant="4" id="gg8-4u-Bu5"/>
+                    <constraint firstItem="NfY-FQ-Iir" firstAttribute="bottom" secondItem="JWG-vg-IEI" secondAttribute="bottom" id="bey-UG-vnM"/>
                     <constraint firstItem="ODc-3Q-JB5" firstAttribute="leading" secondItem="1Lm-Ja-Vp4" secondAttribute="trailing" constant="15" id="iDa-pp-v9v"/>
                     <constraint firstItem="1Lm-Ja-Vp4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="jsJ-PK-waS"/>
+                    <constraint firstItem="JWG-vg-IEI" firstAttribute="top" secondItem="ODc-3Q-JB5" secondAttribute="bottom" constant="5" id="pvb-Mw-rxy"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
-            <point key="canvasLocation" x="-361.60000000000002" y="118.29085457271366"/>
+            <point key="canvasLocation" x="-387.19999999999999" y="118.29085457271366"/>
         </tableViewCell>
     </objects>
     <resources>

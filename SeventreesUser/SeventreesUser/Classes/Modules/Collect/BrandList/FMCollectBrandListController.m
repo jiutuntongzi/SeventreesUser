@@ -18,7 +18,8 @@
 @implementation FMCollectBrandListController
 
 - (void)fm_addSubviews {
-    UIColor *backColor = UIColor.cc_colorByRGBA(247.f, 247.f, 247.f, 1.f);
+    
+    UIColor *backColor = UIColor.cc_colorByHexString(@"#F7F7F7");
     self.view.cv_backColor(backColor);
     
     void (^setTableViewBlock)(void) = ^{

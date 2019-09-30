@@ -70,7 +70,7 @@
                     <constraint firstItem="CKF-Oz-dDE" firstAttribute="leading" secondItem="dux-lG-2Vc" secondAttribute="leading" constant="15" id="xTi-zK-25Q"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="-2007.2" y="31.934032983508249"/>
+            <point key="canvasLocation" x="-1930" y="31"/>
         </tableViewCell>
     </objects>
     <resources>

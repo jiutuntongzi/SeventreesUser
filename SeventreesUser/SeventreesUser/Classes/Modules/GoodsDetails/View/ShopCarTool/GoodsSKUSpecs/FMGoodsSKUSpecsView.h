@@ -1,14 +1,13 @@
 //
-//  FMHomeView.h
+//  FMGoodsSKUSpecsView.h
 //  SeventreesUser
 //
-//  Created by wushiye on 2019/8/19.
+//  Created by wushiye on 2019/9/30.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "FMView.h"
 
-@interface FMHomeView : FMView
+@interface FMGoodsSKUSpecsView : FMView
 
 @end

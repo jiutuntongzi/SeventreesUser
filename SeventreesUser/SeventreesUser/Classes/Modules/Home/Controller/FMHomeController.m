@@ -38,7 +38,6 @@
     FMHomeView *homeView = FMHomeView.cv_viewFromNibLoad();
     _mainView = homeView;
     [self.view addSubview:homeView];
-
 }
 
 - (void)fm_bindViewModel {

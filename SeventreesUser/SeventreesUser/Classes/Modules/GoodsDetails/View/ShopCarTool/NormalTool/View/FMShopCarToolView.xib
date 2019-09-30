@@ -179,7 +179,7 @@
                 <constraint firstAttribute="bottom" secondItem="Acf-yg-PO4" secondAttribute="bottom" id="mLK-JG-aas"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-399.19999999999999" y="-78.260869565217391"/>
+            <point key="canvasLocation" x="-196" y="-59"/>
         </view>
     </objects>
     <resources>

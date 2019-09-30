@@ -60,7 +60,7 @@
     FMDefaultView *mainView = [[FMDefaultView alloc] init];
     _mainView = mainView;
     [self.view addSubview:mainView];
-    mainView.cv_backColor(UIColor.groupTableViewBackgroundColor);
+    mainView.cv_backColor(UIColor.cc_colorByHexString(@"#F7F7F7"));
     
     /// 顶部搜索栏
     FMNavSearchBarView *searchBarView = [[FMNavSearchBarView alloc] init];

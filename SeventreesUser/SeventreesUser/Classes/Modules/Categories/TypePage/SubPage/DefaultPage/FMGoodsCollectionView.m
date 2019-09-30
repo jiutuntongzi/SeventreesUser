@@ -31,7 +31,7 @@
 //    _collectionView.scrollsToTop = NO;
     _collectionView.showsHorizontalScrollIndicator = NO;
     _collectionView.showsVerticalScrollIndicator = NO;
-    _collectionView.backgroundColor = UIColor.cc_colorByHexString(@"#EEEEEE");
+    _collectionView.backgroundColor = UIColor.cc_colorByHexString(@"#F7F7F7");
 //    _collectionView.contentOffset = CGPointMake(0, 0);
 //    _collectionView.contentSize = CGSizeMake(self.width, 0);
     [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([FMGoodsCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([FMGoodsCell class])];

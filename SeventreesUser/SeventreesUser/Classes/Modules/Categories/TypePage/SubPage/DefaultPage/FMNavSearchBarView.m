@@ -50,7 +50,6 @@
     /// 输入搜索栏
     _searchBarView = SearchBarView.cv_viewFromNibLoad();
     [self addSubview:_searchBarView];
-    // code
     
     [self setNeedsUpdateConstraints];
     [self updateConstraintsIfNeeded];

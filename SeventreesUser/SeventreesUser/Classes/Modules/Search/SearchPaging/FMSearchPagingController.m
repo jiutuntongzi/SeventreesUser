@@ -1,29 +1,32 @@
 //
-//  FMCollectPagingController.m
+//  FMSearchPagingController.m
 //  SeventreesUser
 //
 //  Created by wushiye on 2019/8/21.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import "FMCollectPagingController.h"
+#import "FMSearchPagingController.h"
+#import "FMNavSearchBarView.h"
 #import "MacroHeader.h"
 
-#import "FMCollectGoodsListController.h"
+#import "FMSearchGoodsListController.h"
 #import "FMCollectBrandListController.h"
 
 #define     kClassNameVCKey      @"classNameVCKey"
 #define     kTitleKey            @"titleKey"
 
-@interface FMCollectPagingController ()
+@interface FMSearchPagingController ()
 
 @property (copy, nonatomic) NSArray<UIViewController *> *childControllers;
 @property (copy, nonatomic) NSArray<NSString *> *itemTitles;
 @property (nonatomic, copy) NSArray *pageItems;
 
+@property (nonatomic, strong) FMNavSearchBarView *searchBarView;
+
 @end
 
-@implementation FMCollectPagingController
+@implementation FMSearchPagingController
 
 #pragma mark - System Functions
 
@@ -38,27 +41,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self setupUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [self setupNavbar];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self setupCustomNavigationBar];
     
     [self reloadData];
 }
 
-- (void)updateViewConstraints {
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     
-    [super updateViewConstraints];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 #pragma mark - Private Functions
-
-- (void)setupUI {
-    
-}
 
 /** 配置分类菜单栏 */
 - (void)configTypeMenu {
@@ -95,22 +95,32 @@
     _itemTitles = [mTitles copy];
 }
 
-- (void)setupNavbar {
+/** 自定义导航搜索栏 */
+- (void)setupCustomNavigationBar {
+    FMNavSearchBarView *searchBarView = [[FMNavSearchBarView alloc] init];
+    _searchBarView = searchBarView;
+    [self.view addSubview:searchBarView];
+    searchBarView.alpha = 0.01f;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        searchBarView.alpha = 1.f;
+    });
     __weak typeof(self) weakSelf = self;
-    
-    self.navigationItem.title = @"我的收藏";
-    
-    UIBarButtonItem *returnItem = UIBarButtonItem.cbi_initWithImageStyleForTouchCallback(@"icon_navBack", 1, ^(UIBarButtonItem *leftItem) {
+    _searchBarView.prevPageCallback = ^{
+        [UIView animateWithDuration:0.25f animations:^{
+            searchBarView.cv_frameOf(kScreenWidth, searchBarView.origin.y, searchBarView.width, searchBarView.height);
+            searchBarView.alpha = 0.01f;
+        } completion:^(BOOL finished) {
+            [searchBarView removeFromSuperview];
+        }];
         [weakSelf.navigationController popViewControllerAnimated:YES];
-    });
-    self.navigationItem.cni_leftBarButtonItem(returnItem);
+//        [commonMgr.topViewController().navigationController popViewControllerAnimated:YES];
+    };
     
-    // test
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-//        FMAftersaleDetailsController *nextVC = [[FMAftersaleDetailsController alloc] init];
-//        [self.navigationController pushViewController:nextVC animated:YES];
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
+    [_searchBarView makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(kStatusBarHeight);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(kFixedHeight);
+    }];
 }
 
 - (void)refreshData {
@@ -122,7 +132,7 @@
 - (NSArray *)pageItems {
     if (! _pageItems) {
         _pageItems = @[
-                       @{kClassNameVCKey : @"FMCollectGoodsListController", kTitleKey : @"商品"},
+                       @{kClassNameVCKey : @"FMSearchGoodsListController", kTitleKey : @"商品"},
                        @{kClassNameVCKey : @"FMCollectBrandListController", kTitleKey : @"品牌"},
                        ];
     }
@@ -141,8 +151,6 @@
 }
 
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index {
-    
-    
     return _itemTitles[index];
 }
 
@@ -152,9 +160,16 @@
 }
 
 - (CGFloat)menuView:(WMMenuView *)menu widthForItemAtIndex:(NSInteger)index {
+    /// 分隔线
+    UIColor *backColor = UIColor.cc_colorByHexString(@"#EEEEEE");
+    UIView *topSpaceView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, menu.width, 1.f)];
+    topSpaceView.userInteractionEnabled = NO;
+    topSpaceView.backgroundColor = backColor;
+    [menu insertSubview:topSpaceView atIndex:0];
+    
     UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0.f, menu.height - 1.f, menu.width, 1.f)];
-    bottomLineView.userInteractionEnabled = NO;
-    bottomLineView.backgroundColor = UIColor.cc_colorByHexString(@"#E5E5E5");
+    topSpaceView.userInteractionEnabled = NO;
+    bottomLineView.backgroundColor = backColor;
     [menu insertSubview:bottomLineView atIndex:0];
     
     CGFloat width = [super menuView:menu widthForItemAtIndex:index];
@@ -163,12 +178,15 @@
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForMenuView:(WMMenuView *)menuView {
     menuView.backgroundColor = [UIColor whiteColor];
-    return CGRectMake(0.f, 0.f, self.view.width, kFixedHeight);
+    return CGRectMake(0.f, kNavBarHeight, self.view.width, kFixedHeight);
 }
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForContentView:(WMScrollView *)contentView {
-    //    CGFloat originY = CGRectGetMaxY([self pageController:pageController preferredFrameForMenuView:self.menuView]);
-    return CGRectMake(0.f, kFixedHeight, self.view.width, self.view.height - kFixedHeight);
+    return CGRectMake(0.f, kNavBarHeight + kFixedHeight, self.view.width, kScreenHeight - kNavBarHeight - kFixedHeight);
+}
+
+- (void)dealloc {
+    DLog(@"分页VC销毁了");
 }
 
 @end

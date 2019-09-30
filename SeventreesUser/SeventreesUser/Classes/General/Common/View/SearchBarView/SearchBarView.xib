@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -49,18 +48,17 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="h7X-cA-fFP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Hxu-zR-hMF"/>
-                <constraint firstItem="h7X-cA-fFP" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Nzi-5p-7VE"/>
-                <constraint firstItem="h7X-cA-fFP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Sei-wi-cOc"/>
+                <constraint firstItem="h7X-cA-fFP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Hxu-zR-hMF"/>
+                <constraint firstItem="h7X-cA-fFP" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="Nzi-5p-7VE"/>
+                <constraint firstItem="h7X-cA-fFP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Sei-wi-cOc"/>
                 <constraint firstAttribute="bottom" secondItem="h7X-cA-fFP" secondAttribute="bottom" id="Vb6-ue-TFs"/>
-                <constraint firstItem="h7X-cA-fFP" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="X0r-vh-aRL"/>
+                <constraint firstItem="h7X-cA-fFP" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="X0r-vh-aRL"/>
                 <constraint firstItem="h7X-cA-fFP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="b7E-yG-WmX"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="h7X-cA-fFP" secondAttribute="trailing" id="jmv-MQ-hqv"/>
-                <constraint firstItem="h7X-cA-fFP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="xkf-R1-4VC"/>
+                <constraint firstAttribute="trailing" secondItem="h7X-cA-fFP" secondAttribute="trailing" id="jmv-MQ-hqv"/>
+                <constraint firstItem="h7X-cA-fFP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xkf-R1-4VC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="40.799999999999997" y="-226.6866566716642"/>
+            <point key="canvasLocation" x="-192.80000000000001" y="-366.11694152923542"/>
         </view>
     </objects>
 </document>

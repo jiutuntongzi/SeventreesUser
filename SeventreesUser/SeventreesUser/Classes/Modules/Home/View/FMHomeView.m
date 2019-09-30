@@ -7,7 +7,8 @@
 //
 
 #import "FMHomeView.h"
-#import "SearchBarView.h"
+
+#import "FMSearchButtonView.h"
 #import "SDCycleScrollView.h"
 #import "LMJVerticalScrollText.h"
 #import "FMMenuView.h"
@@ -17,7 +18,7 @@
 @interface FMHomeView () <SDCycleScrollViewDelegate, LMJVerticalScrollTextDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *searchContentView;
-@property (nonatomic, strong) SearchBarView *searchBarView;
+@property (nonatomic, weak) FMSearchButtonView *searchButtonView;
 
 @property (weak, nonatomic) IBOutlet UIView *scrollerContentView;
 @property (nonatomic, strong) SDCycleScrollView *cycleScrollView;
@@ -44,7 +45,7 @@
 #pragma mark - System Functions
 
 - (void)updateConstraints {
-    _searchBarView.cv_frame(_searchContentView.bounds);
+    _searchButtonView.cv_frame(CGRectMake(15.f, 11.f, _searchContentView.bounds.size.width - 30.f, 38.f));
     
     [_cycleScrollView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self->_scrollerContentView);
@@ -76,9 +77,16 @@
     });
     
     /// 搜索栏
-    SearchBarView *searchBarView = SearchBarView.cv_viewFromNibLoad();
-    _searchBarView = searchBarView;
-    [_searchContentView addSubview:searchBarView];
+    FMSearchButtonView *searchButtonView = FMSearchButtonView.cv_viewFromNibLoad();
+    _searchButtonView = searchButtonView;
+    [_searchContentView addSubview:searchButtonView];
+    
+    _searchButtonView.actionCallback = ^{
+        DLog(@"点了搜索");
+        UIViewController *nextVC = [[NSClassFromString(@"FMSearchPagingController") alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        [self.viewController.navigationController pushViewController:nextVC animated:YES];
+    };
     
     
     /// 图片轮播器：网络加载 --- 创建自定义图片的pageControlDot的图片轮播器

@@ -30,6 +30,7 @@
 	<array>
 		<string>armv7</string>
 	</array>
+    
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

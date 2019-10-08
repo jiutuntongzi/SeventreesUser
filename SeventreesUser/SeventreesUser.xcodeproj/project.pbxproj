@@ -250,6 +250,10 @@
 		8486851123334FB50057A16E /* FMGoodsInDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486851023334FB50057A16E /* FMGoodsInDetailModel.m */; };
 		84868514233350580057A16E /* FMGoodsInDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84868512233350570057A16E /* FMGoodsInDetailsCell.m */; };
 		84868516233350600057A16E /* FMGoodsInDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84868515233350600057A16E /* FMGoodsInDetailsCell.xib */; };
+		84886C5A234C661200CFD16F /* NetworkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84886C59234C661200CFD16F /* NetworkRequestManager.m */; };
+		84886C5D234C664D00CFD16F /* NetworkDataConver.m in Sources */ = {isa = PBXBuildFile; fileRef = 84886C5C234C664D00CFD16F /* NetworkDataConver.m */; };
+		84886C60234C694500CFD16F /* NetworkResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84886C5F234C694500CFD16F /* NetworkResultModel.m */; };
+		84886C67234C879700CFD16F /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84886C66234C879700CFD16F /* UserData.m */; };
 		8498F58C23307D4E00D5ACF9 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8498F58523307D4E00D5ACF9 /* city.plist */; };
 		8498F58D23307D4E00D5ACF9 /* CZHAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498F58723307D4E00D5ACF9 /* CZHAddressPickerView.m */; };
 		8498F58E23307D4E00D5ACF9 /* UIButton+CZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498F58923307D4E00D5ACF9 /* UIButton+CZHExtension.m */; };
@@ -893,6 +897,15 @@
 		84868512233350570057A16E /* FMGoodsInDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGoodsInDetailsCell.m; sourceTree = "<group>"; };
 		84868513233350570057A16E /* FMGoodsInDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGoodsInDetailsCell.h; sourceTree = "<group>"; };
 		84868515233350600057A16E /* FMGoodsInDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMGoodsInDetailsCell.xib; sourceTree = "<group>"; };
+		84886C58234C661200CFD16F /* NetworkRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkRequestManager.h; sourceTree = "<group>"; };
+		84886C59234C661200CFD16F /* NetworkRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkRequestManager.m; sourceTree = "<group>"; };
+		84886C5B234C664D00CFD16F /* NetworkDataConver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkDataConver.h; sourceTree = "<group>"; };
+		84886C5C234C664D00CFD16F /* NetworkDataConver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkDataConver.m; sourceTree = "<group>"; };
+		84886C5E234C694500CFD16F /* NetworkResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkResultModel.h; sourceTree = "<group>"; };
+		84886C5F234C694500CFD16F /* NetworkResultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkResultModel.m; sourceTree = "<group>"; };
+		84886C65234C879700CFD16F /* UserData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
+		84886C66234C879700CFD16F /* UserData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
+		84886C6B234C8F6100CFD16F /* URIPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URIPath.h; sourceTree = "<group>"; };
 		8498D47D2335D496009EBB2A /* OrderDetailsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailsHeader.h; sourceTree = "<group>"; };
 		8498D47E2335D4F6009EBB2A /* GoodsListHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsListHeader.h; sourceTree = "<group>"; };
 		8498F58423307D4E00D5ACF9 /* AddressPickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerHeader.h; sourceTree = "<group>"; };
@@ -3107,6 +3120,29 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		84886C57234C65B800CFD16F /* NetworkRequest */ = {
+			isa = PBXGroup;
+			children = (
+				84886C6B234C8F6100CFD16F /* URIPath.h */,
+				84886C58234C661200CFD16F /* NetworkRequestManager.h */,
+				84886C59234C661200CFD16F /* NetworkRequestManager.m */,
+				84886C5B234C664D00CFD16F /* NetworkDataConver.h */,
+				84886C5C234C664D00CFD16F /* NetworkDataConver.m */,
+				84886C5E234C694500CFD16F /* NetworkResultModel.h */,
+				84886C5F234C694500CFD16F /* NetworkResultModel.m */,
+			);
+			path = NetworkRequest;
+			sourceTree = "<group>";
+		};
+		84886C61234C845600CFD16F /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				84886C65234C879700CFD16F /* UserData.h */,
+				84886C66234C879700CFD16F /* UserData.m */,
+			);
+			path = UserData;
+			sourceTree = "<group>";
+		};
 		8498F58023307D1000D5ACF9 /* DialogBoxView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3266,6 +3302,7 @@
 		849CBFB523011732003821E4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				84886C61234C845600CFD16F /* UserData */,
 				84065CFB230A383B00D39225 /* View */,
 				849CBFB623011739003821E4 /* Controller */,
 			);
@@ -3638,6 +3675,7 @@
 			isa = PBXGroup;
 			children = (
 				84D7273023014D1B002D387A /* MacroHeader */,
+				84886C57234C65B800CFD16F /* NetworkRequest */,
 				84DD40E423016436001171F1 /* Category */,
 				84D7281B23014D1B002D387A /* Utility */,
 				84D7281223014D1B002D387A /* CommonManager */,
@@ -4856,6 +4894,7 @@
 				84DD3FE123015B04001171F1 /* UIView+Seek.m in Sources */,
 				848684FA233325080057A16E /* FMOrderPagingController.m in Sources */,
 				8407F2D5231E46FE00E875AC /* FMGoodsPictureListModel.m in Sources */,
+				84886C67234C879700CFD16F /* UserData.m in Sources */,
 				84089E6E2313905600D7EF7D /* FMEvaluationModel.m in Sources */,
 				8405B8B42334CE0A0065965F /* FMOrderDetailsViewModel.m in Sources */,
 				8456BAC5232F5D1000E59966 /* FMSelectFooterView.m in Sources */,
@@ -4894,6 +4933,7 @@
 				8412DF4A232A224F001B6801 /* FMAboutController.m in Sources */,
 				84DD3FCD23015B04001171F1 /* UIViewController+Chain.m in Sources */,
 				84499368234082370006A544 /* FMSlashPricesView.m in Sources */,
+				84886C5D234C664D00CFD16F /* NetworkDataConver.m in Sources */,
 				84497C0D231D157000D3A79B /* FMShopCarToolViewModel.m in Sources */,
 				8498F5A8233082EA00D5ACF9 /* BRDatePickerView.m in Sources */,
 				84FC4456231CF4E200DF9799 /* YBIBInteractionProfile.m in Sources */,
@@ -5111,6 +5151,7 @@
 				84FF2F282335BD2800E34550 /* FMGoodsHeaderView.m in Sources */,
 				84DD3FD623015B04001171F1 /* UICollectionViewCell+Chain.m in Sources */,
 				84F045292330BDF70002B5B3 /* FMMessageModel.m in Sources */,
+				84886C60234C694500CFD16F /* NetworkResultModel.m in Sources */,
 				8411604623222EEB00C3443D /* FMSpellShopCarToolViewModel.m in Sources */,
 				84187418233A153A0083FE1E /* FMRefundInGoodsCell.m in Sources */,
 				84D7282423014D1B002D387A /* FMView.m in Sources */,
@@ -5157,6 +5198,7 @@
 				8406E4752325FA7500E167BD /* FMSalesActivityController.m in Sources */,
 				8449935E23407F2A0006A544 /* FMSlashDetailsController.m in Sources */,
 				847E58C8232252B80022FF1F /* FMBargainTypeController.m in Sources */,
+				84886C5A234C661200CFD16F /* NetworkRequestManager.m in Sources */,
 				84C3DF5C231E16B4008147C6 /* FMGoodsInfoViewModel.m in Sources */,
 				84F9CAFA2329DD88001257C8 /* FMStoreCheckModel.m in Sources */,
 				84468D4C230256B20073D640 /* BaseNavigationController.m in Sources */,

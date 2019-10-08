@@ -13,6 +13,8 @@
 
 #import "ChainKit.h" // 原创链式UI布局
 
+#import "NetworkRequestManager.h"
+
 #import "CommonManager.h"
 
 #import "ThreeLibHeader.h"

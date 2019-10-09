@@ -9,6 +9,8 @@
 #import "FMLoginController.h"
 #import "FMLoginView.h"
 
+#import "FMRegisterController.h"
+
 @interface FMLoginController ()
 
 @property (nonatomic, strong) FMLoginView *loginView;
@@ -39,10 +41,17 @@
 
 - (void)fm_bindViewModel {
     @weakify(self)
+    
+    [self.loginView.viewModel.registerActionSubject subscribeNext:^(id x) {
+        @strongify(self)
+        UIViewController *nextVC = [[FMRegisterController alloc] init];
+        [self presentViewController:nextVC animated:YES completion:nil];
+    }];
+    
     [self.loginView.viewModel.loginSuccessSubject subscribeNext:^(id x) {
         DLog(@"请求登录成功数据：%@", x);
-        UINavigationController *navController = UINavigationController.cnc_initWithRootViewController(UIViewController.cvc_controller().cvc_title(@"个人"));
-        self_weak_.cvc_presentVCAnimatedCompletion(navController, YES, nil);
+//        UINavigationController *navController = UINavigationController.cnc_initWithRootViewController(UIViewController.cvc_controller().cvc_title(@"个人"));
+//        self_weak_.cvc_presentVCAnimatedCompletion(navController, YES, nil);
     }];
 }
 

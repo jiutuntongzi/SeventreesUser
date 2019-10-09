@@ -10,8 +10,6 @@
 
 @implementation UserData
 
-
-
 + (NSString *)token {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kTokenKey];
 }
@@ -19,6 +17,10 @@
 + (void)saveToken:(NSString *)token {
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:kTokenKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)removeToken {
+    [self saveToken:nil];
 }
 
 @end

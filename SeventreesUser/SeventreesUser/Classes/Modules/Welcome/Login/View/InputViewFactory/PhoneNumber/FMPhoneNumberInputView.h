@@ -9,13 +9,11 @@
 #import "FMView.h"
 #import "FMPhoneNumberInputViewModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMPhoneNumberInputView : FMView
 
 @property (nonatomic, strong) FMPhoneNumberInputViewModel *viewModel;
 
+- (void)becomeFirstResponder;
 
 @end
 
-NS_ASSUME_NONNULL_END

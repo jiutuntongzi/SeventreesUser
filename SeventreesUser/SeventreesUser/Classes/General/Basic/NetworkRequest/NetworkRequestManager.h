@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "URIPath.h"
-
-@class NetworkResultModel;
+#import "NetworkResultModel.h"
 
 typedef NS_ENUM(NSUInteger, NetworkRequestManagerServerType) {
     

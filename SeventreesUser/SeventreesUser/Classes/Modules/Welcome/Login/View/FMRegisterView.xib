@@ -16,14 +16,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vld-QM-zTV" userLabel="ContentView">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vld-QM-zTV" userLabel="ContentView">
+                    <rect key="frame" x="10" y="10" width="300" height="600"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dUf-OD-tgQ" userLabel="back Image View">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         </imageView>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kG-p2-ABf">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPv-7E-pUB" userLabel="ContentView">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="548"/>
@@ -98,7 +98,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZx-Cd-flL" userLabel="loginResigerContentView">
                                             <rect key="frame" x="14" y="317" width="347" height="35"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rof-yx-g5A">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rof-yx-g5A" userLabel="isAgreeButton">
                                                     <rect key="frame" x="-15" y="7" width="60" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="rFh-45-wsz"/>
@@ -193,7 +193,7 @@
                             </constraints>
                         </scrollView>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rc2-YJ-LtW" userLabel="userAgreementView">
-                            <rect key="frame" x="66.5" y="603" width="242" height="44"/>
+                            <rect key="frame" x="66.5" y="623" width="242" height="44"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录即代表您阅读并同意" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHs-u2-9Xl">
                                     <rect key="frame" x="0.0" y="14.5" width="140" height="15"/>
@@ -242,19 +242,20 @@
             </subviews>
             <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="POY-B8-p2G" firstAttribute="bottom" secondItem="vld-QM-zTV" secondAttribute="bottom" id="8zW-eR-zqc"/>
-                <constraint firstItem="POY-B8-p2G" firstAttribute="trailing" secondItem="vld-QM-zTV" secondAttribute="trailing" id="Zu1-eN-aSZ"/>
-                <constraint firstItem="vld-QM-zTV" firstAttribute="top" secondItem="POY-B8-p2G" secondAttribute="top" id="h98-tA-ZCt"/>
-                <constraint firstItem="vld-QM-zTV" firstAttribute="leading" secondItem="POY-B8-p2G" secondAttribute="leading" id="pDd-Ap-yTe"/>
+                <constraint firstAttribute="bottom" secondItem="vld-QM-zTV" secondAttribute="bottom" id="8zW-eR-zqc"/>
+                <constraint firstAttribute="trailing" secondItem="vld-QM-zTV" secondAttribute="trailing" id="Zu1-eN-aSZ"/>
+                <constraint firstItem="vld-QM-zTV" firstAttribute="top" secondItem="rIK-RC-pyI" secondAttribute="top" id="h98-tA-ZCt"/>
+                <constraint firstItem="vld-QM-zTV" firstAttribute="leading" secondItem="rIK-RC-pyI" secondAttribute="leading" id="pDd-Ap-yTe"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="POY-B8-p2G"/>
+            <viewLayoutGuide key="safeArea" id="3ak-wq-fnm"/>
             <connections>
                 <outlet property="inputContentView1" destination="U7e-Pt-DJI" id="OAE-mj-Rj9"/>
                 <outlet property="inputContentView2" destination="gei-c8-0Xq" id="RoT-DH-not"/>
+                <outlet property="isAgreeButton" destination="rof-yx-g5A" id="Zlq-XA-6D6"/>
                 <outlet property="nextButton" destination="O08-4H-kp4" id="3yV-27-Tkj"/>
                 <outlet property="scrollViewContentHeightCons" destination="upq-T1-LQA" id="Bih-xN-Aub"/>
             </connections>
-            <point key="canvasLocation" x="40.799999999999997" y="46.326836581709152"/>
+            <point key="canvasLocation" x="-615" y="18"/>
         </view>
     </objects>
     <resources>

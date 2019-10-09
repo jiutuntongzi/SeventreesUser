@@ -40,4 +40,9 @@
 
 #import "UITableView+FDTemplateLayoutCell.h"
 
+
+#pragma mark ——— Other
+
+#import "UserData.h"
+
 #endif /* MacroHeader_h */

@@ -7,11 +7,10 @@
 //
 
 #import "FMView.h"
-
-NS_ASSUME_NONNULL_BEGIN
+#import "FMRegisterViewModel.h"
 
 @interface FMRegisterView : FMView
 
-@end
+@property (nonatomic, strong) FMRegisterViewModel *viewModel;
 
-NS_ASSUME_NONNULL_END
+@end

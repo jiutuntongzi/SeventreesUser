@@ -16,8 +16,8 @@
             @{
               @"statusCode": _statusCode,
               @"statusMsg": _statusMsg,
-              @"dict": _dict,
-              @"originalJSONString": _originalJSONString
+              @"jsonDict": _jsonDict,
+              @"jsonString": _jsonString
               }];
 }
 

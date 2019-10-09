@@ -79,21 +79,28 @@
 }
 
 - (RACSubject *)refreshUISubject {
-    if (!_refreshUISubject) {
+    if (! _refreshUISubject) {
         _refreshUISubject = [RACSubject subject];
     }
     return _refreshUISubject;
 }
 
 - (RACSubject *)loginSuccessSubject {
-    if (!_loginSuccessSubject) {
+    if (! _loginSuccessSubject) {
         _loginSuccessSubject = [RACSubject subject];
     }
     return _loginSuccessSubject;
 }
 
+- (RACSubject *)registerActionSubject {
+    if (! _registerActionSubject) {
+        _registerActionSubject = [RACSubject subject];
+    }
+    return _registerActionSubject;
+}
+
 - (FMLoginModel *)loginModel {
-    if (!_loginModel) {
+    if (! _loginModel) {
         _loginModel = [[FMLoginModel alloc] init];
     }
     return _loginModel;

@@ -8,7 +8,14 @@
 
 #import "FMPasswordInputView.h"
 
+@interface FMPasswordInputView ()
+
+
+
+@end
+
 @implementation FMPasswordInputView
+
 
 
 @end

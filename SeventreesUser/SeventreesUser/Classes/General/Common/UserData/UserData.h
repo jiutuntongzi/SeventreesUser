@@ -16,4 +16,6 @@
 
 + (void)saveToken:(NSString *)token;
 
++ (void)removeToken;
+
 @end

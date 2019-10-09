@@ -8,12 +8,7 @@
 
 #import "FMViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMLoginController : FMViewController
 
 
-
 @end
-
-NS_ASSUME_NONNULL_END

@@ -16,10 +16,10 @@
 /** 状态消息 */
 @property (nonatomic, copy) NSString *statusMsg;
 
-/** 响应原始JSON数据 */
-@property (nonatomic, copy) NSString *originalJSONString;
+/** 响应原始JSON字符串 */
+@property (nonatomic, copy) NSString *jsonString;
 
-/** 响应字典数据 */
-@property (nonatomic, strong) NSDictionary *dict;
+/** 响应JSON字典 */
+@property (nonatomic, strong) NSDictionary *jsonDict;
 
 @end

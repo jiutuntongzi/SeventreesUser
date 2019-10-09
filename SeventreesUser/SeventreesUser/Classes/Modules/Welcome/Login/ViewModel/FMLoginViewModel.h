@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) RACSubject *loginSuccessSubject;
 
+@property (nonatomic, strong) RACSubject *registerActionSubject;
 
 @property (nonatomic, strong) RACCommand *requestDataCommand;
 

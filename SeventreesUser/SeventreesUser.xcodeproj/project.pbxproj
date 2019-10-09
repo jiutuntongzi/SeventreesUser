@@ -212,6 +212,9 @@
 		8456BAC2232F5BA300E59966 /* FMImgHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456BAC1232F5BA300E59966 /* FMImgHeaderView.xib */; };
 		8456BAC5232F5D1000E59966 /* FMSelectFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456BAC4232F5D1000E59966 /* FMSelectFooterView.m */; };
 		8456BAC7232F5D2A00E59966 /* FMSelectFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456BAC6232F5D2A00E59966 /* FMSelectFooterView.xib */; };
+		84604F34234D7403005CBD9A /* FMRegisterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84604F33234D7403005CBD9A /* FMRegisterViewModel.m */; };
+		84604F37234D7450005CBD9A /* FMRegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84604F36234D7450005CBD9A /* FMRegisterModel.m */; };
+		84604F3D234D7E4B005CBD9A /* FMSecurityCodeInputViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84604F3C234D7E4B005CBD9A /* FMSecurityCodeInputViewModel.m */; };
 		8467B5812331D5520062B33F /* FMScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467B5712331D5510062B33F /* FMScoreController.m */; };
 		8467B5822331D5520062B33F /* FMScoreHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467B5752331D5520062B33F /* FMScoreHeaderView.m */; };
 		8467B5832331D5520062B33F /* FMScoreHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8467B5762331D5520062B33F /* FMScoreHeaderView.xib */; };
@@ -830,6 +833,12 @@
 		8456BAC3232F5D1000E59966 /* FMSelectFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMSelectFooterView.h; sourceTree = "<group>"; };
 		8456BAC4232F5D1000E59966 /* FMSelectFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMSelectFooterView.m; sourceTree = "<group>"; };
 		8456BAC6232F5D2A00E59966 /* FMSelectFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMSelectFooterView.xib; sourceTree = "<group>"; };
+		84604F32234D7403005CBD9A /* FMRegisterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMRegisterViewModel.h; sourceTree = "<group>"; };
+		84604F33234D7403005CBD9A /* FMRegisterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMRegisterViewModel.m; sourceTree = "<group>"; };
+		84604F35234D7450005CBD9A /* FMRegisterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMRegisterModel.h; sourceTree = "<group>"; };
+		84604F36234D7450005CBD9A /* FMRegisterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMRegisterModel.m; sourceTree = "<group>"; };
+		84604F3B234D7E4B005CBD9A /* FMSecurityCodeInputViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMSecurityCodeInputViewModel.h; sourceTree = "<group>"; };
+		84604F3C234D7E4B005CBD9A /* FMSecurityCodeInputViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMSecurityCodeInputViewModel.m; sourceTree = "<group>"; };
 		8467B5702331D5510062B33F /* FMScoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMScoreController.h; sourceTree = "<group>"; };
 		8467B5712331D5510062B33F /* FMScoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMScoreController.m; sourceTree = "<group>"; };
 		8467B5742331D5520062B33F /* FMScoreHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMScoreHeaderView.h; sourceTree = "<group>"; };
@@ -2891,6 +2900,40 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		84604F38234D7DF4005CBD9A /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				84BAC58323069E950062B812 /* FMPhoneNumberInputView.h */,
+				84BAC58423069E950062B812 /* FMPhoneNumberInputView.m */,
+				84BAC58623069EA50062B812 /* FMPhoneNumberInputView.xib */,
+				84BAC5A22306CD3D0062B812 /* FMPhoneNumberInputViewModel.h */,
+				84BAC5A32306CD3D0062B812 /* FMPhoneNumberInputViewModel.m */,
+			);
+			path = PhoneNumber;
+			sourceTree = "<group>";
+		};
+		84604F39234D7E00005CBD9A /* SecurityCode */ = {
+			isa = PBXGroup;
+			children = (
+				84BAC57E2306859A0062B812 /* FMSecurityCodeInputView.h */,
+				84BAC57F2306859A0062B812 /* FMSecurityCodeInputView.m */,
+				84BAC581230685CF0062B812 /* FMSecurityCodeInputView.xib */,
+				84604F3B234D7E4B005CBD9A /* FMSecurityCodeInputViewModel.h */,
+				84604F3C234D7E4B005CBD9A /* FMSecurityCodeInputViewModel.m */,
+			);
+			path = SecurityCode;
+			sourceTree = "<group>";
+		};
+		84604F3A234D7E23005CBD9A /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				84BAC5882306A51D0062B812 /* FMPasswordInputView.h */,
+				84BAC5892306A51D0062B812 /* FMPasswordInputView.m */,
+				84BAC58B2306A5290062B812 /* FMPasswordInputView.xib */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
 		8467B56D2331D5510062B33F /* ScoreCenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -3347,17 +3390,9 @@
 		84BAC57D230684F00062B812 /* InputViewFactory */ = {
 			isa = PBXGroup;
 			children = (
-				84BAC58323069E950062B812 /* FMPhoneNumberInputView.h */,
-				84BAC58423069E950062B812 /* FMPhoneNumberInputView.m */,
-				84BAC58623069EA50062B812 /* FMPhoneNumberInputView.xib */,
-				84BAC5A22306CD3D0062B812 /* FMPhoneNumberInputViewModel.h */,
-				84BAC5A32306CD3D0062B812 /* FMPhoneNumberInputViewModel.m */,
-				84BAC57E2306859A0062B812 /* FMSecurityCodeInputView.h */,
-				84BAC57F2306859A0062B812 /* FMSecurityCodeInputView.m */,
-				84BAC581230685CF0062B812 /* FMSecurityCodeInputView.xib */,
-				84BAC5882306A51D0062B812 /* FMPasswordInputView.h */,
-				84BAC5892306A51D0062B812 /* FMPasswordInputView.m */,
-				84BAC58B2306A5290062B812 /* FMPasswordInputView.xib */,
+				84604F38234D7DF4005CBD9A /* PhoneNumber */,
+				84604F39234D7E00005CBD9A /* SecurityCode */,
+				84604F3A234D7E23005CBD9A /* Password */,
 			);
 			path = InputViewFactory;
 			sourceTree = "<group>";
@@ -3491,6 +3526,8 @@
 			children = (
 				84D42D35230403F700249356 /* FMLoginModel.h */,
 				84D42D36230403F700249356 /* FMLoginModel.m */,
+				84604F35234D7450005CBD9A /* FMRegisterModel.h */,
+				84604F36234D7450005CBD9A /* FMRegisterModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3498,7 +3535,6 @@
 		84D42D37230403F700249356 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84BAC57D230684F00062B812 /* InputViewFactory */,
 				84D42D38230403F700249356 /* FMLoginView.h */,
 				84D42D39230403F700249356 /* FMLoginView.m */,
 				84D42D442304066E00249356 /* FMLoginView.xib */,
@@ -3508,6 +3544,7 @@
 				84BAC59D2306C6400062B812 /* FMRegisterView.h */,
 				84BAC59E2306C6400062B812 /* FMRegisterView.m */,
 				84BAC5A02306C8AC0062B812 /* FMRegisterView.xib */,
+				84BAC57D230684F00062B812 /* InputViewFactory */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3530,6 +3567,8 @@
 			children = (
 				84D42D3E230403F700249356 /* FMLoginViewModel.h */,
 				84D42D3F230403F700249356 /* FMLoginViewModel.m */,
+				84604F32234D7403005CBD9A /* FMRegisterViewModel.h */,
+				84604F33234D7403005CBD9A /* FMRegisterViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -5026,6 +5065,7 @@
 				84089E6B2313904300D7EF7D /* FMEvaluationViewModel.m in Sources */,
 				84FC4446231CF4E200DF9799 /* YBIBAnimatedTransition.m in Sources */,
 				8449936D234084B10006A544 /* FMSlashRecordListView.m in Sources */,
+				84604F37234D7450005CBD9A /* FMRegisterModel.m in Sources */,
 				84F0453F2330CC330002B5B3 /* FMMemberHeaderView.m in Sources */,
 				84094E9A233B0B98008BF38B /* FMTitleView.m in Sources */,
 				8428B9492341A0350098A633 /* FMGoodsDetailsCell.m in Sources */,
@@ -5051,6 +5091,7 @@
 				84F80BA8232F7B7B0031674F /* FMAddressInfoCell.m in Sources */,
 				8428B93C234198660098A633 /* FMCollectGoodsListController.m in Sources */,
 				8435D7EA231FB9BB00C2CE7D /* FMBuyerEvaluateModel.m in Sources */,
+				84604F3D234D7E4B005CBD9A /* FMSecurityCodeInputViewModel.m in Sources */,
 				843FC536232A468C0096639F /* FMStoreLocationController.m in Sources */,
 				84DD3FD423015B04001171F1 /* UIButton+Chain.m in Sources */,
 				84F9D802230E952100158496 /* DCClassGoodsItem.m in Sources */,
@@ -5183,6 +5224,7 @@
 				84FAECA92317A2BF00E8CA3F /* FMStoreIntroViewModel.m in Sources */,
 				84FF2F1B2335B71D00E34550 /* FMOrderPayViewModel.m in Sources */,
 				84F9D7EA230E8F1B00158496 /* FenLeiViewController.m in Sources */,
+				84604F34234D7403005CBD9A /* FMRegisterViewModel.m in Sources */,
 				840B82872310CE19004DBFC9 /* FMPayView.m in Sources */,
 				84DD3FD323015B04001171F1 /* UIBarButtonItem+Chain.m in Sources */,
 				84FC4450231CF4E200DF9799 /* YBIBUtilities.m in Sources */,

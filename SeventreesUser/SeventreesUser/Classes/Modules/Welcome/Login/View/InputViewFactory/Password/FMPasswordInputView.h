@@ -8,10 +8,6 @@
 
 #import "FMView.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMPasswordInputView : FMView
 
 @end
-
-NS_ASSUME_NONNULL_END

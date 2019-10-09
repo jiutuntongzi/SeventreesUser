@@ -17,6 +17,10 @@
 
 @implementation FMPhoneNumberInputView
 
+- (void)becomeFirstResponder {
+    [_phoneTextField becomeFirstResponder];
+}
+
 - (void)fm_setupSubviews {
     _phoneTextField.ctf_clearButtonMode(UITextFieldViewModeAlways).ctf_keyboardType(UIKeyboardTypeNumberPad)\
     .ctf_placeholderFontSize(15.f); // .ctf_placeholderTextColor(UIColor.lightGrayColor)
@@ -52,15 +56,18 @@
     }];
     
     
-    RAC(self.viewModel, phoneNumber) = _phoneTextField.rac_textSignal;
+    self.viewModel.phoneNumber = _phoneTextField.text;
+    
+//    RAC(self.viewModel, phoneNumber) = _phoneTextField.rac_textSignal;
     
     [[_phoneTextField rac_signalForControlEvents:UIControlEventEditingChanged] subscribeNext:^(UITextField *textField) {
         @strongify(self);
+        self.viewModel.phoneNumber = textField.text;
         [self.viewModel.textChangedSubject sendNext:textField.text];
     }];
-    
 }
 
+/*
 - (UITextField * (^)(NSString *))textFieldByPlaceholder {
     return ^(NSString *placeholder) {
         UITextField *textField = UITextField.ctf_textField();
@@ -71,6 +78,7 @@
         return textField;
     };
 }
+*/
 
 - (FMPhoneNumberInputViewModel *)viewModel {
     if (!_viewModel) {

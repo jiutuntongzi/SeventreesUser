@@ -8,7 +8,7 @@
 
 #import "AppDelegate+AppInit.h"
 #import <objc/runtime.h>
-#import "MainTabBarController.h"
+#import "UserData.h"
 
 @implementation AppDelegate (AppInit)
 
@@ -16,10 +16,10 @@
 
 -(BOOL)fm_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [self fm_loadWindowRootController];
-    
     /**注册微信*/
-//    [WXApi registerApp:WxAppId];
+    //    [WXApi registerApp:WxAppId];
+    
+    [self fm_loadWindowRootController];
     
     return [self fm_application:application didFinishLaunchingWithOptions:launchOptions];
 }
@@ -52,13 +52,13 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    BOOL isLogged = YES;
+    BOOL isLogged = [UserData token] != nil;
     if (isLogged) {
-        self.rootViewController = [[MainTabBarController alloc] init];
+        self.rootViewController = [[NSClassFromString(@"MainTabBarController") alloc] init];
         self.window.rootViewController = self.rootViewController;
         
     } else {
-        UIViewController *loginVC = [[NSClassFromString(@"FMSetPasswordController") alloc] init];
+        UIViewController *loginVC = [[NSClassFromString(@"FMLoginController") alloc] init];
         self.window.rootViewController = loginVC;
     }
 }

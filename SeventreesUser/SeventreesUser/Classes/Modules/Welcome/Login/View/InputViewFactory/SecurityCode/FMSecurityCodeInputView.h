@@ -6,15 +6,14 @@
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "FMView.h"
-
-NS_ASSUME_NONNULL_BEGIN
+#import "FMSecurityCodeInputViewModel.h"
 
 @interface FMSecurityCodeInputView : FMView
 
+@property (nonatomic, strong) FMSecurityCodeInputViewModel *viewModel;
 
+- (void)becomeFirstResponder;
 
 @end
 
-NS_ASSUME_NONNULL_END

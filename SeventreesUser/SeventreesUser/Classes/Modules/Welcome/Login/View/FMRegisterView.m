@@ -13,6 +13,8 @@
 
 @interface FMRegisterView ()
 
+@property (nonatomic, weak) IBOutlet UIButton *dismissButton;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewContentHeightCons;
 
 @property (weak, nonatomic) IBOutlet UIView *inputContentView1;
@@ -65,27 +67,30 @@
     [self updateConstraintsIfNeeded];
 }
 
-
- 
  - (void)fm_bindViewModel {
      @weakify(self);
      
-     self.viewModel.registerModel.phoneNumber = _phoneNumberInputView.viewModel.phoneNumber;
+     [[_dismissButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+         @strongify(self);
+         [self.viewController dismissViewControllerAnimated:YES completion:nil];
+     }];
+     
      [_phoneNumberInputView.viewModel.textChangedSubject subscribeNext:^(NSString *phoneNumber) {
          @strongify(self);
          self.viewModel.registerModel.phoneNumber = phoneNumber;
          if (phoneNumber.length == 11) {
-             self.cv_endEditing();
+             self.viewModel.registerModel.verifyCode = nil;
+             self->_securityCodeInputView.viewModel.verifyCode = nil;
              [self->_securityCodeInputView becomeFirstResponder];
          }
      }];
      
-     self.viewModel.registerModel.verifyCode = _securityCodeInputView.viewModel.verifyCode;
      [_securityCodeInputView.viewModel.textChangedSubject subscribeNext:^(NSString *verifyCode) {
          @strongify(self);
          self.viewModel.registerModel.verifyCode = verifyCode;
          if (verifyCode.length == 4) self.cv_endEditing();
      }];
+     
      
      [[_isAgreeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *isAgreeButton) {
          @strongify(self);
@@ -108,20 +113,22 @@
          }
          self.cv_endEditing();
          
-         [self.viewModel.requestDataCommand execute:nil]; // 执行登录请求命令
+         [self.viewModel.registerSuccessSubject sendNext:self.viewModel.registerModel];
      }];
      
-     [_viewModel.refreshUISubject subscribeNext:^(id x) {
+     [_securityCodeInputView.viewModel.sendActionSubject subscribeNext:^(id x) {
          @strongify(self);
-         
-         DLog(@"请求登录完成，提示登录成功状态：x == %@", x);
-         [self refreshUI];
+         if (self.viewModel.registerModel.phoneNumber.length != 11) {
+             [SVProgressHUD showInfoWithStatus:@"请输入11位手机号码"];
+             return;
+         }
+         [self.viewModel.requestVerifyCodeCommand execute:nil]; // 执行命令:请求获取验证码
      }];
-
- }
-
-- (void)refreshUI {
-    DLog(@"提示注册成功状态");
+     
+     [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
+//         @strongify(self);
+         [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
+     }];
 }
 
 #pragma mark - Lazyload

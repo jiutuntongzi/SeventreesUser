@@ -36,8 +36,16 @@ typedef void(^NetworkRequestFailure)(NSError *error);
 /** 切换服务器 (更换请求主域名)  */
 - (void)changeRequestServerType:(NetworkRequestManagerServerType)requestHostType;
 
+#pragma mark ——— AFURLSessionManager
+
 - (void)GET:(NSString *)URIPath params:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
 
 - (void)POST:(NSString *)URIPath params:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
+
+#pragma mark ——— AFHTTPSessionManager
+
+- (void)GET:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
+
+- (void)POST:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
 
 @end

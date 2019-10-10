@@ -29,6 +29,11 @@
 - (void)fm_bindViewModel {
     @weakify(self);
 
+    [RACObserve(self.viewModel, phoneNumber) subscribeNext:^(NSString *phoneNumber) {
+        @strongify(self);
+        self->_phoneTextField.text = phoneNumber;
+    }];
+    
     [RACObserve(self.viewModel, isShowPlaintext) subscribeNext:^(NSNumber *isShowPlaintext) {
         @strongify(self);
         self->_plaintextButton.hidden = !isShowPlaintext.boolValue;

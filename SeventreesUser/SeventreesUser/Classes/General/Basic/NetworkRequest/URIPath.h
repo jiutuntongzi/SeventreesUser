@@ -11,6 +11,8 @@
 
 #define       kRegisterURIPath        @"/api/sysRegister/register"       // 注册
 
+#define       kSendVerifyCodeURIPath        @"/api/sysRegister/getCode"  // 获取短信验证码
+
 
 
 #endif /* URIPath_h */

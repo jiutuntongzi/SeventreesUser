@@ -16,4 +16,8 @@
 
 @property (nonatomic, copy) NSString *verifyCode;
 
+@property (nonatomic, copy) NSString *password;
+
+@property (nonatomic, copy) NSString *repeatPassword;
+
 @end

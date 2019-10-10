@@ -13,12 +13,13 @@
 
 @property (nonatomic, strong) FMRegisterModel *registerModel;
 
-
 //@property (nonatomic, strong) RACSignal *registerEnableSignal;
 
 @property (nonatomic, strong) RACSubject *registerSuccessSubject;
 
 @property (nonatomic, strong) RACCommand *requestDataCommand;
+
+@property (nonatomic, strong) RACCommand *requestVerifyCodeCommand;
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 

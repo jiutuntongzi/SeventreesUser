@@ -8,6 +8,7 @@
 
 #import "FMSetPasswordController.h"
 #import "FMSetPasswordView.h"
+#import "FMRegisterModel.h"
 
 @interface FMSetPasswordController ()
 
@@ -16,13 +17,6 @@
 @end
 
 @implementation FMSetPasswordController
-
-#pragma mark - System Functions
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-}
 
 - (void)updateViewConstraints {
     self.mainView.cv_frame(self.view.bounds);
@@ -47,20 +41,10 @@
 
 - (void)fm_setupNavbar {
     self.navigationItem.title = @"设置密码";
-    
-    /*
-     @weakify(self)
-     UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"关闭", 1, ^(UIBarButtonItem *leftItem) {
-     DLog(@"点了leftItem == %@", leftItem);
-     self_weak_.view.cv_endEditing();
-     [self_weak_ dismissViewControllerAnimated:YES completion:nil];
-     });
-     self.navigationItem.cni_rightBarButtonItem(rightItem);
-     */
 }
 
 - (void)fm_refreshData {
-    DLog(@"");
+    _mainView.viewModel.registerModel = _registerModel;
 }
 
 #pragma mark - Lazyload
@@ -73,7 +57,7 @@
 }
 
 - (void)dealloc {
-    DLog(@"销毁了");
+    DLog(@"VC销毁了");
 }
 
 @end

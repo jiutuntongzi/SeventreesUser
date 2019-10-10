@@ -8,10 +8,10 @@
 
 #import "FMViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@class FMRegisterModel;
 
 @interface FMSetPasswordController : FMViewController
 
-@end
+@property (nonatomic, strong) FMRegisterModel *registerModel;
 
-NS_ASSUME_NONNULL_END
+@end

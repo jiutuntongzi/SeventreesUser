@@ -30,8 +30,10 @@
 - (void)fm_bindViewModel {
     @weakify(self);
     
-    self.viewModel.verifyCode = _verifyCodeTextField.text;
-    
+    [RACObserve(self.viewModel, verifyCode) subscribeNext:^(NSString *verifyCode) {
+        @strongify(self);
+        self->_verifyCodeTextField.text = verifyCode;
+    }];
 //    RAC(self.viewModel, verifyCode) = _verifyCodeTextField.rac_textSignal;
     
     [[_verifyCodeTextField rac_signalForControlEvents:UIControlEventEditingChanged] subscribeNext:^(UITextField *textField) {

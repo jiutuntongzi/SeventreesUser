@@ -9,11 +9,7 @@
 #import "FMViewModel.h"
 #import "FMLoginModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMLoginViewModel : FMViewModel
-
-//@property (nonatomic, copy) NSArray *dataSources;
 
 @property (nonatomic, strong) FMLoginModel *loginModel;
 
@@ -28,5 +24,3 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
 @end
-
-NS_ASSUME_NONNULL_END

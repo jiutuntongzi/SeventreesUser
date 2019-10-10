@@ -7,7 +7,12 @@
 //
 
 #import "FMView.h"
+#import "FMPasswordInputViewModel.h"
 
 @interface FMPasswordInputView : FMView
+
+@property (nonatomic, strong) FMPasswordInputViewModel *viewModel;
+
+- (void)becomeFirstResponder;
 
 @end

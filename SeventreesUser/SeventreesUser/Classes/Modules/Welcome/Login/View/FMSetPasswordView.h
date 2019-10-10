@@ -7,7 +7,10 @@
 //
 
 #import "FMView.h"
+#import "FMRegisterViewModel.h"
 
 @interface FMSetPasswordView : FMView
+
+@property (nonatomic, strong) FMRegisterViewModel *viewModel;
 
 @end

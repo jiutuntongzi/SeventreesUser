@@ -11,27 +11,19 @@
 @implementation FMRegisterViewModel
 
 - (void)fm_initialize {
-    
     @weakify(self)
-
-    [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
+    [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (!self) return;
         
-        [self.refreshUISubject sendNext:x]; // 登录成功发UI信号
-        [self.registerSuccessSubject sendNext:x]; // 登录成功
+        [self.refreshUISubject sendNext:resultModel];
+        [self.registerSuccessSubject sendNext:resultModel];
     }];
     
-//    [[self.requestDataCommand.executing skip:1] subscribeNext:^(id x) {
-//        if ([x isEqualToNumber:@(YES)]) {
-//            DLog(@"（命令执行中..）");
-//        } else {
-//            DLog(@"（命令未开始 / 命令执行完成");
-//        }
-//    }];
-    
-//    self.registerEnableSignal = [RACSignal combineLatest:@[RACObserve(self.registerModel, phoneNumber), RACObserve(self.registerModel, verifyCode)] reduce:^id (NSString *account, NSString *password) {
-//        return @(account.length == 11 && password.length);
-//    }];
+    [self.requestVerifyCodeCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
+        @strongify(self)    if (!self) return;
+        
+        [self.refreshUISubject sendNext:resultModel];
+    }];
 }
 
 #pragma mark - Lazyload
@@ -43,16 +35,16 @@
             
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 @strongify(self)
-                DLog(@"self.registerModel == %@", self.registerModel);
-                // 请求体参数
-                NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:2];
-                params[@"mobile"] = self.registerModel.phoneNumber;
+                NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:3];
+                // 运营品牌 1：Seventrees
+                params[@"mobile"] = [NSString stringWithFormat:@"%@,%lu", self.registerModel.phoneNumber, operationBrand];
                 params[@"code"] = self.registerModel.verifyCode;
-                params[@"password"] = @"123456";
+                params[@"password"] = self.registerModel.password;
+                
                 [NetworkMgr POST:kRegisterURIPath params:params success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
-                    
+
                 } failure:^(NSError *error) {
                     [subscriber sendCompleted];
                 }];
@@ -63,22 +55,49 @@
     return _requestDataCommand;
 }
 
+- (RACCommand *)requestVerifyCodeCommand {
+    if (! _requestVerifyCodeCommand) {
+        @weakify(self)
+        _requestVerifyCodeCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                @strongify(self)
+                NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:2];
+                // 运营品牌 1：Seventrees
+                params[@"mobile"] = [NSString stringWithFormat:@"%@,%lu", self.registerModel.phoneNumber, operationBrand];
+                // 申请验证码类型（login 登录验证码[默认]，register 注册验证码，pwd 找回密码验证码）
+                params[@"type"] = @"register";
+                
+                [NetworkMgr POST:kSendVerifyCodeURIPath params:params success:^(NetworkResultModel *resultModel) {
+                    [subscriber sendNext:resultModel];
+                    [subscriber sendCompleted];
+                    
+                } failure:^(NSError *error) {
+                    [subscriber sendCompleted];
+                }];
+                return nil;
+            }];
+        }];
+    }
+    return _requestVerifyCodeCommand;
+}
+
 - (RACSubject *)refreshUISubject {
-    if (!_refreshUISubject) {
+    if (! _refreshUISubject) {
         _refreshUISubject = [RACSubject subject];
     }
     return _refreshUISubject;
 }
 
 - (RACSubject *)registerSuccessSubject {
-    if (!_registerSuccessSubject) {
+    if (! _registerSuccessSubject) {
         _registerSuccessSubject = [RACSubject subject];
     }
     return _registerSuccessSubject;
 }
 
 - (FMRegisterModel *)registerModel {
-    if (!_registerModel) {
+    if (! _registerModel) {
         _registerModel = [[FMRegisterModel alloc] init];
     }
     return _registerModel;

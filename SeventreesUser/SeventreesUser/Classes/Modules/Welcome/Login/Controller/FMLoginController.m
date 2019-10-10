@@ -83,7 +83,7 @@
 }
 
 - (void)dealloc {
-    DLog(@"销毁了");
+    DLog(@"VC销毁了");
 }
 
 @end

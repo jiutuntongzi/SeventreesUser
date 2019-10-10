@@ -12,6 +12,8 @@
 #import "UserData.h"
 #import "DLogHeader.h"
 
+
+#define    kTimeoutInterval      15.0f
 typedef NS_ENUM(NSUInteger, HTTPRequestMethod){
     HTTPRequestMethodPOST = 0,
     HTTPRequestMethodGET,
@@ -23,7 +25,7 @@ typedef NS_ENUM(NSUInteger, HTTPRequestMethod){
 #define     kFormalHostDomain      @""
 
 /** 测试服(内网) */
-#define     kTestHostDomain        @"http://192.168.1.103:8080"
+#define     kTestHostDomain        @"http://192.168.1.125:8080"
 
 /** 备用服(外网) */
 
@@ -53,17 +55,7 @@ static NetworkRequestManager * _instance = nil;
 + (instancetype)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        if (!_instance) {
-            _instance = [super allocWithZone:zone];
-            
-//            NetworkRequestManagerServerTypeFormal ,     // 0：主正式服 (线上)
-//
-//            NetworkRequestManagerServerTypeTest,        // 1：测试服（内网/线下）
-            
-            [_instance changeRequestServerType:NetworkRequestManagerServerTypeTest]; // 默认服务器
-            
-            [_instance configAFNetworking];
-        }
+        if (! _instance) _instance = [super allocWithZone:zone];
     });
     return _instance;
 }
@@ -74,8 +66,19 @@ static NetworkRequestManager * _instance = nil;
     return _instance;
 }
 
-/*************************************** 完整单例语法 ***************************************/
+- (instancetype)init {
+    if (self = [super init]) {
+        
+        [self configAFNetworking];
+        
+        //            NetworkRequestManagerServerTypeFormal ,     // 0：主正式服 (线上)
+        //            NetworkRequestManagerServerTypeTest,        // 1：测试服（内网/线下）
+        [self changeRequestServerType:NetworkRequestManagerServerTypeTest]; // 默认服务器
+    }
+    return self;
+}
 
+/*************************************** 完整单例语法 ***************************************/
 
 /** 切换服务器 (更换请求主域名)  */
 - (void)changeRequestServerType:(NetworkRequestManagerServerType)requestHostType {
@@ -95,12 +98,20 @@ static NetworkRequestManager * _instance = nil;
     }
 }
 
+/** AFNetworking配置: 自带处理NSNull对象 */
+- (void)configAFNetworking {
+    AFJSONResponseSerializer *jsonResponse = (AFJSONResponseSerializer *)_sessionManager.responseSerializer;
+    jsonResponse.removesKeysWithNullValues = YES;
+}
+
+#pragma mark ——— AFURLSessionManager
+
 - (void)GET:(NSString *)URIPath params:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
     [self request:HTTPRequestMethodGET URIPath:URIPath params:params success:success failure:failure];
 }
 
 - (void)POST:(NSString *)URIPath params:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
-    [self request:HTTPRequestMethodPOST URIPath:URIPath HTTPBodyParams:params success:success failure:failure];
+    [self request:HTTPRequestMethodPOST URIPath:URIPath params:params success:success failure:failure];
 }
 
 - (NSString *)requestMethod:(HTTPRequestMethod)method {
@@ -121,13 +132,16 @@ static NetworkRequestManager * _instance = nil;
     return requestMethod;
 }
 
-- (void)request:(HTTPRequestMethod)method URIPath:(NSString *)URIPath HTTPBodyParams:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+- (void)request:(HTTPRequestMethod)method URIPath:(NSString *)URIPath params:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@", _hostDomain, URIPath];
-    DLog(@"\n HTTP请求URL: %@ \n", urlString);
     NSString *requestMethod = [self requestMethod:method];
+    DLog(@"\n %@请求URL: %@ \n", requestMethod, urlString);
     
-    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:requestMethod URLString:urlString parameters:nil error:nil];
+    NSDictionary *parameters = nil;
+    if (method == HTTPRequestMethodGET) parameters = [params copy];
+    
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:requestMethod URLString:urlString parameters:parameters error:nil];
     request.timeoutInterval = 15;
     
     if (method != HTTPRequestMethodGET) {
@@ -136,7 +150,7 @@ static NetworkRequestManager * _instance = nil;
         NSString *bodyJSON = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         NSData *bodyData = [bodyJSON dataUsingEncoding:NSUTF8StringEncoding];
         [request setHTTPBody:bodyData];
-        DLog(@"\n HTTP请求体: requestBodyJSON == %@ \n", bodyJSON);
+        DLog(@"\n %@请求体参数: HTTPBodyJSON == %@ \n", requestMethod, bodyJSON);
     }
     
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -145,18 +159,30 @@ static NetworkRequestManager * _instance = nil;
 
     AFURLSessionManager *sessionManager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[sessionManager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-        if (!error) {
-            DLog(@"\n %@请求成功 response == %@ \n\n responseObject == %@ \n", requestMethod, response, responseObject);
-            success([NetworkDataConver resultModelFromAFNetworkingResponseObject:responseObject]);
+        if (error) {
+            DLog(@"\n %@请求失败，网络错误！error == %@ \n", requestMethod, error.localizedDescription);
+            failure(error);
             return;
         }
-        DLog(@"\n HTTP请求失败，网络错误！error.localizedDescription == %@ \n", error.localizedDescription);
-        failure(error);
+        NetworkResultModel *resultModel = [NetworkDataConver resultModelFromAFNetworkingResponseObject:responseObject];
+        DLog(@"\n %@请求成功 response == %@ \n\n responseObject == %@ \n", requestMethod, response, responseObject);
+        DLog(@"\n HTTP %@请求成功 JSONString == %@\n\n", requestMethod, resultModel.jsonString);
+        success(resultModel);
         
     }] resume];
 }
 
-- (void)request:(HTTPRequestMethod)method URIPath:(NSString *)URIPath params:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+#pragma mark ——— AFHTTPSessionManager
+
+- (void)GET:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    [self request:HTTPRequestMethodGET URIPath:URIPath parameters:params success:success failure:failure];
+}
+
+- (void)POST:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    [self request:HTTPRequestMethodPOST URIPath:URIPath parameters:params success:success failure:failure];
+}
+
+- (void)request:(HTTPRequestMethod)method URIPath:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
     
     NSString *token = [UserData token];
     if (token.length) [self.sessionManager.requestSerializer.HTTPRequestHeaders setValue:token forKey:kTokenKey];
@@ -169,14 +195,13 @@ static NetworkRequestManager * _instance = nil;
                 [self.sessionManager POST:urlString parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
                     // ..
                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                    DLog(@"POST请求成功 responseObject == %@", responseObject);
-                    success([NetworkDataConver resultModelFromAFNetworkingResponseObject:responseObject]);
-                    
+                    NetworkResultModel *resultModel = [NetworkDataConver resultModelFromAFNetworkingResponseObject:responseObject];
+                    DLog(@"POST请求成功 responseObject == %@, jsonString == %@", responseObject, resultModel.jsonString);
+                    success(resultModel);
                     
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                     DLog(@"POST请求失败，网络错误！ task == %@  error.localizedDescription == %@", task, error.localizedDescription);
                     failure(error);
-
                 }];
                 break;
             }
@@ -184,13 +209,13 @@ static NetworkRequestManager * _instance = nil;
                 [self.sessionManager GET:urlString parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
                     // ..
                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                    success([NetworkDataConver resultModelFromAFNetworkingResponseObject:responseObject]);
-                    DLog(@"GET请求成功 responseObject == %@", responseObject);
+                    NetworkResultModel *resultModel = [NetworkDataConver resultModelFromAFNetworkingResponseObject:responseObject];
+                    DLog(@"GET请求成功 responseObject == %@, jsonString == %@", responseObject, resultModel.jsonString);
+                    success(resultModel);
                     
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                    failure(error);
                     DLog(@"GET请求失败，网络错误！ task == %@  error.localizedDescription == %@", task, error.localizedDescription);
-                    
+                    failure(error);
                 }];
                 break;
             }
@@ -218,18 +243,12 @@ static NetworkRequestManager * _instance = nil;
         
         /// 设置请求超时时长
         [_sessionManager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        _sessionManager.requestSerializer.timeoutInterval = 15.0f;
+        _sessionManager.requestSerializer.timeoutInterval = kTimeoutInterval;
         [_sessionManager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         
         [self configAFNetworking]; // AFNetworking配置: 自带处理NSNull对象
     }
     return _sessionManager;
-}
-
-/** AFNetworking配置: 自带处理NSNull对象 */
-- (void)configAFNetworking {
-    AFJSONResponseSerializer *jsonResponse = (AFJSONResponseSerializer *)_sessionManager.responseSerializer;
-    jsonResponse.removesKeysWithNullValues = YES;
 }
 
 @end

@@ -150,8 +150,4 @@
     return _viewModel;
 }
 
-- (void)dealloc {
-    DLog(@"销毁了");
-}
-
 @end

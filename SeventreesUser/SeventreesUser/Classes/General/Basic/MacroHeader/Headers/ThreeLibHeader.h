@@ -18,8 +18,6 @@
 
 #import "UIImageView+WebCache.h"
 
-//#import "AFNetworking.h"
-
 #import "MJRefresh.h"
 
 #import "MJExtension.h"

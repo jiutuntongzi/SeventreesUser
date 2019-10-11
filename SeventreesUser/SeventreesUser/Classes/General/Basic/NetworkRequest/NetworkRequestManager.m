@@ -12,7 +12,6 @@
 #import "UserData.h"
 #import "DLogHeader.h"
 
-
 #define    kTimeoutInterval      15.0f
 typedef NS_ENUM(NSUInteger, HTTPRequestMethod){
     HTTPRequestMethodPOST = 0,
@@ -25,7 +24,7 @@ typedef NS_ENUM(NSUInteger, HTTPRequestMethod){
 #define     kFormalHostDomain      @""
 
 /** 测试服(内网) */
-#define     kTestHostDomain        @"http://192.168.1.125:8080"
+#define     kTestHostDomain        @"http://192.168.1.135:8080"
 
 /** 备用服(外网) */
 
@@ -37,7 +36,9 @@ static NSString * _hostDomain = kTestHostDomain;
 
 @interface NetworkRequestManager ()
 
-@property (nonatomic, strong) AFHTTPSessionManager* sessionManager;
+@property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
+
+@property (nonatomic, strong) AFURLSessionManager *netSessionManager;
 
 @property (nonatomic, copy) NSString *hostDomain;
 
@@ -68,9 +69,7 @@ static NetworkRequestManager * _instance = nil;
 
 - (instancetype)init {
     if (self = [super init]) {
-        
-        [self configAFNetworking];
-        
+        [self configAFNetworking]; // 配置网络请求
         //            NetworkRequestManagerServerTypeFormal ,     // 0：主正式服 (线上)
         //            NetworkRequestManagerServerTypeTest,        // 1：测试服（内网/线下）
         [self changeRequestServerType:NetworkRequestManagerServerTypeTest]; // 默认服务器
@@ -114,6 +113,13 @@ static NetworkRequestManager * _instance = nil;
     [self request:HTTPRequestMethodPOST URIPath:URIPath params:params success:success failure:failure];
 }
 
+- (void)cancelRequests {
+    if ([_netSessionManager.tasks count] > 0) {
+        [_netSessionManager.tasks makeObjectsPerformSelector:@selector(cancel)];
+        DLog(@"取消网络请求 URLSessionManager.tasks = %@", _netSessionManager.tasks);
+    }
+}
+
 - (NSString *)requestMethod:(HTTPRequestMethod)method {
     NSString *requestMethod = @"POST";
     switch (method) {
@@ -136,7 +142,7 @@ static NetworkRequestManager * _instance = nil;
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@", _hostDomain, URIPath];
     NSString *requestMethod = [self requestMethod:method];
-    DLog(@"\n %@请求URL: %@ \n", requestMethod, urlString);
+    DLog(@"\n%@请求URL:%@\n", requestMethod, urlString);
     
     NSDictionary *parameters = nil;
     if (method == HTTPRequestMethodGET) parameters = [params copy];
@@ -155,12 +161,13 @@ static NetworkRequestManager * _instance = nil;
     
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:[UserData token] forHTTPHeaderField:@"token"];
+    if ([UserData token]) [request setValue:[UserData token] forHTTPHeaderField:@"token"];
 
     AFURLSessionManager *sessionManager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    _netSessionManager = sessionManager;
     [[sessionManager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error) {
-            DLog(@"\n %@请求失败，网络错误！error == %@ \n", requestMethod, error.localizedDescription);
+            DLog(@"\n %@请求失败！error == %@ \n", requestMethod, error.localizedDescription);
             failure(error);
             return;
         }
@@ -182,25 +189,29 @@ static NetworkRequestManager * _instance = nil;
     [self request:HTTPRequestMethodPOST URIPath:URIPath parameters:params success:success failure:failure];
 }
 
+- (void)cancelRequestTasks {
+    if ([self.sessionManager.tasks count] > 0) {
+        [self.sessionManager.tasks makeObjectsPerformSelector:@selector(cancel)];
+        DLog(@"网络请求被取消 HTTPSessionManager.tasks = %@", self.sessionManager.tasks);
+    }
+}
+
 - (void)request:(HTTPRequestMethod)method URIPath:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
-    
-    NSString *token = [UserData token];
-    if (token.length) [self.sessionManager.requestSerializer.HTTPRequestHeaders setValue:token forKey:kTokenKey];
-    if (token.length == 0) DLog(@"token空了");
 
     NSString *urlString = [NSString stringWithFormat:@"%@%@", _hostDomain, URIPath];
-    DLog(@"发起HTTP请求: urlString == %@", urlString);
+    DLog(@"\n HTTP请求URL:URLString == %@\n", urlString);
     switch (method) {
             case HTTPRequestMethodPOST: {
                 [self.sessionManager POST:urlString parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
                     // ..
                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     NetworkResultModel *resultModel = [NetworkDataConver resultModelFromAFNetworkingResponseObject:responseObject];
-                    DLog(@"POST请求成功 responseObject == %@, jsonString == %@", responseObject, resultModel.jsonString);
+                    DLog(@"\n POST请求成功 responseObject == %@\n", responseObject);
+                    DLog(@"\n POST请求成功 JSONString == %@\n\n", resultModel.jsonString);
                     success(resultModel);
                     
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                    DLog(@"POST请求失败，网络错误！ task == %@  error.localizedDescription == %@", task, error.localizedDescription);
+                    DLog(@"\n POST请求失败，网络错误！ task == %@ error.localizedDescription == %@\n", task, error.localizedDescription);
                     failure(error);
                 }];
                 break;
@@ -210,11 +221,12 @@ static NetworkRequestManager * _instance = nil;
                     // ..
                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     NetworkResultModel *resultModel = [NetworkDataConver resultModelFromAFNetworkingResponseObject:responseObject];
-                    DLog(@"GET请求成功 responseObject == %@, jsonString == %@", responseObject, resultModel.jsonString);
+                    DLog(@"\n GET请求成功 responseObject == %@\n", responseObject);
+                    DLog(@"\n GET请求成功 JSONString == %@\n\n", resultModel.jsonString);
                     success(resultModel);
                     
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                    DLog(@"GET请求失败，网络错误！ task == %@  error.localizedDescription == %@", task, error.localizedDescription);
+                    DLog(@"\n GET请求失败，网络错误！ task == %@ error.localizedDescription == %@ \n", task, error.localizedDescription);
                     failure(error);
                 }];
                 break;
@@ -230,6 +242,10 @@ static NetworkRequestManager * _instance = nil;
     if (! _sessionManager) {
         _sessionManager = [AFHTTPSessionManager manager];
 
+        if ([UserData token]) {
+            [self.sessionManager.requestSerializer.HTTPRequestHeaders setValue:[UserData token] forKey:kTokenKey];
+        }
+        
         // 请求体JSON类型问题 改使用原生HTTP请求 "Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported";
 //        [_sessionManager.requestSerializer.HTTPRequestHeaders setValue:@"application/json" forKey:@"Content-Type"];
 //        [_sessionManager.requestSerializer.HTTPRequestHeaders setValue:@"application/json" forKey:@"Accept"];

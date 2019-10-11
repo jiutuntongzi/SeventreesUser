@@ -11,11 +11,13 @@
 @interface UserData : NSObject
 
 #define  kTokenKey    @"token"
-
 + (NSString *)token;
-
 + (void)saveToken:(NSString *)token;
-
 + (void)removeToken;
+
+UserData * userData(void);
++ (instancetype)shareInstance;
+
+@property (nonatomic, copy) NSString *phoneNumber;
 
 @end

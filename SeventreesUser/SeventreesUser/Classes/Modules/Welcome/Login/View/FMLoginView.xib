@@ -227,6 +227,7 @@
                 <outlet property="loginTypeButton" destination="hls-Co-NPm" id="L5X-AJ-bZh"/>
                 <outlet property="registerButton" destination="Fwq-ni-fpc" id="JfK-HJ-Hgp"/>
                 <outlet property="scrollViewContentHeightCons" destination="mzd-AH-DRA" id="jdu-ic-jsj"/>
+                <outlet property="userAgreementButton" destination="zWM-Dk-Xrv" id="lLa-3E-KBm"/>
             </connections>
             <point key="canvasLocation" x="-442.39999999999998" y="-12.143928035982009"/>
         </view>

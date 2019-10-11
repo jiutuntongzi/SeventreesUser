@@ -13,13 +13,17 @@
 
 @property (nonatomic, strong) FMLoginModel *loginModel;
 
+@property (nonatomic, strong) RACSubject *registerActionSubject;
+
+@property (nonatomic, strong) RACSubject *agreementActionSubject;
+
 @property (nonatomic, strong) RACSignal *loginEnableSignal;
 
 @property (nonatomic, strong) RACSubject *loginSuccessSubject;
 
-@property (nonatomic, strong) RACSubject *registerActionSubject;
-
 @property (nonatomic, strong) RACCommand *requestDataCommand;
+
+@property (nonatomic, strong) RACCommand *requestVerifyCodeCommand;
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 

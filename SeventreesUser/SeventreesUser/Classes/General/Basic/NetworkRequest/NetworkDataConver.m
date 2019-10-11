@@ -14,6 +14,8 @@
 @implementation NetworkDataConver
 
 + (NetworkResultModel *)resultModelFromAFNetworkingResponseObject:(id _Nullable)responseObject {
+    if (!responseObject) return nil;
+    
     NetworkResultModel *resultModel = [[NetworkResultModel alloc] init];
 //    [string stringByURLDecode]
     resultModel.statusMsg = responseObject[@"message"];

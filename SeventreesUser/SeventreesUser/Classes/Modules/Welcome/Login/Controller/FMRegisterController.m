@@ -35,13 +35,13 @@
 }
 
 - (void)fm_bindViewModel {
-        @weakify(self)
-        [self.mainView.viewModel.registerSuccessSubject subscribeNext:^(FMRegisterModel *registerModel) {
-            @strongify(self)
-            FMSetPasswordController *nextVC = [[FMSetPasswordController alloc] init];
-            nextVC.registerModel = registerModel;
-            [self presentViewController:nextVC animated:YES completion:nil];
-        }];
+    @weakify(self)
+    [self.mainView.viewModel.nextActionSubject subscribeNext:^(FMRegisterModel *registerModel) {
+        @strongify(self)
+        FMSetPasswordController *nextVC = [[FMSetPasswordController alloc] init];
+        nextVC.registerModel = registerModel;
+        [self presentViewController:nextVC animated:YES completion:nil];
+    }];
 }
 
 - (void)fm_setupNavbar {

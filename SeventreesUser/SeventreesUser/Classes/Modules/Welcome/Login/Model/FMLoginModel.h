@@ -10,7 +10,9 @@
 
 @interface FMLoginModel : NSObject
 
-@property (nonatomic, copy) NSString *account;
+@property (nonatomic, copy) NSString *phoneNumber;
+
+@property (nonatomic, copy) NSString *verifyCode;
 
 @property (nonatomic, copy) NSString *password;
 

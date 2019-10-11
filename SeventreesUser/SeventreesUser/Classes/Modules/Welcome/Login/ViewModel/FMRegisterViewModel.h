@@ -15,6 +15,8 @@
 
 //@property (nonatomic, strong) RACSignal *registerEnableSignal;
 
+@property (nonatomic, strong) RACSubject *nextActionSubject;
+
 @property (nonatomic, strong) RACSubject *registerSuccessSubject;
 
 @property (nonatomic, strong) RACCommand *requestDataCommand;

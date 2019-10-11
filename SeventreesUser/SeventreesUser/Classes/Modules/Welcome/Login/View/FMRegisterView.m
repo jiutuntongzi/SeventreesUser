@@ -78,11 +78,10 @@
      [_phoneNumberInputView.viewModel.textChangedSubject subscribeNext:^(NSString *phoneNumber) {
          @strongify(self);
          self.viewModel.registerModel.phoneNumber = phoneNumber;
-         if (phoneNumber.length == 11) {
-             self.viewModel.registerModel.verifyCode = nil;
-             self->_securityCodeInputView.viewModel.verifyCode = nil;
-             [self->_securityCodeInputView becomeFirstResponder];
-         }
+         
+         self.viewModel.registerModel.verifyCode = nil;
+         self->_securityCodeInputView.viewModel.verifyCode = nil;
+         if (phoneNumber.length == 11) [self->_securityCodeInputView becomeFirstResponder];
      }];
      
      [_securityCodeInputView.viewModel.textChangedSubject subscribeNext:^(NSString *verifyCode) {
@@ -113,7 +112,7 @@
          }
          self.cv_endEditing();
          
-         [self.viewModel.registerSuccessSubject sendNext:self.viewModel.registerModel];
+         [self.viewModel.nextActionSubject sendNext:self.viewModel.registerModel];
      }];
      
      [_securityCodeInputView.viewModel.sendActionSubject subscribeNext:^(id x) {
@@ -122,12 +121,28 @@
              [SVProgressHUD showInfoWithStatus:@"请输入11位手机号码"];
              return;
          }
+         [self->_securityCodeInputView startCountdown];
          [self.viewModel.requestVerifyCodeCommand execute:nil]; // 执行命令:请求获取验证码
      }];
      
      [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
-//         @strongify(self);
-         [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
+         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+         if ([resultModel.statusCode isEqualToString:@"OK"]) {
+             [SVProgressHUD showSuccessWithStatus:resultModel.statusMsg];
+         } else {
+             [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
+         }
+     }];
+     
+     [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(id x) {
+         if ([x isEqualToNumber:@(YES)]) {
+             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+             [SVProgressHUD showWithStatus:@" "];
+//             DLog(@"（注册命令执行中..）");
+         } else {
+             [SVProgressHUD dismissWithDelay:1.f];
+//             DLog(@"（注册命令未开始 / 注册命令执行完成");
+         }
      }];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "FMSecurityCodeInputView.h"
+#import "UIButton+Countdown.h"
 
 @interface FMSecurityCodeInputView ()
 
@@ -20,6 +21,10 @@
 
 - (void)becomeFirstResponder {
     [_verifyCodeTextField becomeFirstResponder];
+}
+
+- (void)startCountdown {
+    [_sendCodeButton startWithLimit:30 title:@"等待%@秒"];
 }
 
 - (void)fm_setupSubviews {
@@ -42,7 +47,7 @@
         [self.viewModel.textChangedSubject sendNext:textField.text];
     }];
     
-    [[_sendCodeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *plaintextButton) {
+    [[_sendCodeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *sendCodeButton) {
         @strongify(self);
         [self.viewModel.sendActionSubject sendNext:nil];
     }];

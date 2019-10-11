@@ -27,7 +27,7 @@ typedef void(^NetworkRequestFailure)(NSError *error);
 @interface NetworkRequestManager : NSObject
 
 /** 网络请求管理单例 */
-#define     NetworkMgr    [NetworkRequestManager shareNetworkRequestManager]
+#define     networkMgr    [NetworkRequestManager shareNetworkRequestManager]
 + (instancetype)shareNetworkRequestManager;
 
 /** 获取当前服务器类型  */
@@ -42,10 +42,14 @@ typedef void(^NetworkRequestFailure)(NSError *error);
 
 - (void)POST:(NSString *)URIPath params:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
 
+- (void)cancelRequests;
+
 #pragma mark ——— AFHTTPSessionManager
 
 - (void)GET:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
 
 - (void)POST:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
+
+- (void)cancelRequestTasks;
 
 @end

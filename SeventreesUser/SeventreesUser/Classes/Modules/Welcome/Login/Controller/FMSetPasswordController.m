@@ -8,7 +8,8 @@
 
 #import "FMSetPasswordController.h"
 #import "FMSetPasswordView.h"
-#import "FMRegisterModel.h"
+
+#import "FMLoginController.h"
 
 @interface FMSetPasswordController ()
 
@@ -31,12 +32,13 @@
 }
 
 - (void)fm_bindViewModel {
-//    @weakify(self)
-//    [self.mainView.viewModel.loginSuccessSubject subscribeNext:^(id x) {
-//        DLog(@"请求登录成功数据：%@", x);
-//        UINavigationController *navController = UINavigationController.cnc_initWithRootViewController(UIViewController.cvc_controller().cvc_title(@"个人"));
-//        self_weak_.cvc_presentVCAnimatedCompletion(navController, YES, nil);
-//    }];
+    @weakify(self)
+    [self.mainView.viewModel.registerSuccessSubject subscribeNext:^(NetworkResultModel *resultModel) {
+        @strongify(self);
+        [SVProgressHUD showSuccessWithStatus:resultModel.statusMsg];
+        FMLoginController *nextVC = [[FMLoginController alloc] init];
+        [self presentViewController:nextVC animated:YES completion:nil];
+    }];
 }
 
 - (void)fm_setupNavbar {

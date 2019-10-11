@@ -10,8 +10,8 @@
 #import "FMLoginViewModel.h"
 
 typedef NS_ENUM(NSUInteger, FMLoginViewStyle) {
-    FMLoginViewStylePhoneNumber = 1,    // 手机号
-    FMLoginViewStylePassword = 2        // 密码
+    FMLoginViewStylePhoneNumber,    // 手机号
+    FMLoginViewStylePassword       // 密码
 };
 
 @interface FMLoginView : FMView

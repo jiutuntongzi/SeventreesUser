@@ -8,30 +8,33 @@
 
 #import "FMLoginViewModel.h"
 
+#import "NetworkDataConver.h"
+
 @implementation FMLoginViewModel
 
 - (void)fm_initialize {
-    
     @weakify(self)
 
-    [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
+    [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (!self) return;
         
-        [self.refreshUISubject sendNext:x]; // 登录成功发UI信号
-        [self.loginSuccessSubject sendNext:x]; // 登录成功
-    }];
-    
-    [[self.requestDataCommand.executing skip:1] subscribeNext:^(id x) {
-        if ([x isEqualToNumber:@(YES)]) {
-            DLog(@"（命令执行中..）");
-        } else {
-            DLog(@"（命令未开始 / 命令执行完成");
+        [self.refreshUISubject sendNext:resultModel];
+        
+        if ([resultModel.statusCode isEqualToString:@"OK"]) {
+            userData().phoneNumber = self.loginModel.phoneNumber;
+            [self.loginSuccessSubject sendNext:resultModel];
         }
     }];
     
-    self.loginEnableSignal = [RACSignal combineLatest:@[RACObserve(self.loginModel, account), RACObserve(self.loginModel, password)] reduce:^id (NSString *account, NSString *password) {
-        return @(account.length == 11 && password.length);
+    [self.requestVerifyCodeCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
+        @strongify(self)    if (!self) return;
+        
+        [self.refreshUISubject sendNext:resultModel];
     }];
+    
+//    self.loginEnableSignal = [RACSignal combineLatest:@[RACObserve(self.loginModel, phoneNumber), RACObserve(self.loginModel, password)] reduce:^id (NSString *phoneNumber, NSString *password) {
+//        return @(phoneNumber.length == 11 && password.length);
+//    }];
 }
 
 #pragma mark - Lazyload
@@ -43,24 +46,101 @@
             
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 @strongify(self)
-//                NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:2];
-//                // 运营品牌 2：Seventrees
-//                params[@"mobile"] = [NSString stringWithFormat:@"%@,%lu", self.registerModel.phoneNumber, operationBrand];
-//                params[@"code"] = self.loginModel.verifyCode;
-//                params[@"password"] = @"123456";
-//                [NetworkMgr POST:kRegisterURIPath params:params success:^(NetworkResultModel *resultModel) {
-//                    [subscriber sendNext:resultModel];
-//                    [subscriber sendCompleted];
-//                    DLog(@"resultModel == %@", resultModel);
-//                    
-//                } failure:^(NSError *error) {
-//                    [subscriber sendCompleted];
-//                }];
+                /*
+                NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:3];
+                // 运营品牌 1：Seventrees
+                params[@"username"] = [NSString stringWithFormat:@"%@,%lu", self.loginModel.phoneNumber, operationBrand];
+                if (self.loginModel.verifyCode.length) params[@"code"] = self.loginModel.verifyCode;
+                if (self.loginModel.password.length) params[@"password"] = self.loginModel.password;
+                */
+                
+                /*
+                NSString *username = [NSString stringWithFormat:@"%@,%lu", self.loginModel.phoneNumber, operationBrand];
+                
+                NSString *loginURIPath = @"";
+                if (self.loginModel.verifyCode.length) {
+                    loginURIPath = [NSString stringWithFormat:@"%@?username=%@&code=%@", kLoginURIPath, username, self.loginModel.verifyCode];
+                } else if (self.loginModel.password.length) {
+                    loginURIPath = [NSString stringWithFormat:@"%@?username=%@&password=%@", kLoginURIPath, username, self.loginModel.password];
+                } else {
+                    DLog(@"GET登录拼接URL失败!!!");
+                }
+                
+                [networkMgr GET:loginURIPath parameters:nil success:^(NetworkResultModel *resultModel) {
+                    [subscriber sendNext:resultModel];
+                    [subscriber sendCompleted];
+                    
+                } failure:^(NSError *error) {
+                    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                    [subscriber sendNext:nil];
+                    [subscriber sendCompleted];
+                }];
+                */
+                
+                NSString *username = [NSString stringWithFormat:@"%@,%lu", self.loginModel.phoneNumber, operationBrand];
+                
+                NSString *loginURIPath = @"";
+                if (self.loginModel.verifyCode.length) {
+                    loginURIPath = [NSString stringWithFormat:@"%@?username=%@&code=%@", kLoginURIPath, username, self.loginModel.verifyCode];
+                } else if (self.loginModel.password.length) {
+                    loginURIPath = [NSString stringWithFormat:@"%@?username=%@&password=%@", kLoginURIPath, username, self.loginModel.password];
+                } else {
+                    DLog(@"登录拼接URLPath失败!!!");
+                }
+                
+                NSString *domain = @"http://192.168.1.135:8080";
+                NSString *URLString = [domain stringByAppendingString:loginURIPath];
+                DLog(@"（NSURLSession）原生登录POST请求:URLString == %@", URLString);
+                NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLString]];
+                request.HTTPMethod = @"POST";
+                [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+                [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+                
+                [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NetworkResultModel *resultModel;
+                        if (data) {
+                            NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:NULL];
+                             resultModel = [NetworkDataConver resultModelFromAFNetworkingResponseObject:resultDict];
+                        }
+                        DLog(@"登录结果resultDict == %@", resultModel);
+                        [subscriber sendNext:resultModel];
+                        [subscriber sendCompleted];
+                    });
+                }] resume];
+                
                 return nil;
             }];
         }];
     }
     return _requestDataCommand;
+}
+
+- (RACCommand *)requestVerifyCodeCommand {
+    if (! _requestVerifyCodeCommand) {
+        @weakify(self)
+        _requestVerifyCodeCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                @strongify(self)
+                NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:2];
+                // 运营品牌 1：Seventrees
+                params[@"mobile"] = [NSString stringWithFormat:@"%@,%lu", self.loginModel.phoneNumber, operationBrand];
+                // 申请验证码类型（login 登录验证码[默认]，register 注册验证码，pwd 找回密码验证码）
+                params[@"type"] = @"login";
+                
+                [networkMgr POST:kSendVerifyCodeURIPath params:params success:^(NetworkResultModel *resultModel) {
+                    [subscriber sendNext:resultModel];
+                    [subscriber sendCompleted];
+                    
+                } failure:^(NSError *error) {
+                    [subscriber sendCompleted];
+                }];
+                return nil;
+            }];
+        }];
+    }
+    return _requestVerifyCodeCommand;
 }
 
 - (RACSubject *)refreshUISubject {
@@ -82,6 +162,13 @@
         _registerActionSubject = [RACSubject subject];
     }
     return _registerActionSubject;
+}
+
+- (RACSubject *)agreementActionSubject {
+    if (! _agreementActionSubject) {
+        _agreementActionSubject = [RACSubject subject];
+    }
+    return _agreementActionSubject;
 }
 
 - (FMLoginModel *)loginModel {

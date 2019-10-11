@@ -74,13 +74,13 @@
      [_showPasswordInputView.viewModel.textChangedSubject subscribeNext:^(NSString *password) {
          @strongify(self);
          self.viewModel.registerModel.password = password;
-         if (password.length == 11) [self->_hidePasswordInputView becomeFirstResponder];
+         if (password.length == 8) [self->_hidePasswordInputView becomeFirstResponder];
      }];
      
      [_hidePasswordInputView.viewModel.textChangedSubject subscribeNext:^(NSString *repeatPassword) {
          @strongify(self);
          self.viewModel.registerModel.repeatPassword = repeatPassword;
-         if (repeatPassword.length == 11) self.cv_endEditing();
+         if (repeatPassword.length == 8) self.cv_endEditing();
      }];
     
      [[_affirmButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -101,6 +101,14 @@
          }
          self.cv_endEditing();
          [self.viewModel.requestDataCommand execute:nil]; // 执行注册请求命令
+     }];
+     
+     [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
+         if ([resultModel.statusCode isEqualToString:@"OK"]) {
+             [SVProgressHUD showSuccessWithStatus:resultModel.statusMsg];
+         } else {
+             [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
+         }
      }];
 }
 

@@ -363,6 +363,8 @@
 		84DD3FE123015B04001171F1 /* UIView+Seek.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD3FC923015B04001171F1 /* UIView+Seek.m */; };
 		84DD40E723016436001171F1 /* FMModel+RuntimeCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD40E623016436001171F1 /* FMModel+RuntimeCopy.m */; };
 		84DD40EB2301645C001171F1 /* FMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD40EA2301645C001171F1 /* FMModel.m */; };
+		84DE9F562350702500B5B552 /* UIButton+Countdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE9F542350702400B5B552 /* UIButton+Countdown.m */; };
+		84DE9F572350702500B5B552 /* UIButton+UpDownStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE9F552350702500B5B552 /* UIButton+UpDownStructure.m */; };
 		84E7F559233211B4002C6915 /* FMCouponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7F551233211B3002C6915 /* FMCouponCell.m */; };
 		84E7F55A233211B4002C6915 /* FMCouponCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E7F552233211B3002C6915 /* FMCouponCell.xib */; };
 		84E7F55B233211B4002C6915 /* FMCouponCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7F554233211B3002C6915 /* FMCouponCellViewModel.m */; };
@@ -1121,6 +1123,10 @@
 		84DD40E623016436001171F1 /* FMModel+RuntimeCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMModel+RuntimeCopy.m"; sourceTree = "<group>"; };
 		84DD40E92301645C001171F1 /* FMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMModel.h; sourceTree = "<group>"; };
 		84DD40EA2301645C001171F1 /* FMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMModel.m; sourceTree = "<group>"; };
+		84DE9F522350702400B5B552 /* UIButton+UpDownStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+UpDownStructure.h"; sourceTree = "<group>"; };
+		84DE9F532350702400B5B552 /* UIButton+Countdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Countdown.h"; sourceTree = "<group>"; };
+		84DE9F542350702400B5B552 /* UIButton+Countdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Countdown.m"; sourceTree = "<group>"; };
+		84DE9F552350702500B5B552 /* UIButton+UpDownStructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+UpDownStructure.m"; sourceTree = "<group>"; };
 		84E7F550233211B3002C6915 /* FMCouponCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCouponCell.h; sourceTree = "<group>"; };
 		84E7F551233211B3002C6915 /* FMCouponCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMCouponCell.m; sourceTree = "<group>"; };
 		84E7F552233211B3002C6915 /* FMCouponCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMCouponCell.xib; sourceTree = "<group>"; };
@@ -4181,6 +4187,10 @@
 			isa = PBXGroup;
 			children = (
 				84B142D22304F6E7009ADECF /* UITableView+FDTemplateLayoutCell */,
+				84DE9F532350702400B5B552 /* UIButton+Countdown.h */,
+				84DE9F542350702400B5B552 /* UIButton+Countdown.m */,
+				84DE9F522350702400B5B552 /* UIButton+UpDownStructure.h */,
+				84DE9F552350702500B5B552 /* UIButton+UpDownStructure.m */,
 				84D42D462304E88100249356 /* UIView+Frame.h */,
 				84D42D472304E88100249356 /* UIView+Frame.m */,
 				84D42D492304F16700249356 /* UIView+Visuals.h */,
@@ -5070,6 +5080,7 @@
 				84089E6B2313904300D7EF7D /* FMEvaluationViewModel.m in Sources */,
 				84FC4446231CF4E200DF9799 /* YBIBAnimatedTransition.m in Sources */,
 				8449936D234084B10006A544 /* FMSlashRecordListView.m in Sources */,
+				84DE9F562350702500B5B552 /* UIButton+Countdown.m in Sources */,
 				84604F37234D7450005CBD9A /* FMRegisterModel.m in Sources */,
 				84F0453F2330CC330002B5B3 /* FMMemberHeaderView.m in Sources */,
 				84094E9A233B0B98008BF38B /* FMTitleView.m in Sources */,
@@ -5156,6 +5167,7 @@
 				84499363234081650006A544 /* FMSlashGoodsView.m in Sources */,
 				84351D89233364E30090E472 /* FMOrderViewModel.m in Sources */,
 				84464C1E230FF0F400ED9069 /* UIView+ORIBProperty.m in Sources */,
+				84DE9F572350702500B5B552 /* UIButton+UpDownStructure.m in Sources */,
 				844A0E102338BD47006015D4 /* FMApplyRefundController.m in Sources */,
 				8405B8AE2334CDB80065965F /* FMOrderDetailsController.m in Sources */,
 				84F0453E2330CC330002B5B3 /* FMMemberCenterController.m in Sources */,

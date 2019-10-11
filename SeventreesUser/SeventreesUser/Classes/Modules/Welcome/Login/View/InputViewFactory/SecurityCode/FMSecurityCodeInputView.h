@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) FMSecurityCodeInputViewModel *viewModel;
 
+- (void)startCountdown;
+
 - (void)becomeFirstResponder;
 
 @end

@@ -11,6 +11,7 @@
 
 #import "FMRegisterController.h"
 
+
 @interface FMLoginController ()
 
 @property (nonatomic, strong) FMLoginView *loginView;
@@ -20,11 +21,6 @@
 @implementation FMLoginController
 
 #pragma mark - System Functions
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-}
 
 - (void)updateViewConstraints {
     self.loginView.cv_frame(self.view.bounds);
@@ -44,8 +40,14 @@
     
     [self.loginView.viewModel.registerActionSubject subscribeNext:^(id x) {
         @strongify(self)
-        UIViewController *nextVC = [[FMRegisterController alloc] init];
+        FMRegisterController *nextVC = [[FMRegisterController alloc] init];
         [self presentViewController:nextVC animated:YES completion:nil];
+    }];
+    
+    [self.loginView.viewModel.agreementActionSubject subscribeNext:^(id x) {
+//        @strongify(self)
+//        UIViewController *nextVC = [[UIViewController alloc] init]; // 用户协议
+//        [self presentViewController:nextVC animated:YES completion:nil];
     }];
     
     [self.loginView.viewModel.loginSuccessSubject subscribeNext:^(id x) {
@@ -70,7 +72,7 @@
 }
 
 - (void)fm_refreshData {
-    DLog(@"");
+
 }
 
 #pragma mark - Lazyload

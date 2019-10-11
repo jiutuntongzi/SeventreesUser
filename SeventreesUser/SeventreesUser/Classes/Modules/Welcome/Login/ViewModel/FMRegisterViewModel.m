@@ -12,11 +12,16 @@
 
 - (void)fm_initialize {
     @weakify(self)
+    
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (!self) return;
         
         [self.refreshUISubject sendNext:resultModel];
-        [self.registerSuccessSubject sendNext:resultModel];
+        
+        // test code
+        if ([resultModel.statusCode isEqualToString:@"OK"]) {
+            [self.registerSuccessSubject sendNext:resultModel];
+        }
     }];
     
     [self.requestVerifyCodeCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
@@ -36,16 +41,17 @@
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 @strongify(self)
                 NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:3];
-                // 运营品牌 1：Seventrees
                 params[@"mobile"] = [NSString stringWithFormat:@"%@,%lu", self.registerModel.phoneNumber, operationBrand];
                 params[@"code"] = self.registerModel.verifyCode;
                 params[@"password"] = self.registerModel.password;
                 
-                [NetworkMgr POST:kRegisterURIPath params:params success:^(NetworkResultModel *resultModel) {
+                [networkMgr POST:kRegisterURIPath params:params success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
 
                 } failure:^(NSError *error) {
+                    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                    [subscriber sendNext:nil];
                     [subscriber sendCompleted];
                 }];
                 return nil;
@@ -68,7 +74,7 @@
                 // 申请验证码类型（login 登录验证码[默认]，register 注册验证码，pwd 找回密码验证码）
                 params[@"type"] = @"register";
                 
-                [NetworkMgr POST:kSendVerifyCodeURIPath params:params success:^(NetworkResultModel *resultModel) {
+                [networkMgr POST:kSendVerifyCodeURIPath params:params success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
                     
@@ -87,6 +93,13 @@
         _refreshUISubject = [RACSubject subject];
     }
     return _refreshUISubject;
+}
+
+- (RACSubject *)nextActionSubject {
+    if (! _nextActionSubject) {
+        _nextActionSubject = [RACSubject subject];
+    }
+    return _nextActionSubject;
 }
 
 - (RACSubject *)registerSuccessSubject {

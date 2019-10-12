@@ -10,5 +10,6 @@
 
 @interface FMLoginController : FMViewController
 
+@property (nonatomic, copy) void(^loginSuccessBlock)(void);
 
 @end

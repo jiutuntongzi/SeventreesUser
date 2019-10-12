@@ -6,9 +6,11 @@
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "FMView.h"
+#import "FMHomeViewModel.h"
 
 @interface FMHomeView : FMView
+
+@property (nonatomic, strong) FMHomeViewModel *viewModel;
 
 @end

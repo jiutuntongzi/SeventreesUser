@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "URIPath.h"
 #import "NetworkResultModel.h"
+#import "NSError+Common.h"
+
+/** 备用服(外网) */
 
 typedef NS_ENUM(NSUInteger, NetworkRequestManagerServerType) {
     
@@ -36,6 +39,7 @@ typedef void(^NetworkRequestFailure)(NSError *error);
 /** 切换服务器 (更换请求主域名)  */
 - (void)changeRequestServerType:(NetworkRequestManagerServerType)requestHostType;
 
+
 #pragma mark ——— AFURLSessionManager
 
 - (void)GET:(NSString *)URIPath params:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
@@ -44,6 +48,7 @@ typedef void(^NetworkRequestFailure)(NSError *error);
 
 - (void)cancelRequests;
 
+
 #pragma mark ——— AFHTTPSessionManager
 
 - (void)GET:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
@@ -51,5 +56,18 @@ typedef void(^NetworkRequestFailure)(NSError *error);
 - (void)POST:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
 
 - (void)cancelRequestTasks;
+
+
+#pragma mark ——— NSURLSession
+
+- (void)POST:(NSString *)URLString success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
+
+#pragma mark ——— Network API
+
+- (void)requestLoginWithPhoneNumber:(NSString *)phoneNumber verifyCode:(NSString *)verifyCode password:(NSString *)password success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
+
+- (void)requestHomeListDataWithLongitude:(NSString *)longitude latitude:(NSString *)latitude success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
+
+- (void)requestFindGoodsOrBrandWithName:(NSString *)name success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
 
 @end

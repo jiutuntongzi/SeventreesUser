@@ -24,15 +24,7 @@ typedef NS_ENUM(NSUInteger, HTTPRequestMethod){
 #define     kFormalHostDomain      @""
 
 /** 测试服(内网) */
-#define     kTestHostDomain        @"http://192.168.1.135:8080"
-
-/** 备用服(外网) */
-
-
-/** 请求主机地址切换
- *   主正式服: kFormalRequestHost   测试服: kTestRequestHost    备用服: KStandbyRequestHost
- */
-static NSString * _hostDomain = kTestHostDomain;
+#define     kTestHostDomain        @"http://192.168.1.117:8080"
 
 @interface NetworkRequestManager ()
 
@@ -40,6 +32,9 @@ static NSString * _hostDomain = kTestHostDomain;
 
 @property (nonatomic, strong) AFURLSessionManager *netSessionManager;
 
+/** 请求主机地址切换
+ *   主正式服: kFormalRequestHost   测试服: kTestRequestHost    备用服: KStandbyRequestHost
+ */
 @property (nonatomic, copy) NSString *hostDomain;
 
 @end
@@ -103,6 +98,36 @@ static NetworkRequestManager * _instance = nil;
     jsonResponse.removesKeysWithNullValues = YES;
 }
 
+/** AFNetworking请求配置 */
+- (AFHTTPSessionManager *)sessionManager{
+    if (! _sessionManager) {
+        _sessionManager = [AFHTTPSessionManager manager];
+        
+        if ([UserData token]) {
+            [self.sessionManager.requestSerializer.HTTPRequestHeaders setValue:[UserData token] forKey:kTokenKey];
+        }
+        
+        // 请求体JSON类型问题 改使用原生HTTP请求 "Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported";
+        //        [_sessionManager.requestSerializer.HTTPRequestHeaders setValue:@"application/json" forKey:@"Content-Type"];
+        //        [_sessionManager.requestSerializer.HTTPRequestHeaders setValue:@"application/json" forKey:@"Accept"];
+        
+        // 设置 json 响应解析器 ,这样返回的数据就是解析好的 json 数据 ,不需要自己再做 json 解析
+        _sessionManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:(NSJSONReadingAllowFragments)];
+        
+        // 设置支持的响应数据格式
+        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain",@"image/jpg", nil];
+        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
+        
+        /// 设置请求超时时长
+        [_sessionManager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+        _sessionManager.requestSerializer.timeoutInterval = kTimeoutInterval;
+        [_sessionManager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+        
+        [self configAFNetworking]; // AFNetworking配置: 自带处理NSNull对象
+    }
+    return _sessionManager;
+}
+
 #pragma mark ——— AFURLSessionManager
 
 - (void)GET:(NSString *)URIPath params:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
@@ -142,7 +167,7 @@ static NetworkRequestManager * _instance = nil;
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@", _hostDomain, URIPath];
     NSString *requestMethod = [self requestMethod:method];
-    DLog(@"\n%@请求URL:%@\n", requestMethod, urlString);
+    DLog(@"\n %@请求 URL:%@\n", requestMethod, urlString);
     
     NSDictionary *parameters = nil;
     if (method == HTTPRequestMethodGET) parameters = [params copy];
@@ -237,34 +262,72 @@ static NetworkRequestManager * _instance = nil;
     }
 }
 
-/** AFNetworking请求配置 */
-- (AFHTTPSessionManager *)sessionManager{
-    if (! _sessionManager) {
-        _sessionManager = [AFHTTPSessionManager manager];
+#pragma mark ——— NSURLSession
 
-        if ([UserData token]) {
-            [self.sessionManager.requestSerializer.HTTPRequestHeaders setValue:[UserData token] forKey:kTokenKey];
-        }
-        
-        // 请求体JSON类型问题 改使用原生HTTP请求 "Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported";
-//        [_sessionManager.requestSerializer.HTTPRequestHeaders setValue:@"application/json" forKey:@"Content-Type"];
-//        [_sessionManager.requestSerializer.HTTPRequestHeaders setValue:@"application/json" forKey:@"Accept"];
-        
-        // 设置 json 响应解析器 ,这样返回的数据就是解析好的 json 数据 ,不需要自己再做 json 解析
-        _sessionManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:(NSJSONReadingAllowFragments)];
-        
-        // 设置支持的响应数据格式
-        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain",@"image/jpg", nil];
-        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
-        
-        /// 设置请求超时时长
-        [_sessionManager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        _sessionManager.requestSerializer.timeoutInterval = kTimeoutInterval;
-        [_sessionManager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-        
-        [self configAFNetworking]; // AFNetworking配置: 自带处理NSNull对象
+- (void)POST:(NSString *)URLString success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    DLog(@"\n（NSURLSession）原生网络请求(POST表单上传方式):URLString == %@\n", URLString);
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLString]];
+    request.HTTPMethod = @"POST";
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"]; // 表单提交
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                DLog(@"\n（NSURLSession）原生网络请求失败！（POST表单上传方式）error.localizedDescription == %@ \n", error.localizedDescription);
+                failure(error);
+            }
+            NetworkResultModel *resultModel = nil;
+            if (data) {
+                NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:NULL];
+                resultModel = [NetworkDataConver resultModelFromAFNetworkingResponseObject:resultDict];
+            }
+            DLog(@"\n（NSURLSession）原生网络请求成功（POST表单上传方式）response == %@ \n\n resultModel == %@ \n\n", response, resultModel);
+            DLog(@"\n JSONString == %@\n\n", resultModel.jsonString);
+            success(resultModel);
+        });
+    }] resume];
+}
+
+#pragma mark ——— Network API
+
+- (void)requestLoginWithPhoneNumber:(NSString *)phoneNumber verifyCode:(NSString *)verifyCode password:(NSString *)password success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    // 运营品牌 1：Seventrees
+    NSString *username = [NSString stringWithFormat:@"%@,%d", phoneNumber, 1];
+    NSString *loginURIPath;
+    if (verifyCode.length) {
+        loginURIPath = [NSString stringWithFormat:@"%@?username=%@&password=%@", kLoginURIPath, username, verifyCode];
+    } else if (password.length) {
+        loginURIPath = [NSString stringWithFormat:@"%@?username=%@&password=%@", kLoginURIPath, username, password];
+    } else {
+        DLog(@"（NSURLSession）请求登录：拼接URLPath参数失败!");
+        NSError *error = [NSError errorCode:NSCommonErrorCodeFailed userInfo:@{NSLocalizedDescriptionKey:@"登录失败：参数错误！", NSLocalizedFailureReasonErrorKey:@"请求登录：拼接URLPath参数失败!", NSLocalizedRecoverySuggestionErrorKey:@"请求路径参数错误"}];
+        failure(error);
     }
-    return _sessionManager;
+    NSString *URLString = [_hostDomain stringByAppendingString:loginURIPath];
+    [self POST:URLString success:success failure:failure];
+}
+
+- (void)requestHomeListDataWithLongitude:(NSString *)longitude latitude:(NSString *)latitude success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:2];
+    params[@"latitude"] = @"123.0140080000"; // 纬度
+    params[@"longitude"] = @"41.1409530000"; // 经度
+    
+    [networkMgr POST:kHomeListURIPath params:params success:^(NetworkResultModel *resultModel) {
+        success(resultModel);
+    } failure:^(NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)requestFindGoodsOrBrandWithName:(NSString *)name success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:1];
+    params[@"name"] = name;
+    [networkMgr POST:kFindNameLikeURIPath params:params success:^(NetworkResultModel *resultModel) {
+        success(resultModel);
+    } failure:^(NSError *error) {
+        failure(error);
+    }];
 }
 
 @end

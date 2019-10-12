@@ -8,23 +8,23 @@
 
 #import "AppDelegate+AppInit.h"
 #import <objc/runtime.h>
-#import "UserData.h"
+
+#import "AppDelegate+RootWindow.h"
 
 @implementation AppDelegate (AppInit)
 
 #pragma mark ——— <Swizzle system method>
 
--(BOOL)fm_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    /**注册微信*/
-    //    [WXApi registerApp:WxAppId];
+- (BOOL)fm_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self fm_loadWindowRootController];
+    
+    //    [WXApi registerApp:WxAppId]; // 注册微信
     
     return [self fm_application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
--(BOOL)fm_application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+- (BOOL)fm_application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     /**转接url处理对象*/
 //    [WXApi handleOpenURL:url delegate:[WeChatConfig shareCfg]];
 //    [self _alipayHandleUrl:url];
@@ -32,7 +32,7 @@
     return [self fm_application:app openURL:url options:options];
 }
 
--(BOOL)fm_application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+- (BOOL)fm_application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     /**转接url处理对象*/
 //    [WXApi handleOpenURL:url delegate:[WeChatConfig shareCfg]];
 //    [self _alipayHandleUrl:url];
@@ -40,28 +40,12 @@
     return [self fm_application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
--(void)fm_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+- (void)fm_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    [[NIMSDK sharedSDK] updateApnsToken:deviceToken];
     [self fm_application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 #pragma mark ——— <Private method>
-
-- (void)fm_loadWindowRootController {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    
-    BOOL isLogged = [UserData token] != nil;
-    if (isLogged) {
-        self.rootViewController = [[NSClassFromString(@"MainTabBarController") alloc] init];
-        self.window.rootViewController = self.rootViewController;
-        
-    } else {
-        UIViewController *loginVC = [[NSClassFromString(@"FMLoginController") alloc] init];
-        self.window.rootViewController = loginVC;
-    }
-}
 
 - (void)nonHandle {
     NSLog(@"To avoid an infinite loop , do nothing");
@@ -85,7 +69,7 @@ BOOL fm_clsMethodSwizzle(Class cls , SEL originalSel , SEL swizzleSel ,SEL nopSe
     return YES;
 }
 
-+(void)load {
++ (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         fm_clsMethodSwizzle([self class], @selector(application:didFinishLaunchingWithOptions:), @selector(fm_application:didFinishLaunchingWithOptions:),@selector(nonHandle));

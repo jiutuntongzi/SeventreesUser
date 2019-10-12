@@ -50,10 +50,10 @@
 //        [self presentViewController:nextVC animated:YES completion:nil];
     }];
     
-    [self.loginView.viewModel.loginSuccessSubject subscribeNext:^(id x) {
-        DLog(@"请求登录成功数据：%@", x);
-//        UINavigationController *navController = UINavigationController.cnc_initWithRootViewController(UIViewController.cvc_controller().cvc_title(@"个人"));
-//        self_weak_.cvc_presentVCAnimatedCompletion(navController, YES, nil);
+    [self.loginView.viewModel.loginSuccessSubject subscribeNext:^(NetworkResultModel *resultModel) {
+        @strongify(self);
+        
+        if (self->_loginSuccessBlock) self->_loginSuccessBlock();
     }];
 }
 
@@ -85,7 +85,7 @@
 }
 
 - (void)dealloc {
-    DLog(@"VC销毁了");
+    DLog(@"登录VC销毁了");
 }
 
 @end

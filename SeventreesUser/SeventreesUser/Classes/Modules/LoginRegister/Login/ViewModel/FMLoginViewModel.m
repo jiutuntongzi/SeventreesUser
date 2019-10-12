@@ -22,6 +22,7 @@
         
         if ([resultModel.statusCode isEqualToString:@"OK"]) {
             userData().phoneNumber = self.loginModel.phoneNumber;
+            [UserData saveToken:resultModel.jsonDict[@"token"]];
             [self.loginSuccessSubject sendNext:resultModel];
         }
     }];
@@ -65,7 +66,6 @@
                 } else {
                     DLog(@"GET登录拼接URL失败!!!");
                 }
-                
                 [networkMgr GET:loginURIPath parameters:nil success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
@@ -77,6 +77,7 @@
                 }];
                 */
                 
+                /*
                 NSString *username = [NSString stringWithFormat:@"%@,%lu", self.loginModel.phoneNumber, operationBrand];
                 
                 NSString *loginURIPath = @"";
@@ -87,28 +88,25 @@
                 } else {
                     DLog(@"登录拼接URLPath失败!!!");
                 }
+                */
                 
-                NSString *domain = @"http://192.168.1.135:8080";
-                NSString *URLString = [domain stringByAppendingString:loginURIPath];
-                DLog(@"（NSURLSession）原生登录POST请求:URLString == %@", URLString);
-                NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLString]];
-                request.HTTPMethod = @"POST";
-                [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-                [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-                
-                [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NetworkResultModel *resultModel;
-                        if (data) {
-                            NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:NULL];
-                             resultModel = [NetworkDataConver resultModelFromAFNetworkingResponseObject:resultDict];
-                        }
-                        DLog(@"登录结果resultDict == %@", resultModel);
-                        [subscriber sendNext:resultModel];
-                        [subscriber sendCompleted];
-                    });
-                }] resume];
-                
+                [networkMgr requestLoginWithPhoneNumber:self.loginModel.phoneNumber verifyCode:self.loginModel.verifyCode password:self.loginModel.password success:^(NetworkResultModel *resultModel) {
+                    
+                    [subscriber sendNext:resultModel];
+                    [subscriber sendCompleted];
+                    
+                } failure:^(NSError *error) {
+//                    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                    NetworkResultModel *resultModel = [NetworkResultModel modelWithDict:@{
+                                                                                          @"statusCode":@(error.code).stringValue,
+                                                                                          @"statusMsg": error.localizedDescription
+//                                                                                          @"jsonString": @"",
+//                                                                                          @"jsonDict": @{},
+                                                                                          }];
+                    [subscriber sendNext:resultModel];
+                    [subscriber sendCompleted];
+                }];
+
                 return nil;
             }];
         }];

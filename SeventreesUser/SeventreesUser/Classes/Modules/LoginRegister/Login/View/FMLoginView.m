@@ -202,13 +202,15 @@
         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
         if ([resultModel.statusCode isEqualToString:@"OK"]) {
             [SVProgressHUD showSuccessWithStatus:resultModel.statusMsg];
+        } else if (resultModel.statusCode.integerValue == NSCommonErrorCodeNotConnectServer) {
+            [SVProgressHUD showErrorWithStatus:resultModel.statusMsg];
         } else {
             [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
         }
     }];
     
-    [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(id x) {
-        if ([x isEqualToNumber:@(YES)]) {
+    [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+        if ([isExecuting isEqualToNumber:@(YES)]) {
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
             [SVProgressHUD showWithStatus:@"登录中.."];
             //            DLog(@"（登录命令执行中..）");

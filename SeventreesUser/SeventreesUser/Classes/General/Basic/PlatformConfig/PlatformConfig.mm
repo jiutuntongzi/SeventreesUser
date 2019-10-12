@@ -86,13 +86,17 @@ NSString * const baiduMapTTSAppID = @"9451555";
 #pragma mark - 应用信息
 
 /** AppID */
-NSString * const appleAppID = @"1239095898";
+NSString * const appleAppID = @"1344037247";
 
 /** 苹果商店App下载地址 */
-NSString * const appStoreURL = @"https://itunes.apple.com/cn/app/id1239095898?mt=8";
+NSString * const appStoreURL = @"https://itunes.apple.com/cn/app/id1344037247?mt=8";
 
 /** 应用包名（产品唯一标识） */
-NSString * const appBundleId = @"com.ckapp.wcbkj";
+NSString * const appBundleId = @"com.seven-trees.seventreesuser";
+
+/**
+ Universal Links（通用链接）是iOS9.0出的新技术。如果我们的应用支持通用链接，那么就可以通过https链接来打开APP（手机中已经安装此APP），或者跳转到https链接（手机中没有安装此APP）。 */
+NSString * const appUniversalLinks = @"https://seventreesuser/";
 
 /** 运营品牌
  * 1：Seventrees

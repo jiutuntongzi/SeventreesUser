@@ -208,6 +208,7 @@
 		844A0E122338BD51006015D4 /* FMApplyRefundController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844A0E112338BD51006015D4 /* FMApplyRefundController.xib */; };
 		844A0E162338BE2E006015D4 /* FMRefundGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 844A0E152338BE2E006015D4 /* FMRefundGoodsCell.m */; };
 		844A0E182338BE3F006015D4 /* FMRefundGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844A0E172338BE3F006015D4 /* FMRefundGoodsCell.xib */; };
+		8453D56C235177500014CC3B /* NSError+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453D56B235177500014CC3B /* NSError+Common.m */; };
 		8456BAC0232F5B9900E59966 /* FMImgHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456BABF232F5B9900E59966 /* FMImgHeaderView.m */; };
 		8456BAC2232F5BA300E59966 /* FMImgHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456BAC1232F5BA300E59966 /* FMImgHeaderView.xib */; };
 		8456BAC5232F5D1000E59966 /* FMSelectFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456BAC4232F5D1000E59966 /* FMSelectFooterView.m */; };
@@ -365,6 +366,12 @@
 		84DD40EB2301645C001171F1 /* FMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD40EA2301645C001171F1 /* FMModel.m */; };
 		84DE9F562350702500B5B552 /* UIButton+Countdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE9F542350702400B5B552 /* UIButton+Countdown.m */; };
 		84DE9F572350702500B5B552 /* UIButton+UpDownStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE9F552350702500B5B552 /* UIButton+UpDownStructure.m */; };
+		84DFE25E2351B07100F6DA7D /* AppDelegate+RootWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DFE25D2351B07100F6DA7D /* AppDelegate+RootWindow.m */; };
+		84DFE2652351C0A900F6DA7D /* FMHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DFE2642351C0A900F6DA7D /* FMHomeViewModel.m */; };
+		84DFE2682351C1A000F6DA7D /* FMHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DFE2672351C1A000F6DA7D /* FMHomeModel.m */; };
+		84DFE26B2351CF9700F6DA7D /* FMHomeGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DFE26A2351CF9700F6DA7D /* FMHomeGoodsModel.m */; };
+		84DFE26E2351D16300F6DA7D /* FMHomeCarouselModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DFE26D2351D16300F6DA7D /* FMHomeCarouselModel.m */; };
+		84DFE2712351D1E000F6DA7D /* FMHomeMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DFE2702351D1E000F6DA7D /* FMHomeMenuModel.m */; };
 		84E7F559233211B4002C6915 /* FMCouponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7F551233211B3002C6915 /* FMCouponCell.m */; };
 		84E7F55A233211B4002C6915 /* FMCouponCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E7F552233211B3002C6915 /* FMCouponCell.xib */; };
 		84E7F55B233211B4002C6915 /* FMCouponCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7F554233211B3002C6915 /* FMCouponCellViewModel.m */; };
@@ -830,6 +837,8 @@
 		844A0E142338BE2E006015D4 /* FMRefundGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMRefundGoodsCell.h; sourceTree = "<group>"; };
 		844A0E152338BE2E006015D4 /* FMRefundGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMRefundGoodsCell.m; sourceTree = "<group>"; };
 		844A0E172338BE3F006015D4 /* FMRefundGoodsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMRefundGoodsCell.xib; sourceTree = "<group>"; };
+		8453D56A235177500014CC3B /* NSError+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+Common.h"; sourceTree = "<group>"; };
+		8453D56B235177500014CC3B /* NSError+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+Common.m"; sourceTree = "<group>"; };
 		8456BABE232F5B9900E59966 /* FMImgHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMImgHeaderView.h; sourceTree = "<group>"; };
 		8456BABF232F5B9900E59966 /* FMImgHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMImgHeaderView.m; sourceTree = "<group>"; };
 		8456BAC1232F5BA300E59966 /* FMImgHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMImgHeaderView.xib; sourceTree = "<group>"; };
@@ -1127,6 +1136,18 @@
 		84DE9F532350702400B5B552 /* UIButton+Countdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Countdown.h"; sourceTree = "<group>"; };
 		84DE9F542350702400B5B552 /* UIButton+Countdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Countdown.m"; sourceTree = "<group>"; };
 		84DE9F552350702500B5B552 /* UIButton+UpDownStructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+UpDownStructure.m"; sourceTree = "<group>"; };
+		84DFE25C2351B07100F6DA7D /* AppDelegate+RootWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+RootWindow.h"; sourceTree = "<group>"; };
+		84DFE25D2351B07100F6DA7D /* AppDelegate+RootWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+RootWindow.m"; sourceTree = "<group>"; };
+		84DFE2632351C0A900F6DA7D /* FMHomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMHomeViewModel.h; sourceTree = "<group>"; };
+		84DFE2642351C0A900F6DA7D /* FMHomeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMHomeViewModel.m; sourceTree = "<group>"; };
+		84DFE2662351C1A000F6DA7D /* FMHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMHomeModel.h; sourceTree = "<group>"; };
+		84DFE2672351C1A000F6DA7D /* FMHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMHomeModel.m; sourceTree = "<group>"; };
+		84DFE2692351CF9700F6DA7D /* FMHomeGoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMHomeGoodsModel.h; sourceTree = "<group>"; };
+		84DFE26A2351CF9700F6DA7D /* FMHomeGoodsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMHomeGoodsModel.m; sourceTree = "<group>"; };
+		84DFE26C2351D16300F6DA7D /* FMHomeCarouselModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMHomeCarouselModel.h; sourceTree = "<group>"; };
+		84DFE26D2351D16300F6DA7D /* FMHomeCarouselModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMHomeCarouselModel.m; sourceTree = "<group>"; };
+		84DFE26F2351D1E000F6DA7D /* FMHomeMenuModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMHomeMenuModel.h; sourceTree = "<group>"; };
+		84DFE2702351D1E000F6DA7D /* FMHomeMenuModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMHomeMenuModel.m; sourceTree = "<group>"; };
 		84E7F550233211B3002C6915 /* FMCouponCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCouponCell.h; sourceTree = "<group>"; };
 		84E7F551233211B3002C6915 /* FMCouponCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMCouponCell.m; sourceTree = "<group>"; };
 		84E7F552233211B3002C6915 /* FMCouponCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMCouponCell.xib; sourceTree = "<group>"; };
@@ -2711,15 +2732,15 @@
 				84FAEC90231761BB00E8CA3F /* BrandGoods */,
 				8406E4632325FA7500E167BD /* SalesActivity */,
 				84089E5B23138FBE00D7EF7D /* Evaluation */,
+				84E7F54E233211B3002C6915 /* AllCoupon */,
+				8467B56D2331D5510062B33F /* ScoreCenter */,
+				8406E47C2326246B00E167BD /* Setting */,
+				8440B9FA232F3C48002354FC /* PersonalProfile */,
 				84468D3C230253210073D640 /* Home */,
 				84468D3B230252E90073D640 /* Categories */,
 				84468D382302517B0073D640 /* ShoppingCart */,
 				84468D3D230253260073D640 /* Me */,
-				84E7F54E233211B3002C6915 /* AllCoupon */,
-				8467B56D2331D5510062B33F /* ScoreCenter */,
-				8406E47C2326246B00E167BD /* Setting */,
-				84D42D2A2304022100249356 /* Welcome */,
-				8440B9FA232F3C48002354FC /* PersonalProfile */,
+				84D42D2A2304022100249356 /* LoginRegister */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -2738,6 +2759,8 @@
 			children = (
 				846A4905230A826000D2EAFB /* Controller */,
 				84065D01230A737900D39225 /* View */,
+				84DFE2612351BFF400F6DA7D /* ViewModel */,
+				84DFE2622351C00200F6DA7D /* Model */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -3184,6 +3207,8 @@
 				84886C5C234C664D00CFD16F /* NetworkDataConver.m */,
 				84886C5E234C694500CFD16F /* NetworkResultModel.h */,
 				84886C5F234C694500CFD16F /* NetworkResultModel.m */,
+				8453D56A235177500014CC3B /* NSError+Common.h */,
+				8453D56B235177500014CC3B /* NSError+Common.m */,
 			);
 			path = NetworkRequest;
 			sourceTree = "<group>";
@@ -3334,10 +3359,12 @@
 		849CBFAA230113B2003821E4 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				849CBFAB230113B2003821E4 /* AppDelegate+AppInit.h */,
-				849CBFAC230113B2003821E4 /* AppDelegate+AppInit.m */,
 				849CBFAD230113B2003821E4 /* AppDelegate.h */,
 				849CBFAE230113B2003821E4 /* AppDelegate.m */,
+				849CBFAB230113B2003821E4 /* AppDelegate+AppInit.h */,
+				849CBFAC230113B2003821E4 /* AppDelegate+AppInit.m */,
+				84DFE25C2351B07100F6DA7D /* AppDelegate+RootWindow.h */,
+				84DFE25D2351B07100F6DA7D /* AppDelegate+RootWindow.m */,
 				849CBFAF230113B2003821E4 /* main.m */,
 			);
 			path = AppDelegate;
@@ -3505,20 +3532,12 @@
 			path = GoodsList;
 			sourceTree = "<group>";
 		};
-		84D42D2A2304022100249356 /* Welcome */ = {
+		84D42D2A2304022100249356 /* LoginRegister */ = {
 			isa = PBXGroup;
 			children = (
 				84D42D33230403F700249356 /* Login */,
-				84D42D2F230402C200249356 /* Register */,
 			);
-			path = Welcome;
-			sourceTree = "<group>";
-		};
-		84D42D2F230402C200249356 /* Register */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Register;
+			path = LoginRegister;
 			sourceTree = "<group>";
 		};
 		84D42D33230403F700249356 /* Login */ = {
@@ -3915,6 +3934,52 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		84DFE25F2351B69800F6DA7D /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				84D42D462304E88100249356 /* UIView+Frame.h */,
+				84D42D472304E88100249356 /* UIView+Frame.m */,
+				84D42D492304F16700249356 /* UIView+Visuals.h */,
+				84D42D4A2304F16700249356 /* UIView+Visuals.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		84DFE2602351B6B600F6DA7D /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				84DE9F532350702400B5B552 /* UIButton+Countdown.h */,
+				84DE9F542350702400B5B552 /* UIButton+Countdown.m */,
+				84DE9F522350702400B5B552 /* UIButton+UpDownStructure.h */,
+				84DE9F552350702500B5B552 /* UIButton+UpDownStructure.m */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		84DFE2612351BFF400F6DA7D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84DFE2632351C0A900F6DA7D /* FMHomeViewModel.h */,
+				84DFE2642351C0A900F6DA7D /* FMHomeViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84DFE2622351C00200F6DA7D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84DFE2662351C1A000F6DA7D /* FMHomeModel.h */,
+				84DFE2672351C1A000F6DA7D /* FMHomeModel.m */,
+				84DFE26C2351D16300F6DA7D /* FMHomeCarouselModel.h */,
+				84DFE26D2351D16300F6DA7D /* FMHomeCarouselModel.m */,
+				84DFE26F2351D1E000F6DA7D /* FMHomeMenuModel.h */,
+				84DFE2702351D1E000F6DA7D /* FMHomeMenuModel.m */,
+				84DFE2692351CF9700F6DA7D /* FMHomeGoodsModel.h */,
+				84DFE26A2351CF9700F6DA7D /* FMHomeGoodsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		84E7F54E233211B3002C6915 /* AllCoupon */ = {
 			isa = PBXGroup;
 			children = (
@@ -4186,17 +4251,9 @@
 		84F9D803230E984800158496 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				84DFE2602351B6B600F6DA7D /* UIButton */,
+				84DFE25F2351B69800F6DA7D /* UIView */,
 				84B142D22304F6E7009ADECF /* UITableView+FDTemplateLayoutCell */,
-				84DE9F532350702400B5B552 /* UIButton+Countdown.h */,
-				84DE9F542350702400B5B552 /* UIButton+Countdown.m */,
-				84DE9F522350702400B5B552 /* UIButton+UpDownStructure.h */,
-				84DE9F552350702500B5B552 /* UIButton+UpDownStructure.m */,
-				84D42D462304E88100249356 /* UIView+Frame.h */,
-				84D42D472304E88100249356 /* UIView+Frame.m */,
-				84D42D492304F16700249356 /* UIView+Visuals.h */,
-				84D42D4A2304F16700249356 /* UIView+Visuals.m */,
-				84464C1D230FF0F300ED9069 /* UIView+ORIBProperty.h */,
-				84464C1C230FF0F300ED9069 /* UIView+ORIBProperty.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -4206,6 +4263,8 @@
 			children = (
 				84F9D806230E98E400158496 /* NSString+Size.h */,
 				84F9D805230E98E400158496 /* NSString+Size.m */,
+				84464C1D230FF0F300ED9069 /* UIView+ORIBProperty.h */,
+				84464C1C230FF0F300ED9069 /* UIView+ORIBProperty.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -4942,6 +5001,7 @@
 				84497BFA231D0F8800D3A79B /* FMGoodsDetailsModel.m in Sources */,
 				841873FB233A0FB10083FE1E /* FMRefundPagingController.m in Sources */,
 				84497BFB231D0F8800D3A79B /* FMGoodsDetailsView.m in Sources */,
+				84DFE26E2351D16300F6DA7D /* FMHomeCarouselModel.m in Sources */,
 				84FF2F2F2335C18F00E34550 /* FMGoodsTableViewModel.m in Sources */,
 				8406E4762325FA7500E167BD /* FMSalesActivityModel.m in Sources */,
 				8418740D233A12F40083FE1E /* FMRefundGoodsListController.m in Sources */,
@@ -4957,6 +5017,7 @@
 				840942D1233470E700E60D53 /* FMServerConsumeCell.m in Sources */,
 				8405B8C22334D16F0065965F /* FMOrderAddressView.m in Sources */,
 				84FC4459231CF4E200DF9799 /* YBIBToolViewHandler.m in Sources */,
+				8453D56C235177500014CC3B /* NSError+Common.m in Sources */,
 				84187420233A162C0083FE1E /* FMRefundInGoodsModel.m in Sources */,
 				8456BAC0232F5B9900E59966 /* FMImgHeaderView.m in Sources */,
 				84464C21230FF55500ED9069 /* FMSettlementView.m in Sources */,
@@ -5028,6 +5089,7 @@
 				84D7288523014D1B002D387A /* CommonManager.m in Sources */,
 				84D42D43230403F700249356 /* FMLoginViewModel.m in Sources */,
 				84FAECAE2317C02500E8CA3F /* ScrollerMenuView.m in Sources */,
+				84DFE2652351C0A900F6DA7D /* FMHomeViewModel.m in Sources */,
 				84BAC59F2306C6400062B812 /* FMRegisterView.m in Sources */,
 				8498F5AA233082EA00D5ACF9 /* BRStringPickerView.m in Sources */,
 				840CDDB72340894500527CB0 /* FMSlashScopeView.m in Sources */,
@@ -5108,6 +5170,8 @@
 				8428B93C234198660098A633 /* FMCollectGoodsListController.m in Sources */,
 				8435D7EA231FB9BB00C2CE7D /* FMBuyerEvaluateModel.m in Sources */,
 				84604F3D234D7E4B005CBD9A /* FMSecurityCodeInputViewModel.m in Sources */,
+				84DFE2712351D1E000F6DA7D /* FMHomeMenuModel.m in Sources */,
+				84DFE25E2351B07100F6DA7D /* AppDelegate+RootWindow.m in Sources */,
 				843FC536232A468C0096639F /* FMStoreLocationController.m in Sources */,
 				84DD3FD423015B04001171F1 /* UIButton+Chain.m in Sources */,
 				84F9D802230E952100158496 /* DCClassGoodsItem.m in Sources */,
@@ -5175,8 +5239,10 @@
 				8498F58F23307D4E00D5ACF9 /* UIView+CZHExtension.m in Sources */,
 				841C55F0231E4A3C008B5A91 /* FMPictureCell.m in Sources */,
 				84F9D80A230E9B3A00158496 /* DCBrandSortCell.m in Sources */,
+				84DFE2682351C1A000F6DA7D /* FMHomeModel.m in Sources */,
 				84FF2F262335BD2800E34550 /* FMGoodsFooterView.m in Sources */,
 				84F9D7FB230E946C00158496 /* CatogeryList.m in Sources */,
+				84DFE26B2351CF9700F6DA7D /* FMHomeGoodsModel.m in Sources */,
 				84FC444F231CF4E200DF9799 /* YBIBSentinel.m in Sources */,
 				84D42D4B2304F16800249356 /* UIView+Visuals.m in Sources */,
 				84B142DB2304F6E7009ADECF /* UITableView+FDIndexPathHeightCache.m in Sources */,
@@ -5410,7 +5476,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.seven-trees.SeventreesUser";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.seven-trees.seventreesuser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -5432,7 +5498,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.seven-trees.SeventreesUser";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.seven-trees.seventreesuser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

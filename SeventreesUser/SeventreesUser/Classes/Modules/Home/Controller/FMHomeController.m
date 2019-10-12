@@ -12,9 +12,7 @@
 
 @interface FMHomeController ()
 
-@property (nonatomic, strong) UIView *mainView;
-
-@property (nonatomic, strong) UIView *viewModel;
+@property (nonatomic, strong) FMHomeView *mainView;
 
 @end
 
@@ -24,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
 }
 
 - (void)updateViewConstraints {
@@ -49,7 +49,7 @@
 }
 
 - (void)fm_refreshData {
-    
+    [_mainView.viewModel.requestDataCommand execute:nil]; 
 }
 
 #pragma mark - Lazyload

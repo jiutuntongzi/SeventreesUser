@@ -18,7 +18,7 @@
 }
 
 + (instancetype)modelWithDict:(NSDictionary *)dict {
-    return [[self alloc] initWithDictionary:dict];
+    return [[self alloc] initWithDict:dict];
 }
     
 @end

@@ -96,6 +96,10 @@ extern NSString * const appStoreURL;
 /** 应用包名（产品唯一标识） */
 extern NSString * const appBundleId;
 
+/**
+ Universal Links（通用链接）是iOS9.0出的新技术。如果我们的应用支持通用链接，那么就可以通过https链接来打开APP（手机中已经安装此APP），或者跳转到https链接（手机中没有安装此APP）。 */
+extern NSString * const appUniversalLinks;
+
 /** 运营品牌
  * 1：Seventrees
  */

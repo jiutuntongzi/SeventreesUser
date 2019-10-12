@@ -150,13 +150,22 @@
     [self updateConstraintsIfNeeded];
 }
 
+- (void)fm_bindViewModel {
+    
+}
+
 - (void)refreshUI {
     
 }
 
 #pragma mark - Lazyload
 
-
+- (FMHomeViewModel *)viewModel {
+    if (! _viewModel) {
+        _viewModel = [[FMHomeViewModel alloc] init];
+    }
+    return _viewModel;
+}
 
 #pragma mark - SDCycleScrollViewDelegate
 

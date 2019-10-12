@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FMModel.h"
 
-@interface NetworkResultModel : NSObject
+@interface NetworkResultModel : FMModel
 
 /** 状态码 */
 @property (nonatomic, copy) NSString *statusCode;
@@ -20,6 +21,6 @@
 @property (nonatomic, copy) NSString *jsonString;
 
 /** 响应JSON字典 */
-@property (nonatomic, strong) NSDictionary *jsonDict;
+@property (nonatomic, copy) NSDictionary *jsonDict;
 
 @end

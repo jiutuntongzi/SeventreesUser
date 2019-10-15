@@ -10,12 +10,12 @@
 
 #import "FMSearchButtonView.h"
 #import "SDCycleScrollView.h"
-#import "LMJVerticalScrollText.h"
+#import "FMAnnouncementView.h"
 #import "FMMenuView.h"
 #import "FMStoreView.h"
 #import "FMGoodsView.h"
 
-@interface FMHomeView () <SDCycleScrollViewDelegate, LMJVerticalScrollTextDelegate>
+@interface FMHomeView () <SDCycleScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *searchContentView;
 @property (nonatomic, weak) FMSearchButtonView *searchButtonView;
@@ -24,7 +24,7 @@
 @property (nonatomic, strong) SDCycleScrollView *cycleScrollView;
 
 @property (weak, nonatomic) IBOutlet UIView *textScrollContentView;
-@property (strong, nonatomic) LMJVerticalScrollText *textScrollView;
+@property (strong, nonatomic) FMAnnouncementView *announcementView;
 
 @property (weak, nonatomic) IBOutlet UIView *menuContentView;
 @property (strong, nonatomic) FMMenuView *menuView;
@@ -52,7 +52,7 @@
     }];
     
 //    _textScrollView.cv_frame(_textScrollContentView.bounds);
-    [_textScrollView makeConstraints:^(MASConstraintMaker *make) {
+    [_announcementView makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self->_textScrollContentView);
         make.size.equalTo(self->_textScrollContentView);
     }];
@@ -88,24 +88,19 @@
         [self.viewController.navigationController pushViewController:nextVC animated:YES];
     };
     
-    
-    /// 图片轮播器：网络加载 --- 创建自定义图片的pageControlDot的图片轮播器
-    // test
-    NSArray *imagesURLStrings = @[
-                                  @"https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a4b3d7085dee3d6d2293d48b252b5910/0e2442a7d933c89524cd5cd4d51373f0830200ea.jpg",
-                                  @"https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
-                                  @"http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg"
-                                  ];
-    
-    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:_scrollerContentView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    /// 图片轮播器
+    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:_scrollerContentView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"placeholderIcon"]];
+    _cycleScrollView = cycleScrollView;
     cycleScrollView.currentPageDotImage = [UIImage imageNamed:@"pageControlCurrentDot"];
     cycleScrollView.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
-    cycleScrollView.imageURLStringsGroup = imagesURLStrings;
-    
-    _cycleScrollView = cycleScrollView;
     [_scrollerContentView addSubview:cycleScrollView];
     
-    /// 跑马灯
+    /// 公告跑马灯
+    _announcementView = [[FMAnnouncementView alloc] initWithFrame:_textScrollContentView.bounds];
+    [_textScrollContentView addSubview:_announcementView];
+    
+    /*
+    /// 公告跑马灯
     CGRect frame = _textScrollContentView.bounds;
     LMJVerticalScrollText *textScrollView = [[LMJVerticalScrollText alloc] initWithFrame:frame];
     _textScrollView = textScrollView;
@@ -119,7 +114,7 @@
     textScrollView.textAlignment       = NSTextAlignmentLeft;
     textScrollView.touchEnable         = YES;
 
-    // 图片
+    //公告测试数据
     NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithString:@"这是最后一条数据："];
     NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
     textAttachment.image = [UIImage imageNamed:@"icon_ advertising"]; // test
@@ -130,6 +125,7 @@
     textScrollView.textDataArr = @[@"这是一条数据：000000",@"这是一条数据：111111",@"这是一条数据：222222",@"这是一条数据：333333",@"这是一条数据：444444",@"这是一条数据：555555",attrStr];
     
     [_textScrollView startScrollBottomToTopWithNoSpace];
+    */
     
     /// 菜单s
     FMMenuView *menuView = (FMMenuView *)FMMenuView.cv_viewFromNibLoad();
@@ -151,11 +147,40 @@
 }
 
 - (void)fm_bindViewModel {
+    @weakify(self)
     
-}
-
-- (void)refreshUI {
+    [self.viewModel.refreshUISubject subscribeNext:^(FMHomeModel *homeModel) {
+        @strongify(self)     if (!self) return;
+        
+        self->_cycleScrollView.imageURLStringsGroup = homeModel.pictureURLStrings;
+        
+        self->_menuView.viewModel.menuEntitys = homeModel.menuModels;
+        
+        self->_storeView.viewModel.storeModel = homeModel.storeModel;
+    }];
     
+    [self->_menuView.viewModel.itemActionSubject subscribeNext:^(NSString *code) {
+        
+        DLog(@"点了菜单：code == %@", code);
+    }];
+    
+    [self->_storeView.viewModel.chatActionSubject subscribeNext:^(FMHomeStoreModel *storeModel) {
+        DLog(@"点了店铺聊天：storeModel == %@", storeModel);
+    }];
+    
+    [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+        if ([isExecuting isEqualToNumber:@(YES)]) {
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+            [SVProgressHUD showWithStatus:@"加载中.."];
+        } else {
+            [SVProgressHUD dismiss];
+        }
+    }];
+    
+    [self.viewModel.refreshAnnouncementUISubject subscribeNext:^(id x) {
+        @strongify(self)     if (!self) return;
+        
+    }];
 }
 
 #pragma mark - Lazyload
@@ -172,15 +197,6 @@
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
 //    NSLog(@"---点击了第%ld张图片", (long)index);
 
-}
-
-#pragma mark - LMJScrollTextViewDelegate
-
-- (void)verticalScrollText:(LMJVerticalScrollText *)scrollText currentTextIndex:(NSInteger)index{
-//    NSLog(@"当前是信息%ld",index);
-}
-- (void)verticalScrollText:(LMJVerticalScrollText *)scrollText clickIndex:(NSInteger)index content:(NSString *)content{
-//    NSLog(@"#####点击的是：第%ld条信息 内容：%@",index,content);
 }
 
 - (void)dealloc {

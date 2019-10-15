@@ -15,9 +15,41 @@
     
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)
-        if ([resultModel.statusCode isEqualToString:@"OK"]) {
-            [self.refreshUISubject sendNext:resultModel];
+        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+            DLog(@"请求失败，接口错误！statusCode == %@", resultModel.statusCode);
+            return;
         }
+        
+        FMHomeModel *homeModel = [FMHomeModel mj_objectWithKeyValues:resultModel.jsonDict];
+        //            homeModel.goodsArray = [FMHomeGoodsModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"groups"][@"goods"]];
+        /// 手动处理轮播图片数组
+        NSMutableArray *mPictureURLStrs = [[NSMutableArray alloc] initWithCapacity:6];
+        for (FMHomeCarouselModel *carouselModel in homeModel.carouselModels) {
+            [mPictureURLStrs addObject:carouselModel.picUrl];
+        }
+        homeModel.pictureURLStrings = [mPictureURLStrs copy];
+        
+        /// 手动处理店铺信息模型
+        FMHomeStoreModel *storeModel = [[FMHomeStoreModel alloc] init];
+        storeModel.shopLogo = homeModel.shopLogo;
+        storeModel.guideName = homeModel.guideName;
+        storeModel.shopName = homeModel.shopName;
+        storeModel.distance = homeModel.distance;
+        storeModel.guideId = homeModel.guideId;
+        storeModel.brandName = homeModel.brandName;
+        homeModel.storeModel = storeModel;
+        
+        self.homeModel = homeModel;
+        DLog(@"homeModel = %@", homeModel);
+        
+        [self.refreshUISubject sendNext:homeModel];
+    }];
+    
+    [self.requestAnnouncementDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
+        @strongify(self)
+        if (! [resultModel.statusCode isEqualToString:@"OK"]) return;
+        
+        [self.refreshAnnouncementUISubject sendNext:resultModel];
     }];
 }
 
@@ -25,18 +57,12 @@
 
 - (RACCommand *)requestDataCommand {
     if (!_requestDataCommand) {
-        @weakify(self)
+//        @weakify(self)
         _requestDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                @strongify(self)
-                NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:3];
-                params[@"latitude"] = @"123.0140080000"; // 纬度
-                params[@"longitude"] = @"41.1409530000"; // 经度
-//                NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:3];
-//                params[@"name"] = @"鞋子";
-                
-                [networkMgr POST:kHomeListURIPath params:params success:^(NetworkResultModel *resultModel) {
+//                @strongify(self)
+                [networkMgr requestHomeListDataWithLongitude:@"41.1409530000" latitude:@"123.0140080000" success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
                     
@@ -50,6 +76,35 @@
         }];
     }
     return _requestDataCommand;
+}
+
+- (RACCommand *)requestAnnouncementDataCommand {
+    if (! _requestAnnouncementDataCommand) {
+//        @weakify(self)
+        _requestAnnouncementDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+//                @strongify(self)
+                [networkMgr POST:kHomeSysnoticeURIPath params:nil success:^(NetworkResultModel *resultModel) {
+                    [subscriber sendNext:resultModel];
+                    [subscriber sendCompleted];
+                } failure:^(NSError *error) {
+                    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                    [subscriber sendNext:nil];
+                    [subscriber sendCompleted];
+                }];
+                return nil;
+            }];
+        }];
+    }
+    return _requestAnnouncementDataCommand;
+}
+
+- (RACSubject *)refreshAnnouncementUISubject {
+    if (! _refreshAnnouncementUISubject) {
+        _refreshAnnouncementUISubject = [RACSubject subject];
+    }
+    return _refreshAnnouncementUISubject;
 }
 
 - (RACSubject *)refreshUISubject {

@@ -17,6 +17,8 @@
 
 #define       kHomeListURIPath              @"/api/pllayout/list"               // 首页数据
 
+#define       kHomeSysnoticeURIPath         @"/api/sysnotice/all"               // 首页公告跑马灯
+
 #define       kFindNameLikeURIPath          @"/api/pllayout/findNameLike"       // 模糊搜索商品、品牌名称
 
 

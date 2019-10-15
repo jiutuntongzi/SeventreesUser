@@ -1,18 +1,16 @@
 //
-//  FMMenuView.h
+//  FMStoreView.h
 //  SeventreesUser
 //
 //  Created by wushiye on 2019/8/19.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "FMView.h"
+#import "FMStoreViewModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@interface FMStoreView : FMView
 
-@interface FMMenuView : FMView
+@property (nonatomic, strong) FMStoreViewModel *viewModel;
 
 @end
-
-NS_ASSUME_NONNULL_END

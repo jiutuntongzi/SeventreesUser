@@ -49,7 +49,9 @@
 }
 
 - (void)fm_refreshData {
-    [_mainView.viewModel.requestDataCommand execute:nil]; 
+    [_mainView.viewModel.requestDataCommand execute:nil];
+    
+    [_mainView.viewModel.requestAnnouncementDataCommand execute:nil];
 }
 
 #pragma mark - Lazyload

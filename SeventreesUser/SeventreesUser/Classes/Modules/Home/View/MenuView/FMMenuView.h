@@ -1,5 +1,5 @@
 //
-//  FMStoreView.h
+//  FMMenuView.h
 //  SeventreesUser
 //
 //  Created by wushiye on 2019/8/19.
@@ -7,11 +7,11 @@
 //
 
 #import "FMView.h"
+#import "FMHomeMenuViewModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@interface FMMenuView : FMView
 
-@interface FMStoreView : FMView
+@property (nonatomic, strong) FMHomeMenuViewModel *viewModel;
 
 @end
 
-NS_ASSUME_NONNULL_END

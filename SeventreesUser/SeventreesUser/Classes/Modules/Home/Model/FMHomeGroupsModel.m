@@ -1,14 +1,14 @@
 //
-//  FMHomeModel.m
+//  FMHomeGroupsModel.m
 //  SeventreesUser
 //
-//  Created by wushiye on 2019/10/12.
+//  Created by wushiye on 2019/10/15.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import "FMHomeModel.h"
+#import "FMHomeGroupsModel.h"
 
-@implementation FMHomeModel
+@implementation FMHomeGroupsModel
 
 /**
  *  将属性名换为其他key去字典中取值
@@ -17,9 +17,7 @@
  */
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{
-             @"goodsGroupModels":   @"groups",
-             @"carouselModels":     @"imgs",
-             @"menuModels":         @"menus",
+             @"goodsModels": @"goods",
              };
 }
 
@@ -31,9 +29,7 @@
 + (NSDictionary *)mj_objectClassInArray {
     /** 替换数组名：数组名：元素类型 */
     return @{
-             @"carouselModels":         @"FMHomeCarouselModel",
-             @"menuModels":             @"FMHomeMenuModel",
-             @"goodsGroupModels":       @"FMHomeGroupsModel",
+             @"goodsModels": @"FMHomeGoodsModel",
              };
 }
 

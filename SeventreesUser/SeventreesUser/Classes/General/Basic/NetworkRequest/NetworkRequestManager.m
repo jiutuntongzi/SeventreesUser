@@ -24,7 +24,7 @@ typedef NS_ENUM(NSUInteger, HTTPRequestMethod){
 #define     kFormalHostDomain      @""
 
 /** 测试服(内网) */
-#define     kTestHostDomain        @"http://192.168.1.117:8080"
+#define     kTestHostDomain        @"http://192.168.1.123:8080"
 
 @interface NetworkRequestManager ()
 
@@ -310,10 +310,10 @@ static NetworkRequestManager * _instance = nil;
 
 - (void)requestHomeListDataWithLongitude:(NSString *)longitude latitude:(NSString *)latitude success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:2];
-    params[@"latitude"] = @"123.0140080000"; // 纬度
-    params[@"longitude"] = @"41.1409530000"; // 经度
+    params[@"latitude"] = latitude; // 纬度
+    params[@"longitude"] = longitude; // 经度
     
-    [networkMgr POST:kHomeListURIPath params:params success:^(NetworkResultModel *resultModel) {
+    [self POST:kHomeListURIPath params:params success:^(NetworkResultModel *resultModel) {
         success(resultModel);
     } failure:^(NSError *error) {
         failure(error);
@@ -323,7 +323,8 @@ static NetworkRequestManager * _instance = nil;
 - (void)requestFindGoodsOrBrandWithName:(NSString *)name success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:1];
     params[@"name"] = name;
-    [networkMgr POST:kFindNameLikeURIPath params:params success:^(NetworkResultModel *resultModel) {
+    
+    [self POST:kFindNameLikeURIPath params:params success:^(NetworkResultModel *resultModel) {
         success(resultModel);
     } failure:^(NSError *error) {
         failure(error);

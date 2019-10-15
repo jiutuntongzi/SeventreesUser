@@ -16,7 +16,23 @@
 
 @property (nonatomic, copy) NSString *name;
 
+@property (nonatomic, copy) NSString *activityType;
+
+@property (nonatomic, strong) NSNumber *activityId;
+
+@property (nonatomic, strong) NSNumber *normalPrice;
+
 @property (nonatomic, strong) NSNumber *retailPrice;
+
+@property (nonatomic, strong) NSNumber *stock;
+
+@property (nonatomic, strong) NSNumber *num;
+
+@property (nonatomic, strong) NSNumber *bargainDiscount;
+
+@property (nonatomic, strong) NSNumber *promotionDiscount;
+
+@property (nonatomic, strong) NSNumber *promotionMax;
 
 @end
 

@@ -13,9 +13,11 @@
 
 @property (nonatomic, strong) FMHomeModel *homeModel;
 
+@property (nonatomic, strong) RACCommand *requestDataCommand;
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
-@property (nonatomic, strong) RACCommand *requestDataCommand;
+@property (nonatomic, strong) RACCommand *requestAnnouncementDataCommand;
+@property (nonatomic, strong) RACSubject *refreshAnnouncementUISubject;
 
 @property (nonatomic, strong) RACSubject *nextActionSubject;
 

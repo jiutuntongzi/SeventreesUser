@@ -19,7 +19,7 @@
 - (void)fm_addSubviews {
     __weak typeof(self) weakSelf = self;
 
-    PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:@"" rowHeight:FMCouponCellRowHeight params:@{@"userId": @"1059"} requestDataHandler:^(NSDictionary *result) {
+    PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:@"" rowHeight:FMCouponCellRowHeight params:@{@"userId": @"1059"} requestDataHandler:^(NetworkResultModel *resultModel) {
 //        NSArray *dictArray = [result[@"list"] copy];
 //        NSArray *resultEntitys = [[FMStoredRecord mj_objectArrayWithKeyValuesArray:dictArray] copy];
 //        return resultEntitys;

@@ -19,11 +19,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ooc-yj-SzJ" userLabel="contentView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eu-FQ-6y7">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
-                        </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_yhj" translatesAutoresizingMaskIntoConstraints="NO" id="g5e-zv-rig" userLabel="headIcon">
-                            <rect key="frame" x="15" y="21" width="43" height="43"/>
+                            <rect key="frame" x="15" y="20.5" width="44" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="e6Y-TW-sXJ"/>
                                 <constraint firstAttribute="width" constant="44" id="rby-2W-Fy4"/>
@@ -35,19 +32,19 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小七导购名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSa-2Q-4aB">
-                            <rect key="frame" x="73" y="16" width="72" height="17"/>
+                            <rect key="frame" x="74" y="15.5" width="72" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seventress总部新开铺店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6s-Xw-Qd9">
-                            <rect key="frame" x="73" y="35" width="135" height="15"/>
+                            <rect key="frame" x="74" y="35" width="135" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5B-6d-cUJ">
-                            <rect key="frame" x="73" y="54" width="74" height="14"/>
+                            <rect key="frame" x="74" y="54.5" width="74" height="14"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <state key="normal" title=" 距您1.3公里" image="icon_miniLocal">
                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,6 +53,12 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_msg" translatesAutoresizingMaskIntoConstraints="NO" id="H9K-Wt-kyR">
                             <rect key="frame" x="333" y="34.5" width="18" height="16"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eu-FQ-6y7">
+                            <rect key="frame" x="316" y="0.0" width="59" height="85"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="jTh-mJ-wUA"/>
+                            </constraints>
+                        </button>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCQ-Dj-Noh" userLabel="lineView">
                             <rect key="frame" x="316" y="25.5" width="1" height="34"/>
                             <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,7 +82,6 @@
                         <constraint firstAttribute="bottom" secondItem="3eu-FQ-6y7" secondAttribute="bottom" id="XIV-cj-Laf"/>
                         <constraint firstAttribute="trailing" secondItem="H9K-Wt-kyR" secondAttribute="trailing" constant="24" id="YLb-2X-N9t"/>
                         <constraint firstItem="l6s-Xw-Qd9" firstAttribute="centerY" secondItem="g5e-zv-rig" secondAttribute="centerY" id="bH5-zS-AZO"/>
-                        <constraint firstItem="3eu-FQ-6y7" firstAttribute="leading" secondItem="ooc-yj-SzJ" secondAttribute="leading" id="frl-63-P6i"/>
                         <constraint firstItem="nSa-2Q-4aB" firstAttribute="leading" secondItem="l6s-Xw-Qd9" secondAttribute="leading" id="he7-c4-64z"/>
                         <constraint firstItem="H9K-Wt-kyR" firstAttribute="centerY" secondItem="ooc-yj-SzJ" secondAttribute="centerY" id="l18-y4-nry"/>
                         <constraint firstItem="k5B-6d-cUJ" firstAttribute="bottom" secondItem="g5e-zv-rig" secondAttribute="bottom" constant="4" id="u6w-6e-5kT"/>
@@ -102,7 +104,7 @@
                 <outlet property="logoImgView" destination="g5e-zv-rig" id="ap1-WC-Cl0"/>
                 <outlet property="shopNameLabel" destination="l6s-Xw-Qd9" id="SjT-SY-gZd"/>
             </connections>
-            <point key="canvasLocation" x="-854" y="-131"/>
+            <point key="canvasLocation" x="-855.20000000000005" y="-131.78410794602701"/>
         </view>
     </objects>
     <resources>

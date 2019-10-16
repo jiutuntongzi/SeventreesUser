@@ -14,8 +14,9 @@
 @interface FMGoodsSectionCell () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
+
+@property (weak, nonatomic) IBOutlet UIImageView *sectionImgView;
 
 @end
 
@@ -32,7 +33,20 @@
 
 /** 绑定ViewModel */
 - (void)fm_bindViewModel {
+    @weakify(self)
     
+    [RACObserve(self, groupModel) subscribeNext:^(FMHomeGroupsModel *groupModel) {
+        @strongify(self)    if (! self) return;
+        
+        [self->_sectionImgView sd_setImageWithURL:[NSURL URLWithString:groupModel.picUrl]];
+        [self->_collectionView reloadData];
+    }];
+    
+//    [[self rac_valuesAndChangesForKeyPath:@"groupModel" options:NSKeyValueObservingOptionNew observer:nil] subscribeNext:^(RACTuple *tuple) {
+//        @strongify(self)
+//        [self->_sectionImgView sd_setImageWithURL:[NSURL URLWithString:self->_groupModel.picUrl]];
+//        [self->_collectionView reloadData];
+//    }];
 };
 
 - (void)setupCollectionViewFlowLayout {
@@ -65,27 +79,27 @@
 #pragma mark - <UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    return _groupModel.goodsModels.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FMGoodsCell *cell = FMGoodsCell.ccc_cellReuseForCollectionViewIndexPath(collectionView, indexPath);
-    FMGoodsViewModel *viewModel = [[FMGoodsViewModel alloc] init];
+    cell.viewModel.goodsModel = _groupModel.goodsModels[indexPath.row];
     
-    cell.viewModel = viewModel;
     @weakify(self)
-    [cell.viewModel.addActionSubject subscribeNext:^(id x) {
+    
+    [cell.viewModel.addActionSubject subscribeNext:^(FMHomeGoodsModel *goodsModel) {
         @strongify(self);
         [self enterNextVC:@"FMShoppingController"];
     }];
     
-    [cell.viewModel.selectActionSubject subscribeNext:^(id x) {
+    [cell.viewModel.selectActionSubject subscribeNext:^(FMHomeGoodsModel *goodsModel) {
         @strongify(self)
-        
         global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleActivity;
-        FMGoodsDetailsController *nextVC = [[FMGoodsDetailsController alloc] init];
-        nextVC.hidesBottomBarWhenPushed = YES;
-        [self.viewController.navigationController pushViewController:nextVC animated:YES];
+        [self enterNextVC:@"FMGoodsDetailsController"];
+//        FMGoodsDetailsController *nextVC = [[FMGoodsDetailsController alloc] init];
+//        nextVC.hidesBottomBarWhenPushed = YES;
+//        [self.viewController.navigationController pushViewController:nextVC animated:YES];
     }];
     
     return cell;

@@ -8,13 +8,29 @@
 
 #import "SearchBarView.h"
 
+@interface SearchBarView () <UISearchBarDelegate>
+
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@end
+
 @implementation SearchBarView
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    
+    [_searchBar becomeFirstResponder];
 }
 
+#pragma mark ——— <UISearchBarDelegate>
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    _searchText = searchText;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar canBecomeFirstResponder];
+    if (_searchTouchCallback) _searchTouchCallback(_searchText);
+}
 
 @end

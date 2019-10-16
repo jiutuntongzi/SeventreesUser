@@ -37,7 +37,7 @@
 #pragma mark - Private Functions
 
 - (void)fm_addSubviews {
-    PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:@"" rowHeight:158.f params:@{@"userId": @"1059"} requestDataHandler:^(NSDictionary *result) {
+    PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:@"" rowHeight:158.f params:@{@"userId": @"1059"} requestDataHandler:^(NetworkResultModel *resultModel) {
         //        NSArray *dictArray = [result[@"list"] copy];
         //        NSArray *resultEntitys = [[FMStoredRecord mj_objectArrayWithKeyValuesArray:dictArray] copy];
         //        return resultEntitys;

@@ -275,6 +275,7 @@
 		849CBFB92301176F003821E4 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849CBFB82301176F003821E4 /* MainTabBarController.m */; };
 		849CBFBE23014544003821E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849CBFBB23014544003821E4 /* Assets.xcassets */; };
 		849CBFBF23014544003821E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CBFBC23014544003821E4 /* LaunchScreen.storyboard */; };
+		84B06637235703CB00CCB243 /* FMGoodsCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B06636235703CB00CCB243 /* FMGoodsCellViewModel.m */; };
 		84B142DB2304F6E7009ADECF /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B142D42304F6E7009ADECF /* UITableView+FDIndexPathHeightCache.m */; };
 		84B142DC2304F6E7009ADECF /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B142D62304F6E7009ADECF /* UITableView+FDKeyedHeightCache.m */; };
 		84B142DD2304F6E7009ADECF /* UITableView+FDTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B142D82304F6E7009ADECF /* UITableView+FDTemplateLayoutCell.m */; };
@@ -970,6 +971,8 @@
 		849CBFB82301176F003821E4 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		849CBFBB23014544003821E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		849CBFBD23014544003821E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		84B06635235703CB00CCB243 /* FMGoodsCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMGoodsCellViewModel.h; sourceTree = "<group>"; };
+		84B06636235703CB00CCB243 /* FMGoodsCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMGoodsCellViewModel.m; sourceTree = "<group>"; };
 		84B142D32304F6E7009ADECF /* UITableView+FDIndexPathHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDIndexPathHeightCache.h"; sourceTree = "<group>"; };
 		84B142D42304F6E7009ADECF /* UITableView+FDIndexPathHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDIndexPathHeightCache.m"; sourceTree = "<group>"; };
 		84B142D52304F6E7009ADECF /* UITableView+FDKeyedHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDKeyedHeightCache.h"; sourceTree = "<group>"; };
@@ -3422,6 +3425,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		84B066342356FD8B00CCB243 /* GoodsView */ = {
+			isa = PBXGroup;
+			children = (
+				844776AA230ACB97008AE242 /* FMGoodsView.h */,
+				844776AB230ACB97008AE242 /* FMGoodsView.m */,
+				844776AD230ACBA0008AE242 /* FMGoodsView.xib */,
+				84F97A8E2320A53C00FC0EFE /* FMGoodsViewModel.h */,
+				84F97A8F2320A53C00FC0EFE /* FMGoodsViewModel.m */,
+				84F97A912320A69600FC0EFE /* GoodsSectionCell */,
+			);
+			path = GoodsView;
+			sourceTree = "<group>";
+		};
 		84B142D22304F6E7009ADECF /* UITableView+FDTemplateLayoutCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -4164,16 +4180,19 @@
 			path = NewAddress;
 			sourceTree = "<group>";
 		};
-		84F97A912320A69600FC0EFE /* GoodsCell */ = {
+		84F97A912320A69600FC0EFE /* GoodsSectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				84FE047B230B8AAE00E83754 /* FMGoodsSectionCell.h */,
+				84FE047C230B8AAE00E83754 /* FMGoodsSectionCell.m */,
+				84FE047D230B8AAE00E83754 /* FMGoodsSectionCell.xib */,
 				844776AF230AD1A6008AE242 /* FMGoodsCell.h */,
 				844776B0230AD1A6008AE242 /* FMGoodsCell.m */,
 				844776B1230AD1A6008AE242 /* FMGoodsCell.xib */,
-				84F97A8E2320A53C00FC0EFE /* FMGoodsViewModel.h */,
-				84F97A8F2320A53C00FC0EFE /* FMGoodsViewModel.m */,
+				84B06635235703CB00CCB243 /* FMGoodsCellViewModel.h */,
+				84B06636235703CB00CCB243 /* FMGoodsCellViewModel.m */,
 			);
-			path = GoodsCell;
+			path = GoodsSectionCell;
 			sourceTree = "<group>";
 		};
 		84F9CAF42329DCB8001257C8 /* CheckCell */ = {
@@ -4758,13 +4777,7 @@
 		84FFF9492355CCA0000980D8 /* GoodsList */ = {
 			isa = PBXGroup;
 			children = (
-				84F97A912320A69600FC0EFE /* GoodsCell */,
-				844776AA230ACB97008AE242 /* FMGoodsView.h */,
-				844776AB230ACB97008AE242 /* FMGoodsView.m */,
-				844776AD230ACBA0008AE242 /* FMGoodsView.xib */,
-				84FE047B230B8AAE00E83754 /* FMGoodsSectionCell.h */,
-				84FE047C230B8AAE00E83754 /* FMGoodsSectionCell.m */,
-				84FE047D230B8AAE00E83754 /* FMGoodsSectionCell.xib */,
+				84B066342356FD8B00CCB243 /* GoodsView */,
 			);
 			path = GoodsList;
 			sourceTree = "<group>";
@@ -5323,6 +5336,7 @@
 				84B142DD2304F6E7009ADECF /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				8401E2DC23278F77006C111B /* FMCiphertextInputView.m in Sources */,
 				84001CA0230CE5A30010DE0B /* FMCollectController.m in Sources */,
+				84B06637235703CB00CCB243 /* FMGoodsCellViewModel.m in Sources */,
 				84DD3FD823015B04001171F1 /* UIControl+Chain.m in Sources */,
 				844776B2230AD1A6008AE242 /* FMGoodsCell.m in Sources */,
 				84065CFE230A386600D39225 /* DialogBoxView.m in Sources */,

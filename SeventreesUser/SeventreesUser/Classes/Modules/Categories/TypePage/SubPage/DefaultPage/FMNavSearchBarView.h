@@ -10,9 +10,9 @@
 
 @interface FMNavSearchBarView : FMView
 
-@property (nonatomic, strong) RACSubject *textChangeSubject;
-
 @property (nonatomic, copy) void (^prevPageCallback)(void);
+
+@property (nonatomic, copy) void (^searchTouchCallback)(NSString *searchText);
 
 @end
 

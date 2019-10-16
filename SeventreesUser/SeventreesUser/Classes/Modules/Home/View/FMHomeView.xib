@@ -122,13 +122,14 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="goodsContentView" destination="9wy-13-xQ6" id="G1b-Km-1PF"/>
+                <outlet property="mainScrollView" destination="w86-UM-yeP" id="fFP-Hm-Azk"/>
                 <outlet property="menuContentView" destination="HJe-Dx-ghi" id="kqw-ID-aQF"/>
                 <outlet property="scrollerContentView" destination="7wW-lL-j4d" id="xcJ-7E-NV3"/>
                 <outlet property="searchContentView" destination="N1E-Pc-ExS" id="VEK-n2-sJo"/>
                 <outlet property="storeContentView" destination="OiA-at-fTW" id="vD3-2X-4HK"/>
                 <outlet property="textScrollContentView" destination="HAE-BW-jzr" id="goQ-ro-2E0"/>
             </connections>
-            <point key="canvasLocation" x="40.799999999999997" y="192.05397301349328"/>
+            <point key="canvasLocation" x="-274" y="206"/>
         </view>
     </objects>
     <resources>

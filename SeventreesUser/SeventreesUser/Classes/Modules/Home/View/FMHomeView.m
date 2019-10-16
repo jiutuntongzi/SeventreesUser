@@ -17,6 +17,8 @@
 
 @interface FMHomeView () <SDCycleScrollViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+
 @property (weak, nonatomic) IBOutlet UIView *searchContentView;
 @property (nonatomic, weak) FMSearchButtonView *searchButtonView;
 
@@ -33,7 +35,7 @@
 @property (strong, nonatomic) FMStoreView *storeView;
 
 @property (weak, nonatomic) IBOutlet UIView *goodsContentView;
-@property (strong, nonatomic) FMGoodsView *goodsView;
+@property (strong, nonatomic) FMGoodsView *goodsListView;
 
 @end
 
@@ -62,7 +64,7 @@
     _storeView.cv_frame(_storeContentView.bounds);
     
 //    _securityCodeInputView.cv_frame(_inputContentView2.bounds);
-    _goodsView.cv_frame(_goodsContentView.bounds);
+    _goodsListView.cv_frame(_goodsContentView.bounds);
     
     [super updateConstraints];
 }
@@ -81,66 +83,32 @@
     _searchButtonView = searchButtonView;
     [_searchContentView addSubview:searchButtonView];
     
-    _searchButtonView.actionCallback = ^{
-        DLog(@"点了搜索");
-        UIViewController *nextVC = [[NSClassFromString(@"FMSearchPagingController") alloc] init];
-        nextVC.hidesBottomBarWhenPushed = YES;
-        [self.viewController.navigationController pushViewController:nextVC animated:YES];
-    };
-    
     /// 图片轮播器
     SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:_scrollerContentView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"placeholderIcon"]];
     _cycleScrollView = cycleScrollView;
     cycleScrollView.currentPageDotImage = [UIImage imageNamed:@"pageControlCurrentDot"];
     cycleScrollView.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
+    cycleScrollView.cv_backColorRGBA(249.f, 249.f, 249.f, 1.f);
     [_scrollerContentView addSubview:cycleScrollView];
     
     /// 公告跑马灯
     _announcementView = [[FMAnnouncementView alloc] initWithFrame:_textScrollContentView.bounds];
     [_textScrollContentView addSubview:_announcementView];
     
-    /*
-    /// 公告跑马灯
-    CGRect frame = _textScrollContentView.bounds;
-    LMJVerticalScrollText *textScrollView = [[LMJVerticalScrollText alloc] initWithFrame:frame];
-    _textScrollView = textScrollView;
-    [_textScrollContentView addSubview:textScrollView];
-    
-    textScrollView.delegate            = self;
-    textScrollView.textStayTime        = 2;
-    textScrollView.scrollAnimationTime = 1;
-    textScrollView.textColor           = UIColor.cc_colorByHexString(@"#333333");
-    textScrollView.textFont            = [UIFont boldSystemFontOfSize:14.f];
-    textScrollView.textAlignment       = NSTextAlignmentLeft;
-    textScrollView.touchEnable         = YES;
-
-    //公告测试数据
-    NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithString:@"这是最后一条数据："];
-    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-    textAttachment.image = [UIImage imageNamed:@"icon_ advertising"]; // test
-    textAttachment.bounds = CGRectMake(0, -4, 15, 15);
-    NSAttributedString *attachmentAttrStr = [NSAttributedString attributedStringWithAttachment:textAttachment];
-    [attrStr insertAttributedString:attachmentAttrStr atIndex:attrStr.length];
-    // test
-    textScrollView.textDataArr = @[@"这是一条数据：000000",@"这是一条数据：111111",@"这是一条数据：222222",@"这是一条数据：333333",@"这是一条数据：444444",@"这是一条数据：555555",attrStr];
-    
-    [_textScrollView startScrollBottomToTopWithNoSpace];
-    */
-    
     /// 菜单s
-    FMMenuView *menuView = (FMMenuView *)FMMenuView.cv_viewFromNibLoad();
+    FMMenuView *menuView = FMMenuView.cv_viewFromNibLoad();
     _menuView = menuView;
     [_menuContentView addSubview:menuView];
     
     /// 店铺
-    FMStoreView *storeView = (FMStoreView *)FMStoreView.cv_viewFromNibLoad();
+    FMStoreView *storeView = FMStoreView.cv_viewFromNibLoad();
     _storeView = storeView;
     [_storeContentView addSubview:storeView];
     
     /// 商品列表
-    FMGoodsView *goodsView = (FMGoodsView *)FMGoodsView.cv_viewFromNibLoad();
-    _goodsView = goodsView;
-    [_goodsContentView addSubview:goodsView];
+    FMGoodsView *goodsListView = FMGoodsView.cv_viewFromNibLoad();
+    _goodsListView = goodsListView;
+    [_goodsContentView addSubview:_goodsListView];
     
     [self setNeedsUpdateConstraints];
     [self updateConstraintsIfNeeded];
@@ -148,6 +116,18 @@
 
 - (void)fm_bindViewModel {
     @weakify(self)
+    
+    _mainScrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self_weak_.viewModel.refreshSubject sendNext:nil];
+    }];
+    
+    [self.viewModel.refreshSubject subscribeNext:^(id x) {
+        @strongify(self)     if (!self) return;
+        
+        [self.viewModel.requestDataCommand execute:nil];
+        
+        [self->_announcementView.viewModel.requestDataCommand execute:nil];
+    }];
     
     [self.viewModel.refreshUISubject subscribeNext:^(FMHomeModel *homeModel) {
         @strongify(self)     if (!self) return;
@@ -157,15 +137,10 @@
         self->_menuView.viewModel.menuEntitys = homeModel.menuModels;
         
         self->_storeView.viewModel.storeModel = homeModel.storeModel;
-    }];
-    
-    [self->_menuView.viewModel.itemActionSubject subscribeNext:^(NSString *code) {
         
-        DLog(@"点了菜单：code == %@", code);
-    }];
-    
-    [self->_storeView.viewModel.chatActionSubject subscribeNext:^(FMHomeStoreModel *storeModel) {
-        DLog(@"点了店铺聊天：storeModel == %@", storeModel);
+        self->_goodsListView.viewModel.goodsGroupModels = homeModel.goodsGroupModels;
+        
+        [self->_mainScrollView.mj_header endRefreshing];
     }];
     
     [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
@@ -173,14 +148,24 @@
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
             [SVProgressHUD showWithStatus:@"加载中.."];
         } else {
-            [SVProgressHUD dismiss];
+            [SVProgressHUD dismissWithDelay:0.5f];
         }
     }];
     
-    [self.viewModel.refreshAnnouncementUISubject subscribeNext:^(id x) {
-        @strongify(self)     if (!self) return;
-        
+    _searchButtonView.actionCallback = ^{
+        DLog(@"点了搜索");
+        [self.viewModel.nextActionSubject sendNext:@"FMSearchPagingController"];
+    };
+    
+    [self->_menuView.viewModel.itemActionSubject subscribeNext:^(NSString *code) {
+        DLog(@"点了菜单：code == %@", code);
     }];
+    
+    [self->_storeView.viewModel.chatActionSubject subscribeNext:^(FMHomeStoreModel *storeModel) {
+        DLog(@"点了店铺聊天：storeModel == %@", storeModel);
+    }];
+    
+    
 }
 
 #pragma mark - Lazyload

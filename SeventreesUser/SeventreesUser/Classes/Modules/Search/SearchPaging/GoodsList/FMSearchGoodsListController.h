@@ -10,5 +10,7 @@
 
 @interface FMSearchGoodsListController : FMViewController
 
+@property (nonatomic, copy) NSString *searchText;
+
 @end
 

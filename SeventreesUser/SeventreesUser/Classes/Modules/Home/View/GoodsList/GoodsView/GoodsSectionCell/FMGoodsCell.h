@@ -6,17 +6,11 @@
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "FMCollectionViewCell.h"
-
-#import "FMGoodsViewModel.h"
-
-NS_ASSUME_NONNULL_BEGIN
+#import "FMGoodsCellViewModel.h"
 
 @interface FMGoodsCell : FMCollectionViewCell
 
-@property (nonatomic, strong) FMGoodsViewModel *viewModel;
+@property (nonatomic, strong) FMGoodsCellViewModel *viewModel;
 
 @end
-
-NS_ASSUME_NONNULL_END

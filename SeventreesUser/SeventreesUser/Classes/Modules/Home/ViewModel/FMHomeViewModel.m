@@ -17,6 +17,8 @@
         @strongify(self)
         if (![resultModel.statusCode isEqualToString:@"OK"]) {
             DLog(@"请求失败，接口错误！statusCode == %@", resultModel.statusCode);
+            self.homeModel = nil;
+            [self.refreshUISubject sendNext:nil];
             return;
         }
         
@@ -44,19 +46,19 @@
         
         [self.refreshUISubject sendNext:homeModel];
     }];
-    
-    [self.requestAnnouncementDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
-        @strongify(self)
-        if (! [resultModel.statusCode isEqualToString:@"OK"]) return;
-        
-        [self.refreshAnnouncementUISubject sendNext:resultModel];
-    }];
 }
 
 #pragma mark - Lazyload
 
+- (RACSubject *)refreshSubject {
+    if (! _refreshSubject) {
+        _refreshSubject = [RACSubject subject];
+    }
+    return _refreshSubject;
+}
+
 - (RACCommand *)requestDataCommand {
-    if (!_requestDataCommand) {
+    if (! _requestDataCommand) {
 //        @weakify(self)
         _requestDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             
@@ -76,35 +78,6 @@
         }];
     }
     return _requestDataCommand;
-}
-
-- (RACCommand *)requestAnnouncementDataCommand {
-    if (! _requestAnnouncementDataCommand) {
-//        @weakify(self)
-        _requestAnnouncementDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-            
-            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-//                @strongify(self)
-                [networkMgr POST:kHomeSysnoticeURIPath params:nil success:^(NetworkResultModel *resultModel) {
-                    [subscriber sendNext:resultModel];
-                    [subscriber sendCompleted];
-                } failure:^(NSError *error) {
-                    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-                    [subscriber sendNext:nil];
-                    [subscriber sendCompleted];
-                }];
-                return nil;
-            }];
-        }];
-    }
-    return _requestAnnouncementDataCommand;
-}
-
-- (RACSubject *)refreshAnnouncementUISubject {
-    if (! _refreshAnnouncementUISubject) {
-        _refreshAnnouncementUISubject = [RACSubject subject];
-    }
-    return _refreshAnnouncementUISubject;
 }
 
 - (RACSubject *)refreshUISubject {

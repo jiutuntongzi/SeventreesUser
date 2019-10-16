@@ -7,6 +7,7 @@
 //
 
 #import "NetworkRequestManager.h"
+
 #import "AFNetworking.h"
 #import "NetworkDataConver.h"
 #import "UserData.h"
@@ -24,7 +25,7 @@ typedef NS_ENUM(NSUInteger, HTTPRequestMethod){
 #define     kFormalHostDomain      @""
 
 /** 测试服(内网) */
-#define     kTestHostDomain        @"http://192.168.1.123:8080"
+#define     kTestHostDomain        @"http://192.168.1.141:8080"
 
 @interface NetworkRequestManager ()
 

@@ -9,6 +9,8 @@
 #import "FMTableViewCell.h"
 #import "FMGoodsDetailsModel.h"
 
+#define     FMGoodsDetailsCellRowHeight      135.f
+
 @interface FMGoodsDetailsCell : FMTableViewCell
 
 @end

@@ -7,11 +7,11 @@
 //
 
 #import "FMTableViewCell.h"
-
-NS_ASSUME_NONNULL_BEGIN
+#import "FMHomeGroupsModel.h"
 
 @interface FMGoodsSectionCell : FMTableViewCell
 
+@property (nonatomic, strong) FMHomeGroupsModel *groupModel;
+
 @end
 
-NS_ASSUME_NONNULL_END

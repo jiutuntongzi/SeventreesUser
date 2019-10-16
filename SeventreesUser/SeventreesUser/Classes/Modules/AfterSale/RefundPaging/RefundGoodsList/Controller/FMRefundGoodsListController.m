@@ -22,7 +22,7 @@
     __weak typeof(self) weakSelf = self;
 
     // FMRefundInGoodsCellRowHeight 动态组高
-    PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:@"" rowHeight:FMRefundInGoodsCellRowHeight params:@{@"userId": @"1059"} requestDataHandler:^(NSDictionary *result) {
+    PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:@"" rowHeight:FMRefundInGoodsCellRowHeight params:@{@"userId": @"1059"} requestDataHandler:^(NetworkResultModel *resultModel) {
 //        NSArray *dictArray = [result[@"list"] copy];
 //        NSArray *resultEntitys = [[FMStoredRecord mj_objectArrayWithKeyValuesArray:dictArray] copy];
 //        return resultEntitys;

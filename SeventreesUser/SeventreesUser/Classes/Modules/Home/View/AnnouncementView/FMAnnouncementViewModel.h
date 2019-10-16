@@ -11,8 +11,11 @@
 
 @interface FMAnnouncementViewModel : FMViewModel
 
-@property (nonatomic, strong) FMAnnouncementModel *announcementModel;
+@property (nonatomic, strong) NSArray<FMAnnouncementModel *> *announcementModels;
 
+@property (nonatomic, strong) RACCommand *requestDataCommand;
+
+@property (nonatomic, strong) RACSubject *refreshUISubject;
 
 @end
 

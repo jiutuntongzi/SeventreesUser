@@ -23,7 +23,7 @@
 
     [RACObserve(self.viewModel, menuEntitys) subscribeNext:^(NSArray<FMHomeMenuModel *> *menuEntitys) {
         @strongify(self)
-        for (NSUInteger idx = 0; idx != menuEntitys.count; idx++) {
+        for (NSUInteger idx = 0; idx != 4; idx++) {
             FMHomeMenuModel *menuEntity = menuEntitys[idx];
             
             UIView *containerItemView = self->_itemViews[idx];
@@ -48,8 +48,8 @@
         [[itemButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *itemButton) {
             @strongify(self)
             NSUInteger idx = itemButton.tag;
-            NSString *code = self.viewModel.menuEntitys[idx].code;
-            [self.viewModel.itemActionSubject sendNext:code];
+            FMHomeMenuModel *menuModel = [self.viewModel.menuEntitys objectOrNilAtIndex:idx];
+            [self.viewModel.itemActionSubject sendNext:menuModel.code];
         }];
     }
 }

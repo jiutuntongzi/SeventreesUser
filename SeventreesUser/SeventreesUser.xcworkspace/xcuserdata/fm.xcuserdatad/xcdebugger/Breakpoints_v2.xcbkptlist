@@ -51,62 +51,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SeventreesUser/Classes/Modules/Home/ViewModel/FMHomeViewModel.m"
-            timestampString = "592825317.987204"
+            filePath = "SeventreesUser/Classes/Modules/Search/SearchPaging/GoodsList/FMSearchGoodsListController.m"
+            timestampString = "592923652.3286901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-fm_initialize"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "-fm_addSubviews"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SeventreesUser/Classes/Modules/Home/View/FMHomeView.m"
-            timestampString = "592825317.98733"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "-fm_bindViewModel"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__30-[FMHomeView fm_bindViewModel]_block_invoke_4"
-                  moduleName = "SeventreesUser"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/fm/Desktop/SeventreesUser/SeventreesUser/SeventreesUser/Classes/Modules/Home/View/FMHomeView.m"
-                  timestampString = "592825318.270987"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "177"
-                  endingLineNumber = "177"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.316"
-                  moduleName = "SeventreesUser"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/fm/Desktop/SeventreesUser/SeventreesUser/SeventreesUser/Classes/Modules/Home/View/FMHomeView.m"
-                  timestampString = "592825318.2738"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "174"
-                  endingLineNumber = "174"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

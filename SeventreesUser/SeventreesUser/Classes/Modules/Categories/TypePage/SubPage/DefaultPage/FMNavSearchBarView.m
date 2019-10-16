@@ -19,20 +19,10 @@
 
 @implementation FMNavSearchBarView
 
-- (void)updateConstraints {
-    CGFloat btnWidth = 40.f;
-
-    [_returnbutton makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.bottom.equalTo(self);
-        make.width.equalTo(btnWidth);
-    }];
+- (void)setSearchTouchCallback:(void (^)(NSString *))searchTouchCallback {
+    _searchTouchCallback = searchTouchCallback;
     
-    [_searchBarView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(30.f);
-        make.top.bottom.right.equalTo(self);
-    }];
-    
-    [super updateConstraints];
+    _searchBarView.searchTouchCallback = self.searchTouchCallback;
 }
 
 - (void)fm_setupSubviews {
@@ -47,12 +37,28 @@
         if (weakSelf.prevPageCallback) weakSelf.prevPageCallback();
     });
     
-    /// 输入搜索栏
+    /// 搜索栏
     _searchBarView = SearchBarView.cv_viewFromNibLoad();
     [self addSubview:_searchBarView];
     
     [self setNeedsUpdateConstraints];
     [self updateConstraintsIfNeeded];
+}
+
+- (void)updateConstraints {
+    CGFloat btnWidth = 40.f;
+    
+    [_returnbutton makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.bottom.equalTo(self);
+        make.width.equalTo(btnWidth);
+    }];
+    
+    [_searchBarView makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(30.f);
+        make.top.bottom.right.equalTo(self);
+    }];
+    
+    [super updateConstraints];
 }
 
 - (void)fm_bindViewModel {

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,16 +24,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMk-jp-weg" userLabel="titleView">
                                 <rect key="frame" x="107.5" y="17" width="105" height="48"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_jknfback" translatesAutoresizingMaskIntoConstraints="NO" id="g9Y-D3-MqW">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_jknfback" translatesAutoresizingMaskIntoConstraints="NO" id="g9Y-D3-MqW">
                                         <rect key="frame" x="0.0" y="0.0" width="105" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进口奶粉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHg-WL-FV6">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进口奶粉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHg-WL-FV6">
                                         <rect key="frame" x="21.5" y="12" width="62" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.19215686269999999" green="0.18823529410000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gly-CM-alF">
+                                        <rect key="frame" x="0.0" y="0.0" width="105" height="48"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -43,9 +45,13 @@
                                     <constraint firstAttribute="height" constant="48" id="8m5-6g-YHH"/>
                                     <constraint firstItem="JHg-WL-FV6" firstAttribute="centerX" secondItem="AMk-jp-weg" secondAttribute="centerX" id="AhR-Ht-xGR"/>
                                     <constraint firstItem="g9Y-D3-MqW" firstAttribute="top" secondItem="AMk-jp-weg" secondAttribute="top" id="Qho-Ov-NAd"/>
+                                    <constraint firstItem="gly-CM-alF" firstAttribute="top" secondItem="AMk-jp-weg" secondAttribute="top" id="cBj-kG-A61"/>
                                     <constraint firstAttribute="trailing" secondItem="g9Y-D3-MqW" secondAttribute="trailing" id="d9o-GA-rGx"/>
+                                    <constraint firstAttribute="bottom" secondItem="gly-CM-alF" secondAttribute="bottom" id="hnu-LX-356"/>
                                     <constraint firstItem="g9Y-D3-MqW" firstAttribute="leading" secondItem="AMk-jp-weg" secondAttribute="leading" id="lZw-bD-plb"/>
+                                    <constraint firstItem="gly-CM-alF" firstAttribute="leading" secondItem="AMk-jp-weg" secondAttribute="leading" id="lbW-pg-hE3"/>
                                     <constraint firstAttribute="width" constant="105" id="sVb-8h-GAu"/>
+                                    <constraint firstAttribute="trailing" secondItem="gly-CM-alF" secondAttribute="trailing" id="yNZ-DS-vBH"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VYu-XB-CdO" userLabel="goodsListView">
@@ -91,12 +97,12 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="collectionView" destination="RFL-nF-Nsg" id="U7O-gO-gxs"/>
                 <outlet property="flowLayout" destination="t2q-lp-6kE" id="mqY-VX-kfB"/>
+                <outlet property="sectionImgView" destination="gly-CM-alF" id="5TO-66-HcC"/>
             </connections>
-            <point key="canvasLocation" x="29" y="227"/>
+            <point key="canvasLocation" x="-218" y="115"/>
         </tableViewCell>
     </objects>
     <resources>

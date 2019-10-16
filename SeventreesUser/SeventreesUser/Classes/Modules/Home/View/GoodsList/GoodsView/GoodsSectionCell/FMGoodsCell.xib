@@ -34,7 +34,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1T-Lh-gWu" userLabel="goodsInfoView">
                                         <rect key="frame" x="0.0" y="180" width="170" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="美可卓蓝胖子奶粉-脱脂" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOX-qO-avN">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="美可卓蓝胖子奶粉-脱脂" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOX-qO-avN">
                                                 <rect key="frame" x="0.0" y="1" width="170" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,10 +55,10 @@
                                         <constraints>
                                             <constraint firstItem="7L5-jQ-h3M" firstAttribute="centerY" secondItem="y4D-hc-mkJ" secondAttribute="centerY" constant="2" id="1uX-1f-N82"/>
                                             <constraint firstAttribute="trailing" secondItem="7L5-jQ-h3M" secondAttribute="trailing" constant="10" id="3Fw-mu-nhi"/>
-                                            <constraint firstItem="hOX-qO-avN" firstAttribute="leading" secondItem="h1T-Lh-gWu" secondAttribute="leading" id="Ao5-bR-Mqe"/>
+                                            <constraint firstItem="hOX-qO-avN" firstAttribute="leading" secondItem="h1T-Lh-gWu" secondAttribute="leading" constant="10" id="Ao5-bR-Mqe"/>
                                             <constraint firstItem="y4D-hc-mkJ" firstAttribute="leading" secondItem="h1T-Lh-gWu" secondAttribute="leading" constant="10" id="Xaa-eT-CLv"/>
                                             <constraint firstAttribute="bottom" secondItem="y4D-hc-mkJ" secondAttribute="bottom" constant="15" id="djq-Ln-PMd"/>
-                                            <constraint firstAttribute="trailing" secondItem="hOX-qO-avN" secondAttribute="trailing" id="nWn-hr-giG"/>
+                                            <constraint firstAttribute="trailing" secondItem="hOX-qO-avN" secondAttribute="trailing" constant="10" id="nWn-hr-giG"/>
                                             <constraint firstItem="y4D-hc-mkJ" firstAttribute="top" secondItem="hOX-qO-avN" secondAttribute="bottom" constant="10" id="pJM-DU-RLt"/>
                                             <constraint firstAttribute="height" constant="60" id="sZ9-t0-JZ2"/>
                                         </constraints>
@@ -102,10 +102,13 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="goodsImgView" destination="bXF-eN-6LD" id="tsz-p2-Y88"/>
+                <outlet property="goodsPriceLabel" destination="y4D-hc-mkJ" id="D8o-qB-Gn1"/>
+                <outlet property="goodsTitleLabel" destination="hOX-qO-avN" id="UzL-Oj-eds"/>
                 <outlet property="selectButton" destination="QaU-ti-7g2" id="5gU-re-JRT"/>
                 <outlet property="shoppingCarButton" destination="7L5-jQ-h3M" id="oL7-gb-AUQ"/>
             </connections>
-            <point key="canvasLocation" x="136" y="141.22938530734635"/>
+            <point key="canvasLocation" x="-661" y="70"/>
         </collectionViewCell>
     </objects>
     <resources>

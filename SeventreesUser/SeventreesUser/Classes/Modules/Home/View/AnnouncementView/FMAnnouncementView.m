@@ -29,7 +29,13 @@
     textScrollView.textFont            = [UIFont boldSystemFontOfSize:14.f];
     textScrollView.textAlignment       = NSTextAlignmentLeft;
     textScrollView.touchEnable         = YES;
+    _textScrollView.textDataArr = @[@" ", @" "]; // 占位内容
+    [_textScrollView startScrollBottomToTopWithNoSpace];
     
+    [self makeConstraints];
+}
+
+- (void)makeConstraints {
     [_textScrollView makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self);
         make.size.equalTo(self);
@@ -37,17 +43,12 @@
 }
 
 - (void)fm_bindViewModel {
-    // 公告富文本测试数据
-    NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithString:@"这是最后一条数据："];
-    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-    textAttachment.image = [UIImage imageNamed:@"icon_ advertising"]; // test
-    textAttachment.bounds = CGRectMake(0, -4, 15, 15);
-    NSAttributedString *attachmentAttrStr = [NSAttributedString attributedStringWithAttachment:textAttachment];
-    [attrStr insertAttributedString:attachmentAttrStr atIndex:attrStr.length];
-    // test
-    _textScrollView.textDataArr = @[@"这是一条数据：000000",@"这是一条数据：111111",@"这是一条数据：222222",@"这是一条数据：333333",@"这是一条数据：444444",@"这是一条数据：555555",attrStr];
+    @weakify(self)
     
-    [_textScrollView startScrollBottomToTopWithNoSpace];
+    [self.viewModel.refreshUISubject subscribeNext:^(NSArray<NSString *> *announcementTitles) {
+        @strongify(self)     if (!self) return;
+        self->_textScrollView.textDataArr = announcementTitles;
+    }];
 }
 
 - (FMAnnouncementViewModel *)viewModel {
@@ -60,10 +61,11 @@
 #pragma mark - LMJScrollTextViewDelegate
 
 - (void)verticalScrollText:(LMJVerticalScrollText *)scrollText currentTextIndex:(NSInteger)index{
-    //    NSLog(@"当前是信息%ld",index);
+//        NSLog(@"当前是信息%ld",index);
 }
 - (void)verticalScrollText:(LMJVerticalScrollText *)scrollText clickIndex:(NSInteger)index content:(NSString *)content{
-    //    NSLog(@"#####点击的是：第%ld条信息 内容：%@",index,content);
+    FMAnnouncementModel *announcementModel = [self.viewModel.announcementModels ca_objectCheckAtIndex:index];
+    DLog(@"点了第%ld条公告内容：%@", index, announcementModel.title);
 }
 
 @end

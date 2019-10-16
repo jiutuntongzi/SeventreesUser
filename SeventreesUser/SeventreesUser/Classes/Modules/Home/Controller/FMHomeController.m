@@ -9,6 +9,7 @@
 #import "FMHomeController.h"
 #import "SearchBarView.h"
 #import "FMHomeView.h"
+#import "FMSearchPagingController.h"
 
 @interface FMHomeController ()
 
@@ -22,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
 }
 
@@ -41,7 +41,11 @@
 }
 
 - (void)fm_bindViewModel {
-    
+    [_mainView.viewModel.nextActionSubject subscribeNext:^(NSString *className) {
+        UIViewController *nextVC = [[NSClassFromString(className) alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:nextVC animated:YES];
+    }];
 }
 
 - (void)fm_setupNavbar {
@@ -49,9 +53,7 @@
 }
 
 - (void)fm_refreshData {
-    [_mainView.viewModel.requestDataCommand execute:nil];
-    
-    [_mainView.viewModel.requestAnnouncementDataCommand execute:nil];
+    [_mainView.viewModel.refreshSubject sendNext:nil];
 }
 
 #pragma mark - Lazyload

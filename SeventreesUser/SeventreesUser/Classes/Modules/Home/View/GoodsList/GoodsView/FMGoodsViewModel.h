@@ -7,11 +7,11 @@
 //
 
 #import "FMViewModel.h"
+#import "FMHomeGroupsModel.h"
 
 @interface FMGoodsViewModel : FMViewModel
 
-@property (nonatomic, strong) RACSubject *selectActionSubject;
-
-@property (nonatomic, strong) RACSubject *addActionSubject;
+/** 推荐商品分组 */
+@property (nonatomic, copy) NSArray<FMHomeGroupsModel *> *goodsGroupModels;
 
 @end

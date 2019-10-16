@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NetworkResultModel.h"
 
-typedef NSArray* (^PVNetworkRequestDataHandler)(NSDictionary *result);
+typedef NSArray* (^PVNetworkRequestDataHandler)(NetworkResultModel *resultModel);
 
 typedef UITableViewCell* (^PVTableViewCellConfigHandler)(UITableView *tableView, NSIndexPath *indexPath, NSArray *entitys);
 
@@ -21,7 +22,7 @@ typedef void (^PVTableViewCellDidSelectHandler)(id rowEntity);
 
 - (instancetype)initWithLimit:(NSUInteger)limit uriPath:(NSString *)uriPath rowHeight:(CGFloat)rowHeight params:(NSDictionary *)params requestDataHandler:(PVNetworkRequestDataHandler)requestDataHandler cellConfig:(PVTableViewCellConfigHandler)cellConfig cellDidSelectHandler:(PVTableViewCellDidSelectHandler)cellDidSelectHandler;
 
-- (void)reloadDataForTableView;
+- (void)requestData;
 
 @end
 

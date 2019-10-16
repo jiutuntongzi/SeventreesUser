@@ -1,14 +1,14 @@
 //
-//  FMGoodsViewModel.m
+//  FMGoodsCellViewModel.m
 //  SeventreesUser
 //
-//  Created by wushiye on 2019/9/5.
+//  Created by wushiye on 2019/10/16.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import "FMGoodsViewModel.h"
+#import "FMGoodsCellViewModel.h"
 
-@implementation FMGoodsViewModel
+@implementation FMGoodsCellViewModel
 
 - (RACSubject *)addActionSubject {
     if (!_addActionSubject) {

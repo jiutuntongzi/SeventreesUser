@@ -22,10 +22,10 @@
     __weak typeof(self) weakSelf = self;
     
     // FMOrderCellRowHeight 动态组高
-    PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:@"" rowHeight:135.f params:@{@"userId": @"1059"} requestDataHandler:^(NSDictionary *result) {
-        //        NSArray *dictArray = [result[@"list"] copy];
-        //        NSArray *resultEntitys = [[FMStoredRecord mj_objectArrayWithKeyValuesArray:dictArray] copy];
-        //        return resultEntitys;
+    PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:kFindNameLikeURIPath rowHeight:FMGoodsDetailsCellRowHeight params:@{@"name": @"衣服"} requestDataHandler:^(NetworkResultModel *resultModel) {
+//        NSArray *dictArray = [result[@"list"] copy];
+//        NSArray *resultEntitys = [[FMStoredRecord mj_objectArrayWithKeyValuesArray:dictArray] copy];
+//        return resultEntitys;
         return @[@{}, @{}, @{}, @{}];
         
     } cellConfig:^UITableViewCell* (UITableView *tableView, NSIndexPath *indexPath, NSArray *entitys) {
@@ -50,7 +50,25 @@
 }
 
 - (void)fm_bindViewModel {
+    self.view.cv_addTouchEventCallback(^(UIView *view) {
+        [[UIApplication sharedApplication].keyWindow endEditing:YES];
+    });
     
+    @weakify(self)
+    [[self rac_valuesAndChangesForKeyPath:@"searchText" options:NSKeyValueObservingOptionNew observer:nil] subscribeNext:^(RACTuple *tuple) {
+        @strongify(self)
+        NSString *searchText = tuple.first; // newValue
+        if (! searchText.length) {
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+            [SVProgressHUD showInfoWithStatus:@"输入不能为空"];
+            return;
+        }
+        [self->_pagingView requestData];
+    }];
+    
+//    [RACObserve(self, searchText) subscribeNext:^(NSString *searchText) {
+            // ..
+//    }];
 }
 
 - (void)fm_setupNavbar {

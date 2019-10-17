@@ -7,10 +7,12 @@
 //
 
 #import "FMTableViewCell.h"
-#import "FMGoodsDetailsModel.h"
+#import "FMGoodsDetailsCellViewModel.h"
 
 #define     FMGoodsDetailsCellRowHeight      135.f
 
 @interface FMGoodsDetailsCell : FMTableViewCell
+
+@property (nonatomic, strong) FMGoodsDetailsCellViewModel *viewModel;
 
 @end

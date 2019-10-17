@@ -41,7 +41,7 @@
 
 @implementation PagingView
 
-- (instancetype)initWithLimit:(NSUInteger)limit uriPath:(NSString *)uriPath rowHeight:(CGFloat)rowHeight params:(NSDictionary *)params requestDataHandler:(PVNetworkRequestDataHandler)requestDataHandler cellConfig:(PVTableViewCellConfigHandler)cellConfig cellDidSelectHandler:(PVTableViewCellDidSelectHandler)cellDidSelectHandler
+- (instancetype)initWithLimit:(NSUInteger)limit uriPath:(NSString *)uriPath rowHeight:(CGFloat)rowHeight params:(NSDictionary * __nullable)params requestDataHandler:(PVNetworkRequestDataHandler)requestDataHandler cellConfig:(PVTableViewCellConfigHandler)cellConfig cellDidSelectHandler:(PVTableViewCellDidSelectHandler)cellDidSelectHandler
 {
     if (self = [super init]) {
         _limit = limit;
@@ -56,7 +56,7 @@
         
         [self setupSubviews];
         
-        [self requestData];
+//        [self requestData]; // 不自动请求
     }
     return self;
 }
@@ -80,10 +80,10 @@
         self->_tableView = tableView;
         
         tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [self->_pagingUtility execPullDownRefresh];
+            [self.pagingUtility execPullDownRefresh];
         }];
         tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-            [self->_pagingUtility execUpPullLoad];
+            [self.pagingUtility execUpPullLoad];
         }];
         
         [self addSubview:tableView];
@@ -91,13 +91,21 @@
 }
 
 - (void)requestData {
+    [self.pagingUtility execPullDownRefresh];
+}
+
+- (void)requestDataByParams:(NSDictionary *)params {
+    _params = params;
+    [self.pagingUtility execPullDownRefresh];
+}
+
+- (PagingCalculateUtility *)pagingUtility {
     __weak typeof(self) weakSelf = self;
     _pagingUtility = [[PagingCalculateUtility alloc] initWithPageNo:0 limit:_limit uriPath:_uriPath params:_params requestDataHandler:_requestDataHandler finishReloadData:^(NSArray *entitys) {
         weakSelf.entitys = [entitys copy];
         [weakSelf reloadDataForTableView];
     }];
-    
-    [_pagingUtility execUpPullLoad];
+    return _pagingUtility;
 }
 
 - (void)reloadDataForTableView {

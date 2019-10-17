@@ -7,18 +7,20 @@
 //
 
 #import "FMViewModel.h"
-
-@class FMGoodsDetailsModel;
+#import "FMGoodsDetailsModel.h"
 
 @interface FMGoodsDetailsViewModel : FMViewModel
 
-@property (nonatomic, strong) FMGoodsDetailsModel *model;
+@property (nonatomic, strong) NSNumber *goodsId;
 
+@property (nonatomic, strong) FMGoodsDetailsModel *detailsModel;
+
+@property (nonatomic, strong) RACCommand *requestDataCommand;
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
 @property (nonatomic, strong) RACSubject *actionSubject;
 
-@property (nonatomic, strong) RACCommand *requestDataCommand;
+
 
 @end

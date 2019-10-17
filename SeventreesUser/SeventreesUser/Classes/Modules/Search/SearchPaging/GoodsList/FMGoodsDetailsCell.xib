@@ -61,7 +61,12 @@
                     <constraint firstAttribute="trailing" secondItem="q5G-5X-a1P" secondAttribute="trailing" constant="15" id="k3T-jD-Acr"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="86.231884057971016" y="-4.0760869565217392"/>
+            <connections>
+                <outlet property="goodsImgView" destination="r7o-at-Bi5" id="YnZ-si-R19"/>
+                <outlet property="goodsNameLabel" destination="Jy8-4j-oWU" id="NKy-zn-hKr"/>
+                <outlet property="goodsPriceLabel" destination="yFd-ch-TuI" id="UCU-s9-Eiz"/>
+            </connections>
+            <point key="canvasLocation" x="-191" y="-20"/>
         </tableViewCell>
     </objects>
     <resources>

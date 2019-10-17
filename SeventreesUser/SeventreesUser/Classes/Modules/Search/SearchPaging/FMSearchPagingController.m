@@ -118,10 +118,15 @@
     
     @weakify(self)
     _searchBarView.searchTouchCallback = ^(NSString *searchText) {
+        
         UIViewController *currentViewController = self_weak_.currentViewController;
         if ([currentViewController isKindOfClass:[FMSearchGoodsListController class]]) {
             FMSearchGoodsListController *goodsListVC = (FMSearchGoodsListController *)self_weak_.currentViewController;
             goodsListVC.searchText = searchText;
+            
+        } else if ([currentViewController isKindOfClass:[FMCollectBrandListController class]]) {
+            FMCollectBrandListController *brandListVC = (FMCollectBrandListController *)self_weak_.currentViewController;
+            brandListVC.viewModel.searchText = searchText;
         }
     };
     

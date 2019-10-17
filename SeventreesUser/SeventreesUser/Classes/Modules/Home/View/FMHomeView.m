@@ -143,6 +143,7 @@
         [self->_mainScrollView.mj_header endRefreshing];
     }];
     
+    /*
     [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
         if ([isExecuting isEqualToNumber:@(YES)]) {
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
@@ -151,6 +152,7 @@
             [SVProgressHUD dismissWithDelay:0.5f];
         }
     }];
+    */
     
     _searchButtonView.actionCallback = ^{
         DLog(@"点了搜索");

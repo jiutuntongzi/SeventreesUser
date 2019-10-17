@@ -18,6 +18,7 @@
 @implementation FMCollectBrandListController
 
 - (void)fm_addSubviews {
+    self.view.bounds = CGRectMake(0, 0, self.view.width, kScreenHeight - kStatusBarHeight - kFixedHeight - 40.f);
     
     UIColor *backColor = UIColor.cc_colorByHexString(@"#F7F7F7");
     self.view.cv_backColor(backColor);
@@ -36,21 +37,71 @@
 }
 
 - (void)fm_makeConstraints {
-    [_tableView makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+    _tableView.frame = self.view.bounds;
+    
+//    [_tableView makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self.view);
+////        make.left.right.top.equalTo(self.view);
+////        make.bottom.equalTo(self.view).offset(- kNavBarHeight - kTabBarHeight - kFixedHeight);
+//    }];
+}
+
+- (void)fm_bindViewModel {
+    self.view.cv_addTouchEventCallback(^(UIView *view) {
+        [[UIApplication sharedApplication].keyWindow endEditing:YES];
+    });
+    
+    @weakify(self)
+    [[self.viewModel rac_valuesAndChangesForKeyPath:@"searchText" options:NSKeyValueObservingOptionNew observer:nil] subscribeNext:^(RACTuple *tuple) {
+        @strongify(self)
+//        NSString *searchText = tuple.first; // newValue
+//        if (! searchText) {
+//            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+//            [SVProgressHUD showInfoWithStatus:@"输入不能为空"];
+//            return;
+//        }
+        [self.viewModel.requestDataCommand execute:nil];
     }];
+    
+    [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
+        [SVProgressHUD showInfoWithStatus:resultModel.jsonString]; // test
+        if (! [resultModel.statusCode isEqualToString:@"OK"]) {
+            [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
+        }
+        [self->_tableView reloadData];
+    }];
+    
+    [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+        if ([isExecuting isEqualToNumber:@(YES)]) {
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+            [SVProgressHUD showWithStatus:@"搜索中.."];
+        } else {
+            [SVProgressHUD dismissWithDelay:0.5f];
+        }
+    }];
+}
+
+- (void)fm_refreshData {
+    
+}
+
+- (FMCollectBrandListViewModel *)viewModel {
+    if (! _viewModel) {
+        _viewModel = [[FMCollectBrandListViewModel alloc] init];
+    }
+    return _viewModel;
 }
 
 #pragma mark ——— <UITableViewDataSource>
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     FMCollectBrandCell *cell = FMCollectBrandCell.ctc_cellReuseNibLoadForTableView(tableView);
-    
+    cell.brandModel = self.viewModel.brandEntitys[indexPath.row];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.viewModel.brandEntitys.count;
 }
 
 #pragma mark ——— <UITableViewDelegate>
@@ -62,7 +113,7 @@
 //    nextVC.hidesBottomBarWhenPushed = YES;
 //    [self.viewController.navigationController pushViewController:nextVC animated:YES];
 //
-    NSLog(@"indexPath.section == %ld indexPath.row == %ld", indexPath.section, indexPath.row);
+    NSLog(@"indexPath.section == %ld indexPath.row == %ld \n brandEntity == %@", indexPath.section, indexPath.row, self.viewModel.brandEntitys[indexPath.row]);
 }
 
 @end

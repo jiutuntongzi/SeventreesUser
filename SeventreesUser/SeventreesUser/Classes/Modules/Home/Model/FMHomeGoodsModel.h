@@ -10,7 +10,7 @@
 
 @interface FMHomeGoodsModel : FMModel
 
-@property (nonatomic, strong) NSNumber *ID;
+@property (nonatomic, strong) NSNumber *goodsId;
 
 @property (nonatomic, copy) NSString *imgUrl;
 

@@ -70,4 +70,6 @@ typedef void(^NetworkRequestFailure)(NSError *error);
 
 - (void)requestFindGoodsOrBrandWithName:(NSString *)name success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
 
+- (void)requestSearchGoodsName:(NSString *)goodsName categoryId:(NSInteger)categoryId activityType:(NSInteger)activityType sortMethod:(NSInteger)sortMethod sortSequence:(NSInteger)sortSequence pageNo:(NSInteger)pageNo limit:(NSInteger)limit success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure;
+
 @end

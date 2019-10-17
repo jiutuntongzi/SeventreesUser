@@ -8,10 +8,14 @@
 
 #import "FMModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMCollectBrandModel : FMModel
 
-@end
+@property (nonatomic, copy) NSString *logoUrl;
 
-NS_ASSUME_NONNULL_END
+@property (nonatomic, strong) NSNumber *ID;
+
+@property (nonatomic, strong) NSNumber *num;
+
+@property (nonatomic, copy) NSString *name;
+
+@end

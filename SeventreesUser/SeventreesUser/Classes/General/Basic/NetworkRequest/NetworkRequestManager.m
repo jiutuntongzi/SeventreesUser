@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, HTTPRequestMethod){
 #define     kFormalHostDomain      @""
 
 /** 测试服(内网) */
-#define     kTestHostDomain        @"http://192.168.1.141:8080"
+#define     kTestHostDomain        @"http://192.168.1.124:8080"
 
 @interface NetworkRequestManager ()
 
@@ -198,8 +198,9 @@ static NetworkRequestManager * _instance = nil;
             return;
         }
         NetworkResultModel *resultModel = [NetworkDataConver resultModelFromAFNetworkingResponseObject:responseObject];
-        DLog(@"\n %@请求成功 response == %@ \n\n responseObject == %@ \n", requestMethod, response, responseObject);
-        DLog(@"\n HTTP %@请求成功 JSONString == %@\n\n", requestMethod, resultModel.jsonString);
+        DLog(@"\n AFURLSessionManager %@请求成功 response == %@ \n\n responseObject == %@ \n", requestMethod, response, responseObject);
+        NSString *resultJSONString = resultModel.jsonString;
+        DLog(@"\n AFURLSessionManager HTTP %@请求成功 JSONString == %@\n\n", requestMethod, resultJSONString);
         success(resultModel);
         
     }] resume];
@@ -310,6 +311,7 @@ static NetworkRequestManager * _instance = nil;
 }
 
 - (void)requestHomeListDataWithLongitude:(NSString *)longitude latitude:(NSString *)latitude success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    
     NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:2];
     params[@"latitude"] = latitude; // 纬度
     params[@"longitude"] = longitude; // 经度
@@ -322,10 +324,29 @@ static NetworkRequestManager * _instance = nil;
 }
 
 - (void)requestFindGoodsOrBrandWithName:(NSString *)name success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    
     NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:1];
     params[@"name"] = name;
     
-    [self POST:kFindNameLikeURIPath params:params success:^(NetworkResultModel *resultModel) {
+    [self POST:kHomeFindNameLikeURIPath params:params success:^(NetworkResultModel *resultModel) {
+        success(resultModel);
+    } failure:^(NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)requestSearchGoodsName:(NSString *)goodsName categoryId:(NSInteger)categoryId activityType:(NSInteger)activityType sortMethod:(NSInteger)sortMethod sortSequence:(NSInteger)sortSequence pageNo:(NSInteger)pageNo limit:(NSInteger)limit success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:1];
+    params[@"goodsName"] = goodsName;
+    params[@"categoryId"] = @(categoryId);
+    params[@"activityType"] = @(activityType);
+    params[@"sidx"] = @(sortMethod);
+    params[@"order"] = @(sortSequence);
+    params[@"page"] = @(pageNo);
+    params[@"limit"] = @(limit);
+    
+    [self POST:kHomeFindNameLikeURIPath params:params success:^(NetworkResultModel *resultModel) {
         success(resultModel);
     } failure:^(NSError *error) {
         failure(error);

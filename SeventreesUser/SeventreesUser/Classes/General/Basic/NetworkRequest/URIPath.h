@@ -15,13 +15,20 @@
 
 #define       kSendVerifyCodeURIPath        @"/api/sysRegister/getCode"         // 获取短信验证码
 
-#define       kHomeListURIPath              @"/api/pllayout/list"               // 首页数据
+#pragma mark ——— 首页
+
+#define       kHomeListURIPath              @"/api/pllayout/list"               // 首页数据列表
 
 #define       kHomeSysnoticeURIPath         @"/api/sysnotice/all"               // 首页公告跑马灯
 
-#define       kFindNameLikeURIPath          @"/api/pllayout/findNameLike"       // 模糊搜索商品、品牌名称
+#define       kHomeFindNameLikeURIPath      @"/api/pllayout/findNameLike"       // 首页模糊搜索商品、品牌名称
 
+#define       kHomeAueryBrandURIPath        @"/api/pmbrand/queryBrand"          // 首页查询品牌
 
+#define       kHomeQueryBrandGoodsURIPath   @"/api/pmgoods/queryBrandGoods"      // 首页查询商品
 
+#pragma mark ——— 商品
+
+#define       kQueryGoodsDetailsURIPath     @"/api/pmgoods/queryGoodsDetails"   // 查询商品详情
 
 #endif /* URIPath_h */

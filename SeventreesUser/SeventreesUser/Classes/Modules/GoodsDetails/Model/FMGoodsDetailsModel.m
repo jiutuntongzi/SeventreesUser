@@ -8,17 +8,80 @@
 
 #import "FMGoodsDetailsModel.h"
 
+
+@implementation FMGoodsDetailsSpellGroupGoodsMsgModel
+
+@end
+
+
+@implementation FMGoodsDetailsShowImagesExtraModel
+
+@end
+
+
+@implementation FMGoodsDetailsShowImagesModel
+
+@end
+
+
+@implementation FMGoodsDetailsOrdinaryGoodsMsgModel
+
+@end
+
+
+@implementation FMGoodsDetailsGoodsSkusExtraModel
+
+@end
+
+
+@implementation FMGoodsDetailsGoodsSkuModelsModel
+
+@end
+
+
+@implementation FMGoodsDetailsActivityGoodsMsgModel
+
+@end
+
+
+@implementation FMGoodsDetailsBargainingGoodsMsgModel
+
+@end
+
+
+@implementation FMGoodsDetailsGoodsCommentssExtraModel
+
+@end
+
+
+@implementation FMGoodsDetailsGoodsCommentsModelsModel
+
+@end
+
+
+@implementation FMGoodsDetailsDetailsImagesExtraModel
+
+@end
+
+
+@implementation FMGoodsDetailsDetailsImagesModel
+
+@end
+
+
 @implementation FMGoodsDetailsModel
 
 /**
-*  数组中需要转换的模型类
-*
-*  @return 字典中的key是数组属性名，value是数组中存放模型的Class（Class类型或者NSString类型）
-*/
+ *  数组中需要转换的模型类
+ *
+ *  @return 字典中的key是数组属性名，value是数组中存放模型的Class（Class类型或者NSString类型）
+ */
 + (NSDictionary *)mj_objectClassInArray {
-    /** 替换数组名：数组名：元素类型 */
     return @{
-             @"couponEntities":@"FMCouponsModel",
+             @"showImages":             @"FMGoodsDetailsShowImagesModel",
+             @"goodsSkuModels":         @"FMGoodsDetailsGoodsSkuModelsModel",
+             @"goodsCommentsModels":    @"FMGoodsDetailsGoodsCommentsModelsModel",
+             @"detailsImages":          @"FMGoodsDetailsDetailsImagesModel"
              };
 }
 
@@ -29,8 +92,10 @@
  */
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{
-             @"goods":@"a:goods",
+             @"evaluateId": @"id"
              };
 }
 
 @end
+
+

@@ -7,7 +7,10 @@
 //
 
 #import "FMViewController.h"
+#import "FMCollectBrandListViewModel.h"
 
 @interface FMCollectBrandListController : FMViewController
+
+@property (nonatomic, strong) FMCollectBrandListViewModel *viewModel;
 
 @end

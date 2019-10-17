@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SeventreesUser/Classes/Modules/Search/SearchPaging/GoodsList/FMSearchGoodsListController.m"
-            timestampString = "592923652.3286901"
+            filePath = "SeventreesUser/Classes/Modules/GoodsDetails/View/FMGoodsDetailsView.m"
+            timestampString = "592999119.611614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "-fm_addSubviews"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-fm_bindViewModel"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

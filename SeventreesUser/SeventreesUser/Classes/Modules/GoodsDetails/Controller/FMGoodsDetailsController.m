@@ -105,7 +105,8 @@
 }
 
 - (void)fm_refreshData {
-    [_mainView.viewModel.refreshUISubject sendNext:nil];
+    _mainView.viewModel.goodsId = self.goodsId;
+    [_mainView.viewModel.requestDataCommand execute:self.goodsId];
 }
 
 #pragma mark - Lazyload

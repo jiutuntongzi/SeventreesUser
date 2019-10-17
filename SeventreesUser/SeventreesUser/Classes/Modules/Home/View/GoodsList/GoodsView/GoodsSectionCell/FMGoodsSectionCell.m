@@ -96,10 +96,10 @@
     [cell.viewModel.selectActionSubject subscribeNext:^(FMHomeGoodsModel *goodsModel) {
         @strongify(self)
         global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleActivity;
-        [self enterNextVC:@"FMGoodsDetailsController"];
-//        FMGoodsDetailsController *nextVC = [[FMGoodsDetailsController alloc] init];
-//        nextVC.hidesBottomBarWhenPushed = YES;
-//        [self.viewController.navigationController pushViewController:nextVC animated:YES];
+        FMGoodsDetailsController *nextVC = [[FMGoodsDetailsController alloc] init];
+        nextVC.goodsId = goodsModel.goodsId;
+        nextVC.hidesBottomBarWhenPushed = YES;
+        [self.viewController.navigationController pushViewController:nextVC animated:YES];
     }];
     
     return cell;

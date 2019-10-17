@@ -75,10 +75,8 @@
     self.mParams[@"limit"] = @(_limit);
     self.mParams[@"page"] = @(_pageNo);
     
-//    __weak typeof(self) weakSelf = self;
-    
     [networkMgr POST:_uriPath params:[self.mParams copy] success:^(NetworkResultModel *resultModel) {
-//        if (! [resultModel.statusMsg isEqualToString:@"OK"]) {
+//        if (! [resultModel.statusCode isEqualToString:@"OK"]) {
 //            if (!self->_isUpPull) -- self.pageNo;
 //        }
         if (!self->_requestDataHandler) return;
@@ -86,40 +84,12 @@
         if (!self->_isUpPull) [self.entitys removeAllObjects];
         [self.entitys addObjectsFromArray:entitys];
         
-        self->_finishReloadDataHandler(self.entitys);
+        if (self->_finishReloadDataHandler) self->_finishReloadDataHandler(self.entitys);
         
     } failure:^(NSError *error) {
         if (!self->_isUpPull) -- self.pageNo;
+        if (self->_finishReloadDataHandler) self->_finishReloadDataHandler(self.entitys);
     }];
-    
-    /*
-    [networkMgr GET:_uriPath parameters:[self.mParams copy] finished:^(AjaxResult *result) {
-        
-        if (result.status != AjaxResultStateSuccess) if (!self->_isUpPull) -- self.pageNo;
-        if (!self->_requestDataHandler) return;
-        
-        NSArray *resultEntitys = [self->_requestDataHandler(result) copy];
-        if (!self->_isUpPull) [self.entitys removeAllObjects];
-        [self.entitys addObjectsFromArray:resultEntitys];
-        
-        self->_finishReloadDataHandler(self.entitys);
-    }];
-    
-    */
-    /*
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        id result;
-//        if (!self->_isUpPull) -- self.pageNo;
-        if (!self->_requestDataHandler) return;
-        
-        NSArray *resultEntitys = [self->_requestDataHandler(result) copy];
-        
-        if (!self->_isUpPull) [self.entitys removeAllObjects];
-        [self.entitys addObjectsFromArray:resultEntitys];
-        
-        self->_finishReloadDataHandler(self.entitys);
-    });
-    */
 }
 
 - (NSMutableDictionary *)mParams {

@@ -129,7 +129,14 @@
 }
 
 - (void)fm_bindViewModel {
-    // code ..
+    @weakify(self)
+    
+    [self.viewModel.refreshUISubject subscribeNext:^(FMGoodsDetailsModel *goodsDetailsModel) {
+        @strongify(self)     if (!self) return;
+
+        
+        
+    }];
 }
 
 #pragma mark - System Functions

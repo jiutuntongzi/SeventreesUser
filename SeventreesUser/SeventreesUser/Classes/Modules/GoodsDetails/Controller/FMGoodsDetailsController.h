@@ -12,4 +12,6 @@
 
 @interface FMGoodsDetailsController : FMViewController
 
+@property (nonatomic, strong) NSNumber *goodsId;
+
 @end

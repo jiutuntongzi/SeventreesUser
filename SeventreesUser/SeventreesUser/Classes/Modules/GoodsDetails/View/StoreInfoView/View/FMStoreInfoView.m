@@ -12,6 +12,12 @@ const CGFloat FMStoreInfoViewHeight = 64.f;
 
 @interface FMStoreInfoView ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *brandImgView;
+
+@property (weak, nonatomic) IBOutlet UILabel *brandNameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *goodsTotalLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *arrowButton;
 
 @end
@@ -48,10 +54,16 @@ const CGFloat FMStoreInfoViewHeight = 64.f;
 - (void)fm_bindViewModel {
     @weakify(self);
     
-    [[_arrowButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+    [RACObserve(self.viewModel, storeModel) subscribeNext:^(FMStoreInfoModel *storeModel) {
         @strongify(self);
-        
-        [self.viewModel.actionSubject sendNext:self.viewModel.model];
+        [self->_brandImgView sd_setImageWithURL:[NSURL URLWithString:storeModel.brandImg]];
+        self->_brandNameLabel.text = storeModel.brandName ?: @"--";
+        self->_goodsTotalLabel.text = [NSString stringWithFormat:@"共有%@件商品", storeModel.brandGoodsNum];
+    }];
+    
+    [[_arrowButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        [self.viewModel.nextActionSubject sendNext:self.viewModel.storeModel];
     }];
 }
 
@@ -71,6 +83,5 @@ const CGFloat FMStoreInfoViewHeight = 64.f;
     }
     return _viewModel;
 }
-
 
 @end

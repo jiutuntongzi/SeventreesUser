@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FMStoreInfoModel.h"
 
 @interface FMGoodsDetailsSpellGroupGoodsMsgModel : NSObject
 
@@ -45,6 +46,9 @@
 
 @interface FMGoodsDetailsOrdinaryGoodsMsgModel : NSObject
 
+/** 自定义商品名（非JSON转Model数据）*/
+@property (nonatomic, copy) NSString *goodsName;
+
 @property (nonatomic, assign) NSNumber *price;
 
 @property (nonatomic, assign) NSNumber *buyMax;
@@ -59,9 +63,9 @@
 @end
 
 
-@interface FMGoodsDetailsGoodsSkuModelsModel : NSObject
+@interface FMGoodsDetailsGoodsSkuModel : NSObject
 
-@property (nonatomic, assign) NSNumber *id;
+@property (nonatomic, assign) NSNumber *ID;
 
 @property (nonatomic, assign) NSNumber *virtualSales;
 
@@ -116,12 +120,12 @@
 @end
 
 
-@interface FMGoodsDetailsGoodsCommentssExtraModel : NSObject
+@interface FMGoodsDetailsCommentssExtraModel : NSObject
 
 @end
 
 
-@interface FMGoodsDetailsGoodsCommentsModelsModel : NSObject
+@interface FMGoodsDetailsCommentsModel : NSObject
 
 @property (nonatomic, assign) NSNumber *userId;
 
@@ -129,13 +133,13 @@
 
 @property (nonatomic, copy) NSString *userName;
 
-@property (nonatomic, assign) NSNumber *id;
+@property (nonatomic, assign) NSNumber *evaluateId;
 
 @property (nonatomic, copy) NSString *createdDateTime;
 
 @property (nonatomic, copy) NSString *dr;
 
-@property (nonatomic, strong) FMGoodsDetailsGoodsCommentssExtraModel *extra;
+@property (nonatomic, strong) FMGoodsDetailsCommentssExtraModel *extra;
 
 @property (nonatomic, assign) NSNumber *goodsId;
 
@@ -148,18 +152,18 @@
 @end
 
 
-@interface FMGoodsDetailsDetailsImagesExtraModel : NSObject
+@interface FMGoodsDetailsImagesExtraModel : NSObject
 
 @end
 
 
-@interface FMGoodsDetailsDetailsImagesModel : NSObject
+@interface FMGoodsDetailsImagesModel : NSObject
 
 @property (nonatomic, copy) NSString *dr;
 
 @property (nonatomic, copy) NSString *url;
 
-@property (nonatomic, strong) FMGoodsDetailsDetailsImagesExtraModel *extra;
+@property (nonatomic, strong) FMGoodsDetailsImagesExtraModel *extra;
 
 @property (nonatomic, assign) NSNumber *type;
 
@@ -169,45 +173,51 @@
 
 @interface FMGoodsDetailsModel : NSObject
 
+@property (nonatomic, assign) NSNumber *goodsId;
+
+@property (nonatomic, copy) NSString *goodsName;
+
+@property (nonatomic, assign) NSNumber *brandId;
+
+@property (nonatomic, copy) NSString *brandName;
+
 @property (nonatomic, assign) NSNumber *brandGoodsNum;
 
 @property (nonatomic, copy) NSString *brandContent;
 
-@property (nonatomic, strong) FMGoodsDetailsSpellGroupGoodsMsgModel *spellGroupGoodsMsg;
-
-@property (nonatomic, copy) NSString *goodsName;
-
-@property (nonatomic, copy) NSString *specJson;
-
-@property (nonatomic, copy) NSArray<FMGoodsDetailsShowImagesModel *> *showImages;
+@property (nonatomic, copy) NSString *brandImg;
 
 @property (nonatomic, copy) NSString *videoUrl;
 
 @property (nonatomic, assign) NSNumber *isCollect;
 
-@property (nonatomic, assign) NSNumber *goodsId;
-
-@property (nonatomic, strong) FMGoodsDetailsOrdinaryGoodsMsgModel *ordinaryGoodsMsg;
-
-@property (nonatomic, copy) NSArray<FMGoodsDetailsGoodsSkuModelsModel *> *goodsSkuModels;
-
-@property (nonatomic, copy) NSString *brandName;
-
-@property (nonatomic, assign) NSNumber *brandId;
-
 @property (nonatomic, assign) NSNumber *commentNum;
 
 @property (nonatomic, copy) NSString *videoImage;
 
-@property (nonatomic, strong) FMGoodsDetailsActivityGoodsMsgModel *activityGoodsMsg;
+@property (nonatomic, copy) NSString *specJson;
 
-@property (nonatomic, copy) NSString *brandImg;
+
+@property (nonatomic, copy) NSArray<FMGoodsDetailsShowImagesModel *> *showImages;
+/** 手动转换处理的轮播图（非JSON转Model数据）*/
+//@property (nonatomic, copy) NSArray<NSString *> *imageURLStrings;
+
+@property (nonatomic, strong) FMGoodsDetailsSpellGroupGoodsMsgModel *spellGroupGoodsMsg;
+
+@property (nonatomic, strong) FMGoodsDetailsOrdinaryGoodsMsgModel *ordinaryGoodsMsg;
+
+@property (nonatomic, copy) NSArray<FMGoodsDetailsGoodsSkuModel *> *goodsSkuModels;
+
+@property (nonatomic, strong) FMGoodsDetailsActivityGoodsMsgModel *activityGoodsMsg;
 
 @property (nonatomic, strong) FMGoodsDetailsBargainingGoodsMsgModel *bargainingGoodsMsg;
 
-@property (nonatomic, copy) NSArray<FMGoodsDetailsGoodsCommentsModelsModel *> *goodsCommentsModels;
+@property (nonatomic, copy) NSArray<FMGoodsDetailsCommentsModel *> *goodsCommentsModels;
 
-@property (nonatomic, copy) NSArray<FMGoodsDetailsDetailsImagesModel *> *detailsImages;
+@property (nonatomic, copy) NSArray<FMGoodsDetailsImagesModel *> *detailsImages;
+
+/** 手动转换处理的店铺信息Model （非JSON转Model数据）*/
+@property (nonatomic, strong) FMStoreInfoModel *storeModel;
 
 /*
 {

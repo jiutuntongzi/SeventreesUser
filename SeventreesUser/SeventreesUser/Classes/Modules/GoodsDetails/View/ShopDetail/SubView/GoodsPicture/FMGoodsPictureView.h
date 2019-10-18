@@ -7,9 +7,12 @@
 //
 
 #import "FMView.h"
+#import "FMGoodsDetailsModel.h"
+
+extern const CGFloat FMGoodsPictureViewHeight;
 
 @interface FMGoodsPictureView : FMView
 
-extern const CGFloat FMGoodsPictureViewHeight;
+@property (nonatomic, copy) NSArray<FMGoodsDetailsShowImagesModel *> *pictureModels;
 
 @end

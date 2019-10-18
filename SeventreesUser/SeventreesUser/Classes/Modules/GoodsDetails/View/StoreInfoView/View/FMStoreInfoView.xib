@@ -83,9 +83,12 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="arrowButton" destination="cnS-Lt-Bbj" id="qdh-PR-qIt"/>
+                <outlet property="arrowButton" destination="cnS-Lt-Bbj" id="1ej-jR-LRM"/>
+                <outlet property="brandImgView" destination="x32-4n-1xl" id="rZQ-DP-iyM"/>
+                <outlet property="brandNameLabel" destination="Kkc-Ex-ldF" id="7nx-6Q-RJw"/>
+                <outlet property="goodsTotalLabel" destination="YlQ-yX-8DH" id="UpM-1c-a7J"/>
             </connections>
-            <point key="canvasLocation" x="-279.19999999999999" y="-54.872563718140931"/>
+            <point key="canvasLocation" x="193" y="-9"/>
         </view>
     </objects>
     <resources>

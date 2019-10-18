@@ -15,12 +15,26 @@
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)
         if (! [resultModel.statusCode isEqualToString:@"OK"]) {
-            self.detailsModel = nil;
+            self->_detailsModel = nil;
             [self.refreshUISubject sendNext:nil];
             return;
         }
-        FMGoodsDetailsModel * goodsDetailsModel = [FMGoodsDetailsModel mj_objectWithKeyValues:resultModel.jsonDict[@"goodsDetailsModel"]];
-        self.detailsModel = goodsDetailsModel;
+        
+        FMGoodsDetailsModel *goodsDetailsModel = [FMGoodsDetailsModel mj_objectWithKeyValues:resultModel.jsonDict[@"goodsDetailsModel"]];
+        
+        FMStoreInfoModel *storeInfoModel = [[FMStoreInfoModel alloc] init];
+        storeInfoModel.brandId = goodsDetailsModel.brandId;
+        storeInfoModel.brandGoodsNum = goodsDetailsModel.brandGoodsNum;
+        storeInfoModel.brandName = goodsDetailsModel.brandName;
+        storeInfoModel.brandContent = goodsDetailsModel.brandContent;
+        storeInfoModel.brandImg = goodsDetailsModel.brandImg;
+        
+        goodsDetailsModel.storeModel = storeInfoModel;
+        
+        goodsDetailsModel.ordinaryGoodsMsg.goodsName = goodsDetailsModel.goodsName;
+        
+        self->_detailsModel = goodsDetailsModel;
+        
         [self.refreshUISubject sendNext:goodsDetailsModel];
     }];
 }
@@ -38,6 +52,7 @@
                     
                 } failure:^(NSError *error) {
                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                    [subscriber sendNext:nil];
                     [subscriber sendCompleted];
                 }];
                 return nil;

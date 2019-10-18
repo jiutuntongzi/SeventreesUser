@@ -8,13 +8,12 @@
 
 #import "FMView.h"
 
-#import "FMGoodsInfoViewModel.h"
-#import "FMGoodsInfoModel.h"
+#import "FMGoodsDetailsModel.h"
 
 extern const CGFloat FMGoodsInfoViewHeight;
 
 @interface FMGoodsInfoView : FMView
 
-@property (nonatomic, strong) FMGoodsInfoViewModel *viewModel;
+@property (nonatomic, strong) FMGoodsDetailsOrdinaryGoodsMsgModel *detailsModel;
 
 @end

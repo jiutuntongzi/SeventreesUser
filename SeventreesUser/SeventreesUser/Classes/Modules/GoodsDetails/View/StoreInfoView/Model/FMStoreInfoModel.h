@@ -10,7 +10,15 @@
 
 @interface FMStoreInfoModel : FMModel
 
+@property (nonatomic, strong) NSNumber *brandId;
 
+@property (nonatomic, strong) NSNumber *brandGoodsNum;
+
+@property (nonatomic, copy) NSString *brandName;
+
+@property (nonatomic, copy) NSString *brandContent;
+
+@property (nonatomic, copy) NSString *brandImg;
 
 @end
 

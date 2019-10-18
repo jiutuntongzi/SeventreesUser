@@ -47,14 +47,38 @@ const CGFloat FMSpellShopDetailViewHeight = 400.f + 150.f;
 /** 商品详情信息 */
 - (void)setupGoodsInfoView {
     if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell || global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleActivity) {
+        
         FMSpellGoodsInfoView *spellGoodsInfoView = (FMSpellGoodsInfoView *)FMSpellGoodsInfoView.cv_viewFromNibLoad();
         _goodsInfoView = spellGoodsInfoView;
         [self addSubview:spellGoodsInfoView];
+        
     } else {
         FMGoodsInfoView *normalGoodsInfoView = (FMGoodsInfoView *)FMGoodsInfoView.cv_viewFromNibLoad();
         _goodsInfoView = normalGoodsInfoView;
         [self addSubview:normalGoodsInfoView];
     }
+}
+
+- (void)fm_bindViewModel {
+    @weakify(self)
+    [RACObserve(self, pictureModels) subscribeNext:^(id x) {
+        @strongify(self);
+        self->_goodsPictureView.pictureModels = self->_pictureModels;
+    }];
+    
+    [RACObserve(self, detailsModel) subscribeNext:^(id x) {
+        @strongify(self);
+        
+        if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell || global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleActivity) {
+            FMSpellGoodsInfoView *spellGoodsInfoView = (FMSpellGoodsInfoView *)self->_goodsInfoView;
+            // code...
+//            spellGoodsInfoView.detailsModel = self.detailsModel;
+            
+        } else {
+            FMGoodsInfoView *normalGoodsInfoView = (FMGoodsInfoView *)self->_goodsInfoView;
+            normalGoodsInfoView.detailsModel = self.detailsModel;
+        }
+    }];
 }
 
 #pragma mark - System Functions

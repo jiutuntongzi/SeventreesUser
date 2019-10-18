@@ -8,17 +8,12 @@
 
 #import "FMViewModel.h"
 
-@class FMStoreInfoModel;
+#import "FMStoreInfoModel.h"
 
 @interface FMStoreInfoViewModel : FMViewModel
 
-@property (nonatomic, strong) FMStoreInfoModel *model;
+@property (nonatomic, strong) FMStoreInfoModel *storeModel;
 
-
-@property (nonatomic, strong) RACSubject *refreshUISubject;
-
-@property (nonatomic, strong) RACSubject *actionSubject;
-
-@property (nonatomic, strong) RACCommand *requestDataCommand;
+@property (nonatomic, strong) RACSubject *nextActionSubject;
 
 @end

@@ -9,6 +9,7 @@
 #import "FMGoodsDetailsModel.h"
 
 
+
 @implementation FMGoodsDetailsSpellGroupGoodsMsgModel
 
 @end
@@ -34,7 +35,16 @@
 @end
 
 
-@implementation FMGoodsDetailsGoodsSkuModelsModel
+@implementation FMGoodsDetailsGoodsSkuModel
+
+/**
+ *  将属性名换为其他key去字典中取值
+ *
+ *  @return 字典中的key是属性名，value是从字典中取值用的key
+ */
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"ID": @"id"};
+}
 
 @end
 
@@ -49,22 +59,31 @@
 @end
 
 
-@implementation FMGoodsDetailsGoodsCommentssExtraModel
+@implementation FMGoodsDetailsCommentssExtraModel
 
 @end
 
 
-@implementation FMGoodsDetailsGoodsCommentsModelsModel
+@implementation FMGoodsDetailsCommentsModel
+
+/**
+ *  将属性名换为其他key去字典中取值
+ *
+ *  @return 字典中的key是属性名，value是从字典中取值用的key
+ */
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"evaluateId": @"id"};
+}
 
 @end
 
 
-@implementation FMGoodsDetailsDetailsImagesExtraModel
+@implementation FMGoodsDetailsImagesExtraModel
 
 @end
 
 
-@implementation FMGoodsDetailsDetailsImagesModel
+@implementation FMGoodsDetailsImagesModel
 
 @end
 
@@ -79,20 +98,9 @@
 + (NSDictionary *)mj_objectClassInArray {
     return @{
              @"showImages":             @"FMGoodsDetailsShowImagesModel",
-             @"goodsSkuModels":         @"FMGoodsDetailsGoodsSkuModelsModel",
-             @"goodsCommentsModels":    @"FMGoodsDetailsGoodsCommentsModelsModel",
-             @"detailsImages":          @"FMGoodsDetailsDetailsImagesModel"
-             };
-}
-
-/**
- *  将属性名换为其他key去字典中取值
- *
- *  @return 字典中的key是属性名，value是从字典中取值用的key
- */
-+ (NSDictionary *)mj_replacedKeyFromPropertyName {
-    return @{
-             @"evaluateId": @"id"
+             @"goodsSkuModels":         @"FMGoodsDetailsGoodsSkuModel",
+             @"goodsCommentsModels":    @"FMGoodsDetailsCommentsModel",
+             @"detailsImages":          @"FMGoodsDetailsImagesModel"
              };
 }
 

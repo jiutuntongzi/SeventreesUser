@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, HTTPRequestMethod){
 #define     kFormalHostDomain      @""
 
 /** 测试服(内网) */
-#define     kTestHostDomain        @"http://192.168.1.124:8080"
+#define     kTestHostDomain        @"http://192.168.1.131:8080"
 
 @interface NetworkRequestManager ()
 
@@ -278,6 +278,7 @@ static NetworkRequestManager * _instance = nil;
             if (error) {
                 DLog(@"\n（NSURLSession）原生网络请求失败！（POST表单上传方式）error.localizedDescription == %@ \n", error.localizedDescription);
                 failure(error);
+                return;
             }
             NetworkResultModel *resultModel = nil;
             if (data) {

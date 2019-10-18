@@ -11,6 +11,7 @@
 
 @interface FMGoodsDetailsViewModel : FMViewModel
 
+/** 商品ID，从外边传进来的，用作商品详情网络请求参数 */
 @property (nonatomic, strong) NSNumber *goodsId;
 
 @property (nonatomic, strong) FMGoodsDetailsModel *detailsModel;
@@ -20,7 +21,5 @@
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
 @property (nonatomic, strong) RACSubject *actionSubject;
-
-
 
 @end

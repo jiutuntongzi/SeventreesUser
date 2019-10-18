@@ -40,17 +40,17 @@
 
 #pragma mark - Private Functions
 
-- (void)setViewModel:(FMGoodsDetailsViewModel *)viewModel {
-    _viewModel = viewModel;
-    
-    
-}
+//- (void)setViewModel:(FMGoodsDetailsViewModel *)viewModel {
+//    _viewModel = viewModel;
+//
+//
+//}
 
-- (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel {
-    _viewModel = (FMGoodsDetailsViewModel *)_viewModel;
-    
-    return [super initWithViewModel:viewModel];
-}
+//- (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel {
+//    _viewModel = (FMGoodsDetailsViewModel *)_viewModel;
+//
+//    return [super initWithViewModel:viewModel];
+//}
 
 - (void)fm_setupSubviews {
     
@@ -133,9 +133,9 @@
     
     [self.viewModel.refreshUISubject subscribeNext:^(FMGoodsDetailsModel *goodsDetailsModel) {
         @strongify(self)     if (!self) return;
-
         
-        
+        self->_shopDetailView.pictureModels = goodsDetailsModel.showImages;
+        self->_shopDetailView.detailsModel = goodsDetailsModel.ordinaryGoodsMsg;
     }];
 }
 

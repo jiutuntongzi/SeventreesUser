@@ -16,6 +16,6 @@ typedef NS_ENUM(NSUInteger, FMGoodsDetailsPageStyle) {
 };
 
 // 全局的 商品详情页面类型
-static FMGoodsDetailsPageStyle global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleActivity;
+static FMGoodsDetailsPageStyle global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleNormal;
 
 #endif /* FMGoodsDetailsPageStyle_h */

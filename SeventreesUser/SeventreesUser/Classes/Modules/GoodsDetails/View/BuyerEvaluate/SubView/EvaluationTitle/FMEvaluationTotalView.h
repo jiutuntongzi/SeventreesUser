@@ -12,6 +12,9 @@ extern const CGFloat FMEvaluationTotalViewHeight;
 
 @interface FMEvaluationTotalView : FMView
 
-@property (nonatomic, strong) NSNumber *evaluateTotal;
+@property (nonatomic, assign) NSInteger evaluateTotal;
+
+@property (nonatomic, copy) void(^showAllCallback)(void);
+
 
 @end

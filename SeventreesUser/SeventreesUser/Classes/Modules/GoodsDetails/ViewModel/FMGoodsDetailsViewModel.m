@@ -13,7 +13,7 @@
 - (void)fm_initialize {
     @weakify(self)
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
-        @strongify(self)
+        @strongify(self)    if (! self) return;
         if (! [resultModel.statusCode isEqualToString:@"OK"]) {
             self->_detailsModel = nil;
             [self.refreshUISubject sendNext:nil];
@@ -33,8 +33,13 @@
         
         goodsDetailsModel.ordinaryGoodsMsg.goodsName = goodsDetailsModel.goodsName;
         
-        self->_detailsModel = goodsDetailsModel;
+        NSMutableArray *mImageURLStrings = [NSMutableArray array];
+        for (FMGoodsDetailsImagesModel *goodsPictureModel in goodsDetailsModel.detailsImages) {
+            [mImageURLStrings addObject:goodsPictureModel.url];
+        }
+        goodsDetailsModel.imageURLStrings = [mImageURLStrings copy];
         
+        self->_detailsModel = goodsDetailsModel;
         [self.refreshUISubject sendNext:goodsDetailsModel];
     }];
 }

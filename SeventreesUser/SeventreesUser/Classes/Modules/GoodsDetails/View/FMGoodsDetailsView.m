@@ -89,7 +89,7 @@
     UIScrollView *mainScrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     mainScrollView.bounces = YES;
     mainScrollView.backgroundColor = UIColor.cc_colorByRGBA(247.f, 247.f, 247.f, 1.f);
-    mainScrollView.contentSize = CGSizeMake(0.f, 2130.f);
+    mainScrollView.contentSize = CGSizeMake(0.f, [self contentVHeight]);
     mainScrollView.scrollEnabled = YES;
     _mainScrollView = mainScrollView;
     [self addSubview:_mainScrollView];
@@ -136,13 +136,60 @@
         
         self->_shopDetailView.pictureModels = goodsDetailsModel.showImages;
         self->_shopDetailView.detailsModel = goodsDetailsModel.ordinaryGoodsMsg;
+        
+        self->_storeInfoView.viewModel.storeModel = goodsDetailsModel.storeModel;
+        
+        self->_evaluateView.viewModel.commentsTotal = goodsDetailsModel.goodsCommentsModels.count;
+        self->_evaluateView.viewModel.commentsModel = goodsDetailsModel.goodsCommentsModels.lastObject;
+        
+        self->_pictureListView.viewModel.imageURLStrings  = goodsDetailsModel.imageURLStrings;
+    }];
+    
+    /// Show nextVC
+    
+    [self->_storeInfoView.viewModel.nextActionSubject subscribeNext:^(FMStoreInfoModel *storeModel) {
+        DLog(@"storeModel == %@", storeModel);
+    }];
+    
+    [self->_evaluateView.viewModel.nextActionSubject subscribeNext:^(id x) {
+        UIViewController *nextVC = [[NSClassFromString(@"FMEvaluationController") alloc] init];
+        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    }];
+    
+    [self->_evaluateView.viewModel.selectItemSubject subscribeNext:^(FMImageEyeModel *imageEyeModel) {
+        DLog(@"imageEyeModel == %@", imageEyeModel);
     }];
 }
 
-#pragma mark - System Functions
+#pragma mark - Make Constraints
+
+/** ScrollView Content 动态内容高度 */
+- (CGFloat)contentVHeight {
+    const CGFloat margin = 15.f;
+    CGFloat height = 0.f;
+    CGFloat offsetY = 0.f;
+    
+    offsetY += ([self shopDetailVHeight] + margin);
+    offsetY += (FMStoreInfoViewHeight + margin);
+    offsetY += (FMBuyerEvaluateViewHeight + margin);
+    offsetY += kFixedHeight + 8.f;
+    
+    height = offsetY;
+    return height;
+}
+
+/** 顶部商品详情高度 */
+- (CGFloat)shopDetailVHeight {
+    CGFloat height = 0.f;
+    if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell || global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleActivity) {
+        height = FMSpellShopDetailViewHeight;
+    } else {
+        height = FMShopDetailViewHeight;
+    }
+    return height;
+}
 
 - (void)updateConstraints {
-    CGFloat contentVHeight = 2130.f; // test
     
     [_mainScrollView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
@@ -151,7 +198,7 @@
     [_contentView makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(self->_mainScrollView);
         make.width.equalTo(self.width);
-        make.height.equalTo(contentVHeight);
+        make.height.equalTo([self contentVHeight]);
     }];
     
     [_shopCarToolView makeConstraints:^(MASConstraintMaker *make) {

@@ -14,7 +14,6 @@ const CGFloat FMImageEyeCellSize = 80.f;
 
 @property (nonatomic, strong) UIImageView *imgView;
 
-
 @end
 
 @implementation FMImageEyeCell
@@ -40,7 +39,15 @@ const CGFloat FMImageEyeCellSize = 80.f;
 
 /** 绑定ViewModel */
 - (void)fm_bindViewModel {
-    
+    @weakify(self)
+//    [RACObserve(self, pictureModel) subscribeNext:^(FMImageEyeModel *pictureModel) {
+//        @strongify(self)
+//        [self.imgView sd_setImageWithURL:[NSURL URLWithString:pictureModel.imgurl]];
+//    }];
+    [RACObserve(self, imgUrlString) subscribeNext:^(NSString *imgUrlString) {
+        @strongify(self)
+        [self.imgView sd_setImageWithURL:[NSURL URLWithString:imgUrlString]];
+    }];
 };
 
 @end

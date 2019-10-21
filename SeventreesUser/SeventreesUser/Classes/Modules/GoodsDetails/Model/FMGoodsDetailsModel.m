@@ -100,7 +100,8 @@
              @"showImages":             @"FMGoodsDetailsShowImagesModel",
              @"goodsSkuModels":         @"FMGoodsDetailsGoodsSkuModel",
              @"goodsCommentsModels":    @"FMGoodsDetailsCommentsModel",
-             @"detailsImages":          @"FMGoodsDetailsImagesModel"
+             @"detailsImages":          @"FMGoodsDetailsImagesModel",
+             @"apiPmCommentsImgs":      @"FMImageEyeModel",
              };
 }
 

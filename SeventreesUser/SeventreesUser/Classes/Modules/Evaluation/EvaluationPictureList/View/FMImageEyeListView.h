@@ -7,7 +7,10 @@
 //
 
 #import "FMView.h"
+#import "FMImageEyeListViewModel.h"
 
 @interface FMImageEyeListView : FMView
+
+@property (nonatomic, strong) FMImageEyeListViewModel *viewModel;
 
 @end

@@ -7,18 +7,17 @@
 //
 
 #import "FMViewModel.h"
-
-@class FMBuyerEvaluateModel;
+#import "FMGoodsDetailsModel.h"
 
 @interface FMBuyerEvaluateViewModel : FMViewModel
 
-@property (nonatomic, strong) FMBuyerEvaluateModel *model;
+/** 评价详细 */
+@property (nonatomic, strong) FMGoodsDetailsCommentsModel *commentsModel;
+/** 评价总数 */
+@property (nonatomic, assign) NSInteger commentsTotal;
 
+@property (nonatomic, strong) RACSubject *nextActionSubject;
 
-@property (nonatomic, strong) RACSubject *refreshUISubject;
-
-@property (nonatomic, strong) RACSubject *actionSubject;
-
-@property (nonatomic, strong) RACCommand *requestDataCommand;
+@property (nonatomic, strong) RACSubject *selectItemSubject;
 
 @end

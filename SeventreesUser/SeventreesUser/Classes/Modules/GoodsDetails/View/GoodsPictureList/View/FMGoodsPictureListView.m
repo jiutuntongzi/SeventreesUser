@@ -11,6 +11,8 @@
 #import "FMPictureTableView.h"
 #import "FMPictureCell.h"
 
+const CGFloat FMGoodsPictureListViewRowHeight = 268.f;
+
 @interface FMGoodsPictureListView () <UITableViewDataSource>
 
 @property (nonatomic, strong) FMPictureTableView *tableView;
@@ -26,17 +28,17 @@
 
 #pragma mark - Private Functions
 
-- (void)setViewModel:(FMGoodsPictureListViewModel *)viewModel {
-    _viewModel = viewModel;
-    
-    
-}
-
-- (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel {
-    _viewModel = (FMGoodsPictureListViewModel *)_viewModel;
-    
-    return [super initWithViewModel:viewModel];
-}
+//- (void)setViewModel:(FMGoodsPictureListViewModel *)viewModel {
+//    _viewModel = viewModel;
+//
+//
+//}
+//
+//- (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel {
+//    _viewModel = (FMGoodsPictureListViewModel *)_viewModel;
+//
+//    return [super initWithViewModel:viewModel];
+//}
 
 - (void)fm_setupSubviews {
     self.cv_backColor(UIColor.whiteColor);
@@ -52,7 +54,7 @@
     
     _tableView = [[FMPictureTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableView.dataSource = self;
-    _tableView.rowHeight = 234.f;
+    _tableView.rowHeight = FMGoodsPictureListViewRowHeight;
     [self addSubview:_tableView];
     
     [self setNeedsUpdateConstraints];
@@ -67,19 +69,18 @@
 }
 
 - (void)fm_bindViewModel {
-//    @weakify(self);
-//
-//    [[_arrowButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        @strongify(self);
-//
-//        [self.viewModel.actionSubject sendNext:self.viewModel.model];
-//    }];
+    @weakify(self);
+    
+    [RACObserve(self.viewModel, imageURLStrings) subscribeNext:^(NSArray<NSString *> *imageURLStrings) {
+        @strongify(self);
+        [self reloadTableView];
+    }];
 }
 
 #pragma mark - System Functions
 
 - (void)updateConstraints {
-    CGFloat height = 44.f;
+    CGFloat height = kFixedHeight;
     [_titleView makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(height);
         make.left.top.right.equalTo(self);
@@ -102,12 +103,12 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     FMPictureCell *cell = FMPictureCell.ctc_cellReuseForTableView(tableView);
-    cell.imgURLString = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568102004&di=53d47b12ed5c5a896637f8346658fda6&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F25%2F20180225080939_E8rAt.jpeg";
+    cell.imgURLString = self.viewModel.imageURLStrings[indexPath.row];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.viewModel.imageURLStrings.count;
 }
 
 #pragma mark ——— <UITableViewDelegate>

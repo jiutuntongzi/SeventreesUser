@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FMStoreInfoModel.h"
+#import "FMImageEyeModel.h"
 
 @interface FMGoodsDetailsSpellGroupGoodsMsgModel : NSObject
 
@@ -147,7 +148,7 @@
 
 @property (nonatomic, copy) NSString *userHeadUrl;
 
-@property (nonatomic, copy) NSArray *apiPmCommentsImgs;
+@property (nonatomic, copy) NSArray<FMImageEyeModel *> *apiPmCommentsImgs;
 
 @end
 
@@ -163,9 +164,11 @@
 
 @property (nonatomic, copy) NSString *url;
 
+@property (nonatomic, assign) NSNumber *type;
+
 @property (nonatomic, strong) FMGoodsDetailsImagesExtraModel *extra;
 
-@property (nonatomic, assign) NSNumber *type;
+
 
 @end
 
@@ -212,9 +215,12 @@
 
 @property (nonatomic, strong) FMGoodsDetailsBargainingGoodsMsgModel *bargainingGoodsMsg;
 
+/** 用户评价列表 */
 @property (nonatomic, copy) NSArray<FMGoodsDetailsCommentsModel *> *goodsCommentsModels;
 
 @property (nonatomic, copy) NSArray<FMGoodsDetailsImagesModel *> *detailsImages;
+/** 手动转换处理的图片列表 （非JSON转Model数据）*/
+@property (nonatomic, copy) NSArray<NSString *> *imageURLStrings;
 
 /** 手动转换处理的店铺信息Model （非JSON转Model数据）*/
 @property (nonatomic, strong) FMStoreInfoModel *storeModel;

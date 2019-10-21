@@ -26,11 +26,6 @@ const CGFloat FMBuyerEvaluateViewHeight = 44.f + 206.f;
 
 #pragma mark - Private Functions
 
-- (void)setViewModel:(FMBuyerEvaluateViewModel *)viewModel {
-    _viewModel = viewModel;
-    
-}
-
 - (void)fm_setupSubviews {
     self.cv_backColor(UIColor.whiteColor);
     
@@ -53,13 +48,27 @@ const CGFloat FMBuyerEvaluateViewHeight = 44.f + 206.f;
 }
 
 - (void)fm_bindViewModel {
-//    @weakify(self);
-//
-//    [[_arrowButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        @strongify(self);
-//
-//        [self.viewModel.actionSubject sendNext:self.viewModel.model];
-//    }];
+    @weakify(self);
+    
+    [RACObserve(self.viewModel, commentsTotal) subscribeNext:^(NSNumber *commentsTotal) {
+        @strongify(self)
+        self->_evaluationTotalView.evaluateTotal = commentsTotal.integerValue;
+    }];
+    
+    [RACObserve(self.viewModel, commentsModel) subscribeNext:^(FMGoodsDetailsCommentsModel *commentsModel) {
+        @strongify(self)
+        self->_goodsEvaluationView.viewModel.commentsModel = commentsModel;
+    }];
+    
+    __weak typeof(self) weakSelf = self;
+    _evaluationTotalView.showAllCallback = ^{
+        [self.viewModel.nextActionSubject sendNext:nil];
+    };
+    
+    [_goodsEvaluationView.viewModel.selectItemSubject subscribeNext:^(FMImageEyeModel *imageEyeModel) {
+        @strongify(self)
+        [self.viewModel.selectItemSubject sendNext:imageEyeModel];
+    }];
 }
 
 #pragma mark - System Functions
@@ -79,6 +88,13 @@ const CGFloat FMBuyerEvaluateViewHeight = 44.f + 206.f;
     }];
     
     [super updateConstraints];
+}
+
+- (FMBuyerEvaluateViewModel *)viewModel {
+    if (! _viewModel) {
+        _viewModel = [[FMBuyerEvaluateViewModel alloc] init];
+    }
+    return _viewModel;
 }
 
 @end

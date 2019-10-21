@@ -9,7 +9,6 @@
 #import "FMView.h"
 
 #import "FMGoodsEvaluationViewModel.h"
-#import "FMGoodsEvaluationModel.h"
 
 extern const CGFloat FMGoodsEvaluationViewHeight;
 

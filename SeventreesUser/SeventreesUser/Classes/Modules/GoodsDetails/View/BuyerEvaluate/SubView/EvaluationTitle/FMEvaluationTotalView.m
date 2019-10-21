@@ -12,15 +12,18 @@ const CGFloat FMEvaluationTotalViewHeight = 44.f;
 
 @interface FMEvaluationTotalView ()
 
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *arrowButton;
 
 @end
 
 @implementation FMEvaluationTotalView
 
-- (void)setEvaluateTotal:(NSNumber *)evaluateTotal {
+- (void)setEvaluateTotal:(NSInteger )evaluateTotal {
     _evaluateTotal = evaluateTotal;
     
+    _totalLabel.text = [NSString stringWithFormat:@"用户评价(%ld)", evaluateTotal];
 }
 
 - (void)fm_bindViewModel {
@@ -29,11 +32,7 @@ const CGFloat FMEvaluationTotalViewHeight = 44.f;
     [[_arrowButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
         
-        // test
-        UIViewController *nextVC = [[NSClassFromString(@"FMEvaluationController") alloc] init];
-        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-        
-//        [self.viewModel.actionSubject sendNext:self.viewModel.model];
+        if (self->_showAllCallback) self->_showAllCallback();
     }];
 }
 

@@ -9,16 +9,15 @@
 #import "FMImageEyeListView.h"
 #import "FMImageEyeCell.h"
 
-//#import "TZImagePickerController.h"
-
 #import "YBImageBrowser.h"      // 图片浏览器
-
 
 @interface FMImageEyeListView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UICollectionView *collectionView;
 
 @property (strong, nonatomic) UICollectionViewFlowLayout *flowLayout;
+
+@property (strong, nonatomic) YBImageBrowser *browser;
 
 @end
 
@@ -50,8 +49,29 @@
 
 /** 绑定ViewModel */
 - (void)fm_bindViewModel {
-    
+    @weakify(self)
+    [RACObserve(self.viewModel, pictureModels) subscribeNext:^(id x) {
+        @strongify(self)
+        //    NSMutableArray<NSString *> *previewPictures = [NSMutableArray array];
+        NSMutableArray<YBIBImageData *> *dataSourceArray = [NSMutableArray array];
+        for (FMImageEyeModel *pictureModel in self.viewModel.pictureModels) {
+            //        [previewPictures addObject:pictureModel.imgurl];
+            YBIBImageData *imageData = [YBIBImageData new];
+            imageData.imageURL = [NSURL URLWithString:pictureModel.imgurl];
+            [dataSourceArray addObject:imageData];
+        }
+        self->_browser.dataSourceArray = dataSourceArray;
+        
+        [self->_collectionView reloadData];
+    }];
 };
+
+- (FMImageEyeListViewModel *)viewModel {
+    if (! _viewModel) {
+        _viewModel = [[FMImageEyeListViewModel alloc] init];
+    }
+    return _viewModel;
+}
 
 - (void)setupCollectionViewFlowLayout {
     // 每组Cell四边的边距
@@ -84,11 +104,13 @@
 #pragma mark - <UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.viewModel.pictureModels.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FMImageEyeCell *cell = FMImageEyeCell.ccc_cellReuseForCollectionViewIndexPath(collectionView, indexPath);
+    FMImageEyeModel *pictureModel = self.viewModel.pictureModels[indexPath.row];
+    cell.imgUrlString = pictureModel.imgurl;
     return cell;
 }
 
@@ -96,25 +118,18 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    // 浏览图片指定当前索引
+    self.browser.currentPage = indexPath.row;
+    [self.browser show];
     
-    DLog(@"indexPath == %@", indexPath);
-
-    NSMutableArray *selectedPhotos = [[NSMutableArray alloc] initWithCapacity:9];
-    NSMutableArray *datas = [NSMutableArray array];
-    for (UInt8 idx = 0; idx != 9; idx ++) {
-        [selectedPhotos addObject:UIImage.ci_imageNamed(@"test80")];
-        
-        YBIBImageData *data = [YBIBImageData new];
-        data.imageName = @"test80";
-        
-        [datas addObject:data];
-    }
-    // 本地图片
-    YBImageBrowser *browser = [YBImageBrowser new];
-    browser.dataSourceArray = datas;
-    browser.currentPage = 1; // 当前图片索引
-    [browser show];
+    [self.viewModel.selectItemSubject sendNext:self.viewModel.pictureModels[indexPath.row]];
 }
 
+- (YBImageBrowser *)browser {
+    if (! _browser) {
+        _browser = [[YBImageBrowser alloc] init];
+    }
+    return _browser;
+}
 
 @end

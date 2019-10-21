@@ -7,10 +7,15 @@
 //
 
 #import "FMCollectionViewCell.h"
+//#import "FMImageEyeModel.h"
 
 extern const CGFloat FMImageEyeCellSize;
 
 @interface FMImageEyeCell : FMCollectionViewCell
+
+@property (nonatomic, copy) NSString *imgUrlString;
+
+//@property (nonatomic, strong) FMImageEyeModel *pictureModel;
 
 @end
 

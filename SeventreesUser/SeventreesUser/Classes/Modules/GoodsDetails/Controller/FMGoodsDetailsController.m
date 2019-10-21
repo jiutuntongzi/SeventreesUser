@@ -112,7 +112,7 @@
 #pragma mark - Lazyload
 
 - (void)dealloc {
-    DLog(@"%@ VC销毁了", NSStringFromClass([self class]));
+    DLog(@"%@ 商品详情VC销毁了", NSStringFromClass([self class]));
 }
 
 @end

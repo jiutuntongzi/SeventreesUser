@@ -8,17 +8,10 @@
 
 #import "FMViewModel.h"
 
-@class FMGoodsPictureListModel;
-
 @interface FMGoodsPictureListViewModel : FMViewModel
 
-@property (nonatomic, strong) FMGoodsPictureListModel *model;
-
-
-@property (nonatomic, strong) RACSubject *refreshUISubject;
+@property (nonatomic, copy) NSArray<NSString *> *imageURLStrings;
 
 @property (nonatomic, strong) RACSubject *actionSubject;
-
-@property (nonatomic, strong) RACCommand *requestDataCommand;
 
 @end

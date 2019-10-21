@@ -72,6 +72,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="arrowButton" destination="iHD-6m-ld2" id="l3F-fI-P5Q"/>
+                <outlet property="totalLabel" destination="khR-40-s5o" id="fyC-BG-gfe"/>
             </connections>
             <point key="canvasLocation" x="40.799999999999997" y="310.34482758620692"/>
         </view>

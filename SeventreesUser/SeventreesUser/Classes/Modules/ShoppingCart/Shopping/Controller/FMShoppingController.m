@@ -49,17 +49,17 @@
 }
 
 - (void)fm_setupNavbar {
+    [super fm_setupNavbar];
     
     self.navigationItem.title = @"购物车";
     
-    __weak typeof(self) weakSelf = self;
+//    __weak typeof(self) weakSelf = self;
     
-    // test
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"品牌商品", 1, ^(UIBarButtonItem *leftItem) {
-        UIViewController *nextVC = [[NSClassFromString(@"FMBrandGoodsController") alloc] init];
-        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
+//    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"品牌商品", 1, ^(UIBarButtonItem *leftItem) {
+//        UIViewController *nextVC = [[NSClassFromString(@"FMBrandGoodsController") alloc] init];
+//        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+//    });
+//    self.navigationItem.cni_rightBarButtonItem(rightItem);
     
 //    self.navigationItem.rightBarButtonItem.title = @"";
 }

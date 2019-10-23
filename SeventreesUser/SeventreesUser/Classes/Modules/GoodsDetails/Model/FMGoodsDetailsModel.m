@@ -8,8 +8,6 @@
 
 #import "FMGoodsDetailsModel.h"
 
-
-
 @implementation FMGoodsDetailsSpellGroupGoodsMsgModel
 
 @end

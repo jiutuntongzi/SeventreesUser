@@ -10,18 +10,23 @@
 
 @implementation FMGoodsCellViewModel
 
-- (RACSubject *)addActionSubject {
-    if (!_addActionSubject) {
-        _addActionSubject = [[RACSubject alloc] init];
-    }
-    return _addActionSubject;
+- (void)fm_initialize {
+    _addActionSubject = [[RACSubject alloc] init];
+    _selectActionSubject = [[RACSubject alloc] init];
 }
 
-- (RACSubject *)selectActionSubject {
-    if (!_selectActionSubject) {
-        _selectActionSubject = [[RACSubject alloc] init];
-    }
-    return _selectActionSubject;
-}
+//- (RACSubject *)addActionSubject {
+////    if (!_addActionSubject) {
+//        _addActionSubject = [[RACSubject alloc] init];
+////    }
+//    return _addActionSubject;
+//}
+//
+//- (RACSubject *)selectActionSubject {
+////    if (!_selectActionSubject) {
+//        _selectActionSubject = [[RACSubject alloc] init];
+////    }
+//    return _selectActionSubject;
+//}
 
 @end

@@ -10,11 +10,5 @@
 
 @implementation FMGoodsPictureListViewModel
 
-- (RACSubject *)actionSubject {
-    if (!_actionSubject) {
-        _actionSubject = [[RACSubject alloc] init];
-    }
-    return _actionSubject;
-}
 
 @end

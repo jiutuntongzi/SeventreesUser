@@ -47,22 +47,15 @@
         self->_goodsPriceLabel.text = [NSString stringWithFormat:@"￥%@", goodsModel.retailPrice];
     }];
     
+//    _viewModel = [[FMGoodsCellViewModel alloc] init];
+    
     [[_shoppingCarButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id button) {
-        [[UIApplication sharedApplication].keyWindow endEditing:YES];
-        [self.viewModel.addActionSubject sendNext:self.viewModel.goodsModel];
+        [self->_viewModel.addActionSubject sendNext:self.viewModel.goodsModel];
     }];
     
     [[_selectButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id button) {
-        [[UIApplication sharedApplication].keyWindow endEditing:YES];
-        [self.viewModel.selectActionSubject sendNext:self.viewModel.goodsModel];
+        [self->_viewModel.selectActionSubject sendNext:self.viewModel.goodsModel];
     }];
 };
-
-- (FMGoodsCellViewModel *)viewModel {
-    if (! _viewModel) {
-        _viewModel = [[FMGoodsCellViewModel alloc] init];
-    }
-    return _viewModel;
-}
 
 @end

@@ -74,11 +74,18 @@
     return _refreshUISubject;
 }
 
-- (RACSubject *)actionSubject {
-    if (!_actionSubject) {
-        _actionSubject = [[RACSubject alloc] init];
+- (RACSubject *)nextActionSubject {
+    if (! _nextActionSubject) {
+        _nextActionSubject = [[RACSubject alloc] init];
     }
-    return _actionSubject;
+    return _nextActionSubject;
+}
+
+- (RACSubject *)nextBrandVCSubject {
+    if (! _nextBrandVCSubject) {
+        _nextBrandVCSubject = [[RACSubject alloc] init];
+    }
+    return _nextBrandVCSubject;
 }
 
 @end

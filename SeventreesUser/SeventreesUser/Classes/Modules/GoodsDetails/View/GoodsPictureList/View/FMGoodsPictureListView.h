@@ -10,7 +10,6 @@
 
 #import "FMGoodsPictureListViewModel.h"
 
-
 extern const CGFloat FMGoodsPictureListViewRowHeight;
 
 @interface FMGoodsPictureListView : FMView

@@ -10,4 +10,7 @@
 
 @interface FMShoppingController : FMViewController
 
+@property (nonatomic, strong) NSNumber *goodsId;
+
+
 @end

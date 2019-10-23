@@ -17,4 +17,6 @@ extern const CGFloat FMSpellGoodsInfoViewHeight;
 
 @property (nonatomic, strong) FMSpellGoodsInfoViewModel *viewModel;
 
+@property (nonatomic, strong) id detailsModel;
+
 @end

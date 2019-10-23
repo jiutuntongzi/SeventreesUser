@@ -9,13 +9,13 @@
 #ifndef FMGoodsDetailsPageStyle_h
 #define FMGoodsDetailsPageStyle_h
 
-typedef NS_ENUM(NSUInteger, FMGoodsDetailsPageStyle) {
-    FMGoodsDetailsPageStyleNormal       = 0,         // 普通商品详情
-    FMGoodsDetailsPageStyleSpell        = 1,         // 拼团商品详情
-    FMGoodsDetailsPageStyleActivity    = 2,         // 活动商品详情
+enum FMGoodsDetailsPageStyle {
+    FMGoodsDetailsPageStyleNormal   = 0,         // 普通商品详情
+    FMGoodsDetailsPageStyleSpell    = 1,         // 拼团商品详情
+    FMGoodsDetailsPageStyleActivity = 2          // 活动商品详情
 };
 
 // 全局的 商品详情页面类型
-static FMGoodsDetailsPageStyle global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleNormal;
+extern enum FMGoodsDetailsPageStyle global_goodsDetailsPageStyle;
 
 #endif /* FMGoodsDetailsPageStyle_h */

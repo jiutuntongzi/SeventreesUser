@@ -13,8 +13,6 @@
 
 @interface FMEvaluationView () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) FMEvaluationViewModel *viewModel;
-
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
@@ -62,23 +60,23 @@
 }
 
 - (void)fm_bindViewModel {
-    
-}
-
-- (void)refreshUI {
-    
+    @weakify(self);
+    [self.viewModel.refreshUISubject subscribeNext:^(id x) {
+        @strongify(self)     if (! self) return;
+        [self->_tableView reloadData];
+    }];
 }
 
 #pragma mark ——— <UITableViewDataSource>
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     FMEvaluationCell *cell = FMEvaluationCell.ctc_cellReuseNibLoadForTableView(tableView);
-    cell.ctc_selectedColor(nil); // 默认点暗色
+    cell.commentsModel = self.viewModel.commentsModels[indexPath.row];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.viewModel.commentsModels.count;
 }
 
 #pragma mark ——— <UITableViewDelegate>
@@ -93,6 +91,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     tableView.ct_deselectRowAtIndexPathAnimated(indexPath, YES);
+    
     UIViewController *nextVC = [[NSClassFromString(@"FMBrandGoodsController") alloc] init];
     self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     

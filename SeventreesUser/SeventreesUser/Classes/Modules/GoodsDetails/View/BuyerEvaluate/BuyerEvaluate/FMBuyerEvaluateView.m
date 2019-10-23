@@ -62,7 +62,7 @@ const CGFloat FMBuyerEvaluateViewHeight = 44.f + 206.f;
     
     __weak typeof(self) weakSelf = self;
     _evaluationTotalView.showAllCallback = ^{
-        [self.viewModel.nextActionSubject sendNext:nil];
+        [weakSelf.viewModel.nextActionSubject sendNext:nil];
     };
     
     [_goodsEvaluationView.viewModel.selectItemSubject subscribeNext:^(FMImageEyeModel *imageEyeModel) {

@@ -10,4 +10,6 @@
 
 @interface FMEvaluationController : FMViewController
 
+@property (nonatomic, strong) NSNumber *goodsId;
+
 @end

@@ -7,11 +7,11 @@
 //
 
 #import "FMTableViewCell.h"
-
-NS_ASSUME_NONNULL_BEGIN
+#import "FMGoodsDetailsModel.h"
 
 @interface FMEvaluationCell : FMTableViewCell
 
+@property (nonatomic, strong) FMGoodsDetailsCommentsModel *commentsModel;
+
 @end
 
-NS_ASSUME_NONNULL_END

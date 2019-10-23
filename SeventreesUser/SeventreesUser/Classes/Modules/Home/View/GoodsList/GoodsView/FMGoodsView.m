@@ -36,8 +36,8 @@
     [RACObserve(self.viewModel, goodsGroupModels) subscribeNext:^(id x) {
         @strongify(self)    if (! self) return;
         [self->_tableView reloadData];
-        GCDDispatchMgr.afterByIntervalForCallback(0.1f, ^{
-            [self->_tableView scrollToTop]; // 修复，刷新Cell时跑出屏幕外不见了
+        GCDDispatchMgr.afterByIntervalForCallback(0.01f, ^{
+            [self->_tableView scrollToTopAnimated:NO]; // 修复，刷新Cell时跑出屏幕外不见了
         });
     }];
     

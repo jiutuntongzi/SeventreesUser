@@ -10,6 +10,9 @@
 #import "FMGoodsDetailsView.h"
 #import "FMGoodsDetailsViewModel.h"
 
+#import "FMEvaluationController.h"
+#import "FMBrandGoodsController.h"
+
 @interface FMGoodsDetailsController ()
 
 @property (nonatomic, strong) FMGoodsDetailsView *mainView;
@@ -56,7 +59,20 @@
 }
 
 - (void)fm_bindViewModel {
+    @weakify(self)
+    [_mainView.viewModel.nextActionSubject subscribeNext:^(id x) {
+        @strongify(self)
+        FMEvaluationController *nextVC = [[FMEvaluationController alloc] init];
+        nextVC.goodsId = self->_goodsId;
+        self.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    }];
     
+    [_mainView.viewModel.nextBrandVCSubject subscribeNext:^(NSNumber *brandId) {
+        @strongify(self)
+        FMBrandGoodsController *nextVC = [[FMBrandGoodsController alloc] init];
+        nextVC.brandId = brandId;
+        self.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    }];
 }
 
 - (void)fm_setupNavbar {

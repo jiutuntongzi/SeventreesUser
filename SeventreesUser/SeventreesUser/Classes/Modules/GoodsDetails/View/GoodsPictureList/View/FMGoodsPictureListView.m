@@ -61,19 +61,12 @@ const CGFloat FMGoodsPictureListViewRowHeight = 268.f;
     [self updateConstraintsIfNeeded];
 }
 
-- (void)reloadTableView {
-//    [_tableView updateConstraints:^(MASConstraintMaker *make) {
-//        make.height
-//    }];
-    [_tableView reloadData];
-}
-
 - (void)fm_bindViewModel {
     @weakify(self);
     
     [RACObserve(self.viewModel, imageURLStrings) subscribeNext:^(NSArray<NSString *> *imageURLStrings) {
         @strongify(self);
-        [self reloadTableView];
+        [self->_tableView reloadData];
     }];
 }
 

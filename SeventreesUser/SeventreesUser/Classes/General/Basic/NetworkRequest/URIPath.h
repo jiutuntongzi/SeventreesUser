@@ -29,6 +29,13 @@
 
 #pragma mark ——— 商品
 
-#define       kQueryGoodsDetailsURIPath     @"/api/pmgoods/queryGoodsDetails"   // 查询商品详情
+#define       kQueryGoodsDetailsURIPath      @"/api/pmgoods/queryGoodsDetails"        // 查询商品详情
+
+#define       kQueryApiPmCommentsURIPath     @"/api/pmcomments/queryApiPmComments"   // 查询商品详情评论
+
+#define       kQueryBrandInfoURIPath         @"/api/pmbrand/brandInfo"               // 查询品牌详情
+
+
+
 
 #endif /* URIPath_h */

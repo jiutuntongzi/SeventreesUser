@@ -135,7 +135,15 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="136.80000000000001" y="-0.44977511244377816"/>
+            <connections>
+                <outlet property="collectButton" destination="wY8-Jz-MSJ" id="SbW-Wz-0eK"/>
+                <outlet property="goodsTotalLabel" destination="VZ3-0m-1V0" id="TlP-th-IX8"/>
+                <outlet property="introTextView" destination="CmR-J7-8TX" id="yBm-3n-FV7"/>
+                <outlet property="moreDownButton" destination="T12-kT-Xd2" id="4wU-3f-mnT"/>
+                <outlet property="storeImgView" destination="0uS-Hz-2Uj" id="6qF-wE-a3f"/>
+                <outlet property="storeNameLabel" destination="iQi-Kv-BDb" id="vH6-Nv-PNa"/>
+            </connections>
+            <point key="canvasLocation" x="-137" y="28"/>
         </view>
     </objects>
     <resources>

@@ -7,9 +7,10 @@
 //
 
 #import "FMBrandGoodsController.h"
-
 #import "FMBrandGoodsView.h"
-#import "FMBrandGoodsViewModel.h"
+
+#import "FMGoodsDetailsController.h"
+#import "FMShoppingController.h"
 
 @interface FMBrandGoodsController ()
 
@@ -19,28 +20,6 @@
 
 @implementation FMBrandGoodsController
 
-#pragma mark - System Functions
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    
-}
-
-- (void)updateViewConstraints {
-    [_mainView makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-    
-    [super updateViewConstraints];
-}
-
 #pragma mark - Private Functions
 
 - (void)fm_addSubviews {
@@ -49,26 +28,43 @@
 }
 
 - (void)fm_bindViewModel {
+    @weakify(self)
     
+    [_mainView.viewModel.goodsDetailsVCSubject subscribeNext:^(NSNumber *goodsId) {
+        @strongify(self)
+        global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleNormal;
+        FMGoodsDetailsController *nextVC = [[FMGoodsDetailsController alloc] init];
+        nextVC.goodsId = goodsId;
+        [self.navigationController pushViewController:nextVC animated:YES];
+    }];
+    
+    [_mainView.viewModel.shopCarVCSubject subscribeNext:^(NSNumber *goodsId) {
+        @strongify(self)
+        FMShoppingController *nextVC = [[FMShoppingController alloc] init];
+        nextVC.goodsId = goodsId;
+        [self.navigationController pushViewController:nextVC animated:YES];
+    }];
 }
 
 - (void)fm_setupNavbar {
     [super fm_setupNavbar];
     
     self.navigationItem.title = @"品牌商品";
-    
-    __weak typeof(self) weakSelf = self;
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(nil, 1, ^(UIBarButtonItem *rightItem) {
-        weakSelf.navigationController.cnc_popViewControllerDidAnimated(YES);
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (void)fm_refreshData {
-    [_mainView.viewModel.refreshUISubject sendNext:nil];
+    [_mainView.viewModel.requestDataCommand execute:self->_brandId];
 }
 
-#pragma mark - Lazyload
+#pragma mark - System Functions
+
+- (void)updateViewConstraints {
+    [_mainView makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
+    [super updateViewConstraints];
+}
 
 - (void)dealloc {
     DLog(@"VC销毁了");

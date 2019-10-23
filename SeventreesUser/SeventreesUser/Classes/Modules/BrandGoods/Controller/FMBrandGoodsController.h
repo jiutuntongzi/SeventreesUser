@@ -11,4 +11,6 @@
 
 @interface FMBrandGoodsController : FMViewController
 
+@property (nonatomic, strong) NSNumber *brandId;
+
 @end

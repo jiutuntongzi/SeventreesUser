@@ -10,17 +10,18 @@
 
 @implementation FMStoreIntroViewModel
 
-- (void)fm_initialize {
-    
+- (RACSubject *)selectItemSubject {
+    if (! _selectItemSubject) {
+        _selectItemSubject = [[RACSubject alloc] init];
+    }
+    return _selectItemSubject;
 }
 
-#pragma mark - Lazyload
-
-- (RACSubject *)actionSubject {
-    if (!_actionSubject) {
-        _actionSubject = [[RACSubject alloc] init];
+- (RACSubject *)addShopCarSubject {
+    if (! _addShopCarSubject) {
+        _addShopCarSubject = [[RACSubject alloc] init];
     }
-    return _actionSubject;
+    return _addShopCarSubject;
 }
 
 @end

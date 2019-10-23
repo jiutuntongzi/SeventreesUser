@@ -84,22 +84,25 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FMGoodsCell *cell = FMGoodsCell.ccc_cellReuseForCollectionViewIndexPath(collectionView, indexPath);
-    cell.viewModel.goodsModel = _groupModel.goodsModels[indexPath.row];
+    
+    FMGoodsCellViewModel *viewModel = [[FMGoodsCellViewModel alloc] init];
+    viewModel.goodsModel = _groupModel.goodsModels[indexPath.row];
+    cell.viewModel = viewModel;
     
     @weakify(self)
     
     [cell.viewModel.addActionSubject subscribeNext:^(FMHomeGoodsModel *goodsModel) {
         @strongify(self);
-        [self enterNextVC:@"FMShoppingController"];
+        [self enterNextVC:@"FMShoppingController"]; // test
     }];
     
     [cell.viewModel.selectActionSubject subscribeNext:^(FMHomeGoodsModel *goodsModel) {
         @strongify(self)
-        global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleActivity;
+        global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleNormal;
         FMGoodsDetailsController *nextVC = [[FMGoodsDetailsController alloc] init];
         nextVC.goodsId = goodsModel.goodsId;
         nextVC.hidesBottomBarWhenPushed = YES;
-        [self.viewController.navigationController pushViewController:nextVC animated:YES];
+        [self.viewController.navigationController pushViewController:nextVC animated:YES]; // test
     }];
     
     return cell;

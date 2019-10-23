@@ -13,11 +13,10 @@
 
 @interface FMBrandGoodsView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *button;
-
 @property (nonatomic, strong) FMStoreIntroView *storeIntroView;
 
 @property (nonatomic, strong) ScrollerMenuView *scrollerMenuView;
+
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
@@ -97,29 +96,12 @@
 - (void)fm_bindViewModel {
     @weakify(self);
     
-    [[_button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+    [self.viewModel.refreshUISubject subscribeNext:^(FMBrandModel *brandModel) {
         @strongify(self);
-
-        [self.viewModel.actionSubject sendNext:self.viewModel.model];
+        DLog(@"刷新页面：brandModel == %@", brandModel);
+        self->_storeIntroView.viewModel.brandInfoEntity = brandModel.brandInfoEntity;
+        [self->_collectionView reloadData];
     }];
-    
-    [self.viewModel.refreshUISubject subscribeNext:^(id x) {
-        @strongify(self);
-        
-        DLog(@"刷新页面：x == %@", x);
-        
-    }];
-    
-//    [[_TextField rac_signalForControlEvents:UIControlEventEditingDidEndOnExit] subscribeNext:^(id x) {
-//        @strongify(self);
-//        [self.viewModel.requestDataCommand execute:@(0)]; // 执行登录请求命令
-//    }];
-    
-//    [self.viewModel.subject subscribeNext:^(id x) {
-//        @strongify(self);
-//
-//        DLog(@"订阅到信号：x == %@", x);
-//    }];
 }
 
 #pragma mark - System Functions
@@ -143,11 +125,28 @@
 #pragma mark - <UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    return self.viewModel.brandModel.goodsEntitys.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FMGoodsCell *cell = FMGoodsCell.ccc_cellReuseForCollectionViewIndexPath(collectionView, indexPath);
+    
+    FMGoodsCellViewModel *viewModel = [[FMGoodsCellViewModel alloc] init];
+    viewModel.goodsModel = self.viewModel.brandModel.goodsEntitys[indexPath.row];
+    cell.viewModel = viewModel;
+    
+    @weakify(self)
+    
+    [cell.viewModel.addActionSubject subscribeNext:^(FMHomeGoodsModel *goodsEntity) {
+        @strongify(self);
+        [self.viewModel.shopCarVCSubject sendNext:goodsEntity.goodsId];
+    }];
+    
+    [cell.viewModel.selectActionSubject subscribeNext:^(FMHomeGoodsModel *goodsEntity) {
+        @strongify(self)
+        [self.viewModel.goodsDetailsVCSubject sendNext:goodsEntity.goodsId];
+    }];
+    
     return cell;
 }
 

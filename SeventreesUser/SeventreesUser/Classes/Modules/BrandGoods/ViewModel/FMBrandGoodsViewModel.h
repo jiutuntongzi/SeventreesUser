@@ -7,18 +7,20 @@
 //
 
 #import "FMViewModel.h"
-
-@class FMBrandGoodsModel;
+#import "FMBrandModel.h"
 
 @interface FMBrandGoodsViewModel : FMViewModel
 
-@property (nonatomic, strong) FMBrandGoodsModel *model;
+@property (nonatomic, strong) FMBrandModel *brandModel;
 
+
+@property (nonatomic, strong) RACCommand *requestDataCommand;
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
-@property (nonatomic, strong) RACSubject *actionSubject;
 
-@property (nonatomic, strong) RACCommand *requestDataCommand;
+@property (nonatomic, strong) RACSubject *goodsDetailsVCSubject;
+
+@property (nonatomic, strong) RACSubject *shopCarVCSubject;
 
 @end

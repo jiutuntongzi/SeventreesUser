@@ -43,16 +43,16 @@ const CGFloat FMGoodsEvaluationViewHeight = 206.f;
 //    return [super initWithViewModel:viewModel];
 //}
 
-- (void)fm_setupSubviews {
-    self.cv_backColor(UIColor.whiteColor);
-    
-    self.cv_addTouchEventCallback(^(UIView *view) {
-        view.cv_endEditing();
-    });
-    
-    [self setNeedsUpdateConstraints];
-    [self updateConstraintsIfNeeded];
-}
+//- (void)fm_setupSubviews {
+//    self.cv_backColor(UIColor.whiteColor);
+//
+//    self.cv_addTouchEventCallback(^(UIView *view) {
+//        view.cv_endEditing();
+//    });
+//
+//    [self setNeedsUpdateConstraints];
+//    [self updateConstraintsIfNeeded];
+//}
 
 - (void)fm_bindViewModel {
     @weakify(self)
@@ -79,10 +79,10 @@ const CGFloat FMGoodsEvaluationViewHeight = 206.f;
 
 #pragma mark - System Functions
 
-- (void)updateConstraints {
-    
-    [super updateConstraints];
-}
+//- (void)updateConstraints {
+//    
+//    [super updateConstraints];
+//}
 
 #pragma mark - Lazyload
 

@@ -7,15 +7,14 @@
 //
 
 #import "FMViewModel.h"
-
-@class FMBrandGoodsModel;
+#import "FMBrandModel.h"
 
 @interface FMStoreIntroViewModel : FMViewModel
 
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, assign) NSInteger count;
-@property (nonatomic, strong) NSNumber *number;
+@property (nonatomic, strong) FMBrandInfoModel *brandInfoEntity;
 
-@property (nonatomic, strong) RACSubject *actionSubject;
+@property (nonatomic, strong) RACSubject *addShopCarSubject;
+
+@property (nonatomic, strong) RACSubject *selectItemSubject;
 
 @end

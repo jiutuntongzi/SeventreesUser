@@ -72,11 +72,11 @@ const CGFloat FMSpellShopDetailViewHeight = 400.f + 150.f;
         if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell || global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleActivity) {
             FMSpellGoodsInfoView *spellGoodsInfoView = (FMSpellGoodsInfoView *)self->_goodsInfoView;
             // code...
-//            spellGoodsInfoView.detailsModel = self.detailsModel;
+            spellGoodsInfoView.detailsModel = self->_detailsModel;
             
         } else {
             FMGoodsInfoView *normalGoodsInfoView = (FMGoodsInfoView *)self->_goodsInfoView;
-            normalGoodsInfoView.detailsModel = self.detailsModel;
+            normalGoodsInfoView.detailsModel = self->_detailsModel;
         }
     }];
 }

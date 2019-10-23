@@ -7,8 +7,10 @@
 //
 
 #import "FMView.h"
+#import "FMEvaluationViewModel.h"
 
 @interface FMEvaluationView : FMView
 
-@end
+@property (nonatomic, strong) FMEvaluationViewModel *viewModel;
 
+@end

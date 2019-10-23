@@ -24,7 +24,6 @@
 
 #define      kISPhoneX             ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
-
 #define IPHONE_4S (fabs((double)SCREEN_H - (double)480) < DBL_EPSILON)
 #define IPHONE_5  (fabs((double)SCREEN_H - (double)568) < DBL_EPSILON)
 #define IPHONE_6  (fabs((double)SCREEN_H - (double)667) < DBL_EPSILON)

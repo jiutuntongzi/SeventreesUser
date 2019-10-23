@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
-@property (nonatomic, strong) RACSubject *actionSubject;
+@property (nonatomic, strong) RACSubject *nextActionSubject;
+
+@property (nonatomic, strong) RACSubject *nextBrandVCSubject;
 
 @end

@@ -142,18 +142,22 @@
         self->_evaluateView.viewModel.commentsTotal = goodsDetailsModel.goodsCommentsModels.count;
         self->_evaluateView.viewModel.commentsModel = goodsDetailsModel.goodsCommentsModels.lastObject;
         
-        self->_pictureListView.viewModel.imageURLStrings  = goodsDetailsModel.imageURLStrings;
+        self->_pictureListView.viewModel.imageURLStrings = goodsDetailsModel.imageURLStrings;
+        
+        [self setupDynamicScrollerContentHeight];
+        [self updateConstraintsForScrollerContentHeight];
     }];
     
     /// Show nextVC
     
     [self->_storeInfoView.viewModel.nextActionSubject subscribeNext:^(FMStoreInfoModel *storeModel) {
+        @strongify(self)   if (!self) return;
         DLog(@"storeModel == %@", storeModel);
+        [self.viewModel.nextBrandVCSubject sendNext:storeModel.brandId];
     }];
     
     [self->_evaluateView.viewModel.nextActionSubject subscribeNext:^(id x) {
-        UIViewController *nextVC = [[NSClassFromString(@"FMEvaluationController") alloc] init];
-        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+        [self.viewModel.nextActionSubject sendNext:nil];
     }];
     
     [self->_evaluateView.viewModel.selectItemSubject subscribeNext:^(FMImageEyeModel *imageEyeModel) {
@@ -163,19 +167,58 @@
 
 #pragma mark - Make Constraints
 
-/** ScrollView Content 动态内容高度 */
+/** 设置ScrollView内容高度，微调适配ScrollView纵向滚动范围 */
+- (void)setupDynamicScrollerContentHeight {
+    CGFloat dynamicContentHeight = [self dynamicContentVHeight];
+    /// 动态计算ScrollView内容大小(纵向内容滚动范围)
+    CGFloat contentHeight = dynamicContentHeight;
+    if (IPHONE_5 || IPHONE_6 || IPHONE_7 || IPHONE_8 || IPHONE_8P) {
+        contentHeight = dynamicContentHeight + kFixedHeight;
+    } else {
+        contentHeight = dynamicContentHeight + 10.f;
+    }
+    _mainScrollView.contentSize = CGSizeMake(0.f, contentHeight);
+}
+
+/** 拿到商品图列表数据后，更新ScrollView内容布局 */
+- (void)updateConstraintsForScrollerContentHeight {
+    CGFloat dynamicContentHeight = [self dynamicContentVHeight];
+    
+    [_contentView remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.equalTo(self->_mainScrollView);
+        make.width.equalTo(self.width);
+        make.height.equalTo(dynamicContentHeight);
+    }];
+    
+    CGFloat offsetY = [self goodsPictureListViewOffsetY];
+    [_pictureListView remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self->_contentView).offset(offsetY);
+        make.width.equalTo(self.width);
+        make.centerX.equalTo(self->_contentView);
+        make.bottom.equalTo(self->_contentView);
+    }];
+}
+
+/** 动态计算ScrollView内容高度 (contentView动态高度) */
+- (CGFloat)dynamicContentVHeight {
+    CGFloat goodsPictureListViewHeight = self.viewModel.detailsModel.imageURLStrings.count * FMGoodsPictureListViewRowHeight;
+    CGFloat dynamicHeight = [self contentVHeight] + goodsPictureListViewHeight + 15.f;
+    return dynamicHeight;
+}
+
+/** contentView默认高度 */
 - (CGFloat)contentVHeight {
+    return [self goodsPictureListViewOffsetY] + kFixedHeight;
+}
+
+- (CGFloat)goodsPictureListViewOffsetY {
     const CGFloat margin = 15.f;
-    CGFloat height = 0.f;
     CGFloat offsetY = 0.f;
     
     offsetY += ([self shopDetailVHeight] + margin);
     offsetY += (FMStoreInfoViewHeight + margin);
     offsetY += (FMBuyerEvaluateViewHeight + margin);
-    offsetY += kFixedHeight + 8.f;
-    
-    height = offsetY;
-    return height;
+    return offsetY;
 }
 
 /** 顶部商品详情高度 */
@@ -206,7 +249,6 @@
         make.width.equalTo(self);
         make.height.equalTo(FMShopCarToolViewHeight);
     }];
-    
     
     /// subviewContents
     const CGFloat margin = 15.f;
@@ -243,9 +285,9 @@
     offsetY += (FMBuyerEvaluateViewHeight + margin);
     [_pictureListView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self->_contentView).offset(offsetY);
-        make.left.equalTo(self->_contentView);
         make.width.equalTo(self->_contentView);
-        make.height.equalTo(1165.f);
+        make.centerX.equalTo(self->_contentView);
+        make.height.equalTo(kFixedHeight);
     }];
     
     [super updateConstraints];

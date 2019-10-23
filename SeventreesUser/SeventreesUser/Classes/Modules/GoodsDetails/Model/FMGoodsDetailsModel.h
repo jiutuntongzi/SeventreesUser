@@ -134,6 +134,7 @@
 
 @property (nonatomic, copy) NSString *userName;
 
+/** evaluateId : id */
 @property (nonatomic, assign) NSNumber *evaluateId;
 
 @property (nonatomic, copy) NSString *createdDateTime;
@@ -145,6 +146,10 @@
 @property (nonatomic, assign) NSNumber *goodsId;
 
 @property (nonatomic, assign) NSNumber *goodsStar;
+
+@property (nonatomic, assign) NSNumber *serverStar;
+
+@property (nonatomic, assign) NSNumber *expressStar;
 
 @property (nonatomic, copy) NSString *userHeadUrl;
 

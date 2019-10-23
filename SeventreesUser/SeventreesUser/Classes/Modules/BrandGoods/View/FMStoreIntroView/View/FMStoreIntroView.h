@@ -9,7 +9,7 @@
 #import "FMView.h"
 
 #import "FMStoreIntroViewModel.h"
-#import "FMBrandGoodsModel.h"
+#import "FMBrandModel.h"
 
 @interface FMStoreIntroView : FMView
 

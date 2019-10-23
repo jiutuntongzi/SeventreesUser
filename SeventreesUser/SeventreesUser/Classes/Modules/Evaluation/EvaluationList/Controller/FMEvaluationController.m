@@ -17,25 +17,6 @@
 
 @implementation FMEvaluationController
 
-#pragma mark - System Functions
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-}
-
-- (void)updateViewConstraints {
-    [_mainView makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-    
-    [super updateViewConstraints];
-}
-
 #pragma mark - Private Functions
 
 - (void)fm_addSubviews {
@@ -51,19 +32,20 @@
     [super fm_setupNavbar];
     
     self.navigationItem.title = @"商品评价";
-    
-    @weakify(self)
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"", 1, ^(UIBarButtonItem *rightItem) {
-        
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (void)fm_refreshData {
-    
+    [_mainView.viewModel.requestDataCommand execute:_goodsId];
 }
 
-#pragma mark - Lazyload
+#pragma mark - System Functions
 
+- (void)updateViewConstraints {
+    [_mainView makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
+    [super updateViewConstraints];
+}
 
 @end

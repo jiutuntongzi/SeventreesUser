@@ -12,6 +12,6 @@
 
 @property (nonatomic, copy) NSArray<NSString *> *imageURLStrings;
 
-@property (nonatomic, strong) RACSubject *actionSubject;
+//@property (nonatomic, strong) RACSubject *actionSubject;
 
 @end

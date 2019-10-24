@@ -104,13 +104,6 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     });
     self.navigationItem.cni_leftBarButtonItem(returnItem);
-    
-    // test
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-//        FMAftersaleDetailsController *nextVC = [[FMAftersaleDetailsController alloc] init];
-//        [self.navigationController pushViewController:nextVC animated:YES];
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (void)refreshData {
@@ -169,6 +162,10 @@
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForContentView:(WMScrollView *)contentView {
     //    CGFloat originY = CGRectGetMaxY([self pageController:pageController preferredFrameForMenuView:self.menuView]);
     return CGRectMake(0.f, kFixedHeight, self.view.width, self.view.height - kFixedHeight);
+}
+
+- (void)dealloc {
+    DLog(@"VC销毁了");
 }
 
 @end

@@ -1,14 +1,14 @@
 //
-//  FMCollectBrandModel.m
+//  FMShoppingGoodsModel.m
 //  SeventreesUser
 //
-//  Created by wushiye on 2019/9/29.
+//  Created by wushiye on 2019/8/23.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import "FMCollectBrandModel.h"
+#import "FMShoppingGoodsModel.h"
 
-@implementation FMCollectBrandModel
+@implementation FMShoppingGoodsModel
 
 /**
  *  将属性名换为其他key去字典中取值
@@ -17,7 +17,7 @@
  */
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{
-             @"brandId":@"id",
+             @"imgURLStr":   @"goodsImage"
              };
 }
 

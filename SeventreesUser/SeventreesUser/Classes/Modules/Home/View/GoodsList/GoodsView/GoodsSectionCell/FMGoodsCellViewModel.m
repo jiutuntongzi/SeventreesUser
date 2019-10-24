@@ -15,18 +15,4 @@
     _selectActionSubject = [[RACSubject alloc] init];
 }
 
-//- (RACSubject *)addActionSubject {
-////    if (!_addActionSubject) {
-//        _addActionSubject = [[RACSubject alloc] init];
-////    }
-//    return _addActionSubject;
-//}
-//
-//- (RACSubject *)selectActionSubject {
-////    if (!_selectActionSubject) {
-//        _selectActionSubject = [[RACSubject alloc] init];
-////    }
-//    return _selectActionSubject;
-//}
-
 @end

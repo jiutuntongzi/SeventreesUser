@@ -1,24 +1,25 @@
 //
-//  FMShoppingViewModel.m
+//  FMGoodsCollectionViewModel.m
 //  SeventreesUser
 //
-//  Created by wushiye on 2019/8/23.
+//  Created by wushiye on 2019/10/24.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import "FMShoppingViewModel.h"
+#import "FMGoodsCollectionViewModel.h"
 
-@implementation FMShoppingViewModel
+@implementation FMGoodsCollectionViewModel
 
 - (void)fm_initialize {
+    self->_type = @"2";
     
     @weakify(self)
-    
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
-        @strongify(self)    if (! self) return;
+        @strongify(self)    if (!self) return;
         
-        self->_shoppingGoodsEntitys = [FMShoppingGoodsModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict];
-        [self.refreshUISubject sendNext:self->_shoppingGoodsEntitys];
+        NSArray<FMHomeGoodsModel *> *goodsEntitys = [[FMHomeGoodsModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"data"]] copy];
+        self->_goodsEntitys = goodsEntitys;
+        [self.refreshUISubject sendNext:goodsEntitys];
     }];
 }
 
@@ -26,12 +27,17 @@
 
 - (RACCommand *)requestDataCommand {
     if (! _requestDataCommand) {
+        @weakify(self);
         _requestDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                [networkMgr POST:kQueryShoppingListURIPath params:nil success:^(NetworkResultModel *resultModel) {
+                @strongify(self);
+                if (self->_type.length == 0) {
+                    [SVProgressHUD showErrorWithStatus:@"数据错误：type空了！"];
+                    return nil;
+                }
+                [networkMgr POST:kQueryCollectListURIPath params:@{@"type": self->_type} success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
-                    
                 } failure:^(NSError *error) {
                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                     [subscriber sendNext:nil];
@@ -51,20 +57,18 @@
     return _refreshUISubject;
 }
 
-- (RACSubject *)goodsDetailsVCSubject {
-    if (! _goodsDetailsVCSubject) {
-        _goodsDetailsVCSubject = [[RACSubject alloc] init];
+- (RACSubject *)selectItemSubject {
+    if (! _selectItemSubject) {
+        _selectItemSubject = [[RACSubject alloc] init];
     }
-    return _goodsDetailsVCSubject;
+    return _selectItemSubject;
 }
 
-- (RACSubject *)settleAccountsVCSubject {
-    if (! _settleAccountsVCSubject) {
-        _settleAccountsVCSubject = [[RACSubject alloc] init];
+- (RACSubject *)addShopCarSubject {
+    if (! _addShopCarSubject) {
+        _addShopCarSubject = [[RACSubject alloc] init];
     }
-    return _settleAccountsVCSubject;
+    return _addShopCarSubject;
 }
-
-
 
 @end

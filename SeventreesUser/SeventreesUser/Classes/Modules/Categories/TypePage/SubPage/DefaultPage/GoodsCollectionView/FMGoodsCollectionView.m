@@ -43,8 +43,25 @@
 
 /** 绑定ViewModel */
 - (void)fm_bindViewModel {
+    @weakify(self)
+    [RACObserve(self.viewModel, goodsEntitys) subscribeNext:^(NSArray<FMHomeGoodsModel *> *goodsEntitys) {
+        @strongify(self) if (!self) return;
+        
+        [self->_collectionView reloadData];
+    }];
     
+//    [self.viewModel.refreshUISubject subscribeNext:^(NSArray<FMHomeGoodsModel *> *goodsEntitys) {
+//        @strongify(self)    if (!self) return;
+//        
+//    }];
 };
+
+- (FMGoodsCollectionViewModel *)viewModel {
+    if (! _viewModel) {
+        _viewModel = [[FMGoodsCollectionViewModel alloc] init];
+    }
+    return _viewModel;
+}
 
 - (void)setupCollectionViewFlowLayout {
     // 每组Cell四边的边距
@@ -69,18 +86,34 @@
     [_collectionView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
     }];
-    
     [super updateConstraints];
 }
 
 #pragma mark - <UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.viewModel.goodsEntitys.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FMGoodsCell *cell = FMGoodsCell.ccc_cellReuseForCollectionViewIndexPath(collectionView, indexPath);
+    
+    FMGoodsCellViewModel *viewModel = [[FMGoodsCellViewModel alloc] init];
+    viewModel.goodsModel = self.viewModel.goodsEntitys[indexPath.row];
+    cell.viewModel = viewModel;
+    
+    @weakify(self)
+    
+    [cell.viewModel.addActionSubject subscribeNext:^(FMHomeGoodsModel *goodsModel) {
+        @strongify(self);
+        [self.viewModel.addShopCarSubject sendNext:goodsModel.goodsId];
+    }];
+    
+    [cell.viewModel.selectActionSubject subscribeNext:^(FMHomeGoodsModel *goodsModel) {
+        @strongify(self);
+        [self.viewModel.selectItemSubject sendNext:goodsModel.goodsId];
+    }];
+    
     return cell;
 }
 
@@ -90,9 +123,6 @@
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 
     DLog(@"indexPath == %@", indexPath);
-    
-    [[UIApplication sharedApplication].keyWindow endEditing:YES];
 }
-
 
 @end

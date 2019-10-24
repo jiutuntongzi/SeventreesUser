@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,32 +19,32 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNf-1s-dVt">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="117.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="117.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="eaE-MX-x0x"/>
                         </constraints>
                         <state key="normal" image="icon_check_normal"/>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="Ac5-3X-sSl">
-                        <rect key="frame" x="50" y="18" width="81.5" height="81.5"/>
+                        <rect key="frame" x="0.0" y="18" width="81.5" height="81.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Ac5-3X-sSl" secondAttribute="height" multiplier="1:1" id="lp2-kG-LMT"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新生儿衣服套装婴儿礼盒初生满月礼物宝宝母婴用品大全" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bA7-VY-8b6">
-                        <rect key="frame" x="147.5" y="18" width="230.5" height="33.5"/>
+                        <rect key="frame" x="97.5" y="18" width="280.5" height="33.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="限购1件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVe-Qc-ZZ3">
-                        <rect key="frame" x="147.5" y="55.5" width="230.5" height="15"/>
+                        <rect key="frame" x="97.5" y="55.5" width="280.5" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 899.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7u-XC-JpB">
-                        <rect key="frame" x="147.5" y="81.5" width="65" height="18"/>
+                        <rect key="frame" x="97.5" y="81.5" width="65" height="18"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                         <color key="textColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -68,7 +67,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLi-rr-lgQ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLi-rr-lgQ">
                         <rect key="frame" x="333" y="74.5" width="25" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -127,8 +126,18 @@
                     <constraint firstAttribute="trailing" secondItem="TwU-CK-yCP" secondAttribute="trailing" constant="16" id="xvg-uA-Loj"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="hMV-v8-4XM"/>
-            <point key="canvasLocation" x="152" y="90.854572713643179"/>
+            <connections>
+                <outlet property="addButton" destination="TwU-CK-yCP" id="87n-lg-gGs"/>
+                <outlet property="chooseButton" destination="DNf-1s-dVt" id="nFe-Lx-bEz"/>
+                <outlet property="chooseButtonWidthConstraint" destination="eaE-MX-x0x" id="pb2-mC-hHO"/>
+                <outlet property="goodsCountLabel" destination="DLi-rr-lgQ" id="Zjh-VH-yPu"/>
+                <outlet property="goodsImgView" destination="Ac5-3X-sSl" id="Ali-ly-cFh"/>
+                <outlet property="goodsPriceLabel" destination="b7u-XC-JpB" id="UuN-2G-5BQ"/>
+                <outlet property="goodsSubTitleLabel" destination="XVe-Qc-ZZ3" id="yde-Ab-P4G"/>
+                <outlet property="goodsTitleLabel" destination="bA7-VY-8b6" id="0Yr-xE-Gwj"/>
+                <outlet property="minusButton" destination="yvt-Kd-X6h" id="XGM-cc-ZO4"/>
+            </connections>
+            <point key="canvasLocation" x="-155.19999999999999" y="10.794602698650676"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -8,10 +8,7 @@
 
 #import "FMView.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMDefaultView : FMView
 
 @end
 
-NS_ASSUME_NONNULL_END

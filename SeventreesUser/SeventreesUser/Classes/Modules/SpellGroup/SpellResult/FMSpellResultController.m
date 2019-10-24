@@ -47,7 +47,7 @@
 - (void)fm_setupNavbar {
     [super fm_setupNavbar];
     
-    self.navigationItem.title = @"品牌商品";
+    self.navigationItem.title = @"拼团商品";
     
     __weak typeof(self) weakSelf = self;
     UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {

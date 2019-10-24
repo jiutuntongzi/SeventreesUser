@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) FMGoodsCollectionView *goodsListView;
 
-
 @end
 
 @implementation FMDefaultView

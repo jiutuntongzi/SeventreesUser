@@ -30,6 +30,9 @@
 
 - (void)fm_setupSubviews {
     self.ctc_selectedColor(nil); // 默认点暗色
+    
+    _brandImgView.layer.borderWidth = 1.f;
+    _brandImgView.layer.borderColor = UIColor.cc_colorByHexString(@"#E5E5E5").CGColor;
 }
 
 @end

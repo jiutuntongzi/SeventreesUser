@@ -11,14 +11,23 @@
 @implementation FMCollectBrandListViewModel
 
 - (void)fm_initialize {
+    self->_type = @"2";
+    
     @weakify(self)
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)
-        if (![resultModel.statusCode isEqualToString:@"OK"]) {
-            DLog(@"请求失败，接口错误！statusCode == %@", resultModel.statusCode);
-        }
+//        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+//            DLog(@"请求失败，接口错误！statusCode == %@", resultModel.statusCode);
+//        }
         self->_brandEntitys = [FMCollectBrandModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"brandList"]];
         [self.refreshUISubject sendNext:resultModel];
+    }];
+    
+    [self.requestBrandDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
+        @strongify(self)    if (!self) return;
+        
+         self->_brandEntitys = [[FMCollectBrandModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"data"]] copy];
+        [self.refreshBrandUISubject sendNext:self->_brandEntitys];
     }];
 }
 
@@ -42,6 +51,31 @@
         }];
     }
     return _requestDataCommand;
+}
+
+- (RACCommand *)requestBrandDataCommand {
+    if (! _requestBrandDataCommand) {
+        @weakify(self);
+        _requestBrandDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                @strongify(self);
+                if (self->_type.length == 0) {
+                    [SVProgressHUD showErrorWithStatus:@"数据错误：type空了！"];
+                    return nil;
+                }
+                [networkMgr POST:kQueryCollectListURIPath params:@{@"type": self->_type} success:^(NetworkResultModel *resultModel) {
+                    [subscriber sendNext:resultModel];
+                    [subscriber sendCompleted];
+                } failure:^(NSError *error) {
+                    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                    [subscriber sendNext:nil];
+                    [subscriber sendCompleted];
+                }];
+                return nil;
+            }];
+        }];
+    }
+    return _requestBrandDataCommand;
 }
 
 - (RACSubject *)refreshUISubject {

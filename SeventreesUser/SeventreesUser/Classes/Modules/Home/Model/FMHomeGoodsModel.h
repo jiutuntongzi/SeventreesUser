@@ -16,6 +16,7 @@
 
 @property (nonatomic, copy) NSString *name;
 
+/** --商品类型  group:拼团;   parcel:限时包邮;    bargain:砍价； normal:普通商品 */
 @property (nonatomic, copy) NSString *activityType;
 
 @property (nonatomic, strong) NSNumber *activityId;

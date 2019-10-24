@@ -9,22 +9,19 @@
 #import "FMViewModel.h"
 #import "FMShoppingGoodsModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMShoppingViewModel : FMViewModel
 
-@property (nonatomic, strong) FMShoppingGoodsModel *shoppingGoodsModel;
+@property (nonatomic, copy) NSArray <FMShoppingGoodsModel *> *shoppingGoodsEntitys;
 
+@property (nonatomic, assign) BOOL isEdit;
 
 @property (nonatomic, strong) RACCommand *requestDataCommand;
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
+@property (nonatomic, strong) RACSubject *goodsDetailsVCSubject;
 
-@property (nonatomic, strong) RACSubject *ActionSubject;
-
-@property (nonatomic, strong) RACSubject *settleActionSubject;
+@property (nonatomic, strong) RACSubject *settleAccountsVCSubject;
 
 @end
 
-NS_ASSUME_NONNULL_END

@@ -6,10 +6,12 @@
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "FMView.h"
+#import "FMGoodsCollectionViewModel.h"
 
 @interface FMGoodsCollectionView : FMView
+
+@property (nonatomic, strong) FMGoodsCollectionViewModel *viewModel;
 
 @end
 

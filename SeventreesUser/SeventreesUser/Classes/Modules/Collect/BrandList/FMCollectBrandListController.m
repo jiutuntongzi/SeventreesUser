@@ -9,6 +9,8 @@
 #import "FMCollectBrandListController.h"
 #import "FMCollectBrandCell.h"
 
+#import "FMBrandGoodsController.h"
+
 @interface FMCollectBrandListController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -64,14 +66,15 @@
     }];
     
     [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
-        [SVProgressHUD showInfoWithStatus:resultModel.jsonString]; // test
+        @strongify(self)
+        [self->_tableView reloadData];
         if (! [resultModel.statusCode isEqualToString:@"OK"]) {
             [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
         }
-        [self->_tableView reloadData];
     }];
     
     [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+//        @strongify(self)
         if ([isExecuting isEqualToNumber:@(YES)]) {
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
             [SVProgressHUD showWithStatus:@"搜索中.."];
@@ -79,10 +82,15 @@
             [SVProgressHUD dismissWithDelay:0.5f];
         }
     }];
+    
+    [self.viewModel.refreshBrandUISubject subscribeNext:^(id x) {
+        @strongify(self)
+        [self->_tableView reloadData];
+    }];
 }
 
 - (void)fm_refreshData {
-    
+    [self.viewModel.requestBrandDataCommand execute:nil];
 }
 
 - (FMCollectBrandListViewModel *)viewModel {
@@ -108,12 +116,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     tableView.ct_deselectRowAtIndexPathAnimated(indexPath, YES);
-    
-//    FMGoodsDetailsController *nextVC = [[FMGoodsDetailsController alloc] init];
-//    nextVC.hidesBottomBarWhenPushed = YES;
-//    [self.viewController.navigationController pushViewController:nextVC animated:YES];
-//
-    NSLog(@"indexPath.section == %ld indexPath.row == %ld \n brandEntity == %@", indexPath.section, indexPath.row, self.viewModel.brandEntitys[indexPath.row]);
+//    NSLog(@"indexPath.section == %ld indexPath.row == %ld \n brandEntity == %@", indexPath.section, indexPath.row, self.viewModel.brandEntitys[indexPath.row]);
+    FMBrandGoodsController *nextVC = [[FMBrandGoodsController alloc] init];
+    nextVC.brandId = self.viewModel.brandEntitys[indexPath.row].brandId;
+    self.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
 }
 
 @end

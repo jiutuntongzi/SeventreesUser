@@ -61,6 +61,7 @@
     if (! _requestDataCommand) {
         _requestDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                
                 [networkMgr requestHomeListDataWithLongitude:@"41.1409530000" latitude:@"123.0140080000" success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];

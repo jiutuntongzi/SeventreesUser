@@ -12,10 +12,13 @@
 
 @property (nonatomic, copy) NSString *logoUrl;
 
-@property (nonatomic, strong) NSNumber *ID;
+@property (nonatomic, strong) NSNumber *brandId;
 
 @property (nonatomic, strong) NSNumber *num;
 
 @property (nonatomic, copy) NSString *name;
+
+/** 品牌描述 */
+@property (nonatomic, copy) NSString *brandContent;
 
 @end

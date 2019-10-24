@@ -11,13 +11,20 @@
 
 @interface FMCollectBrandListViewModel : FMViewModel
 
-@property (nonatomic, copy) NSString *searchText;
-
 @property (nonatomic, copy) NSArray<FMCollectBrandModel *> *brandEntitys;
+
+@property (nonatomic, copy) NSString *searchText;
 
 @property (nonatomic, strong) RACCommand *requestDataCommand;
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
+
+/** 网络请求参数： 1 商品列表 , 2 品牌列表 */
+@property (nonatomic, copy) NSString * _Nonnull type;
+
+@property (nonatomic, strong) RACCommand *requestBrandDataCommand;
+
+@property (nonatomic, strong) RACSubject *refreshBrandUISubject;
 
 @end
 

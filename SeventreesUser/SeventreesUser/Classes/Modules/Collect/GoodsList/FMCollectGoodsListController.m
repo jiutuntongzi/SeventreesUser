@@ -9,6 +9,9 @@
 #import "FMCollectGoodsListController.h"
 #import "FMGoodsCollectionView.h"
 
+#import "FMGoodsDetailsController.h"
+#import "FMShoppingController.h"
+
 @interface FMCollectGoodsListController ()
 
 @property (nonatomic, strong) FMGoodsCollectionView *goodsListView;
@@ -30,16 +33,28 @@
     }];
 }
 
-- (void)fm_setupNavbar {
-    
-}
-
 - (void)fm_bindViewModel {
+    @weakify(self)
+    [_goodsListView.viewModel.selectItemSubject subscribeNext:^(NSNumber *goodsId) {
+        @strongify(self)    if (!self) return;
+        
+        global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleNormal;
+        FMGoodsDetailsController *nextVC = [[FMGoodsDetailsController alloc] init];
+        nextVC.goodsId = goodsId;
+        [self.navigationController pushViewController:nextVC animated:YES];
+    }];
     
+    [_goodsListView.viewModel.addShopCarSubject subscribeNext:^(NSNumber *goodsId) {
+        @strongify(self)    if (!self) return;
+        
+        FMShoppingController *nextVC = [[FMShoppingController alloc] init];
+        nextVC.goodsId = goodsId;
+        [self.navigationController pushViewController:nextVC animated:YES];
+    }];
 }
 
 - (void)fm_refreshData {
-    
+    [_goodsListView.viewModel.requestDataCommand execute:nil];
 }
 
 - (void)dealloc {

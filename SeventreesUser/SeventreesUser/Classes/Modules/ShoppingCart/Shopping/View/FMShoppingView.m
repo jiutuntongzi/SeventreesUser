@@ -8,12 +8,9 @@
 
 #import "FMShoppingView.h"
 #import "FMShoppingViewModel.h"
-
 #import "FMShoppingGoodsCell.h"
 
 #import "FMSettlementView.h"
-
-#import "FMGoodsDetailsController.h"
 
 @interface FMShoppingView () <UITableViewDataSource, UITableViewDelegate>
 
@@ -80,39 +77,47 @@
 }
 
 - (void)fm_bindViewModel {
+    @weakify(self)
+    [self.viewModel.refreshUISubject subscribeNext:^(NSArray<FMShoppingGoodsModel *> *shoppingGoodsEntitys) {
+        @strongify(self)    if (!self) return;
+        [self->_tableView reloadData];
+    }];
     
     [self->_settlementView.viewModel.settleActionSubject subscribeNext:^(id x) {
-        [self.viewModel.settleActionSubject sendNext:nil];
+        @strongify(self)    if (!self) return;
+        [self.viewModel.settleAccountsVCSubject sendNext:nil];
     }];
-}
-
-- (void)refreshUI {
-
+    
+    [RACObserve(self.viewModel, isEdit) subscribeNext:^(NSNumber *isEdit) {
+        @strongify(self)    if (!self) return;
+        for (FMShoppingGoodsModel *goodsEntity in self.viewModel.shoppingGoodsEntitys) {
+            goodsEntity.isEdit = isEdit.boolValue;
+        }
+        [self->_tableView reloadData];
+    }];
 }
 
 #pragma mark ——— <UITableViewDataSource>
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UITableViewCell *cell = FMShoppingGoodsCell.ctc_cellReuseNibLoadForTableView(tableView);
-    cell.ctc_selectedColor(nil); // 默认点暗色
+    FMShoppingGoodsCell *cell = FMShoppingGoodsCell.ctc_cellReuseNibLoadForTableView(tableView);
+//    cell.goodsEntity = self.viewModel.shoppingGoodsEntitys[indexPath.row];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return 5;
+//    return self.viewModel.shoppingGoodsEntitys.count;
 }
 
 #pragma mark ——— <UITableViewDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     tableView.ct_deselectRowAtIndexPathAnimated(indexPath, YES);
-    
-    global_goodsDetailsPageStyle = FMGoodsDetailsPageStyleNormal;
-    FMGoodsDetailsController *nextVC = [[FMGoodsDetailsController alloc] init];
-    nextVC.hidesBottomBarWhenPushed = YES;
-    [self.viewController.navigationController pushViewController:nextVC animated:YES];
-    
     NSLog(@"indexPath.section == %ld indexPath.row == %ld", indexPath.section, indexPath.row);
+    
+//    FMShoppingGoodsModel *goodsModel = self.viewModel.shoppingGoodsEntitys[indexPath.row];
+//    [self.viewModel.goodsDetailsVCSubject sendNext:goodsModel.goodsId];
 }
 
 #pragma mark - Lazyload
@@ -123,6 +128,5 @@
     }
     return _viewModel;
 }
-
 
 @end

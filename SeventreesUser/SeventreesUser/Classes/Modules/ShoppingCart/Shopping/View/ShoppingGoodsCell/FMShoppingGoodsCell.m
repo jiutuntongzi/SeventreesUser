@@ -35,53 +35,65 @@
 
 - (void)fm_bindViewModel {
     @weakify(self)
-    [RACObserve(self, goodsEntity) subscribeNext:^(FMShoppingGoodsModel *goodsEntity) {
+    
+    [RACObserve(self, viewModel.goodsEntity) subscribeNext:^(FMShoppingGoodsModel *goodsEntity) {
         @strongify(self)    if (!self) return;
         
         [self->_goodsImgView sd_setImageWithURL:[NSURL URLWithString:goodsEntity.imgURLStr]];
         self->_goodsTitleLabel.text = goodsEntity.goodsName ?: @"--";
         self->_goodsSubTitleLabel.text = goodsEntity.propertiesName ?: @"--";
         self->_goodsPriceLabel.text = [NSString stringWithFormat:@"¥%.2f", goodsEntity.goodsPrice.floatValue];
-        self->_goodsCountLabel.text = [NSString stringWithFormat:@"%lu", goodsEntity.goodsNum];
+        self->_goodsCountLabel.text = [NSString stringWithFormat:@"%ld", goodsEntity.goodsNum];
         
-        if (goodsEntity.isEdit) {
-            self->_chooseButtonWidthConstraint.constant = 50.f;
-            self->_chooseButton.hidden = NO;
-        } else {
-            self->_chooseButtonWidthConstraint.constant = 15.f;
-            self->_chooseButton.hidden = YES;
-        }
+//        if (goodsEntity.isEdit) {
+//            self->_chooseButtonWidthConstraint.constant = 50.f;
+//            self->_chooseButton.hidden = NO;
+//        } else {
+//            self->_chooseButtonWidthConstraint.constant = 15.f;
+//            self->_chooseButton.hidden = YES;
+//        }
     }];
-    
-    [RACObserve(self.goodsEntity, goodsNum) subscribeNext:^(NSNumber *goodsNum) {
-        @strongify(self)
-        self->_goodsCountLabel.text = goodsNum.stringValue;
-    }];
-    
-    [RACObserve(self.goodsEntity, isChecked) subscribeNext:^(NSNumber *isChecked) {
+
+    [RACObserve(self, viewModel.goodsEntity.isChecked) subscribeNext:^(NSNumber *isChecked) {
         @strongify(self)
         if (isChecked.boolValue) {
             self->_chooseButton.cb_setImageOfNamed(@"icon_check_selected");
-            self->_chooseButton.cb_title(@"1");
-            
         } else {
             self->_chooseButton.cb_setImageOfNamed(@"icon_check_normal");
-            self->_chooseButton.cb_title(@"0");
         }
     }];
     
     [[_addButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        ++ self->_goodsEntity.goodsNum;
+    //        NSUInteger goodsNum = self->_goodsEntity.goodsNum.unsignedIntegerValue + 1;
+    //        self->_goodsEntity.goodsNum = @(goodsNum);
+        self->_viewModel.goodsEntity.goodsNum += 1;
+        [self->_viewModel.requestDataCommand execute:nil];
     }];
     
     [[_minusButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        -- self->_goodsEntity.goodsNum;
+        if (self.viewModel.goodsEntity.goodsNum > 1) {
+            self->_viewModel.goodsEntity.goodsNum -= 1;
+            [self->_viewModel.requestDataCommand execute:nil];
+        }
     }];
     
     [[_chooseButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *chooseButton) {
-        self->_goodsEntity.isChecked = !self->_goodsEntity.isChecked;
+        self->_viewModel.goodsEntity.isChecked = !self.viewModel.goodsEntity.isChecked;
+        [self->_viewModel.checkedActionSubject sendNext:nil];
+    }];
+}
+
+- (void)setViewModel:(FMShoppingGoodsCellViewModel *)viewModel {
+    _viewModel = viewModel;
+    
+    [self->_viewModel.showHintSubject subscribeNext:^(NSString *status) {
+        [SVProgressHUD showErrorWithStatus:status];
+    }];
+    
+    [self->_viewModel.updateCountUISubject subscribeNext:^(NSNumber *goodsNum) {
+        self->_goodsCountLabel.text = goodsNum.stringValue;
     }];
 }
 

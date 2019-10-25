@@ -22,17 +22,17 @@ const CGFloat FMSpellShopCarToolViewHeight = 44.f;
 
 #pragma mark - Private Functions
 
-- (void)setViewModel:(FMSpellShopCarToolViewModel *)viewModel {
-    _viewModel = viewModel;
-    
-    
-}
-
-- (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel {
-    _viewModel = (FMSpellShopCarToolViewModel *)_viewModel;
-    
-    return [super initWithViewModel:viewModel];
-}
+//- (void)setViewModel:(FMSpellShopCarToolViewModel *)viewModel {
+//    _viewModel = viewModel;
+//
+//
+//}
+//
+//- (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel {
+//    _viewModel = (FMSpellShopCarToolViewModel *)_viewModel;
+//
+//    return [super initWithViewModel:viewModel];
+//}
 
 - (void)fm_setupSubviews {
     self.cv_backColor(UIColor.whiteColor);

@@ -41,7 +41,12 @@
 
 #pragma mark ——— 购物车
 
-#define       kQueryShoppingListURIPath      @"/api/pmshoppingcart/query"           // 查询购物车列表
+#define       kShoppingQueryGoodsListURIPath         @"/api/pmshoppingcart/query"       // 查询购物车商品列表
 
+#define       kShoppingAddGoodsURIPath             @"/api/pmshoppingcart/create"        // 购物车加入商品
+
+#define       kShoppingDeleteListToURIPath           @"/api/pmshoppingcart/delete"      // 购物车删除商品列表
+
+#define       kShoppingUpdateGoodsCountURIPath       @"/api/pmshoppingcart/update"      // 更新（+/-）购物车商品数量
 
 #endif /* URIPath_h */

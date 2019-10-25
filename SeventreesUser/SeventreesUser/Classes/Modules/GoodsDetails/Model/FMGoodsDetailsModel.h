@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FMStoreInfoModel.h"
 #import "FMImageEyeModel.h"
+#import "FMShopCarToolModel.h"
 
 @interface FMGoodsDetailsSpellGroupGoodsMsgModel : NSObject
 
@@ -220,6 +221,8 @@
 
 @property (nonatomic, strong) FMGoodsDetailsBargainingGoodsMsgModel *bargainingGoodsMsg;
 
+
+
 /** 用户评价列表 */
 @property (nonatomic, copy) NSArray<FMGoodsDetailsCommentsModel *> *goodsCommentsModels;
 
@@ -229,6 +232,9 @@
 
 /** 手动转换处理的店铺信息Model （非JSON转Model数据）*/
 @property (nonatomic, strong) FMStoreInfoModel *storeModel;
+
+/** 添加商品到购物车接口请求参数 (手动转换处理，非JSON转Model数据) */
+@property (nonatomic, strong) FMShopCarToolModel *goodsParamsEntity;
 
 /*
 {

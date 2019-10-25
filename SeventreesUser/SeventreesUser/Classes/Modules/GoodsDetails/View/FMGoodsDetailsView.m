@@ -74,14 +74,15 @@
 
 - (void)setupShopCarToolView {
     if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleSpell) {
-        _shopCarToolView = (FMSpellShopCarToolView *)FMSpellShopCarToolView.cv_viewFromNibLoad();
+        FMSpellShopCarToolView *shopCarToolView = FMSpellShopCarToolView.cv_viewFromNibLoad();
+        _shopCarToolView = shopCarToolView;
     } else {
         if (global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleNormal || global_goodsDetailsPageStyle == FMGoodsDetailsPageStyleActivity) {
-            _shopCarToolView = (FMShopCarToolView *)FMShopCarToolView.cv_viewFromNibLoad();
+            FMShopCarToolView *shopCarToolView = FMShopCarToolView.cv_viewFromNibLoad();
+            _shopCarToolView = shopCarToolView;
         }
     }
     [self addSubview:_shopCarToolView];
-    
 }
 
 /** 主Scroller */
@@ -144,6 +145,12 @@
         
         self->_pictureListView.viewModel.imageURLStrings = goodsDetailsModel.imageURLStrings;
         
+        if ([self->_shopCarToolView isKindOfClass:[FMShopCarToolView class]]) {
+            FMShopCarToolView *shopCarToolView = (FMShopCarToolView *)self->_shopCarToolView;
+            // 初始化添加商品到购物车接口请求参数
+            shopCarToolView.viewModel.goodsParamsEntity = goodsDetailsModel.goodsParamsEntity;
+        }
+        
         [self setupDynamicScrollerContentHeight];
         [self updateConstraintsForScrollerContentHeight];
     }];
@@ -163,6 +170,7 @@
     [self->_evaluateView.viewModel.selectItemSubject subscribeNext:^(FMImageEyeModel *imageEyeModel) {
         DLog(@"imageEyeModel == %@", imageEyeModel);
     }];
+
 }
 
 #pragma mark - Make Constraints

@@ -22,15 +22,6 @@
 
 @implementation FMShoppingController
 
-- (void)setIsEdit:(BOOL)isEdit {
-    _isEdit = isEdit;
-    if (isEdit) {
-        self.navigationItem.rightBarButtonItem.title = @"完成";
-    } else {
-        self.navigationItem.rightBarButtonItem.title = @"编辑";
-    }
-}
-
 #pragma mark - System Functions
 
 - (void)updateViewConstraints {
@@ -45,7 +36,7 @@
     _mainView = [[FMShoppingView alloc] init];
     [self.view addSubview:_mainView];
     
-    [_mainView.viewModel.requestDataCommand execute:nil];
+//    [_mainView.viewModel.requestDataCommand execute:nil];
 }
 
 - (void)fm_bindViewModel {
@@ -72,8 +63,14 @@
     self.navigationItem.title = @"购物车";
     
     UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"编辑", 1, ^(UIBarButtonItem *leftItem) {
-        self.isEdit = ! self->_isEdit;
-        self->_mainView.viewModel.isEdit = ! self->_isEdit;
+        if (self->_mainView.viewModel.shoppingGoodsEntitys.count == 0) {
+            [SVProgressHUD showInfoWithStatus:@"购物车无商品，请添加！"];
+            [SVProgressHUD dismissWithDelay:1.f];
+            return;
+        }
+        BOOL isEdit = ! self->_isEdit;
+        self.isEdit = isEdit;
+        self->_mainView.viewModel.isEdit = isEdit;
     });
     self.navigationItem.cni_rightBarButtonItem(rightItem);
     self.isEdit = NO;
@@ -92,6 +89,17 @@
         self.navigationItem.cni_rightBarButtonItem(nil);
     }
     */
+}
+
+- (void)fm_refreshData {
+    [_mainView.viewModel.requestDataCommand execute:nil];
+}
+
+- (void)setIsEdit:(BOOL)isEdit {
+    _isEdit = isEdit;
+    NSString *title = @"编辑";
+    if (isEdit) title = @"完成";
+    self.navigationItem.rightBarButtonItem.title = title;
 }
 
 @end

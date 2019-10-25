@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,7 +19,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awq-Yx-fzJ">
-                            <rect key="frame" x="16" y="0.0" width="60" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="Jm7-fG-xj0"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="   全选" image="icon_check_normal">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -32,6 +34,15 @@
                             <color key="textColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuy-Wa-iYC">
+                            <rect key="frame" x="265" y="0.0" width="110" height="50"/>
+                            <color key="backgroundColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="110" id="uOz-xc-27Y"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                            <state key="normal" title="删除"/>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60P-LF-igc">
                             <rect key="frame" x="265" y="0.0" width="110" height="50"/>
                             <color key="backgroundColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,13 +57,16 @@
                     <constraints>
                         <constraint firstItem="60P-LF-igc" firstAttribute="leading" secondItem="Dqw-RJ-Evi" secondAttribute="trailing" constant="8" id="6hk-MJ-nKe"/>
                         <constraint firstAttribute="height" constant="50" id="7jd-Yj-lyt"/>
+                        <constraint firstItem="kuy-Wa-iYC" firstAttribute="top" secondItem="5FT-jn-YYm" secondAttribute="top" id="9mQ-wx-AeN"/>
                         <constraint firstItem="60P-LF-igc" firstAttribute="top" secondItem="5FT-jn-YYm" secondAttribute="top" id="H4u-2Q-zV7"/>
+                        <constraint firstAttribute="bottom" secondItem="kuy-Wa-iYC" secondAttribute="bottom" id="KKP-8E-ohf"/>
                         <constraint firstItem="awq-Yx-fzJ" firstAttribute="height" secondItem="5FT-jn-YYm" secondAttribute="height" id="LDh-CE-FlN"/>
                         <constraint firstAttribute="bottom" secondItem="60P-LF-igc" secondAttribute="bottom" id="NMk-Oe-j3A"/>
                         <constraint firstAttribute="trailing" secondItem="60P-LF-igc" secondAttribute="trailing" id="Pj2-Mu-L3b"/>
                         <constraint firstItem="awq-Yx-fzJ" firstAttribute="centerY" secondItem="5FT-jn-YYm" secondAttribute="centerY" id="Tlo-FL-clX"/>
-                        <constraint firstItem="awq-Yx-fzJ" firstAttribute="leading" secondItem="5FT-jn-YYm" secondAttribute="leading" constant="16" id="VQo-RP-yx3"/>
+                        <constraint firstItem="awq-Yx-fzJ" firstAttribute="leading" secondItem="5FT-jn-YYm" secondAttribute="leading" id="VQo-RP-yx3"/>
                         <constraint firstItem="Dqw-RJ-Evi" firstAttribute="centerY" secondItem="5FT-jn-YYm" secondAttribute="centerY" id="l8h-EY-rA3"/>
+                        <constraint firstAttribute="trailing" secondItem="kuy-Wa-iYC" secondAttribute="trailing" id="v9s-sg-SFn"/>
                     </constraints>
                 </view>
             </subviews>
@@ -64,13 +78,13 @@
                 <constraint firstItem="5FT-jn-YYm" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="kQr-qE-iyL"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="checkAllButton" destination="awq-Yx-fzJ" id="w4I-od-PhJ"/>
+                <outlet property="deleteButton" destination="kuy-Wa-iYC" id="79j-DB-CRf"/>
                 <outlet property="settleCarButton" destination="60P-LF-igc" id="JWV-n1-P4M"/>
                 <outlet property="totalPriceLabel" destination="Dqw-RJ-Evi" id="B2c-an-I6o"/>
             </connections>
-            <point key="canvasLocation" x="132" y="-76.011994002998506"/>
+            <point key="canvasLocation" x="-1071.2" y="-17.091454272863569"/>
         </view>
     </objects>
     <resources>

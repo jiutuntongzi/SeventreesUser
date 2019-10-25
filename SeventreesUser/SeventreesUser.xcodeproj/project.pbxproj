@@ -239,6 +239,8 @@
 		846A4917230A913200D2EAFB /* UIView+ForLMJVerticalScrollText.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A4914230A913200D2EAFB /* UIView+ForLMJVerticalScrollText.m */; };
 		846A491A230AACC700D2EAFB /* FMMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A4919230AACC700D2EAFB /* FMMenuView.m */; };
 		846A491C230ABDD500D2EAFB /* FMMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846A491B230ABDD500D2EAFB /* FMMenuView.xib */; };
+		846CF2942362A42600A8F6D6 /* FMShopCarToolModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846CF2932362A42600A8F6D6 /* FMShopCarToolModel.m */; };
+		846CF2972362E92700A8F6D6 /* FMShoppingGoodsCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846CF2962362E92700A8F6D6 /* FMShoppingGoodsCellViewModel.m */; };
 		847E58C02322361E0022FF1F /* FMGoodsDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E58BF2322361E0022FF1F /* FMGoodsDetailsController.m */; };
 		847E58C8232252B80022FF1F /* FMBargainTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E58C7232252B80022FF1F /* FMBargainTypeController.m */; };
 		847E58D1232258DD0022FF1F /* PagingCalculateUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E58CD232258DD0022FF1F /* PagingCalculateUtility.m */; };
@@ -898,6 +900,10 @@
 		846A4918230AACC700D2EAFB /* FMMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMMenuView.h; sourceTree = "<group>"; };
 		846A4919230AACC700D2EAFB /* FMMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMMenuView.m; sourceTree = "<group>"; };
 		846A491B230ABDD500D2EAFB /* FMMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMMenuView.xib; sourceTree = "<group>"; };
+		846CF2922362A42600A8F6D6 /* FMShopCarToolModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMShopCarToolModel.h; sourceTree = "<group>"; };
+		846CF2932362A42600A8F6D6 /* FMShopCarToolModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMShopCarToolModel.m; sourceTree = "<group>"; };
+		846CF2952362E92700A8F6D6 /* FMShoppingGoodsCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMShoppingGoodsCellViewModel.h; sourceTree = "<group>"; };
+		846CF2962362E92700A8F6D6 /* FMShoppingGoodsCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMShoppingGoodsCellViewModel.m; sourceTree = "<group>"; };
 		847E58BD232235040022FF1F /* FMGoodsDetailsPageStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMGoodsDetailsPageStyle.h; sourceTree = "<group>"; };
 		847E58BE2322361E0022FF1F /* FMGoodsDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGoodsDetailsController.h; sourceTree = "<group>"; };
 		847E58BF2322361E0022FF1F /* FMGoodsDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGoodsDetailsController.m; sourceTree = "<group>"; };
@@ -2277,6 +2283,7 @@
 			children = (
 				84497C05231D157000D3A79B /* View */,
 				84497C08231D157000D3A79B /* ViewModel */,
+				846CF2912362A3ED00A8F6D6 /* Model */,
 			);
 			path = NormalTool;
 			sourceTree = "<group>";
@@ -2702,16 +2709,18 @@
 			path = Settlement;
 			sourceTree = "<group>";
 		};
-		84464C16230FE56600ED9069 /* TableViewCell */ = {
+		84464C16230FE56600ED9069 /* ShoppingGoodsCell */ = {
 			isa = PBXGroup;
 			children = (
 				84464C17230FED7300ED9069 /* FMShoppingGoodsCell.h */,
 				84464C18230FED7300ED9069 /* FMShoppingGoodsCell.m */,
 				84464C19230FED7300ED9069 /* FMShoppingGoodsCell.xib */,
+				846CF2952362E92700A8F6D6 /* FMShoppingGoodsCellViewModel.h */,
+				846CF2962362E92700A8F6D6 /* FMShoppingGoodsCellViewModel.m */,
 				84F9D81F230FE14200158496 /* FMShoppingGoodsModel.h */,
 				84F9D820230FE14200158496 /* FMShoppingGoodsModel.m */,
 			);
-			path = TableViewCell;
+			path = ShoppingGoodsCell;
 			sourceTree = "<group>";
 		};
 		84468D382302517B0073D640 /* ShoppingCart */ = {
@@ -2827,9 +2836,9 @@
 		84497C01231D157000D3A79B /* ShopCarTool */ = {
 			isa = PBXGroup;
 			children = (
-				84FE34E22341FC7400637748 /* GoodsSKUSpecs */,
-				8411603C23222EEB00C3443D /* SpellTool */,
 				8411603A23222D5800C3443D /* NormalTool */,
+				8411603C23222EEB00C3443D /* SpellTool */,
+				84FE34E22341FC7400637748 /* GoodsSKUSpecs */,
 			);
 			path = ShopCarTool;
 			sourceTree = "<group>";
@@ -3107,6 +3116,15 @@
 				846A4914230A913200D2EAFB /* UIView+ForLMJVerticalScrollText.m */,
 			);
 			path = LMJVerticalScrollText;
+			sourceTree = "<group>";
+		};
+		846CF2912362A3ED00A8F6D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				846CF2922362A42600A8F6D6 /* FMShopCarToolModel.h */,
+				846CF2932362A42600A8F6D6 /* FMShopCarToolModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		847E58C1232250DF0022FF1F /* Bargain */ = {
@@ -4290,7 +4308,7 @@
 			children = (
 				84F9D818230FDD3000158496 /* FMShoppingView.h */,
 				84F9D819230FDD3000158496 /* FMShoppingView.m */,
-				84464C16230FE56600ED9069 /* TableViewCell */,
+				84464C16230FE56600ED9069 /* ShoppingGoodsCell */,
 				84464C15230FE50100ED9069 /* Settlement */,
 			);
 			path = View;
@@ -5296,6 +5314,7 @@
 				84F045452330CC330002B5B3 /* FMMemberCenterViewModel.m in Sources */,
 				84BAC5972306B6F20062B812 /* FMRegisterController.m in Sources */,
 				84DD3FD223015B04001171F1 /* NSTimer+Chain.m in Sources */,
+				846CF2972362E92700A8F6D6 /* FMShoppingGoodsCellViewModel.m in Sources */,
 				84FF219623275679001AFE30 /* FMVerifyInputViewModel.m in Sources */,
 				8411603823220C5C00C3443D /* FMSpellGoodsInfoViewModel.m in Sources */,
 				844A0E062338A8CA006015D4 /* FMEvaluateViewModel.m in Sources */,
@@ -5325,6 +5344,7 @@
 				8411603523220C5C00C3443D /* FMSpellGoodsInfoModel.m in Sources */,
 				84C3DF4C231E0DCF008147C6 /* FMStoreInfoViewModel.m in Sources */,
 				84D7287923014D1B002D387A /* UIImage+Zirkfied.m in Sources */,
+				846CF2942362A42600A8F6D6 /* FMShopCarToolModel.m in Sources */,
 				84089E862313BD1800D7EF7D /* FMEvaluationCell.m in Sources */,
 				84F9D811230E9C2200158496 /* DCClassMianItem.m in Sources */,
 				84FF2F192335B71D00E34550 /* FMOrderPayView.m in Sources */,

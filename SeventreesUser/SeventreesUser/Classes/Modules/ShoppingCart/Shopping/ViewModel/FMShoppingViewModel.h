@@ -13,11 +13,19 @@
 
 @property (nonatomic, copy) NSArray <FMShoppingGoodsModel *> *shoppingGoodsEntitys;
 
+@property (nonatomic, assign) CGFloat totalPrice;
+
+@property (nonatomic, assign) NSUInteger goodsTotal;
+
 @property (nonatomic, assign) BOOL isEdit;
+
+@property (nonatomic, assign) BOOL isCheckedAll;
 
 @property (nonatomic, strong) RACCommand *requestDataCommand;
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
+
+@property (nonatomic, strong) RACSubject *checkedActionSubject;
 
 @property (nonatomic, strong) RACSubject *goodsDetailsVCSubject;
 

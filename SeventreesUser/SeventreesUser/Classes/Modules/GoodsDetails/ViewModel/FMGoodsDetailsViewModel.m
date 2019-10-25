@@ -39,6 +39,12 @@
         }
         goodsDetailsModel.imageURLStrings = [mImageURLStrings copy];
         
+        FMShopCarToolModel *goodsParamsEntity = [[FMShopCarToolModel alloc] init];
+        goodsParamsEntity.goodsId = goodsDetailsModel.goodsId;
+        goodsParamsEntity.skuId = goodsDetailsModel.goodsSkuModels.firstObject.ID; // test
+        goodsParamsEntity.goodsNum = 1;
+        goodsDetailsModel.goodsParamsEntity = goodsParamsEntity;
+        
         self->_detailsModel = goodsDetailsModel;
         [self.refreshUISubject sendNext:goodsDetailsModel];
     }];

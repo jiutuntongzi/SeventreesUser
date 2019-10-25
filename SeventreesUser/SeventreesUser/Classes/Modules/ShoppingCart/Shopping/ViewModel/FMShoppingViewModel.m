@@ -17,8 +17,29 @@
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (! self) return;
         
-        self->_shoppingGoodsEntitys = [FMShoppingGoodsModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict];
+        self->_shoppingGoodsEntitys = [FMShoppingGoodsModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"data"]];
+        
         [self.refreshUISubject sendNext:self->_shoppingGoodsEntitys];
+    }];
+    
+    [self.checkedActionSubject subscribeNext:^(id x) {
+        @strongify(self)    if (!self) return;
+        
+        CGFloat totalPrice = 0.f;     NSUInteger goodsTotal = 0; NSUInteger checkedCount = 0;
+        
+        for (FMShoppingGoodsModel *goodsEntity in self->_shoppingGoodsEntitys) {
+            if (goodsEntity.isChecked) {
+                totalPrice = goodsEntity.goodsPrice.floatValue * (CGFloat)goodsEntity.goodsNum;
+                goodsTotal += goodsEntity.goodsNum;
+                ++checkedCount;
+            }
+        }
+        
+        self.totalPrice = totalPrice;
+        self.goodsTotal = goodsTotal;
+        if (checkedCount == self->_shoppingGoodsEntitys.count) {
+            self.isCheckedAll = YES;
+        }
     }];
 }
 
@@ -28,7 +49,7 @@
     if (! _requestDataCommand) {
         _requestDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                [networkMgr POST:kQueryShoppingListURIPath params:nil success:^(NetworkResultModel *resultModel) {
+                [networkMgr POST:kShoppingQueryGoodsListURIPath params:nil success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
                     
@@ -65,6 +86,11 @@
     return _settleAccountsVCSubject;
 }
 
-
+- (RACSubject *)checkedActionSubject {
+    if (! _checkedActionSubject) {
+        _checkedActionSubject = [RACSubject subject];
+    }
+    return _checkedActionSubject;
+}
 
 @end

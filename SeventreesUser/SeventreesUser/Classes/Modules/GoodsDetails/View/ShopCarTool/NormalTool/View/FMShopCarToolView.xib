@@ -40,13 +40,20 @@
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4G-Q0-CQh" userLabel="contactButton">
+                                                    <rect key="frame" x="0.0" y="0.0" width="62.5" height="44"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="TKU-GV-IaP" firstAttribute="top" secondItem="8ZT-hc-SXS" secondAttribute="top" constant="4" id="3vp-Pv-FtA"/>
                                                 <constraint firstItem="kFq-kG-ofB" firstAttribute="top" secondItem="TKU-GV-IaP" secondAttribute="bottom" id="B0x-3g-x80"/>
+                                                <constraint firstAttribute="trailing" secondItem="u4G-Q0-CQh" secondAttribute="trailing" id="NaW-uC-3Da"/>
+                                                <constraint firstItem="u4G-Q0-CQh" firstAttribute="leading" secondItem="8ZT-hc-SXS" secondAttribute="leading" id="QEp-Eu-Cwt"/>
                                                 <constraint firstItem="TKU-GV-IaP" firstAttribute="centerX" secondItem="8ZT-hc-SXS" secondAttribute="centerX" id="Yf9-aP-yos"/>
+                                                <constraint firstItem="u4G-Q0-CQh" firstAttribute="top" secondItem="8ZT-hc-SXS" secondAttribute="top" id="lO7-Tn-YAe"/>
                                                 <constraint firstItem="kFq-kG-ofB" firstAttribute="centerX" secondItem="8ZT-hc-SXS" secondAttribute="centerX" id="m74-cu-7dY"/>
+                                                <constraint firstAttribute="bottom" secondItem="u4G-Q0-CQh" secondAttribute="bottom" id="q3B-6S-4UK"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPY-wZ-VIk" userLabel="itemView">
@@ -65,6 +72,10 @@
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ffb-dr-X4B" userLabel="collectButton">
+                                                    <rect key="frame" x="-0.5" y="0.0" width="62.5" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -90,12 +101,19 @@
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uii-Vz-LGa">
+                                                    <rect key="frame" x="0.0" y="0.0" width="62.5" height="44"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="0Ed-Tx-wIA" firstAttribute="centerX" secondItem="WhG-u8-Qut" secondAttribute="centerX" id="AlT-UQ-T2U"/>
+                                                <constraint firstAttribute="trailing" secondItem="uii-Vz-LGa" secondAttribute="trailing" id="P8t-5s-OE7"/>
+                                                <constraint firstItem="uii-Vz-LGa" firstAttribute="leading" secondItem="WhG-u8-Qut" secondAttribute="leading" id="cUn-fV-ij8"/>
                                                 <constraint firstItem="hgF-r8-gcj" firstAttribute="top" secondItem="WhG-u8-Qut" secondAttribute="top" constant="4" id="doX-AC-Qt7"/>
+                                                <constraint firstItem="uii-Vz-LGa" firstAttribute="top" secondItem="WhG-u8-Qut" secondAttribute="top" id="epg-jw-2yR"/>
                                                 <constraint firstItem="hgF-r8-gcj" firstAttribute="centerX" secondItem="WhG-u8-Qut" secondAttribute="centerX" id="krQ-zh-48O"/>
+                                                <constraint firstAttribute="bottom" secondItem="uii-Vz-LGa" secondAttribute="bottom" id="mBD-Ct-wJw"/>
                                                 <constraint firstItem="0Ed-Tx-wIA" firstAttribute="top" secondItem="hgF-r8-gcj" secondAttribute="bottom" id="sAF-9q-hXF"/>
                                             </constraints>
                                         </view>
@@ -179,7 +197,14 @@
                 <constraint firstAttribute="bottom" secondItem="Acf-yg-PO4" secondAttribute="bottom" id="mLK-JG-aas"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-196" y="-59"/>
+            <connections>
+                <outlet property="buyItNowButton" destination="kgO-e1-OsY" id="jaf-jo-lLh"/>
+                <outlet property="collectButton" destination="Ffb-dr-X4B" id="fcC-U3-Fzg"/>
+                <outlet property="contactButton" destination="u4G-Q0-CQh" id="qEE-AB-Hq0"/>
+                <outlet property="joinButton" destination="NHK-wB-vg9" id="WAo-hh-PJw"/>
+                <outlet property="shoppingButton" destination="uii-Vz-LGa" id="jxm-47-da5"/>
+            </connections>
+            <point key="canvasLocation" x="-874" y="-75"/>
         </view>
     </objects>
     <resources>

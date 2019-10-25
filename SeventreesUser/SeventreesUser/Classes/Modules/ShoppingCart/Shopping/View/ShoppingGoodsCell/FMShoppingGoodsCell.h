@@ -7,10 +7,10 @@
 //
 
 #import "FMTableViewCell.h"
-#import "FMShoppingGoodsModel.h"
+#import "FMShoppingGoodsCellViewModel.h"
 
 @interface FMShoppingGoodsCell : FMTableViewCell
 
-@property (nonatomic, copy) FMShoppingGoodsModel *goodsEntity;
+@property (nonatomic, strong) FMShoppingGoodsCellViewModel *viewModel;
 
 @end

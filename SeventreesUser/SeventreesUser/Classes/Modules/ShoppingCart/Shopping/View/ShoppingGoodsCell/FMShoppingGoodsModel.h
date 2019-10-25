@@ -36,6 +36,23 @@
 @end
 
 /*
+{
+    "data":[
+            {
+                "goodsImage":"http://qiniu.shengmei1858.com/upload/20190920/b93bde98ae37421699eb80b73f7d9af0.png",
+                "goodsName":"奶粉",
+                "goodsId":16,
+                "shoppingCarId":1318,
+                "goodsNum":8,
+                "skuId":1,
+                "goodsPrice":50,
+                "propertiesName":"颜色:红色,尺码:大码"
+            }
+            ]
+}
+*/
+
+/*
 "shoppingCarId": 1309,    --购物车id
 "goodsId": 16,        --商品id
 "skuId": 6,        --skuId

@@ -7,18 +7,19 @@
 //
 
 #import "FMViewModel.h"
-
-@class FMShopCarToolModel;
+#import "FMShopCarToolModel.h"
 
 @interface FMShopCarToolViewModel : FMViewModel
 
-@property (nonatomic, strong) FMShopCarToolModel *model;
+@property (nonatomic, strong) FMShopCarToolModel *goodsParamsEntity;
 
+
+@property (nonatomic, strong) RACCommand *requestJoinCommand;
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
-@property (nonatomic, strong) RACSubject *actionSubject;
+@property (nonatomic, strong) RACSubject *showHintSubject;
 
-@property (nonatomic, strong) RACCommand *requestDataCommand;
+@property (nonatomic, strong) RACSubject *actionSubject;
 
 @end

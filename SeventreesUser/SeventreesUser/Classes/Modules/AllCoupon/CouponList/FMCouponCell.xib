@@ -100,7 +100,7 @@
             <connections>
                 <outlet property="takeButton" destination="Pd1-Lv-tW5" id="iSh-wF-jas"/>
             </connections>
-            <point key="canvasLocation" x="-2082.4000000000001" y="50.374812593703155"/>
+            <point key="canvasLocation" x="-2766" y="-58"/>
         </tableViewCell>
     </objects>
     <resources>

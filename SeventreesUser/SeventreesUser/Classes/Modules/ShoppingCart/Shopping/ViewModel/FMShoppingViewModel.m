@@ -34,12 +34,13 @@
                 ++checkedCount;
             }
         }
-        
-        self.totalPrice = totalPrice;
-        self.goodsTotal = goodsTotal;
-        if (checkedCount == self->_shoppingGoodsEntitys.count) {
+        if (checkedCount > 0 && checkedCount == self->_shoppingGoodsEntitys.count) {
             self.isCheckedAll = YES;
         }
+        self.totalPrice = totalPrice;
+        self.goodsTotal = goodsTotal;
+        
+        [self.refreshUISubject sendNext:self->_shoppingGoodsEntitys];
     }];
 }
 

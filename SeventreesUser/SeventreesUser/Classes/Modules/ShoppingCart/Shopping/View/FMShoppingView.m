@@ -82,10 +82,11 @@
     [self.viewModel.refreshUISubject subscribeNext:^(NSArray<FMShoppingGoodsModel *> *shoppingGoodsEntitys) {
         @strongify(self)    if (!self) return;
         
+        [self->_tableView reloadData];
+        
         self->_settlementView.viewModel.totalPrice = self.viewModel.totalPrice;
         self->_settlementView.viewModel.checkedGoodsTotal = self.viewModel.goodsTotal;
-        
-        [self->_tableView reloadData];
+        self->_settlementView.viewModel.isCheckedAll = self.viewModel.isCheckedAll;
     }];
     
     [self->_settlementView.viewModel.settleActionSubject subscribeNext:^(id x) {
@@ -96,7 +97,8 @@
     [self->_settlementView.viewModel.checkAllActionSubject subscribeNext:^(NSNumber *isCheckedAll) {
         @strongify(self)    if (!self) return;
         
-        [self refreshUIWithIsCheckedAll:isCheckedAll.boolValue];
+        [self.viewModel.checkedActionSubject sendNext:nil];
+//        [self refreshUIWithIsCheckedAll:isCheckedAll.boolValue];
     }];
     
     [RACObserve(self.viewModel, isEdit) subscribeNext:^(NSNumber *isEdit) {

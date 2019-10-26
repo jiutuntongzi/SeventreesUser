@@ -70,7 +70,7 @@
         BOOL isCheckedAll = self.viewModel.isCheckedAll;
         isCheckedAll = !isCheckedAll;
         
-        self.viewModel.isCheckedAll = isCheckedAll;
+//        self.viewModel.isCheckedAll = isCheckedAll;
         [self.viewModel.checkAllActionSubject sendNext:@(isCheckedAll)];
     }];
     

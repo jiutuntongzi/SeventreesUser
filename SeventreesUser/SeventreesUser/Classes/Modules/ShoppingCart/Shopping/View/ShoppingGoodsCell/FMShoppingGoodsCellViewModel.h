@@ -11,14 +11,21 @@
 
 @interface FMShoppingGoodsCellViewModel : FMViewModel
 
-@property (nonatomic, copy) FMShoppingGoodsModel *goodsEntity;
+@property (nonatomic, strong) FMShoppingGoodsModel *goodsEntity;
 
-@property (nonatomic, strong) RACCommand *requestDataCommand; // get
-
-@property (nonatomic, strong) RACSubject *showHintSubject;
+/** lazy get */
+@property (nonatomic, strong) RACCommand *requestDataCommand;
 
 @property (nonatomic, strong) RACSubject *updateCountUISubject;
 
+@property (nonatomic, strong) RACSubject *showHintSubject;
+
 @property (nonatomic, strong) RACSubject *checkedActionSubject;
+
+@property (nonatomic, strong) RACSubject *addActionSubject;
+
+@property (nonatomic, strong) RACSubject *minusActionSubject;
+
+@property (nonatomic, strong) RACSubject *updateSettlementInfoSubject;
 
 @end

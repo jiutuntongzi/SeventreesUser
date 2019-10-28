@@ -200,6 +200,7 @@
             <connections>
                 <outlet property="buyItNowButton" destination="kgO-e1-OsY" id="jaf-jo-lLh"/>
                 <outlet property="collectButton" destination="Ffb-dr-X4B" id="fcC-U3-Fzg"/>
+                <outlet property="collectImgView" destination="5kc-bA-0hh" id="r7Z-3b-ESB"/>
                 <outlet property="contactButton" destination="u4G-Q0-CQh" id="qEE-AB-Hq0"/>
                 <outlet property="joinButton" destination="NHK-wB-vg9" id="WAo-hh-PJw"/>
                 <outlet property="shoppingButton" destination="uii-Vz-LGa" id="jxm-47-da5"/>

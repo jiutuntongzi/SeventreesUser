@@ -14,6 +14,7 @@ const CGFloat FMShopCarToolViewHeight = 44.f;
 
 @property (weak, nonatomic) IBOutlet UIButton *contactButton;
 
+@property (weak, nonatomic) IBOutlet UIImageView *collectImgView;
 @property (weak, nonatomic) IBOutlet UIButton *collectButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *shoppingButton;
@@ -51,27 +52,35 @@ const CGFloat FMShopCarToolViewHeight = 44.f;
 - (void)fm_bindViewModel {
     @weakify(self);
     
+    [RACObserve(self.viewModel, isCollect) subscribeNext:^(NSNumber *isCollect) {
+        self->_collectImgView.image = isCollect.boolValue ? UIImage.ci_imageNamed(@"icon_collect_selected") : UIImage.ci_imageNamed(@"icon_collect_normal");
+    }];
+    
+    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
+        [SVProgressHUD showInfoWithStatus:status];
+    }];
+    
+    [[self.viewModel.requestCollectCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+        if ([isExecuting isEqualToNumber:@(YES)]) {
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+            [SVProgressHUD showWithStatus:@"收藏中.."];
+        } else {
+            [SVProgressHUD dismissWithDelay:0.15f];
+        }
+    }];
+    
+    [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
+        self->_collectImgView.image = self.viewModel.isCollect ? UIImage.ci_imageNamed(@"icon_collect_selected") : UIImage.ci_imageNamed(@"icon_collect_normal");
+    }];
+    
     [[self.viewModel.requestJoinCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
         if ([isExecuting isEqualToNumber:@(YES)]) {
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
-            [SVProgressHUD showWithStatus:@""];
+            [SVProgressHUD showWithStatus:@"加入中.."];
         } else {
             [SVProgressHUD dismissWithDelay:0.5f];
         }
     }];
-    
-    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-//        @strongify(self);
-        [SVProgressHUD showInfoWithStatus:status];
-    }];
-    
-    [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
-//        @strongify(self);
-        if ([resultModel.statusCode isEqualToString:@"OK"]) {
-            [SVProgressHUD showSuccessWithStatus:@"加入商品成功"];
-        }
-    }];
-    
     
     [[_contactButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
@@ -81,8 +90,8 @@ const CGFloat FMShopCarToolViewHeight = 44.f;
     
     [[_collectButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
-        
-        [self.viewModel.actionSubject sendNext:nil];
+        if (![self.viewModel checkOKRequestCollectParams]) return;
+        [self.viewModel.requestCollectCommand execute:nil];
     }];
     
     [[_shoppingButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -92,6 +101,7 @@ const CGFloat FMShopCarToolViewHeight = 44.f;
     
     [[_joinButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
+        if ([self.viewModel checkOKRequestParams] == NO) return ;
         
         [self.viewModel.requestJoinCommand execute:nil];
     }];

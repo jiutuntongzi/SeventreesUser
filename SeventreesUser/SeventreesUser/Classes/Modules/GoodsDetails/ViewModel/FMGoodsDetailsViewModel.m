@@ -41,8 +41,9 @@
         
         FMShopCarToolModel *goodsParamsEntity = [[FMShopCarToolModel alloc] init];
         goodsParamsEntity.goodsId = goodsDetailsModel.goodsId;
+        goodsParamsEntity.brandId = goodsDetailsModel.brandId;
         goodsParamsEntity.skuId = goodsDetailsModel.goodsSkuModels.firstObject.ID; // test
-        goodsParamsEntity.goodsNum = 1;
+        goodsParamsEntity.goodsNum = 1; // test
         goodsDetailsModel.goodsParamsEntity = goodsParamsEntity;
         
         self->_detailsModel = goodsDetailsModel;

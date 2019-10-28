@@ -45,7 +45,7 @@
         self->_goodsTitleLabel.text = goodsEntity.goodsName ?: @"--";
         self->_goodsSubTitleLabel.text = goodsEntity.propertiesName ?: @"--";
         self->_goodsPriceLabel.text = [NSString stringWithFormat:@"¥%.2f", goodsEntity.goodsPrice.floatValue];
-        self->_goodsCountLabel.text = [NSString stringWithFormat:@"%ld", goodsEntity.goodsNum];
+        self->_goodsCountLabel.text = [NSString stringWithFormat:@"%lu", goodsEntity.goodsNum];
         
         //        if (goodsEntity.isEdit) {
         //            self->_chooseButtonWidthConstraint.constant = 50.f;
@@ -66,27 +66,24 @@
     }];
     
     [self->_viewModel.showHintSubject subscribeNext:^(NSString *status) {
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
         [SVProgressHUD showErrorWithStatus:status];
+        [SVProgressHUD dismissWithDelay:1.f];
     }];
     
     [self->_viewModel.updateCountUISubject subscribeNext:^(NSNumber *goodsNum) {
         self->_goodsCountLabel.text = goodsNum.stringValue;
     }];
     
-    
     [[_addButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        //        NSUInteger goodsNum = self->_goodsEntity.goodsNum.unsignedIntegerValue + 1;
-        //        self->_goodsEntity.goodsNum = @(goodsNum);
-        self->_viewModel.goodsEntity.goodsNum += 1;
-        [self->_viewModel.requestDataCommand execute:nil];
+        [self->_viewModel.requestDataCommand execute:@(self->_viewModel.goodsEntity.goodsNum + 1)];
     }];
     
     [[_minusButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
         if (self.viewModel.goodsEntity.goodsNum > 1) {
-            self->_viewModel.goodsEntity.goodsNum -= 1;
-            [self->_viewModel.requestDataCommand execute:nil];
+            [self->_viewModel.requestDataCommand execute:@(self->_viewModel.goodsEntity.goodsNum - 1)];
         }
     }];
     

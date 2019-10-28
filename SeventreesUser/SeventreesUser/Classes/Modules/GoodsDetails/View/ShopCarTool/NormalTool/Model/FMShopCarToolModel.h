@@ -16,5 +16,7 @@
 
 @property (nonatomic, assign) NSInteger goodsNum;
 
+@property (nonatomic, strong) NSNumber *brandId;
+
 @end
 

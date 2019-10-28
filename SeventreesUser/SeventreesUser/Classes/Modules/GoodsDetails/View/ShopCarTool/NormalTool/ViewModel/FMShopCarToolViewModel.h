@@ -11,8 +11,9 @@
 
 @interface FMShopCarToolViewModel : FMViewModel
 
-@property (nonatomic, strong) FMShopCarToolModel *goodsParamsEntity;
+@property (nonatomic, assign) BOOL isCollect;
 
+@property (nonatomic, strong) FMShopCarToolModel *goodsParamsEntity;
 
 @property (nonatomic, strong) RACCommand *requestJoinCommand;
 
@@ -20,6 +21,12 @@
 
 @property (nonatomic, strong) RACSubject *showHintSubject;
 
+@property (nonatomic, strong) RACCommand *requestCollectCommand;
+
 @property (nonatomic, strong) RACSubject *actionSubject;
+
+- (BOOL)checkOKRequestParams;
+
+- (BOOL)checkOKRequestCollectParams;
 
 @end

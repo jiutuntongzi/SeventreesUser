@@ -16,22 +16,31 @@
     _updateCountUISubject = [[RACSubject alloc] init];
     _showHintSubject = [[RACSubject alloc] init];
     _checkedActionSubject = [[RACSubject alloc] init];
+    _addActionSubject = [[RACSubject alloc] init];
+    _minusActionSubject = [[RACSubject alloc] init];
+    _updateSettlementInfoSubject = [[RACSubject alloc] init];
     
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (! self) return;
         
+        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+            [self->_showHintSubject sendNext:resultModel.statusMsg];
+            return;
+        }
         NSNumber *goodsNum = resultModel.jsonDict[@"goodsNum"];
         self->_goodsEntity.goodsNum = goodsNum.unsignedIntegerValue;
+        
+        [self->_updateSettlementInfoSubject sendNext:nil];
         [self.updateCountUISubject sendNext:goodsNum];
     }];
 }
 
-- (BOOL)checkRequestParams {
-    BOOL (^checkParamsCallback)(NSNumber *, NSInteger) = ^(NSNumber *shoppingCarId, NSInteger goodsNum) {
+- (BOOL)checkRequestParams:(NSNumber *)goodsNum {
+    BOOL (^checkParamsCallback)(NSNumber *, NSUInteger) = ^(NSNumber *shoppingCarId, NSUInteger goodsNum) {
         if (shoppingCarId == nil || goodsNum == 0) return NO;
         return YES;
     };
-    BOOL isCheckOK = checkParamsCallback(self->_goodsEntity.shoppingCarId, self->_goodsEntity.goodsNum);
+    BOOL isCheckOK = checkParamsCallback(self->_goodsEntity.shoppingCarId, goodsNum.unsignedIntegerValue);
     return isCheckOK;
 }
 
@@ -39,18 +48,18 @@
 
 - (RACCommand *)requestDataCommand {
     if (! _requestDataCommand) {
-        _requestDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        _requestDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *goodsNum) {
             @weakify(self)
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 @strongify(self)
                 
-                if ([self checkRequestParams] == NO) {
+                if ([self checkRequestParams:goodsNum] == NO) {
                     [self.showHintSubject sendNext:@"网络请求参数错误！"];
                     return nil;
                 }
                 NSDictionary *params = @{
                                          @"id": self->_goodsEntity.shoppingCarId,
-                                         @"goodsNum": @(self->_goodsEntity.goodsNum)
+                                         @"goodsNum": goodsNum
                                          };
                 [networkMgr POST:kShoppingUpdateGoodsCountURIPath params:params success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];

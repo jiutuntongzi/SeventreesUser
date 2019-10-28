@@ -13,17 +13,17 @@
 
 @interface FMGoodsDetailsSpellGroupGoodsMsgModel : NSObject
 
-@property (nonatomic, assign) NSNumber *normalPrice;
+@property (nonatomic, strong) NSNumber *normalPrice;
 
-@property (nonatomic, assign) NSNumber *virtualSales;
+@property (nonatomic, strong) NSNumber *virtualSales;
 
-@property (nonatomic, assign) NSNumber *buyMax;
+@property (nonatomic, strong) NSNumber *buyMax;
 
-@property (nonatomic, assign) NSNumber *originalPrice;
+@property (nonatomic, strong) NSNumber *originalPrice;
 
-@property (nonatomic, assign) NSNumber *price;
+@property (nonatomic, strong) NSNumber *price;
 
-@property (nonatomic, assign) NSNumber *userNum;
+@property (nonatomic, strong) NSNumber *userNum;
 
 @end
 
@@ -41,7 +41,7 @@
 
 @property (nonatomic, strong) FMGoodsDetailsShowImagesExtraModel *extra;
 
-@property (nonatomic, assign) NSNumber * type;
+@property (nonatomic, strong) NSNumber * type;
 
 @end
 
@@ -51,11 +51,11 @@
 /** 自定义商品名（非JSON转Model数据）*/
 @property (nonatomic, copy) NSString *goodsName;
 
-@property (nonatomic, assign) NSNumber *price;
+@property (nonatomic, strong) NSNumber *price;
 
-@property (nonatomic, assign) NSNumber *buyMax;
+@property (nonatomic, strong) NSNumber *buyMax;
 
-@property (nonatomic, assign) NSNumber *virtualSales;
+@property (nonatomic, strong) NSNumber *virtualSales;
 
 @end
 
@@ -67,9 +67,9 @@
 
 @interface FMGoodsDetailsGoodsSkuModel : NSObject
 
-@property (nonatomic, assign) NSNumber *ID;
+@property (nonatomic, strong) NSNumber *ID;
 
-@property (nonatomic, assign) NSNumber *virtualSales;
+@property (nonatomic, strong) NSNumber *virtualSales;
 
 @property (nonatomic, strong) FMGoodsDetailsGoodsSkusExtraModel *extra;
 
@@ -79,45 +79,45 @@
 
 @property (nonatomic, copy) NSString *picUrl;
 
-@property (nonatomic, assign) NSNumber *normalPrice;
+@property (nonatomic, strong) NSNumber *normalPrice;
 
-@property (nonatomic, assign) NSNumber *retailPrice;
+@property (nonatomic, strong) NSNumber *retailPrice;
 
-@property (nonatomic, assign) NSNumber *stock;
+@property (nonatomic, strong) NSNumber *stock;
 
-@property (nonatomic, assign) NSNumber *salePrice;
+@property (nonatomic, strong) NSNumber *salePrice;
 
 @property (nonatomic, copy) NSString *dr;
 
-@property (nonatomic, assign) NSNumber *sales;
+@property (nonatomic, strong) NSNumber *sales;
 
 @end
 
 
 @interface FMGoodsDetailsActivityGoodsMsgModel : NSObject
 
-@property (nonatomic, assign) NSNumber *virtualSales;
+@property (nonatomic, strong) NSNumber *virtualSales;
 
-@property (nonatomic, assign) NSNumber *originalPrice;
+@property (nonatomic, strong) NSNumber *originalPrice;
 
-@property (nonatomic, assign) NSNumber *price;
+@property (nonatomic, strong) NSNumber *price;
 
-@property (nonatomic, assign) NSNumber *buyMax;
+@property (nonatomic, strong) NSNumber *buyMax;
 
 @end
 
 
 @interface FMGoodsDetailsBargainingGoodsMsgModel : NSObject
 
-@property (nonatomic, assign) NSNumber *minPrice;
+@property (nonatomic, strong) NSNumber *minPrice;
 
-@property (nonatomic, assign) NSNumber *originalPrice;
+@property (nonatomic, strong) NSNumber *originalPrice;
 
-@property (nonatomic, assign) NSNumber *price;
+@property (nonatomic, strong) NSNumber *price;
 
-@property (nonatomic, assign) NSNumber *virtualSales;
+@property (nonatomic, strong) NSNumber *virtualSales;
 
-@property (nonatomic, assign) NSNumber *buyMax;
+@property (nonatomic, strong) NSNumber *buyMax;
 
 @end
 
@@ -129,14 +129,14 @@
 
 @interface FMGoodsDetailsCommentsModel : NSObject
 
-@property (nonatomic, assign) NSNumber *userId;
+@property (nonatomic, strong) NSNumber *userId;
 
 @property (nonatomic, copy) NSString *content;
 
 @property (nonatomic, copy) NSString *userName;
 
 /** evaluateId : id */
-@property (nonatomic, assign) NSNumber *evaluateId;
+@property (nonatomic, strong) NSNumber *evaluateId;
 
 @property (nonatomic, copy) NSString *createdDateTime;
 
@@ -144,13 +144,13 @@
 
 @property (nonatomic, strong) FMGoodsDetailsCommentssExtraModel *extra;
 
-@property (nonatomic, assign) NSNumber *goodsId;
+@property (nonatomic, strong) NSNumber *goodsId;
 
-@property (nonatomic, assign) NSNumber *goodsStar;
+@property (nonatomic, strong) NSNumber *goodsStar;
 
-@property (nonatomic, assign) NSNumber *serverStar;
+@property (nonatomic, strong) NSNumber *serverStar;
 
-@property (nonatomic, assign) NSNumber *expressStar;
+@property (nonatomic, strong) NSNumber *expressStar;
 
 @property (nonatomic, copy) NSString *userHeadUrl;
 
@@ -170,7 +170,7 @@
 
 @property (nonatomic, copy) NSString *url;
 
-@property (nonatomic, assign) NSNumber *type;
+@property (nonatomic, strong) NSNumber *type;
 
 @property (nonatomic, strong) FMGoodsDetailsImagesExtraModel *extra;
 
@@ -182,15 +182,15 @@
 
 @interface FMGoodsDetailsModel : NSObject
 
-@property (nonatomic, assign) NSNumber *goodsId;
+@property (nonatomic, strong) NSNumber *goodsId;
 
 @property (nonatomic, copy) NSString *goodsName;
 
-@property (nonatomic, assign) NSNumber *brandId;
+@property (nonatomic, strong) NSNumber *brandId;
 
 @property (nonatomic, copy) NSString *brandName;
 
-@property (nonatomic, assign) NSNumber *brandGoodsNum;
+@property (nonatomic, strong) NSNumber *brandGoodsNum;
 
 @property (nonatomic, copy) NSString *brandContent;
 
@@ -198,9 +198,9 @@
 
 @property (nonatomic, copy) NSString *videoUrl;
 
-@property (nonatomic, assign) NSNumber *isCollect;
+@property (nonatomic, strong) NSNumber *isCollect;
 
-@property (nonatomic, assign) NSNumber *commentNum;
+@property (nonatomic, strong) NSNumber *commentNum;
 
 @property (nonatomic, copy) NSString *videoImage;
 

@@ -54,7 +54,6 @@
     
     [RACObserve(self, viewModel.isCheckedAll) subscribeNext:^(NSNumber *isCheckedAll) {
         @strongify(self)    if (!self) return;
-        
         NSString *imageName;
         if (isCheckedAll.boolValue) {
             imageName = @"icon_check_selected";
@@ -69,20 +68,16 @@
         
         BOOL isCheckedAll = self.viewModel.isCheckedAll;
         isCheckedAll = !isCheckedAll;
-        
-//        self.viewModel.isCheckedAll = isCheckedAll;
         [self.viewModel.checkAllActionSubject sendNext:@(isCheckedAll)];
     }];
     
     [[_settleCarButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id button) {
         @strongify(self)    if (!self) return;
-        
         [self.viewModel.settleActionSubject sendNext:nil];
     }];
     
     [[_deleteButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id button) {
         @strongify(self)    if (!self) return;
-        
         [self.viewModel.deleteActionSubject sendNext:nil];
     }];
 }

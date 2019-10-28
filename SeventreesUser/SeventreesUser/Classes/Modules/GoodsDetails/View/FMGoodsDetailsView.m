@@ -149,6 +149,7 @@
             FMShopCarToolView *shopCarToolView = (FMShopCarToolView *)self->_shopCarToolView;
             // 初始化添加商品到购物车接口请求参数
             shopCarToolView.viewModel.goodsParamsEntity = goodsDetailsModel.goodsParamsEntity;
+            shopCarToolView.viewModel.isCollect = goodsDetailsModel.isCollect.boolValue;
         }
         
         [self setupDynamicScrollerContentHeight];

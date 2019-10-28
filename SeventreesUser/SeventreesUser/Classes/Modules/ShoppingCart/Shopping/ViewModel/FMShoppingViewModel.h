@@ -21,15 +21,27 @@
 
 @property (nonatomic, assign) BOOL isCheckedAll;
 
+
 @property (nonatomic, strong) RACCommand *requestDataCommand;
+
+@property (nonatomic, strong) RACCommand *requestDeleteGoodsCommand;
+
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
+@property (nonatomic, strong) RACSubject *showHintSubject;
+
+
 @property (nonatomic, strong) RACSubject *checkedActionSubject;
+
+@property (nonatomic, strong) RACSubject *checkAllActionSubject;
 
 @property (nonatomic, strong) RACSubject *goodsDetailsVCSubject;
 
 @property (nonatomic, strong) RACSubject *settleAccountsVCSubject;
+
+/** 请求验证：列表有商品、且至少有一个商品是选中的 */
+- (BOOL)verifyIsOK;
 
 @end
 

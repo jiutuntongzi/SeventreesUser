@@ -59,7 +59,6 @@
 }
 
 - (void)fm_setupNavbar {
-    
     self.navigationItem.title = @"购物车";
     
     UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"编辑", 1, ^(UIBarButtonItem *leftItem) {

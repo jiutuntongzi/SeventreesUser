@@ -37,6 +37,8 @@
 
 #define       kQueryBrandInfoURIPath         @"/api/pmbrand/brandInfo"               // 查询品牌
 
+#define       kCollectAddGoodsURIPath             @"/api/pccollect/create"                // 加入/取消收藏商品
+
 #define       kQueryCollectListURIPath       @"/api/pccollect/queryCollectList"      // 查询我的收藏列表
 
 #pragma mark ——— 购物车

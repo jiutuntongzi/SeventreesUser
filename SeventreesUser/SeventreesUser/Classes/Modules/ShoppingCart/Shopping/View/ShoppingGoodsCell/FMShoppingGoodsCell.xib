@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="398" height="117.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNf-1s-dVt">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNf-1s-dVt">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="117.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="eaE-MX-x0x"/>
@@ -85,7 +85,7 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLi-rr-lgQ">
-                        <rect key="frame" x="333" y="74.5" width="25" height="25"/>
+                        <rect key="frame" x="328" y="74.5" width="30" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -99,7 +99,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvt-Kd-X6h">
-                        <rect key="frame" x="309" y="74.5" width="25" height="25"/>
+                        <rect key="frame" x="304" y="74.5" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="FiM-vs-dX5"/>
                         </constraints>
@@ -136,7 +136,7 @@
                     <constraint firstItem="DLi-rr-lgQ" firstAttribute="centerY" secondItem="TwU-CK-yCP" secondAttribute="centerY" id="goq-Tp-37L"/>
                     <constraint firstItem="DLi-rr-lgQ" firstAttribute="height" secondItem="TwU-CK-yCP" secondAttribute="height" id="i5I-ex-Smq"/>
                     <constraint firstItem="XVe-Qc-ZZ3" firstAttribute="leading" secondItem="bA7-VY-8b6" secondAttribute="leading" id="jhI-HS-6gp"/>
-                    <constraint firstItem="DLi-rr-lgQ" firstAttribute="width" secondItem="TwU-CK-yCP" secondAttribute="width" id="mSK-SH-JhY"/>
+                    <constraint firstItem="DLi-rr-lgQ" firstAttribute="width" secondItem="TwU-CK-yCP" secondAttribute="width" constant="5" id="mSK-SH-JhY"/>
                     <constraint firstItem="b7u-XC-JpB" firstAttribute="bottom" secondItem="Ac5-3X-sSl" secondAttribute="bottom" id="sVY-Je-8GD"/>
                     <constraint firstItem="DLi-rr-lgQ" firstAttribute="leading" secondItem="yvt-Kd-X6h" secondAttribute="trailing" constant="-1" id="t70-Jz-xSg"/>
                     <constraint firstItem="yvt-Kd-X6h" firstAttribute="centerY" secondItem="TwU-CK-yCP" secondAttribute="centerY" id="v0l-0j-MOu"/>

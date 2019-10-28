@@ -12,6 +12,8 @@
 
 #import "FMSettlementView.h"
 
+#import "DialogBoxView.h"
+
 @interface FMShoppingView () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -89,21 +91,53 @@
         self->_settlementView.viewModel.isCheckedAll = self.viewModel.isCheckedAll;
     }];
     
+    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
+        @strongify(self)    if (!self) return;
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+        [SVProgressHUD showInfoWithStatus:status];
+        [SVProgressHUD dismissWithDelay:1.f];
+    }];
+    
     [self->_settlementView.viewModel.settleActionSubject subscribeNext:^(id x) {
         @strongify(self)    if (!self) return;
+        
+        if (![self.viewModel verifyIsOK]) return;
+        
         [self.viewModel.settleAccountsVCSubject sendNext:nil];
+    }];
+    
+    [self->_settlementView.viewModel.deleteActionSubject subscribeNext:^(id x) {
+        @strongify(self)    if (!self) return;
+        
+        if (![self.viewModel verifyIsOK]) return;
+        
+        [DialogBoxView showByTitle:@"购物车" message:@"确认从购物车移除选中商品？" affirmButtonTitle:@"确定" forStyle:DialogBoxViewStyleAffirm affirmHandler:^(NSString * _Nullable text) {
+            // 验证通过，发起删除请求
+            [self_weak_.viewModel.requestDeleteGoodsCommand execute:nil];
+        }];
     }];
     
     [self->_settlementView.viewModel.checkAllActionSubject subscribeNext:^(NSNumber *isCheckedAll) {
         @strongify(self)    if (!self) return;
-        
-        [self.viewModel.checkedActionSubject sendNext:nil];
-//        [self refreshUIWithIsCheckedAll:isCheckedAll.boolValue];
+        if (self.viewModel.shoppingGoodsEntitys.count == 0) {
+            [self.viewModel.showHintSubject sendNext:@"购物车无商品，请添加！"];
+            return;
+        }
+        [self.viewModel.checkAllActionSubject sendNext:isCheckedAll];
     }];
     
     [RACObserve(self.viewModel, isEdit) subscribeNext:^(NSNumber *isEdit) {
         @strongify(self)    if (!self) return;
         self->_settlementView.viewModel.isEdit = isEdit.boolValue;
+    }];
+    
+    [[self.viewModel.requestDeleteGoodsCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+        if ([isExecuting isEqualToNumber:@(YES)]) {
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+            [SVProgressHUD showWithStatus:@""];
+        } else {
+            [SVProgressHUD dismissWithDelay:1.f];
+        }
     }];
     
 //    [RACObserve(self.viewModel, isEdit) subscribeNext:^(NSNumber *isEdit) {
@@ -146,6 +180,12 @@
     @weakify(self)
     
     [cell.viewModel.checkedActionSubject subscribeNext:^(id x) {
+        @strongify(self)    if (!self) return;
+        
+        [self.viewModel.checkedActionSubject sendNext:nil];
+    }];
+    
+    [cell.viewModel.updateSettlementInfoSubject subscribeNext:^(id x) {
         @strongify(self)    if (!self) return;
         
         [self.viewModel.checkedActionSubject sendNext:nil];

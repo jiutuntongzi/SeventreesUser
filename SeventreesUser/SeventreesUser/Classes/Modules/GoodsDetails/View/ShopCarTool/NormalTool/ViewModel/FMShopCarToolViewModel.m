@@ -15,20 +15,44 @@
     
     [self.requestJoinCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (! self) return;
-//        NSNumber *goodsId = resultModel.jsonDict[@"id"];
+        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+            [self.showHintSubject sendNext:resultModel.statusMsg];
+            return;
+        }
+        // NSNumber *goodsId = resultModel.jsonDict[@"id"];
+//        [self.showHintSubject sendNext:@"加入商品成功"];
+        [SVProgressHUD showSuccessWithStatus:@"加入商品成功"];
+    }];
+    
+    [self.requestCollectCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
+        @strongify(self)    if (! self) return;
+        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+            [self.showHintSubject sendNext:resultModel.statusMsg];
+            return;
+        }
+        self->_isCollect = !self->_isCollect;
         [self.refreshUISubject sendNext:resultModel];
+//        self->_isCollect = @(!self->_isCollect.boolValue);
     }];
 }
 
-- (BOOL)checkRequestParams {
+- (BOOL)checkOKRequestParams {
     BOOL (^checkParamsCallback)(NSNumber *, NSNumber *, NSInteger) = ^(NSNumber *goodsId, NSNumber *skuId, NSInteger goodsNum) {
         if (!goodsId || !skuId || goodsNum == 0) return NO;
         return YES;
     };
     
     BOOL isCheckOK = checkParamsCallback(self->_goodsParamsEntity.goodsId, self->_goodsParamsEntity.skuId, self->_goodsParamsEntity.goodsNum);
-    [self.showHintSubject sendNext:@"网络请求参数错误！"];
+    if (isCheckOK == NO) [self.showHintSubject sendNext:@"网络请求参数错误！"];
     return isCheckOK;
+}
+
+- (BOOL)checkOKRequestCollectParams {
+    if (!self->_goodsParamsEntity.goodsId || !self->_goodsParamsEntity.brandId) {
+        [self.showHintSubject sendNext:@"网络请求参数错误！"];
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - Lazyload
@@ -39,8 +63,7 @@
             @weakify(self)
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 @strongify(self)
-                if ([self checkRequestParams] == NO) return nil;
-                
+
                 NSDictionary *params = [self.goodsParamsEntity mj_keyValues];
                 [networkMgr POST:kShoppingAddGoodsURIPath params:params success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
@@ -56,6 +79,30 @@
         }];
     }
     return _requestJoinCommand;
+}
+
+- (RACCommand *)requestCollectCommand {
+    if (! _requestCollectCommand) {
+        _requestCollectCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            @weakify(self)
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                @strongify(self)
+                
+                NSDictionary *params = @{@"goodsId": self.goodsParamsEntity.goodsId, @"brandId": self.goodsParamsEntity.brandId};
+                [networkMgr POST:kCollectAddGoodsURIPath params:params success:^(NetworkResultModel *resultModel) {
+                    [subscriber sendNext:resultModel];
+                    [subscriber sendCompleted];
+                    
+                } failure:^(NSError *error) {
+                    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                    [subscriber sendNext:nil];
+                    [subscriber sendCompleted];
+                }];
+                return nil;
+            }];
+        }];
+    }
+    return _requestCollectCommand;
 }
 
 - (RACSubject *)refreshUISubject {

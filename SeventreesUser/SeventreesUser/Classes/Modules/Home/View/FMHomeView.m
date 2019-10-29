@@ -153,14 +153,25 @@
         }
     }];
     */
-    
     _searchButtonView.actionCallback = ^{
         DLog(@"点了搜索");
-        [self.viewModel.nextActionSubject sendNext:@"FMSearchPagingController"];
+        [self_weak_.viewModel.nextActionSubject sendNext:@"FMSearchPagingController"];
     };
     
-    [self->_menuView.viewModel.itemActionSubject subscribeNext:^(NSString *code) {
-        DLog(@"点了菜单：code == %@", code);
+    [self->_menuView.viewModel.itemActionSubject subscribeNext:^(NSString *menuType) {
+        @strongify(self)     if (!self) return;
+        DLog(@"点了菜单：code == %@", menuType);
+        if ([menuType isEqualToString:@"sr"]) {
+            [self.viewModel.nextActionSubject sendNext:@"FMCouponPagingController"];
+        } else if ([menuType isEqualToString:@"group"]) {
+            
+        } else if ([menuType isEqualToString:@"bargain"]) {
+            
+        } else if ([menuType isEqualToString:@"parcel"]) {
+            
+        } else {
+            
+        }
     }];
     
     [self->_storeView.viewModel.chatActionSubject subscribeNext:^(FMHomeStoreModel *storeModel) {

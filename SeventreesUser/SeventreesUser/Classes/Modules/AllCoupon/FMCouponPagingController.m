@@ -52,7 +52,6 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
     
     [self setupNavbar];
     
-    
     [self reloadData];
 }
 
@@ -111,7 +110,6 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 }
 
 - (void)setupNavbar {
-    
     self.navigationItem.title = @"全部券";
     
     __weak typeof(self) weakSelf = self;
@@ -120,10 +118,11 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
         weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     });
     self.navigationItem.cni_rightBarButtonItem(rightItem);
-}
-
-- (void)refreshData {
     
+    UIBarButtonItem *returnItem = UIBarButtonItem.cbi_initWithImageStyleForTouchCallback(@"icon_navBack", 1, ^(UIBarButtonItem *leftItem) {
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    });
+    self.navigationItem.cni_leftBarButtonItem(returnItem);
 }
 
 #pragma mark - Lazyload

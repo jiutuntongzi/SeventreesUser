@@ -13,5 +13,7 @@
 
 @interface FMCouponCell : FMTableViewCell
 
+@property (nonatomic, strong) FMCouponCellViewModel *viewModel;
+
 @end
 

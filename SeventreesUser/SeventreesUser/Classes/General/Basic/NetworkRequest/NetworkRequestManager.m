@@ -129,13 +129,31 @@ static NetworkRequestManager * _instance = nil;
     return _sessionManager;
 }
 
+- (BOOL)checkHasEmptyForRequestParams:(NSDictionary *)params failure:(NetworkRequestFailure)failure {
+    __block BOOL hasNil = NO;
+    [params enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
+        if (!value) {
+            DLog(@"\n请求参数错误：有参数值nil了！RequestParams -> key：%@, value：%@\n", key, value);
+            hasNil = YES;
+        }
+    }];
+    if (hasNil) {
+        NSString *errorDescr = [NSString stringWithFormat:@"请求参数错误：有参数(nil)了！params:%@", params];
+        NSError *error = [NSError errorCode:NSCommonErrorCodeFailed userInfo:@{NSLocalizedDescriptionKey:errorDescr, NSLocalizedFailureReasonErrorKey:@"有参数值nil了！", NSLocalizedRecoverySuggestionErrorKey:@"请求参数错误"}];
+        if (failure) failure(error);
+    }
+    return hasNil;
+}
+
 #pragma mark ——— AFURLSessionManager
 
 - (void)GET:(NSString *)URIPath params:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    if ([self checkHasEmptyForRequestParams:params failure:failure]) return;
     [self request:HTTPRequestMethodGET URIPath:URIPath params:params success:success failure:failure];
 }
 
 - (void)POST:(NSString *)URIPath params:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    if ([self checkHasEmptyForRequestParams:params failure:failure]) return;
     [self request:HTTPRequestMethodPOST URIPath:URIPath params:params success:success failure:failure];
 }
 
@@ -209,10 +227,12 @@ static NetworkRequestManager * _instance = nil;
 #pragma mark ——— AFHTTPSessionManager
 
 - (void)GET:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    if ([self checkHasEmptyForRequestParams:params failure:failure]) return;
     [self request:HTTPRequestMethodGET URIPath:URIPath parameters:params success:success failure:failure];
 }
 
 - (void)POST:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
+    if ([self checkHasEmptyForRequestParams:params failure:failure]) return;
     [self request:HTTPRequestMethodPOST URIPath:URIPath parameters:params success:success failure:failure];
 }
 
@@ -224,7 +244,7 @@ static NetworkRequestManager * _instance = nil;
 }
 
 - (void)request:(HTTPRequestMethod)method URIPath:(NSString *)URIPath parameters:(NSDictionary *)params success:(NetworkRequestSuccess)success failure:(NetworkRequestFailure)failure {
-
+    
     NSString *urlString = [NSString stringWithFormat:@"%@%@", _hostDomain, URIPath];
     DLog(@"\n HTTP请求URL:URLString == %@\n", urlString);
     switch (method) {
@@ -304,8 +324,8 @@ static NetworkRequestManager * _instance = nil;
         loginURIPath = [NSString stringWithFormat:@"%@?username=%@&password=%@", kLoginURIPath, username, password];
     } else {
         DLog(@"（NSURLSession）请求登录：拼接URLPath参数失败!");
-        NSError *error = [NSError errorCode:NSCommonErrorCodeFailed userInfo:@{NSLocalizedDescriptionKey:@"登录失败：参数错误！", NSLocalizedFailureReasonErrorKey:@"请求登录：拼接URLPath参数失败!", NSLocalizedRecoverySuggestionErrorKey:@"请求路径参数错误"}];
-        failure(error);
+        NSError *error = [NSError errorCode:NSCommonErrorCodeFailed userInfo:@{NSLocalizedDescriptionKey:@"登录失败：请求参数错误！", NSLocalizedFailureReasonErrorKey:@"请求登录：拼接URLPath参数失败!", NSLocalizedRecoverySuggestionErrorKey:@"请求路径参数错误"}];
+        if (failure) failure(error);
     }
     NSString *URLString = [_hostDomain stringByAppendingString:loginURIPath];
     [self POST:URLString success:success failure:failure];

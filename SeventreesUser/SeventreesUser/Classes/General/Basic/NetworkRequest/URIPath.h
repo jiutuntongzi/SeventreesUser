@@ -29,7 +29,7 @@
 
 #define       kHomeQueryBrandGoodsURIPath   @"/api/pmgoods/queryBrandGoods"      // 首页查询商品
 
-#pragma mark ——— 商品
+#pragma mark ——— 商品详情
 
 #define       kQueryGoodsDetailsURIPath      @"/api/pmgoods/queryGoodsDetails"       // 查询商品详情
 
@@ -37,18 +37,28 @@
 
 #define       kQueryBrandInfoURIPath         @"/api/pmbrand/brandInfo"               // 查询品牌
 
-#define       kCollectAddGoodsURIPath             @"/api/pccollect/create"                // 加入/取消收藏商品
-
-#define       kQueryCollectListURIPath       @"/api/pccollect/queryCollectList"      // 查询我的收藏列表
-
 #pragma mark ——— 购物车
 
 #define       kShoppingQueryGoodsListURIPath         @"/api/pmshoppingcart/query"       // 查询购物车商品列表
 
-#define       kShoppingAddGoodsURIPath             @"/api/pmshoppingcart/create"        // 购物车加入商品
+#define       kShoppingAddGoodsURIPath               @"/api/pmshoppingcart/create"        // 购物车加入商品
 
 #define       kShoppingDeleteListToURIPath           @"/api/pmshoppingcart/delete"      // 购物车删除商品列表
 
 #define       kShoppingUpdateGoodsCountURIPath       @"/api/pmshoppingcart/update"      // 更新（+/-）购物车商品数量
+
+#pragma mark ——— 收藏管理
+
+#define      kCollectListQueryURIPath      @"/api/pccollect/queryCollectList"      // 查询我的收藏列表
+
+#define      kCollectAddGoodsURIPath       @"/api/pccollect/create"                // 加入/取消收藏商品
+
+#pragma mark ——— 优惠卷
+
+#define      kCouponListQueryURIPath       @"/api/srvoucher/voucherList"           // 查询优惠卷列表
+
+#define      kCouponGainURIPath            @"/api/srvoucher/getVoucher"            // 领取优惠卷
+
+
 
 #endif /* URIPath_h */

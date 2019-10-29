@@ -63,16 +63,16 @@
     
     UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"编辑", 1, ^(UIBarButtonItem *leftItem) {
         if (self->_mainView.viewModel.shoppingGoodsEntitys.count == 0) {
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
             [SVProgressHUD showInfoWithStatus:@"购物车无商品，请添加！"];
             [SVProgressHUD dismissWithDelay:1.f];
-            return;
         }
         BOOL isEdit = ! self->_isEdit;
         self.isEdit = isEdit;
         self->_mainView.viewModel.isEdit = isEdit;
     });
     self.navigationItem.cni_rightBarButtonItem(rightItem);
-    self.isEdit = NO;
+    self.isEdit = _isEdit;
     
     /*
     if (_mainView.viewModel.shoppingGoodsEntitys.count ) {

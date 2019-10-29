@@ -63,7 +63,7 @@
                     [SVProgressHUD showErrorWithStatus:@"数据错误：type空了！"];
                     return nil;
                 }
-                [networkMgr POST:kQueryCollectListURIPath params:@{@"type": self->_type} success:^(NetworkResultModel *resultModel) {
+                [networkMgr POST:kCollectListQueryURIPath params:@{@"type": self->_type} success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
                 } failure:^(NSError *error) {
@@ -83,6 +83,13 @@
         _refreshUISubject = [RACSubject subject];
     }
     return _refreshUISubject;
+}
+
+- (RACSubject *)refreshBrandUISubject {
+    if (! _refreshBrandUISubject) {
+        _refreshBrandUISubject = [RACSubject subject];
+    }
+    return _refreshBrandUISubject;
 }
 
 @end

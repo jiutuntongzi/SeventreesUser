@@ -98,9 +98,14 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="couponTypeImgView" destination="cY0-Dt-BYC" id="RWn-Kv-KrT"/>
+                <outlet property="remakeLabel" destination="U2Z-35-TSv" id="9Nh-sq-5Cf"/>
                 <outlet property="takeButton" destination="Pd1-Lv-tW5" id="iSh-wF-jas"/>
+                <outlet property="timeLimitLabel" destination="RhM-Kt-eyh" id="veN-2a-Iqv"/>
+                <outlet property="titleLabel" destination="ag3-Sl-X90" id="aSi-uS-vtq"/>
+                <outlet property="topStyleImgView" destination="4wo-tK-UGg" id="vlz-QE-xC5"/>
             </connections>
-            <point key="canvasLocation" x="-2766" y="-58"/>
+            <point key="canvasLocation" x="-3479" y="-195"/>
         </tableViewCell>
     </objects>
     <resources>

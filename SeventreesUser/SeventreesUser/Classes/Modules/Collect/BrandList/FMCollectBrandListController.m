@@ -26,10 +26,10 @@
     self.view.cv_backColor(backColor);
     
     void (^setTableViewBlock)(void) = ^{
-        UITableView *tableView = UITableView.ct_tableView();
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero];
         self->_tableView = tableView;
-        tableView.ct_dataSource(self).ct_delegate(self)\
-        .ct_rowHeight(FMCollectBrandCellHeight).ct_tableFooterView(UIView.cv_viewWithFrame(CGRectZero))\
+        tableView.dataSource = self; tableView.delegate = self;
+        tableView.ct_rowHeight(FMCollectBrandCellHeight).ct_tableFooterView(UIView.cv_viewWithFrame(CGRectZero))\
         .ct_separatorInset(UIEdgeInsetsMake(0.f, 15.f, 0.f, 0.f)).ct_separatorStyle(UITableViewCellSeparatorStyleSingleLine).ct_separatorColor(UIColor.cc_colorByHexString(@"#E5E5E5"))\
         .cv_backColor(backColor);
         tableView.cs_showsVerticalScrollIndicator(NO);
@@ -49,10 +49,6 @@
 }
 
 - (void)fm_bindViewModel {
-    self.view.cv_addTouchEventCallback(^(UIView *view) {
-        [[UIApplication sharedApplication].keyWindow endEditing:YES];
-    });
-    
     @weakify(self)
     [[self.viewModel rac_valuesAndChangesForKeyPath:@"searchText" options:NSKeyValueObservingOptionNew observer:nil] subscribeNext:^(RACTuple *tuple) {
         @strongify(self)
@@ -116,7 +112,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     tableView.ct_deselectRowAtIndexPathAnimated(indexPath, YES);
-//    NSLog(@"indexPath.section == %ld indexPath.row == %ld \n brandEntity == %@", indexPath.section, indexPath.row, self.viewModel.brandEntitys[indexPath.row]);
     FMBrandGoodsController *nextVC = [[FMBrandGoodsController alloc] init];
     nextVC.brandId = self.viewModel.brandEntitys[indexPath.row].brandId;
     self.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);

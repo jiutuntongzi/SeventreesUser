@@ -44,16 +44,10 @@
 /** 绑定ViewModel */
 - (void)fm_bindViewModel {
     @weakify(self)
-    [RACObserve(self.viewModel, goodsEntitys) subscribeNext:^(NSArray<FMHomeGoodsModel *> *goodsEntitys) {
-        @strongify(self) if (!self) return;
-        
+    [self.viewModel.refreshUISubject subscribeNext:^(NSArray<FMHomeGoodsModel *> *goodsEntitys) {
+        @strongify(self)    if (!self) return;
         [self->_collectionView reloadData];
     }];
-    
-//    [self.viewModel.refreshUISubject subscribeNext:^(NSArray<FMHomeGoodsModel *> *goodsEntitys) {
-//        @strongify(self)    if (!self) return;
-//        
-//    }];
 };
 
 - (FMGoodsCollectionViewModel *)viewModel {

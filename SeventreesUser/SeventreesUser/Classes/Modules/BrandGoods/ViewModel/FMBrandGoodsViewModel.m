@@ -30,7 +30,7 @@
     if (! _requestDataCommand) {
         _requestDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *brandId) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                NSDictionary *params = @{@"brandId": brandId ?: @(0), @"page": @(1), @"limit": @(100)};
+                NSDictionary *params = @{@"brandId": brandId ?: @(0), @"page": @(1), @"limit": @(10)};
                 [networkMgr POST:kQueryBrandInfoURIPath params:params success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];

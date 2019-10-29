@@ -11,12 +11,11 @@
 @implementation FMGoodsCollectionViewModel
 
 - (void)fm_initialize {
-    self->_type = @"2";
+    self->_type = @"1";
     
     @weakify(self)
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (!self) return;
-        
         NSArray<FMHomeGoodsModel *> *goodsEntitys = [[FMHomeGoodsModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"data"]] copy];
         self->_goodsEntitys = goodsEntitys;
         [self.refreshUISubject sendNext:goodsEntitys];
@@ -31,11 +30,7 @@
         _requestDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 @strongify(self);
-                if (self->_type.length == 0) {
-                    [SVProgressHUD showErrorWithStatus:@"数据错误：type空了！"];
-                    return nil;
-                }
-                [networkMgr POST:kQueryCollectListURIPath params:@{@"type": self->_type} success:^(NetworkResultModel *resultModel) {
+                [networkMgr POST:kCollectListQueryURIPath params:@{@"type": self->_type} success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
                 } failure:^(NSError *error) {

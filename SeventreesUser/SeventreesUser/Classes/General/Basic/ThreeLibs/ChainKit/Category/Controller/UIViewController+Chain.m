@@ -11,31 +11,25 @@
 
 @implementation UIViewController (Chain)
 
-+ (UIViewController* (^)(void))cvc_controller {
-    return ^() { 
-        return [[self alloc] init];
-    };
-}
+#pragma mark - Show Class
 
-- (UIViewController* (^)(NSString * _Nullable))cvc_pushControllerByClassName {
+- (CVCShowClassNameCompletion)cvc_pushControllerByClassName {
     return ^(NSString * _Nullable aClassName) {
         UIViewController *nextController = [[NSClassFromString(aClassName) alloc] init];
         [self.navigationController pushViewController:nextController animated:YES];
-        
         return self;
     };
 }
 
-- (UIViewController* (^)(NSString * _Nullable))cvc_presentControllerByClassName {
+- (CVCShowClassNameCompletion)cvc_presentControllerByClassName {
     return ^(NSString * _Nullable aClassName) {
         UIViewController *nextController = [[NSClassFromString(aClassName) alloc] init];
         [self presentViewController:nextController animated:YES completion:nil];
-        
         return self;
     };
 }
 
-- (UIViewController* (^)(NSString * _Nullable))cvc_showVCWithClassName {
+- (CVCShowClassNameCompletion)cvc_showVCByClassName {
     return ^(NSString * _Nullable aClassName) {
         UIViewController *nextController = [[NSClassFromString(aClassName) alloc] init];
         if (nextController.navigationController) {
@@ -43,8 +37,15 @@
         } else {
             [self presentViewController:nextController animated:YES completion:nil];
         }
-        
         return self;
+    };
+}
+
+
+
++ (UIViewController* (^)(void))cvc_controller {
+    return ^{
+        return [[self alloc] init];
     };
 }
 

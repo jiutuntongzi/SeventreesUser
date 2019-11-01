@@ -7,15 +7,15 @@
 //
 
 #import "FMCouponPagingController.h"
-#import "MacroHeader.h"
+#import "FMCouponListController.h"
 
 #define     kClassNameVCKey      @"classNameVCKey"
 #define     kTitleKey            @"titleKey"
 
-typedef NS_ENUM(NSUInteger, FMItemPageType) {
-    FMItemPageTypeNoget,        // 未领取(0)
-    FMItemPageTypeNouser,       // 未使用(1)
-    FMItemPageTypeUsed,         // 已使用(2)
+typedef NS_ENUM(NSUInteger, FMCouponPagingItemType) {
+    FMCouponPagingItemTypeNoget = 1,        // 未领取(1)
+    FMCouponPagingItemTypeNouser,           // 未使用(2)
+    FMCouponPagingItemTypeUsed,             // 已使用(3)
 };
 
 @interface FMCouponPagingController ()
@@ -38,41 +38,15 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self setupUI];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-//    [self.navigationController setNavigationBarHidden:YES animated:NO];
-//    self.tabBarController.tabBar.hidden = YES;
     
     [self setupNavbar];
     
     [self reloadData];
 }
 
-//- (void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:animated];
-//
-//    self.tabBarController.tabBar.hidden = NO;
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
-//}
-
-- (void)updateViewConstraints {
-    
-    
-    [super updateViewConstraints];
-}
-
 #pragma mark - Private Functions
-
-- (void)setupUI {
-    
-}
 
 /** 配置分类菜单栏 */
 - (void)configTypeMenu {
@@ -141,8 +115,8 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 
 #pragma mark ——— <WMPageControllerDelegate, WMPageControllerDataSource>
 
-- (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info{
-    
+- (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof FMCouponListController *)couponListVC withInfo:(NSDictionary *)info {
+    couponListVC.viewModel.status = (FMCouponPagingItemType)self.selectIndex + 1;
 }
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController {

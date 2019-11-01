@@ -12,11 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (Chain)
 
-- (UIViewController* (^)(NSString * _Nullable))cvc_pushControllerByClassName;
+- (CVCShowClassNameCompletion)cvc_pushControllerByClassName;
 
-- (UIViewController* (^)(NSString * _Nullable))cvc_presentControllerByClassName;
+- (CVCShowClassNameCompletion)cvc_presentControllerByClassName;
 
-- (UIViewController* (^)(NSString * _Nullable))cvc_showVCWithClassName;
+- (CVCShowClassNameCompletion)cvc_showVCByClassName;
 
 
 + (UIViewController* (^)(void))cvc_controller;

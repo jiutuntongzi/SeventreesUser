@@ -1,14 +1,14 @@
 //
-//  FMCouponCellViewModel.m
+//  FMMeViewModel.m
 //  SeventreesUser
 //
-//  Created by wushiye on 2019/8/29.
+//  Created by wushiye on 2019/11/1.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import "FMCouponCellViewModel.h"
+#import "FMMeViewModel.h"
 
-@implementation FMCouponCellViewModel
+@implementation FMMeViewModel
 
 - (void)fm_initialize {
     @weakify(self)
@@ -16,10 +16,11 @@
         @strongify(self)    if (!self) return;
         if (![resultModel.statusCode isEqualToString:@"OK"]) {
             [self.showHintSubject sendNext:resultModel.statusMsg];
-        } else {
-            [SVProgressHUD showSuccessWithStatus:resultModel.statusMsg];
+            return;
         }
-//        [self.refreshUISubject sendNext:resultModel];
+        FMMeModel *profileEntity = [FMMeModel mj_objectWithKeyValues:resultModel.jsonDict];
+        self->_profileEntity = profileEntity;
+        [self.refreshUISubject sendNext:profileEntity];
     }];
 }
 
@@ -28,16 +29,13 @@
         @weakify(self)
         _requestDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *couponId) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:1];
-                params[@"voucherId"] = self->_couponEntity.couponId;
-                [networkMgr GET:kCouponGainURIPath params:params success:^(NetworkResultModel *resultModel) {
+                [networkMgr POST:kPersonalProfileQueryURIPath params:nil success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
                     
                 } failure:^(NSError *error) {
                     [subscriber sendCompleted];
-                    @strongify(self)
-                    [self.showHintSubject sendNext:error.localizedDescription];
+                    @strongify(self) [self.showHintSubject sendNext:error.localizedDescription];
                 }];
                 return nil;
             }];

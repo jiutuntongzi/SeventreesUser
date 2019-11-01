@@ -798,8 +798,8 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="r88-RB-TQJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-150" id="1la-de-CzI"/>
-                <constraint firstAttribute="bottom" secondItem="jeU-ac-iBF" secondAttribute="bottom" id="31k-nH-mGV"/>
                 <constraint firstItem="jeU-ac-iBF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7CV-aw-UNw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="jeU-ac-iBF" secondAttribute="bottom" id="8iU-Hq-9lU"/>
                 <constraint firstItem="jeU-ac-iBF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="J46-SD-lUe"/>
                 <constraint firstAttribute="trailing" secondItem="jeU-ac-iBF" secondAttribute="trailing" id="YRL-Go-HTs"/>
                 <constraint firstItem="r88-RB-TQJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="g1L-at-eKv"/>
@@ -809,15 +809,23 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="afterSaleLabel" destination="2r9-r0-14d" id="h6p-A7-7eT"/>
                 <outlet property="bargainButton" destination="mC7-x3-PlT" id="vOW-mN-Ft2"/>
                 <outlet property="collectButton" destination="Xqv-2B-Qt4" id="pGo-GS-Wo1"/>
                 <outlet property="contentTopMarginCons" destination="J46-SD-lUe" id="5We-AA-GSA"/>
                 <outlet property="couponListButton" destination="keG-TN-FDw" id="xrw-bn-32o"/>
+                <outlet property="couponTotalLabel" destination="Gz5-6n-bOV" id="LRX-Ml-jiJ"/>
+                <outlet property="delayCommentsLabel" destination="0Kx-1x-thy" id="5qH-BF-rOh"/>
+                <outlet property="delayDeliverLabel" destination="UDI-TL-dfh" id="Ja8-U8-u1J"/>
+                <outlet property="delayPaymentLabel" destination="iVr-I3-Hax" id="N9h-tz-MlB"/>
+                <outlet property="delayTakeLabel" destination="RE0-Ol-pwy" id="DUT-bW-vcS"/>
                 <outlet property="headImgView" destination="P0F-mM-36H" id="Dpw-Sj-LRd"/>
                 <outlet property="messageButton" destination="2dM-da-Q1l" id="NJ7-4V-Qim"/>
                 <outlet property="moreOrderButton" destination="RJs-dX-GDl" id="Fj2-wM-ASp"/>
                 <outlet property="myQRCodeButton" destination="3Px-Fp-vAk" id="G5P-Iq-1l1"/>
+                <outlet property="nikeNameLabel" destination="UPi-VH-FmX" id="e1c-Hv-eLy"/>
                 <outlet property="scoreCenterButton" destination="gmn-0J-IBs" id="SfT-pn-LiA"/>
+                <outlet property="scoreTotalLabel" destination="HVg-G8-wAF" id="AKK-zz-iDv"/>
                 <outlet property="settingButton" destination="yL9-3h-REf" id="6LA-1Q-drC"/>
                 <outlet property="shareButton" destination="M1J-pi-pLn" id="ekr-fR-bkP"/>
                 <outlet property="spellButton" destination="m0f-ha-bEW" id="N1R-wn-oWb"/>
@@ -829,7 +837,7 @@
                 <outletCollection property="orderTypeButtons" destination="cVP-FL-KAV" id="eI7-nl-O9V"/>
                 <outletCollection property="orderTypeButtons" destination="GfN-cB-pRa" id="cl8-Xb-er2"/>
             </connections>
-            <point key="canvasLocation" x="-2118" y="-28"/>
+            <point key="canvasLocation" x="-3148" y="84"/>
         </view>
     </objects>
     <resources>

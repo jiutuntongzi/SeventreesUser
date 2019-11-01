@@ -17,8 +17,8 @@
         @strongify(self)
         if (![resultModel.statusCode isEqualToString:@"OK"]) {
             DLog(@"请求失败，接口错误！statusCode == %@", resultModel.statusCode);
-            self.homeModel = nil;
-            [self.refreshUISubject sendNext:nil];
+//            self.homeModel = nil;
+//            [self.refreshUISubject sendNext:nil];
             return;
         }
         

@@ -6,18 +6,28 @@
 //  Copyright © 2019 印象管家商家. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#ifndef FMTableViewCellProtocol_h
+#define FMTableViewCellProtocol_h
 
-NS_ASSUME_NONNULL_BEGIN
+@protocol FMViewModelProtocol; // 协议引用
 
 @protocol FMTableViewCellProtocol <NSObject>
 @optional
 
+- (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel;
+
 /** 设置子views */
 - (void)fm_setupSubviews;
+
+/** 生成布局约束 */
+- (void)fm_makeConstraints;
+
+/** 绑定KVO观察 */
+- (void)fm_bindObserver;
+
 /** 绑定ViewModel */
 - (void)fm_bindViewModel;
 
 @end
 
-NS_ASSUME_NONNULL_END
+#endif /* FMTableViewCellProtocol_h */

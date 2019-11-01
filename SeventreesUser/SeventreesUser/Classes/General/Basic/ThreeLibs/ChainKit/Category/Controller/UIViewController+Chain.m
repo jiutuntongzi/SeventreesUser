@@ -12,8 +12,39 @@
 @implementation UIViewController (Chain)
 
 + (UIViewController* (^)(void))cvc_controller {
-    return ^() {
+    return ^() { 
         return [[self alloc] init];
+    };
+}
+
+- (UIViewController* (^)(NSString * _Nullable))cvc_pushControllerByClassName {
+    return ^(NSString * _Nullable aClassName) {
+        UIViewController *nextController = [[NSClassFromString(aClassName) alloc] init];
+        [self.navigationController pushViewController:nextController animated:YES];
+        
+        return self;
+    };
+}
+
+- (UIViewController* (^)(NSString * _Nullable))cvc_presentControllerByClassName {
+    return ^(NSString * _Nullable aClassName) {
+        UIViewController *nextController = [[NSClassFromString(aClassName) alloc] init];
+        [self presentViewController:nextController animated:YES completion:nil];
+        
+        return self;
+    };
+}
+
+- (UIViewController* (^)(NSString * _Nullable))cvc_showVCWithClassName {
+    return ^(NSString * _Nullable aClassName) {
+        UIViewController *nextController = [[NSClassFromString(aClassName) alloc] init];
+        if (nextController.navigationController) {
+            [self.navigationController pushViewController:nextController animated:YES];
+        } else {
+            [self presentViewController:nextController animated:YES completion:nil];
+        }
+        
+        return self;
     };
 }
 

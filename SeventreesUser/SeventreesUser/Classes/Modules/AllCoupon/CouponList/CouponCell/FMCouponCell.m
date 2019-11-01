@@ -37,7 +37,7 @@
         
         
         /// 优惠卷类型（1 = 现金卷 2 = 折扣卷）
-        NSString *typeImageName, *styleImageName;
+        NSString *typeImageName = nil, *styleImageName = nil;
         switch (couponEntity.type.integerValue) {
             case 1: {
                 styleImageName = @"icon_cashCoupon_top";
@@ -68,7 +68,7 @@
             self->_couponTypeImgView.image = UIImage.ci_imageNamed(typeImageName);
             
         } else if (couponEntity.status == 2) {
-            typeImageName = [NSString stringWithFormat:@"%@_notuse", typeImageName];
+            typeImageName = [NSString stringWithFormat:@"%@_unused", typeImageName];
             self->_couponTypeImgView.image = UIImage.ci_imageNamed(typeImageName);
             
         } else if (couponEntity.status == 3) {

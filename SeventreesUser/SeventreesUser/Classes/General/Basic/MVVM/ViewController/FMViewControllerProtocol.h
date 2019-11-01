@@ -11,20 +11,23 @@
 
 @protocol FMViewModelProtocol; // 引用ViewModel协议
 
-
 @protocol FMViewControllerProtocol <NSObject>
 @optional
 
 - (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel;
-
-/** 绑定ViewModel */
-- (void)fm_bindViewModel;
 
 /** 添加子views */
 - (void)fm_addSubviews;
 
 /** 添加布局约束 */
 - (void)fm_makeConstraints;
+
+/** 绑定KVO观察 */
+- (void)fm_bindObserver;
+
+/** 绑定ViewModel */
+- (void)fm_bindViewModel;
+
 
 /** 设置导航栏 */
 - (void)fm_setupNavbar;

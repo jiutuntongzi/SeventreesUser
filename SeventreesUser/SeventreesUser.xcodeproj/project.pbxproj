@@ -848,6 +848,7 @@
 		844A0E142338BE2E006015D4 /* FMRefundGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMRefundGoodsCell.h; sourceTree = "<group>"; };
 		844A0E152338BE2E006015D4 /* FMRefundGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMRefundGoodsCell.m; sourceTree = "<group>"; };
 		844A0E172338BE3F006015D4 /* FMRefundGoodsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMRefundGoodsCell.xib; sourceTree = "<group>"; };
+		84501960236ACC000086AEBE /* FMTableViewCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMTableViewCellProtocol.h; sourceTree = "<group>"; };
 		845058DC235EEE60006BA561 /* FMBrandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMBrandModel.h; sourceTree = "<group>"; };
 		845058DD235EEE60006BA561 /* FMBrandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMBrandModel.m; sourceTree = "<group>"; };
 		8453D56A235177500014CC3B /* NSError+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+Common.h"; sourceTree = "<group>"; };
@@ -1060,7 +1061,6 @@
 		84D7273623014D1B002D387A /* MacroHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroHeader.h; sourceTree = "<group>"; };
 		84D7273923014D1B002D387A /* FMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMTableViewCell.h; sourceTree = "<group>"; };
 		84D7273A23014D1B002D387A /* FMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMTableViewCell.m; sourceTree = "<group>"; };
-		84D7273B23014D1B002D387A /* FMTableViewCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMTableViewCellProtocol.h; sourceTree = "<group>"; };
 		84D7273C23014D1B002D387A /* FMView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMView.h; sourceTree = "<group>"; };
 		84D7273D23014D1B002D387A /* FMView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMView.m; sourceTree = "<group>"; };
 		84D7273E23014D1B002D387A /* FMViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMViewProtocol.h; sourceTree = "<group>"; };
@@ -3668,15 +3668,15 @@
 		84D7273823014D1B002D387A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84D7273923014D1B002D387A /* FMTableViewCell.h */,
-				84D7273A23014D1B002D387A /* FMTableViewCell.m */,
-				84D7273B23014D1B002D387A /* FMTableViewCellProtocol.h */,
-				84FE0480230BC3AE00E83754 /* FMCollectionViewCell.h */,
-				84FE0481230BC3AE00E83754 /* FMCollectionViewCell.m */,
-				84FE0483230BC40400E83754 /* FMCollectionViewCellProtocol.h */,
 				84D7273C23014D1B002D387A /* FMView.h */,
 				84D7273D23014D1B002D387A /* FMView.m */,
 				84D7273E23014D1B002D387A /* FMViewProtocol.h */,
+				84D7273923014D1B002D387A /* FMTableViewCell.h */,
+				84D7273A23014D1B002D387A /* FMTableViewCell.m */,
+				84501960236ACC000086AEBE /* FMTableViewCellProtocol.h */,
+				84FE0480230BC3AE00E83754 /* FMCollectionViewCell.h */,
+				84FE0481230BC3AE00E83754 /* FMCollectionViewCell.m */,
+				84FE0483230BC40400E83754 /* FMCollectionViewCellProtocol.h */,
 			);
 			path = View;
 			sourceTree = "<group>";

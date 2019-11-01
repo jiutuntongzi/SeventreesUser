@@ -6,18 +6,28 @@
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#ifndef FMCollectionViewCellProtocol_h
+#define FMCollectionViewCellProtocol_h
 
-NS_ASSUME_NONNULL_BEGIN
+@protocol FMViewModelProtocol; // 协议引用
 
 @protocol FMCollectionViewCellProtocol <NSObject>
 @optional
 
+- (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel;
+
 /** 设置子views */
 - (void)fm_setupSubviews;
+
+/** 生成布局约束 */
+- (void)fm_makeConstraints;
+
+/** 绑定KVO观察 */
+- (void)fm_bindObserver;
+
 /** 绑定ViewModel */
 - (void)fm_bindViewModel;
 
 @end
 
-NS_ASSUME_NONNULL_END
+#endif /** FMCollectionViewCellProtocol.h */

@@ -12,6 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (Chain)
 
+- (UIViewController* (^)(NSString * _Nullable))cvc_pushControllerByClassName;
+
+- (UIViewController* (^)(NSString * _Nullable))cvc_presentControllerByClassName;
+
+- (UIViewController* (^)(NSString * _Nullable))cvc_showVCWithClassName;
+
+
 + (UIViewController* (^)(void))cvc_controller;
 
 - (CVCModalControllerHandleCallback)cvc_presentVCAnimatedCompletion;
@@ -21,7 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIViewController* (^)(NSString * __nullable))cvc_title;
 
 - (void (^ __nullable)(BOOL))cvc_automaticallyAdjustsScrollViewInsets;
-
 
 
 #pragma mark - UIAlertController

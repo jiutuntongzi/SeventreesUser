@@ -9,7 +9,7 @@
 #ifndef FMViewProtocol_h
 #define FMViewProtocol_h
 
-@protocol FMViewModelProtocol; // 引用ViewModel协议
+@protocol FMViewModelProtocol; // 协议引用
 
 @protocol FMViewProtocol <NSObject>
 @optional
@@ -18,6 +18,13 @@
 
 /** 设置子views */
 - (void)fm_setupSubviews;
+
+/** 生成布局约束 */
+//- (void)fm_makeConstraints;
+
+/** 绑定KVO观察 */
+- (void)fm_bindObserver;
+
 /** 绑定ViewModel */
 - (void)fm_bindViewModel;
 

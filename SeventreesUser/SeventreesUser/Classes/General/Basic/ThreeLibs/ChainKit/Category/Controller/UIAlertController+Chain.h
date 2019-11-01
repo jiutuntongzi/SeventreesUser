@@ -19,8 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (CACInputTextFieldsHandler)cac_alertControllerWithTitlePlaceholdersForInputCompleted;
 
-
-
 @end
 
 NS_ASSUME_NONNULL_END

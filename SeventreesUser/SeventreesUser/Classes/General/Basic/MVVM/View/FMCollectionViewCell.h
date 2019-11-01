@@ -10,10 +10,7 @@
 #import "MacroHeader.h"
 #import "FMCollectionViewCellProtocol.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMCollectionViewCell : UICollectionViewCell <FMCollectionViewCellProtocol>
 
 @end
 
-NS_ASSUME_NONNULL_END

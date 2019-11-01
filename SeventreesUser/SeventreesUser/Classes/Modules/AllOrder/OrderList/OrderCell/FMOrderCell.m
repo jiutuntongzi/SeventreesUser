@@ -46,8 +46,6 @@
     [[_rightButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         // code..
     }];
-    
-    
 }
 
 - (FMOrderCellViewModel *)viewModel {

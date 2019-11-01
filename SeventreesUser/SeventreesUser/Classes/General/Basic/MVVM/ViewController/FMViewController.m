@@ -25,6 +25,7 @@
         @strongify(viewController);
         
         [viewController fm_addSubviews];
+        [viewController fm_bindObserver];
         [viewController fm_makeConstraints];
         [viewController fm_bindViewModel];
     }];
@@ -45,6 +46,7 @@
     return self;
 }
 
+/** Subclass Implement */
 - (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel {
     if (self = [super init]) {
     }
@@ -52,13 +54,17 @@
 }
 
 /** 添加子views */
-- (void)fm_addSubviews { }
+- (void)fm_addSubviews { /** Subclass Implement */ }
 
 /** 添加布局约束 */
-- (void)fm_makeConstraints { }
+- (void)fm_makeConstraints { /** Subclass Implement */ }
+
+/** 绑定KVO观察 */
+- (void)fm_bindObserver { /** Subclass Implement */ };
 
 /** 绑定ViewModel */
-- (void)fm_bindViewModel { }
+- (void)fm_bindViewModel { /** Subclass Implement */ }
+
 
 /** 设置导航栏 */
 - (void)fm_setupNavbar {
@@ -70,22 +76,9 @@
         }
     });
     self.navigationItem.cni_leftBarButtonItem(returnItem);
-    
-    /*
-    UIButton *customButton = UIButton.cb_button();
-    customButton.cv_frameOf(0.f, 0.f, kNavBarHeight, kNavBarHeight);
-    customButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    self.navigationItem.cni_leftBarButtonItem(UIBarButtonItem.cbi_initWithCustomView(customButton));
-    __weak typeof(self) weakSelf = self;
-    customButton.cb_setImageOfNamed(_returnImageName).cc_setActionEventsCallback(UIControlEventTouchUpInside, ^(UIButton *button) {
-        if ([weakSelf.navigationController popViewControllerAnimated:YES] == nil) {
-            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
-        }
-    });
-    */
 }
 
-/** 刷新数据 */
-- (void)fm_refreshData { }
+/** 刷新页面数据 */
+- (void)fm_refreshData { /** Subclass Implement */ }
 
 @end

@@ -37,8 +37,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentTopMarginCons;
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImgView;
-@property (weak, nonatomic) IBOutlet UIView *totalContentView;
 @property (weak, nonatomic) IBOutlet UIButton *vipButton;
+@property (weak, nonatomic) IBOutlet UIView *totalContentView;
 
 @property (weak, nonatomic) IBOutlet UIButton *couponListButton;
 @property (weak, nonatomic) IBOutlet UIButton *scoreCenterButton;
@@ -55,6 +55,18 @@
 @property (weak, nonatomic) IBOutlet UIButton *settingButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *delayPaymentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *delayDeliverLabel;
+@property (weak, nonatomic) IBOutlet UILabel *delayTakeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *delayCommentsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *afterSaleLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *nikeNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *couponTotalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scoreTotalLabel;
+
 
 @end
 
@@ -76,15 +88,15 @@
 
 /** 绑定ViewModel */
 - (void)fm_bindViewModel {
-    __weak typeof(self) weakSelf = self;
+    @weakify(self);
+    
+    /// Bind Actions
     
     _headImgView.cv_addTouchEventCallback(^(UIImageView *imageView) {
         UIViewController *nextVC = [[FMPersonalProfileController alloc] init];
         nextVC.hidesBottomBarWhenPushed = YES;
-        weakSelf.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+        self_weak_.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     });
-    
-    @weakify(self);
     
     [[_vipButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
@@ -179,13 +191,43 @@
         orderTypeButton.tag = idx;
        
         [[orderTypeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *orderTypeButton) {
-            @strongify(self);
+            @strongify(self)
             UIViewController *nextVC = [[FMOrderPagingController alloc] init];
             global_orderType = (unsigned int)orderTypeButton.tag;
             nextVC.hidesBottomBarWhenPushed = YES;
             self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
         }];
     }
+    
+    /// Bind viewModel
+    
+    [self.viewModel.refreshUISubject subscribeNext:^(FMMeModel *profileEntity) {
+        @strongify(self);
+        [self->_headImgView sd_setImageWithURL:[NSURL URLWithString:profileEntity.headUrl] placeholderImage:[UIImage new]];
+                self->_nikeNameLabel.text = profileEntity.nick;
+        self->_couponTotalLabel.text = [NSString stringWithFormat:@"%@张", profileEntity.couponNum];
+        self->_scoreTotalLabel.text = profileEntity.integralNum.stringValue;
+        
+        self->_delayPaymentLabel.text = [NSString stringWithFormat:@"待付款(%@)", profileEntity.paymentNum.stringValue];
+        self->_delayPaymentLabel.text = [NSString stringWithFormat:@"待发货(%@)", profileEntity.deliveryNum.stringValue];
+        self->_delayPaymentLabel.text = [NSString stringWithFormat:@"待收货(%@)", profileEntity.takeNum.stringValue];
+        self->_delayPaymentLabel.text = [NSString stringWithFormat:@"待评论(%@)", profileEntity.commentsNum.stringValue];
+//        self->_afterSaleLabel.text = [NSString stringWithFormat:@"退货/售后(%@)", profileEntity.];
+    }];
+    
+    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+        [SVProgressHUD showInfoWithStatus:status];
+        [SVProgressHUD dismissWithDelay:1.f];
+    }];
+    
 };
+
+- (FMMeViewModel *)viewModel {
+    if (! _viewModel) {
+        _viewModel = [[FMMeViewModel alloc] init];
+    }
+    return _viewModel;
+}
 
 @end

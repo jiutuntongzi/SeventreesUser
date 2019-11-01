@@ -171,6 +171,8 @@ typedef void (^ __nullable CVCAlertInputTextsHandler)(NSString * __nullable, NSA
 
 typedef void (^ __nullable CVCAlertConfrimHandler)(NSString * __nullable, NSString * __nullable, NSString * __nullable, CHandleCallback __nullable);
 
+typedef UIViewController* (^ __nullable CVCShowClassNameCompletion)(NSString * _Nonnull);
+
 
 
 #endif /* ChainBlockType_h */

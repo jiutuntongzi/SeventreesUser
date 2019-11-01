@@ -59,6 +59,9 @@
 
 #define      kCouponGainURIPath            @"/api/srvoucher/getVoucher"            // 领取优惠卷
 
+#pragma mark ——— 个人资料
+
+#define      kPersonalProfileQueryURIPath        @"/api/sysuser/getUserMsg"         // 领取优惠卷
 
 
 #endif /* URIPath_h */

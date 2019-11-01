@@ -11,7 +11,7 @@
 
 @interface FMMeController ()
 
-@property (nonatomic, strong) UIView *mainView;
+@property (nonatomic, strong) FMMeView *mainView;
 
 @end
 
@@ -44,9 +44,8 @@
 #pragma mark - Private Functions
 
 - (void)fm_addSubviews {
-    FMMeView *meView = (FMMeView *)FMMeView.cv_viewFromNibLoad();
-    _mainView = meView;
-    [self.view addSubview:meView];
+    _mainView = FMMeView.cv_viewFromNibLoad();
+    [self.view addSubview:_mainView];
 }
 
 - (void)fm_bindViewModel {
@@ -54,15 +53,13 @@
 }
 
 - (void)fm_setupNavbar {
-    self.navigationItem.title = @"首页";
+    [super fm_setupNavbar];
+    
+    self.navigationItem.title = @"我的";
 }
 
 - (void)fm_refreshData {
-    
+    [_mainView.viewModel.requestDataCommand execute:nil];
 }
-
-#pragma mark - Lazyload
-
-
 
 @end

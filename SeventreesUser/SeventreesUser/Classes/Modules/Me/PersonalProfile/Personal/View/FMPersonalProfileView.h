@@ -8,11 +8,10 @@
 
 #import "FMView.h"
 
-#import "FMPersonalProfileViewModel.h"
-#import "FMSelectItemModel.h"
+#import "FMMeViewModel.h"
 
 @interface FMPersonalProfileView : FMView
 
-@property (nonatomic, strong) FMPersonalProfileViewModel *viewModel;
+@property (nonatomic, strong) FMMeViewModel *viewModel;
 
 @end

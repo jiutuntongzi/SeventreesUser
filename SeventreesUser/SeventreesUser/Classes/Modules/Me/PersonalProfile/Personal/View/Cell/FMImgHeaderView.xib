@@ -69,7 +69,11 @@
                 <constraint firstItem="DJI-6C-ClP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lwp-n0-R2h"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="175" y="-177"/>
+            <connections>
+                <outlet property="headImgView" destination="pWV-nY-pMK" id="2lc-WI-Pee"/>
+                <outlet property="titleLabel" destination="dk6-7V-fI3" id="ybs-3T-RsL"/>
+            </connections>
+            <point key="canvasLocation" x="-106" y="-123"/>
         </view>
     </objects>
     <resources>

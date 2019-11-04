@@ -19,18 +19,17 @@
 
 @implementation FMPersonalInfoCell
 
-- (void)setSubTitle:(NSString *)subTitle {
-    _subTitle = subTitle;
-    
-    _subTitleLabel.cl_textColor(UIColor.cc_colorByHexString(@"#333333"));
-}
-
 - (void)setItemModel:(FMPersonalInfoModel *)itemModel {
     _itemModel = itemModel;
     
-    _subTitleLabel.cl_textColor(UIColor.cc_colorByHexString(@"#E5E5E5"));
     _titleLabel.text = itemModel.title;
     _subTitleLabel.text = itemModel.subTitle;
+    
+    if (itemModel.hasText) {
+        _subTitleLabel.cl_textColor(UIColor.cc_colorByHexString(@"#333333"));
+    } else {
+        _subTitleLabel.cl_textColor(UIColor.cc_colorByHexString(@"#999999"));
+    }
 }
 
 - (void)awakeFromNib {

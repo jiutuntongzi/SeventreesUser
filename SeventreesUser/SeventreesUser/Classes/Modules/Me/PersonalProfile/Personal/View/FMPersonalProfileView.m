@@ -21,8 +21,6 @@
 
 @interface FMPersonalProfileView () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSDictionary *selectItems;
-
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, assign) CGFloat rowHeight;
@@ -34,35 +32,6 @@
 @synthesize viewModel = _viewModel;
 
 #pragma mark - Private Functions
-
-static const NSUInteger _rowCount = 4;
-- (NSDictionary *)itemInfoForIndex:(NSUInteger)index {
-    if (! _selectItems) {
-        NSString * const title = @"title";
-        NSString * const subTitle = @"subTitle";
-        
-        _selectItems = @{
-                     @(0) : @{
-                             title           : @"昵称",
-                             subTitle        : @"请设置昵称",
-                             },
-                     @(1) : @{
-                             title           : @"姓名",
-                             subTitle        : @"请填写姓名",
-                             },
-                     @(2) : @{
-                             title           : @"生日",
-                             subTitle        : @"请设置生日",
-                             },
-                     @(3) : @{
-                             title           : @"性别",
-                             subTitle        : @"请选择性别",
-                             },
-                     };
-        
-    }
-    return _selectItems[@(index)];
-}
 
 - (void)fm_setupSubviews {
     _rowHeight = kFixedHeight;
@@ -76,7 +45,7 @@ static const NSUInteger _rowCount = 4;
 
 - (void)setupTableView {
     CGFloat width = self.bounds.size.width, height = self.bounds.size.height;
-    UITableView *tableView = UITableView.ct_tableViewWithFrameStyle(0.f, 0.f, width, height, UITableViewStylePlain)\
+    UITableView *tableView = UITableView.ct_tableViewWithFrameStyle(0.f, 0.f, width, height, UITableViewStyleGrouped)\
     .ct_dataSource(self).ct_delegate(self)\
     .ct_rowHeight(_rowHeight).ct_separatorStyle(UITableViewCellSeparatorStyleSingleLine).ct_separatorColor(UIColor.cc_colorByHexString(@"#E5E5E5"))\
     .ct_separatorInset(UIEdgeInsetsMake(0.f, 15.f, 0.f, 0.f));
@@ -88,13 +57,29 @@ static const NSUInteger _rowCount = 4;
 }
 
 - (void)fm_bindViewModel {
-//    @weakify(self);
-//
-//    [[self.logoutButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        @strongify(self);
-//
-//        [self.viewModel.actionSubject sendNext:nil];
-//    }];
+    @weakify(self);
+    
+    /// Bind viewModel
+    
+    [self.viewModel.refreshUISubject subscribeNext:^(FMMeModel *profileEntity) {
+        @strongify(self)
+        [self->_tableView reloadData];
+    }];
+    
+    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+        [SVProgressHUD showInfoWithStatus:status];
+//        [SVProgressHUD dismissWithDelay:1.f];
+    }];
+    
+    [[self.viewModel.requestUpdateDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+        if ([isExecuting isEqualToNumber:@(YES)]) {
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+            [SVProgressHUD showWithStatus:@" "];
+        } else {
+            [SVProgressHUD dismissWithDelay:1.f];
+        }
+    }];
 }
 
 #pragma mark - System Functions
@@ -109,9 +94,9 @@ static const NSUInteger _rowCount = 4;
 
 #pragma mark - Lazyload
 
-- (FMPersonalProfileViewModel *)viewModel {
+- (FMMeViewModel *)viewModel {
     if (!_viewModel) {
-        _viewModel = [[FMPersonalProfileViewModel alloc] init];
+        _viewModel = [[FMMeViewModel alloc] init];
     }
     return _viewModel;
 }
@@ -120,15 +105,12 @@ static const NSUInteger _rowCount = 4;
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     FMPersonalInfoCell *cell = FMPersonalInfoCell.ctc_cellReuseNibLoadForTableView(tableView);
-    cell.itemModel = [FMPersonalInfoModel modelWithDictionary:[self itemInfoForIndex:indexPath.row]];
-    if (indexPath.row % 2 == 0) {
-        cell.subTitle = @"测试颜色";
-    }
+    cell.itemModel = self.viewModel.profileItems[indexPath.row];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _rowCount;
+    return self.viewModel.profileItems.count;
 }
 
 #pragma mark ——— <UITableViewDelegate>
@@ -137,6 +119,14 @@ static const NSUInteger _rowCount = 4;
     DLog(@"点了第%ld行", (long)indexPath.row);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    // 刷新表格单行
+    void (^reloadRowsAtIndexPathsBlock)(NSString *) = ^(NSString *subTitle) {
+        FMPersonalInfoCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.itemModel.subTitle = subTitle;
+        tableView.ct_reloadRowsAtIndexPaths(@[indexPath]);
+    };
+    
+    NSMutableDictionary *requestBodyParams = [[NSMutableDictionary alloc] initWithCapacity:1];
     NSString *placeholder = @"最多可输入6位中文字符", *affirmTitle = @"确认保存";
     if (indexPath.row == 0) {
         [DialogBoxView showByTitle:@"请设置昵称" message:placeholder affirmButtonTitle:affirmTitle forStyle:DialogBoxViewStyleInput affirmHandler:^(NSString * _Nullable inputText) {
@@ -146,41 +136,46 @@ static const NSUInteger _rowCount = 4;
                 [SVProgressHUD dismissWithDelay:1.f];
                 return;
             }
-            
+            reloadRowsAtIndexPathsBlock(inputText);
+            requestBodyParams[@"nick"] = inputText ?: @"";
+            [self.viewModel.requestUpdateDataCommand execute:requestBodyParams];
         }];
+        
     } else if (indexPath.row == 1) {
         [DialogBoxView showByTitle:@"请填写姓名" message:placeholder affirmButtonTitle:affirmTitle forStyle:DialogBoxViewStyleInput affirmHandler:^(NSString * _Nullable inputText) {
             DLog(@"inputText == %@", inputText);
-            if (inputText.length > 6) {
-                [SVProgressHUD showInfoWithStatus:placeholder];
-                [SVProgressHUD dismissWithDelay:1.f];
-                return;
-            }
+            reloadRowsAtIndexPathsBlock(inputText);
             
+            requestBodyParams[@"name"] = inputText ?: @"";
+            [self.viewModel.requestUpdateDataCommand execute:requestBodyParams];
         }];
+        
     } else if (indexPath.row == 2) {
         NSDate *minDate = [NSDate br_setYear:1900 month:0 day:0];
         NSDate *maxDate = [NSDate distantFuture];
         [BRDatePickerView showDatePickerWithTitle:@"" dateType:BRDatePickerModeYMD defaultSelValue:nil minDate:minDate maxDate:maxDate isAutoSelect:YES themeColor:nil resultBlock:^(NSString *selectTime) {
             DLog(@"selectTime == %@", selectTime);
-        } cancelBlock:^{
+            reloadRowsAtIndexPathsBlock(selectTime);
             
-        }];
+            requestBodyParams[@"birthday"] = selectTime ?: @"";
+            [self.viewModel.requestUpdateDataCommand execute:requestBodyParams];
+        } cancelBlock:nil];
         
     } else if (indexPath.row == 3) {
 //        self.viewController.cvc_showSheetControllerByTitleNamesCompleted(nil, @[@"男", @"女"], ^(NSUInteger index) {
 //        });
-        [BRStringPickerView showStringPickerWithTitle:@"" dataSource:@[@"男", @"女"] defaultSelValue:@"" isAutoSelect:NO themeColor:nil resultBlock:^(NSString *selectText, NSInteger selectIdx) {
-            
-        } cancelBlock:^{
-            DLog(@"取消");
-        }];
+        [BRStringPickerView showStringPickerWithTitle:@"" dataSource:@[@"男", @"女"] defaultSelValue:@"" isAutoSelect:NO themeColor:nil resultBlock:^(NSString *selectSex, NSInteger selectIdx) {
+            reloadRowsAtIndexPathsBlock(selectSex);
+            requestBodyParams[@"sex"] = @(selectIdx + 1);
+            [self.viewModel.requestUpdateDataCommand execute:requestBodyParams];
+        } cancelBlock:nil];
     }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     FMImgHeaderView *imgHeaderView = (FMImgHeaderView *)FMImgHeaderView.cv_viewFromNibLoad();
     imgHeaderView.frame = CGRectZero;
+    imgHeaderView.imageURLString = self.viewModel.profileEntity.headUrl;
     
     imgHeaderView.cv_addTouchEventCallback(^(UIView *view) {
         DLog(@"点了头像 headerView");
@@ -201,9 +196,8 @@ static const NSUInteger _rowCount = 4;
     __weak typeof(self) weakSelf = self;
     selectFooterView.cv_addTouchEventCallback(^(UIView *view) {
         DLog(@"点了地址管理 footerView");
-        [weakSelf.viewModel.nextActionSubject sendNext:nil];
+        [weakSelf.viewModel.showAddressVCSubject sendNext:@"FMAddressManagerController"];
     });
-    
     [footerView addSubview:selectFooterView];
     
     return footerView;

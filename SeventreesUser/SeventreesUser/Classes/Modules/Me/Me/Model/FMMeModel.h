@@ -28,6 +28,10 @@
 
 @property (nonatomic, copy) NSString *nick;
 
+@property (nonatomic, copy) NSString *name;
+
+@property (nonatomic, copy) NSString *birthday;
+
 @property (nonatomic, copy) NSString *headUrl;
 
 @property (nonatomic, strong) NSNumber *shopId;

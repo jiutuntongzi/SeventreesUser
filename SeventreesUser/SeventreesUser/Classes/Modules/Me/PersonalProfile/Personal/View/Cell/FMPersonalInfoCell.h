@@ -14,6 +14,4 @@
 
 @property (nonatomic, strong) FMPersonalInfoModel *itemModel;
 
-@property (nonatomic, copy) NSString *subTitle;
-
 @end

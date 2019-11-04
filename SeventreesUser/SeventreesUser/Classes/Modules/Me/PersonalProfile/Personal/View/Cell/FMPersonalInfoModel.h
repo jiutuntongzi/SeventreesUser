@@ -14,5 +14,7 @@
 
 @property (nonatomic, copy) NSString *subTitle;
 
+@property (nonatomic, assign) BOOL hasText;
+
 @end
 

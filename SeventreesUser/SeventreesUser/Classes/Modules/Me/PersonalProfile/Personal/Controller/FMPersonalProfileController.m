@@ -8,7 +8,6 @@
 
 #import "FMPersonalProfileController.h"
 #import "FMPersonalProfileView.h"
-#import "FMPersonalProfileViewModel.h"
 
 #import "FMAddressManagerController.h"
 
@@ -49,9 +48,10 @@
 
 - (void)fm_bindViewModel {
     @weakify(self)
-    [_mainView.viewModel.nextActionSubject subscribeNext:^(id x) {
+    
+    [_mainView.viewModel.showAddressVCSubject subscribeNext:^(id x) {
         @strongify(self)    if (!self) return;
-        UIViewController *nextVC = [[FMAddressManagerController alloc] init];
+        FMAddressManagerController *nextVC = [[FMAddressManagerController alloc] init];
         self.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
 }
@@ -68,6 +68,10 @@
 //        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
 //    });
 //    self.navigationItem.cni_rightBarButtonItem(rightItem);
+}
+
+- (void)fm_refreshData {
+    [_mainView.viewModel.requestDataCommand execute:nil];
 }
 
 #pragma mark - Lazyload

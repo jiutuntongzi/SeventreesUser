@@ -9,12 +9,11 @@
 #import "FMView.h"
 #import "FMCiphertextInputViewModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMCiphertextInputView : FMView
 
 @property (nonatomic, strong) FMCiphertextInputViewModel *viewModel;
 
+- (void)fm_becomeFirstResponder;
+
 @end
 
-NS_ASSUME_NONNULL_END

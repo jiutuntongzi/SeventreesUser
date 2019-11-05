@@ -61,8 +61,13 @@
 
 #pragma mark ——— 个人资料
 
-#define      kPersonalProfileQueryURIPath        @"/api/sysuser/getUserMsg"        // 查询个人资料
+#define      kPersonalProfileQueryURIPath           @"/api/sysuser/getUserMsg"       // 查询个人资料
 
-#define      kPersonalProfileUpdateURIPath        @"/api/sysuser/update"           // 修改个人资料
+#define      kPersonalProfileUpdateURIPath          @"/api/sysuser/update"           // 修改个人资料
+
+#define      kUpdateByCodeURIPath                   @"/api/sysuser/updateByCode"     // 修改手机号或密码
+
+
+
 
 #endif /* URIPath_h */

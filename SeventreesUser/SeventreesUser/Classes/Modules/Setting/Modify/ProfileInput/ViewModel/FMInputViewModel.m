@@ -12,53 +12,67 @@
 
 - (void)fm_initialize {
     @weakify(self)
-
-    [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NSDictionary *result) {
-        @strongify(self)
-        
-        [self.refreshUISubject sendNext:result];
-    }];
     
-    [[self.requestDataCommand.executing skip:1] subscribeNext:^(id x) {
-        if ([x isEqualToNumber:@(YES)]) {
-            DLog(@"（HTTP请求：命令执行中..）");
-        } else {
-            DLog(@"（HTTP请求：命令未开始 / 命令执行完成");
+    self.inputModel.bindPhoneNumber = userData().phoneNumber;
+    
+    [self.requestUpdateDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
+        @strongify(self)    if (!self) return;
+        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+            [self.showHintSubject sendNext:resultModel.statusMsg];
+            return;
         }
+        [SVProgressHUD showSuccessWithStatus:@"修改成功"];
+        [self.refreshUISubject sendNext:resultModel];
     }];
 }
 
-#pragma mark - Lazyload
-
-- (RACCommand *)requestDataCommand {
-    if (!_requestDataCommand) {
-//        @weakify(self)
-        _requestDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-            
+- (RACCommand *)requestUpdateDataCommand {
+    if (! _requestUpdateDataCommand) {
+        @weakify(self)
+        _requestUpdateDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSMutableDictionary *params) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-//                @strongify(self)
-                NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.douban.com/v2/book/search?q=%22%E7%BE%8E%E5%A5%B3%22"]];
-                [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NSDictionary *resultDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:NULL];
-                        [subscriber sendNext:resultDictionary];
-                        [subscriber sendCompleted];
-                    });
-                }] resume];
-                return [RACDisposable disposableWithBlock:^{
-                    DLog(@"网络请求资源销毁了");
+
+                
+                NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:3];
+                params[@"moblie"] = self.inputModel.phoneNumber;
+                params[@"code"] = self.inputModel.verifyCode;
+                params[@"newMobile"] = self.inputModel.bindPhoneNumber;
+                params[@"password"] = self.inputModel.password;
+                
+                /// 移除空值对应的字典元素(key->value)
+                NSMutableArray *removeKeys = [[NSMutableArray alloc] initWithCapacity:3];
+                [params enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                    if (obj == nil) [removeKeys addObject:key];
                 }];
+                [params removeObjectsForKeys:removeKeys];
+                
+                [networkMgr POST:kUpdateByCodeURIPath params:params success:^(NetworkResultModel *resultModel) {
+                    [subscriber sendNext:resultModel];
+                    [subscriber sendCompleted];
+                    
+                } failure:^(NSError *error) {
+                    @strongify(self) [self.showHintSubject sendNext:error.localizedDescription];
+                    [subscriber sendCompleted];
+                }];
+                return nil;
             }];
         }];
     }
-    return _requestDataCommand;
+    return _requestUpdateDataCommand;
 }
 
 - (RACSubject *)refreshUISubject {
-    if (!_refreshUISubject) {
-        _refreshUISubject = [[RACSubject alloc] init];
+    if (! _refreshUISubject) {
+        _refreshUISubject = [RACSubject subject];
     }
     return _refreshUISubject;
+}
+
+- (RACSubject *)showHintSubject {
+    if (! _showHintSubject) {
+        _showHintSubject = [RACSubject subject];
+    }
+    return _showHintSubject;
 }
 
 - (RACSubject *)nextPageSubject {
@@ -66,6 +80,13 @@
         _nextPageSubject = [[RACSubject alloc] init];
     }
     return _nextPageSubject;
+}
+
+- (FMInputModel *)inputModel {
+    if (! _inputModel) {
+        _inputModel = [[FMInputModel alloc] init];
+    }
+    return _inputModel;
 }
 
 @end

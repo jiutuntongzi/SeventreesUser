@@ -7,6 +7,7 @@
 //
 
 #import "FMViewModel.h"
+#import "FMInputModel.h"
 
 typedef NS_ENUM(NSUInteger, FMInputViewType) {
     FMInputViewTypeModifyPhone = 0,      //  修改手机号
@@ -16,6 +17,9 @@ typedef NS_ENUM(NSUInteger, FMInputViewType) {
 };
 
 @interface FMInputViewModel : FMViewModel
+
+@property (nonatomic, strong) FMInputModel *inputModel;
+
 
 @property (nonatomic, assign) FMInputViewType type;
 
@@ -27,6 +31,8 @@ typedef NS_ENUM(NSUInteger, FMInputViewType) {
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
-@property (nonatomic, strong) RACCommand *requestDataCommand;
+@property (nonatomic, strong) RACCommand *requestUpdateDataCommand;
+
+@property (nonatomic, strong) RACSubject *showHintSubject;
 
 @end

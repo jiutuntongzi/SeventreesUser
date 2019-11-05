@@ -16,4 +16,6 @@ extern const CGFloat FMPhoneInputViewHeight;
 
 @property (nonatomic, strong) FMPhoneInputViewModel *viewModel;
 
+- (void)fm_becomeFirstResponder;
+
 @end

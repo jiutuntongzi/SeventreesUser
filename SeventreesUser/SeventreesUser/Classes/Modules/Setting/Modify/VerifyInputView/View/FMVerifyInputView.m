@@ -25,6 +25,7 @@ const CGFloat FMVerifyInputViewHeight = 44.f;
 #pragma mark - Private Functions
 
 - (void)fm_setupSubviews {
+    _textField.ctf_clearButtonMode(UITextFieldViewModeAlways).ctf_placeholderFontSize(15.f);
     
     [self setNeedsUpdateConstraints];
     [self updateConstraintsIfNeeded];
@@ -35,14 +36,19 @@ const CGFloat FMVerifyInputViewHeight = 44.f;
     
     RAC(self.viewModel, verifyCodeText) = _textField.rac_textSignal;
     
-//    [[_textField rac_signalForControlEvents:UIControlEventEditingChanged] subscribeNext:^(UITextField *textField) {
-//        @strongify(self);
-//    }];
+    [[_textField rac_signalForControlEvents:UIControlEventEditingChanged] subscribeNext:^(UITextField *textField) {
+        @strongify(self);
+        [self->_viewModel.textChangeSubject sendNext:textField.text];
+    }];
     
     [[_verifyCodeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
         [self.viewModel.verifyActionSubject sendNext:nil];
     }];
+}
+
+- (void)fm_becomeFirstResponder {
+    [_textField becomeFirstResponder];
 }
 
 #pragma mark - System Functions
@@ -55,11 +61,10 @@ const CGFloat FMVerifyInputViewHeight = 44.f;
 #pragma mark - Lazyload
 
 - (FMVerifyInputViewModel *)viewModel {
-    if (!_viewModel) {
+    if (! _viewModel) {
         _viewModel = [[FMVerifyInputViewModel alloc] init];
     }
     return _viewModel;
 }
-
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "BaseNavigationController.h"
+#import "NetworkRequestManager.h"
+#import "SVProgressHUD.h"
 
 @interface BaseNavigationController ()
 
@@ -43,6 +45,13 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleDefault;
+}
+
+- (UIViewController *)popViewControllerAnimated:(BOOL)animated {
+    [networkMgr cancelRequests];
+    [SVProgressHUD dismiss];
+    
+    return [super popViewControllerAnimated:animated];
 }
 
 /*

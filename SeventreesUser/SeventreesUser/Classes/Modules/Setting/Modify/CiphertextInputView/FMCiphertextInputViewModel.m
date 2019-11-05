@@ -18,7 +18,7 @@
 }
 
 - (RACSubject *)textChangedSubject {
-    if (!_textChangedSubject) {
+    if (! _textChangedSubject) {
         _textChangedSubject = [[RACSubject alloc] init];
     }
     return _textChangedSubject;

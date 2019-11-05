@@ -84,8 +84,8 @@
                     [subscriber sendCompleted];
                     
                 } failure:^(NSError *error) {
-                    [subscriber sendCompleted];
                     @strongify(self) [self.showHintSubject sendNext:error.localizedDescription];
+                    [subscriber sendCompleted];
                 }];
                 return nil;
             }];
@@ -105,8 +105,8 @@
                     [subscriber sendCompleted];
                     
                 } failure:^(NSError *error) {
-                    [subscriber sendCompleted];
                     @strongify(self) [self.showHintSubject sendNext:error.localizedDescription];
+                    [subscriber sendCompleted];
                 }];
                 return nil;
             }];

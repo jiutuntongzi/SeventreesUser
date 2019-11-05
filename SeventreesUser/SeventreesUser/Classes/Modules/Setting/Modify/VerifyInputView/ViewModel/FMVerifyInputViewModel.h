@@ -10,9 +10,10 @@
 
 @interface FMVerifyInputViewModel : FMViewModel
 
-
 @property (nonatomic, copy) NSString *verifyCodeText;
 
 @property (nonatomic, strong) RACSubject *verifyActionSubject;
+
+@property (nonatomic, strong) RACSubject *textChangeSubject;
 
 @end

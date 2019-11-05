@@ -8,8 +8,6 @@
 
 #import "FMViewModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMCiphertextInputViewModel : FMViewModel
 
 /** 输入密码文本做变化 */
@@ -29,4 +27,3 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END

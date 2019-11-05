@@ -81,4 +81,8 @@
 /** 刷新页面数据 */
 - (void)fm_refreshData { /** Subclass Implement */ }
 
+- (void)dealloc {
+    DLog(@"  %@ <<< %@VC销毁了 >>>\n", self.navigationItem.title, NSStringFromClass([self class]));
+}
+
 @end

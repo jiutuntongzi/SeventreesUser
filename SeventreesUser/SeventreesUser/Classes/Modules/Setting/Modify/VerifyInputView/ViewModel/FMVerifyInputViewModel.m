@@ -17,4 +17,11 @@
     return _verifyActionSubject;
 }
 
+- (RACSubject *)textChangeSubject {
+    if (! _textChangeSubject) {
+        _textChangeSubject = [[RACSubject alloc] init];
+    }
+    return _textChangeSubject;
+}
+
 @end

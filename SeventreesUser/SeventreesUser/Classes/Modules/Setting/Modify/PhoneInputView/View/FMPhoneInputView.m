@@ -22,51 +22,40 @@ const CGFloat FMPhoneInputViewHeight = 44.f;
 
 #pragma mark - Private Functions
 
-//- (instancetype)initWithViewModel:(id <FMViewModelProtocol>)viewModel {
-//    _viewModel = (FMPhoneInputViewModel *)_viewModel;
-//
-//    return [super initWithViewModel:viewModel];
-//}
-
-- (void)setViewModel:(FMPhoneInputViewModel *)viewModel {
-    _viewModel = viewModel;
-    
-    _textField.ctf_placeholder(viewModel.placeholderText);
-    
-    [self fm_bindViewModel];
-}
-
 - (void)fm_setupSubviews {
+    _textField.ctf_clearButtonMode(UITextFieldViewModeAlways).ctf_placeholderFontSize(15.f);
     
     [self setNeedsUpdateConstraints];
     [self updateConstraintsIfNeeded];
 }
 
-- (void)fm_bindViewModel {
-    @weakify(self);
-
-    [[_textField rac_signalForControlEvents:UIControlEventEditingChanged] subscribeNext:^(UITextField *textField) {
-        @strongify(self);
-        [self->_viewModel.textChangeSubject sendNext:textField.text];
+- (void)fm_bindObserver {
+    @weakify(self)
+    [RACObserve(self.viewModel, placeholderText) subscribeNext:^(NSString *placeholderText) {
+        @strongify(self)
+        self->_textField.text = placeholderText;
     }];
 }
 
-#pragma mark - System Functions
+- (void)fm_bindViewModel {
+    @weakify(self)
+    [[_textField rac_signalForControlEvents:UIControlEventEditingChanged] subscribeNext:^(UITextField *textField) {
+        @strongify(self)
+        [self.viewModel.textChangeSubject sendNext:textField.text];
+    }];
+}
 
-- (void)updateConstraints {
-    
-    
-    [super updateConstraints];
+- (void)fm_becomeFirstResponder {
+    [_textField becomeFirstResponder];
 }
 
 #pragma mark - Lazyload
 
-//- (FMPhoneInputViewModel *)viewModel {
-//    if (!_viewModel) {
-//        _viewModel = [[FMPhoneInputViewModel alloc] init];
-//    }
-//    return _viewModel;
-//}
-
+- (FMPhoneInputViewModel *)viewModel {
+    if (! _viewModel) {
+        _viewModel = [[FMPhoneInputViewModel alloc] init];
+    }
+    return _viewModel;
+}
 
 @end

@@ -18,12 +18,11 @@
 @implementation FMCiphertextInputView
 
 - (void)fm_setupSubviews {
-    _passwordTextField.ctf_clearButtonMode(UITextFieldViewModeAlways).ctf_keyboardType(UIKeyboardTypeNumberPad)\
-    .ctf_placeholderFontSize(15.f); // .ctf_placeholderTextColor(UIColor.lightGrayColor)
+   _passwordTextField.ctf_clearButtonMode(UITextFieldViewModeAlways).ctf_placeholderFontSize(15.f); 
 }
 
 - (void)fm_bindViewModel {
-    @weakify(self);
+    @weakify(self)
 
     [RACObserve(self.viewModel, isShowPlaintext) subscribeNext:^(NSNumber *isShowPlaintext) {
         @strongify(self);
@@ -55,10 +54,14 @@
     RAC(self.viewModel, passwordNumber) = _passwordTextField.rac_textSignal;
     
     [[_passwordTextField rac_signalForControlEvents:UIControlEventEditingChanged] subscribeNext:^(UITextField *textField) {
-        @strongify(self);
+        @strongify(self)
         [self.viewModel.textChangedSubject sendNext:textField.text];
     }];
     
+}
+
+- (void)fm_becomeFirstResponder {
+    [_passwordTextField becomeFirstResponder];
 }
 
 - (UITextField * (^)(NSString *))textFieldByPlaceholder {

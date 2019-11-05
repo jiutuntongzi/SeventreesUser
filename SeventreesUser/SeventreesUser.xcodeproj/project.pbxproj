@@ -109,6 +109,7 @@
 		840CDDD02340B64100527CB0 /* FMCollectPagingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840CDDCF2340B64100527CB0 /* FMCollectPagingController.m */; };
 		840DFAE4236C272800B6CC82 /* FMMeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DFAE3236C272800B6CC82 /* FMMeViewModel.m */; };
 		840DFAE8236C282000B6CC82 /* FMMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DFAE7236C282000B6CC82 /* FMMeModel.m */; };
+		841091DD23714E4D005F8E43 /* FMInputModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 841091DC23714E4D005F8E43 /* FMInputModel.m */; };
 		841150CE2320F461004DF4CD /* FMSpellGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841150C42320F461004DF4CD /* FMSpellGroupController.m */; };
 		841150CF2320F461004DF4CD /* FMSpellGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 841150C72320F461004DF4CD /* FMSpellGroupModel.m */; };
 		841150D02320F461004DF4CD /* FMSpellGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841150CA2320F461004DF4CD /* FMSpellGroupView.m */; };
@@ -679,6 +680,8 @@
 		840DFAE3236C272800B6CC82 /* FMMeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMMeViewModel.m; sourceTree = "<group>"; };
 		840DFAE6236C282000B6CC82 /* FMMeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMMeModel.h; sourceTree = "<group>"; };
 		840DFAE7236C282000B6CC82 /* FMMeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMMeModel.m; sourceTree = "<group>"; };
+		841091DB23714E4D005F8E43 /* FMInputModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMInputModel.h; sourceTree = "<group>"; };
+		841091DC23714E4D005F8E43 /* FMInputModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMInputModel.m; sourceTree = "<group>"; };
 		841150C32320F461004DF4CD /* FMSpellGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSpellGroupController.h; sourceTree = "<group>"; };
 		841150C42320F461004DF4CD /* FMSpellGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSpellGroupController.m; sourceTree = "<group>"; };
 		841150C62320F461004DF4CD /* FMSpellGroupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSpellGroupModel.h; sourceTree = "<group>"; };
@@ -1505,6 +1508,7 @@
 				8401E2E523279958006C111B /* Controller */,
 				8401E2E823279958006C111B /* View */,
 				8401E2EB23279958006C111B /* ViewModel */,
+				841091DA23714E22005F8E43 /* FMInputModel */,
 			);
 			path = ProfileInput;
 			sourceTree = "<group>";
@@ -2155,6 +2159,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		841091DA23714E22005F8E43 /* FMInputModel */ = {
+			isa = PBXGroup;
+			children = (
+				841091DB23714E4D005F8E43 /* FMInputModel.h */,
+				841091DC23714E4D005F8E43 /* FMInputModel.m */,
+			);
+			path = FMInputModel;
+			sourceTree = "<group>";
+		};
 		841150C12320F461004DF4CD /* SpellGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -2770,10 +2783,10 @@
 				84E7F54E233211B3002C6915 /* AllCoupon */,
 				8467B56D2331D5510062B33F /* ScoreCenter */,
 				840CDDC02340ADED00527CB0 /* Collect */,
-				8406E47C2326246B00E167BD /* Setting */,
 				84468D3C230253210073D640 /* Home */,
 				84468D3B230252E90073D640 /* Categories */,
 				84468D382302517B0073D640 /* ShoppingCart */,
+				8406E47C2326246B00E167BD /* Setting */,
 				84468D3D230253260073D640 /* Me */,
 				84D42D2A2304022100249356 /* LoginRegister */,
 			);
@@ -5199,6 +5212,7 @@
 				8409B8B423264EDE009CD45B /* FMFeedbackRecordController.m in Sources */,
 				84D7288723014D1B002D387A /* PlatformConfig.mm in Sources */,
 				84D7288623014D1B002D387A /* GCDDispatchManager.m in Sources */,
+				841091DD23714E4D005F8E43 /* FMInputModel.m in Sources */,
 				8428B94223419ECE0098A633 /* FMSearchPagingController.m in Sources */,
 				848684FE233325080057A16E /* FMOrderListController.m in Sources */,
 				846A490D230A8F1C00D2EAFB /* FMHomeController.m in Sources */,

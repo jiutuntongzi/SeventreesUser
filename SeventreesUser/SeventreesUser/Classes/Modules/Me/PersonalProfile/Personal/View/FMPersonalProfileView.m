@@ -72,13 +72,20 @@
 //        [SVProgressHUD dismissWithDelay:1.f];
     }];
     
-    [[self.viewModel.requestUpdateDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+    void (^showHUDCallback)(NSNumber *isExecuting) = ^(NSNumber *isExecuting) {
         if ([isExecuting isEqualToNumber:@(YES)]) {
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
             [SVProgressHUD showWithStatus:@" "];
         } else {
             [SVProgressHUD dismissWithDelay:1.f];
         }
+    };
+    [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+        showHUDCallback(@(NO));
+    }];
+    
+    [[self.viewModel.requestUpdateDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+        showHUDCallback(isExecuting);
     }];
 }
 

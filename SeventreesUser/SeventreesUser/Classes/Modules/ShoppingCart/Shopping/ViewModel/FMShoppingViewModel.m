@@ -112,7 +112,7 @@
                     
                 } failure:^(NSError *error) {
                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-                    [subscriber sendNext:nil];
+//                    [subscriber sendNext:nil];
                     [subscriber sendCompleted];
                 }];
                 return nil;
@@ -149,7 +149,7 @@
                     
                 } failure:^(NSError *error) {
                     [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-                    [subscriber sendNext:nil];
+//                    [subscriber sendNext:nil];
                     [subscriber sendCompleted];
                 }];
                 return nil;

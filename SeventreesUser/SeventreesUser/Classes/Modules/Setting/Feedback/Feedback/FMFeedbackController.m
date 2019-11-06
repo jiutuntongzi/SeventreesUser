@@ -38,7 +38,6 @@
 #pragma mark - Private Functions
 
 - (void)fm_addSubviews {
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
     _textView.delegate = self;
 }
 

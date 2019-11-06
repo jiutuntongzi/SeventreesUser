@@ -12,6 +12,8 @@
 
 @property (nonatomic, copy) NSString *phoneNumber;
 
+@property (nonatomic, copy) NSString *twoPhoneNumber;
+
 @property (nonatomic, copy) NSString *verifyCode;
 
 @property (nonatomic, copy) NSString *password;

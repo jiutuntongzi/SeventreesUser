@@ -78,6 +78,7 @@
                     [subscriber sendCompleted];
                     
                 } failure:^(NSError *error) {
+                    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                     [subscriber sendCompleted];
                 }];
                 return nil;

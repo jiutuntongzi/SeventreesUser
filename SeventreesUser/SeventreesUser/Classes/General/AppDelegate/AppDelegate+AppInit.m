@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 
 #import "AppDelegate+RootWindow.h"
+#import "SVProgressHUD+Config.h"
 
 @implementation AppDelegate (AppInit)
 
@@ -20,6 +21,8 @@
     [self fm_loadWindowRootController];
     
     //    [WXApi registerApp:WxAppId]; // 注册微信
+    
+    [SVProgressHUD fm_globalConfig];
     
     return [self fm_application:application didFinishLaunchingWithOptions:launchOptions];
 }

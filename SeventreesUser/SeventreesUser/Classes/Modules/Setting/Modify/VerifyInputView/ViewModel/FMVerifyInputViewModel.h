@@ -16,4 +16,13 @@
 
 @property (nonatomic, strong) RACSubject *textChangeSubject;
 
+
+@property (nonatomic, copy) NSString *bodyPhoneNumber;
+
+@property (nonatomic, strong) RACCommand *requestVerifyCodeCommand;
+
+@property (nonatomic, strong) RACSubject *refreshUISubject;
+
+@property (nonatomic, strong) RACSubject *showHintSubject;
+
 @end

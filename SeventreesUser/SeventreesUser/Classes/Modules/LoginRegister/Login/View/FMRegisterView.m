@@ -126,8 +126,8 @@
      }];
      
      [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
-         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
          if ([resultModel.statusCode isEqualToString:@"OK"]) {
+             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
              [SVProgressHUD showSuccessWithStatus:resultModel.statusMsg];
          } else {
              [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];

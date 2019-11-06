@@ -20,4 +20,7 @@ typedef NS_ENUM(NSUInteger, FMInputControllerType) {
 
 @property (nonatomic, assign) FMInputControllerType type;
 
+/** 第一次输入的旧号码，仅用于修改手机号 */
+@property (nonatomic, copy) NSString *phoneNumber;
+
 @end

@@ -281,6 +281,7 @@
 		849CBFB92301176F003821E4 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849CBFB82301176F003821E4 /* MainTabBarController.m */; };
 		849CBFBE23014544003821E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849CBFBB23014544003821E4 /* Assets.xcassets */; };
 		849CBFBF23014544003821E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CBFBC23014544003821E4 /* LaunchScreen.storyboard */; };
+		84A0CA4D23725F5F000183E3 /* SVProgressHUD+Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0CA4C23725F5F000183E3 /* SVProgressHUD+Config.m */; };
 		84A103DA23602A13003B3924 /* FMGoodsDetailsPageStyle.c in Sources */ = {isa = PBXBuildFile; fileRef = 84A103D923602A13003B3924 /* FMGoodsDetailsPageStyle.c */; };
 		84B06637235703CB00CCB243 /* FMGoodsCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B06636235703CB00CCB243 /* FMGoodsCellViewModel.m */; };
 		84B142DB2304F6E7009ADECF /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B142D42304F6E7009ADECF /* UITableView+FDIndexPathHeightCache.m */; };
@@ -989,6 +990,8 @@
 		849CBFB82301176F003821E4 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		849CBFBB23014544003821E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		849CBFBD23014544003821E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		84A0CA4B23725F5F000183E3 /* SVProgressHUD+Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD+Config.h"; sourceTree = "<group>"; };
+		84A0CA4C23725F5F000183E3 /* SVProgressHUD+Config.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD+Config.m"; sourceTree = "<group>"; };
 		84A103D923602A13003B3924 /* FMGoodsDetailsPageStyle.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = FMGoodsDetailsPageStyle.c; sourceTree = "<group>"; };
 		84B06635235703CB00CCB243 /* FMGoodsCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMGoodsCellViewModel.h; sourceTree = "<group>"; };
 		84B06636235703CB00CCB243 /* FMGoodsCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMGoodsCellViewModel.m; sourceTree = "<group>"; };
@@ -3444,6 +3447,8 @@
 				849CBFAC230113B2003821E4 /* AppDelegate+AppInit.m */,
 				84DFE25C2351B07100F6DA7D /* AppDelegate+RootWindow.h */,
 				84DFE25D2351B07100F6DA7D /* AppDelegate+RootWindow.m */,
+				84A0CA4B23725F5F000183E3 /* SVProgressHUD+Config.h */,
+				84A0CA4C23725F5F000183E3 /* SVProgressHUD+Config.m */,
 				849CBFAF230113B2003821E4 /* main.m */,
 			);
 			path = AppDelegate;
@@ -5366,6 +5371,7 @@
 				84F9D821230FE14200158496 /* FMShoppingGoodsModel.m in Sources */,
 				84D38B59233B173E00DEF36D /* FMRefundStatusView.m in Sources */,
 				84F045412330CC330002B5B3 /* FMMemberLevelCell.m in Sources */,
+				84A0CA4D23725F5F000183E3 /* SVProgressHUD+Config.m in Sources */,
 				84DD3FD023015B04001171F1 /* NSObject+CheckNull.m in Sources */,
 				8438B1C4231E60F000E5F819 /* FMGoodsPictureView.m in Sources */,
 				84FF2F282335BD2800E34550 /* FMGoodsHeaderView.m in Sources */,

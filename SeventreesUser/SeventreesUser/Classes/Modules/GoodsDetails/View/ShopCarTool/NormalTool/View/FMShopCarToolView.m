@@ -62,7 +62,6 @@ const CGFloat FMShopCarToolViewHeight = 44.f;
     
     [[self.viewModel.requestCollectCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
         if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
             [SVProgressHUD showWithStatus:@"收藏中.."];
         } else {
             [SVProgressHUD dismissWithDelay:0.15f];
@@ -75,7 +74,6 @@ const CGFloat FMShopCarToolViewHeight = 44.f;
     
     [[self.viewModel.requestJoinCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
         if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
             [SVProgressHUD showWithStatus:@"加入中.."];
         } else {
             [SVProgressHUD dismissWithDelay:0.5f];

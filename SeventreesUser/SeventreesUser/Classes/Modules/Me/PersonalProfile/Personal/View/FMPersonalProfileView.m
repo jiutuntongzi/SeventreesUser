@@ -67,15 +67,13 @@
     }];
     
     [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
         [SVProgressHUD showInfoWithStatus:status];
 //        [SVProgressHUD dismissWithDelay:1.f];
     }];
     
     void (^showHUDCallback)(NSNumber *isExecuting) = ^(NSNumber *isExecuting) {
         if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
-            [SVProgressHUD showWithStatus:@" "];
+            [SVProgressHUD showWithStatus:@""];
         } else {
             [SVProgressHUD dismissWithDelay:1.f];
         }

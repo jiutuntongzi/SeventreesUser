@@ -54,7 +54,6 @@
         @strongify(self)
 //        NSString *searchText = tuple.first; // newValue
 //        if (! searchText) {
-//            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
 //            [SVProgressHUD showInfoWithStatus:@"输入不能为空"];
 //            return;
 //        }
@@ -72,7 +71,6 @@
     [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
 //        @strongify(self)
         if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
             [SVProgressHUD showWithStatus:@"搜索中.."];
         } else {
             [SVProgressHUD dismissWithDelay:0.5f];

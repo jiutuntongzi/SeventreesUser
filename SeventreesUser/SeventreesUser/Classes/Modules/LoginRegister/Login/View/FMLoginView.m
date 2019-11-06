@@ -199,8 +199,8 @@
     }];
     
     [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
         if ([resultModel.statusCode isEqualToString:@"OK"]) {
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
             [SVProgressHUD showSuccessWithStatus:resultModel.statusMsg];
         } else if (resultModel.statusCode.integerValue == NSCommonErrorCodeNotConnectServer) {
             [SVProgressHUD showErrorWithStatus:resultModel.statusMsg];

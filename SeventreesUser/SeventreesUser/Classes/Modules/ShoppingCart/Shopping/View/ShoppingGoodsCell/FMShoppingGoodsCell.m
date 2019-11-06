@@ -66,7 +66,6 @@
     }];
     
     [self->_viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
         [SVProgressHUD showErrorWithStatus:status];
         [SVProgressHUD dismissWithDelay:1.f];
     }];

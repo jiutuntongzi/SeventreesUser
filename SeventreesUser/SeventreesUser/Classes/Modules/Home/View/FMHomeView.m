@@ -146,7 +146,6 @@
     /*
     [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
         if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
             [SVProgressHUD showWithStatus:@"加载中.."];
         } else {
             [SVProgressHUD dismissWithDelay:0.5f];

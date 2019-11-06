@@ -21,7 +21,7 @@
             [self.showHintSubject sendNext:resultModel.statusMsg];
             return;
         }
-        [SVProgressHUD showSuccessWithStatus:@"修改成功"];
+        [SVProgressHUD showSuccessWithStatus:resultModel.jsonDict[@"data"]];
         [self.refreshUISubject sendNext:resultModel];
     }];
 }
@@ -36,7 +36,7 @@
                 NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:3];
                 params[@"moblie"] = self.inputModel.phoneNumber;
                 params[@"code"] = self.inputModel.verifyCode;
-                params[@"newMobile"] = self.inputModel.bindPhoneNumber;
+                params[@"newMobile"] = self.inputModel.twoPhoneNumber;
                 params[@"password"] = self.inputModel.password;
                 
                 /// 移除空值对应的字典元素(key->value)

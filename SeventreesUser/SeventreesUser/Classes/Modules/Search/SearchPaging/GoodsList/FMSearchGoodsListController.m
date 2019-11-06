@@ -19,8 +19,6 @@
 @implementation FMSearchGoodsListController
 
 - (void)fm_addSubviews {
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
-    
     PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:kHomeQueryBrandGoodsURIPath rowHeight:FMGoodsDetailsCellRowHeight params:nil requestDataHandler:^(NetworkResultModel *resultModel) {
         [SVProgressHUD dismissWithDelay:0.5f];
         if (![resultModel.statusCode isEqualToString:@"OK"]) {

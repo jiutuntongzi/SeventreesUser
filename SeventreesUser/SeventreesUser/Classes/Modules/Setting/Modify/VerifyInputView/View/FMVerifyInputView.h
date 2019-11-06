@@ -16,6 +16,8 @@ extern const CGFloat FMVerifyInputViewHeight;
 
 @property (nonatomic, strong) FMVerifyInputViewModel *viewModel;
 
+- (void)startCountdownLimit:(NSInteger)limit;
+
 - (void)fm_becomeFirstResponder;
 
 @end

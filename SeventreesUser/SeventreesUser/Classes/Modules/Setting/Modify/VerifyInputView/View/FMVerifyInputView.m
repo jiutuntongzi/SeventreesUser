@@ -7,6 +7,7 @@
 //
 
 #import "FMVerifyInputView.h"
+#import "UIButton+Countdown.h"
 
 const CGFloat FMVerifyInputViewHeight = 44.f;
 
@@ -21,6 +22,12 @@ const CGFloat FMVerifyInputViewHeight = 44.f;
 @implementation FMVerifyInputView
 
 @synthesize viewModel = _viewModel;
+
+#pragma mark - Public Functions
+
+- (void)startCountdownLimit:(NSInteger)limit {
+    [_verifyCodeButton startWithLimit:limit title:@"等待%@秒"];
+}
 
 #pragma mark - Private Functions
 
@@ -37,13 +44,31 @@ const CGFloat FMVerifyInputViewHeight = 44.f;
     RAC(self.viewModel, verifyCodeText) = _textField.rac_textSignal;
     
     [[_textField rac_signalForControlEvents:UIControlEventEditingChanged] subscribeNext:^(UITextField *textField) {
-        @strongify(self);
+        @strongify(self)
         [self->_viewModel.textChangeSubject sendNext:textField.text];
     }];
     
     [[_verifyCodeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self);
+        @strongify(self)
         [self.viewModel.verifyActionSubject sendNext:nil];
+        
+        if (!self.viewModel.bodyPhoneNumber) {
+            [self.viewModel.showHintSubject sendNext:@"数据错误：验证码参数nil了"];
+            return;
+        }
+        [self.viewModel.requestVerifyCodeCommand execute:nil];
+    }];
+    
+    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
+        [SVProgressHUD showInfoWithStatus:status];
+    }];
+    
+    [[self.viewModel.requestVerifyCodeCommand.executing skip:1] subscribeNext:^(id x) {
+        if ([x isEqualToNumber:@(YES)]) {
+            [SVProgressHUD showWithStatus:@" "];
+        } else {
+            [SVProgressHUD dismissWithDelay:1.f];
+        }
     }];
 }
 

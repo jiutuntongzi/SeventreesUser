@@ -93,9 +93,7 @@
     
     [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
         @strongify(self)    if (!self) return;
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
         [SVProgressHUD showInfoWithStatus:status];
-        [SVProgressHUD dismissWithDelay:1.f];
     }];
     
     [self->_settlementView.viewModel.settleActionSubject subscribeNext:^(id x) {
@@ -133,7 +131,6 @@
     
     [[self.viewModel.requestDeleteGoodsCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
         if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
             [SVProgressHUD showWithStatus:@""];
         } else {
             [SVProgressHUD dismissWithDelay:1.f];

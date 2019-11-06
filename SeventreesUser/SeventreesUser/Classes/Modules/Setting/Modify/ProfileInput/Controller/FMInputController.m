@@ -35,6 +35,9 @@
 - (void)fm_addSubviews {
     _mainView = (FMInputView *)FMInputView.cv_viewFromNibLoad();
     _mainView.viewModel.type = (FMInputViewType)_type; // 通用枚举类型
+    if (self->_type == FMInputControllerTypeBindPhone) {
+        _mainView.viewModel.inputModel.phoneNumber = self.phoneNumber;
+    }
     [self.view addSubview:_mainView];
 }
 
@@ -53,9 +56,10 @@
             UIViewController *nextVC = [[FMStoreListController alloc] init];
             [self.navigationController pushViewController:nextVC animated:YES];
             
-        } else {
+        } else if (self->_type == FMInputControllerTypeModifyPhone) {
             FMInputController *nextVC = [[FMInputController alloc] init];
             nextVC.type = FMInputControllerTypeBindPhone;
+            nextVC.phoneNumber = self->_mainView.viewModel.inputModel.phoneNumber;
             [self.navigationController pushViewController:nextVC animated:YES];
         }
     }];

@@ -20,7 +20,6 @@ typedef NS_ENUM(NSUInteger, FMInputViewType) {
 
 @property (nonatomic, strong) FMInputModel *inputModel;
 
-
 @property (nonatomic, assign) FMInputViewType type;
 
 @property (nonatomic, copy) NSString *hintText;

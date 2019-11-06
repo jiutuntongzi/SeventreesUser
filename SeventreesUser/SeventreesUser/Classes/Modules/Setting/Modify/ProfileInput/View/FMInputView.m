@@ -80,56 +80,101 @@
     FMPhoneInputView *phoneInputView = (FMPhoneInputView *)_numberInputView;
     [phoneInputView.viewModel.textChangeSubject subscribeNext:^(NSString *inputText) {
         @strongify(self)    if (!self) return;
-        self.viewModel.inputModel.phoneNumber = inputText;
+        
+        if (self.viewModel.type == FMInputViewTypeBindPhone) {
+            self.viewModel.inputModel.twoPhoneNumber = inputText;
+        } else {
+            self.viewModel.inputModel.phoneNumber = inputText;
+        }
         if (inputText.length == 11) [self->_verifyInputView fm_becomeFirstResponder];
     }];
+    
+    BOOL (^checkedNewPhoneOK)(void) = ^{
+        if (self.viewModel.inputModel.twoPhoneNumber.length != 11) {
+            [self.viewModel.showHintSubject sendNext:@"请输入11位新手机号"];
+            return NO;
+        }
+        return YES;
+    };
+    
+    BOOL (^checkedOKPhoneBlock)(void) = ^{
+        if (self.viewModel.inputModel.phoneNumber.length != 11) {
+            [self.viewModel.showHintSubject sendNext:@"请输入11位手机号"];
+            return NO;
+        }
+        return YES;
+    };
+    
+    BOOL (^checkedOKMsgCodeBlock)(void) = ^{
+        if (self.viewModel.inputModel.verifyCode.length != 4) {
+            [self.viewModel.showHintSubject sendNext:@"请输入6位验证码"];
+            return NO;
+        }
+        return YES;
+    };
+    BOOL (^checkedOKPasswordBlock)(void) = ^{
+        if (self.viewModel.inputModel.password.length > 16) {
+            [self.viewModel.showHintSubject sendNext:@"输入密码必须小于16位"];
+            return NO;
+        }
+        return YES;
+    };
     
     FMVerifyInputView *verifyInputView = _verifyInputView;
     [verifyInputView.viewModel.textChangeSubject subscribeNext:^(NSString *inputText) {
         @strongify(self)    if (!self) return;
         self.viewModel.inputModel.verifyCode = inputText;
-        if (inputText.length == 6) self.cv_endEditing();
+        if (inputText.length == 4) self.cv_endEditing();
     }];
     [verifyInputView.viewModel.verifyActionSubject subscribeNext:^(id x) {
         @strongify(self)    if (!self) return;
+        
         if (self.viewModel.type == FMInputViewTypeModifyPhone) {
-            
+            if (checkedOKPhoneBlock()) return;
         } else if (self.viewModel.type == FMInputViewTypeModifyPassword) {
-            
+            if (self.viewModel.inputModel.bindPhoneNumber.length != 11) {
+                [self.viewModel.showHintSubject sendNext:@"数据错误：未获取到绑定手机，请重新登录！"];
+                return ;
+            }
+        } else if (self.viewModel.type == FMInputViewTypeBindPhone) {
+            if (checkedNewPhoneOK()) return; // 新手机
+        } else if (self.viewModel.type == FMInputViewTypeBindStore) {
+            if (checkedOKPhoneBlock()) return;
         }
+        // 验证数据格式无误，可以发起请求
+        [verifyInputView startCountdownLimit:30];
+        verifyInputView.viewModel.bodyPhoneNumber = self.viewModel.inputModel.twoPhoneNumber;
     }];
 
     [[_nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)    if (!self) return;
         
-        self.cv_endEditing();
-        if (self.viewModel.inputModel.verifyCode.length != 6) {
-            [self.viewModel.showHintSubject sendNext:@"请输入6位验证码"];
-            return;
-        }
-        
         if (self.viewModel.type == FMInputViewTypeModifyPhone) {
-            if (self.viewModel.inputModel.phoneNumber.length != 11) {
-                [self.viewModel.showHintSubject sendNext:@"请输入11位手机号"];
-                return;
-            }
-            [self.viewModel.requestUpdateDataCommand execute:nil];
+            if (!checkedOKPhoneBlock()) return;
+            if (!checkedOKMsgCodeBlock()) return;
+            [self.viewModel.nextPageSubject sendNext:nil];
+//            [self.viewModel.requestUpdateDataCommand execute:nil];
 
         } else if (self.viewModel.type == FMInputViewTypeModifyPassword) {
 //            FMCiphertextInputView *passwordInputView = (FMCiphertextInputView *)self->_numberInputView;
-            if (self.viewModel.inputModel.password.length > 16) {
-                [self.viewModel.showHintSubject sendNext:@"输入密码必须小于16位"];
-                return;
-            }
+            if (!checkedOKMsgCodeBlock()) return;
+            if (!checkedOKPasswordBlock()) return;
             [self.viewModel.requestUpdateDataCommand execute:nil];
             
         } else if (self.viewModel.type == FMInputViewTypeBindStore) {
+            if (!checkedOKMsgCodeBlock()) return;
+            
             NSString *message = @"因门店间会员信息不共享，修改门店将导致您锁拥有的积分、优惠券、会员等级全部重置，请确认后再操作哦 ！";
             [DialogBoxView showByTitle:@"换绑门店须知" message:message affirmButtonTitle:@"我知道了" forStyle:DialogBoxViewStyleHint affirmHandler:^(NSString * _Nullable text) {
                 [self_weak_.viewModel.requestUpdateDataCommand execute:nil];
             }];
             
         } else if (self.viewModel.type == FMInputViewTypeBindPhone) {
+            if (!checkedOKPhoneBlock()) return;
+            
+            if (!checkedNewPhoneOK()) return;
+            
+            if (!checkedOKMsgCodeBlock()) return;
             [self.viewModel.requestUpdateDataCommand execute:nil];
             
         } else {
@@ -139,13 +184,21 @@
     
     [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (!self) return;
-        [self.viewModel.nextPageSubject sendNext:nil];
+        if (self.viewModel.type != FMInputViewTypeModifyPassword) {
+            [self.viewController.navigationController popViewControllerAnimated:YES];
+        }
+    }];
+    
+    [[self.viewModel.requestUpdateDataCommand.executing skip:1] subscribeNext:^(id x) {
+        if ([x isEqualToNumber:@(YES)]) {
+            [SVProgressHUD showWithStatus:@" "];
+        } else {
+            [SVProgressHUD dismissWithDelay:1.f];
+        }
     }];
     
     [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
         [SVProgressHUD showInfoWithStatus:status];
-        [SVProgressHUD dismissWithDelay:1.f];
     }];
 }
 
@@ -198,7 +251,7 @@
         [passwordInputView.viewModel.textChangedSubject subscribeNext:^(NSString *inputText) {
             @strongify(self)    if (!self) return;
             self.viewModel.inputModel.password = inputText;
-            if (inputText.length == 16 ) self.cv_endEditing();
+            if (inputText.length == 16) self.cv_endEditing();
         }];
     }
 }

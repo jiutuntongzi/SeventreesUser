@@ -3167,12 +3167,8 @@
 		847090172374008300E44623 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				84D7281B23014D1B002D387A /* Utility */,
-				849CBFB523011732003821E4 /* Common */,
-				84D7273023014D1B002D387A /* MacroHeader */,
-				84D7274723014D1B002D387A /* ThreeLibs */,
-				84D7281823014D1B002D387A /* PlatformConfig */,
-				849CBFAA230113B2003821E4 /* AppDelegate */,
+				84B4D59E237404D40019BA38 /* General */,
+				84468D3A230251AB0073D640 /* Modules */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -3436,8 +3432,8 @@
 		849CBFA9230113B2003821E4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				849CBFB0230113B2003821E4 /* General */,
-				84468D3A230251AB0073D640 /* Modules */,
+				84D7281123014D1B002D387A /* Basic */,
+				847090172374008300E44623 /* Application */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -3456,15 +3452,6 @@
 				849CBFAF230113B2003821E4 /* main.m */,
 			);
 			path = AppDelegate;
-			sourceTree = "<group>";
-		};
-		849CBFB0230113B2003821E4 /* General */ = {
-			isa = PBXGroup;
-			children = (
-				84D7281123014D1B002D387A /* Basic */,
-				847090172374008300E44623 /* Application */,
-			);
-			path = General;
 			sourceTree = "<group>";
 		};
 		849CBFB523011732003821E4 /* Common */ = {
@@ -3522,6 +3509,19 @@
 				84B142DA2304F6E7009ADECF /* UITableView+FDTemplateLayoutCellDebug.m */,
 			);
 			path = "UITableView+FDTemplateLayoutCell";
+			sourceTree = "<group>";
+		};
+		84B4D59E237404D40019BA38 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				84D7281B23014D1B002D387A /* Utility */,
+				849CBFB523011732003821E4 /* Common */,
+				84D7273023014D1B002D387A /* MacroHeader */,
+				84D7274723014D1B002D387A /* ThreeLibs */,
+				84D7281823014D1B002D387A /* PlatformConfig */,
+				849CBFAA230113B2003821E4 /* AppDelegate */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		84BAC57D230684F00062B812 /* InputViewFactory */ = {

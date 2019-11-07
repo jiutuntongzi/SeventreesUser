@@ -38,7 +38,7 @@
 
 #import "LMJVerticalScrollText.h" // 纵向跑马灯
 
-
+#import "CountDown.h" // 时间倒计时
 
 
 #endif /* ThreeLibHeader_h */

@@ -409,6 +409,7 @@
 		84F80BAC232F7DC30031674F /* FMAddressInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F80BAA232F7DC30031674F /* FMAddressInfoModel.m */; };
 		84F80BB1232F87F60031674F /* FMNewAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F80BAF232F87F60031674F /* FMNewAddressController.m */; };
 		84F80BB2232F87F60031674F /* FMNewAddressController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F80BB0232F87F60031674F /* FMNewAddressController.xib */; };
+		84F8A4F72373F5890005AFE1 /* CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A4F62373F5890005AFE1 /* CountDown.m */; };
 		84F941402357FDC600B98C1C /* FMGoodsDetailsCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9413F2357FDC600B98C1C /* FMGoodsDetailsCellViewModel.m */; };
 		84F941432358058200B98C1C /* FMCollectBrandListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F941422358058200B98C1C /* FMCollectBrandListViewModel.m */; };
 		84F97A902320A53C00FC0EFE /* FMGoodsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F97A8F2320A53C00FC0EFE /* FMGoodsViewModel.m */; };
@@ -1226,6 +1227,8 @@
 		84F80BAE232F87F60031674F /* FMNewAddressController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMNewAddressController.h; sourceTree = "<group>"; };
 		84F80BAF232F87F60031674F /* FMNewAddressController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMNewAddressController.m; sourceTree = "<group>"; };
 		84F80BB0232F87F60031674F /* FMNewAddressController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMNewAddressController.xib; sourceTree = "<group>"; };
+		84F8A4F52373F5890005AFE1 /* CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountDown.h; sourceTree = "<group>"; };
+		84F8A4F62373F5890005AFE1 /* CountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountDown.m; sourceTree = "<group>"; };
 		84F9413E2357FDC600B98C1C /* FMGoodsDetailsCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMGoodsDetailsCellViewModel.h; sourceTree = "<group>"; };
 		84F9413F2357FDC600B98C1C /* FMGoodsDetailsCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMGoodsDetailsCellViewModel.m; sourceTree = "<group>"; };
 		84F941412358058200B98C1C /* FMCollectBrandListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMCollectBrandListViewModel.h; sourceTree = "<group>"; };
@@ -3739,6 +3742,7 @@
 				84D727F923014D1B002D387A /* ZFScan */,
 				84001C82230CD4EB0010DE0B /* WMPageController */,
 				846A490E230A913200D2EAFB /* LMJVerticalScrollText */,
+				84F8A4F42373F5890005AFE1 /* CountDown */,
 			);
 			path = ThreeLibs;
 			sourceTree = "<group>";
@@ -4197,6 +4201,15 @@
 				84F80BB0232F87F60031674F /* FMNewAddressController.xib */,
 			);
 			path = NewAddress;
+			sourceTree = "<group>";
+		};
+		84F8A4F42373F5890005AFE1 /* CountDown */ = {
+			isa = PBXGroup;
+			children = (
+				84F8A4F52373F5890005AFE1 /* CountDown.h */,
+				84F8A4F62373F5890005AFE1 /* CountDown.m */,
+			);
+			path = CountDown;
 			sourceTree = "<group>";
 		};
 		84F97A912320A69600FC0EFE /* GoodsSectionCell */ = {
@@ -5237,6 +5250,7 @@
 				8449936D234084B10006A544 /* FMSlashRecordListView.m in Sources */,
 				84DE9F562350702500B5B552 /* UIButton+Countdown.m in Sources */,
 				84604F37234D7450005CBD9A /* FMRegisterModel.m in Sources */,
+				84F8A4F72373F5890005AFE1 /* CountDown.m in Sources */,
 				84F0453F2330CC330002B5B3 /* FMMemberHeaderView.m in Sources */,
 				84094E9A233B0B98008BF38B /* FMTitleView.m in Sources */,
 				8428B9492341A0350098A633 /* FMGoodsDetailsCell.m in Sources */,

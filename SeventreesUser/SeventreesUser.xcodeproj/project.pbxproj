@@ -1703,17 +1703,6 @@
 			path = ContactUs;
 			sourceTree = "<group>";
 		};
-		84065CFB230A383B00D39225 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				8498F590233082E900D5ACF9 /* BRPickerView */,
-				8498F58323307D4E00D5ACF9 /* AddressPickerView */,
-				8498F58023307D1000D5ACF9 /* DialogBoxView */,
-				8498F58123307D1F00D5ACF9 /* SearchBarView */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		84065D01230A737900D39225 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2774,7 +2763,6 @@
 		84468D3A230251AB0073D640 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				849CBFB523011732003821E4 /* Common */,
 				844A0E0A2338BBA6006015D4 /* AfterSale */,
 				8405B8992334CB610065965F /* OrderDetails */,
 				848684ED233325080057A16E /* AllOrder */,
@@ -3176,6 +3164,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		847090172374008300E44623 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				84D7281B23014D1B002D387A /* Utility */,
+				849CBFB523011732003821E4 /* Common */,
+				84D7273023014D1B002D387A /* MacroHeader */,
+				84D7274723014D1B002D387A /* ThreeLibs */,
+				84D7281823014D1B002D387A /* PlatformConfig */,
+				849CBFAA230113B2003821E4 /* AppDelegate */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		847E58C1232250DF0022FF1F /* Bargain */ = {
 			isa = PBXGroup;
 			children = (
@@ -3461,7 +3462,7 @@
 			isa = PBXGroup;
 			children = (
 				84D7281123014D1B002D387A /* Basic */,
-				849CBFAA230113B2003821E4 /* AppDelegate */,
+				847090172374008300E44623 /* Application */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -3470,7 +3471,6 @@
 			isa = PBXGroup;
 			children = (
 				84886C61234C845600CFD16F /* UserData */,
-				84065CFB230A383B00D39225 /* View */,
 				849CBFB623011739003821E4 /* Controller */,
 			);
 			path = Common;
@@ -3737,7 +3737,6 @@
 		84D7274723014D1B002D387A /* ThreeLibs */ = {
 			isa = PBXGroup;
 			children = (
-				84DD3F9423015B04001171F1 /* ChainKit */,
 				84FC43FB231CF4E200DF9799 /* YBImageBrowser */,
 				84D727F923014D1B002D387A /* ZFScan */,
 				84001C82230CD4EB0010DE0B /* WMPageController */,
@@ -3809,34 +3808,31 @@
 			isa = PBXGroup;
 			children = (
 				84886C57234C65B800CFD16F /* NetworkRequest */,
-				84D7273023014D1B002D387A /* MacroHeader */,
-				84DD40E423016436001171F1 /* Category */,
-				84D7281B23014D1B002D387A /* Utility */,
-				84D7281223014D1B002D387A /* CommonManager */,
-				84D7281823014D1B002D387A /* PlatformConfig */,
-				84D7274723014D1B002D387A /* ThreeLibs */,
 				84D7273723014D1B002D387A /* MVVM */,
+				84DD3F9423015B04001171F1 /* ChainKit */,
+				84DD40E423016436001171F1 /* Category */,
+				84D7281223014D1B002D387A /* CommonMgr */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
 		};
-		84D7281223014D1B002D387A /* CommonManager */ = {
+		84D7281223014D1B002D387A /* CommonMgr */ = {
 			isa = PBXGroup;
 			children = (
 				84D7281323014D1B002D387A /* CommonManager.h */,
 				84D7281423014D1B002D387A /* CommonManager.m */,
-				84D7281523014D1B002D387A /* Manager */,
+				84D7281523014D1B002D387A /* GCDManager */,
 			);
-			path = CommonManager;
+			path = CommonMgr;
 			sourceTree = "<group>";
 		};
-		84D7281523014D1B002D387A /* Manager */ = {
+		84D7281523014D1B002D387A /* GCDManager */ = {
 			isa = PBXGroup;
 			children = (
 				84D7281623014D1B002D387A /* GCDDispatchManager.h */,
 				84D7281723014D1B002D387A /* GCDDispatchManager.m */,
 			);
-			path = Manager;
+			path = GCDManager;
 			sourceTree = "<group>";
 		};
 		84D7281823014D1B002D387A /* PlatformConfig */ = {
@@ -3852,6 +3848,10 @@
 			isa = PBXGroup;
 			children = (
 				847E58C9232258DD0022FF1F /* RequestPagingUtility */,
+				8498F590233082E900D5ACF9 /* BRPickerView */,
+				8498F58323307D4E00D5ACF9 /* AddressPickerView */,
+				8498F58023307D1000D5ACF9 /* DialogBoxView */,
+				8498F58123307D1F00D5ACF9 /* SearchBarView */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -3879,8 +3879,8 @@
 		84DD3F9423015B04001171F1 /* ChainKit */ = {
 			isa = PBXGroup;
 			children = (
-				84DD3F9523015B04001171F1 /* Category */,
 				84DD3FCA23015B04001171F1 /* ChainKit.h */,
+				84DD3F9523015B04001171F1 /* Category */,
 			);
 			path = ChainKit;
 			sourceTree = "<group>";

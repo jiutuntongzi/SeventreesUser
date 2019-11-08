@@ -10,11 +10,89 @@
 
 @implementation FMScoreViewModel
 
+- (void)fm_initialize {
+    @weakify(self)
+    
+    [self.refreshUISubject subscribeNext:^(id x) {
+        [self.requestDataCommand execute:nil];
+        
+        // code..
+    }];
+    
+    [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
+        @strongify(self)    if (!self) return;
+        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+            [self.showHintSubject sendNext:resultModel.statusMsg];
+            return;
+        }
+//        self->_scoreEntitys = [FMScoreRecordModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"data"]];
+        
+        /// test
+        NSDictionary *itemEntity = @{
+                                     @"extra": @{},
+                                     @"id": @(2),
+                                     @"dr": @"N",
+                                     @"createdDateTime": @"2019-09-16 17:08:58",  // --时间
+                                     @"titile": @"每日签到",        //--标题
+                                     @"expendIntegral": @(2),       // --出入分数
+                                     @"expendType": @(1),        //--1加 2减
+                                     };
+        FMScoreRecordModel *entity = [FMScoreRecordModel mj_objectWithKeyValues:itemEntity];
+        [self.scoreEntitys addObjectsFromArray:@[entity, entity, entity, entity, entity,entity,entity,entity,entity]];
+        [self.refreshRecordSubject sendNext:self.scoreEntitys];
+    }];
+}
+
+- (RACCommand *)requestDataCommand {
+    if (! _requestDataCommand) {
+//        @weakify(self)
+        _requestDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+//                @strongify(self)
+                NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:2];
+                params[@"limit"] = @(100);  // params[@"limit"] = @(_limit);
+                params[@"page"] = @(1);     // params[@"page"] = @(_pageNo);
+                [networkMgr POST:kIntegralRecordListQueryURIPath params:params success:^(NetworkResultModel *resultModel) {
+                    [subscriber sendNext:resultModel];
+                    [subscriber sendCompleted];
+                    
+                } failure:^(NSError *error) {
+                    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                    [subscriber sendCompleted];
+                }];
+                return nil;
+            }];
+        }];
+    }
+    return _requestDataCommand;
+}
+
+- (RACSubject *)refreshUISubject {
+    if (! _refreshUISubject) {
+        _refreshUISubject = [RACSubject subject];
+    }
+    return _refreshUISubject;
+}
+
+- (RACSubject *)refreshRecordSubject {
+    if (! _refreshRecordSubject) {
+        _refreshRecordSubject = [RACSubject subject];
+    }
+    return _refreshRecordSubject;
+}
+
 - (RACSubject *)nextActionSubject {
     if (!_nextActionSubject) {
         _nextActionSubject = [[RACSubject alloc] init];
     }
     return _nextActionSubject;
+}
+
+- (NSMutableArray<FMScoreRecordModel *> *)scoreEntitys {
+    if (! _scoreEntitys) {
+        _scoreEntitys = [NSMutableArray array];
+    }
+    return _scoreEntitys;
 }
 
 @end

@@ -22,6 +22,8 @@ typedef NS_ENUM(NSUInteger, DialogBoxViewStyle) {
 //             DLog(@"点了确定OK inputText == %@", inputText);
 //         }];
 
+- (void)dismiss;
+
 @end
 
 

@@ -32,7 +32,7 @@
 - (CVCShowClassNameCompletion)cvc_showVCByClassName {
     return ^(NSString * _Nullable aClassName) {
         UIViewController *nextController = [[NSClassFromString(aClassName) alloc] init];
-        if (nextController.navigationController) {
+        if (self.navigationController) {
             [self.navigationController pushViewController:nextController animated:YES];
         } else {
             [self presentViewController:nextController animated:YES completion:nil];

@@ -13,18 +13,25 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *subTitle1;
-@property (weak, nonatomic) IBOutlet UILabel *subTitle2;
-@property (weak, nonatomic) IBOutlet UILabel *subTitle3;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
 @end
 
 @implementation FMScoreRecordCell
 
-- (void)setModel:(FMScoreRecordModel *)model {
-    _model = model;
+- (void)setScoreEntity:(FMScoreRecordModel *)scoreEntity {
+    _scoreEntity = scoreEntity;
     
+    _titleLabel.text = scoreEntity.title;
+    _timeLabel.text = scoreEntity.subTitle;
     
+    NSString *symbol = scoreEntity.expendType.integerValue == 2 ? @"-" : @"+";
+    _scoreLabel.text = [NSString stringWithFormat:@"%@%@", symbol, scoreEntity.expendIntegral];
+    
+    NSString *colorHexStr = scoreEntity.expendType.integerValue == 2 ? @"#F76F6F" : @"#7EC52E";
+    _scoreLabel.textColor = UIColor.cc_colorByHexString(colorHexStr);;
 }
 
 - (void)awakeFromNib {

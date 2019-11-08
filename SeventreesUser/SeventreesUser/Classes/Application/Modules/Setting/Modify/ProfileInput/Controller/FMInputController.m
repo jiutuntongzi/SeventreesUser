@@ -50,13 +50,10 @@
             
         } else if (self->_type == FMInputControllerTypeModifyPassword) {
             
-            
         } else if (self->_type == FMInputControllerTypeBindStore) {
-            FMStoreListController *nextVC = [[FMStoreListController alloc] init];
-            [self.navigationController pushViewController:nextVC animated:YES];
+            self.cvc_showVCByClassName(FMStoreListController.className);
             
         } else if (self->_type == FMInputControllerTypeModifyPhone) {
-            
             nextVC.type = FMInputControllerTypeBindPhone;
             nextVC.phoneNumber = self->_mainView.viewModel.inputModel.phoneNumber;
         }

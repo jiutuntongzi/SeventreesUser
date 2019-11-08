@@ -14,7 +14,7 @@
 
 @interface FMScoreRecordCell : FMTableViewCell
 
-@property (nonatomic, strong) FMScoreRecordModel *model;
+@property (nonatomic, strong) FMScoreRecordModel *scoreEntity;
 
 @property (nonatomic, copy) NSString *subTitle;
 

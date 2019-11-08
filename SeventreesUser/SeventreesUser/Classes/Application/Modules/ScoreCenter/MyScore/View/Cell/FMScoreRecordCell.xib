@@ -87,6 +87,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="scoreLabel" destination="4Gc-Vh-70w" id="SK9-o3-BN7"/>
+                <outlet property="timeLabel" destination="Rq8-G4-nhx" id="Cab-X7-qDx"/>
                 <outlet property="titleLabel" destination="m3o-Vv-Phq" id="PAg-yW-hAH"/>
             </connections>
             <point key="canvasLocation" x="-139.19999999999999" y="147.97601199400302"/>

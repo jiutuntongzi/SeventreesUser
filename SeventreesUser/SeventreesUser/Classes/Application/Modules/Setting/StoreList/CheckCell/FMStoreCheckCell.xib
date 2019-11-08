@@ -194,7 +194,7 @@
                 <outlet property="telephoneButton" destination="0kf-Ye-dqQ" id="JVv-Y3-LCi"/>
                 <outlet property="telephoneLabel" destination="PJp-uz-KwA" id="xux-eG-igU"/>
             </connections>
-            <point key="canvasLocation" x="-151.19999999999999" y="94.902548725637189"/>
+            <point key="canvasLocation" x="-217" y="87"/>
         </tableViewCell>
     </objects>
     <resources>

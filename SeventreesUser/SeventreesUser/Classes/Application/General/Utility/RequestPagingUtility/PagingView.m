@@ -56,7 +56,7 @@
         
         [self setupSubviews];
         
-//        [self requestData]; // 不自动请求
+//        [self requestData]; // 不自动发网络请求
     }
     return self;
 }
@@ -82,9 +82,12 @@
         tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [self.pagingUtility execPullDownRefresh];
         }];
-        tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-            [self.pagingUtility execUpPullLoad];
-        }];
+        
+        if (self->_limit != 0) {
+            tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+                [self.pagingUtility execUpPullLoad];
+            }];
+        }
         
         [self addSubview:tableView];
     };

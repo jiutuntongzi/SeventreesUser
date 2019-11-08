@@ -67,7 +67,18 @@
 
 #define      kUpdateByCodeURIPath                   @"/api/sysuser/updateByCode"     // 修改手机号或密码
 
+#define      kStoreListQueryURIPath                 @"/api/opshop/queryStoreList"    // 换绑门店查询门店列表
 
+#define      kUpdateBindStoreURIPath                @"/api/sysuser/updateStore"      // 换绑门店
 
+#pragma mark ——— 我的积分
+
+#define      kIntegralQueryURIPath       @"/api/pcintegral/queryIntegral"     // 查询我的剩余积分
+
+#define      kSignInIntegralURIPath      @"/api/pcintegral/signIntegral"      // 签到送积分
+
+#define      kIntegralRecordListQueryURIPath        @"/api/pcintegralrecord/queryApiPcIntegralRecord"     // 查询积分收支明细
+
+#define      kIntegralExplainHTMLQueryURIPath       @"/api/pcintegral/queryInstructionsHtml"     // 查询积分说明HTML网页
 
 #endif /* URIPath_h */

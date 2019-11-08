@@ -60,7 +60,7 @@
 - (instancetype)initWithPageNo:(NSUInteger)pageNo limit:(NSUInteger)limit uriPath:(NSString *)uriPath params:(NSDictionary *)params requestDataHandler:(NetworkRequestDataHandler)requestDataHandler finishReloadData:(FinishReloadTABHandler)finishReloadDataHandler {
     if (self = [super init]) {
         _pageNo = pageNo;
-        _limit = limit ?: 10;
+        _limit = limit;
         _uriPath = [uriPath copy];
         _mParams = [params mutableCopy];
         
@@ -72,9 +72,10 @@
 
 /** 加载数据：上拉/下拉 */
 - (void)requestLoadData {
-    self.mParams[@"limit"] = @(_limit);
-    self.mParams[@"page"] = @(_pageNo);
-    
+    if (_limit != 0) {
+        self.mParams[@"limit"] = @(_limit);
+        self.mParams[@"page"] = @(_pageNo);
+    }
     [networkMgr POST:_uriPath params:[self.mParams copy] success:^(NetworkResultModel *resultModel) {
 //        if (! [resultModel.statusCode isEqualToString:@"OK"]) {
 //            if (!self->_isUpPull) -- self.pageNo;

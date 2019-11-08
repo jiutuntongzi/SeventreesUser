@@ -46,14 +46,14 @@
                                         <constraint firstItem="dk6-7V-fI3" firstAttribute="centerX" secondItem="3dl-28-j5b" secondAttribute="centerX" id="rBW-qZ-LJr"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B22-Ef-WzK">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B22-Ef-WzK">
                                     <rect key="frame" x="292" y="15" width="68" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="68" id="3Iq-pG-Kxr"/>
                                         <constraint firstAttribute="height" constant="20" id="lgo-tL-1MP"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                    <state key="normal" title="积分说明">
+                                    <state key="normal" title=" 积分说明" image="icon_store_jth">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
@@ -93,7 +93,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMg-ww-j9y" userLabel="itemView">
                                     <rect key="frame" x="0.0" y="0.0" width="125" height="104"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_head_zsdg" translatesAutoresizingMaskIntoConstraints="NO" id="eyt-2p-ZMb">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_store_wszl" translatesAutoresizingMaskIntoConstraints="NO" id="eyt-2p-ZMb">
                                             <rect key="frame" x="38.5" y="16" width="48" height="48"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="48" id="83a-Uk-nJC"/>
@@ -118,7 +118,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIy-Up-I9z" userLabel="itemView">
                                     <rect key="frame" x="125" y="0.0" width="125" height="104"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_head_zsdg" translatesAutoresizingMaskIntoConstraints="NO" id="MeC-gB-5w5">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_store_pjsp" translatesAutoresizingMaskIntoConstraints="NO" id="MeC-gB-5w5">
                                             <rect key="frame" x="38.5" y="16" width="48" height="48"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="48" id="2yO-3V-0iG"/>
@@ -143,7 +143,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hbo-GO-iwL" userLabel="itemView">
                                     <rect key="frame" x="250" y="0.0" width="125" height="104"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_head_zsdg" translatesAutoresizingMaskIntoConstraints="NO" id="eGF-3s-xMw">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_store_yqhy" translatesAutoresizingMaskIntoConstraints="NO" id="eGF-3s-xMw">
                                             <rect key="frame" x="38.5" y="16" width="48" height="48"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="48" id="9XB-9C-fAp"/>
@@ -265,6 +265,9 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_head_zsdg" width="32.5" height="32.5"/>
+        <image name="icon_store_jth" width="11.5" height="11.5"/>
+        <image name="icon_store_pjsp" width="54" height="54"/>
+        <image name="icon_store_wszl" width="54" height="54"/>
+        <image name="icon_store_yqhy" width="54" height="54"/>
     </resources>
 </document>

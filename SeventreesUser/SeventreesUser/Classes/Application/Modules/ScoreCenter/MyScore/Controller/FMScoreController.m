@@ -69,6 +69,10 @@
 //    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
+- (void)fm_refreshData {
+    [_mainView.viewModel.refreshUISubject sendNext:nil];
+}
+
 #pragma mark - Lazyload
 
 - (void)dealloc {

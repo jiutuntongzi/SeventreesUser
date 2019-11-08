@@ -7,11 +7,21 @@
 //
 
 #import "FMViewModel.h"
+#import "FMScoreRecordModel.h"
 
 @interface FMScoreViewModel : FMViewModel
 
-@property (nonatomic, strong) NSArray *dataSource;
+@property (nonatomic, strong) NSMutableArray<FMScoreRecordModel *> *scoreEntitys;
+
+@property (nonatomic, strong) RACSubject *refreshUISubject;
+
+@property (nonatomic, strong) RACSubject *showHintSubject;
 
 @property (nonatomic, strong) RACSubject *nextActionSubject;
+
+
+@property (nonatomic, strong) RACCommand *requestDataCommand;
+
+@property (nonatomic, strong) RACSubject *refreshRecordSubject;
 
 @end

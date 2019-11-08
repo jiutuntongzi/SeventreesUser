@@ -44,22 +44,8 @@
     self.ctc_selectionStyle(UITableViewCellSelectionStyleNone);
 }
 
-- (void)fm_bindViewModel {
-    
-    /// dataSource
-    
+- (void)fm_bindObserver {
     @weakify(self)
-    /*
-    [RACObserve(self.viewModel, storeEntity) subscribeNext:^(FMStoreCheckModel *storeEntity) {
-        @strongify(self)
-        
-        if (storeEntity.isCheck) {
-            self->_checkIconButton.cb_setImageOfNamed(@"icon_store_check_selected");
-        } else {
-            self->_checkIconButton.cb_setImageOfNamed(@"icon_store_check_normal");
-        }
-    }];
-    */
     
     void (^checkStatusBlock)(BOOL) = ^(BOOL isCheck) {
         if (isCheck) {
@@ -69,17 +55,44 @@
         }
     };
     
-    [[self.viewModel rac_valuesAndChangesForKeyPath:@"storeEntity" options:NSKeyValueObservingOptionNew observer:nil] subscribeNext:^(RACTuple *tuple) {
-        @strongify(self)
+    [[self rac_valuesAndChangesForKeyPath:@"viewModel.storeEntity" options:NSKeyValueObservingOptionNew observer:nil] subscribeNext:^(RACTuple *tuple) {
+        @strongify(self) if (!self) return;
         
         FMStoreCheckModel *storeEntity = tuple.first;
-        if (checkStatusBlock) checkStatusBlock(storeEntity.isCheck);
+        checkStatusBlock(storeEntity.isCheck);
         
-        // code..
+        [self->_haedImgView sd_setImageWithURL:[NSURL URLWithString:storeEntity.logoUrl] placeholderImage:UIImage.new];
+        self->_storeNameLabel.text = storeEntity.name ?: @"--";
         
+        NSString *storeDistance = [NSString stringWithFormat:@"距您%.1f公里", storeEntity.storeDistance.doubleValue];
+        self->_distanceLabel.text = storeEntity.storeDistance ? storeDistance : @"--";
+        
+        self->_telephoneLabel.text = storeEntity.phone ? [NSString stringWithFormat:@"电话：%@", storeEntity.phone] : @"--";
+        
+        self->_addressLabel.text = storeEntity.detailedAddress ?: @"--";
     }];
     
-    /// Actions
+    /*
+     [RACObserve(self.viewModel, storeEntity) subscribeNext:^(FMStoreCheckModel *storeEntity) {
+     @strongify(self)
+     
+     if (storeEntity.isCheck) {
+     self->_checkIconButton.cb_setImageOfNamed(@"icon_store_check_selected");
+     } else {
+     self->_checkIconButton.cb_setImageOfNamed(@"icon_store_check_normal");
+     }
+     }];
+     */
+}
+
+- (void)setViewModel:(FMStoreCheckViewModel *)viewModel {
+    _viewModel = viewModel;
+    
+    [self fm_bindViewModel];
+}
+
+- (void)fm_bindViewModel {
+    @weakify(self)  if (! _viewModel) return;
     
     [[_storeItemButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
@@ -87,7 +100,6 @@
             [SVProgressHUD showInfoWithStatus:@"请选择其它门店"];
             return ;
         }
-        
         /*
         PagingView *pagingView = (PagingView *)self.tableView.superview;
         for (FMStoreCheckModel *entity in pagingView.entitys) {
@@ -100,27 +112,20 @@
         [self.tableView reloadData];
         [self.tableView scrollToRowAtIndexPath:self.viewModel.storeEntity.indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
         */
-        [self.viewModel.checkActionSubject sendNext:self.viewModel.storeEntity];
+        [self->_viewModel.checkActionSubject sendNext:self.viewModel.storeEntity];
     }];
     
     [[_telephoneButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
         
-        [self.viewModel.telephoneActionSubject sendNext:self.viewModel.storeEntity];
+        [self->_viewModel.telephoneActionSubject sendNext:self.viewModel.storeEntity];
     }];
     
     [[_addressButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
         
-        [self.viewModel.addressActionSubject sendNext:self.viewModel.storeEntity];
+        [self->_viewModel.addressActionSubject sendNext:self.viewModel.storeEntity];
     }];
-}
-
-- (FMStoreCheckViewModel *)viewModel {
-    if (! _viewModel) {
-        _viewModel = [[FMStoreCheckViewModel alloc] init];
-    }
-    return _viewModel;
 }
 
 @end

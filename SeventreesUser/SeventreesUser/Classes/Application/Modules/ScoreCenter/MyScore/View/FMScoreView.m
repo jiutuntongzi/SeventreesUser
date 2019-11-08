@@ -15,7 +15,7 @@
 @interface FMScoreView () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) FMScoreHeaderView *ScoreHeaderView;
+@property (nonatomic, strong) FMScoreHeaderView *scoreHeaderView;
 
 @end
 
@@ -24,8 +24,6 @@
 #pragma mark - Private Functions
 
 - (void)fm_setupSubviews {
-    self.cv_backColor(UIColor.whiteColor);
-    
     [self setupTableView];
     
     [self setNeedsUpdateConstraints];
@@ -33,8 +31,9 @@
 }
 
 - (void)setupTableView {
+    self.cv_backColor(UIColor.whiteColor);
     CGFloat width = self.bounds.size.width, height = self.bounds.size.height;
-    UITableView *tableView = UITableView.ct_tableViewWithFrameStyle(0.f, 0.f, width, height, UITableViewStylePlain)\
+    UITableView *tableView = UITableView.ct_tableViewWithFrameStyle(0.f, 0.f, width, height, UITableViewStyleGrouped)\
     .ct_dataSource(self).ct_delegate(self)\
     .ct_rowHeight(FMScoreRecordCellRowHeight).ct_separatorStyle(UITableViewCellSeparatorStyleNone);
     tableView.cv_backColorByHexString(@"#F7F7F7");
@@ -43,9 +42,39 @@
     [self addSubview:tableView];
 }
 
+- (void)fm_bindObserver {
+    /// RAC-KVO
+    /*
+    @weakify(self)
+    [RACObserve(self.viewModel, scoreEntitys) subscribeNext:^(NSArray *scoreEntitys) {
+        @strongify(self)
+        [self->_tableView reloadData];
+    }];
+    */
+    
+//    @weakify(self)
+//    [[self.viewModel rac_valuesForKeyPath:@"scoreEntitys" observer:nil] subscribeNext:^(NSArray * _Nullable scoreEntitys) {
+//        @strongify(self)
+//        DLog(@"%@", scoreEntitys);
+//    }];
+    
+//    @weakify(self)
+//    [[self.viewModel rac_valuesAndChangesForKeyPath:@"scoreEntitys" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld observer:nil] subscribeNext:^(RACTuple *tuple) {
+//        @strongify(self)
+//        NSArray * _Nullable scoreEntitys = tuple.first;
+//
+//    }];
+    
+}
+
 - (void)fm_bindViewModel {
     
-    // 绑定头部、尾部Model RAC-KVO
+    // 绑定头部、尾部ViewModel
+    @weakify(self)
+    [self.viewModel.refreshRecordSubject subscribeNext:^(id x) {
+        @strongify(self)
+        [self->_tableView reloadData];
+    }];
 }
 
 #pragma mark - System Functions
@@ -67,25 +96,24 @@
     return _viewModel;
 }
 
-- (FMScoreHeaderView *)ScoreHeaderView {
-    if (! _ScoreHeaderView) {
-        FMScoreHeaderView *ScoreHeaderView = (FMScoreHeaderView *)FMScoreHeaderView.cv_viewFromNibLoad();
-        ScoreHeaderView.frame = CGRectZero;
-        _ScoreHeaderView = ScoreHeaderView;
+- (FMScoreHeaderView *)scoreHeaderView {
+    if (! _scoreHeaderView) {
+        _scoreHeaderView = FMScoreHeaderView.cv_viewFromNibLoad();
+        _scoreHeaderView.frame = CGRectZero;
     }
-    return _ScoreHeaderView;
+    return _scoreHeaderView;
 }
 
 #pragma mark ——— <UITableViewDataSource>
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     FMScoreRecordCell *cell = FMScoreRecordCell.ctc_cellReuseNibLoadForTableView(tableView);
-//    cell.model = FMScoreRecordModel
+    cell.scoreEntity = self.viewModel.scoreEntitys[indexPath.row];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return self.viewModel.scoreEntitys.count;
 }
 
 #pragma mark ——— <UITableViewDelegate>
@@ -93,20 +121,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DLog(@"点了第%ld行", (long)indexPath.row);
-    if (indexPath.row == 0) {
-
-    } else if (indexPath.row == 1) {
-
-    } else if (indexPath.row == 2) {
-        
-        
-    } else if (indexPath.row == 3) {
-
-    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return self.ScoreHeaderView;
+    return self.scoreHeaderView;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return FMScoreHeaderViewHeight;
@@ -114,7 +132,7 @@
 
 //设置标题  可以根据section的值来设置 第一个为0
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @"会员进阶";
+    return @"积分收支明细";
 }
 
 @end

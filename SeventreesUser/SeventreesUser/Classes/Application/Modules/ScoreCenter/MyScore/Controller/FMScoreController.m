@@ -10,6 +10,7 @@
 
 #import "FMScoreView.h"
 #import "FMScoreViewModel.h"
+#import "WebViewController.h"
 
 @interface FMScoreController ()
 
@@ -47,11 +48,9 @@
 }
 
 - (void)fm_bindViewModel {
-    @weakify(self)
-    [_mainView.viewModel.nextActionSubject subscribeNext:^(id x) {
-        @strongify(self)    if (!self) return;
-//        UIViewController *nextVC = [[FMAddressManagerController alloc] init];
-//        self.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    [_mainView.viewModel.nextPageSubject subscribeNext:^(NSString *URLString) {
+        [WebViewController showByPageType:WebViewControllerPageTypeScoreExplain];
+//        [WebViewController showByURLString:URLString];
     }];
 }
 

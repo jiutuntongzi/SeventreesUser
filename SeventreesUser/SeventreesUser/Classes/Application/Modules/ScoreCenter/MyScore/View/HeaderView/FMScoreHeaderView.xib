@@ -47,9 +47,9 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B22-Ef-WzK">
-                                    <rect key="frame" x="292" y="15" width="68" height="20"/>
+                                    <rect key="frame" x="285" y="15" width="75" height="20"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="68" id="3Iq-pG-Kxr"/>
+                                        <constraint firstAttribute="width" constant="75" id="3Iq-pG-Kxr"/>
                                         <constraint firstAttribute="height" constant="20" id="lgo-tL-1MP"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -63,14 +63,13 @@
                                     </userDefinedRuntimeAttributes>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4VP-wl-ni5">
-                                    <rect key="frame" x="115.5" y="80" width="144" height="30"/>
+                                    <rect key="frame" x="122" y="80" width="131" height="30"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="144" id="86k-TY-VRC"/>
                                         <constraint firstAttribute="height" constant="30" id="wBR-qN-zHN"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <state key="normal" title="立即签到领积分">
+                                    <state key="normal" title="    立即签到领积分    ">
                                         <color key="titleColor" red="0.96862745098039216" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                 </button>
@@ -259,9 +258,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="explainButton" destination="B22-Ef-WzK" id="Duz-Xv-CTz"/>
+                <outlet property="integralNumLabel" destination="dk6-7V-fI3" id="DVY-Sz-f6N"/>
                 <outlet property="signInButton" destination="4VP-wl-ni5" id="Tkh-gQ-rOs"/>
             </connections>
-            <point key="canvasLocation" x="-690.39999999999998" y="4.497751124437781"/>
+            <point key="canvasLocation" x="-513" y="5"/>
         </view>
     </objects>
     <resources>

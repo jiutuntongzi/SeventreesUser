@@ -68,13 +68,27 @@
 }
 
 - (void)fm_bindViewModel {
-    
-    // 绑定头部、尾部ViewModel
     @weakify(self)
+    
+    // 绑定头部ViewModel
+    [self.viewModel.refreshUISubject subscribeNext:^(id x) {
+        @strongify(self)
+        [self.scoreHeaderView.viewModel.requestDataCommand execute:nil];
+    }];
+    
+    [self.scoreHeaderView.viewModel.nextPageSubject subscribeNext:^(id x) {
+        @strongify(self)
+        [self.viewModel.nextPageSubject sendNext:nil];
+    }];
+    
+    
+    // 绑定表格ViewModel
     [self.viewModel.refreshRecordSubject subscribeNext:^(id x) {
         @strongify(self)
         [self->_tableView reloadData];
     }];
+    
+    
 }
 
 #pragma mark - System Functions

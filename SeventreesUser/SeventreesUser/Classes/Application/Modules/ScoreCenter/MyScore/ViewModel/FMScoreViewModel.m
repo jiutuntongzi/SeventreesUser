@@ -81,11 +81,11 @@
     return _refreshRecordSubject;
 }
 
-- (RACSubject *)nextActionSubject {
-    if (!_nextActionSubject) {
-        _nextActionSubject = [[RACSubject alloc] init];
+- (RACSubject *)nextPageSubject {
+    if (! _nextPageSubject) {
+        _nextPageSubject = [[RACSubject alloc] init];
     }
-    return _nextActionSubject;
+    return _nextPageSubject;
 }
 
 - (NSMutableArray<FMScoreRecordModel *> *)scoreEntitys {

@@ -7,9 +7,12 @@
 //
 
 #import "FMView.h"
+#import "FMScoreHeaderViewModel.h"
+
+#define         FMScoreHeaderViewHeight      292.f
 
 @interface FMScoreHeaderView : FMView
 
-#define         FMScoreHeaderViewHeight      292.f
+@property (nonatomic, strong) FMScoreHeaderViewModel *viewModel;
 
 @end

@@ -20,7 +20,7 @@
 - (void)fm_setupSubviews;
 
 /** 生成布局约束 */
-//- (void)fm_makeConstraints;
+- (void)fm_makeConstraints;
 
 /** 绑定KVO观察 */
 - (void)fm_bindObserver;

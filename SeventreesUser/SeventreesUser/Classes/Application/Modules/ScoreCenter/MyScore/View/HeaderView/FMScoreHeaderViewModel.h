@@ -1,17 +1,18 @@
 //
-//  FMScoreViewModel.h
+//  FMScoreHeaderViewModel.h
 //  SeventreesUser
 //
-//  Created by wushiye on 2019/8/29.
+//  Created by wushiye on 2019/11/9.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
 #import "FMViewModel.h"
-#import "FMScoreRecordModel.h"
+#import "FMScoreModel.h"
 
-@interface FMScoreViewModel : FMViewModel
+@interface FMScoreHeaderViewModel : FMViewModel
 
-@property (nonatomic, strong) NSMutableArray<FMScoreRecordModel *> *scoreEntitys;
+/** self. KVO */
+@property (nonatomic, strong) FMScoreModel *scoreEntity;
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
@@ -22,6 +23,9 @@
 
 @property (nonatomic, strong) RACCommand *requestDataCommand;
 
-@property (nonatomic, strong) RACSubject *refreshRecordSubject;
+@property (nonatomic, strong) RACCommand *requestSignInCommand;
+
+@property (nonatomic, strong) RACCommand *requestWebExplainCommand;
 
 @end
+

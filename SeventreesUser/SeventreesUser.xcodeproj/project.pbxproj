@@ -146,6 +146,12 @@
 		8428B94A2341A0350098A633 /* FMGoodsDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8428B9482341A0350098A633 /* FMGoodsDetailsCell.xib */; };
 		8428B9502341A77E0098A633 /* FMSearchButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428B94F2341A77E0098A633 /* FMSearchButtonView.m */; };
 		8428B9522341A78B0098A633 /* FMSearchButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8428B9512341A78B0098A633 /* FMSearchButtonView.xib */; };
+		842D5CDB237912F900770C74 /* FMCouponSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842D5CD2237912F800770C74 /* FMCouponSelectCell.m */; };
+		842D5CDC237912F900770C74 /* FMCouponSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842D5CD3237912F800770C74 /* FMCouponSelectCell.xib */; };
+		842D5CDD237912F900770C74 /* FMCouponSelectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842D5CD5237912F800770C74 /* FMCouponSelectModel.m */; };
+		842D5CDE237912F900770C74 /* FMCouponSelectListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842D5CD7237912F800770C74 /* FMCouponSelectListController.m */; };
+		842D5CDF237912F900770C74 /* FMCouponSelectListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842D5CD9237912F800770C74 /* FMCouponSelectListViewModel.m */; };
+		842D5CE2237913C000770C74 /* FMCouponSelectCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842D5CE0237913C000770C74 /* FMCouponSelectCellViewModel.m */; };
 		842DDA53236829860088396C /* FMCouponListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842DDA52236829860088396C /* FMCouponListViewModel.m */; };
 		842F0AED231655C400D78028 /* FMImageEyeListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842F0AEA231655C400D78028 /* FMImageEyeListView.m */; };
 		842F0AF02316572D00D78028 /* FMImageEyeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842F0AEE2316572D00D78028 /* FMImageEyeCell.m */; };
@@ -748,6 +754,17 @@
 		8428B94E2341A77E0098A633 /* FMSearchButtonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMSearchButtonView.h; sourceTree = "<group>"; };
 		8428B94F2341A77E0098A633 /* FMSearchButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMSearchButtonView.m; sourceTree = "<group>"; };
 		8428B9512341A78B0098A633 /* FMSearchButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMSearchButtonView.xib; sourceTree = "<group>"; };
+		842D5CD1237912F800770C74 /* FMCouponSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCouponSelectCell.h; sourceTree = "<group>"; };
+		842D5CD2237912F800770C74 /* FMCouponSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMCouponSelectCell.m; sourceTree = "<group>"; };
+		842D5CD3237912F800770C74 /* FMCouponSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMCouponSelectCell.xib; sourceTree = "<group>"; };
+		842D5CD4237912F800770C74 /* FMCouponSelectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCouponSelectModel.h; sourceTree = "<group>"; };
+		842D5CD5237912F800770C74 /* FMCouponSelectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMCouponSelectModel.m; sourceTree = "<group>"; };
+		842D5CD6237912F800770C74 /* FMCouponSelectListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCouponSelectListController.h; sourceTree = "<group>"; };
+		842D5CD7237912F800770C74 /* FMCouponSelectListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMCouponSelectListController.m; sourceTree = "<group>"; };
+		842D5CD8237912F800770C74 /* FMCouponSelectListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCouponSelectListViewModel.h; sourceTree = "<group>"; };
+		842D5CD9237912F800770C74 /* FMCouponSelectListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMCouponSelectListViewModel.m; sourceTree = "<group>"; };
+		842D5CE0237913C000770C74 /* FMCouponSelectCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMCouponSelectCellViewModel.m; sourceTree = "<group>"; };
+		842D5CE1237913C000770C74 /* FMCouponSelectCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCouponSelectCellViewModel.h; sourceTree = "<group>"; };
 		842DDA51236829860088396C /* FMCouponListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMCouponListViewModel.h; sourceTree = "<group>"; };
 		842DDA52236829860088396C /* FMCouponListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMCouponListViewModel.m; sourceTree = "<group>"; };
 		842F0AE9231655C400D78028 /* FMImageEyeListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMImageEyeListView.h; sourceTree = "<group>"; };
@@ -2479,6 +2496,32 @@
 			path = SearchPaging;
 			sourceTree = "<group>";
 		};
+		842D5CCD237912F800770C74 /* CouponSelectList */ = {
+			isa = PBXGroup;
+			children = (
+				842D5CD6237912F800770C74 /* FMCouponSelectListController.h */,
+				842D5CD7237912F800770C74 /* FMCouponSelectListController.m */,
+				842D5CD8237912F800770C74 /* FMCouponSelectListViewModel.h */,
+				842D5CD9237912F800770C74 /* FMCouponSelectListViewModel.m */,
+				842D5CCE237912F800770C74 /* CouponCell */,
+			);
+			path = CouponSelectList;
+			sourceTree = "<group>";
+		};
+		842D5CCE237912F800770C74 /* CouponCell */ = {
+			isa = PBXGroup;
+			children = (
+				842D5CD1237912F800770C74 /* FMCouponSelectCell.h */,
+				842D5CD2237912F800770C74 /* FMCouponSelectCell.m */,
+				842D5CD3237912F800770C74 /* FMCouponSelectCell.xib */,
+				842D5CE1237913C000770C74 /* FMCouponSelectCellViewModel.h */,
+				842D5CE0237913C000770C74 /* FMCouponSelectCellViewModel.m */,
+				842D5CD4237912F800770C74 /* FMCouponSelectModel.h */,
+				842D5CD5237912F800770C74 /* FMCouponSelectModel.m */,
+			);
+			path = CouponCell;
+			sourceTree = "<group>";
+		};
 		842DDA5423682B0E0088396C /* CouponCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2774,18 +2817,18 @@
 		84468D3A230251AB0073D640 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				844A0E0A2338BBA6006015D4 /* AfterSale */,
 				8405B8992334CB610065965F /* OrderDetails */,
 				848684ED233325080057A16E /* AllOrder */,
 				84089E4E23138D8E00D7EF7D /* GoodsDetails */,
 				84DC590B233090710004DA2D /* VIPCenter */,
+				844A0E0A2338BBA6006015D4 /* AfterSale */,
 				847E58C1232250DF0022FF1F /* Bargain */,
 				8428B93E23419E260098A633 /* Search */,
 				841150C12320F461004DF4CD /* SpellGroup */,
 				84FAEC90231761BB00E8CA3F /* BrandGoods */,
 				8406E4632325FA7500E167BD /* SalesActivity */,
 				84089E5B23138FBE00D7EF7D /* Evaluation */,
-				84E7F54E233211B3002C6915 /* AllCoupon */,
+				84E7F54E233211B3002C6915 /* Coupon */,
 				8467B56D2331D5510062B33F /* ScoreCenter */,
 				840CDDC02340ADED00527CB0 /* Collect */,
 				84468D3C230253210073D640 /* Home */,
@@ -3180,6 +3223,16 @@
 				84468D3A230251AB0073D640 /* Modules */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		847BA162237945AF00D4E81E /* CouponPaging */ = {
+			isa = PBXGroup;
+			children = (
+				84E7F557233211B3002C6915 /* FMCouponPagingController.h */,
+				84E7F558233211B3002C6915 /* FMCouponPagingController.m */,
+				84E7F54F233211B3002C6915 /* CouponList */,
+			);
+			path = CouponPaging;
 			sourceTree = "<group>";
 		};
 		847E58C1232250DF0022FF1F /* Bargain */ = {
@@ -4062,14 +4115,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		84E7F54E233211B3002C6915 /* AllCoupon */ = {
+		84E7F54E233211B3002C6915 /* Coupon */ = {
 			isa = PBXGroup;
 			children = (
-				84E7F557233211B3002C6915 /* FMCouponPagingController.h */,
-				84E7F558233211B3002C6915 /* FMCouponPagingController.m */,
-				84E7F54F233211B3002C6915 /* CouponList */,
+				847BA162237945AF00D4E81E /* CouponPaging */,
+				842D5CCD237912F800770C74 /* CouponSelectList */,
 			);
-			path = AllCoupon;
+			path = Coupon;
 			sourceTree = "<group>";
 		};
 		84E7F54F233211B3002C6915 /* CouponList */ = {
@@ -4930,6 +4982,7 @@
 				8469E346233E04E900362168 /* FMButtonFooterView.xib in Resources */,
 				84FF2F272335BD2800E34550 /* FMGoodsFooterView.xib in Resources */,
 				84D38B58233B173E00DEF36D /* FMRefundStatusView.xib in Resources */,
+				842D5CDC237912F900770C74 /* FMCouponSelectCell.xib in Resources */,
 				8405B8C32334D16F0065965F /* FMOrderAddressView.xib in Resources */,
 				844776AE230ACBA0008AE242 /* FMGoodsView.xib in Resources */,
 				84FDEF6E232905DB0030196A /* FMStoreCheckCell.xib in Resources */,
@@ -5094,6 +5147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842D5CDF237912F900770C74 /* FMCouponSelectListViewModel.m in Sources */,
 				84DD3FCE23015B04001171F1 /* NSArray+Chain.m in Sources */,
 				84F9D7F0230E933A00158496 /* CatogeryModel.m in Sources */,
 				84F045262330BDCC0002B5B3 /* FMMessageListController.m in Sources */,
@@ -5150,6 +5204,7 @@
 				84D7282523014D1B002D387A /* FMViewController.m in Sources */,
 				84FC445A231CF4E200DF9799 /* YBIBTopView.m in Sources */,
 				8407F2D8231E46FE00E875AC /* FMGoodsPictureListViewModel.m in Sources */,
+				842D5CDE237912F900770C74 /* FMCouponSelectListController.m in Sources */,
 				84F97A942320ABB800FC0EFE /* FMSettlementViewModel.m in Sources */,
 				84464C1A230FED7300ED9069 /* FMShoppingGoodsCell.m in Sources */,
 				84FC444C231CF4E200DF9799 /* YBIBCopywriter.m in Sources */,
@@ -5206,6 +5261,7 @@
 				84497C0C231D157000D3A79B /* FMShopCarToolView.m in Sources */,
 				8403F7662323999800A3B347 /* FMBargainFreeController.m in Sources */,
 				841C55EC231E48A6008B5A91 /* FMPictureTableView.m in Sources */,
+				842D5CE2237913C000770C74 /* FMCouponSelectCellViewModel.m in Sources */,
 				8428B94523419F600098A633 /* FMSearchGoodsListController.m in Sources */,
 				84C3DF5A231E16B4008147C6 /* FMGoodsInfoView.m in Sources */,
 				84FAEC9D23176BBF00E8CA3F /* FMBrandGoodsViewModel.m in Sources */,
@@ -5287,6 +5343,7 @@
 				8469E345233E04E900362168 /* FMButtonFooterView.m in Sources */,
 				8405B8B12334CDD00065965F /* FMOrderDetailsModel.m in Sources */,
 				84FFF9502355CD79000980D8 /* FMAnnouncementViewModel.m in Sources */,
+				842D5CDD237912F900770C74 /* FMCouponSelectModel.m in Sources */,
 				845058DE235EEE60006BA561 /* FMBrandModel.m in Sources */,
 				84FDEF6F232905DB0030196A /* FMStoreListController.m in Sources */,
 				84001C95230CD4EB0010DE0B /* WMPageController.m in Sources */,
@@ -5320,6 +5377,7 @@
 				84FC4444231CF4E200DF9799 /* YBIBLoadingView.m in Sources */,
 				84DD3FCC23015B04001171F1 /* UINavigationController+Chain.m in Sources */,
 				849CBFB92301176F003821E4 /* MainTabBarController.m in Sources */,
+				842D5CDB237912F900770C74 /* FMCouponSelectCell.m in Sources */,
 				84BAC58F2306B2EB0062B812 /* FMSetPasswordView.m in Sources */,
 				84094EA0233B10E3008BF38B /* FMMarkTitleView.m in Sources */,
 				8449935623405F190006A544 /* FMSlashGoodsModel.m in Sources */,

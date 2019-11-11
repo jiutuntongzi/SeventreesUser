@@ -71,7 +71,7 @@
     [WebViewController presentToController:customWebVC];
 }
 
-+ (void)showByURLString:(NSString *)URLString {
++ (void)showByURLString:(NSString * __nonnull)URLString {
     WebViewController *customWebVC = [[WebViewController alloc] init];
     customWebVC.urlString = URLString;
     [WebViewController presentToController:customWebVC];

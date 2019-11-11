@@ -35,12 +35,15 @@
         @strongify(self)
         self->_integralNumLabel.text = scoreEntity.integralNum ? scoreEntity.integralNum.stringValue : @"--";
         
-        if (scoreEntity.signType.integerValue == 1) {
-            self->_signInButton.cb_title(@"  已签到  ");
-            self->_signInButton.enabled = NO;
+        BOOL isSign = scoreEntity.signType.integerValue == 1;
+        if (isSign) {
+            self->_signInButton.cb_title(@"   已签到   ");
+            self->_signInButton.enabled = !isSign;
+            self->_signInButton.userInteractionEnabled = !isSign;
         } else {
             self->_signInButton.cb_title(@"    立即签到领积分    ");
-            self->_signInButton.enabled = YES;
+            self->_signInButton.enabled = isSign;
+            self->_signInButton.userInteractionEnabled = isSign;
         }
     }];
 }
@@ -54,14 +57,13 @@
     
     [[_explainButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        [self.viewModel.nextPageSubject sendNext:@""];
+        [self.viewModel.nextPageSubject sendNext:self.viewModel.webExplainURL];
 //        [self.viewModel.requestWebExplainCommand execute:nil];
     }];
     
-    [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
-        @strongify(self)    if (!self) return;
-        
-    }];
+//    [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
+//        @strongify(self)    if (!self) return;
+//    }];
     
     [[self.viewModel.requestSignInCommand.executing skip:1] subscribeNext:^(id x) {
         if ([x isEqualToNumber:@(YES)]) {

@@ -203,6 +203,7 @@ static NetworkRequestManager * _instance = nil;
         DLog(@"\n %@请求体参数: HTTPBodyJSON == %@ \n", requestMethod, bodyJSON);
     }
     
+    
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     if ([UserData token]) [request setValue:[UserData token] forHTTPHeaderField:@"token"];

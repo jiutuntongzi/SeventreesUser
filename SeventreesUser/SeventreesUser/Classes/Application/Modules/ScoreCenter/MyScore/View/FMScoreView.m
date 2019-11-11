@@ -76,9 +76,9 @@
         [self.scoreHeaderView.viewModel.requestDataCommand execute:nil];
     }];
     
-    [self.scoreHeaderView.viewModel.nextPageSubject subscribeNext:^(id x) {
+    [self.scoreHeaderView.viewModel.nextPageSubject subscribeNext:^(NSString *webExplainURL) {
         @strongify(self)
-        [self.viewModel.nextPageSubject sendNext:nil];
+        [self.viewModel.nextPageSubject sendNext:webExplainURL];
     }];
     
     
@@ -87,8 +87,6 @@
         @strongify(self)
         [self->_tableView reloadData];
     }];
-    
-    
 }
 
 #pragma mark - System Functions

@@ -22,16 +22,6 @@
 
 #pragma mark - System Functions
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-}
-
 - (void)updateViewConstraints {
     [_mainView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -48,9 +38,9 @@
 }
 
 - (void)fm_bindViewModel {
-    [_mainView.viewModel.nextPageSubject subscribeNext:^(NSString *URLString) {
+    [_mainView.viewModel.nextPageSubject subscribeNext:^(NSString *webExplainURL) {
         [WebViewController showByPageType:WebViewControllerPageTypeScoreExplain];
-//        [WebViewController showByURLString:URLString];
+//        [WebViewController showByURLString:webExplainURL];
     }];
 }
 
@@ -58,14 +48,6 @@
     [super fm_setupNavbar];
     
     self.navigationItem.title = @"我的积分";
-    
-//    __weak typeof(self) weakSelf = self;
-//    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-//        DLog(@"点了导航栏右");
-//        UIViewController *nextVC = [[FMFeedbackController alloc] init];
-//        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-//    });
-//    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (void)fm_refreshData {

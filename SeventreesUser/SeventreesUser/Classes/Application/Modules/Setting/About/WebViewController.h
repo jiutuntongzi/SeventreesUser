@@ -15,6 +15,6 @@ typedef NS_ENUM(NSInteger, WebViewControllerPageType) {
 
 + (void)showByPageType:(WebViewControllerPageType)type;
 
-+ (void)showByURLString:(NSString *)URLString;
++ (void)showByURLString:(NSString * __nonnull)URLString;
 
 @end

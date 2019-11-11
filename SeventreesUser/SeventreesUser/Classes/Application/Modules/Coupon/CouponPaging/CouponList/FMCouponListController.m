@@ -47,6 +47,7 @@
     
     [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
         [SVProgressHUD showInfoWithStatus:status];
+        [SVProgressHUD dismissWithDelay:1.f];
     }];
 }
 

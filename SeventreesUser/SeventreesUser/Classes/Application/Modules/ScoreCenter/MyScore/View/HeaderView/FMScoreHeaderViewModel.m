@@ -29,6 +29,7 @@
             return;
         }
         [SVProgressHUD showSuccessWithStatus:@"签到成功"];
+        [self.requestDataCommand execute:nil]; // 重新加载积分头部
     }];
     
     [self.requestWebExplainCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
@@ -37,6 +38,7 @@
             [self.showHintSubject sendNext:resultModel.statusMsg];
             return;
         }
+        self->_webExplainURL = [resultModel.jsonDict[@"html"] copy];
     }];
 }
 
@@ -68,9 +70,8 @@
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 //                @strongify(self)
                 NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:2];
-                params[@"limit"] = @(100);  // params[@"limit"] = @(_limit);
-                params[@"page"] = @(1);     // params[@"page"] = @(_pageNo);
-                [networkMgr POST:kIntegralRecordListQueryURIPath params:params success:^(NetworkResultModel *resultModel) {
+                params[@"type"] = @(1);
+                [networkMgr POST:kIntegralExplainHTMLQueryURIPath params:params success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
                     
@@ -91,10 +92,7 @@
         _requestSignInCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 //                @strongify(self)
-                NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:2];
-                params[@"limit"] = @(100);  // params[@"limit"] = @(_limit);
-                params[@"page"] = @(1);     // params[@"page"] = @(_pageNo);
-                [networkMgr POST:kIntegralRecordListQueryURIPath params:params success:^(NetworkResultModel *resultModel) {
+                [networkMgr POST:kSignInIntegralURIPath params:nil success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
                     
@@ -109,12 +107,12 @@
     return _requestSignInCommand;
 }
 
-- (RACSubject *)refreshUISubject {
-    if (! _refreshUISubject) {
-        _refreshUISubject = [RACSubject subject];
-    }
-    return _refreshUISubject;
-}
+//- (RACSubject *)refreshUISubject {
+//    if (! _refreshUISubject) {
+//        _refreshUISubject = [RACSubject subject];
+//    }
+//    return _refreshUISubject;
+//}
 
 - (RACSubject *)nextPageSubject {
     if (! _nextPageSubject) {

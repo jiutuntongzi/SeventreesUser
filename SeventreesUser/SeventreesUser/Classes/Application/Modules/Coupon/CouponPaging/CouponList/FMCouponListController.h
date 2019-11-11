@@ -9,7 +9,7 @@
 #import "FMViewController.h"
 #import "FMCouponListViewModel.h"
 
-@interface FMCouponListController : FMViewController
+@interface FMCouponListController : FMViewController 
 
 @property (nonatomic, strong) FMCouponListViewModel *viewModel;
 

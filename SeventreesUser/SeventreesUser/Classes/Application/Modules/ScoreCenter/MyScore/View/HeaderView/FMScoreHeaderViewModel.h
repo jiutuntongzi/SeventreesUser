@@ -14,7 +14,7 @@
 /** self. KVO */
 @property (nonatomic, strong) FMScoreModel *scoreEntity;
 
-@property (nonatomic, strong) RACSubject *refreshUISubject;
+//@property (nonatomic, strong) RACSubject *refreshUISubject;
 
 @property (nonatomic, strong) RACSubject *showHintSubject;
 
@@ -25,6 +25,7 @@
 
 @property (nonatomic, strong) RACCommand *requestSignInCommand;
 
+@property (nonatomic, copy) NSString *webExplainURL;
 @property (nonatomic, strong) RACCommand *requestWebExplainCommand;
 
 @end

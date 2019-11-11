@@ -88,7 +88,7 @@ typedef NS_ENUM(NSUInteger, FMCouponPagingItemType) {
     
     __weak typeof(self) weakSelf = self;
     UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithImageStyleForTouchCallback(@"icon_coupon_rightItem", 1, ^(UIBarButtonItem *rightItem) {
-        UIViewController *nextVC = [[NSClassFromString(@"") alloc] init];
+        UIViewController *nextVC = [[NSClassFromString(@"FMCouponSelectListController") alloc] init];
         weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     });
     self.navigationItem.cni_rightBarButtonItem(rightItem);

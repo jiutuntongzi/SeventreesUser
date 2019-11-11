@@ -1,14 +1,14 @@
 //
-//  FMCouponCell.m
+//  FMCouponSelectCell.m
 //  SeventreesUser
 //
 //  Created by wushiye on 2019/9/6.
 //  Copyright © 2019 Seven trees. All rights reserved.
 //
 
-#import "FMCouponCell.h"
+#import "FMCouponSelectCell.h"
 
-@interface FMCouponCell ()
+@interface FMCouponSelectCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *topStyleImgView;
 @property (weak, nonatomic) IBOutlet UIImageView *couponTypeImgView;
@@ -17,21 +17,20 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLimitLabel;
 @property (weak, nonatomic) IBOutlet UILabel *remakeLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *takeButton;
+@property (weak, nonatomic) IBOutlet UIImageView *checkedImgView;
+@property (weak, nonatomic) IBOutlet UIButton *checkedButton;
 
 @end
 
-@implementation FMCouponCell
+@implementation FMCouponSelectCell
 
 - (void)fm_setupSubviews {
-    _takeButton.layer.cornerRadius = 13.f;
-    _takeButton.layer.borderColor = UIColor.cc_colorByHexString(@"#F76F6F").CGColor;
-    _takeButton.layer.borderWidth = 1.f;
+    
 }
 
 - (void)fm_bindObserver {
     @weakify(self)
-    [RACObserve(self, viewModel.couponEntity) subscribeNext:^(FMCouponModel *couponEntity) {
+    [RACObserve(self, viewModel.couponEntity) subscribeNext:^(FMCouponSelectModel *couponEntity) {
         @strongify(self)    if (!self) return;
         
         self->_timeLimitLabel.text = [NSString stringWithFormat:@"使用期限：%@至%@", couponEntity.startTime, couponEntity.endTime];
@@ -72,33 +71,53 @@
         }
         
         /// 优惠卷状态 1 = 未领取, 2 = 未使用, 3 = 已使用
-        if (couponEntity.status == 1) {
+        if (couponEntity.status == 2) {
+            self->_topStyleImgView.image = UIImage.ci_imageNamed(styleImageName);
             self->_couponTypeImgView.image = UIImage.ci_imageNamed(typeImageName);
             
-        } else if (couponEntity.status == 2) {
-            typeImageName = [NSString stringWithFormat:@"%@_unused", typeImageName];
-            self->_couponTypeImgView.image = UIImage.ci_imageNamed(typeImageName);
-            
-        } else if (couponEntity.status == 3) {
-            typeImageName = [NSString stringWithFormat:@"%@_used", typeImageName];
-            self->_couponTypeImgView.image = UIImage.ci_imageNamed(typeImageName);
         } else {
-            DLog(@"优惠卷状态未定义：couponEntity.status == %ld", couponEntity.status);
+            DLog(@"优惠卷状态nil：couponEntity.status == %ld", couponEntity.status);
+        }
+        
+        /*
+         /// 优惠卷状态 1 = 未领取, 2 = 未使用, 3 = 已使用
+         if (couponEntity.status == 1) {
+         self->_topStyleImgView.image = UIImage.ci_imageNamed(styleImageName);
+         self->_couponTypeImgView.image = UIImage.ci_imageNamed(typeImageName);
+         
+         } else if (couponEntity.status == 2) {
+         self->_topStyleImgView.image = UIImage.ci_imageNamed(styleImageName);
+         self->_couponTypeImgView.image = UIImage.ci_imageNamed(typeImageName);
+         
+         } else if (couponEntity.status == 3) {
+         styleImageName = [NSString stringWithFormat:@"%@_used", styleImageName];
+         self->_topStyleImgView.image = UIImage.ci_imageNamed(styleImageName);
+         
+         typeImageName = [NSString stringWithFormat:@"%@_used", typeImageName];
+         self->_couponTypeImgView.image = UIImage.ci_imageNamed(typeImageName);
+         } else {
+         DLog(@"优惠卷状态nil：couponEntity.status == %ld", couponEntity.status);
+         }
+         */
+    }];
+    
+    [[self rac_valuesForKeyPath:@"viewModel.couponEntity.isChecked" observer:nil] subscribeNext:^(NSNumber * _Nullable isChecked) {
+        @strongify(self)    if (!self) return;
+        if (isChecked.boolValue) {
+            self->_checkedImgView.image = UIImage.ci_imageNamed(@"icon_coupon_selected");
+        } else {
+            self->_checkedImgView.image = UIImage.ci_imageNamed(@"icon_coupon_normal");
         }
     }];
 }
 
-- (void)setViewModel:(FMCouponCellViewModel *)viewModel {
+- (void)setViewModel:(FMCouponSelectCellViewModel *)viewModel {
     _viewModel = viewModel;
     
     @weakify(self)
-    [[_takeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *takeButton) {
-        @strongify(self)    if (!self) return;
-        [self->_viewModel.requestDataCommand execute:nil];
-    }];
-    
-    [self->_viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
+    [[_checkedButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *takeButton) {
+        @strongify(self)
+        [self->_viewModel.checkedActionSubject sendNext:viewModel.couponEntity];
     }];
 }
 

@@ -15,8 +15,6 @@
     
     [self.refreshUISubject subscribeNext:^(id x) {
         [self.requestDataCommand execute:nil];
-        
-        // code..
     }];
     
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
@@ -25,7 +23,7 @@
             [self.showHintSubject sendNext:resultModel.statusMsg];
             return;
         }
-//        self->_scoreEntitys = [FMScoreRecordModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"data"]];
+//        self.scoreEntitys = [FMScoreRecordModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"data"]];
         
         /// test
         NSDictionary *itemEntity = @{

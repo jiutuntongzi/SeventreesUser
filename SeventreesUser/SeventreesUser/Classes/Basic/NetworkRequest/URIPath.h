@@ -81,4 +81,11 @@
 
 #define      kIntegralExplainHTMLQueryURIPath       @"/api/pcintegral/queryInstructionsHtml"     // 查询积分说明HTML网页
 
+#pragma mark ——— 我的订单
+
+#define      kOrderListQueryURIPath     @"/api/poorder/queryOrderList"     // 查询订单列表
+
+
+
+
 #endif /* URIPath_h */

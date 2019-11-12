@@ -28,6 +28,8 @@
     _takeButton.layer.cornerRadius = 13.f;
     _takeButton.layer.borderColor = UIColor.cc_colorByHexString(@"#F76F6F").CGColor;
     _takeButton.layer.borderWidth = 1.f;
+    
+    self.ctc_selectionStyle(UITableViewCellSelectionStyleNone);
 }
 
 - (void)fm_bindObserver {

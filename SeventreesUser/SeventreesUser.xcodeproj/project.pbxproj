@@ -2817,8 +2817,8 @@
 		84468D3A230251AB0073D640 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				8405B8992334CB610065965F /* OrderDetails */,
 				848684ED233325080057A16E /* AllOrder */,
+				8405B8992334CB610065965F /* OrderDetails */,
 				84089E4E23138D8E00D7EF7D /* GoodsDetails */,
 				84DC590B233090710004DA2D /* VIPCenter */,
 				844A0E0A2338BBA6006015D4 /* AfterSale */,

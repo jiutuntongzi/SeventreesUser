@@ -24,10 +24,6 @@
 
 @implementation FMCouponSelectCell
 
-- (void)fm_setupSubviews {
-    
-}
-
 - (void)fm_bindObserver {
     @weakify(self)
     [RACObserve(self, viewModel.couponEntity) subscribeNext:^(FMCouponSelectModel *couponEntity) {

@@ -116,7 +116,7 @@
 - (void)requestUpdateBindStoreByStoreId:(NSNumber *)storeId completed:(void (^)(BOOL isSuccess))completed {
     [SVProgressHUD showWithStatus:nil];
     [networkMgr POST:kUpdateBindStoreURIPath params:@{@"sid": storeId} success:^(NetworkResultModel *resultModel) {
-        [SVProgressHUD dismissWithDelay:1.f];
+        [SVProgressHUD dismissWithDelay:0.5f];
         if (![resultModel.statusCode isEqualToString:@"OK"]) {
             if (completed) completed(NO);
             [SVProgressHUD showErrorWithStatus:resultModel.statusMsg];

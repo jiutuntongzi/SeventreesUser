@@ -38,7 +38,7 @@
                     [subscriber sendCompleted];
                     @strongify(self)
                     [self.showHintSubject sendNext:error.localizedDescription];
-                }];
+                }]; 
                 return nil;
             }];
         }];

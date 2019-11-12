@@ -72,7 +72,7 @@ const CGFloat FMVerifyInputViewHeight = 44.f;
         if ([x isEqualToNumber:@(YES)]) {
             [SVProgressHUD showWithStatus:nil];
         } else {
-            [SVProgressHUD dismissWithDelay:1.f];
+            [SVProgressHUD dismissWithDelay:0.5f];
         }
     }];
 }

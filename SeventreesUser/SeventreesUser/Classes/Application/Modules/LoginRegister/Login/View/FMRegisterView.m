@@ -140,7 +140,7 @@
              [SVProgressHUD showWithStatus:nil];
 //             DLog(@"（注册命令执行中..）");
          } else {
-             [SVProgressHUD dismissWithDelay:1.f];
+             [SVProgressHUD dismissWithDelay:0.5f];
 //             DLog(@"（注册命令未开始 / 注册命令执行完成");
          }
      }];

@@ -7,10 +7,11 @@
 //
 
 #import "FMViewModel.h"
+#import "FMOrderModel.h"
 
 @interface FMOrderViewModel : FMViewModel
 
-@property (nonatomic, strong) id allOrderInfo;
+@property (nonatomic, copy) NSArray<FMOrderModel *> *orderEntitys;
 
 @property (nonatomic, strong) RACCommand *requestDataCommand;
 

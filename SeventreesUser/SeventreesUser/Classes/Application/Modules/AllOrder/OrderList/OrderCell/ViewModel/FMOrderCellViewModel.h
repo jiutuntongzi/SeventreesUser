@@ -11,7 +11,7 @@
 
 @interface FMOrderCellViewModel : FMViewModel
 
-@property (nonatomic, strong) FMOrderModel *orderModel;
+@property (nonatomic, strong) FMOrderModel *orderEntity;
 
 @property (nonatomic, strong) RACSubject *leftActionSubject;
 

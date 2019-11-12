@@ -7,7 +7,10 @@
 //
 
 #import "FMViewController.h"
+#include "FMOrderPagingType.h"
 
 @interface FMOrderListController : FMViewController
+
+- (void)requestReloadData;
 
 @end

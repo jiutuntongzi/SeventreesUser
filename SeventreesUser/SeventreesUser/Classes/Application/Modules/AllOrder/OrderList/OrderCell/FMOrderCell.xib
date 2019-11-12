@@ -77,16 +77,16 @@
                                                     <constraint firstAttribute="height" constant="1" id="hvK-BO-fWC"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥308.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HA6-J1-Lto">
-                                                <rect key="frame" x="371" y="13.5" width="61" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" red="0.96862745098039216" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共2件商品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0m0-bo-jco">
                                                 <rect key="frame" x="15" y="13.5" width="65.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥308.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HA6-J1-Lto">
+                                                <rect key="frame" x="371" y="13.5" width="61" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.96862745098039216" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAl-kO-vIU" userLabel="lineView">
@@ -116,10 +116,10 @@
                                         <rect key="frame" x="0.0" y="44" width="447" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGq-wj-ce2">
-                                                <rect key="frame" x="249" y="7" width="84" height="30"/>
+                                                <rect key="frame" x="262" y="9" width="80" height="26"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="6bU-tx-c9f"/>
-                                                    <constraint firstAttribute="width" constant="84" id="Xu9-VM-TpZ"/>
+                                                    <constraint firstAttribute="height" constant="26" id="6bU-tx-c9f"/>
+                                                    <constraint firstAttribute="width" constant="80" id="Xu9-VM-TpZ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="取消订单">
@@ -127,10 +127,10 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYY-Pq-IdT">
-                                                <rect key="frame" x="343" y="7" width="84" height="30"/>
+                                                <rect key="frame" x="352" y="9" width="80" height="26"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="84" id="2Mg-9g-zo4"/>
-                                                    <constraint firstAttribute="height" constant="30" id="AYp-PV-ZlL"/>
+                                                    <constraint firstAttribute="width" constant="80" id="2Mg-9g-zo4"/>
+                                                    <constraint firstAttribute="height" constant="26" id="AYp-PV-ZlL"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="去支付">
@@ -148,7 +148,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="adI-Em-rl0" secondAttribute="trailing" id="0zX-ra-24F"/>
-                                            <constraint firstAttribute="trailing" secondItem="EYY-Pq-IdT" secondAttribute="trailing" constant="20" id="Ff3-Y4-HDA"/>
+                                            <constraint firstAttribute="trailing" secondItem="EYY-Pq-IdT" secondAttribute="trailing" constant="15" id="Ff3-Y4-HDA"/>
                                             <constraint firstItem="adI-Em-rl0" firstAttribute="leading" secondItem="3ku-cm-ycq" secondAttribute="leading" id="MWf-aZ-rqh"/>
                                             <constraint firstItem="vGq-wj-ce2" firstAttribute="centerY" secondItem="3ku-cm-ycq" secondAttribute="centerY" id="dFD-VE-oH8"/>
                                             <constraint firstAttribute="bottom" secondItem="adI-Em-rl0" secondAttribute="bottom" id="ili-SY-WNE"/>
@@ -205,12 +205,14 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="leftButton" destination="vGq-wj-ce2" id="5pm-66-RiG"/>
+                <outlet property="priceLabel" destination="HA6-J1-Lto" id="YNP-Bm-3Mb"/>
                 <outlet property="rightButton" destination="EYY-Pq-IdT" id="9Cb-HX-tpd"/>
-                <outlet property="statusLabel" destination="Itv-uf-xFV" id="wIf-Jt-gKr"/>
+                <outlet property="statusLabel" destination="odf-Jl-QIP" id="WGf-Om-osA"/>
                 <outlet property="tableView" destination="LJl-bm-e0m" id="PFR-NB-IxV"/>
-                <outlet property="titleLabel" destination="Itv-uf-xFV" id="PAm-ji-Dcf"/>
+                <outlet property="titleLabel" destination="Itv-uf-xFV" id="MXT-7y-MXO"/>
+                <outlet property="totalLabel" destination="0m0-bo-jco" id="BvQ-YI-gjq"/>
             </connections>
-            <point key="canvasLocation" x="-3236" y="37.781109445277366"/>
+            <point key="canvasLocation" x="-4991" y="-4"/>
         </tableViewCell>
     </objects>
 </document>

@@ -157,7 +157,7 @@ static const NSUInteger _rowCount = 8;
     [DialogBoxView showByTitle:@"清除缓存" message:@"\n\n确认清空缓存？" affirmButtonTitle:@"清除" forStyle:DialogBoxViewStyleAffirm affirmHandler:^(NSString * _Nullable text) {
         [[[SDWebImageManager sharedManager] imageCache] clearWithCacheType:SDImageCacheTypeDisk completion:^{
             [SVProgressHUD showSuccessWithStatus:@"清除成功"];
-            [SVProgressHUD dismissWithDelay:1.0f];
+            [SVProgressHUD dismissWithDelay:0.5f];
         }];
     }];
     /*

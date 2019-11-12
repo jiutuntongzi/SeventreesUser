@@ -13,7 +13,6 @@
 
 @interface FMGoodsInDetailsCell : FMTableViewCell
 
-@property (nonatomic, strong) FMGoodsInDetailModel *goodsModel;
-
+@property (nonatomic, strong) FMGoodsInDetailModel *goodsEntity;
 
 @end

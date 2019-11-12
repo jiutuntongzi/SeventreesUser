@@ -70,7 +70,13 @@
                     <constraint firstItem="CKF-Oz-dDE" firstAttribute="leading" secondItem="dux-lG-2Vc" secondAttribute="leading" constant="15" id="xTi-zK-25Q"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="-1930" y="31"/>
+            <connections>
+                <outlet property="imgView" destination="Zua-cu-Vav" id="mRZ-nO-Sfa"/>
+                <outlet property="priceLabel" destination="KDg-xo-AQ7" id="VbL-LF-prU"/>
+                <outlet property="titleLabel" destination="Cwd-eB-OaX" id="BaG-u1-11U"/>
+                <outlet property="unitLabel" destination="fdv-RW-pG8" id="iFA-bO-0rX"/>
+            </connections>
+            <point key="canvasLocation" x="-3273" y="-36"/>
         </tableViewCell>
     </objects>
     <resources>

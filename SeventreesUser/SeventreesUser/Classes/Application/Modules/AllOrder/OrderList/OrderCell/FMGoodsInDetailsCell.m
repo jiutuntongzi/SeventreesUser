@@ -8,16 +8,29 @@
 
 #import "FMGoodsInDetailsCell.h"
 
+@interface FMGoodsInDetailsCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *unitLabel;
+
+@end
+
 @implementation FMGoodsInDetailsCell
 
 - (void)fm_setupSubviews {
-    
-    
-    self.ctc_selectedColor(nil);
+    self.ctc_selectionStyle(UITableViewCellSelectionStyleNone);
 }
 
-- (void)fm_bindViewModel {
-    
+- (void)fm_bindObserver {
+    @weakify(self)
+    [RACObserve(self, goodsEntity) subscribeNext:^(FMGoodsInDetailModel *goodsEntity) {
+        @strongify(self)
+        [self->_imgView sd_setImageWithURL:[NSURL URLWithString:goodsEntity.goodsImage] placeholderImage:UIImage.new];
+        self->_titleLabel.text = goodsEntity.goodsName;
+        self->_priceLabel.text = [NSString stringWithFormat:@"￥%@", goodsEntity.goodsPrice];
+        self->_unitLabel.text = [NSString stringWithFormat:@"x%@", goodsEntity.goodsNum];
+    }];
 }
-
 @end

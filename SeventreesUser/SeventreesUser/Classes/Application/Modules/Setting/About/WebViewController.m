@@ -156,7 +156,7 @@
 - (void)rightNavRefreshButtonAction {
     if (! _urlString.length) {
         [SVProgressHUD showErrorWithStatus:@"数据错误：刷新网页失败，URL(nil)"];
-        [SVProgressHUD dismissWithDelay:1.f];
+        [SVProgressHUD dismissWithDelay:0.5f];
         return;
     }
     [self.webView reload]; // 刷新
@@ -258,7 +258,7 @@
         [SVProgressHUD dismiss];
         if (![resultModel.statusCode isEqualToString:@"OK"]) {
             [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"数据错误：%@", resultModel.statusMsg]];
-            [SVProgressHUD dismissWithDelay:1.f];
+            [SVProgressHUD dismissWithDelay:0.5f];
             return;
         }
         weakSelf.urlString = [resultModel.jsonDict[@"html"] copy];
@@ -266,7 +266,7 @@
         
     } failure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-        [SVProgressHUD dismissWithDelay:1.f];
+        [SVProgressHUD dismissWithDelay:0.5f];
     }];
 }
 

@@ -133,7 +133,7 @@
         if ([isExecuting isEqualToNumber:@(YES)]) {
             [SVProgressHUD showWithStatus:@"绑定中.."];
         } else {
-            [SVProgressHUD dismissWithDelay:1.f];
+            [SVProgressHUD dismissWithDelay:0.5f];
         }
     }];
     

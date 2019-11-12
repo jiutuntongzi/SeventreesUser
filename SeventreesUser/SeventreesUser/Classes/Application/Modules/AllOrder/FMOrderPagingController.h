@@ -11,5 +11,6 @@
 
 @interface FMOrderPagingController : WMPageController
 
++ (void)showByType:(unsigned int)type fromController:(UIViewController *)fromVC;
 
 @end

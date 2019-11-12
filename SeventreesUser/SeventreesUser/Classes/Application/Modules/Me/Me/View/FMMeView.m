@@ -174,16 +174,17 @@
     
     [[_moreOrderButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
+        [FMOrderPagingController showByType:FMOrderPagingTypeAll fromController:self.viewController];
         // test
 //        UIViewController *nextVC = [[FMOrderPagingController alloc] init];
 //        nextVC.hidesBottomBarWhenPushed = YES;
 //        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
 //        
         // test
-        FMAftersaleDetailsController *nextVC = [[FMAftersaleDetailsController alloc] init];
-        nextVC.style = FMAftersaleDetailsControllerStyleWaitReceive;
-        nextVC.hidesBottomBarWhenPushed = YES;
-        [self.viewController.navigationController pushViewController:nextVC animated:YES];
+//        FMAftersaleDetailsController *nextVC = [[FMAftersaleDetailsController alloc] init];
+//        nextVC.style = FMAftersaleDetailsControllerStyleWaitReceive;
+//        nextVC.hidesBottomBarWhenPushed = YES;
+//        [self.viewController.navigationController pushViewController:nextVC animated:YES];
     }];
     
     for (UInt8 idx = 0; idx != 5; idx++) {
@@ -192,10 +193,13 @@
        
         [[orderTypeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *orderTypeButton) {
             @strongify(self)
-            UIViewController *nextVC = [[FMOrderPagingController alloc] init];
-            global_orderType = (unsigned int)orderTypeButton.tag;
-            nextVC.hidesBottomBarWhenPushed = YES;
-            self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+            if (orderTypeButton.tag == self->_orderTypeButtons.count - 1) {
+                // 退货/售后
+                // code..
+                return ;
+            }
+            unsigned int pageType = (unsigned int)orderTypeButton.tag + 1;
+            [FMOrderPagingController showByType:pageType fromController:self.viewController];
         }];
     }
     
@@ -209,9 +213,9 @@
         self->_scoreTotalLabel.text = profileEntity.integralNum.stringValue;
         
         self->_delayPaymentLabel.text = [NSString stringWithFormat:@"待付款(%@)", profileEntity.paymentNum.stringValue];
-        self->_delayPaymentLabel.text = [NSString stringWithFormat:@"待发货(%@)", profileEntity.deliveryNum.stringValue];
-        self->_delayPaymentLabel.text = [NSString stringWithFormat:@"待收货(%@)", profileEntity.takeNum.stringValue];
-        self->_delayPaymentLabel.text = [NSString stringWithFormat:@"待评论(%@)", profileEntity.commentsNum.stringValue];
+        self->_delayDeliverLabel.text = [NSString stringWithFormat:@"待发货(%@)", profileEntity.deliveryNum.stringValue];
+        self->_delayTakeLabel.text = [NSString stringWithFormat:@"待收货(%@)", profileEntity.takeNum.stringValue];
+        self->_delayCommentsLabel.text = [NSString stringWithFormat:@"待评论(%@)", profileEntity.commentsNum.stringValue];
 //        self->_afterSaleLabel.text = [NSString stringWithFormat:@"退货/售后(%@)", profileEntity.];
     }];
     

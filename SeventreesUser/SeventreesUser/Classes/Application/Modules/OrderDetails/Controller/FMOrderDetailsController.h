@@ -21,4 +21,8 @@ typedef NS_ENUM(NSUInteger, FMOrderDetailsPageStyle) {
 
 @property (nonatomic, assign) FMOrderDetailsPageStyle type;
 
+@property (nonatomic, strong) NSNumber *orderId;
+
++ (void)showByType:(FMOrderDetailsPageStyle)type orderId:(NSNumber *)orderId fromController:(UIViewController *)fromVC;
+
 @end

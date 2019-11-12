@@ -12,7 +12,10 @@
 #import "FMFragmentBarView.h"
 #import "FMStoreConsumeController.h"
 
-#import "FMSubmitEvaluateController.h" // test
+#import "FMOrderListController.h"
+#include "FMOrderPagingType.h"
+
+#import "FMSubmitEvaluateController.h" //test
 
 
 #define     kClassNameVCKey      @"classNameVCKey"
@@ -28,12 +31,20 @@
 
 @implementation FMOrderPagingController
 
++ (void)showByType:(unsigned int)type fromController:(UIViewController *)fromVC {
+    global_orderType = type;
+    FMOrderPagingController *nextVC = [[FMOrderPagingController alloc] init];
+    nextVC.hidesBottomBarWhenPushed = YES;
+    fromVC.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+}
+
 #pragma mark - System Functions
 
 - (instancetype)init {
     if (self = [super init]) {
         [self configTypeMenu];
         [self configSubPages];
+        self.selectIndex = global_orderType;
     }
     return self;
 }
@@ -41,12 +52,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self setupUI];
+//    UIViewController *chiodVC = self.childControllers[self.selectIndex];
+//    [chiodVC reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     [self setupNavbar];
     
     [self reloadData];
@@ -58,10 +70,6 @@
 }
 
 #pragma mark - Private Functions
-
-- (void)setupUI {
-    
-}
 
 /** 配置分类菜单栏 */
 - (void)configTypeMenu {
@@ -147,23 +155,20 @@
 
 #pragma mark ——— <WMPageControllerDelegate, WMPageControllerDataSource>
 
-- (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info{
-    
+- (void)pageController:(WMPageController *)pageController willEnterViewController:(__kindof FMOrderListController *)orderListController withInfo:(NSDictionary *)info {
+    global_orderType = (enum FMOrderPagingType)self.selectIndex;
+    [orderListController requestReloadData];
 }
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController {
-    
     return self.pageItems.count;
 }
 
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index {
-    
-    
     return _itemTitles[index];
 }
 
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
-    
     return _childControllers[index];
 }
 

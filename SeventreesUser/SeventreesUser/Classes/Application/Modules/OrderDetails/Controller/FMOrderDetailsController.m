@@ -31,10 +31,10 @@
 
 #pragma mark - System Functions
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    
++ (void)showByType:(FMOrderDetailsPageStyle)type orderId:(NSNumber *)orderId fromController:(UIViewController *)fromVC {
+    FMOrderDetailsController *nextVC = [[self alloc] init];
+    nextVC.type = type;
+    fromVC.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
 }
 
 #pragma mark - Private Functions

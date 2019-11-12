@@ -215,7 +215,7 @@
             [SVProgressHUD showWithStatus:@"登录中.."];
             //            DLog(@"（登录命令执行中..）");
         } else {
-            [SVProgressHUD dismissWithDelay:1.f];
+            [SVProgressHUD dismissWithDelay:0.5f];
             //            DLog(@"（登录命令未开始 / 登录命令执行完成");
         }
     }];

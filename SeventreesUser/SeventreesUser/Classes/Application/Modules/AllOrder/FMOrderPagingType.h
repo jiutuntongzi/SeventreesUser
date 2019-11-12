@@ -14,7 +14,8 @@ enum FMOrderPagingType {
     FMOrderPagingTypeWaitPay,
     FMOrderPagingTypeWaitSend,
     FMOrderPagingTypeWaitReceive,
-    FMOrderPagingTypeWaitEvaluate
+    FMOrderPagingTypeWaitEvaluate,
+//    FMOrderPagingTypeWaitCanceled
 };
 
 extern enum FMOrderPagingType global_orderType;

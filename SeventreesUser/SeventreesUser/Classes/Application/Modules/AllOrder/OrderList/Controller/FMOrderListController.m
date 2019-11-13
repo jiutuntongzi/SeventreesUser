@@ -26,6 +26,7 @@
 
     // FMOrderCellRowHeight 动态组高
     PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:kOrderListQueryURIPath rowHeight:FMOrderCellRowHeight params:@{@"orderType": @(global_orderType).stringValue} requestDataHandler:^(NetworkResultModel *resultModel) {
+        
         if (![resultModel.statusCode isEqualToString:@"OK"]) {
             [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
             [SVProgressHUD dismissWithDelay:1.f];

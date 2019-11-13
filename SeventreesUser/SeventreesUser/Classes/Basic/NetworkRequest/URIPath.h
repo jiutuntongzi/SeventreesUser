@@ -55,9 +55,12 @@
 
 #pragma mark ——— 优惠卷
 
-#define      kCouponListQueryURIPath       @"/api/srvoucher/voucherList"           // 查询优惠卷列表
+#define      kCouponListQueryURIPath        @"/api/srvoucher/voucherList"           // 查询优惠卷分页列表
 
-#define      kCouponGainURIPath            @"/api/srvoucher/getVoucher"            // 领取优惠卷
+#define      kCouponGainURIPath             @"/api/srvoucher/getVoucher"            // 领取优惠卷
+
+#define      kSelectCouponListURIPath       @"/api/poorder/queryCouponList"         // 选择优惠卷列表
+
 
 #pragma mark ——— 个人资料
 
@@ -77,14 +80,21 @@
 
 #define      kSignInIntegralURIPath      @"/api/pcintegral/signIntegral"      // 签到送积分
 
-#define      kIntegralRecordListQueryURIPath        @"/api/pcintegralrecord/queryApiPcIntegralRecord"     // 查询积分收支明细
+#define      kIntegralRecordListQueryURIPath    @"/api/pcintegralrecord/queryApiPcIntegralRecord"   // 查询积分收支明细
 
-#define      kIntegralExplainHTMLQueryURIPath       @"/api/pcintegral/queryInstructionsHtml"     // 查询积分说明HTML网页
+#define      kIntegralExplainHTMLQueryURIPath   @"/api/pcintegral/queryInstructionsHtml"   // 查询积分说明HTML网页
 
 #pragma mark ——— 我的订单
 
-#define      kOrderListQueryURIPath     @"/api/poorder/queryOrderList"     // 查询订单列表
+#define      kOrderListQueryURIPath               @"/api/poorder/queryOrderList"         // 查询订单列表
 
+#define      kOrderDetialsQueryURIPath            @"/api/poorder/queryOrderListInfo"      // 查询订单详情
+
+#define      kOrderCancelURIPath                  @"/api/poorder/cancelOrder"            // 取消订单
+
+#define      kOrderConfirmReceivingURIPath        @"/api/poorder/confirmReceiving"       // 确认收货
+
+#define      kOrderGoPaymentURIPath               @"/api/poorder/paymentOrder"           // 订单支付详情
 
 
 

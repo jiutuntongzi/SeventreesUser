@@ -19,11 +19,6 @@
 
 #pragma mark - System Functions
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-}
-
 - (void)updateViewConstraints {
 //    _mainView.frame = self.view.bounds;
     [_mainView makeConstraints:^(MASConstraintMaker *make) {
@@ -40,7 +35,7 @@
 }
 
 - (void)fm_bindViewModel {
-    
+//    FMPayController
 }
 
 - (void)fm_setupNavbar {
@@ -50,7 +45,9 @@
 }
 
 - (void)fm_refreshData {
+    _mainView.viewModel.orderId = self->_orderId;
     
+    [_mainView.viewModel.requestDataCommand execute:nil];
 }
 
 #pragma mark - Lazyload

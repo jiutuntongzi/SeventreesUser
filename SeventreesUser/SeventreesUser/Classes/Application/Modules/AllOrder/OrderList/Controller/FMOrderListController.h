@@ -11,6 +11,7 @@
 
 @interface FMOrderListController : FMViewController
 
+/** 重新加载表格：刷新页面数据 */
 - (void)requestReloadData;
 
 @end

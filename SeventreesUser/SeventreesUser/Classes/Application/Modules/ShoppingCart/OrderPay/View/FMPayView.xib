@@ -161,15 +161,22 @@
                                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9f-pa-jxD">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="R7H-EQ-YUp" firstAttribute="centerY" secondItem="4UZ-Rv-qye" secondAttribute="centerY" id="5PD-kU-wUQ"/>
                                                         <constraint firstAttribute="height" constant="44" id="Azo-tu-e4U"/>
                                                         <constraint firstItem="4UZ-Rv-qye" firstAttribute="centerY" secondItem="4Cl-ED-8Mz" secondAttribute="centerY" id="D4l-Qp-eOR"/>
+                                                        <constraint firstAttribute="trailing" secondItem="N9f-pa-jxD" secondAttribute="trailing" id="LhD-vd-hfu"/>
+                                                        <constraint firstAttribute="bottom" secondItem="N9f-pa-jxD" secondAttribute="bottom" id="NRn-z6-OCR"/>
                                                         <constraint firstAttribute="trailing" secondItem="R7H-EQ-YUp" secondAttribute="trailing" constant="15" id="OwZ-E7-zCD"/>
                                                         <constraint firstItem="AOB-uE-oRC" firstAttribute="centerY" secondItem="4UZ-Rv-qye" secondAttribute="centerY" id="PDG-1H-ll0"/>
+                                                        <constraint firstItem="N9f-pa-jxD" firstAttribute="leading" secondItem="4Cl-ED-8Mz" secondAttribute="leading" id="RGI-hC-TDq"/>
                                                         <constraint firstItem="4UZ-Rv-qye" firstAttribute="leading" secondItem="4Cl-ED-8Mz" secondAttribute="leading" constant="15" id="WTu-36-gGa"/>
+                                                        <constraint firstItem="N9f-pa-jxD" firstAttribute="top" secondItem="4Cl-ED-8Mz" secondAttribute="top" id="j3S-BQ-cjW"/>
                                                         <constraint firstItem="AOB-uE-oRC" firstAttribute="leading" secondItem="4UZ-Rv-qye" secondAttribute="trailing" constant="10" id="kRY-fM-dZI"/>
                                                     </constraints>
                                                 </view>
@@ -182,6 +189,9 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pay_wechatPay" translatesAutoresizingMaskIntoConstraints="NO" id="2as-TP-EHC">
                                                             <rect key="frame" x="15" y="8.5" width="27" height="27"/>
                                                         </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch9-JK-DwX">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGz-tO-Skh">
                                                             <rect key="frame" x="52" y="13.5" width="57.5" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -193,9 +203,13 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="8c6-z0-tua"/>
                                                         <constraint firstItem="fS1-te-Zht" firstAttribute="centerY" secondItem="2as-TP-EHC" secondAttribute="centerY" id="KG6-Dq-43F"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Ch9-JK-DwX" secondAttribute="bottom" id="LYw-N1-gHn"/>
+                                                        <constraint firstItem="Ch9-JK-DwX" firstAttribute="leading" secondItem="38S-6t-GFO" secondAttribute="leading" id="ZtF-tQ-lXJ"/>
                                                         <constraint firstItem="2as-TP-EHC" firstAttribute="centerY" secondItem="38S-6t-GFO" secondAttribute="centerY" id="ZvI-z2-p57"/>
+                                                        <constraint firstItem="Ch9-JK-DwX" firstAttribute="top" secondItem="38S-6t-GFO" secondAttribute="top" id="ahC-qz-cGa"/>
                                                         <constraint firstItem="2as-TP-EHC" firstAttribute="leading" secondItem="38S-6t-GFO" secondAttribute="leading" constant="15" id="dZx-t5-fXY"/>
                                                         <constraint firstItem="oGz-tO-Skh" firstAttribute="centerY" secondItem="2as-TP-EHC" secondAttribute="centerY" id="gto-Qw-jCo"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ch9-JK-DwX" secondAttribute="trailing" id="hhE-5D-ahW"/>
                                                         <constraint firstAttribute="trailing" secondItem="fS1-te-Zht" secondAttribute="trailing" constant="15" id="rSz-1D-16c"/>
                                                         <constraint firstItem="oGz-tO-Skh" firstAttribute="leading" secondItem="2as-TP-EHC" secondAttribute="trailing" constant="10" id="uQT-C8-1cy"/>
                                                     </constraints>
@@ -275,7 +289,18 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="39.200000000000003" y="49.925037481259373"/>
+            <connections>
+                <outlet property="affirmButton" destination="Iqd-TS-NpL" id="7fz-Rk-Z57"/>
+                <outlet property="alipayImgView" destination="R7H-EQ-YUp" id="oNH-aL-acu"/>
+                <outlet property="alipayTypeButton" destination="N9f-pa-jxD" id="RTq-TL-tha"/>
+                <outlet property="commitStatusImgView" destination="GkM-Td-JHl" id="loX-fY-SzO"/>
+                <outlet property="commitStatusLabel" destination="DRe-gJ-bRa" id="zbA-XP-qPM"/>
+                <outlet property="countdownStatusLabel" destination="Qkz-fm-Qnp" id="59B-M9-CxU"/>
+                <outlet property="paymentMoneyLabel" destination="T8s-Bd-koe" id="43w-1M-2EJ"/>
+                <outlet property="wechatPayImgView" destination="fS1-te-Zht" id="zE6-HU-Vx4"/>
+                <outlet property="wechatPayTypeButton" destination="Ch9-JK-DwX" id="eaY-xU-bFG"/>
+            </connections>
+            <point key="canvasLocation" x="-823.20000000000005" y="86.806596701649184"/>
         </view>
     </objects>
     <resources>

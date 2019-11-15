@@ -10,18 +10,25 @@
 
 @interface FMPayView ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *commitStatusImgView;
+@property (weak, nonatomic) IBOutlet UILabel *commitStatusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countdownStatusLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *paymentMoneyLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *alipayTypeButton;
+@property (weak, nonatomic) IBOutlet UIImageView *alipayImgView;
+
+@property (weak, nonatomic) IBOutlet UIButton *wechatPayTypeButton;
+@property (weak, nonatomic) IBOutlet UIImageView *wechatPayImgView;
+
+@property (weak, nonatomic) IBOutlet UIButton *affirmButton;
 
 @end
 
 @implementation FMPayView
 
 #pragma mark - System Functions
-
-- (instancetype)initWithViewModel:(id<FMViewModelProtocol>)viewModel {
-    _viewModel = (FMPayViewModel *)viewModel;
-    
-    return [super initWithViewModel:viewModel];
-}
 
 - (void)updateConstraints {
  
@@ -37,19 +44,53 @@
     [self updateConstraintsIfNeeded];
 }
 
-
-- (void)fm_bindViewModel {
-
+- (void)fm_bindObserver {
+    @weakify(self)
+    
+    [RACObserve(self.viewModel, paymentType) subscribeNext:^(id x) {
+        @strongify(self)
+        
+        // code..
+    }];
 }
 
-- (void)refreshUI {
+- (void)fm_bindViewModel {
+    @weakify(self)
+    [self.viewModel.refreshUISubject subscribeNext:^(FMPayModel *paymentEntity) {
+        @strongify(self) if (!self) return;
+        
+    }];
     
+    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
+        [SVProgressHUD showInfoWithStatus:status];
+    }];
+    
+    
+    /// Actions
+    
+    [[_affirmButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+                   
+        [self.viewModel.requestPaymentCommand execute:nil];
+    }];
+    
+    [[_alipayTypeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+                   
+        [self.viewModel.choicePaymentSubject sendNext:nil];
+    }];
+    
+    [[_wechatPayTypeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        
+        [self.viewModel.choicePaymentSubject sendNext:nil];
+    }];
 }
 
 #pragma mark - Lazyload
 
 - (FMPayViewModel *)viewModel {
-    if (!_viewModel) {
+    if (! _viewModel) {
         _viewModel = [[FMPayViewModel alloc] init];
     }
     return _viewModel;

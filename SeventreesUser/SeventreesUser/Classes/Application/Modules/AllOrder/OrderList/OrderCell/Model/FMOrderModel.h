@@ -11,6 +11,9 @@
 
 @interface FMOrderModel : FMModel
 
+/** 自定义属性：订单页面类型 */
+@property (nonatomic, assign) NSNumber *pageType;
+
 @property (nonatomic, strong) NSNumber *orderId;
 
 @property (nonatomic, copy) NSString *orderCode;

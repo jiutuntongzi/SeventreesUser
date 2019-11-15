@@ -15,8 +15,6 @@
 #import "FMOrderListController.h"
 #include "FMOrderPagingType.h"
 
-#import "FMSubmitEvaluateController.h" //test
-
 
 #define     kClassNameVCKey      @"classNameVCKey"
 #define     kTitleKey            @"titleKey"
@@ -124,13 +122,6 @@
             weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, NO);
         }
     };
-    
-    
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"商品评价", 1, ^(UIBarButtonItem *rightItem) {
-        FMSubmitEvaluateController *nextVC = [[FMSubmitEvaluateController alloc] init];
-        [self.navigationController pushViewController:nextVC animated:YES];
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (void)refreshData {

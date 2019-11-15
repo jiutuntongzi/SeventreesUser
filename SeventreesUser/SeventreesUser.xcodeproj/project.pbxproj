@@ -156,7 +156,6 @@
 		842F0AED231655C400D78028 /* FMImageEyeListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842F0AEA231655C400D78028 /* FMImageEyeListView.m */; };
 		842F0AF02316572D00D78028 /* FMImageEyeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842F0AEE2316572D00D78028 /* FMImageEyeCell.m */; };
 		84323FDB2359BDC300E96439 /* FMStoreInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84323FD92359BDC300E96439 /* FMStoreInfoModel.m */; };
-		84351D89233364E30090E472 /* FMOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84351D88233364E30090E472 /* FMOrderViewModel.m */; };
 		84351D8F233368040090E472 /* FMOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84351D8E233368030090E472 /* FMOrderModel.m */; };
 		84352D17235D8E94006CE10E /* FMImageEyeListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84352D16235D8E94006CE10E /* FMImageEyeListViewModel.m */; };
 		84352D1B235D925C006CE10E /* FMImageEyeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84352D1A235D925C006CE10E /* FMImageEyeModel.m */; };
@@ -773,8 +772,6 @@
 		842F0AEF2316572D00D78028 /* FMImageEyeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMImageEyeCell.h; sourceTree = "<group>"; };
 		84323FD92359BDC300E96439 /* FMStoreInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMStoreInfoModel.m; sourceTree = "<group>"; };
 		84323FDA2359BDC300E96439 /* FMStoreInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMStoreInfoModel.h; sourceTree = "<group>"; };
-		84351D87233364E30090E472 /* FMOrderViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMOrderViewModel.h; sourceTree = "<group>"; };
-		84351D88233364E30090E472 /* FMOrderViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMOrderViewModel.m; sourceTree = "<group>"; };
 		84351D8D233368030090E472 /* FMOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMOrderModel.h; sourceTree = "<group>"; };
 		84351D8E233368030090E472 /* FMOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMOrderModel.m; sourceTree = "<group>"; };
 		84352D15235D8E94006CE10E /* FMImageEyeListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMImageEyeListViewModel.h; sourceTree = "<group>"; };
@@ -3315,8 +3312,6 @@
 			children = (
 				848684F6233325080057A16E /* FMOrderListController.h */,
 				848684F7233325080057A16E /* FMOrderListController.m */,
-				84351D87233364E30090E472 /* FMOrderViewModel.h */,
-				84351D88233364E30090E472 /* FMOrderViewModel.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5421,7 +5416,6 @@
 				8498F5A7233082EA00D5ACF9 /* BRBaseView.m in Sources */,
 				84001C91230CD4EB0010DE0B /* WMMenuItem.m in Sources */,
 				84499363234081650006A544 /* FMSlashGoodsView.m in Sources */,
-				84351D89233364E30090E472 /* FMOrderViewModel.m in Sources */,
 				84464C1E230FF0F400ED9069 /* UIView+ORIBProperty.m in Sources */,
 				84DE9F572350702500B5B552 /* UIButton+UpDownStructure.m in Sources */,
 				844A0E102338BD47006015D4 /* FMApplyRefundController.m in Sources */,

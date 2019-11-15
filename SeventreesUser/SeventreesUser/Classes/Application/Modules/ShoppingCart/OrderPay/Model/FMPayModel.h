@@ -8,10 +8,9 @@
 
 #import "FMModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMPayModel : FMModel
+
+@property (nonatomic, strong) NSNumber *orderId;
 
 @end
 
-NS_ASSUME_NONNULL_END

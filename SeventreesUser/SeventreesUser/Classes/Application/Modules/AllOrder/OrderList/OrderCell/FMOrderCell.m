@@ -10,6 +10,9 @@
 #import "FMGoodsInDetailsCell.h"
 #include "FMOrderPagingType.h"
 
+#import "FMPayController.h"
+#import "FMSubmitEvaluateController.h"
+
 @interface FMOrderCell () <UITableViewDataSource, UITableViewDelegate>
 
 /// header
@@ -164,14 +167,84 @@
     if (_viewModel == nil) return;
     
     @weakify(self)
+    
+    void (^orderOperateBlock)(NSInteger, BOOL) = ^(NSInteger orderStatus, BOOL isLeft) {
+        @strongify(self)
+        switch (orderStatus) {
+            case 1: {
+//              orderStatus = @"待付款";  leftTitle = @"取消订单";  rightTitle = @"去支付";
+                if (isLeft) {
+                    DLog(@"点了取消订单");
+                    [self->_viewModel.requestCancelCommand execute:nil];
+                } else {
+                    DLog(@"点了去支付");
+                    FMPayController *paymentNextVC = [[FMPayController alloc] init];
+                    paymentNextVC.orderId = self->_viewModel.orderEntity.orderId;
+                    [self.viewController.navigationController pushViewController:paymentNextVC animated:YES];
+                }
+                break;
+            }
+            case 2: {
+//              orderStatus = @"待发货";  leftTitle = @"申请退款";
+                if (isLeft) {
+                    DLog(@"点了申请退款");
+                } else {
+//                    DLog(@"点了右");
+                }
+                break;
+            }
+            case 4: {
+//              orderStatus = @"待收货";  leftTitle = @"申请退货";  rightTitle = @"确认收货";
+                if (isLeft) {
+                    DLog(@"点了申请退货");
+                } else {
+                    DLog(@"点了确认收货");
+                    [self->_viewModel.requestReceivingCommand execute:nil];
+                }
+                break;
+            }
+            case 5: {
+//              orderStatus = @"待评论";  leftTitle = @"申请退货";  rightTitle = @"去评论";
+                if (isLeft) {
+                    DLog(@"点了申请退货");
+                } else {
+                    DLog(@"点了去评论");
+                    FMSubmitEvaluateController *evaluateNextVC = [[FMSubmitEvaluateController alloc] init];
+                    [self.viewController.navigationController pushViewController:evaluateNextVC animated:YES];
+                }
+                break;
+            }
+        }
+    };
+    
     [[_leftButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *button) {
         @strongify(self)
-        DLog(@"点了%@", button.titleLabel.text);
+        orderOperateBlock(self->_viewModel.orderEntity.orderStatus.integerValue, YES);
     }];
     
     [[_rightButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *button) {
         @strongify(self)
-        DLog(@"点了%@", button.titleLabel.text);
+        orderOperateBlock(self->_viewModel.orderEntity.orderStatus.integerValue, NO);
+    }];
+    
+    [[_viewModel.requestReceivingCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+        if ([isExecuting isEqualToNumber:@(YES)]) {
+            [SVProgressHUD showWithStatus:nil];
+        } else {
+            [SVProgressHUD dismissWithDelay:1.f];
+        }
+    }];
+    
+    [[_viewModel.requestCancelCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+        if ([isExecuting isEqualToNumber:@(YES)]) {
+            [SVProgressHUD showWithStatus:nil];
+        } else {
+            [SVProgressHUD dismissWithDelay:1.f];
+        }
+    }];
+    
+    [_viewModel.showHintSubject subscribeNext:^(NSString *status) {
+        [SVProgressHUD showInfoWithStatus:status];
     }];
 }
 
@@ -191,6 +264,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     DLog(@"indexPath == %@", indexPath);
+    [self.viewModel.nextVCSubject sendNext:self->_viewModel.orderEntity];
 }
 
 @end

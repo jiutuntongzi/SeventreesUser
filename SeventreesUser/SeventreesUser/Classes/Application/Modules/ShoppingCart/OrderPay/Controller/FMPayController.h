@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "FMViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMPayController : FMViewController
+
+@property (nonatomic, strong) NSNumber *orderId;
 
 @end
 
-NS_ASSUME_NONNULL_END

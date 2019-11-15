@@ -9,7 +9,7 @@
 #import "FMViewController.h"
 
 typedef NS_ENUM(NSUInteger, FMOrderDetailsPageStyle) {
-    FMOrderDetailsPageStyleWaitPay,
+    FMOrderDetailsPageStyleWaitPay = 1,
     FMOrderDetailsPageStyleWaitSend,
     FMOrderDetailsPageStyleWaitReceive,
     FMOrderDetailsPageStyleWaitEvaluate,

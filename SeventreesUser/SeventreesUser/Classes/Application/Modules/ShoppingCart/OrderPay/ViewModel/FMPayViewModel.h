@@ -9,14 +9,30 @@
 #import "FMViewModel.h"
 #import "FMPayModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
+typedef NS_ENUM(NSUInteger, FMPayViewModelPaymentType) {
+    FMPayViewModelPaymentTypeAli,
+    FMPayViewModelPaymentTypeWechat
+};
 
 @interface FMPayViewModel : FMViewModel
 
-@property (nonatomic, strong) FMPayModel *model;
+@property (nonatomic, strong) NSNumber *orderId;
+
+@property (nonatomic, assign) FMPayViewModelPaymentType paymentType;
+
+@property (nonatomic, strong) FMPayModel *paymentEntity;
+
+
+@property (nonatomic, strong) RACSubject *choicePaymentSubject;
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
-@end
+@property (nonatomic, strong) RACSubject *showHintSubject;
 
-NS_ASSUME_NONNULL_END
+@property (nonatomic, strong) RACCommand *requestDataCommand;
+
+@property (nonatomic, strong) RACCommand *requestPaymentCommand;
+
+
+
+@end

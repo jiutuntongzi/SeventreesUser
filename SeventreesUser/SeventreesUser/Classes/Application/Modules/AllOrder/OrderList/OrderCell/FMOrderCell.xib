@@ -115,11 +115,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ku-cm-ycq" userLabel="toolView">
                                         <rect key="frame" x="0.0" y="44" width="447" height="44"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHm-BY-YYV" userLabel="safetyButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="447" height="44"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGq-wj-ce2">
-                                                <rect key="frame" x="262" y="9" width="80" height="26"/>
+                                                <rect key="frame" x="258" y="9" width="82" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="6bU-tx-c9f"/>
-                                                    <constraint firstAttribute="width" constant="80" id="Xu9-VM-TpZ"/>
+                                                    <constraint firstAttribute="width" constant="82" id="Xu9-VM-TpZ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="取消订单">
@@ -127,9 +131,9 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYY-Pq-IdT">
-                                                <rect key="frame" x="352" y="9" width="80" height="26"/>
+                                                <rect key="frame" x="350" y="9" width="82" height="26"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="2Mg-9g-zo4"/>
+                                                    <constraint firstAttribute="width" constant="82" id="2Mg-9g-zo4"/>
                                                     <constraint firstAttribute="height" constant="26" id="AYp-PV-ZlL"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -149,12 +153,16 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="adI-Em-rl0" secondAttribute="trailing" id="0zX-ra-24F"/>
                                             <constraint firstAttribute="trailing" secondItem="EYY-Pq-IdT" secondAttribute="trailing" constant="15" id="Ff3-Y4-HDA"/>
+                                            <constraint firstAttribute="bottom" secondItem="YHm-BY-YYV" secondAttribute="bottom" id="G4O-8E-yaQ"/>
                                             <constraint firstItem="adI-Em-rl0" firstAttribute="leading" secondItem="3ku-cm-ycq" secondAttribute="leading" id="MWf-aZ-rqh"/>
                                             <constraint firstItem="vGq-wj-ce2" firstAttribute="centerY" secondItem="3ku-cm-ycq" secondAttribute="centerY" id="dFD-VE-oH8"/>
                                             <constraint firstAttribute="bottom" secondItem="adI-Em-rl0" secondAttribute="bottom" id="ili-SY-WNE"/>
+                                            <constraint firstItem="YHm-BY-YYV" firstAttribute="top" secondItem="3ku-cm-ycq" secondAttribute="top" id="lnw-7K-Y0J"/>
+                                            <constraint firstItem="YHm-BY-YYV" firstAttribute="leading" secondItem="3ku-cm-ycq" secondAttribute="leading" id="mrT-PM-No7"/>
                                             <constraint firstItem="EYY-Pq-IdT" firstAttribute="leading" secondItem="vGq-wj-ce2" secondAttribute="trailing" constant="10" id="qC6-RZ-7Xb"/>
                                             <constraint firstItem="EYY-Pq-IdT" firstAttribute="centerY" secondItem="3ku-cm-ycq" secondAttribute="centerY" id="tMf-Pj-cjl"/>
                                             <constraint firstAttribute="height" constant="44" id="vwC-vL-xbn"/>
+                                            <constraint firstAttribute="trailing" secondItem="YHm-BY-YYV" secondAttribute="trailing" id="wl2-24-JK9"/>
                                         </constraints>
                                     </view>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRS-6Y-IOf" userLabel="marginView">
@@ -212,7 +220,7 @@
                 <outlet property="titleLabel" destination="Itv-uf-xFV" id="MXT-7y-MXO"/>
                 <outlet property="totalLabel" destination="0m0-bo-jco" id="BvQ-YI-gjq"/>
             </connections>
-            <point key="canvasLocation" x="-4991" y="-4"/>
+            <point key="canvasLocation" x="-5538.3999999999996" y="39.580209895052477"/>
         </tableViewCell>
     </objects>
 </document>

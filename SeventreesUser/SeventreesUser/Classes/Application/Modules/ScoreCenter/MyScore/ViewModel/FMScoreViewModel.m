@@ -65,6 +65,13 @@
     return _requestDataCommand;
 }
 
+- (RACSubject *)showHintSubject {
+    if (! _showHintSubject) {
+        _showHintSubject = [RACSubject subject];
+    }
+    return _showHintSubject;
+}
+
 - (RACSubject *)refreshUISubject {
     if (! _refreshUISubject) {
         _refreshUISubject = [RACSubject subject];

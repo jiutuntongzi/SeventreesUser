@@ -17,4 +17,17 @@
 
 @property (nonatomic, strong) RACSubject *rightActionSubject;
 
+@property (nonatomic, strong) RACSubject *showHintSubject;
+
+@property (nonatomic, strong) RACSubject *nextVCSubject;
+
+
+@property (nonatomic, strong) RACCommand *requestCancelCommand;
+
+@property (nonatomic, strong) RACCommand *requestReceivingCommand;
+
+@property (nonatomic, strong) RACCommand *requestGoPaymentCommand;
+
+@property (nonatomic, strong) RACSubject *reloadDataSubject;
+
 @end

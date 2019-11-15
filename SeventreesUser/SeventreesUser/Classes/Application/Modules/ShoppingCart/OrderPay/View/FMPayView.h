@@ -9,12 +9,8 @@
 #import "FMView.h"
 #import "FMPayViewModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMPayView : FMView
 
 @property (nonatomic, strong) FMPayViewModel *viewModel;
 
 @end
-
-NS_ASSUME_NONNULL_END

@@ -12,7 +12,6 @@
 #import "FMOrderCell.h"
 #import "FMOrderDetailsController.h"
 
-
 @interface FMOrderListController ()
 
 @property (nonatomic, strong) PagingView *pagingView;
@@ -21,9 +20,18 @@
 
 @implementation FMOrderListController
 
+- (void)requestReloadData {
+    [_pagingView requestData];
+}
+
 - (void)fm_addSubviews {
     __weak typeof(self) weakSelf = self;
 
+    void (^showOrderVCBlock)(FMOrderModel *) = ^(FMOrderModel *orderEntity) {
+        FMOrderDetailsPageStyle pageType = orderEntity.pageType.unsignedIntegerValue;
+        [FMOrderDetailsController showByType:pageType orderId:orderEntity.orderId fromController:weakSelf];
+    };
+    
     // FMOrderCellRowHeight 动态组高
     PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:kOrderListQueryURIPath rowHeight:FMOrderCellRowHeight params:@{@"orderType": @(global_orderType).stringValue} requestDataHandler:^(NetworkResultModel *resultModel) {
         
@@ -33,6 +41,7 @@
         }
         NSArray *dictAry = @[
                              @{
+                                 @"pageType": @(global_orderType),
                                  @"orderId": @(2676),           // --订单id
                                  @"orderCode": @"1568794293868",      //  --订单编码
                                  @"orderStatus": @(1),           // --订单状态（1 未付款 2 拣货中 3已关闭 4 已发货 5 未评价 6 退货中 7 已退货 8 拒接退货 9 订单取消 10 部分已发货 11已完成）
@@ -49,6 +58,7 @@
                                          ]
                                  },
                              @{
+                                 @"pageType": @(global_orderType),
                                  @"orderId": @(2677),           // --订单id
                                  @"orderCode": @"1568794293868",      //  --订单编码
                                  @"orderStatus": @(2),           // --订单状态（1 未付款 2 拣货中 3已关闭 4 已发货 5 未评价 6 退货中 7 已退货 8 拒接退货 9 订单取消 10 部分已发货 11已完成）
@@ -65,6 +75,7 @@
                                          ]
                                  },
                              @{
+                                 @"pageType": @(global_orderType),
                                  @"orderId": @(2678),           // --订单id
                                  @"orderCode": @"1568794293868",      //  --订单编码
                                  @"orderStatus": @(4),           // --订单状态（1 未付款 2 拣货中 3已关闭 4 已发货 5 未评价 6 退货中 7 已退货 8 拒接退货 9 订单取消 10 部分已发货 11已完成）
@@ -81,6 +92,7 @@
                                          ]
                                  },
                              @{
+                                 @"pageType": @(global_orderType),
                                  @"orderId": @(2678),           // --订单id
                                  @"orderCode": @"1568794293868",      //  --订单编码
                                  @"orderStatus": @(5),           // --订单状态（1 未付款 2 拣货中 3已关闭 4 已发货 5 未评价 6 退货中 7 已退货 8 拒接退货 9 订单取消 10 部分已发货 11已完成）
@@ -107,11 +119,23 @@
         FMOrderCellViewModel *viewModel = [[FMOrderCellViewModel alloc] init];
         viewModel.orderEntity = entitys[indexPath.row];
         cell.viewModel = viewModel;
+        
+        [cell.viewModel.nextVCSubject subscribeNext:^(FMOrderModel *orderEntity) {
+            DLog(@"orderEntity == %@", orderEntity);
+            showOrderVCBlock(orderEntity);
+        }];
+        
+        [cell.viewModel.reloadDataSubject subscribeNext:^(FMOrderModel *orderEntity) {
+            DLog(@"orderEntity == %@", orderEntity);
+            [weakSelf requestReloadData];
+        }];
+        
         return cell;
         
     } cellDidSelectHandler:^(FMOrderModel *orderEntity) {
         DLog(@"orderEntity == %@", orderEntity);
-        [FMOrderDetailsController showByType:FMOrderDetailsPageStyleWaitPay orderId:orderEntity.orderId fromController:weakSelf];
+        showOrderVCBlock(orderEntity);
+//        [FMOrderDetailsController showByType:pageType orderId:orderEntity.orderId fromController:weakSelf];
 //        FMOrderDetailsController *nextVC = [[FMOrderDetailsController alloc] init];
 //        nextVC.type = FMOrderDetailsPageStyleWaitPay;
 //        nextVC.orderId = orderEntity.orderId;
@@ -125,11 +149,5 @@
     self.view.bounds = CGRectMake(0, 0, self.view.width, kScreenHeight - kStatusBarHeight - kFixedHeight - 44.f);
     _pagingView.cv_frame(self.view.bounds);
 }
-
-- (void)requestReloadData {
-    [_pagingView requestData];
-}
-
-
 
 @end

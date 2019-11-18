@@ -11,12 +11,14 @@
 
 @interface FMOrderDetailsViewModel : FMViewModel
 
-@property (nonatomic, strong) FMOrderDetailsModel *model;
+@property (nonatomic, strong) NSNumber *orderId;
+
+@property (nonatomic, strong) FMOrderDetailsModel *orderDetailsEntity;
+
+@property (nonatomic, strong) RACCommand *requestDataCommand;
 
 @property (nonatomic, strong) RACSubject *refreshUISubject;
 
-@property (nonatomic, strong) RACSubject *actionSubject;
-
-@property (nonatomic, strong) RACCommand *requestDataCommand;
+@property (nonatomic, strong) RACSubject *showHintSubject;
 
 @end

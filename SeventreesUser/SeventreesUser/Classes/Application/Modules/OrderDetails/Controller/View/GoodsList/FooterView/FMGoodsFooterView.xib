@@ -222,7 +222,15 @@
                 <constraint firstItem="C8D-pG-qIy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="z0U-5z-qcH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-172" y="79"/>
+            <connections>
+                <outlet property="couponMoneyLabel" destination="cd5-hK-gnR" id="whj-JV-Gqf"/>
+                <outlet property="expressAmountLabel" destination="Ha0-5P-eva" id="H3J-w5-pDe"/>
+                <outlet property="goodsMoneyLabel" destination="rY5-jh-sJZ" id="G74-Qx-5Mz"/>
+                <outlet property="integralMoneyLabel" destination="T0x-sd-Nnh" id="UWs-ow-euf"/>
+                <outlet property="knockMoneyLabel" destination="pCW-AU-Qox" id="9IB-kL-ooG"/>
+                <outlet property="totalPriceLabel" destination="isZ-Nl-Dze" id="WCR-Nb-VWs"/>
+            </connections>
+            <point key="canvasLocation" x="-1146" y="29"/>
         </view>
     </objects>
 </document>

@@ -12,4 +12,10 @@
 
 @interface FMOrderAddressView : FMView
 
+@property (nonatomic, strong) NSString *userName;
+
+@property (nonatomic, strong) NSString *mobilePhone;
+
+@property (nonatomic, strong) NSString *addressDetails;
+
 @end

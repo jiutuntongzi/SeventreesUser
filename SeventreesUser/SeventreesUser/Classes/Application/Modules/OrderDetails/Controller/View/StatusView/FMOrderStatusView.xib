@@ -22,13 +22,13 @@
                             <rect key="frame" x="309" y="10" width="54" height="60"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="待付款" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IM-qW-DiW">
-                            <rect key="frame" x="15" y="23" width="46" height="18"/>
+                            <rect key="frame" x="15" y="23" width="280" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩23小时59分自动关闭" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncu-Hz-lNR">
-                            <rect key="frame" x="15" y="46" width="128" height="15"/>
+                            <rect key="frame" x="15" y="46" width="280" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -36,9 +36,11 @@
                     </subviews>
                     <color key="backgroundColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Ncu-Hz-lNR" secondAttribute="trailing" constant="80" id="2DI-HM-bhr"/>
                         <constraint firstItem="Ncu-Hz-lNR" firstAttribute="top" secondItem="1IM-qW-DiW" secondAttribute="bottom" constant="5" id="Akl-i4-3KT"/>
                         <constraint firstItem="gBU-Ha-Yua" firstAttribute="centerY" secondItem="PKi-Fq-jO4" secondAttribute="centerY" id="EUW-VW-XwV"/>
                         <constraint firstItem="Ncu-Hz-lNR" firstAttribute="leading" secondItem="1IM-qW-DiW" secondAttribute="leading" id="J0y-Bp-hfs"/>
+                        <constraint firstAttribute="trailing" secondItem="1IM-qW-DiW" secondAttribute="trailing" constant="80" id="dT9-vr-6Rx"/>
                         <constraint firstAttribute="trailing" secondItem="gBU-Ha-Yua" secondAttribute="trailing" constant="12" id="mRx-sj-18c"/>
                         <constraint firstItem="1IM-qW-DiW" firstAttribute="top" secondItem="PKi-Fq-jO4" secondAttribute="top" constant="23" id="mSb-Ra-tLg"/>
                         <constraint firstItem="1IM-qW-DiW" firstAttribute="leading" secondItem="PKi-Fq-jO4" secondAttribute="leading" constant="15" id="x7b-af-gC7"/>
@@ -53,7 +55,12 @@
                 <constraint firstItem="PKi-Fq-jO4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ofv-gq-UT1"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="18" y="-49"/>
+            <connections>
+                <outlet property="remainTimeLabel" destination="Ncu-Hz-lNR" id="ysv-rC-cVO"/>
+                <outlet property="statusImgView" destination="gBU-Ha-Yua" id="g5a-iG-Wra"/>
+                <outlet property="statusLabel" destination="1IM-qW-DiW" id="BaI-wU-q6B"/>
+            </connections>
+            <point key="canvasLocation" x="-442" y="-58"/>
         </view>
     </objects>
     <resources>

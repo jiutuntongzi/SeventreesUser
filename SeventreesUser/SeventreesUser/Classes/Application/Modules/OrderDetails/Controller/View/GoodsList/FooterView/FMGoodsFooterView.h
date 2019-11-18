@@ -7,9 +7,13 @@
 //
 
 #import "FMView.h"
+#import "FMOrderPriceModel.h"
 
 extern const CGFloat FMGoodsFooterViewHeight;
 
 @interface FMGoodsFooterView : FMView
+
+/* 自定义的订单价格实体 **/
+@property (nonatomic, strong) FMOrderPriceModel *orderPriceEntity;
 
 @end

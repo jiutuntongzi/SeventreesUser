@@ -7,12 +7,16 @@
 //
 
 #import "FMView.h"
-#import "FMGoodsTableViewModel.h"
+#import "FMOrderDetailsModel.h"
+//#import "FMGoodsTableViewModel.h"
 
 #define         FMGoodsTableViewHeight        420.f
 
 @interface FMGoodsTableView : FMView
 
-@property (nonatomic, strong) FMGoodsTableViewModel *viewModel;
+/** 只取商品数组及尾部订单信息、头部标题的部分字段 */
+@property (nonatomic, strong) FMOrderDetailsModel *orderDetailsEntity;
+
+//@property (nonatomic, strong) FMGoodsTableViewModel *viewModel;
 
 @end

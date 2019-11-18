@@ -18,9 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 /** CString -> NSString */
 + (NSString * __nullable (^)(char *))cs_stringWithCString;
 
-/** NSData -> NSString */
-+ (NSString * __nullable (^)(NSData *))cs_stringWithData;
-
 @end
 
 NS_ASSUME_NONNULL_END

@@ -51,6 +51,7 @@
 
 #import "NSString+Chain.h"
 
+#import "NSString+TimestampConvert.h"
 
 #import "UIView+Seek.h"
 

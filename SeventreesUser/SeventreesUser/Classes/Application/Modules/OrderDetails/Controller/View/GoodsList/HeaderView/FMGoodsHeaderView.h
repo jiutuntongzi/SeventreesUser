@@ -12,4 +12,6 @@ extern const CGFloat FMGoodsHeaderViewHeight;
 
 @interface FMGoodsHeaderView : FMView
 
+@property (nonatomic, assign) NSInteger goodsTotal;
+
 @end

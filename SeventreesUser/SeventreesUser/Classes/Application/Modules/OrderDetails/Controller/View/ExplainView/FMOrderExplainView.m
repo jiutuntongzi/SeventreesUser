@@ -18,15 +18,7 @@
 
 @implementation FMOrderExplainView
 
-- (void)setOrderInfoText:(NSString *)orderInfoText {
-    _orderInfoText = orderInfoText;
-    
-    _textView.text = orderInfoText;
-}
-
 - (void)fm_setupSubviews {
-    
-    
     void (^setStyleBlock)(UIView *) = ^(UIView *view) {
         view.layer.cornerRadius = 3.f;
         view.layer.borderWidth = 1.f;
@@ -35,9 +27,30 @@
     setStyleBlock(_fuzhiButton);
 }
 
+- (void)fm_bindObserver {
+    @weakify(self)
+    
+    [RACObserve(self, orderInfoText) subscribeNext:^(NSString *orderInfoText) {
+        @strongify(self)
+        
+        self->_textView.text = orderInfoText;
+    }];
+    
+    [RACObserve(self, orderExplainEntity) subscribeNext:^(FMOrderExplainModel *explainEntity) {
+        @strongify(self)
+        
+        NSString *explainInfoText = [NSString stringWithFormat:@"订单编号：%@ \n下单时间：%@ \n下单门店：%@ \n物流公司：%@ \n物流单号：%@",\
+                                     explainEntity.orderCode, explainEntity.createOrderTime, explainEntity.storeName,\
+                                     explainEntity.logisticsName, explainEntity.logisticsCode];
+        self.orderInfoText = explainInfoText;
+    }];
+}
+
 - (void)fm_bindViewModel {
+    @weakify(self)
     [[_fuzhiButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [UIPasteboard generalPasteboard].string = self->_textView.text;
+        @strongify(self)
+        [UIPasteboard generalPasteboard].string = self->_orderInfoText;
     }];
 }
 

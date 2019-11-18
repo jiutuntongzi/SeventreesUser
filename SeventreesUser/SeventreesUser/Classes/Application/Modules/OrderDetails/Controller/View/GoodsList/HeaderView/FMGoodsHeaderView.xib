@@ -59,7 +59,10 @@
                 <constraint firstAttribute="bottom" secondItem="Rlw-nv-c4A" secondAttribute="bottom" id="vr3-8i-t3y"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-134" y="202"/>
+            <connections>
+                <outlet property="goodsTotalLabel" destination="ZOb-Zw-8W0" id="mah-kk-qZJ"/>
+            </connections>
+            <point key="canvasLocation" x="-436" y="118"/>
         </view>
     </objects>
 </document>

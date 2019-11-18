@@ -26,10 +26,4 @@
     };
 }
 
-+ (NSString * __nullable (^)(NSData *))cs_stringWithData {
-    return ^(NSData *data) {
-        return [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    };
-}
-
 @end

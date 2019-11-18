@@ -7,12 +7,14 @@
 //
 
 #import "FMView.h"
+#import "FMOrderExplainModel.h"
 
 #define      FMOrderExplainViewHeight    134.f
 
 @interface FMOrderExplainView : FMView
 
-@property (nonatomic, copy) NSString *orderInfoText;
+@property (nonatomic, strong) FMOrderExplainModel *orderExplainEntity;
 
+@property (nonatomic, copy) NSString *orderInfoText;
 
 @end

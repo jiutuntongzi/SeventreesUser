@@ -86,15 +86,15 @@
 
 #pragma mark ——— 我的订单
 
-#define      kOrderListQueryURIPath               @"/api/poorder/queryOrderList"         // 查询订单列表
+#define      kOrderListQueryURIPath               @"/api/poorder/queryOrderList"          // 查询订单列表
 
 #define      kOrderDetialsQueryURIPath            @"/api/poorder/queryOrderListInfo"      // 查询订单详情
 
-#define      kOrderCancelURIPath                  @"/api/poorder/cancelOrder"            // 取消订单
+#define      kOrderCancelURIPath                  @"/api/poorder/cancelOrder"             // 取消订单
 
-#define      kOrderConfirmReceivingURIPath        @"/api/poorder/confirmReceiving"       // 确认收货
+#define      kOrderConfirmReceivingURIPath        @"/api/poorder/confirmReceiving"        // 确认收货
 
-#define      kOrderGoPaymentURIPath               @"/api/poorder/paymentOrder"           // 订单支付详情
+#define      kOrderGoPaymentURIPath               @"/api/poorder/paymentOrder"            // 订单支付详情
 
 
 

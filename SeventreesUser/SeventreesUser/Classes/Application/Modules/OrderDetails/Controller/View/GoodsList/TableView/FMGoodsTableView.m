@@ -33,6 +33,18 @@
     _tableView.backgroundColor = UIColor.cc_colorByHexString(@"#F7F7F7");
 }
 
+- (void)fm_bindObserver {
+    @weakify(self)
+    
+    [RACObserve(self, orderDetailsEntity) subscribeNext:^(FMOrderDetailsModel *orderDetailsEntity) {
+        @strongify(self)
+        self->_headerView.goodsTotal = orderDetailsEntity.goodsEntitys.count;
+        self->_footerView.orderPriceEntity = orderDetailsEntity.orderPriceEntity;
+        
+        [self->_tableView reloadData];
+    }];
+}
+
 - (void)fm_bindViewModel {
     
 }
@@ -49,16 +61,16 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     FMGoodsInDetailsCell *goodsCell = FMGoodsInDetailsCell.ctc_cellReuseNibLoadForTableView(tableView);
+    goodsCell.goodsEntity = self->_orderDetailsEntity.goodsEntitys[indexPath.row];
     return goodsCell;
-    //    cell.goodsModel = self.viewModel.;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 1; // 写死一组
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return self.orderDetailsEntity.goodsEntitys.count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -68,21 +80,33 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    FMGoodsHeaderView *headerView = FMGoodsHeaderView.cv_viewFromNibLoad();
-    headerView.frame = CGRectZero;
-    return headerView;
+    return self.headerView;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return FMGoodsHeaderViewHeight;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    FMGoodsFooterView *footerView = FMGoodsFooterView.cv_viewFromNibLoad();
-    footerView.frame = CGRectZero;
-    return footerView;
+    return self.footerView;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return FMGoodsFooterViewHeight;
+}
+
+- (FMGoodsHeaderView *)headerView {
+    if (! _headerView) {
+        _headerView = FMGoodsHeaderView.cv_viewFromNibLoad();
+//        _headerView.frame = CGRectZero;
+    }
+    return _headerView;
+}
+
+- (FMGoodsFooterView *)footerView {
+    if (! _footerView) {
+        _footerView = FMGoodsFooterView.cv_viewFromNibLoad();
+//        _footerView.frame = CGRectZero;
+    }
+    return _footerView;
 }
 
 @end

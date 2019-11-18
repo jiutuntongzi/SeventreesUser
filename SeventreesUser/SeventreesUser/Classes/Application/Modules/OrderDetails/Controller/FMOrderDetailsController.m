@@ -25,6 +25,9 @@
 
 @property (nonatomic, strong) FMOrderPayView *orderPayView;
 
+@property (nonatomic, strong) FMOrderDetailsViewModel *viewModel;
+
+
 @end
 
 @implementation FMOrderDetailsController
@@ -33,6 +36,7 @@
 
 + (void)showByType:(FMOrderDetailsPageStyle)type orderId:(NSNumber *)orderId fromController:(UIViewController *)fromVC {
     FMOrderDetailsController *nextVC = [[self alloc] init];
+    nextVC.orderId = orderId;
     nextVC.type = type;
     fromVC.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
 }
@@ -45,8 +49,6 @@
     
     [self setupMainScrollView];
     [self setupScrollerContent];
-    
-    [self fm_makeConstraints];
 }
 
 /** Main Scroller */
@@ -157,7 +159,35 @@
 }
 
 - (void)fm_bindViewModel {
+    @weakify(self)
     
+    [self.viewModel.refreshUISubject subscribeNext:^(FMOrderDetailsModel *orderDetailsEntity) {
+        @strongify(self)
+        self->_orderStatusView.orderStatus = orderDetailsEntity.orderStatus;
+        self->_orderStatusView.remainTime = orderDetailsEntity.remainTime;
+        
+        self->_addressView.userName = orderDetailsEntity.addressUserName;
+        self->_addressView.mobilePhone = orderDetailsEntity.addressMobile;
+        self->_addressView.addressDetails = orderDetailsEntity.addressName;
+        
+        self->_goodsListView.orderDetailsEntity = orderDetailsEntity;
+        
+        self->_orderExplainView.orderExplainEntity = orderDetailsEntity.orderExplainEntity;
+        
+        
+    }];
+    
+//    [[_viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+//        if ([isExecuting isEqualToNumber:@(YES)]) {
+//            [SVProgressHUD showWithStatus:nil];
+//        } else {
+//            [SVProgressHUD dismissWithDelay:1.f];
+//        }
+//    }];
+    
+    [_viewModel.showHintSubject subscribeNext:^(NSString *status) {
+        [SVProgressHUD showInfoWithStatus:status];
+    }];
 }
 
 - (void)fm_setupNavbar {
@@ -177,13 +207,17 @@
 }
 
 - (void)fm_refreshData {
-//    self.viewModel
+    self.viewModel.orderId = self->_orderId;
+    [self.viewModel.requestDataCommand execute:nil];
 }
 
 #pragma mark - Lazyload
 
-- (void)dealloc {
-    DLog(@"%@ 订单详情VC销毁了", NSStringFromClass([self class]));
+- (FMOrderDetailsViewModel *)viewModel {
+    if (! _viewModel) {
+        _viewModel = [[FMOrderDetailsViewModel alloc] init];
+    }
+    return _viewModel;
 }
 
 @end

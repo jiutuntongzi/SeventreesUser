@@ -34,7 +34,6 @@
 		8403F7672323999800A3B347 /* FMBargainFreeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8403F7652323999800A3B347 /* FMBargainFreeController.xib */; };
 		8405B8AE2334CDB80065965F /* FMOrderDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405B8AD2334CDB80065965F /* FMOrderDetailsController.m */; };
 		8405B8B12334CDD00065965F /* FMOrderDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405B8B02334CDD00065965F /* FMOrderDetailsModel.m */; };
-		8405B8B42334CE0A0065965F /* FMOrderDetailsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405B8B32334CE090065965F /* FMOrderDetailsViewModel.m */; };
 		8405B8B92334CEE50065965F /* FMOrderStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405B8B82334CEE50065965F /* FMOrderStatusView.m */; };
 		8405B8BB2334CEED0065965F /* FMOrderStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8405B8BA2334CEED0065965F /* FMOrderStatusView.xib */; };
 		8405B8C22334D16F0065965F /* FMOrderAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405B8BF2334D16F0065965F /* FMOrderAddressView.m */; };
@@ -293,6 +292,11 @@
 		84B142DC2304F6E7009ADECF /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B142D62304F6E7009ADECF /* UITableView+FDKeyedHeightCache.m */; };
 		84B142DD2304F6E7009ADECF /* UITableView+FDTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B142D82304F6E7009ADECF /* UITableView+FDTemplateLayoutCell.m */; };
 		84B142DE2304F6E7009ADECF /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B142DA2304F6E7009ADECF /* UITableView+FDTemplateLayoutCellDebug.m */; };
+		84B23DE02382338A00C0D831 /* FMOrderDetailsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B23DDF2382338900C0D831 /* FMOrderDetailsViewModel.m */; };
+		84B23DE3238248F500C0D831 /* NSString+TimestampConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B23DE2238248F500C0D831 /* NSString+TimestampConvert.m */; };
+		84B23DE623827AC700C0D831 /* NSString+TimeConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B23DE523827AC700C0D831 /* NSString+TimeConvert.m */; };
+		84B23DE9238290D200C0D831 /* FMOrderPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B23DE8238290D200C0D831 /* FMOrderPriceModel.m */; };
+		84B23DEC23829D5B00C0D831 /* FMOrderExplainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B23DEB23829D5B00C0D831 /* FMOrderExplainModel.m */; };
 		84BAC5802306859A0062B812 /* FMSecurityCodeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BAC57F2306859A0062B812 /* FMSecurityCodeInputView.m */; };
 		84BAC582230685CF0062B812 /* FMSecurityCodeInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BAC581230685CF0062B812 /* FMSecurityCodeInputView.xib */; };
 		84BAC58523069E950062B812 /* FMPhoneNumberInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BAC58423069E950062B812 /* FMPhoneNumberInputView.m */; };
@@ -563,8 +567,6 @@
 		8405B8AD2334CDB80065965F /* FMOrderDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMOrderDetailsController.m; sourceTree = "<group>"; };
 		8405B8AF2334CDD00065965F /* FMOrderDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMOrderDetailsModel.h; sourceTree = "<group>"; };
 		8405B8B02334CDD00065965F /* FMOrderDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMOrderDetailsModel.m; sourceTree = "<group>"; };
-		8405B8B22334CE090065965F /* FMOrderDetailsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMOrderDetailsViewModel.h; sourceTree = "<group>"; };
-		8405B8B32334CE090065965F /* FMOrderDetailsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMOrderDetailsViewModel.m; sourceTree = "<group>"; };
 		8405B8B72334CEE50065965F /* FMOrderStatusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMOrderStatusView.h; sourceTree = "<group>"; };
 		8405B8B82334CEE50065965F /* FMOrderStatusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMOrderStatusView.m; sourceTree = "<group>"; };
 		8405B8BA2334CEED0065965F /* FMOrderStatusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMOrderStatusView.xib; sourceTree = "<group>"; };
@@ -1021,6 +1023,16 @@
 		84B142D82304F6E7009ADECF /* UITableView+FDTemplateLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDTemplateLayoutCell.m"; sourceTree = "<group>"; };
 		84B142D92304F6E7009ADECF /* UITableView+FDTemplateLayoutCellDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDTemplateLayoutCellDebug.h"; sourceTree = "<group>"; };
 		84B142DA2304F6E7009ADECF /* UITableView+FDTemplateLayoutCellDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDTemplateLayoutCellDebug.m"; sourceTree = "<group>"; };
+		84B23DDE2382338900C0D831 /* FMOrderDetailsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMOrderDetailsViewModel.h; sourceTree = "<group>"; };
+		84B23DDF2382338900C0D831 /* FMOrderDetailsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMOrderDetailsViewModel.m; sourceTree = "<group>"; };
+		84B23DE1238248F500C0D831 /* NSString+TimestampConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+TimestampConvert.h"; sourceTree = "<group>"; };
+		84B23DE2238248F500C0D831 /* NSString+TimestampConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+TimestampConvert.m"; sourceTree = "<group>"; };
+		84B23DE423827AC700C0D831 /* NSString+TimeConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeConvert.h"; sourceTree = "<group>"; };
+		84B23DE523827AC700C0D831 /* NSString+TimeConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+TimeConvert.m"; sourceTree = "<group>"; };
+		84B23DE7238290D200C0D831 /* FMOrderPriceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMOrderPriceModel.h; sourceTree = "<group>"; };
+		84B23DE8238290D200C0D831 /* FMOrderPriceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMOrderPriceModel.m; sourceTree = "<group>"; };
+		84B23DEA23829D5B00C0D831 /* FMOrderExplainModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMOrderExplainModel.h; sourceTree = "<group>"; };
+		84B23DEB23829D5B00C0D831 /* FMOrderExplainModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMOrderExplainModel.m; sourceTree = "<group>"; };
 		84BAC57E2306859A0062B812 /* FMSecurityCodeInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMSecurityCodeInputView.h; sourceTree = "<group>"; };
 		84BAC57F2306859A0062B812 /* FMSecurityCodeInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMSecurityCodeInputView.m; sourceTree = "<group>"; };
 		84BAC581230685CF0062B812 /* FMSecurityCodeInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMSecurityCodeInputView.xib; sourceTree = "<group>"; };
@@ -1643,28 +1655,11 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		8405B8A32334CB610065965F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				8405B8B72334CEE50065965F /* FMOrderStatusView.h */,
-				8405B8B82334CEE50065965F /* FMOrderStatusView.m */,
-				8405B8BA2334CEED0065965F /* FMOrderStatusView.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		8405B8A42334CB610065965F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		8405B8A52334CB610065965F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				8405B8B22334CE090065965F /* FMOrderDetailsViewModel.h */,
-				8405B8B32334CE090065965F /* FMOrderDetailsViewModel.m */,
+				84B23DDE2382338900C0D831 /* FMOrderDetailsViewModel.h */,
+				84B23DDF2382338900C0D831 /* FMOrderDetailsViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1672,8 +1667,9 @@
 		8405B8B62334CE5E0065965F /* StatusView */ = {
 			isa = PBXGroup;
 			children = (
-				8405B8A32334CB610065965F /* View */,
-				8405B8A42334CB610065965F /* ViewModel */,
+				8405B8B72334CEE50065965F /* FMOrderStatusView.h */,
+				8405B8B82334CEE50065965F /* FMOrderStatusView.m */,
+				8405B8BA2334CEED0065965F /* FMOrderStatusView.xib */,
 			);
 			path = StatusView;
 			sourceTree = "<group>";
@@ -1682,7 +1678,6 @@
 			isa = PBXGroup;
 			children = (
 				8405B8BD2334D16F0065965F /* View */,
-				8405B8C12334D16F0065965F /* ViewModel */,
 			);
 			path = AddressView;
 			sourceTree = "<group>";
@@ -1697,19 +1692,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		8405B8C12334D16F0065965F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		8405B8C42334D2B20065965F /* ExplainView */ = {
 			isa = PBXGroup;
 			children = (
 				8405B8C52334D3670065965F /* FMOrderExplainView.h */,
 				8405B8C62334D3670065965F /* FMOrderExplainView.m */,
 				8405B8C82334D3920065965F /* FMOrderExplainView.xib */,
+				84B23DEA23829D5B00C0D831 /* FMOrderExplainModel.h */,
+				84B23DEB23829D5B00C0D831 /* FMOrderExplainModel.m */,
 			);
 			path = ExplainView;
 			sourceTree = "<group>";
@@ -3976,6 +3966,10 @@
 				84DD3FA323015B04001171F1 /* NSObject+CheckNull */,
 				84DD3FA623015B04001171F1 /* NSString+Chain.h */,
 				84DD3FA723015B04001171F1 /* NSString+Chain.m */,
+				84B23DE1238248F500C0D831 /* NSString+TimestampConvert.h */,
+				84B23DE2238248F500C0D831 /* NSString+TimestampConvert.m */,
+				84B23DE423827AC700C0D831 /* NSString+TimeConvert.h */,
+				84B23DE523827AC700C0D831 /* NSString+TimeConvert.m */,
 				84DD3FA823015B04001171F1 /* NSTimer+Chain.h */,
 				84DD3FA923015B04001171F1 /* NSTimer+Chain.m */,
 			);
@@ -4822,6 +4816,8 @@
 				84FF2F1E2335BD2800E34550 /* FMGoodsFooterView.h */,
 				84FF2F1F2335BD2800E34550 /* FMGoodsFooterView.m */,
 				84FF2F202335BD2800E34550 /* FMGoodsFooterView.xib */,
+				84B23DE7238290D200C0D831 /* FMOrderPriceModel.h */,
+				84B23DE8238290D200C0D831 /* FMOrderPriceModel.m */,
 			);
 			path = FooterView;
 			sourceTree = "<group>";
@@ -4839,12 +4835,12 @@
 		84FF2F252335BD2800E34550 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				8498D47E2335D4F6009EBB2A /* GoodsListHeader.h */,
 				84FF2F2A2335BDF200E34550 /* FMGoodsTableView.h */,
 				84FF2F2B2335BDF200E34550 /* FMGoodsTableView.m */,
 				844A0DF323387026006015D4 /* FMGoodsTableView.xib */,
 				84FF2F2D2335C18F00E34550 /* FMGoodsTableViewModel.h */,
 				84FF2F2E2335C18F00E34550 /* FMGoodsTableViewModel.m */,
-				8498D47E2335D4F6009EBB2A /* GoodsListHeader.h */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -5164,6 +5160,7 @@
 				84FC4454231CF4E200DF9799 /* YBIBImageLayout.m in Sources */,
 				849CBFB2230113B2003821E4 /* AppDelegate.m in Sources */,
 				84868514233350580057A16E /* FMGoodsInDetailsCell.m in Sources */,
+				84B23DE9238290D200C0D831 /* FMOrderPriceModel.m in Sources */,
 				84089E6223138FD300D7EF7D /* FMEvaluationController.m in Sources */,
 				84001C93230CD4EB0010DE0B /* WMProgressView.m in Sources */,
 				84FF2F122335B39100E34550 /* FMOrderContacUsViewModel.m in Sources */,
@@ -5184,7 +5181,6 @@
 				84DD3FE123015B04001171F1 /* UIView+Seek.m in Sources */,
 				848684FA233325080057A16E /* FMOrderPagingController.m in Sources */,
 				84886C67234C879700CFD16F /* UserData.m in Sources */,
-				8405B8B42334CE0A0065965F /* FMOrderDetailsViewModel.m in Sources */,
 				8456BAC5232F5D1000E59966 /* FMSelectFooterView.m in Sources */,
 				840CDDD02340B64100527CB0 /* FMCollectPagingController.m in Sources */,
 				84BEADDD233E0BF000B4D6E1 /* FMSpellGroupPagingController.m in Sources */,
@@ -5227,6 +5223,7 @@
 				84497C0D231D157000D3A79B /* FMShopCarToolViewModel.m in Sources */,
 				8498F5A8233082EA00D5ACF9 /* BRDatePickerView.m in Sources */,
 				84FC4456231CF4E200DF9799 /* YBIBInteractionProfile.m in Sources */,
+				84B23DE623827AC700C0D831 /* NSString+TimeConvert.m in Sources */,
 				84DC59102330AE5E0004DA2D /* FMVIPQRCodeBoxView.m in Sources */,
 				84F941432358058200B98C1C /* FMCollectBrandListViewModel.m in Sources */,
 				84FC445D231CF4E200DF9799 /* YBImageBrowser.m in Sources */,
@@ -5257,6 +5254,7 @@
 				8403F7662323999800A3B347 /* FMBargainFreeController.m in Sources */,
 				841C55EC231E48A6008B5A91 /* FMPictureTableView.m in Sources */,
 				842D5CE2237913C000770C74 /* FMCouponSelectCellViewModel.m in Sources */,
+				84B23DE3238248F500C0D831 /* NSString+TimestampConvert.m in Sources */,
 				8428B94523419F600098A633 /* FMSearchGoodsListController.m in Sources */,
 				84C3DF5A231E16B4008147C6 /* FMGoodsInfoView.m in Sources */,
 				84FAEC9D23176BBF00E8CA3F /* FMBrandGoodsViewModel.m in Sources */,
@@ -5277,9 +5275,11 @@
 				84FC4453231CF4E200DF9799 /* YBIBImageData.m in Sources */,
 				8438B1CA231E65F300E5F819 /* FMShopDetailView.m in Sources */,
 				84D7287B23014D1B002D387A /* ZFConst.m in Sources */,
+				84B23DEC23829D5B00C0D831 /* FMOrderExplainModel.m in Sources */,
 				84065D04230A73D400D39225 /* SearchBarView.m in Sources */,
 				840B827E2310CC3A004DBFC9 /* FMPayController.m in Sources */,
 				84DD3FD523015B04001171F1 /* UICollectionView+Chain.m in Sources */,
+				84B23DE02382338A00C0D831 /* FMOrderDetailsViewModel.m in Sources */,
 				846A4917230A913200D2EAFB /* UIView+ForLMJVerticalScrollText.m in Sources */,
 				84FC445B231CF4E200DF9799 /* YBIBDefaultWebImageMediator.m in Sources */,
 				840DFAE4236C272800B6CC82 /* FMMeViewModel.m in Sources */,

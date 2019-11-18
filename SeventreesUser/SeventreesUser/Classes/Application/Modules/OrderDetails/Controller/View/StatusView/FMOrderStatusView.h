@@ -12,4 +12,8 @@
 
 @interface FMOrderStatusView : FMView
 
+@property (nonatomic, strong) NSNumber *orderStatus;
+
+@property (nonatomic, strong) NSNumber *remainTime;
+
 @end

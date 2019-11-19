@@ -27,7 +27,7 @@
     @weakify(self)
     [RACObserve(self, goodsEntity) subscribeNext:^(FMGoodsInDetailModel *goodsEntity) {
         @strongify(self)
-        [self->_imgView sd_setImageWithURL:[NSURL URLWithString:goodsEntity.goodsImage] placeholderImage:UIImage.new];
+        [self->_imgView sd_setImageWithURL:[NSURL URLWithString:goodsEntity.goodsImage] placeholderImage:UIImage.ci_imageNamed(@"test80")];
         self->_titleLabel.text = goodsEntity.goodsName;
         self->_priceLabel.text = [NSString stringWithFormat:@"￥%@", goodsEntity.goodsPrice];
         self->_unitLabel.text = [NSString stringWithFormat:@"x%@", goodsEntity.goodsNum];

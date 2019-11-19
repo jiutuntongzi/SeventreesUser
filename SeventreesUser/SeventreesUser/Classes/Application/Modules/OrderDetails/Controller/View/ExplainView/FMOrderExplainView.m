@@ -34,6 +34,16 @@
         @strongify(self)
         
         self->_textView.text = orderInfoText;
+        if (orderInfoText) {
+            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            paragraphStyle.lineSpacing = 5; // 行间距
+            NSDictionary *attributes = @{
+                                         NSFontAttributeName:[UIFont systemFontOfSize:12.f],
+                                         NSParagraphStyleAttributeName:paragraphStyle,
+                                         NSForegroundColorAttributeName: UIColor.cc_colorByHexString(@"#999999")
+                                         };
+            self->_textView.attributedText = [[NSAttributedString alloc] initWithString:orderInfoText attributes:attributes];
+        }
     }];
     
     [RACObserve(self, orderExplainEntity) subscribeNext:^(FMOrderExplainModel *explainEntity) {
@@ -51,6 +61,8 @@
     [[_fuzhiButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
         [UIPasteboard generalPasteboard].string = self->_orderInfoText;
+        [SVProgressHUD showSuccessWithStatus:@"已复制到粘贴板"];
+        [SVProgressHUD  dismissWithDelay:1.0f];
     }];
 }
 

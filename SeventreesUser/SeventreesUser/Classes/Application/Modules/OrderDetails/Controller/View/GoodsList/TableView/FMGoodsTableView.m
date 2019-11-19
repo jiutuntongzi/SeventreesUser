@@ -96,7 +96,6 @@
 - (FMGoodsHeaderView *)headerView {
     if (! _headerView) {
         _headerView = FMGoodsHeaderView.cv_viewFromNibLoad();
-//        _headerView.frame = CGRectZero;
     }
     return _headerView;
 }
@@ -104,7 +103,6 @@
 - (FMGoodsFooterView *)footerView {
     if (! _footerView) {
         _footerView = FMGoodsFooterView.cv_viewFromNibLoad();
-//        _footerView.frame = CGRectZero;
     }
     return _footerView;
 }

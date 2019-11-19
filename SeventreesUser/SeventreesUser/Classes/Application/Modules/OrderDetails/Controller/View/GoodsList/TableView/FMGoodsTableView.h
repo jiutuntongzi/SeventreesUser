@@ -10,7 +10,9 @@
 #import "FMOrderDetailsModel.h"
 //#import "FMGoodsTableViewModel.h"
 
-#define         FMGoodsTableViewHeight        420.f
+#define         FMGoodsTableViewHeight       (44.f+158.f)   // test (+110.f*2.f)
+
+#define         FMGoodsTableViewRowHeight    110.f          // FMGoodsInDetailsCellRowHeight
 
 @interface FMGoodsTableView : FMView
 

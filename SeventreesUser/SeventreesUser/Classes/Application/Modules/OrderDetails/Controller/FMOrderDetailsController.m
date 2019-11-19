@@ -56,7 +56,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.bounces = YES;
     scrollView.backgroundColor = UIColor.cc_colorByRGBA(247.f, 247.f, 247.f, 1.f);
-    scrollView.contentSize = CGSizeMake(0.f, 795.f);
+    scrollView.contentSize = CGSizeMake(0.f, [self contentVHeight]); // 795.f
     scrollView.scrollEnabled = YES;
     scrollView.showsVerticalScrollIndicator = true;
 //    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -94,6 +94,48 @@
     
 }
 
+
+#pragma mark - Make Constraints
+
+/** 拿到商品列表数据后，更新ScrollView内容布局 */
+- (void)updateConstraintsForScrollerContentHeight {
+    CGFloat dynamicHeight = [self dynamicContentVHeight];
+    
+    _mainScrollView.contentSize = CGSizeMake(0.f, dynamicHeight); // 动态更新ScrollView内容高度
+    
+    [_contentView updateConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.equalTo(self->_mainScrollView);
+//        make.width.equalTo(self->_mainScrollView);
+        make.height.equalTo(dynamicHeight); // 动态内容高度
+    }];
+
+    [self->_goodsListView updateConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self->_contentView).offset(FMOrderStatusViewHeight + FMOrderAddressViewHeight + 15.f);
+//        make.left.equalTo(self->_contentView);
+//        make.width.equalTo(self->_contentView);
+        make.height.equalTo(dynamicHeight);
+    }];
+}
+
+/** 动态计算ScrollView内容高度 */
+- (CGFloat)dynamicContentVHeight {
+    CGFloat goodsPictureListViewHeight = self.viewModel.orderDetailsEntity.goodsEntitys.count * FMGoodsTableViewRowHeight;
+    return [self contentVHeight] + goodsPictureListViewHeight; // 求出contentView动态高度
+}
+
+/** Scroller contentView默认高度 */
+- (CGFloat)contentVHeight {
+    CGFloat offsetY = 0.f;  const CGFloat margin = 15.f;
+    
+    offsetY += FMOrderStatusViewHeight;
+    offsetY += (FMOrderAddressViewHeight + margin);
+    offsetY += (FMGoodsTableViewHeight + margin); // 减去TableView高度
+    offsetY += FMOrderExplainViewHeight;
+    offsetY += FMOrderContactUsViewHeight;
+    DLog(@"contentView默认高度 == %f", offsetY);
+    return offsetY;
+}
+
 - (void)fm_makeConstraints {
     [_orderPayView makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view);
@@ -110,12 +152,11 @@
     [_contentView makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.equalTo(self->_mainScrollView);
         make.width.equalTo(self->_mainScrollView);
-        make.height.equalTo(795.f);
+        make.height.equalTo([self contentVHeight]); // 默认高度
     }];
     
     /// subviewContents
-    const CGFloat margin = 15.f;
-    CGFloat offsetY = 0.f;
+    const CGFloat margin = 15.f;    CGFloat offsetY = 0.f;
     
     [_orderStatusView makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(self->_contentView);
@@ -163,6 +204,9 @@
     
     [self.viewModel.refreshUISubject subscribeNext:^(FMOrderDetailsModel *orderDetailsEntity) {
         @strongify(self)
+                   
+        [self updateConstraintsForScrollerContentHeight];
+        
         self->_orderStatusView.orderStatus = orderDetailsEntity.orderStatus;
         self->_orderStatusView.remainTime = orderDetailsEntity.remainTime;
         
@@ -173,8 +217,6 @@
         self->_goodsListView.orderDetailsEntity = orderDetailsEntity;
         
         self->_orderExplainView.orderExplainEntity = orderDetailsEntity.orderExplainEntity;
-        
-        
     }];
     
 //    [[_viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {

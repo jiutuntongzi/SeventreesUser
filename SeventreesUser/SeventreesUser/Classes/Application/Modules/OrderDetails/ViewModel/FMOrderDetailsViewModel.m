@@ -20,7 +20,6 @@
             [self.showHintSubject sendNext:resultModel.statusMsg];
             return;
         }
-        
         FMOrderDetailsModel *orderDetailsEntity = [FMOrderDetailsModel mj_objectWithKeyValues:resultModel.jsonDict[@"poOrderDetailsModel"]];
         
         /// 自定义的订单价格实体
@@ -43,6 +42,19 @@
         orderExplainEntity.logisticsCode = orderDetailsEntity.logisticsCode;
         
         orderDetailsEntity.orderExplainEntity = orderExplainEntity;
+        
+        /// test goodsEntitys
+        NSMutableArray *testGoodsEntitys = [[NSMutableArray alloc] init];
+        for (NSUInteger idx = 0; idx != 2; idx++) {
+            FMGoodsInDetailModel *goodsEntity = [[FMGoodsInDetailModel alloc] init];
+            goodsEntity.goodsId = @(16);
+            goodsEntity.goodsNum = @(idx);
+            goodsEntity.goodsPrice = @(99.80);
+            goodsEntity.goodsName = [@"humana奶粉_67年德国品质积累_值得妈妈信赖 humana值得妈妈信赖" stringByAppendingString:@(idx).stringValue];
+            goodsEntity.goodsImage = @"http://shengmei1868.com/upload/20181026/7a37f8151c314523b5d289b7dad50452.png";
+            [testGoodsEntitys addObject:goodsEntity];
+        }
+        orderDetailsEntity.goodsEntitys = [testGoodsEntitys copy];
         
         self.orderDetailsEntity = orderDetailsEntity; // self. KVO
         [self.refreshUISubject sendNext:orderDetailsEntity];

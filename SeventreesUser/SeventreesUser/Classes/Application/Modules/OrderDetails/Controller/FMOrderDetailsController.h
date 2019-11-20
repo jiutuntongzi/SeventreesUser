@@ -9,12 +9,12 @@
 #import "FMViewController.h"
 
 typedef NS_ENUM(NSUInteger, FMOrderDetailsPageStyle) {
-    FMOrderDetailsPageStyleWaitPay = 1,
-    FMOrderDetailsPageStyleWaitSend,
-    FMOrderDetailsPageStyleWaitReceive,
-    FMOrderDetailsPageStyleWaitEvaluate,
-    FMOrderDetailsPageStyleYetEvaluate,
-    FMOrderDetailsPageStyleYetCancel
+    FMOrderDetailsPageStyleWaitPay      = 1,
+    FMOrderDetailsPageStyleWaitSend     = 2,
+    FMOrderDetailsPageStyleWaitReceive  = 3,
+    FMOrderDetailsPageStyleWaitEvaluate = 4,
+    FMOrderDetailsPageStyleYetCancel    = 9,
+    FMOrderDetailsPageStyleYetFinish    = 11,
 };
 
 @interface FMOrderDetailsController : FMViewController

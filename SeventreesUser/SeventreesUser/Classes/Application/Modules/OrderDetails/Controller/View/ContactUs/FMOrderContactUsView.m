@@ -30,10 +30,10 @@
 
 - (void)fm_bindViewModel {
     [[_guideButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *button) {
-        
+        DLog(@"点了联系导购");
     }];
     [[_serverButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *button) {
-        
+        DLog(@"点了联系客服");
     }];
 }
 

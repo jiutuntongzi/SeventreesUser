@@ -16,4 +16,8 @@
 
 @property (nonatomic, strong) NSNumber *remainTime;
 
+@property (nonatomic, strong) NSString *createOrderTime;
+
+@property (nonatomic, strong) NSString *cancelCause;
+
 @end

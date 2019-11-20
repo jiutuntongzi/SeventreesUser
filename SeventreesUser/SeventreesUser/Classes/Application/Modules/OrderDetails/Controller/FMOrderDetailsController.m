@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) UIScrollView *mainScrollView;
 @property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, assign) CGFloat margin;
+
 
 @property (nonatomic, strong) FMOrderStatusView *orderStatusView;
 @property (nonatomic, strong) FMOrderAddressView *addressView;
@@ -44,11 +46,10 @@
 #pragma mark - Private Functions
 
 - (void)fm_addSubviews {
-    _orderPayView = FMOrderPayView.cv_viewFromNibLoad();
-    [self.view addSubview:_orderPayView];
-    
     [self setupMainScrollView];
     [self setupScrollerContent];
+    
+    [self setupOrderPayView];
 }
 
 /** Main Scroller */
@@ -56,10 +57,12 @@
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.bounces = YES;
     scrollView.backgroundColor = UIColor.cc_colorByRGBA(247.f, 247.f, 247.f, 1.f);
-    scrollView.contentSize = CGSizeMake(0.f, [self contentVHeight]); // 795.f
+    scrollView.contentSize = CGSizeMake(0.f, [self contentVHeight]);
     scrollView.scrollEnabled = YES;
-    scrollView.showsVerticalScrollIndicator = true;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.contentSize = CGSizeMake(0.f, [self contentVHeight] + FMOrderPayViewHeight);
 //    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    if (@available(iOS 11.0, *)) scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     _mainScrollView = scrollView;
     [self.view addSubview:_mainScrollView];
     
@@ -90,10 +93,12 @@
     [_contentView addSubview:_contactUsView];
 }
 
+/** 订单工具：底部单独的 */
 - (void)setupOrderPayView {
-    
+    _orderPayView = FMOrderPayView.cv_viewFromNibLoad();
+    _orderPayView.hidden = YES;
+    [self.view addSubview:_orderPayView];
 }
-
 
 #pragma mark - Make Constraints
 
@@ -101,62 +106,71 @@
 - (void)updateConstraintsForScrollerContentHeight {
     CGFloat dynamicHeight = [self dynamicContentVHeight];
     
-    _mainScrollView.contentSize = CGSizeMake(0.f, dynamicHeight); // 动态更新ScrollView内容高度
+    CGFloat orderPayViewHeight = FMOrderPayViewHeight;
+    if (self.viewModel.orderDetailsEntity.orderStatus.integerValue == 9) orderPayViewHeight = 0.f; // 订单取消
+    _mainScrollView.contentSize = CGSizeMake(0.f, dynamicHeight + orderPayViewHeight); // 动态更新ScrollView内容高度
     
     [_contentView updateConstraints:^(MASConstraintMaker *make) {
-//        make.top.left.equalTo(self->_mainScrollView);
-//        make.width.equalTo(self->_mainScrollView);
         make.height.equalTo(dynamicHeight); // 动态内容高度
     }];
 
-    [self->_goodsListView updateConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self->_contentView).offset(FMOrderStatusViewHeight + FMOrderAddressViewHeight + 15.f);
-//        make.left.equalTo(self->_contentView);
-//        make.width.equalTo(self->_contentView);
-        make.height.equalTo(dynamicHeight);
+    CGFloat tableViewHeight = FMGoodsTableViewHeight + [self goodsListHeight];
+    [_goodsListView updateConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(tableViewHeight);
+    }];
+    
+    const CGFloat _margin = 15.f;
+    CGFloat offsetY = FMOrderStatusViewHeight + (FMOrderAddressViewHeight + _margin) + (tableViewHeight + _margin);
+    [_orderExplainView updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(offsetY);
+    }];
+
+    offsetY += FMOrderExplainViewHeight;
+    [_contactUsView updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(offsetY);
     }];
 }
 
 /** 动态计算ScrollView内容高度 */
 - (CGFloat)dynamicContentVHeight {
-    CGFloat goodsPictureListViewHeight = self.viewModel.orderDetailsEntity.goodsEntitys.count * FMGoodsTableViewRowHeight;
-    return [self contentVHeight] + goodsPictureListViewHeight; // 求出contentView动态高度
+    return [self contentVHeight] + [self goodsListHeight]; // 求出contentView动态高度
 }
 
-/** Scroller contentView默认高度 */
+/** 商品列表高度（减去TableView头部、尾部的商品表格s高度）*/
+- (CGFloat)goodsListHeight {
+    return self.viewModel.orderDetailsEntity.goodsEntitys.count * FMGoodsTableViewRowHeight;
+}
+
+/** Scroller contentView默认高度 （default = 576.f） */
 - (CGFloat)contentVHeight {
-    CGFloat offsetY = 0.f;  const CGFloat margin = 15.f;
+    CGFloat offsetY = 0.f;
     
     offsetY += FMOrderStatusViewHeight;
-    offsetY += (FMOrderAddressViewHeight + margin);
-    offsetY += (FMGoodsTableViewHeight + margin); // 减去TableView高度
+    offsetY += (FMOrderAddressViewHeight + _margin);
+    offsetY += (FMGoodsTableViewHeight + _margin); // 减去TableView高度
     offsetY += FMOrderExplainViewHeight;
     offsetY += FMOrderContactUsViewHeight;
-    DLog(@"contentView默认高度 == %f", offsetY);
+//    DLog(@"contentView默认高度 == %f", offsetY);
     return offsetY;
 }
 
 - (void)fm_makeConstraints {
     [_orderPayView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view);
-        make.bottom.equalTo(self.view);
-        make.right.equalTo(self.view);
+        make.left.bottom.width.equalTo(self.view);
         make.height.equalTo(FMOrderPayViewHeight);
     }];
     
     [_mainScrollView makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.equalTo(self.view);
-        make.bottom.equalTo(self.view).offset(-FMOrderPayViewHeight);
+        make.edges.equalTo(self.view);
     }];
     
     [_contentView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.equalTo(self->_mainScrollView);
-        make.width.equalTo(self->_mainScrollView);
+        make.top.left.width.equalTo(self->_mainScrollView);
         make.height.equalTo([self contentVHeight]); // 默认高度
     }];
     
     /// subviewContents
-    const CGFloat margin = 15.f;    CGFloat offsetY = 0.f;
+    CGFloat offsetY = 0.f;  _margin = 15.f;
     
     [_orderStatusView makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(self->_contentView);
@@ -172,7 +186,7 @@
         make.height.equalTo(FMOrderAddressViewHeight);
     }];
     
-    offsetY += (FMOrderAddressViewHeight + margin);
+    offsetY += (FMOrderAddressViewHeight + _margin);
     [_goodsListView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(offsetY);
         make.left.equalTo(self->_contentView);
@@ -180,10 +194,10 @@
         make.height.equalTo(FMGoodsTableViewHeight);
     }];
     
-    offsetY += (FMGoodsTableViewHeight + margin);
+    offsetY += (FMGoodsTableViewHeight + _margin);
     [_orderExplainView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(offsetY);
-//        make.top.equalTo(self->_goodsListView.bottom).offset(margin);
+//        make.top.equalTo(self->_goodsListView.bottom).offset(_margin);
         make.left.equalTo(self->_contentView);
         make.width.equalTo(self->_contentView);
         make.height.equalTo(FMOrderExplainViewHeight);
@@ -192,7 +206,7 @@
     offsetY += FMOrderExplainViewHeight;
     [_contactUsView makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(offsetY);
-//        make.top.equalTo(self->_orderExplainView.bottom).offset(margin);
+//        make.top.equalTo(self->_orderExplainView.bottom).offset(_margin);
         make.left.equalTo(self->_contentView);
         make.width.equalTo(self->_contentView);
         make.height.equalTo(FMOrderContactUsViewHeight);
@@ -204,11 +218,12 @@
     
     [self.viewModel.refreshUISubject subscribeNext:^(FMOrderDetailsModel *orderDetailsEntity) {
         @strongify(self)
-                   
-        [self updateConstraintsForScrollerContentHeight];
+        
+        [self updateConstraintsForScrollerContentHeight]; // 动态更新内容高度
         
         self->_orderStatusView.orderStatus = orderDetailsEntity.orderStatus;
         self->_orderStatusView.remainTime = orderDetailsEntity.remainTime;
+        self->_orderStatusView.createOrderTime = orderDetailsEntity.createOrderTime;
         
         self->_addressView.userName = orderDetailsEntity.addressUserName;
         self->_addressView.mobilePhone = orderDetailsEntity.addressMobile;
@@ -217,18 +232,18 @@
         self->_goodsListView.orderDetailsEntity = orderDetailsEntity;
         
         self->_orderExplainView.orderExplainEntity = orderDetailsEntity.orderExplainEntity;
+        
+        self->_orderPayView.viewModel.orderStatus = orderDetailsEntity.orderStatus;
+        self->_orderPayView.viewModel.orderId = orderDetailsEntity.orderId;
     }];
-    
-//    [[_viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
-//        if ([isExecuting isEqualToNumber:@(YES)]) {
-//            [SVProgressHUD showWithStatus:nil];
-//        } else {
-//            [SVProgressHUD dismissWithDelay:1.f];
-//        }
-//    }];
     
     [_viewModel.showHintSubject subscribeNext:^(NSString *status) {
         [SVProgressHUD showInfoWithStatus:status];
+    }];
+    
+    [self.orderPayView.viewModel.reloadDataSubject subscribeNext:^(NSNumber *orderId) {
+        @strongify(self)
+        [self.viewModel.requestDataCommand execute:nil];
     }];
 }
 

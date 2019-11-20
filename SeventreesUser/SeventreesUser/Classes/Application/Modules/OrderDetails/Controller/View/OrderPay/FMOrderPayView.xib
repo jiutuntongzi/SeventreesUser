@@ -30,7 +30,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="取消订单">
-                                <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xE-Hm-oVn">
@@ -67,10 +67,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="cancelButton" destination="fjl-UZ-et9" id="XGg-K1-T4g"/>
-                <outlet property="goPayButton" destination="9xE-Hm-oVn" id="ZUl-4s-k48"/>
+                <outlet property="leftButton" destination="fjl-UZ-et9" id="zyx-Jg-IFn"/>
+                <outlet property="rightButton" destination="9xE-Hm-oVn" id="aiA-HD-hjN"/>
             </connections>
-            <point key="canvasLocation" x="-903" y="-162"/>
+            <point key="canvasLocation" x="-921" y="-1"/>
         </view>
     </objects>
 </document>

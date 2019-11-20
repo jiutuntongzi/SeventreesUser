@@ -7,14 +7,11 @@
 //
 
 #import "FMView.h"
-#import "FMOrderContacUsViewModel.h"
 
 #define     FMOrderContactUsViewHeight      60.f
 
-
 @interface FMOrderContactUsView : FMView
 
-@property (nonatomic, strong) FMOrderContacUsViewModel *viewModel;
 
 
 @end

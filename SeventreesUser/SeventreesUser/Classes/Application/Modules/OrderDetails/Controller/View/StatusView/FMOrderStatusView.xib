@@ -27,6 +27,12 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                  " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtT-ev-Xk2" userLabel="Right TimeLabel">
+                            <rect key="frame" x="299" y="24.5" width="61" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩23小时59分自动关闭" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncu-Hz-lNR">
                             <rect key="frame" x="15" y="46" width="280" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -37,6 +43,8 @@
                     <color key="backgroundColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Ncu-Hz-lNR" secondAttribute="trailing" constant="80" id="2DI-HM-bhr"/>
+                        <constraint firstItem="vtT-ev-Xk2" firstAttribute="centerY" secondItem="1IM-qW-DiW" secondAttribute="centerY" id="5xv-Mk-WpK"/>
+                        <constraint firstAttribute="trailing" secondItem="vtT-ev-Xk2" secondAttribute="trailing" constant="15" id="9Vp-PR-QIA"/>
                         <constraint firstItem="Ncu-Hz-lNR" firstAttribute="top" secondItem="1IM-qW-DiW" secondAttribute="bottom" constant="5" id="Akl-i4-3KT"/>
                         <constraint firstItem="gBU-Ha-Yua" firstAttribute="centerY" secondItem="PKi-Fq-jO4" secondAttribute="centerY" id="EUW-VW-XwV"/>
                         <constraint firstItem="Ncu-Hz-lNR" firstAttribute="leading" secondItem="1IM-qW-DiW" secondAttribute="leading" id="J0y-Bp-hfs"/>
@@ -59,8 +67,10 @@
                 <outlet property="remainTimeLabel" destination="Ncu-Hz-lNR" id="ysv-rC-cVO"/>
                 <outlet property="statusImgView" destination="gBU-Ha-Yua" id="g5a-iG-Wra"/>
                 <outlet property="statusLabel" destination="1IM-qW-DiW" id="BaI-wU-q6B"/>
+                <outlet property="statusLabelTopCons" destination="mSb-Ra-tLg" id="3Dn-O2-uyi"/>
+                <outlet property="timeLabel" destination="vtT-ev-Xk2" id="xbr-s4-DSU"/>
             </connections>
-            <point key="canvasLocation" x="-442" y="-58"/>
+            <point key="canvasLocation" x="-610" y="-43"/>
         </view>
     </objects>
     <resources>

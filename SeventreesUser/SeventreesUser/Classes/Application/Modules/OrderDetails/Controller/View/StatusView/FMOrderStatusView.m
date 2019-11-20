@@ -11,6 +11,9 @@
 @interface FMOrderStatusView ()
 
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusLabelTopCons;
+
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *remainTimeLabel;
 
@@ -29,6 +32,17 @@
     
     [RACObserve(self, orderStatus) subscribeNext:^(NSNumber *orderStatus) {
         @strongify(self)
+        
+        void (^setHideStatusBlock)(void) = ^ {
+            self->_remainTimeLabel.text = @"";
+            self->_statusLabelTopCons.constant = 30.f;
+        };
+        if (orderStatus.integerValue == 9 || orderStatus.integerValue == 9 || orderStatus.integerValue == 5 || orderStatus.integerValue == 11) {
+            setHideStatusBlock();
+        } else {
+            self->_statusLabelTopCons.constant = 23.f;
+        }
+        
         // --订单状态（1 未付款 2 拣货中 3已关闭 4 已发货 5 未评价 6 退货中 7 已退货 8 拒接退货 9 订单取消 10 部分已发货 11已完成）
         NSString *statusText = nil, *statusIconName = nil;
         switch (orderStatus.integerValue) {
@@ -58,7 +72,7 @@
                 break;
             }
             case 5: {
-                statusText = @"待评论";
+                statusText = @"交易成功"; // 未评价
                 statusIconName = @"icon_orderStatus_waitEvaluate";
 //                leftTitle = @"申请退货";
 //                rightTitle = @"去评论";
@@ -80,8 +94,9 @@
                 break;
             }
             case 9: {
-                statusText = @"订单取消";
+                statusText = @"交易取消";
                 statusIconName = @"icon_orderStatus_yetCancel";
+                
                 break;
             }
             case 10: {
@@ -91,7 +106,7 @@
                 break;
             }
             case 11: {
-                statusText = @"已完成";
+                statusText = @"交易成功"; // 已完成
                 statusIconName = @"icon_orderStatus_yetFinish";
                 break;
             }
@@ -106,8 +121,27 @@
     [RACObserve(self, remainTime) subscribeNext:^(NSNumber *remainTime) {
         @strongify(self)
 //        NSString *formatTime = [NSString convertTimeFromTimestamp:remainTime.unsignedIntegerValue dateformatter:@"HH:mm:ss"]; // @"yyyy-MM-dd HH:mm:ss"
-        NSString *countdownTime = formatTimeMsec(remainTime.integerValue);
-        self->_remainTimeLabel.text = [NSString stringWithFormat:@"剩%@自动关闭", countdownTime];
+        if (self->_orderStatus.integerValue == 1) { // 订单取消
+            NSString *countdownTime = formatTimeMsec(remainTime.integerValue);
+            self->_remainTimeLabel.text = [NSString stringWithFormat:@"剩%@自动关闭", countdownTime];
+        }
+    }];
+    
+    [RACObserve(self, createOrderTime) subscribeNext:^(NSString *createOrderTime) {
+        @strongify(self)
+        
+        if (self->_orderStatus.integerValue == 5 || self->_orderStatus.integerValue == 11) { // 交易成功
+            self->_remainTimeLabel.text = createOrderTime ?: @"";
+            
+        } else if (self->_orderStatus.integerValue == 9) { // 订单取消
+            self->_timeLabel.text = createOrderTime ?: @"";
+        }
+    }];
+    
+    [RACObserve(self, cancelCause) subscribeNext:^(NSString *cancelCause) {
+        if (self->_orderStatus.integerValue == 9) { // 订单取消
+            self->_remainTimeLabel.text = cancelCause ?: @"取消原因：我不想要了"; // test
+        }
     }];
 }
 

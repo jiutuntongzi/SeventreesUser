@@ -220,7 +220,7 @@
                 <outlet property="titleLabel" destination="Itv-uf-xFV" id="MXT-7y-MXO"/>
                 <outlet property="totalLabel" destination="0m0-bo-jco" id="BvQ-YI-gjq"/>
             </connections>
-            <point key="canvasLocation" x="-5538.3999999999996" y="39.580209895052477"/>
+            <point key="canvasLocation" x="-5828" y="29"/>
         </tableViewCell>
     </objects>
 </document>

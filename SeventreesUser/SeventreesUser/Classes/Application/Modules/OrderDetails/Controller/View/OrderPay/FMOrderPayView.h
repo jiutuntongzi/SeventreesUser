@@ -16,6 +16,5 @@
 
 @property (nonatomic, strong) FMOrderPayViewModel *viewModel;
 
-
 @end
 

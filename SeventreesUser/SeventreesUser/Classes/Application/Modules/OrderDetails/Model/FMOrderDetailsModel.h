@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSNumber *orderId;
 
+/** 订单状态（1 未付款 2 拣货中 3已关闭 4 已发货 5 未评价 6 退货中 7 已退货 8 拒接退货 9 订单取消 10 部分已发货 11已完成）*/
 @property (nonatomic, strong) NSNumber *orderStatus;
 
 @property (nonatomic, strong) NSNumber *remainTime;

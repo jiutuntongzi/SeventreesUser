@@ -10,4 +10,18 @@
 
 @interface FMOrderPayViewModel : FMViewModel
 
+/** UI status */
+@property (nonatomic, strong) NSNumber *orderStatus;
+
+@property (nonatomic, strong) RACSubject *showHintSubject;
+
+/** Request Params */
+@property (nonatomic, strong) NSNumber *orderId;
+
+@property (nonatomic, strong) RACCommand *requestCancelCommand;
+
+@property (nonatomic, strong) RACCommand *requestReceivingCommand;
+
+@property (nonatomic, strong) RACSubject *reloadDataSubject;
+
 @end

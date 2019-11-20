@@ -498,7 +498,6 @@
 		84FF219423275679001AFE30 /* FMVerifyInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF218F23275679001AFE30 /* FMVerifyInputView.m */; };
 		84FF219523275679001AFE30 /* FMVerifyInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF219023275679001AFE30 /* FMVerifyInputView.xib */; };
 		84FF219623275679001AFE30 /* FMVerifyInputViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF219323275679001AFE30 /* FMVerifyInputViewModel.m */; };
-		84FF2F122335B39100E34550 /* FMOrderContacUsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF2F112335B39100E34550 /* FMOrderContacUsViewModel.m */; };
 		84FF2F192335B71D00E34550 /* FMOrderPayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF2F152335B71D00E34550 /* FMOrderPayView.m */; };
 		84FF2F1A2335B71D00E34550 /* FMOrderPayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF2F162335B71D00E34550 /* FMOrderPayView.xib */; };
 		84FF2F1B2335B71D00E34550 /* FMOrderPayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF2F182335B71D00E34550 /* FMOrderPayViewModel.m */; };
@@ -1419,8 +1418,6 @@
 		84FF219023275679001AFE30 /* FMVerifyInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMVerifyInputView.xib; sourceTree = "<group>"; };
 		84FF219223275679001AFE30 /* FMVerifyInputViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMVerifyInputViewModel.h; sourceTree = "<group>"; };
 		84FF219323275679001AFE30 /* FMVerifyInputViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMVerifyInputViewModel.m; sourceTree = "<group>"; };
-		84FF2F102335B39100E34550 /* FMOrderContacUsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMOrderContacUsViewModel.h; sourceTree = "<group>"; };
-		84FF2F112335B39100E34550 /* FMOrderContacUsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMOrderContacUsViewModel.m; sourceTree = "<group>"; };
 		84FF2F142335B71D00E34550 /* FMOrderPayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMOrderPayView.h; sourceTree = "<group>"; };
 		84FF2F152335B71D00E34550 /* FMOrderPayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMOrderPayView.m; sourceTree = "<group>"; };
 		84FF2F162335B71D00E34550 /* FMOrderPayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMOrderPayView.xib; sourceTree = "<group>"; };
@@ -1710,8 +1707,6 @@
 				8405B8CB2334D6A80065965F /* FMOrderContactUsView.h */,
 				8405B8CC2334D6A80065965F /* FMOrderContactUsView.m */,
 				8405B8CE2334D6B10065965F /* FMOrderContactUsView.xib */,
-				84FF2F102335B39100E34550 /* FMOrderContacUsViewModel.h */,
-				84FF2F112335B39100E34550 /* FMOrderContacUsViewModel.m */,
 			);
 			path = ContactUs;
 			sourceTree = "<group>";
@@ -5163,7 +5158,6 @@
 				84B23DE9238290D200C0D831 /* FMOrderPriceModel.m in Sources */,
 				84089E6223138FD300D7EF7D /* FMEvaluationController.m in Sources */,
 				84001C93230CD4EB0010DE0B /* WMProgressView.m in Sources */,
-				84FF2F122335B39100E34550 /* FMOrderContacUsViewModel.m in Sources */,
 				8401E2EF23279958006C111B /* FMInputView.m in Sources */,
 				840B828F2310D0AA004DBFC9 /* FMPayModel.m in Sources */,
 				8486850323332F5B0057A16E /* FMOrderPagingType.c in Sources */,

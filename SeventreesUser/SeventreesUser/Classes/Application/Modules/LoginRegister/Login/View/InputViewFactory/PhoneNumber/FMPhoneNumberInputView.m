@@ -56,7 +56,7 @@
         } else {
             cleartextImgName = @"icon_cleartextPhone";
         }
-        self->_plaintextButton.cb_setImageOfNamed(cleartextImgName);
+        self->_plaintextButton.cb_imageOfNamed(cleartextImgName);
         self->_phoneTextField.secureTextEntry = !isPlaintext.boolValue;
     }];
     

@@ -55,7 +55,7 @@
             [testGoodsEntitys addObject:goodsEntity];
         }
         orderDetailsEntity.goodsEntitys = [testGoodsEntitys copy];
-        orderDetailsEntity.orderStatus = @(1); // test
+        orderDetailsEntity.orderStatus = @(5); // test
         
         self.orderDetailsEntity = orderDetailsEntity; // self. KVO
         [self.refreshUISubject sendNext:orderDetailsEntity];

@@ -33,7 +33,7 @@
     customButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     [self addSubview:customButton];
     __weak typeof(self) weakSelf = self;
-    customButton.cb_setImageOfNamed(@"icon_navBack").cc_setActionEventsCallback(UIControlEventTouchUpInside, ^(UIButton *button) {
+    customButton.cb_imageOfNamed(@"icon_navBack").cc_setActionEventsCallback(UIControlEventTouchUpInside, ^(UIButton *button) {
         if (weakSelf.prevPageCallback) weakSelf.prevPageCallback();
     });
     

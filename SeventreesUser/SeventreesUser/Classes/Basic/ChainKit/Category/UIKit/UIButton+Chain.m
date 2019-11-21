@@ -48,7 +48,7 @@
     };
 }
 
-- (CBStringHandleCallback)cb_setImageOfNamed {
+- (CBStringHandleCallback)cb_imageOfNamed {
     return ^(NSString * __nullable imageName) {
         [self setImage:UIImage.ci_imageNamed(imageName) forState:UIControlStateNormal];
         return self;

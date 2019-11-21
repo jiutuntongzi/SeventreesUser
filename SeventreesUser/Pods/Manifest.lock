@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - GPUImage (0.1.7)
   - IQKeyboardManager (6.4.0)
   - Masonry (1.1.0)
   - MJExtension (3.1.0)
@@ -34,9 +35,12 @@ PODS:
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
+  - ZLPhotoBrowser (3.1.2):
+    - SDWebImage
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
+  - GPUImage (~> 0.1.7)
   - IQKeyboardManager (~> 6.4.0)
   - Masonry (~> 1.1.0)
   - MJExtension (~> 3.1.0)
@@ -46,9 +50,10 @@ DEPENDENCIES:
   - SDWebImage (~> 5.1.0)
   - SVProgressHUD (~> 2.2.5)
   - YYKit (~> 1.0.9)
+  - ZLPhotoBrowser (~> 3.1.2)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - IQKeyboardManager
     - Masonry
@@ -57,7 +62,10 @@ SPEC REPOS:
     - SDCycleScrollView
     - SDWebImage
     - SVProgressHUD
+  trunk:
+    - GPUImage
     - YYKit
+    - ZLPhotoBrowser
 
 EXTERNAL SOURCES:
   ReactiveCocoa:
@@ -71,6 +79,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   IQKeyboardManager: fcef267266379c003181fc3592f6bdb8bf4db839
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 6b69b3bef2864fd550ce1a184eda219e321209d2
@@ -80,7 +89,8 @@ SPEC CHECKSUMS:
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+  ZLPhotoBrowser: 7e88434918366af98f8ebbaf5b94206985812ed6
 
-PODFILE CHECKSUM: d5cd752d705209fc72e80588b32bd4e9135476b4
+PODFILE CHECKSUM: 8eaaf09e4d39c8af7cca047cb0f38ca3492e4c30
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4

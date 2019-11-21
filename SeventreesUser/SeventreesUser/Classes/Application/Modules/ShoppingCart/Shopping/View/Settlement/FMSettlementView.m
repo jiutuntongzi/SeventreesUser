@@ -60,7 +60,7 @@
         } else {
             imageName = @"icon_check_normal";
         }
-        self->_checkAllButton.cb_setImageOfNamed(imageName);
+        self->_checkAllButton.cb_imageOfNamed(imageName);
     }];
     
     [[_checkAllButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id button) {

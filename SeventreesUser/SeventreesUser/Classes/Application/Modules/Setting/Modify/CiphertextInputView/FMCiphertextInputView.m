@@ -46,7 +46,7 @@
         } else {
             cleartextImgName = @"icon_cleartext";
         }
-        self->_cleartextButton.cb_setImageOfNamed(cleartextImgName);
+        self->_cleartextButton.cb_imageOfNamed(cleartextImgName);
         self->_passwordTextField.secureTextEntry = !isPlaintext.boolValue;
     }];
     

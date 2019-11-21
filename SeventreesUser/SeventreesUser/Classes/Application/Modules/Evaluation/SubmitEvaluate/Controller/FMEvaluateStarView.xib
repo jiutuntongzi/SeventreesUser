@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FMEvaluateStarView">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="18"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmM-xu-fge" userLabel="ContentView">
+                    <rect key="frame" x="0.0" y="0.0" width="100" height="18"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rPD-Fr-woZ" userLabel="StarView">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="18"/>
+                            <subviews>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pey-Md-VmZ" userLabel="starButton">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="ZF9-Y6-fBH"/>
+                                        <constraint firstAttribute="height" constant="18" id="uaU-0m-p1A"/>
+                                    </constraints>
+                                    <state key="normal" image="icon_evaluate_star_normal"/>
+                                    <connections>
+                                        <action selector="startOnTouch:" destination="iN0-l3-epB" eventType="touchUpInside" id="qdK-Ot-ZTG"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2D-vN-i7u" userLabel="starButton">
+                                    <rect key="frame" x="20" y="0.0" width="20" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="siE-23-oDE"/>
+                                        <constraint firstAttribute="width" constant="20" id="vxT-zj-S8n"/>
+                                    </constraints>
+                                    <state key="normal" image="icon_evaluate_star_normal"/>
+                                    <connections>
+                                        <action selector="startOnTouch:" destination="iN0-l3-epB" eventType="touchUpInside" id="SG4-rG-yUM"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8v-sG-jm2" userLabel="starButton">
+                                    <rect key="frame" x="40" y="0.0" width="20" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="Bdv-GQ-ezb"/>
+                                        <constraint firstAttribute="width" constant="20" id="UNz-n1-nVK"/>
+                                    </constraints>
+                                    <state key="normal" image="icon_evaluate_star_normal"/>
+                                    <connections>
+                                        <action selector="startOnTouch:" destination="iN0-l3-epB" eventType="touchUpInside" id="j71-RN-cJN"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNL-HJ-yRc" userLabel="starButton">
+                                    <rect key="frame" x="60" y="0.0" width="20" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="FEE-b5-vEn"/>
+                                        <constraint firstAttribute="height" constant="18" id="Hvk-hC-Qae"/>
+                                    </constraints>
+                                    <state key="normal" image="icon_evaluate_star_normal"/>
+                                    <connections>
+                                        <action selector="startOnTouch:" destination="iN0-l3-epB" eventType="touchUpInside" id="39h-0D-sqQ"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9g-tb-FnX" userLabel="starButton">
+                                    <rect key="frame" x="80" y="0.0" width="20" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="ZVj-GP-CSy"/>
+                                        <constraint firstAttribute="width" constant="20" id="gFO-pg-YrG"/>
+                                    </constraints>
+                                    <state key="normal" image="icon_evaluate_star_normal"/>
+                                    <connections>
+                                        <action selector="startOnTouch:" destination="iN0-l3-epB" eventType="touchUpInside" id="Tpy-xd-azM"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Pey-Md-VmZ" firstAttribute="leading" secondItem="rPD-Fr-woZ" secondAttribute="leading" id="CYh-y0-e0o"/>
+                                <constraint firstItem="Z8v-sG-jm2" firstAttribute="top" secondItem="VNL-HJ-yRc" secondAttribute="top" id="Ews-eO-hnb"/>
+                                <constraint firstItem="e9g-tb-FnX" firstAttribute="leading" secondItem="VNL-HJ-yRc" secondAttribute="trailing" id="Iuh-iv-Il8"/>
+                                <constraint firstItem="Z8v-sG-jm2" firstAttribute="leading" secondItem="k2D-vN-i7u" secondAttribute="trailing" id="LOa-gF-GHv"/>
+                                <constraint firstItem="e9g-tb-FnX" firstAttribute="top" secondItem="rPD-Fr-woZ" secondAttribute="top" id="OLS-XI-r2A"/>
+                                <constraint firstItem="VNL-HJ-yRc" firstAttribute="leading" secondItem="Z8v-sG-jm2" secondAttribute="trailing" id="PLe-96-fpY"/>
+                                <constraint firstItem="Z8v-sG-jm2" firstAttribute="top" secondItem="k2D-vN-i7u" secondAttribute="top" id="d4N-IU-hvF"/>
+                                <constraint firstItem="k2D-vN-i7u" firstAttribute="leading" secondItem="Pey-Md-VmZ" secondAttribute="trailing" id="d7c-YE-kcL"/>
+                                <constraint firstItem="Pey-Md-VmZ" firstAttribute="top" secondItem="rPD-Fr-woZ" secondAttribute="top" id="h7z-nX-Fbm"/>
+                                <constraint firstItem="Z8v-sG-jm2" firstAttribute="top" secondItem="Pey-Md-VmZ" secondAttribute="top" id="iou-WO-pr5"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="rPD-Fr-woZ" secondAttribute="bottom" id="DnC-ZX-d4R"/>
+                        <constraint firstItem="rPD-Fr-woZ" firstAttribute="leading" secondItem="mmM-xu-fge" secondAttribute="leading" id="OKK-no-CqI"/>
+                        <constraint firstItem="rPD-Fr-woZ" firstAttribute="top" secondItem="mmM-xu-fge" secondAttribute="top" id="bGS-hG-TFB"/>
+                        <constraint firstAttribute="trailing" secondItem="rPD-Fr-woZ" secondAttribute="trailing" id="enV-KB-xSw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="mmM-xu-fge" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="J5M-t4-slJ"/>
+                <constraint firstAttribute="bottom" secondItem="mmM-xu-fge" secondAttribute="bottom" id="Td1-GF-cFv"/>
+                <constraint firstItem="mmM-xu-fge" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kRY-gf-Jiq"/>
+                <constraint firstAttribute="trailing" secondItem="mmM-xu-fge" secondAttribute="trailing" id="zIZ-Rt-Zei"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="starBtns" destination="Pey-Md-VmZ" id="rdf-Gd-RTO"/>
+                <outletCollection property="starBtns" destination="k2D-vN-i7u" id="cuo-Mt-cMB"/>
+                <outletCollection property="starBtns" destination="Z8v-sG-jm2" id="6I2-0u-bBo"/>
+                <outletCollection property="starBtns" destination="VNL-HJ-yRc" id="VWm-Jk-xxZ"/>
+                <outletCollection property="starBtns" destination="e9g-tb-FnX" id="b8l-p6-wdC"/>
+            </connections>
+            <point key="canvasLocation" x="-195.19999999999999" y="-186.20689655172416"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_evaluate_star_normal" width="20" height="18.5"/>
+    </resources>
+</document>

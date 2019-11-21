@@ -59,9 +59,9 @@
     [RACObserve(self->_viewModel, goodsEntity.isChecked) subscribeNext:^(NSNumber *isChecked) {
         @strongify(self)
         if (isChecked.boolValue) {
-            self->_chooseButton.cb_setImageOfNamed(@"icon_check_selected");
+            self->_chooseButton.cb_imageOfNamed(@"icon_check_selected");
         } else {
-            self->_chooseButton.cb_setImageOfNamed(@"icon_check_normal");
+            self->_chooseButton.cb_imageOfNamed(@"icon_check_normal");
         }
     }];
     

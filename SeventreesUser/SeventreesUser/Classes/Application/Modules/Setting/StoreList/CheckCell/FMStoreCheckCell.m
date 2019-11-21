@@ -49,9 +49,9 @@
     
     void (^checkStatusBlock)(BOOL) = ^(BOOL isCheck) {
         if (isCheck) {
-            self->_checkIconButton.cb_setImageOfNamed(kIcon_store_check_selected);
+            self->_checkIconButton.cb_imageOfNamed(kIcon_store_check_selected);
         } else {
-            self->_checkIconButton.cb_setImageOfNamed(kIcon_store_check_normal);
+            self->_checkIconButton.cb_imageOfNamed(kIcon_store_check_normal);
         }
     };
     
@@ -77,9 +77,9 @@
      @strongify(self)
      
      if (storeEntity.isCheck) {
-     self->_checkIconButton.cb_setImageOfNamed(@"icon_store_check_selected");
+     self->_checkIconButton.cb_imageOfNamed(@"icon_store_check_selected");
      } else {
-     self->_checkIconButton.cb_setImageOfNamed(@"icon_store_check_normal");
+     self->_checkIconButton.cb_imageOfNamed(@"icon_store_check_normal");
      }
      }];
      */

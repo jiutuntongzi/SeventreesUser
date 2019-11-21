@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (CBContentForStateHandle)cb_setTitleForState;
 
-- (CBStringHandleCallback)cb_setImageOfNamed;
+- (CBStringHandleCallback)cb_imageOfNamed;
 
 - (CBContentForStateHandle)cb_setImageOfNamedForState;
 

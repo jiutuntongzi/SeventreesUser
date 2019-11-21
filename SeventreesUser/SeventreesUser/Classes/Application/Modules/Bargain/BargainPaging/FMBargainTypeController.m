@@ -122,7 +122,7 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 //    customButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 //    self.navigationItem.cni_leftBarButtonItem(UIBarButtonItem.cbi_initWithCustomView(customButton));
 //    __weak typeof(self) weakSelf = self;
-//    customButton.cb_setImageOfNamed(_returnImageName).cc_setActionEventsCallback(UIControlEventTouchUpInside, ^(UIButton *button) {
+//    customButton.cb_imageOfNamed(_returnImageName).cc_setActionEventsCallback(UIControlEventTouchUpInside, ^(UIButton *button) {
 //        if ([weakSelf.navigationController popViewControllerAnimated:YES] == nil) {
 //            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
 //        }

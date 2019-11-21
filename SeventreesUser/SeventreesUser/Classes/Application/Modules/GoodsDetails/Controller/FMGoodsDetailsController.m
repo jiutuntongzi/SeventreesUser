@@ -92,7 +92,7 @@
      customBackButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
      self.navigationItem.cni_leftBarButtonItem(UIBarButtonItem.cbi_initWithCustomView(customBackButton));
     
-     customBackButton.cb_setImageOfNamed(@"icon_shopCar_back").cc_setActionEventsCallback(UIControlEventTouchUpInside, ^(UIButton *button) {
+     customBackButton.cb_imageOfNamed(@"icon_shopCar_back").cc_setActionEventsCallback(UIControlEventTouchUpInside, ^(UIButton *button) {
          if ([weakSelf.navigationController popViewControllerAnimated:YES] == nil) {
              [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
      }
@@ -104,7 +104,7 @@
     customRightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.navigationItem.cni_rightBarButtonItem(UIBarButtonItem.cbi_initWithCustomView(customRightButton));
     
-    customRightButton.cb_setImageOfNamed(@"icon_shopCar_share").cc_setActionEventsCallback(UIControlEventTouchUpInside, ^(UIButton *button) {
+    customRightButton.cb_imageOfNamed(@"icon_shopCar_share").cc_setActionEventsCallback(UIControlEventTouchUpInside, ^(UIButton *button) {
         if ([weakSelf.navigationController popViewControllerAnimated:YES] == nil) {
             [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
         }

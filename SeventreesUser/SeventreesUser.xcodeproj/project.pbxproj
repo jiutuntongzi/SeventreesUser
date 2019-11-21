@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08045B351A189E7F959DD3B6 /* libPods-SeventreesUser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E526D20361804ADF582EE2C0 /* libPods-SeventreesUser.a */; };
 		84001C90230CD4EB0010DE0B /* UIViewController+WMPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84001C84230CD4EB0010DE0B /* UIViewController+WMPageController.m */; };
 		84001C91230CD4EB0010DE0B /* WMMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84001C87230CD4EB0010DE0B /* WMMenuItem.m */; };
 		84001C92230CD4EB0010DE0B /* WMMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84001C89230CD4EB0010DE0B /* WMMenuView.m */; };
@@ -292,6 +291,8 @@
 		84B142DC2304F6E7009ADECF /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B142D62304F6E7009ADECF /* UITableView+FDKeyedHeightCache.m */; };
 		84B142DD2304F6E7009ADECF /* UITableView+FDTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B142D82304F6E7009ADECF /* UITableView+FDTemplateLayoutCell.m */; };
 		84B142DE2304F6E7009ADECF /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B142DA2304F6E7009ADECF /* UITableView+FDTemplateLayoutCellDebug.m */; };
+		84B1C02223862F7C007AB2C3 /* FMEvaluateStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1C02123862F7C007AB2C3 /* FMEvaluateStarView.m */; };
+		84B1C02423862F98007AB2C3 /* FMEvaluateStarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B1C02323862F98007AB2C3 /* FMEvaluateStarView.xib */; };
 		84B23DE02382338A00C0D831 /* FMOrderDetailsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B23DDF2382338900C0D831 /* FMOrderDetailsViewModel.m */; };
 		84B23DE3238248F500C0D831 /* NSString+TimestampConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B23DE2238248F500C0D831 /* NSString+TimestampConvert.m */; };
 		84B23DE623827AC700C0D831 /* NSString+TimeConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B23DE523827AC700C0D831 /* NSString+TimeConvert.m */; };
@@ -317,6 +318,8 @@
 		84C3DF4C231E0DCF008147C6 /* FMStoreInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C3DF48231E0DCF008147C6 /* FMStoreInfoViewModel.m */; };
 		84C3DF5A231E16B4008147C6 /* FMGoodsInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C3DF54231E16B4008147C6 /* FMGoodsInfoView.m */; };
 		84C3DF5B231E16B4008147C6 /* FMGoodsInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C3DF55231E16B4008147C6 /* FMGoodsInfoView.xib */; };
+		84C7FD332386710F0016A5AC /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C7FD322386710F0016A5AC /* Photos.framework */; };
+		84C7FD35238673EA0016A5AC /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C7FD34238673EA0016A5AC /* PhotosUI.framework */; };
 		84CBD0D123586F10003C19BE /* FMGoodsDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CBD0CF23586F0F003C19BE /* FMGoodsDetailsModel.m */; };
 		84D38B58233B173E00DEF36D /* FMRefundStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D38B56233B173E00DEF36D /* FMRefundStatusView.xib */; };
 		84D38B59233B173E00DEF36D /* FMRefundStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D38B57233B173E00DEF36D /* FMRefundStatusView.m */; };
@@ -514,6 +517,7 @@
 		84FFF94D2355CD15000980D8 /* FMAnnouncementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FFF94C2355CD15000980D8 /* FMAnnouncementView.m */; };
 		84FFF9502355CD79000980D8 /* FMAnnouncementViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FFF94F2355CD79000980D8 /* FMAnnouncementViewModel.m */; };
 		84FFF9532355CDA5000980D8 /* FMAnnouncementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FFF9522355CDA5000980D8 /* FMAnnouncementModel.m */; };
+		9BCE844179D03847ACDC2D6E /* libPods-SeventreesUser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDEEDE053CCEB994DD446CDE /* libPods-SeventreesUser.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1022,6 +1026,9 @@
 		84B142D82304F6E7009ADECF /* UITableView+FDTemplateLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDTemplateLayoutCell.m"; sourceTree = "<group>"; };
 		84B142D92304F6E7009ADECF /* UITableView+FDTemplateLayoutCellDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDTemplateLayoutCellDebug.h"; sourceTree = "<group>"; };
 		84B142DA2304F6E7009ADECF /* UITableView+FDTemplateLayoutCellDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDTemplateLayoutCellDebug.m"; sourceTree = "<group>"; };
+		84B1C02023862F7C007AB2C3 /* FMEvaluateStarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMEvaluateStarView.h; sourceTree = "<group>"; };
+		84B1C02123862F7C007AB2C3 /* FMEvaluateStarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMEvaluateStarView.m; sourceTree = "<group>"; };
+		84B1C02323862F98007AB2C3 /* FMEvaluateStarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMEvaluateStarView.xib; sourceTree = "<group>"; };
 		84B23DDE2382338900C0D831 /* FMOrderDetailsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMOrderDetailsViewModel.h; sourceTree = "<group>"; };
 		84B23DDF2382338900C0D831 /* FMOrderDetailsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMOrderDetailsViewModel.m; sourceTree = "<group>"; };
 		84B23DE1238248F500C0D831 /* NSString+TimestampConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+TimestampConvert.h"; sourceTree = "<group>"; };
@@ -1065,6 +1072,8 @@
 		84C3DF53231E16B4008147C6 /* FMGoodsInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGoodsInfoView.h; sourceTree = "<group>"; };
 		84C3DF54231E16B4008147C6 /* FMGoodsInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGoodsInfoView.m; sourceTree = "<group>"; };
 		84C3DF55231E16B4008147C6 /* FMGoodsInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMGoodsInfoView.xib; sourceTree = "<group>"; };
+		84C7FD322386710F0016A5AC /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		84C7FD34238673EA0016A5AC /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		84CBD0CF23586F0F003C19BE /* FMGoodsDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGoodsDetailsModel.m; sourceTree = "<group>"; };
 		84CBD0D023586F0F003C19BE /* FMGoodsDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGoodsDetailsModel.h; sourceTree = "<group>"; };
 		84D38B55233B173D00DEF36D /* FMRefundStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMRefundStatusView.h; sourceTree = "<group>"; };
@@ -1448,7 +1457,7 @@
 		84FFF9512355CDA5000980D8 /* FMAnnouncementModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMAnnouncementModel.h; sourceTree = "<group>"; };
 		84FFF9522355CDA5000980D8 /* FMAnnouncementModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMAnnouncementModel.m; sourceTree = "<group>"; };
 		9061A6A03D5FF6522BD79287 /* Pods-SeventreesUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeventreesUser.debug.xcconfig"; path = "Target Support Files/Pods-SeventreesUser/Pods-SeventreesUser.debug.xcconfig"; sourceTree = "<group>"; };
-		E526D20361804ADF582EE2C0 /* libPods-SeventreesUser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SeventreesUser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDEEDE053CCEB994DD446CDE /* libPods-SeventreesUser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SeventreesUser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1456,7 +1465,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08045B351A189E7F959DD3B6 /* libPods-SeventreesUser.a in Frameworks */,
+				84C7FD35238673EA0016A5AC /* PhotosUI.framework in Frameworks */,
+				84C7FD332386710F0016A5AC /* Photos.framework in Frameworks */,
+				9BCE844179D03847ACDC2D6E /* libPods-SeventreesUser.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2977,6 +2988,9 @@
 				844A0DFC23389FA7006015D4 /* FMSubmitEvaluateController.h */,
 				844A0DFD23389FA7006015D4 /* FMSubmitEvaluateController.m */,
 				844A0DFE23389FA7006015D4 /* FMSubmitEvaluateController.xib */,
+				84B1C02023862F7C007AB2C3 /* FMEvaluateStarView.h */,
+				84B1C02123862F7C007AB2C3 /* FMEvaluateStarView.m */,
+				84B1C02323862F98007AB2C3 /* FMEvaluateStarView.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4893,7 +4907,9 @@
 		F42963049D5966A52EF093F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E526D20361804ADF582EE2C0 /* libPods-SeventreesUser.a */,
+				84C7FD34238673EA0016A5AC /* PhotosUI.framework */,
+				84C7FD322386710F0016A5AC /* Photos.framework */,
+				CDEEDE053CCEB994DD446CDE /* libPods-SeventreesUser.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -4909,7 +4925,7 @@
 				849CBF862300FBAA003821E4 /* Sources */,
 				849CBF872300FBAA003821E4 /* Frameworks */,
 				849CBF882300FBAA003821E4 /* Resources */,
-				E4425539983CDDE13D1DFA47 /* [CP] Copy Pods Resources */,
+				257480C332A0A2E82F72ECF4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5063,6 +5079,7 @@
 				84F045252330BDCC0002B5B3 /* FMMessageCell.xib in Resources */,
 				8405B8BB2334CEED0065965F /* FMOrderStatusView.xib in Resources */,
 				84FC445C231CF4E200DF9799 /* YBImageBrowser.bundle in Resources */,
+				84B1C02423862F98007AB2C3 /* FMEvaluateStarView.xib in Resources */,
 				8411604523222EEB00C3443D /* FMSpellShopCarToolView.xib in Resources */,
 				8456BAC2232F5BA300E59966 /* FMImgHeaderView.xib in Resources */,
 				8405B8CF2334D6B10065965F /* FMOrderContactUsView.xib in Resources */,
@@ -5078,6 +5095,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		257480C332A0A2E82F72ECF4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SeventreesUser/Pods-SeventreesUser-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SeventreesUser/Pods-SeventreesUser-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeventreesUser/Pods-SeventreesUser-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5FC1C1E328D9BB505A9E5BCA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5098,32 +5132,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E4425539983CDDE13D1DFA47 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SeventreesUser/Pods-SeventreesUser-resources.sh",
-				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeventreesUser/Pods-SeventreesUser-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -5467,6 +5475,7 @@
 				8411604623222EEB00C3443D /* FMSpellShopCarToolViewModel.m in Sources */,
 				84187418233A153A0083FE1E /* FMRefundInGoodsCell.m in Sources */,
 				84D7282423014D1B002D387A /* FMView.m in Sources */,
+				84B1C02223862F7C007AB2C3 /* FMEvaluateStarView.m in Sources */,
 				84DD40EB2301645C001171F1 /* FMModel.m in Sources */,
 				8406E48A2326246B00E167BD /* FMSelectItemModel.m in Sources */,
 				8401E2DE23278F77006C111B /* FMCiphertextInputViewModel.m in Sources */,

@@ -8,6 +8,10 @@
 
 #import "FMMeView.h"
 
+#import "FMVIPQRCodeBoxView.h"
+#import "FMOrderPagingController.h"
+
+/*
 #import "FMBargainTypeController.h"
 #import "FMSlashPagingController.h"
 #import "FMSpellGroupPagingController.h"
@@ -29,8 +33,11 @@
 #import "FMAftersaleDetailsController.h"
 
 #import "FMCollectPagingController.h"
-//#import "FMCollectBrandListController.h"
 
+#import "FMCollectBrandListController.h"
+#import "FMSubmitEvaluateController.h"
+ 
+*/
 
 @interface FMMeView ()
 
@@ -90,86 +97,108 @@
 - (void)fm_bindViewModel {
     @weakify(self);
     
+    void (^showNextVCBlock)(NSString * _Nonnull) = ^(NSString * _Nonnull aClassName) {
+        @strongify(self);
+        UIViewController *nextVC = [[NSClassFromString(aClassName) alloc] init];
+        nextVC.hidesBottomBarWhenPushed = YES;
+        [self.viewController.navigationController pushViewController:nextVC animated:YES];
+    };
+    
     /// Bind Actions
     
     _headImgView.cv_addTouchEventCallback(^(UIImageView *imageView) {
-        UIViewController *nextVC = [[FMPersonalProfileController alloc] init];
-        nextVC.hidesBottomBarWhenPushed = YES;
-        self_weak_.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+        showNextVCBlock(@"FMPersonalProfileController");
+//        UIViewController *nextVC = [[FMPersonalProfileController alloc] init];
+//        nextVC.hidesBottomBarWhenPushed = YES;
+//        self_weak_.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     });
     
     [[_vipButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self);
-        
-        UIViewController *nextVC = [[FMMemberCenterController alloc] init];
-        nextVC.hidesBottomBarWhenPushed = YES;
-        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+//        @strongify(self);
+        showNextVCBlock(@"FMMemberCenterController");
+//        UIViewController *nextVC = [[FMMemberCenterController alloc] init];
+//        nextVC.hidesBottomBarWhenPushed = YES;
+//        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
     
     
     [[_settingButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self);
-        
-        UIViewController *nextVC = [[FMSettingController alloc] init];
-        nextVC.hidesBottomBarWhenPushed = YES;
-        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+//        @strongify(self);
+        showNextVCBlock(@"FMSettingController");
+//        UIViewController *nextVC = [[FMSettingController alloc] init];
+//        nextVC.hidesBottomBarWhenPushed = YES;
+//        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
     
     [[_myQRCodeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
 //        @strongify(self);
-        
         [FMVIPQRCodeBoxView showByInfo:nil];
     }];
     
     [[_messageButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self);
-        
-        UIViewController *nextVC = [[FMMessageListController alloc] init];
-        nextVC.hidesBottomBarWhenPushed = YES;
-        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+//        @strongify(self);
+        showNextVCBlock(@"FMMessageListController");
+//        UIViewController *nextVC = [[FMMessageListController alloc] init];
+//        nextVC.hidesBottomBarWhenPushed = YES;
+//        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
     
     [[_couponListButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self);
-        UIViewController *nextVC = [[FMCouponPagingController alloc] init];
-        nextVC.hidesBottomBarWhenPushed = YES;
-        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+//        @strongify(self);
+        showNextVCBlock(@"FMCouponPagingController");
+//        UIViewController *nextVC = [[FMCouponPagingController alloc] init];
+//        nextVC.hidesBottomBarWhenPushed = YES;
+//        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
     
     [[_scoreCenterButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self);
-        UIViewController *nextVC = [[FMScoreController alloc] init];
-        nextVC.hidesBottomBarWhenPushed = YES;
-        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+//        @strongify(self);
+        showNextVCBlock(@"FMScoreController");
+//        UIViewController *nextVC = [[FMScoreController alloc] init];
+//        nextVC.hidesBottomBarWhenPushed = YES;
+//        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
     
     
     [[_spellButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self);
+        showNextVCBlock(@"FMSpellGroupPagingController");
+//        @strongify(self);
         // test
 //        UIViewController *nextVC = [[FMSpellGroupController alloc] init];
-        UIViewController *nextVC = [[FMSpellGroupPagingController alloc] init];
-        nextVC.hidesBottomBarWhenPushed = YES;
-        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+//        UIViewController *nextVC = [[FMSpellGroupPagingController alloc] init];
+//        nextVC.hidesBottomBarWhenPushed = YES;
+//        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
     
     [[_bargainButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self);
+//        @strongify(self);
         // test
 //        UIViewController *nextVC = [[FMBargainTypeController alloc] init];
 //        nextVC.hidesBottomBarWhenPushed = YES;
 //        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
 //
-        UIViewController *nextVC = [[FMSlashPagingController alloc] init];
-        nextVC.hidesBottomBarWhenPushed = YES;
-        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+        showNextVCBlock(@"FMSlashPagingController");
+//        UIViewController *nextVC = [[FMSlashPagingController alloc] init];
+//        nextVC.hidesBottomBarWhenPushed = YES;
+//        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
     }];
     
     [[_collectButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self)
-        UIViewController *nextVC = [[FMCollectPagingController alloc] init];
-        nextVC.hidesBottomBarWhenPushed = YES;
-        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+        showNextVCBlock(@"FMCollectPagingController");
+//        @strongify(self)
+//        UIViewController *nextVC = [[FMCollectPagingController alloc] init];
+//        nextVC.hidesBottomBarWhenPushed = YES;
+//        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+    }];
+    
+    [[_shareButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+//        @strongify(self);
+        DLog(@"点了去评论");
+        showNextVCBlock(@"FMSubmitEvaluateController");
+        //        self.viewController.cvc_showVCByClassName(@"FMSubmitEvaluateController");
+//        FMSubmitEvaluateController *evaluateNextVC = [[FMSubmitEvaluateController alloc] init];
+//        evaluateNextVC.hidesBottomBarWhenPushed = YES;
+//        [self.viewController.navigationController pushViewController:evaluateNextVC animated:YES];
     }];
     
     [[_moreOrderButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {

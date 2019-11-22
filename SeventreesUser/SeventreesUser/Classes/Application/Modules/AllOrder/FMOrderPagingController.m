@@ -58,8 +58,6 @@
     [super viewWillAppear:animated];
     
     [self setupNavbar];
-    
-    [self reloadData];
 }
 
 - (void)updateViewConstraints {
@@ -122,10 +120,6 @@
             weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, NO);
         }
     };
-}
-
-- (void)refreshData {
-    
 }
 
 #pragma mark - Lazyload

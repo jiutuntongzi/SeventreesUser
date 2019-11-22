@@ -157,23 +157,14 @@
         [self_weak_.viewModel.nextActionSubject sendNext:@"FMSearchPagingController"];
     };
     
-    [self->_menuView.viewModel.itemActionSubject subscribeNext:^(NSString *menuType) {
-        @strongify(self)     if (!self) return;
-        DLog(@"点了菜单：code == %@", menuType);
-        if ([menuType isEqualToString:@"sr"]) {
-            [self.viewModel.nextActionSubject sendNext:@"FMCouponPagingController"];
-        } else if ([menuType isEqualToString:@"group"]) {
-            
-        } else if ([menuType isEqualToString:@"bargain"]) {
-            
-        } else if ([menuType isEqualToString:@"parcel"]) {
-            
-        } else {
-            
-        }
+    [self->_menuView.viewModel.itemActionSubject subscribeNext:^(NSString *activityType) {
+        @strongify(self)
+        DLog(@"点了活动菜单：code == %@", activityType);
+        [self.viewModel.nextActionSubject sendNext:activityType];
     }];
     
     [self->_storeView.viewModel.chatActionSubject subscribeNext:^(FMHomeStoreModel *storeModel) {
+        @strongify(self)
         DLog(@"点了店铺聊天：storeModel == %@", storeModel);
     }];
     

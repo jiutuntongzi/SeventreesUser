@@ -19,15 +19,17 @@
 
 #import "GCDDispatchManager.h"
 
-#import "ThreeLibHeader.h"
+#include "ThreeLibHeader.h"
 
-#import "WeakifyHeader.h"  
+//#include "WeakifyHeader.h"
 
-#import "ScreenSizeHeader.h"
+#include "ScreenSizeHeader.h"
 
-#import "DLogHeader.h"
+#include "DLogHeader.h"
 
-#import "PlatformConfig.h"
+#include "PlatformConfig.h"
+
+#include "SeventreesHeader.h"
 
 
 #pragma mark ——— Category

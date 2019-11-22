@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, HTTPRequestMethod){
 #define     kFormalHostDomain      @""
 
 /** 测试服(内网) */
-#define     kTestHostDomain        @"http://192.168.1.105:8080"
+#define     kTestHostDomain        @"http://192.168.1.112:8080"
 
 @interface NetworkRequestManager ()
 

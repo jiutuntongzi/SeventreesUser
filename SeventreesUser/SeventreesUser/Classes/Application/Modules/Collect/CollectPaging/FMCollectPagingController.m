@@ -37,16 +37,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self setupUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
     [self setupNavbar];
-    
-    [self reloadData];
 }
 
 - (void)updateViewConstraints {
@@ -55,10 +51,6 @@
 }
 
 #pragma mark - Private Functions
-
-- (void)setupUI {
-    
-}
 
 /** 配置分类菜单栏 */
 - (void)configTypeMenu {
@@ -104,10 +96,6 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     });
     self.navigationItem.cni_leftBarButtonItem(returnItem);
-}
-
-- (void)refreshData {
-    
 }
 
 #pragma mark - Lazyload

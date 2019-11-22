@@ -11,6 +11,10 @@
 #import "FMHomeView.h"
 #import "FMSearchPagingController.h"
 
+#import "FMBargainTypeController.h"
+#import "FMCouponPagingController.h"
+
+
 @interface FMHomeController ()
 
 @property (nonatomic, strong) FMHomeView *mainView;
@@ -41,8 +45,25 @@
 }
 
 - (void)fm_bindViewModel {
-    [_mainView.viewModel.nextActionSubject subscribeNext:^(NSString *className) {
-        UIViewController *nextVC = [[NSClassFromString(className) alloc] init];
+    @weakify(self)
+    [_mainView.viewModel.nextActionSubject subscribeNext:^(NSString *activityType) {
+        @strongify(self)
+        
+        UIViewController *nextVC = nil;
+        
+        if ([activityType isEqualToString:kActivityTypeSpellGroup]) {
+            
+            
+        } else if ([activityType isEqualToString:kActivityTypeBargain]) {
+            [FMBargainTypeController showByActivityType:kActivityTypeBargain];
+            
+        } else {
+            if ([activityType isEqualToString:@"sr"]) {
+                nextVC = [[FMCouponPagingController alloc] init];
+            }
+        }
+        
+        if (!nextVC) return;
         nextVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:nextVC animated:YES];
     }];

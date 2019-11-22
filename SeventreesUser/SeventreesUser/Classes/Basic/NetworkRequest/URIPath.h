@@ -27,7 +27,7 @@
 
 #define       kHomeAueryBrandURIPath        @"/api/pmbrand/queryBrand"          // 首页查询品牌商品详情
 
-#define       kHomeQueryBrandGoodsURIPath   @"/api/pmgoods/queryBrandGoods"      // 首页查询商品
+#define       kCategoryGoodsListQueryURIPath   @"/api/pmgoods/queryBrandGoods"      // 分页商品列表查询
 
 #pragma mark ——— 商品详情
 
@@ -35,7 +35,7 @@
 
 #define       kQueryApiPmCommentsURIPath     @"/api/pmcomments/queryApiPmComments"   // 查询商品详情评论
 
-#define       kQueryBrandInfoURIPath         @"/api/pmbrand/brandInfo"               // 查询品牌
+#define       kQueryBrandInfoURIPath         @"/api/pmbrand/brandInfo"               // 查询品牌详情
 
 #pragma mark ——— 购物车
 
@@ -86,9 +86,11 @@
 
 #pragma mark ——— 我的订单
 
-#define      kOrderListQueryURIPath               @"/api/poorder/queryOrderList"          // 查询订单列表
+#define      kOrderCreateURIPath                  @"/api/poorder/createOrder"             // 生成订单（下单）
 
-#define      kOrderDetialsQueryURIPath            @"/api/poorder/queryOrderListInfo"      // 查询订单详情
+#define      kOrderListQueryURIPath               @"/api/poorder/queryOrderList"          // 查订单列表
+
+#define      kOrderDetialsQueryURIPath            @"/api/poorder/queryOrderListInfo"      // 查订单详情
 
 #define      kOrderCancelURIPath                  @"/api/poorder/cancelOrder"             // 取消订单
 
@@ -96,6 +98,16 @@
 
 #define      kOrderGoPaymentURIPath               @"/api/poorder/paymentOrder"            // 订单支付详情
 
+#define      kOrderLogisticsQueryURIPath          @"/api/poorder/queryLogisticsMsg"       // 查询物流信息
 
+#pragma mark ——— 活动/砍价
+
+#define      kBargainCategoryQueryURIPath         @"/api/pmcategory/findActivityCategory"       // 砍价分页菜单
+
+#define      kBargainCreateURIPath                @"/api/spgroup/createBargain"     // 发起砍价
+
+#define      kYetStartBargainInfoURIPath          @"/api/spgroup/bargainInfo"       // 已发起的砍价详情
+
+#define      kActivityInfoURIPath       @"/api/spactivity/activityInfo"       // 活动详情-未发起砍价时
 
 #endif /* URIPath_h */

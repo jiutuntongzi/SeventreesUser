@@ -10,4 +10,6 @@
 
 @interface FMBargainTypeController : WMPageController
 
++ (void)showByActivityType:(NSString *)activityType;
+
 @end

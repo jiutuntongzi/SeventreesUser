@@ -35,22 +35,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self setupUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
     [self setupNavbar];
-    
-    [self reloadData];
 }
 
 #pragma mark - Private Functions
-
-- (void)setupUI {
-    
-}
 
 /** 配置分类菜单栏 */
 - (void)configTypeMenu {

@@ -42,8 +42,6 @@ typedef NS_ENUM(NSUInteger, FMCouponPagingItemType) {
     [super viewWillAppear:animated];
     
     [self setupNavbar];
-    
-    [self reloadData];
 }
 
 #pragma mark - Private Functions

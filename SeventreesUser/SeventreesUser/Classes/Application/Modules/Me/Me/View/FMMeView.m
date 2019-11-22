@@ -172,11 +172,7 @@
     
     [[_bargainButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
 //        @strongify(self);
-        // test
-//        UIViewController *nextVC = [[FMBargainTypeController alloc] init];
-//        nextVC.hidesBottomBarWhenPushed = YES;
-//        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-//
+
         showNextVCBlock(@"FMSlashPagingController");
 //        UIViewController *nextVC = [[FMSlashPagingController alloc] init];
 //        nextVC.hidesBottomBarWhenPushed = YES;

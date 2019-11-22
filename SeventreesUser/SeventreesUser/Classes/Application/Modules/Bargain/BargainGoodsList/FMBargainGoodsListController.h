@@ -8,10 +8,13 @@
 
 #import "FMViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FMBargainGoodsListController : FMViewController
+
+/** 请求参数：菜单分类ID */
+@property (nonatomic, strong) NSNumber *categoryId;
+
+/** 请求参数：砍价活动类型 */
+@property (nonatomic, copy) NSString *activityType;
 
 @end
 
-NS_ASSUME_NONNULL_END

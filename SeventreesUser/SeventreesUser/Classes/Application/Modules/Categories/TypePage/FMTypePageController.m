@@ -45,7 +45,6 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -53,7 +52,6 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     self.tabBarController.tabBar.hidden = YES;
-    [self reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -63,17 +61,7 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
-- (void)updateViewConstraints {
-    
-    
-    [super updateViewConstraints];
-}
-
 #pragma mark - Private Functions
-
-- (void)setupUI {
-    
-}
 
 /** 配置分类菜单栏 */
 - (void)configTypeMenu {

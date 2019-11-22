@@ -8,6 +8,7 @@
 
 #import "FMSearchGoodsListController.h"
 #import "PagingView.h"
+
 #import "FMGoodsDetailsCell.h"
 
 @interface FMSearchGoodsListController ()
@@ -19,22 +20,21 @@
 @implementation FMSearchGoodsListController
 
 - (void)fm_addSubviews {
-    PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:kHomeQueryBrandGoodsURIPath rowHeight:FMGoodsDetailsCellRowHeight params:nil requestDataHandler:^(NetworkResultModel *resultModel) {
+    PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:kCategoryGoodsListQueryURIPath rowHeight:FMGoodsDetailsCellRowHeight params:nil requestDataHandler:^(NetworkResultModel *resultModel) {
         [SVProgressHUD dismissWithDelay:0.5f];
         if (![resultModel.statusCode isEqualToString:@"OK"]) {
             [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
         }
-        [SVProgressHUD showInfoWithStatus:resultModel.jsonString]; // test
         
-        NSArray *goodsEntitys = [[FMGoodsDetailsModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"goodsModels"]] copy];
+        NSArray *goodsEntitys = [[FMCategoryGoodsModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"goodsModels"]] copy];
         return goodsEntitys;
         
-    } cellConfig:^UITableViewCell* (UITableView *tableView, NSIndexPath *indexPath, NSArray *entitys) {
+    } cellConfig:^UITableViewCell* (UITableView *tableView, NSIndexPath *indexPath, NSArray *goodsEntitys) {
         FMGoodsDetailsCell *cell = FMGoodsDetailsCell.ctc_cellReuseNibLoadForTableView(tableView);
-        cell.viewModel.goodsModel = entitys[indexPath.row];
+        cell.goodsEntity = goodsEntitys[indexPath.row];
         return cell;
         
-    } cellDidSelectHandler:^(FMGoodsDetailsModel *goodsEntity) {
+    } cellDidSelectHandler:^(FMCategoryGoodsModel *goodsEntity) {
         DLog(@"goodsEntity == %@", goodsEntity);
 //        FMOrderDetailsController *nextVC = [[FMOrderDetailsController alloc] init];
 //        nextVC.type = FMOrderDetailsPageStyleWaitPay;
@@ -46,7 +46,6 @@
 
 - (void)fm_makeConstraints {
     self.view.bounds = CGRectMake(0, 0, self.view.width, kScreenHeight - kStatusBarHeight - kFixedHeight - 40.f);
-    //    CGRect bounds = self.view.bounds;
     _pagingView.cv_frame(self.view.bounds);
 }
 
@@ -75,10 +74,6 @@
 //    [RACObserve(self, searchText) subscribeNext:^(NSString *searchText) {
             // ..
 //    }];
-}
-
-- (void)fm_refreshData {
-    
 }
 
 @end

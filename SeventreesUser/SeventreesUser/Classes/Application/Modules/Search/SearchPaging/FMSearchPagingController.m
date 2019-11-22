@@ -38,18 +38,11 @@
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self setupCustomNavigationBar];
-    
-    [self reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -137,10 +130,6 @@
     }];
 }
 
-- (void)refreshData {
-    
-}
-
 #pragma mark - Lazyload
 
 - (NSArray *)pageItems {
@@ -197,10 +186,6 @@
 
 - (CGRect)pageController:(WMPageController *)pageController preferredFrameForContentView:(WMScrollView *)contentView {
     return CGRectMake(0.f, kNavBarHeight + kFixedHeight, self.view.width, kScreenHeight - kNavBarHeight - kFixedHeight);
-}
-
-- (void)dealloc {
-    DLog(@"分页VC销毁了");
 }
 
 @end

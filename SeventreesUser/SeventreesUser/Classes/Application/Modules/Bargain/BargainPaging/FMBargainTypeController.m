@@ -7,38 +7,38 @@
 //
 
 #import "FMBargainTypeController.h"
-
 #import "MacroHeader.h"
+#import "FMBargainTypeViewModel.h"
 
+#import "FMBargainGoodsListController.h"
 
-static const NSUInteger _itemPageCount = 4;
-
-static NSString * const _itemPageTypeVCKey = @"itemPageTypeVCKey";
-static NSString * const _itemPageTypeTitleKey = @"temPageTypeTitleKey";
-
-typedef NS_ENUM(NSUInteger, FMItemPageType) {
-    FMItemPageTypeDefault,
-    FMItemPageTypeCollect,
-    FMItemPageTypeSales,
-    FMItemPageTypePrice
-};
+//typedef NS_ENUM(NSUInteger, FMItemPageType) {
+//    FMItemPageTypeDefault,
+//    FMItemPageTypeCollect,
+//    FMItemPageTypeSales,
+//    FMItemPageTypePrice
+//};
 
 @interface FMBargainTypeController ()
 
-@property (copy, nonatomic) NSArray<UIViewController *> *childControllers;
-@property (copy, nonatomic) NSArray<NSString *> *itemTitles;
-@property (nonatomic, copy) NSDictionary *configs;
+@property (nonatomic, strong) FMBargainTypeViewModel *viewModel;
 
 @end
 
 @implementation FMBargainTypeController
+
++ (void)showByActivityType:(NSString *)activityType {
+    FMBargainTypeController *pagingController = [[self alloc] init];
+    pagingController.hidesBottomBarWhenPushed = YES;
+    pagingController.viewModel.activityType = activityType;
+    [commonMgr.topViewController().navigationController pushViewController:pagingController animated:YES];
+}
 
 #pragma mark - System Functions
 
 - (instancetype)init {
     if (self = [super init]) {
         [self configTypeMenu];
-        [self configSubPages];
     }
     return self;
 }
@@ -46,41 +46,30 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupUI];
+    @weakify(self)
+    [self.viewModel.refreshUISubject subscribeNext:^(id obj) {
+        @strongify(self)
+        [self reloadData];
+        
+    }];
+    
+    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
+        [SVProgressHUD showInfoWithStatus:status];
+        [SVProgressHUD dismissWithDelay:1.0f];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-//    [self.navigationController setNavigationBarHidden:YES animated:NO];
-//    self.tabBarController.tabBar.hidden = YES;
     
     [self setupNavbar];
     
-    
-    [self reloadData];
-}
-
-//- (void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:animated];
-//
-//    self.tabBarController.tabBar.hidden = NO;
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
-//}
-
-- (void)updateViewConstraints {
-    
-    
-    [super updateViewConstraints];
+    [self.viewModel.requestDataCommand execute:nil];
 }
 
 #pragma mark - Private Functions
 
-- (void)setupUI {
-    
-}
-
-/** 配置分类菜单栏 */
+/** 分类菜单配置 */
 - (void)configTypeMenu {
     self.showOnNavigationBar = NO;     //在导航栏上展示
     self.automaticallyCalculatesItemWidths = YES;
@@ -97,37 +86,7 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
     self.menuViewLayoutMode = WMMenuViewLayoutModeScatter;
 }
 
-/** 配置子页VC */
-- (void)configSubPages {
-    NSMutableArray *mChildControllers = [[NSMutableArray alloc] initWithCapacity:4];
-    NSMutableArray *mTitles = [[NSMutableArray alloc] initWithCapacity:4];
-    for (UInt8 i = 0 ; i < _itemPageCount; i++) {
-        NSDictionary *configItem = [self itemInfoForPageType:i];
-        
-        NSString *className = configItem[_itemPageTypeVCKey];
-        UIViewController *childController = [[NSClassFromString(className) alloc] init];
-        [mChildControllers addObject:childController];
-        
-        NSString *title = configItem[_itemPageTypeTitleKey];
-        [mTitles addObject:title];
-    }
-    _childControllers = [mChildControllers copy];
-    _itemTitles = [mTitles copy];
-}
-
 - (void)setupNavbar {
-//    NSString * const _returnImageName = @"icon_navBack";
-//    UIButton *customButton = UIButton.cb_button();
-//    customButton.cv_frameOf(0.f, 0.f, 40.f, 40.f);
-//    customButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-//    self.navigationItem.cni_leftBarButtonItem(UIBarButtonItem.cbi_initWithCustomView(customButton));
-//    __weak typeof(self) weakSelf = self;
-//    customButton.cb_imageOfNamed(_returnImageName).cc_setActionEventsCallback(UIControlEventTouchUpInside, ^(UIButton *button) {
-//        if ([weakSelf.navigationController popViewControllerAnimated:YES] == nil) {
-//            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
-//        }
-//    });
-
     self.navigationItem.title = @"砍到爽";
     
     __weak typeof(self) weakSelf = self;
@@ -138,62 +97,31 @@ typedef NS_ENUM(NSUInteger, FMItemPageType) {
     self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
-- (void)refreshData {
-    
-}
-
-#pragma mark - Lazyload
-
-- (NSDictionary *)itemInfoForPageType:(FMItemPageType)type {
-    NSString *classNameVC = @"FMBargainGoodsListController";
-    if (!_configs) {
-        _configs = @{
-                     @(FMItemPageTypeDefault) : @{
-                             _itemPageTypeVCKey               : classNameVC,
-                             _itemPageTypeTitleKey            : @"全部",
-                             },
-                     @(FMItemPageTypeCollect) : @{
-                             _itemPageTypeVCKey               : classNameVC,
-                             _itemPageTypeTitleKey            : @"进口奶粉",
-                             },
-                     @(FMItemPageTypeSales) : @{
-                             _itemPageTypeVCKey               : classNameVC,
-                             _itemPageTypeTitleKey            : @"尿裤纸巾",
-                             },
-                     @(FMItemPageTypePrice) : @{
-                             _itemPageTypeVCKey               : classNameVC,
-                             _itemPageTypeTitleKey            : @"喂养用品",
-                             },
-                     @(FMItemPageTypePrice) : @{
-                             _itemPageTypeVCKey               : classNameVC,
-                             _itemPageTypeTitleKey            : @"服饰棉品",
-                             }
-                     };
+- (FMBargainTypeViewModel *)viewModel {
+    if (! _viewModel) {
+        _viewModel = [[FMBargainTypeViewModel alloc] init];
     }
-    return _configs[@(type)];
+    return _viewModel;
 }
 
+#pragma mark - <WMPageControllerDelegate, WMPageControllerDataSource>
 
-#pragma mark ——— <WMPageControllerDelegate, WMPageControllerDataSource>
-
-- (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info{
-    
+- (void)pageController:(WMPageController *)pageController willEnterViewController:(nonnull __kindof UIViewController *)viewController withInfo:(nonnull NSDictionary *)info {
 }
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController {
-    
-    return _itemPageCount;
+    return self.viewModel.itemEntitys.count;
 }
 
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index {
-    
-    
-     return _itemTitles[index];
+    return [self.viewModel.itemEntitys objectAtIndex:index].name;
 }
 
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
-    
-    return _childControllers[index];
+    FMBargainGoodsListController *childController = [[FMBargainGoodsListController alloc] init];
+    childController.categoryId = self.viewModel.itemEntitys[index].categoryId;
+    childController.activityType = self.viewModel.activityType;
+    return childController;
 }
 
 - (CGFloat)menuView:(WMMenuView *)menu widthForItemAtIndex:(NSInteger)index {

@@ -113,7 +113,7 @@
                 <outlet property="starLevelImgView" destination="ioB-ut-XOf" id="Fdw-Za-sSq"/>
                 <outlet property="timeLabel" destination="kzE-JO-aNE" id="sDn-BL-CE1"/>
             </connections>
-            <point key="canvasLocation" x="-854" y="133"/>
+            <point key="canvasLocation" x="-575" y="133"/>
         </tableViewCell>
     </objects>
     <resources>

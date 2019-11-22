@@ -23,17 +23,15 @@
     self.ctc_selectedColor(nil);
 }
 
-- (void)fm_bindViewModel {
-    [RACObserve(self.viewModel, goodsModel) subscribeNext:^(FMGoodsDetailsModel *goodsModel) {
+- (void)fm_bindObserver {
+    @weakify(self)
+    [RACObserve(self, goodsEntity) subscribeNext:^(FMCategoryGoodsModel *goodsEntity) {
+        @strongify(self)
         
+        [self->_goodsImgView sd_setImageWithURL:[NSURL URLWithString:goodsEntity.imgUrl]];
+        self->_goodsNameLabel.text = goodsEntity.name ?: @"--";
+        self->_goodsPriceLabel.text = [NSString stringWithFormat:@"￥%.2f", goodsEntity.retailPrice.floatValue];
     }];
-}
-
-- (FMGoodsDetailsCellViewModel *)viewModel {
-    if (! _viewModel) {
-        _viewModel = [[FMGoodsDetailsCellViewModel alloc] init];
-    }
-    return _viewModel;
 }
 
 @end

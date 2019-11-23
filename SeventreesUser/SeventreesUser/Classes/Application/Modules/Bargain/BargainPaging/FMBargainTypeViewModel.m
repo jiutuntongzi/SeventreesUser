@@ -14,8 +14,19 @@
     @weakify(self)
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (! self) return;
+        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+            [self.showHintSubject sendNext:resultModel.statusMsg];
+            return;
+        }
+        /// test
+        FMBargainItemModel *categoryEntity = [[FMBargainItemModel alloc] init];
+        categoryEntity.categoryId = @(1);
+        categoryEntity.name = @"测试分类";
+        self.itemEntitys = @[categoryEntity, categoryEntity, categoryEntity];
         
+        /*
         self.itemEntitys = [FMBargainItemModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"data"]];
+        */
         [self.refreshUISubject sendNext:self->_itemEntitys];
     }];
 }

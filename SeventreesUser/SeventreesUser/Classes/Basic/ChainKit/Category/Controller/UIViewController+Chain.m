@@ -21,6 +21,14 @@
     };
 }
 
+- (CVCShowControllerCompletion)cvc_pushViewController {
+    return ^(UIViewController * _Nullable viewController) {
+        [self.navigationController pushViewController:viewController animated:YES];
+        return self;
+    };
+}
+
+
 - (CVCShowClassNameCompletion)cvc_presentControllerByClassName {
     return ^(NSString * _Nullable aClassName) {
         UIViewController *nextController = [[NSClassFromString(aClassName) alloc] init];
@@ -28,6 +36,14 @@
         return self;
     };
 }
+
+- (CVCShowControllerCompletion)cvc_presentViewController {
+    return ^(UIViewController * _Nullable viewController) {
+        [self presentViewController:viewController animated:YES completion:nil];
+        return self;
+    };
+}
+
 
 - (CVCShowClassNameCompletion)cvc_showVCByClassName {
     return ^(NSString * _Nullable aClassName) {
@@ -41,9 +57,19 @@
     };
 }
 
+- (CVCShowControllerCompletion)cvc_showViewController {
+    return ^(UIViewController * _Nullable viewController) {
+        if (self.navigationController) {
+            [self.navigationController pushViewController:viewController animated:YES];
+        } else {
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+        return self;
+    };
+}
 
 
-+ (UIViewController* (^)(void))cvc_controller {
++ (instancetype (^)(void))cvc_controller {
     return ^{
         return [[self alloc] init];
     };

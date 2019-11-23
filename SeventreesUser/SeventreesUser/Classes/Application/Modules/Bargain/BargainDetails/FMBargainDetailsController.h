@@ -11,4 +11,6 @@
 
 @interface FMBargainDetailsController : FMViewController
 
++ (void)showByActivityId:(NSNumber *)activityId goodsId:(NSNumber *)goodsId;
+
 @end

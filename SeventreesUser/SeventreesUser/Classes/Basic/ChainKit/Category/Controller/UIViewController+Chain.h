@@ -14,12 +14,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (CVCShowClassNameCompletion)cvc_pushControllerByClassName;
 
+- (CVCShowControllerCompletion)cvc_pushViewController;
+
+
 - (CVCShowClassNameCompletion)cvc_presentControllerByClassName;
+
+- (CVCShowControllerCompletion)cvc_presentViewController;
+
 
 - (CVCShowClassNameCompletion)cvc_showVCByClassName;
 
+- (CVCShowControllerCompletion)cvc_showViewController;
 
-+ (UIViewController* (^)(void))cvc_controller;
+
++ (instancetype (^)(void))cvc_controller;
 
 - (CVCModalControllerHandleCallback)cvc_presentVCAnimatedCompletion;
 

@@ -144,7 +144,7 @@
 
 #pragma mark ——— <WMPageControllerDelegate, WMPageControllerDataSource>
 
-- (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info{
+- (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info {
     
 }
 

@@ -27,7 +27,7 @@
 @implementation FMBargainGoodsCell
 
 - (void)fm_setupSubviews {
-    self.ctc_selectedColor(nil);
+    self.ctc_selectionStyle(UITableViewCellSelectionStyleNone);
 }
 
 - (void)fm_bindObserver {
@@ -47,7 +47,7 @@
     @weakify(self)
     [[_goBargainButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        DLog(@"点了去砍价->砍价详情 /api/spactivity/activityInfo");
+        if (self->_goBargainActionCallback) self->_goBargainActionCallback(self->_goodsEntity);
     }];
 }
 

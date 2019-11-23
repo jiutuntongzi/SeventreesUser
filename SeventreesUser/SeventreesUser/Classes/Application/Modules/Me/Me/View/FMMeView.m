@@ -11,8 +11,10 @@
 #import "FMVIPQRCodeBoxView.h"
 #import "FMOrderPagingController.h"
 
+#import "FMBargainTypeController.h" // test
+
 /*
-#import "FMBargainTypeController.h"
+
 #import "FMSlashPagingController.h"
 #import "FMSpellGroupPagingController.h"
 //#import "FMSpellListController.h"
@@ -172,8 +174,8 @@
     
     [[_bargainButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
 //        @strongify(self);
-
-        showNextVCBlock(@"FMSlashPagingController");
+        [FMBargainTypeController showByActivityType:kActivityTypeBargain]; // test
+//        showNextVCBlock(@"FMSlashPagingController");
 //        UIViewController *nextVC = [[FMSlashPagingController alloc] init];
 //        nextVC.hidesBottomBarWhenPushed = YES;
 //        self.viewController.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);

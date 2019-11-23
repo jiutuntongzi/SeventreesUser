@@ -15,5 +15,8 @@
 
 @property (nonatomic, strong) FMCategoryGoodsModel *goodsEntity;
 
+@property (nonatomic, copy) void (^goBargainActionCallback)(FMCategoryGoodsModel * _Nullable);
+
+
 @end
 

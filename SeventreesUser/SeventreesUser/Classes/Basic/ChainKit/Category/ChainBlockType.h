@@ -173,7 +173,7 @@ typedef void (^ __nullable CVCAlertConfrimHandler)(NSString * __nullable, NSStri
 
 typedef UIViewController* (^ __nullable CVCShowClassNameCompletion)(NSString * _Nonnull);
 
-
+typedef UIViewController* (^ __nullable CVCShowControllerCompletion)(UIViewController * _Nonnull);
 
 #endif /* ChainBlockType_h */
 

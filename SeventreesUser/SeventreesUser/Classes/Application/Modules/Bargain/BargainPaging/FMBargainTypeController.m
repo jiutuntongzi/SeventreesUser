@@ -46,23 +46,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupNavbar];
+    
     @weakify(self)
-    [self.viewModel.refreshUISubject subscribeNext:^(id obj) {
+    [self.viewModel.refreshUISubject subscribeNext:^(NSArray<FMBargainItemModel *> *itemEntitys) {
         @strongify(self)
         [self reloadData];
-        
     }];
     
     [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
         [SVProgressHUD showInfoWithStatus:status];
         [SVProgressHUD dismissWithDelay:1.0f];
     }];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self setupNavbar];
     
     [self.viewModel.requestDataCommand execute:nil];
 }
@@ -89,12 +84,12 @@
 - (void)setupNavbar {
     self.navigationItem.title = @"砍到爽";
     
-    __weak typeof(self) weakSelf = self;
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-        UIViewController *nextVC = [[NSClassFromString(@"FMBargainDetailsController") alloc] init];
-        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
+//    __weak typeof(self) weakSelf = self;
+//    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
+//        UIViewController *nextVC = [[NSClassFromString(@"FMBargainDetailsController") alloc] init];
+//        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+//    });
+//    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (FMBargainTypeViewModel *)viewModel {
@@ -107,6 +102,7 @@
 #pragma mark - <WMPageControllerDelegate, WMPageControllerDataSource>
 
 - (void)pageController:(WMPageController *)pageController willEnterViewController:(nonnull __kindof UIViewController *)viewController withInfo:(nonnull NSDictionary *)info {
+    
 }
 
 - (NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController {

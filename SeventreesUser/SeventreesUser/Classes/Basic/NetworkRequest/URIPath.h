@@ -104,10 +104,10 @@
 
 #define      kBargainCategoryQueryURIPath         @"/api/pmcategory/findActivityCategory"       // 砍价分页菜单
 
-#define      kBargainCreateURIPath                @"/api/spgroup/createBargain"     // 发起砍价
+#define      kActivityInfoURIPath                 @"/api/spactivity/activityInfo"       // 砍价详情（发起砍价）
 
-#define      kYetStartBargainInfoURIPath          @"/api/spgroup/bargainInfo"       // 已发起的砍价详情
+#define      kBargainCreateURIPath                @"/api/spgroup/createBargain"         // 发起砍价
 
-#define      kActivityInfoURIPath       @"/api/spactivity/activityInfo"       // 活动详情-未发起砍价时
+#define      kYetStartBargainInfoURIPath          @"/api/spgroup/bargainInfo"           // 已发起的砍价详情
 
 #endif /* URIPath_h */

@@ -17,6 +17,8 @@
 @implementation FMSlashPricesView
 
 - (void)fm_bindViewModel {
+    @weakify(self)
+    
     [[_buyButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
     }];

@@ -12,8 +12,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FMBargainDetailsController">
             <connections>
+                <outlet property="bargainStatusLabel" destination="44j-eY-eHW" id="I8w-Mt-W7q"/>
+                <outlet property="goodsImgView" destination="hDn-ge-CxC" id="Ggt-fq-htJ"/>
+                <outlet property="goodsPriceLabel" destination="Va6-Ey-Mo9" id="5cu-ko-PfD"/>
+                <outlet property="goodsTitleLabel" destination="Jqk-2S-VAe" id="iHo-v7-O5I"/>
+                <outlet property="remainingTimeLabel" destination="deP-z9-aZG" id="peA-P3-Kkb"/>
                 <outlet property="selectBoxButton" destination="nsW-66-NFv" id="DcG-Dj-e2o"/>
-                <outlet property="startButton" destination="LQr-vg-UQj" id="Txi-SY-JC1"/>
+                <outlet property="startBargainButton" destination="LQr-vg-UQj" id="YUf-Dx-cFI"/>
                 <outlet property="view" destination="iN0-l3-epB" id="V0A-HT-u2l"/>
             </connections>
         </placeholder>
@@ -214,7 +219,7 @@
                 <constraint firstAttribute="trailing" secondItem="Cxu-dL-8CK" secondAttribute="trailing" id="xYT-on-Clf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-910" y="184"/>
+            <point key="canvasLocation" x="-1314" y="187"/>
         </view>
     </objects>
     <resources>

@@ -227,25 +227,9 @@
         orderOperateBlock(self->_viewModel.orderEntity.orderStatus.integerValue, NO);
     }];
     
-    [[_viewModel.requestReceivingCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
-        if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:nil];
-        } else {
-            [SVProgressHUD dismissWithDelay:1.f];
-        }
-    }];
-    
-    [[_viewModel.requestCancelCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
-        if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:nil];
-        } else {
-            [SVProgressHUD dismissWithDelay:1.f];
-        }
-    }];
-    
-    [_viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-    }];
+    [FMOrderCell showRequestHUDStatus:nil command:_viewModel.requestReceivingCommand];
+    [FMOrderCell showRequestHUDStatus:nil command:_viewModel.requestCancelCommand];
+    [FMOrderCell showStatusInfoBySubject:_viewModel.showHintSubject];
 }
 
 #pragma mark ——— <UITableViewDataSource, UITableViewDelegate>

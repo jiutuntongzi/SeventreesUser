@@ -11,13 +11,12 @@
 
 typedef NS_ENUM(NSUInteger, FMSlashDetailsControllerStyle) {
     FMSlashDetailsControllerStyleSlashing,           // 砍价中
-    FMSlashDetailsControllerStyleSlashSuccess,       // 退款成功
-    FMSlashDetailsControllerStyleSlashFailure,       // 退货失败
+    FMSlashDetailsControllerStyleSlashSuccess,       // 砍价成功
+    FMSlashDetailsControllerStyleSlashFailure,       // 砍价失败
 };
 
 @interface FMSlashDetailsController : FMViewController
 
-@property (nonatomic, assign) FMSlashDetailsControllerStyle style;
-
++ (void)showByPageType:(FMSlashDetailsControllerStyle)style activityId:(NSNumber *)activityId goodsId:(NSNumber *)goodsId;
 
 @end

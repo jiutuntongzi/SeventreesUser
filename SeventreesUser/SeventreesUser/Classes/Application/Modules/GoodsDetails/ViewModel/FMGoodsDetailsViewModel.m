@@ -14,7 +14,7 @@
     @weakify(self)
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (! self) return;
-        if (! [resultModel.statusCode isEqualToString:@"OK"]) {
+        if (! resultModel.isSuccess) {
             self->_detailsModel = nil;
             [self.refreshUISubject sendNext:nil];
             return;

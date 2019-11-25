@@ -19,7 +19,7 @@
         [self.refreshUISubject sendNext:resultModel];
         
         // test code
-        if ([resultModel.statusCode isEqualToString:@"OK"]) {
+        if (resultModel.isSuccess) {
             [self.registerSuccessSubject sendNext:resultModel];
         }
     }];

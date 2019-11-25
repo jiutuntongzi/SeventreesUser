@@ -18,8 +18,10 @@
     
     NetworkResultModel *resultModel = [[NetworkResultModel alloc] init];
 //    [string stringByURLDecode]
-    resultModel.statusMsg = responseObject[@"message"];
+    
     resultModel.statusCode = responseObject[@"code"];
+    resultModel.isSuccess = [resultModel.statusCode isEqualToString:@"OK"]; // test
+    resultModel.statusMsg = responseObject[@"message"];
     resultModel.jsonDict = responseObject[@"response"];
     resultModel.jsonString = [responseObject mj_JSONString];
     return resultModel;

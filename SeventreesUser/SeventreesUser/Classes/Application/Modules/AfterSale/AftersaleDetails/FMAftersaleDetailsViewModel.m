@@ -22,14 +22,6 @@
         
         [self.refreshUISubject sendNext:result];
     }];
-    
-    [[self.requestDataCommand.executing skip:1] subscribeNext:^(id x) {
-        if ([x isEqualToNumber:@(YES)]) {
-            DLog(@"（HTTP请求：命令执行中..）");
-        } else {
-            DLog(@"（HTTP请求：命令未开始 / 命令执行完成");
-        }
-    }];
 }
 
 #pragma mark - Lazyload

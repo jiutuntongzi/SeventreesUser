@@ -15,7 +15,7 @@
     
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)
-        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+        if (!resultModel.isSuccess) {
             DLog(@"请求失败，接口错误！statusCode == %@", resultModel.statusCode);
 //            self.homeModel = nil;
 //            [self.refreshUISubject sendNext:nil];

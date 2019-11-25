@@ -20,7 +20,7 @@
         
         [self.refreshUISubject sendNext:resultModel];
         
-        if ([resultModel.statusCode isEqualToString:@"OK"]) {
+        if (resultModel.isSuccess) {
             userData().phoneNumber = self.loginModel.phoneNumber;
             [UserData saveToken:resultModel.jsonDict[@"token"]];
             [self.loginSuccessSubject sendNext:resultModel];

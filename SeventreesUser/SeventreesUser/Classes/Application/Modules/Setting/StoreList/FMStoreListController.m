@@ -47,7 +47,7 @@
         }
         return [mStoreEntitys copy];
         */
-        if (![resultModel.statusCode isEqualToString:@"OK"]) [SVProgressHUD showErrorWithStatus:resultModel.statusMsg];
+        if (!resultModel.isSuccess) [SVProgressHUD showErrorWithStatus:resultModel.statusMsg];
         NSArray *storeEntitys = [FMStoreCheckModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict];
         return [storeEntitys copy];
         
@@ -117,7 +117,7 @@
     [SVProgressHUD showWithStatus:nil];
     [networkMgr POST:kUpdateBindStoreURIPath params:@{@"sid": storeId} success:^(NetworkResultModel *resultModel) {
         [SVProgressHUD dismissWithDelay:0.5f];
-        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+        if (!resultModel.isSuccess) {
             if (completed) completed(NO);
             [SVProgressHUD showErrorWithStatus:resultModel.statusMsg];
             return;

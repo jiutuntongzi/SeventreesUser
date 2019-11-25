@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test3333" translatesAutoresizingMaskIntoConstraints="NO" id="Mqh-ew-IlC">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_joinUser_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Mqh-ew-IlC">
                         <rect key="frame" x="15" y="17" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="RmA-Z1-ABs"/>
@@ -37,11 +37,11 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fMJ-aT-3mm">
-                        <rect key="frame" x="215" y="28" width="14" height="14"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_slash" translatesAutoresizingMaskIntoConstraints="NO" id="fMJ-aT-3mm">
+                        <rect key="frame" x="215" y="29" width="13" height="13"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="14" id="fr4-dz-f8P"/>
-                            <constraint firstAttribute="height" constant="14" id="tdc-lo-TAd"/>
+                            <constraint firstAttribute="width" constant="13" id="fr4-dz-f8P"/>
+                            <constraint firstAttribute="height" constant="13" id="tdc-lo-TAd"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="砍掉3.27元" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHG-f9-IJS">
@@ -58,7 +58,7 @@
                     <constraint firstItem="fMJ-aT-3mm" firstAttribute="centerY" secondItem="NHG-f9-IJS" secondAttribute="centerY" id="N5M-Ux-kZq"/>
                     <constraint firstItem="EJh-h3-iuS" firstAttribute="leading" secondItem="Mqh-ew-IlC" secondAttribute="trailing" constant="15" id="U6z-Jq-gFB"/>
                     <constraint firstItem="EJh-h3-iuS" firstAttribute="bottom" secondItem="Mqh-ew-IlC" secondAttribute="bottom" id="a4K-9O-01b"/>
-                    <constraint firstItem="NHG-f9-IJS" firstAttribute="leading" secondItem="fMJ-aT-3mm" secondAttribute="trailing" constant="5" id="g0C-eh-WVD"/>
+                    <constraint firstItem="NHG-f9-IJS" firstAttribute="leading" secondItem="fMJ-aT-3mm" secondAttribute="trailing" constant="6" id="g0C-eh-WVD"/>
                     <constraint firstItem="TAG-2Y-wbC" firstAttribute="leading" secondItem="Mqh-ew-IlC" secondAttribute="trailing" constant="15" id="hPU-Nc-IY1"/>
                     <constraint firstItem="Mqh-ew-IlC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="m2b-Vu-bOO"/>
                     <constraint firstItem="Mqh-ew-IlC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wOJ-t5-G7J"/>
@@ -68,6 +68,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="test3333" width="37" height="37"/>
+        <image name="icon_joinUser_placeholder" width="35" height="35"/>
+        <image name="icon_slash" width="13.5" height="13.5"/>
     </resources>
 </document>

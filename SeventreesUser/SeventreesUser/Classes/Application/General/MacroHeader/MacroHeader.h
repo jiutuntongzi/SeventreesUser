@@ -44,6 +44,9 @@
 
 #import "UITableView+FDTemplateLayoutCell.h"
 
+#import "UIViewController+SubscribeHUD.h"
+#import "UIView+SubscribeHUD.h"
+
 
 #pragma mark ——— Other
 

@@ -13,16 +13,20 @@
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *statusImgView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *goodsImgView;
+@property (weak, nonatomic) IBOutlet UILabel *goodsTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *goodsPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *remainingTimeLabel;
+
 @end
 
 @implementation FMSlashGoodsView
 
-- (void)fm_setupSubviews {
-    
-}
-
-- (void)fm_bindViewModel {
-    
+- (void)fm_bindObserver {
+    @weakify(self)
+    // 您正在发起砍价
+//    砍价失败 icon_slashFailure
+//    您已完成砍价 icon_slashSuccess
 }
 
 @end

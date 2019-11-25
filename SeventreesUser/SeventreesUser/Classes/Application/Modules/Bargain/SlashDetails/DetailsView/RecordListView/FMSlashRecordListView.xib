@@ -47,7 +47,7 @@
                                 <constraint firstAttribute="height" constant="1" id="zZM-50-PYX"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已有3位好友助力" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjO-gH-jZU">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已有0位好友助力" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjO-gH-jZU">
                             <rect key="frame" x="14" y="48" width="347" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -89,6 +89,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="tableView" destination="Wb4-UM-6j7" id="VXZ-Dv-WMt"/>
+                <outlet property="totalLabel" destination="cjO-gH-jZU" id="UY2-D9-ovU"/>
             </connections>
             <point key="canvasLocation" x="-330" y="-89"/>
         </view>

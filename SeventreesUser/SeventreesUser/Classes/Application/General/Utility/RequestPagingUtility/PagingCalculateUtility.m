@@ -77,7 +77,7 @@
         self.mParams[@"page"] = @(_pageNo);
     }
     [networkMgr POST:_uriPath params:[self.mParams copy] success:^(NetworkResultModel *resultModel) {
-//        if (! [resultModel.statusCode isEqualToString:@"OK"]) {
+//        if (! resultModel.isSuccess) {
 //            if (!self->_isUpPull) -- self.pageNo;
 //        }
         if (!self->_requestDataHandler) return;

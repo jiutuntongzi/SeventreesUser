@@ -63,19 +63,12 @@
     [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)
         [self->_tableView reloadData];
-        if (! [resultModel.statusCode isEqualToString:@"OK"]) {
+        if (! resultModel.isSuccess) {
             [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
         }
     }];
     
-    [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
-//        @strongify(self)
-        if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:@"搜索中.."];
-        } else {
-            [SVProgressHUD dismissWithDelay:0.5f];
-        }
-    }];
+    [UIView showRequestHUDStatus:@"搜索中.." command:self.viewModel.requestDataCommand];
     
     [self.viewModel.refreshBrandUISubject subscribeNext:^(id x) {
         @strongify(self)

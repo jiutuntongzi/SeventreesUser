@@ -256,7 +256,7 @@
     [SVProgressHUD showWithStatus:nil];
     [networkMgr POST:kIntegralExplainHTMLQueryURIPath params:@{@"type": @(type)} success:^(NetworkResultModel *resultModel) {
         [SVProgressHUD dismiss];
-        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+        if (!resultModel.isSuccess) {
             [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"数据错误：%@", resultModel.statusMsg]];
             [SVProgressHUD dismissWithDelay:0.5f];
             return;

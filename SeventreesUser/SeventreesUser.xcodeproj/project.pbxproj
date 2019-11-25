@@ -267,6 +267,11 @@
 		84886C5D234C664D00CFD16F /* NetworkDataConver.m in Sources */ = {isa = PBXBuildFile; fileRef = 84886C5C234C664D00CFD16F /* NetworkDataConver.m */; };
 		84886C60234C694500CFD16F /* NetworkResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84886C5F234C694500CFD16F /* NetworkResultModel.m */; };
 		84886C67234C879700CFD16F /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84886C66234C879700CFD16F /* UserData.m */; };
+		84979D1A238BA80100CAE40C /* FMSlashDetailsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84979D19238BA80100CAE40C /* FMSlashDetailsViewModel.m */; };
+		84979D1D238BA82100CAE40C /* FMSlashDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84979D1C238BA82100CAE40C /* FMSlashDetailsModel.m */; };
+		84979D20238BB37B00CAE40C /* FMBargainUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84979D1F238BB37B00CAE40C /* FMBargainUserModel.m */; };
+		84979D29238BD4DF00CAE40C /* UIView+SubscribeHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 84979D28238BD4DF00CAE40C /* UIView+SubscribeHUD.m */; };
+		84979D2D238BD5D400CAE40C /* UIViewController+SubscribeHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 84979D2C238BD5D400CAE40C /* UIViewController+SubscribeHUD.m */; };
 		8498F58C23307D4E00D5ACF9 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8498F58523307D4E00D5ACF9 /* city.plist */; };
 		8498F58D23307D4E00D5ACF9 /* CZHAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498F58723307D4E00D5ACF9 /* CZHAddressPickerView.m */; };
 		8498F58E23307D4E00D5ACF9 /* UIButton+CZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498F58923307D4E00D5ACF9 /* UIButton+CZHExtension.m */; };
@@ -982,6 +987,16 @@
 		84886C65234C879700CFD16F /* UserData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
 		84886C66234C879700CFD16F /* UserData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
 		84886C6B234C8F6100CFD16F /* URIPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URIPath.h; sourceTree = "<group>"; };
+		84979D18238BA80100CAE40C /* FMSlashDetailsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMSlashDetailsViewModel.h; sourceTree = "<group>"; };
+		84979D19238BA80100CAE40C /* FMSlashDetailsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMSlashDetailsViewModel.m; sourceTree = "<group>"; };
+		84979D1B238BA82100CAE40C /* FMSlashDetailsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMSlashDetailsModel.h; sourceTree = "<group>"; };
+		84979D1C238BA82100CAE40C /* FMSlashDetailsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMSlashDetailsModel.m; sourceTree = "<group>"; };
+		84979D1E238BB37B00CAE40C /* FMBargainUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMBargainUserModel.h; sourceTree = "<group>"; };
+		84979D1F238BB37B00CAE40C /* FMBargainUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMBargainUserModel.m; sourceTree = "<group>"; };
+		84979D27238BD4DF00CAE40C /* UIView+SubscribeHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+SubscribeHUD.h"; sourceTree = "<group>"; };
+		84979D28238BD4DF00CAE40C /* UIView+SubscribeHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+SubscribeHUD.m"; sourceTree = "<group>"; };
+		84979D2B238BD5D400CAE40C /* UIViewController+SubscribeHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SubscribeHUD.h"; sourceTree = "<group>"; };
+		84979D2C238BD5D400CAE40C /* UIViewController+SubscribeHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SubscribeHUD.m"; sourceTree = "<group>"; };
 		8498D47D2335D496009EBB2A /* OrderDetailsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailsHeader.h; sourceTree = "<group>"; };
 		8498D47E2335D4F6009EBB2A /* GoodsListHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsListHeader.h; sourceTree = "<group>"; };
 		8498F58423307D4E00D5ACF9 /* AddressPickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerHeader.h; sourceTree = "<group>"; };
@@ -2150,6 +2165,8 @@
 				840CDDBB23408EC600527CB0 /* FMSlashRecordCell.h */,
 				840CDDBC23408EC600527CB0 /* FMSlashRecordCell.m */,
 				840CDDBD23408EC600527CB0 /* FMSlashRecordCell.xib */,
+				84979D1E238BB37B00CAE40C /* FMBargainUserModel.h */,
+				84979D1F238BB37B00CAE40C /* FMBargainUserModel.m */,
 			);
 			path = RecordListView;
 			sourceTree = "<group>";
@@ -2966,6 +2983,10 @@
 				8449935B23407F2A0006A544 /* FMSlashDetailsController.h */,
 				8449935C23407F2A0006A544 /* FMSlashDetailsController.m */,
 				8449935D23407F2A0006A544 /* FMSlashDetailsController.xib */,
+				84979D18238BA80100CAE40C /* FMSlashDetailsViewModel.h */,
+				84979D19238BA80100CAE40C /* FMSlashDetailsViewModel.m */,
+				84979D1B238BA82100CAE40C /* FMSlashDetailsModel.h */,
+				84979D1C238BA82100CAE40C /* FMSlashDetailsModel.m */,
 				84499360234080C40006A544 /* DetailsView */,
 			);
 			path = SlashDetails;
@@ -3262,8 +3283,8 @@
 				8403F75B2323898600A3B347 /* BargainPaging */,
 				847E58C2232250FB0022FF1F /* BargainGoodsList */,
 				8403F75C232389A800A3B347 /* BargainDetails */,
-				84FF06EE234058C10037ACED /* SlashPaging */,
 				8449935A23407F2A0006A544 /* SlashDetails */,
+				84FF06EE234058C10037ACED /* SlashPaging */,
 				8403F7622323996400A3B347 /* BargainFree */,
 			);
 			path = Bargain;
@@ -3386,6 +3407,15 @@
 				84886C66234C879700CFD16F /* UserData.m */,
 			);
 			path = UserData;
+			sourceTree = "<group>";
+		};
+		84979D2A238BD5B700CAE40C /* UIController */ = {
+			isa = PBXGroup;
+			children = (
+				84979D2B238BD5D400CAE40C /* UIViewController+SubscribeHUD.h */,
+				84979D2C238BD5D400CAE40C /* UIViewController+SubscribeHUD.m */,
+			);
+			path = UIController;
 			sourceTree = "<group>";
 		};
 		8498F58023307D1000D5ACF9 /* DialogBoxView */ = {
@@ -3598,9 +3628,9 @@
 		84B4D59E237404D40019BA38 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				84D7273023014D1B002D387A /* MacroHeader */,
 				84D7281B23014D1B002D387A /* Utility */,
 				849CBFB523011732003821E4 /* Common */,
-				84D7273023014D1B002D387A /* MacroHeader */,
 				84D7274723014D1B002D387A /* ThreeLibs */,
 				84D7281823014D1B002D387A /* PlatformConfig */,
 				849CBFAA230113B2003821E4 /* AppDelegate */,
@@ -4093,6 +4123,8 @@
 				84D42D472304E88100249356 /* UIView+Frame.m */,
 				84D42D492304F16700249356 /* UIView+Visuals.h */,
 				84D42D4A2304F16700249356 /* UIView+Visuals.m */,
+				84979D27238BD4DF00CAE40C /* UIView+SubscribeHUD.h */,
+				84979D28238BD4DF00CAE40C /* UIView+SubscribeHUD.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -4410,6 +4442,7 @@
 			children = (
 				84DFE2602351B6B600F6DA7D /* UIButton */,
 				84DFE25F2351B69800F6DA7D /* UIView */,
+				84979D2A238BD5B700CAE40C /* UIController */,
 				84B142D22304F6E7009ADECF /* UITableView+FDTemplateLayoutCell */,
 			);
 			path = UIKit;
@@ -5213,8 +5246,10 @@
 				8456BAC5232F5D1000E59966 /* FMSelectFooterView.m in Sources */,
 				840CDDD02340B64100527CB0 /* FMCollectPagingController.m in Sources */,
 				84BEADDD233E0BF000B4D6E1 /* FMSpellGroupPagingController.m in Sources */,
+				84979D1D238BA82100CAE40C /* FMSlashDetailsModel.m in Sources */,
 				840942D1233470E700E60D53 /* FMServerConsumeCell.m in Sources */,
 				8405B8C22334D16F0065965F /* FMOrderAddressView.m in Sources */,
+				84979D29238BD4DF00CAE40C /* UIView+SubscribeHUD.m in Sources */,
 				84FC4459231CF4E200DF9799 /* YBIBToolViewHandler.m in Sources */,
 				8453D56C235177500014CC3B /* NSError+Common.m in Sources */,
 				84187420233A162C0083FE1E /* FMRefundInGoodsModel.m in Sources */,
@@ -5259,6 +5294,7 @@
 				8407F2D6231E46FE00E875AC /* FMGoodsPictureListView.m in Sources */,
 				84001C94230CD4EB0010DE0B /* WMScrollView.m in Sources */,
 				84F64E0C231F8911005E477D /* FMGoodsEvaluationViewModel.m in Sources */,
+				84979D2D238BD5D400CAE40C /* UIViewController+SubscribeHUD.m in Sources */,
 				84497BFC231D0F8800D3A79B /* FMGoodsDetailsViewModel.m in Sources */,
 				840942C623346F6900E60D53 /* FMConsumeHeaderView.m in Sources */,
 				84CBD0D123586F10003C19BE /* FMGoodsDetailsModel.m in Sources */,
@@ -5266,6 +5302,7 @@
 				84BAC5802306859A0062B812 /* FMSecurityCodeInputView.m in Sources */,
 				8498F5A5233082EA00D5ACF9 /* BRAddressPickerView.m in Sources */,
 				843FC53D232A48390096639F /* FMMapNavigationViewModel.m in Sources */,
+				84979D1A238BA80100CAE40C /* FMSlashDetailsViewModel.m in Sources */,
 				84001C92230CD4EB0010DE0B /* WMMenuView.m in Sources */,
 				84BAC5A42306CD3D0062B812 /* FMPhoneNumberInputViewModel.m in Sources */,
 				84E7F56023321A3D002C6915 /* FMCouponModel.m in Sources */,
@@ -5492,6 +5529,7 @@
 				844A0E062338A8CA006015D4 /* FMEvaluateViewModel.m in Sources */,
 				840942CB2334701000E60D53 /* FMTotalFooterView.m in Sources */,
 				84FFF94D2355CD15000980D8 /* FMAnnouncementView.m in Sources */,
+				84979D20238BB37B00CAE40C /* FMBargainUserModel.m in Sources */,
 				84F9D821230FE14200158496 /* FMShoppingGoodsModel.m in Sources */,
 				84D38B59233B173E00DEF36D /* FMRefundStatusView.m in Sources */,
 				84FA82DE2387925500E49622 /* FMBargainTypeViewModel.m in Sources */,

@@ -7,7 +7,10 @@
 //
 
 #import "FMView.h"
+#import "FMBargainUserModel.h"
 
 @interface FMSlashRecordListView : FMView
+
+@property (nonatomic, copy) NSArray<FMBargainUserModel *> *joinUserEntitys;
 
 @end

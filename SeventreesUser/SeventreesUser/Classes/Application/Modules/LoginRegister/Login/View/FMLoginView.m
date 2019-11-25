@@ -199,8 +199,7 @@
     }];
     
     [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
-        if ([resultModel.statusCode isEqualToString:@"OK"]) {
-            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+        if (resultModel.isSuccess) {
             [SVProgressHUD showSuccessWithStatus:resultModel.statusMsg];
         } else if (resultModel.statusCode.integerValue == NSCommonErrorCodeNotConnectServer) {
             [SVProgressHUD showErrorWithStatus:resultModel.statusMsg];
@@ -209,32 +208,16 @@
         }
     }];
     
+    [UIView showRequestHUDStatus:@"登录中.." command:self.viewModel.requestDataCommand];
     [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
         if ([isExecuting isEqualToNumber:@(YES)]) {
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
             [SVProgressHUD showWithStatus:@"登录中.."];
-            //            DLog(@"（登录命令执行中..）");
         } else {
             [SVProgressHUD dismissWithDelay:0.5f];
-            //            DLog(@"（登录命令未开始 / 登录命令执行完成");
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
         }
     }];
-    
-//    [[_passwordTextField rac_signalForControlEvents:UIControlEventEditingDidEndOnExit] subscribeNext:^(id x) {
-//        @strongify(self);
-//        [self.viewModel.requestDataCommand execute:@(666)]; // 执行登录请求命令
-//    }];
-//
-//    [_viewModel.refreshUISubject subscribeNext:^(id x) {
-//        @strongify(self);
-//
-//        DLog(@"请求登录完成，提示登录成功状态：x == %@", x);
-//        [self refreshUI];
-//    }];
-}
-
-- (void)refreshUI {
-    DLog(@"提示登录成功状态");
 }
 
 #pragma mark - Lazyload

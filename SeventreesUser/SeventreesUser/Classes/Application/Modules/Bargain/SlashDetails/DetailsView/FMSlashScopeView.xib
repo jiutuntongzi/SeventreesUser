@@ -42,7 +42,7 @@
                     <color key="progressTintColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="trackTintColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                 </progressView>
-                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="Bli-8g-8mX">
+                <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="Bli-8g-8mX">
                     <rect key="frame" x="15" y="49" width="345" height="2"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="2" id="Qut-c9-XNU"/>
@@ -51,29 +51,15 @@
                     <color key="trackTintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                 </progressView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgZ-Nc-LWc">
-                    <rect key="frame" x="199" y="70" width="161" height="44"/>
+                    <rect key="frame" x="107.5" y="70" width="160" height="44"/>
                     <color key="backgroundColor" red="0.90196078430000004" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="sNJ-aY-l8C"/>
+                        <constraint firstAttribute="width" constant="160" id="ysh-cx-Cn4"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                     <state key="normal" title="邀请好友帮我砍价">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUP-X2-PL8">
-                    <rect key="frame" x="15" y="70" width="161.5" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="vZG-AW-Etz"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                    <state key="normal" title="当前价购买">
-                        <color key="titleColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -91,36 +77,36 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="aUP-X2-PL8" secondAttribute="bottom" constant="20" id="1W5-E5-OVd"/>
                 <constraint firstItem="KxF-7e-h6k" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="7t2-bT-7k1"/>
                 <constraint firstAttribute="bottom" secondItem="II9-3E-gHh" secondAttribute="bottom" id="AeV-9h-hA7"/>
                 <constraint firstAttribute="trailing" secondItem="KxF-7e-h6k" secondAttribute="trailing" constant="15" id="CIG-r2-8OK"/>
                 <constraint firstItem="Bli-8g-8mX" firstAttribute="centerX" secondItem="9SJ-u2-krl" secondAttribute="centerX" id="Izl-fb-Mkl"/>
                 <constraint firstItem="Bli-8g-8mX" firstAttribute="height" secondItem="9SJ-u2-krl" secondAttribute="height" id="JZk-RX-WqN"/>
+                <constraint firstItem="dgZ-Nc-LWc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LPw-HO-cWX"/>
                 <constraint firstItem="7sS-Zz-LWN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ofg-sI-VNy"/>
                 <constraint firstAttribute="bottom" secondItem="dgZ-Nc-LWc" secondAttribute="bottom" constant="20" id="PtJ-7X-E7k"/>
                 <constraint firstItem="9SJ-u2-krl" firstAttribute="top" secondItem="7ue-tT-eIK" secondAttribute="bottom" constant="8" id="Rbl-7F-xcU"/>
                 <constraint firstItem="Bli-8g-8mX" firstAttribute="top" secondItem="9SJ-u2-krl" secondAttribute="bottom" id="Stg-DG-uhn"/>
                 <constraint firstAttribute="trailing" secondItem="II9-3E-gHh" secondAttribute="trailing" id="Wys-U9-dMV"/>
-                <constraint firstAttribute="trailing" secondItem="dgZ-Nc-LWc" secondAttribute="trailing" constant="15" id="YFH-cv-gfA"/>
-                <constraint firstItem="aUP-X2-PL8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Zzj-hy-K5t"/>
                 <constraint firstItem="9SJ-u2-krl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="b3Z-K2-G38"/>
                 <constraint firstItem="II9-3E-gHh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cgN-PE-WWX"/>
                 <constraint firstAttribute="trailing" secondItem="9SJ-u2-krl" secondAttribute="trailing" constant="15" id="d2e-nJ-Poi"/>
                 <constraint firstItem="Bli-8g-8mX" firstAttribute="width" secondItem="9SJ-u2-krl" secondAttribute="width" id="exL-Io-IY0"/>
                 <constraint firstAttribute="trailing" secondItem="7sS-Zz-LWN" secondAttribute="trailing" id="hEN-Pc-Kqe"/>
-                <constraint firstItem="dgZ-Nc-LWc" firstAttribute="width" secondItem="aUP-X2-PL8" secondAttribute="width" id="n5g-sW-j75"/>
                 <constraint firstItem="7ue-tT-eIK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="q4Z-GJ-XiX"/>
-                <constraint firstItem="aUP-X2-PL8" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.43" id="s13-4C-8jF"/>
                 <constraint firstItem="7ue-tT-eIK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="vb0-Zf-QaD"/>
                 <constraint firstItem="7sS-Zz-LWN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xYI-2t-4YH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="leftButton" destination="aUP-X2-PL8" id="dvg-Jm-7gJ"/>
+                <outlet property="curPriceLabel" destination="7ue-tT-eIK" id="WCQ-M7-7sE"/>
+                <outlet property="inviteFriendsButton" destination="dgZ-Nc-LWc" id="aga-LT-bAz"/>
+                <outlet property="lastPriceLabel" destination="KxF-7e-h6k" id="rv3-kn-kLG"/>
+                <outlet property="perchProgressView" destination="Bli-8g-8mX" id="zZR-nW-HPB"/>
+                <outlet property="progressView" destination="9SJ-u2-krl" id="eDf-M5-mPJ"/>
                 <outlet property="rightButton" destination="dgZ-Nc-LWc" id="u6J-or-8YZ"/>
             </connections>
-            <point key="canvasLocation" x="-873" y="-139"/>
+            <point key="canvasLocation" x="-1198" y="-73"/>
         </view>
     </objects>
 </document>

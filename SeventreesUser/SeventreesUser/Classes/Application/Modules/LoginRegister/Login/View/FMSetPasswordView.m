@@ -104,7 +104,7 @@
      }];
      
      [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
-         if ([resultModel.statusCode isEqualToString:@"OK"]) {
+         if (resultModel.isSuccess) {
              [SVProgressHUD showSuccessWithStatus:resultModel.statusMsg];
          } else {
              [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];

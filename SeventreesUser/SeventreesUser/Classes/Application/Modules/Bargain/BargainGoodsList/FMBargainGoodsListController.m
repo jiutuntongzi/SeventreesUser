@@ -30,7 +30,7 @@
     params[@"order"] = @(1); // 排列顺序（1 = 正序 2 = 逆序）
     
     PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:kCategoryGoodsListQueryURIPath rowHeight:FMBargainGoodsCellRowHeight params:params requestDataHandler:^(NetworkResultModel *resultModel) {
-        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+        if (!resultModel.isSuccess) {
             [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
             [SVProgressHUD dismissWithDelay:1.f];
         }
@@ -63,7 +63,7 @@
             nextVC.activityId = goodsEntity.activityId;
             weakSelf.cvc_pushViewController(nextVC);
             */
-            [FMBargainDetailsController showByActivityId:goodsEntity.goodsId goodsId:goodsEntity.activityId];
+            [FMBargainDetailsController showByActivityId:goodsEntity.activityId goodsId:goodsEntity.goodsId];
         };
         return cell;
         

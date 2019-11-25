@@ -22,7 +22,7 @@
 - (void)fm_addSubviews {
     PagingView *pagingView = [[PagingView alloc] initWithLimit:10 uriPath:kCategoryGoodsListQueryURIPath rowHeight:FMGoodsDetailsCellRowHeight params:nil requestDataHandler:^(NetworkResultModel *resultModel) {
         [SVProgressHUD dismissWithDelay:0.5f];
-        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+        if (!resultModel.isSuccess) {
             [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
         }
         

@@ -9,10 +9,19 @@
 #import "FMBargainDetailsController.h"
 #import "FMBargainDetailsViewModel.h"
 
+#import "FMSlashDetailsController.h"
+
 @interface FMBargainDetailsController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *bargainStatusLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *goodsImgView;
+@property (weak, nonatomic) IBOutlet UILabel *goodsTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *goodsPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *remainingTimeLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *selectBoxButton;
-@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UIButton *startBargainButton;
 
 @property (nonatomic, strong) FMBargainDetailsViewModel *viewModel;
 
@@ -34,14 +43,6 @@
     return _viewModel;
 }
 
-- (void)fm_addSubviews {
-    
-}
-
-- (void)fm_makeConstraints {
-    
-}
-
 - (void)fm_bindObserver {
     @weakify(self)
     [RACObserve(self.viewModel, bargainDetailsEntity) subscribeNext:^(FMBargainDetailsModel *bargainEntity) {
@@ -55,39 +56,27 @@
     
     [[_selectBoxButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        
+        DLog(@"点了商品SKU");
     }];
     
-    [[_startButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+    [[_startBargainButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
         [self.viewModel.requestStartBargainCommand execute:nil];
     }];
     
-    [[self.viewModel.requestStartBargainCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
-        if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:@"发起砍价中.."];
-        } else {
-            [SVProgressHUD dismissWithDelay:1.f];
-        }
+    [self.viewModel.nextVCSubject subscribeNext:^(RACTuple *identifyTuple) {
+        @strongify(self)
+        [FMSlashDetailsController showByPageType:FMSlashDetailsControllerStyleSlashing activityId:self.viewModel.activityId goodsId:self.viewModel.goodsId];
     }];
     
-    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-        [SVProgressHUD dismissWithDelay:1.f];
-    }];
+    [UIView showRequestHUDStatus:@"发起砍价中.." command:self.viewModel.requestStartBargainCommand];
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
 }
 
 - (void)fm_setupNavbar {
     [super fm_setupNavbar];
     
-    self.navigationItem.title = @"砍价详情";
-    
-    __weak typeof(self) weakSelf = self;
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-        UIViewController *nextVC = [[NSClassFromString(@"FMBargainFreeController") alloc] init];
-        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
+    self.navigationItem.title = @"发起砍价";
 }
 
 - (void)fm_refreshData {

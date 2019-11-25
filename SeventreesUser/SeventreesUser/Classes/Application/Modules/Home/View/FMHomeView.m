@@ -142,16 +142,7 @@
         
         [self->_mainScrollView.mj_header endRefreshing];
     }];
-    
-    /*
-    [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
-        if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:@"加载中.."];
-        } else {
-            [SVProgressHUD dismissWithDelay:0.5f];
-        }
-    }];
-    */
+
     _searchButtonView.actionCallback = ^{
         DLog(@"点了搜索");
         [self_weak_.viewModel.nextActionSubject sendNext:@"FMSearchPagingController"];

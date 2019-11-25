@@ -65,17 +65,9 @@
 //        @strongify(self)    if (!self) return;
 //    }];
     
-    [[self.viewModel.requestSignInCommand.executing skip:1] subscribeNext:^(id x) {
-        if ([x isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:nil];
-        } else {
-            [SVProgressHUD dismissWithDelay:1.f];
-        }
-    }];
+    [UIView showRequestHUDStatus:nil command:self.viewModel.requestSignInCommand];
     
-    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-    }];
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
 }
 
 - (FMScoreHeaderViewModel *)viewModel {

@@ -35,9 +35,8 @@
     } cellDidSelectHandler:^(id rowEntity) {
         DLog(@"rowEntity == %@", rowEntity);
         
-        FMSlashDetailsController *nextVC = [[FMSlashDetailsController alloc] init];
-        nextVC.style = FMSlashDetailsControllerStyleSlashing;
-        [self.navigationController pushViewController:nextVC animated:YES];
+//        [FMSlashDetailsController showByPageType:FMSlashDetailsControllerStyleSlashing activityId:<#(NSNumber *)#> goodsId:<#(NSNumber *)#>]
+        
     }];
     pagingView.cv_frame(CGRectMake(0.f, 0.f, self.view.width, self.view.height - kNavBarHeight - kFixedHeight - 40.f));
     pagingView.cv_backColorByHexString(@"#f7f7f7");

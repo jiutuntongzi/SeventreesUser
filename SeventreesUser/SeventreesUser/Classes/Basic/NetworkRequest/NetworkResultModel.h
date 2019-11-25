@@ -11,6 +11,9 @@
 
 @interface NetworkResultModel : FMModel
 
+/** 接口状态成功 */
+@property (nonatomic, assign) BOOL isSuccess;
+
 /** 状态码 */
 @property (nonatomic, copy) NSString *statusCode;
 

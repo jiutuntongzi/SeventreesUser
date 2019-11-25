@@ -7,9 +7,12 @@
 //
 
 #import "FMTableViewCell.h"
+#import "FMBargainUserModel.h"
 
 #define      FMSlashRecordCellHeight     70.f
 
 @interface FMSlashRecordCell : FMTableViewCell
+
+@property (nonatomic, strong) FMBargainUserModel *joinUserEntity;
 
 @end

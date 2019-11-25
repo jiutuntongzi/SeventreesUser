@@ -12,4 +12,10 @@
 
 @interface FMSlashScopeView : FMView
 
+@property (nonatomic, assign) CGFloat curPrice;
+
+@property (nonatomic, assign) CGFloat lastPrice;
+
+@property (nonatomic, copy) void(^inviteFriendsCallback)(void);
+
 @end

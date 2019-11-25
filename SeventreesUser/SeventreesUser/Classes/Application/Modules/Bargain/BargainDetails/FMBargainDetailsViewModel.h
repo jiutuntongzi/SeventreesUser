@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong) RACCommand *requestDataCommand;
 
-@property (nonatomic, copy) FMBargainDetailsModel *bargainDetailsEntity;
+@property (nonatomic, strong) FMBargainDetailsModel *bargainDetailsEntity;
 
 
 @property (nonatomic, strong) NSNumber *skuId;
@@ -25,6 +25,8 @@
 @property (nonatomic, strong) RACCommand *requestStartBargainCommand;
 
 @property (nonatomic, strong) RACSubject *showHintSubject;
+
+@property (nonatomic, strong) RACSubject *nextVCSubject;
 
 @end
 

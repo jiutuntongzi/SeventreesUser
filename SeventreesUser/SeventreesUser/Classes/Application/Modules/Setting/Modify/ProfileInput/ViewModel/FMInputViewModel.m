@@ -25,7 +25,7 @@
     
     [self.requestUpdateDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (!self) return;
-        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+        if (!resultModel.isSuccess) {
             [self.showHintSubject sendNext:resultModel.statusMsg];
             return;
         }

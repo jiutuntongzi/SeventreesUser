@@ -129,13 +129,7 @@
         self->_settlementView.viewModel.isEdit = isEdit.boolValue;
     }];
     
-    [[self.viewModel.requestDeleteGoodsCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
-        if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:@"绑定中.."];
-        } else {
-            [SVProgressHUD dismissWithDelay:0.5f];
-        }
-    }];
+    [UIView showRequestHUDStatus:@"绑定中.." command:self.viewModel.requestDeleteGoodsCommand];
     
 //    [RACObserve(self.viewModel, isEdit) subscribeNext:^(NSNumber *isEdit) {
 //        @strongify(self)    if (!self) return;

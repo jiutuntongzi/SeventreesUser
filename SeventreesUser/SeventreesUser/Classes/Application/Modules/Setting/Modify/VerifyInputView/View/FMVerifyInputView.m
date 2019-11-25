@@ -59,22 +59,14 @@ const CGFloat FMVerifyInputViewHeight = 44.f;
         [self.viewModel.requestVerifyCodeCommand execute:nil];
     }];
     
-    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-    }];
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
     
     [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)
         [self startCountdownLimit:30];
     }];
     
-    [[self.viewModel.requestVerifyCodeCommand.executing skip:1] subscribeNext:^(id x) {
-        if ([x isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:nil];
-        } else {
-            [SVProgressHUD dismissWithDelay:0.5f];
-        }
-    }];
+    [UIView showRequestHUDStatus:nil command:self.viewModel.requestVerifyCodeCommand];
 }
 
 - (void)fm_becomeFirstResponder {

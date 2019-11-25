@@ -23,13 +23,19 @@
 @implementation FMSlashRecordCell
 
 - (void)fm_setupSubviews {
-    self.ctc_selectedColor(nil);
     _headImgView.layer.cornerRadius = _headImgView.width * 0.5f;
     _headImgView.clipsToBounds = YES;
 }
 
-- (void)fm_bindViewModel {
-    
+- (void)fm_bindObserver {
+    @weakify(self)
+    [RACObserve(self, joinUserEntity) subscribeNext:^(FMBargainUserModel *joinUserEntity) {
+        @strongify(self)
+        [self->_headImgView sd_setImageWithURL:[NSURL URLWithString:joinUserEntity.headUrl] placeholderImage:UIImage.ci_imageNamed(@"icon_joinUser_placeholder")];
+        self->_nicknameLabel.text = joinUserEntity.userName ?: @"--";
+        self->_timeLabel.text = joinUserEntity.time ?: @"--";
+        self->_priceLabel.text = [NSString stringWithFormat:@"砍掉%.2f元", joinUserEntity.price];
+    }];
 }
 
 @end

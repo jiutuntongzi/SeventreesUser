@@ -176,25 +176,11 @@
         orderOperateBlock(self.viewModel.orderStatus.integerValue, NO);
     }];
     
-    [[self.viewModel.requestReceivingCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
-        if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:nil];
-        } else {
-            [SVProgressHUD dismissWithDelay:1.f];
-        }
-    }];
+    [FMOrderPayView showRequestHUDStatus:nil command:self.viewModel.requestReceivingCommand];
     
-    [[self.viewModel.requestCancelCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
-        if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:nil];
-        } else {
-            [SVProgressHUD dismissWithDelay:1.f];
-        }
-    }];
+    [FMOrderPayView showRequestHUDStatus:nil command:self.viewModel.requestCancelCommand];
     
-    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-    }];
+    [FMOrderPayView showStatusInfoBySubject:self.viewModel.showHintSubject];
 }
 
 - (FMOrderPayViewModel *)viewModel {

@@ -56,29 +56,15 @@ const CGFloat FMShopCarToolViewHeight = 44.f;
         self->_collectImgView.image = isCollect.boolValue ? UIImage.ci_imageNamed(@"icon_collect_selected") : UIImage.ci_imageNamed(@"icon_collect_normal");
     }];
     
-    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-    }];
-    
-    [[self.viewModel.requestCollectCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
-        if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:@"收藏中.."];
-        } else {
-            [SVProgressHUD dismissWithDelay:0.15f];
-        }
-    }];
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
+    [UIView showRequestHUDStatus:@"收藏中.." command:self.viewModel.requestCollectCommand];
+
     
     [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
         self->_collectImgView.image = self.viewModel.isCollect ? UIImage.ci_imageNamed(@"icon_collect_selected") : UIImage.ci_imageNamed(@"icon_collect_normal");
     }];
     
-    [[self.viewModel.requestJoinCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
-        if ([isExecuting isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:@"加入中.."];
-        } else {
-            [SVProgressHUD dismissWithDelay:0.5f];
-        }
-    }];
+    [UIView showRequestHUDStatus:@"加入中.." command:self.viewModel.requestJoinCommand];
     
     [[_contactButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);

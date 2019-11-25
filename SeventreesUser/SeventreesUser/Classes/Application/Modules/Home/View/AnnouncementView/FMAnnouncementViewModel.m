@@ -15,7 +15,7 @@
     
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)
-        if (! [resultModel.statusCode isEqualToString:@"OK"]) return;
+        if (! resultModel.isSuccess) return;
         
         NSArray *announcementModels = [[FMAnnouncementModel mj_objectArrayWithKeyValuesArray:resultModel.jsonDict[@"data"]] copy];
         self->_announcementModels = announcementModels;

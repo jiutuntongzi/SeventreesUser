@@ -7,6 +7,7 @@
 //
 
 #import "FMSlashDetailsController.h"
+#import "FMSlashDetailsViewModel.h"
 
 #import "FMSlashGoodsView.h"
 
@@ -18,6 +19,9 @@
 
 @interface FMSlashDetailsController ()
 
+@property (nonatomic, assign) FMSlashDetailsControllerStyle style;
+
+@property (nonatomic, strong) FMSlashDetailsViewModel *viewModel;
 
 @property (nonatomic, strong) FMSlashGoodsView *slashGoodsView;
 
@@ -32,6 +36,14 @@
 @end
 
 @implementation FMSlashDetailsController
+
++ (void)showByPageType:(FMSlashDetailsControllerStyle)style activityId:(NSNumber *)activityId goodsId:(NSNumber *)goodsId; {
+    FMSlashDetailsController *nextVC = self.cvc_controller();
+    nextVC.style = style;
+    nextVC.viewModel.activityId = activityId;
+    nextVC.viewModel.goodsId = goodsId;
+    commonMgr.topViewController().cvc_pushViewController(nextVC);
+}
 
 - (void)fm_addSubviews {
     _slashGoodsView = FMSlashGoodsView.cv_viewFromNibLoad();
@@ -102,17 +114,56 @@
     }];
 }
 
+- (void)fm_bindObserver {
+    @weakify(self)
+    [RACObserve(self.viewModel, slashEntity) subscribeNext:^(FMSlashDetailsModel *slashEntity) {
+        @strongify(self)    if (!self) return;
+        
+        
+    }];
+}
+
+- (void)fm_bindViewModel {
+    @weakify(self)
+    
+    _slashScopeView.inviteFriendsCallback = ^{
+//        self_weak_
+    };
+    
+    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
+        [SVProgressHUD showInfoWithStatus:status];
+        [SVProgressHUD dismissWithDelay:1.f];
+    }];
+}
+
+- (FMSlashDetailsViewModel *)viewModel {
+    if (! _viewModel) {
+        _viewModel = [[FMSlashDetailsViewModel alloc] init];
+    }
+    return _viewModel;
+}
+
 - (void)fm_setupNavbar {
     [super fm_setupNavbar];
     
     self.navigationItem.title = @"砍价详情";
-    
-    __weak typeof(self) weakSelf = self;
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-        UIViewController *nextVC = [[NSClassFromString(@"FMSlashFreeController") alloc] init];
-        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
+
+- (void)fm_refreshData {
+    [self.viewModel.requestDataCommand execute:nil];
+}
+
+//- (void)fm_setupNavbar {
+//    [super fm_setupNavbar];
+//
+//    self.navigationItem.title = @"砍价详情";
+//
+//    __weak typeof(self) weakSelf = self;
+//    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
+//        UIViewController *nextVC = [[NSClassFromString(@"FMSlashFreeController") alloc] init];
+//        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
+//    });
+//    self.navigationItem.cni_rightBarButtonItem(rightItem);
+//}
 
 @end

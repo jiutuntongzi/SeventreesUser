@@ -206,17 +206,8 @@
         }
     }];
     
-    [[self.viewModel.requestUpdateDataCommand.executing skip:1] subscribeNext:^(id x) {
-        if ([x isEqualToNumber:@(YES)]) {
-            [SVProgressHUD showWithStatus:nil];
-        } else {
-            [SVProgressHUD dismissWithDelay:0.5f];
-        }
-    }];
-    
-    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-    }];
+    [UIView showRequestHUDStatus:nil command:self.viewModel.requestUpdateDataCommand];
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
 }
 
 /** 按页面类型生成样式 */

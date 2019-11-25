@@ -126,24 +126,23 @@
      }];
      
      [self.viewModel.refreshUISubject subscribeNext:^(NetworkResultModel *resultModel) {
-         if ([resultModel.statusCode isEqualToString:@"OK"]) {
-             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+         if (resultModel.isSuccess) {
              [SVProgressHUD showSuccessWithStatus:resultModel.statusMsg];
          } else {
              [SVProgressHUD showInfoWithStatus:resultModel.statusMsg];
          }
      }];
      
-     [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(id x) {
-         if ([x isEqualToNumber:@(YES)]) {
+     [[self.viewModel.requestDataCommand.executing skip:1] subscribeNext:^(NSNumber *isExecuting) {
+         if ([isExecuting isEqualToNumber:@(YES)]) {
              [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-             [SVProgressHUD showWithStatus:nil];
-//             DLog(@"（注册命令执行中..）");
+             [SVProgressHUD showWithStatus:@"注册中.."];
          } else {
              [SVProgressHUD dismissWithDelay:0.5f];
-//             DLog(@"（注册命令未开始 / 注册命令执行完成");
+             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
          }
      }];
+     [UIView showRequestHUDStatus:nil command:self.viewModel.requestDataCommand];
 }
 
 #pragma mark - Lazyload

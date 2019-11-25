@@ -11,6 +11,8 @@
 
 @interface FMSlashRecordListView () <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -21,24 +23,27 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.rowHeight = FMSlashRecordCellHeight;
-    
-    
 }
 
-- (void)fm_bindViewModel {
-    
+- (void)fm_bindObserver {
+    @weakify(self)
+    [RACObserve(self, joinUserEntitys) subscribeNext:^(NSArray<FMBargainUserModel *> *joinUserEntitys) {
+        @strongify(self)    if (!self) return;
+        self->_totalLabel.text = [NSString stringWithFormat:@"已有%lu位好友助力", joinUserEntitys.count];
+        [self->_tableView reloadData];
+    }];
 }
 
 #pragma mark ——— <UITableViewDataSource>
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     FMSlashRecordCell *cell = FMSlashRecordCell.ctc_cellReuseNibLoadForTableView(tableView);
-    
+    cell.joinUserEntity = self.joinUserEntitys[indexPath.row];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return self.joinUserEntitys.count;
 }
 
 #pragma mark ——— <UITableViewDelegate>

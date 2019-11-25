@@ -15,7 +15,7 @@
     
     [self.requestDataCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (! self) return;
-        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+        if (!resultModel.isSuccess) {
             [self.showHintSubject sendNext:resultModel.statusMsg];
             return;
         }
@@ -24,10 +24,12 @@
     
     [self.requestStartBargainCommand.executionSignals.switchToLatest subscribeNext:^(NetworkResultModel *resultModel) {
         @strongify(self)    if (! self) return;
-        if (![resultModel.statusCode isEqualToString:@"OK"]) {
+        if (!resultModel.isSuccess) {
             [self.showHintSubject sendNext:resultModel.statusMsg];
+            return;
         }
-        [SVProgressHUD showSuccessWithStatus:resultModel.statusMsg];
+        RACTuple *tuple = [RACTuple tupleWithObjects:self.bargainDetailsEntity.goodsEntity.goodsId, self.bargainDetailsEntity.goodsEntity.activityId, nil];
+        [self.nextVCSubject sendNext:tuple];
     }];
 }
 
@@ -92,4 +94,10 @@
     return _showHintSubject;
 }
 
+- (RACSubject *)nextVCSubject {
+    if (! _nextVCSubject) {
+        _nextVCSubject = [[RACSubject alloc] init];
+    }
+    return _nextVCSubject;
+}
 @end

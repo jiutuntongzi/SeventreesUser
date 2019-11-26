@@ -45,10 +45,7 @@
         [self->_tableView reloadData];
     }];
     
-    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-        [SVProgressHUD dismissWithDelay:1.f];
-    }];
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
 }
 
 - (FMCouponListViewModel *)viewModel {

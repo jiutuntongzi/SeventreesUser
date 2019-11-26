@@ -24,9 +24,19 @@
 
 - (void)fm_bindObserver {
     @weakify(self)
-    // 您正在发起砍价
-//    砍价失败 icon_slashFailure
-//    您已完成砍价 icon_slashSuccess
+    [RACObserve(self, goodsEntity) subscribeNext:^(FMSlashInGoodsModel *goodsEntity) {
+        @strongify(self)    if (!self) return;
+        // 您正在发起砍价
+        //    砍价失败 icon_slashFailure
+        //    您已完成砍价 icon_slashSuccess
+//        self->_statusLabel.text = @"";
+//        self->_statusImgView.image = UIImage.ci_imageNamed(@"");
+        
+        [self->_goodsImgView sd_setImageWithURL:[NSURL URLWithString:goodsEntity.imgUrl]];
+        self->_goodsTitleLabel.text = goodsEntity.name;
+        self->_goodsPriceLabel.text = [NSString stringWithFormat:@"原价：¥%.2f", goodsEntity.normalPrice.floatValue];
+//        self->_remainingTimeLabel.text = [NSString stringWithFormat:@"剩余 %@", goodsEntity.];
+    }];
 }
 
 @end

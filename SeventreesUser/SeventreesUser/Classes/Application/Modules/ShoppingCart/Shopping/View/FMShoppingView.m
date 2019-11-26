@@ -91,10 +91,7 @@
         self->_settlementView.viewModel.isCheckedAll = self.viewModel.isCheckedAll;
     }];
     
-    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        @strongify(self)    if (!self) return;
-        [SVProgressHUD showInfoWithStatus:status];
-    }];
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
     
     [self->_settlementView.viewModel.settleActionSubject subscribeNext:^(id x) {
         @strongify(self)    if (!self) return;

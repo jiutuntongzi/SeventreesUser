@@ -17,7 +17,8 @@
  */
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{
-             @"joinUserEntitys": @"joinUser"
+             @"joinUserEntitys": @"joinUser",
+             @"goodsEntitys": @"goods"
              };
 }
 
@@ -28,7 +29,9 @@
  */
 + (NSDictionary *)mj_objectClassInArray {
     /** 替换数组名：{数组名：元素类型} */
-    return @{@"joinUserEntitys": @"FMBargainUserModel"};
+    return @{@"joinUserEntitys": @"FMBargainUserModel",
+             @"goodsEntitys": @"FMSlashInGoodsModel"
+             };
 }
 
 @end

@@ -19,7 +19,14 @@
             [self.showHintSubject sendNext:resultModel.statusMsg];
             return;
         }
-        self.slashEntity = [FMSlashDetailsModel mj_objectWithKeyValues:resultModel.jsonDict];
+        FMSlashDetailsModel *slashEntity = [FMSlashDetailsModel mj_objectWithKeyValues:resultModel.jsonDict];
+        FMSlashPriceModel *priceEntity = [[FMSlashPriceModel alloc] init];
+        priceEntity.curPrice = [resultModel.jsonDict[@"price1"] floatValue];
+        priceEntity.favourablePrice = [resultModel.jsonDict[@"price2"] floatValue];
+        priceEntity.floorPrice = [resultModel.jsonDict[@"minPrice"] floatValue];
+        slashEntity.priceEntity = priceEntity;
+        
+        self.slashEntity = slashEntity;
     }];
 }
 
@@ -34,12 +41,12 @@
                 NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
                 params[@"activityId"] = self->_activityId;
                 params[@"goodsId"] = self->_goodsId;
-                [networkMgr POST:kActivityInfoURIPath params:params success:^(NetworkResultModel *resultModel) {
+                [networkMgr POST:kYetStartBargainInfoURIPath params:params success:^(NetworkResultModel *resultModel) {
                     [subscriber sendNext:resultModel];
                     [subscriber sendCompleted];
                     
                 } failure:^(NSError *error) {
-                    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                    @strongify(self) [self.showHintSubject sendNext:error.localizedDescription];
                     [subscriber sendNext:nil];
                     [subscriber sendCompleted];
                 }];

@@ -119,7 +119,7 @@
 #pragma mark - Lazyload
 - (FMRefundHeaderView *)headerView {
     if (! _headerView) {
-        _headerView = [[FMRefundHeaderView alloc] initWithStyle:(FMRefundHeaderViewStyle)_style];
+        _headerView = [[FMRefundHeaderView alloc] initWithStyle:(FMRefundHeaderViewStyle)_pageType];
     }
     return _headerView;
 }
@@ -127,9 +127,9 @@
 - (FMRefundFooterView *)footerView {
     if (! _footerView) {
         UInt8 footerStyle = 0;
-        if (_style == FMAftersaleDetailsControllerStyleWaitReceive ||
-            _style == FMAftersaleDetailsControllerStyleSalesSuccess ||
-            _style == FMAftersaleDetailsControllerStyleSalesFailure
+        if (_pageType == FMAftersaleDetailsControllerStyleWaitReceive ||
+            _pageType == FMAftersaleDetailsControllerStyleSalesSuccess ||
+            _pageType == FMAftersaleDetailsControllerStyleSalesFailure
             ) {
             footerStyle = 1;
         }

@@ -47,7 +47,16 @@
     @weakify(self)
     [RACObserve(self.viewModel, bargainDetailsEntity) subscribeNext:^(FMBargainDetailsModel *bargainEntity) {
         @strongify(self)    if (!self) return;
-        
+        // 您正在发起砍价
+        //    砍价失败 icon_slashFailure
+        //    您已完成砍价 icon_slashSuccess
+        //        self->_statusLabel.text = @"";
+        //        self->_statusImgView.image = UIImage.ci_imageNamed(@"");
+        FMSlashInGoodsModel *goodsEntity = bargainEntity.goodsEntitys.firstObject;
+        [self->_goodsImgView sd_setImageWithURL:[NSURL URLWithString:goodsEntity.imgUrl]];
+        self->_goodsTitleLabel.text = goodsEntity.name;
+        self->_goodsPriceLabel.text = [NSString stringWithFormat:@"原价：¥%.2f", goodsEntity.normalPrice.floatValue];
+        //        self->_remainingTimeLabel.text = [NSString stringWithFormat:@"剩余 %@", goodsEntity.];
     }];
 }
 
@@ -62,6 +71,7 @@
     [[_startBargainButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
         [self.viewModel.requestStartBargainCommand execute:nil];
+        [self.viewModel.nextVCSubject sendNext:nil]; // test
     }];
     
     [self.viewModel.nextVCSubject subscribeNext:^(RACTuple *identifyTuple) {

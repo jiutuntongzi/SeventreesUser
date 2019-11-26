@@ -11,5 +11,4 @@
 
 @interface FMCategoryGoodsModel : FMHomeGoodsModel
 
-
 @end

@@ -87,8 +87,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="buyButton" destination="ldD-zI-Vqb" id="y5C-cA-4a2"/>
+                <outlet property="curPriceLabel" destination="OCE-rk-SbJ" id="NI2-iW-uQN"/>
+                <outlet property="sparePriceLabel" destination="is5-bo-I4M" id="8HH-ca-LZG"/>
             </connections>
-            <point key="canvasLocation" x="-342" y="123"/>
+            <point key="canvasLocation" x="-927" y="102"/>
         </view>
     </objects>
 </document>

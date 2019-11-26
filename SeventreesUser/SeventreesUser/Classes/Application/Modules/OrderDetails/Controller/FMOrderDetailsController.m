@@ -237,9 +237,7 @@
         self->_orderPayView.viewModel.orderId = orderDetailsEntity.orderId;
     }];
     
-    [_viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-    }];
+    [UIView showStatusInfoBySubject:_viewModel.showHintSubject];
     
     [self.orderPayView.viewModel.reloadDataSubject subscribeNext:^(NSNumber *orderId) {
         @strongify(self)

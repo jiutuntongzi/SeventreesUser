@@ -110,4 +110,18 @@
 
 #define      kYetStartBargainInfoURIPath          @"/api/spgroup/bargainInfo"           // 已发起的砍价详情
 
+#pragma mark ——— 售后/退货
+
+#define      kAfterSalesListQueryURIPath          @"/api/seaftersales/queryAfterSales"      // 查询退货/退款列表
+
+#define      kAfterSalesDetailsQueryURIPath       @"/api/seaftersales/queryAfterSalesDetails"     // 退货/退款详情
+
+#define      kAfterSalesGoodsListQueryURIPath     @"/api/seaftersales/selectAfterSalesGoods"      // 查询退货/退款详情的商品列表
+
+#define      kAfterSalesGoodsPriceQueryURIPath    @"/api/seaftersales/selectAfterSalesGoodsPrice"    // 查询退货退款商品的总价格
+
+#define      kAfterSalesOrderCreateURIPath        @"/api/seaftersales/createAfterSales"      // 创建退货/退款订单
+
+#define      kAfterSalesLogisticsInfoURIPath      @"/api/seaftersales/writeAfterSalesMsg"    // 填写物流信息
+
 #endif /* URIPath_h */

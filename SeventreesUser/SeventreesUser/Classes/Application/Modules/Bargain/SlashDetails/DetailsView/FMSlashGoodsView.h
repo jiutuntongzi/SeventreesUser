@@ -7,9 +7,12 @@
 //
 
 #import "FMView.h"
+#import "FMSlashInGoodsModel.h"
 
 #define         FMSlashGoodsViewHeight      190.f
 
 @interface FMSlashGoodsView : FMView
+
+@property (nonatomic, strong) FMSlashInGoodsModel *goodsEntity;
 
 @end

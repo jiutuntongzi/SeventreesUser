@@ -15,7 +15,6 @@
 
 @property (nonatomic, strong) NSNumber *goodsId;
 
-
 @property (nonatomic, strong) RACCommand *requestDataCommand;
 @property (nonatomic, strong) FMSlashDetailsModel *slashEntity;
 

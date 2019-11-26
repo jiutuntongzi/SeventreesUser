@@ -54,10 +54,7 @@
         [self reloadData];
     }];
     
-    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-        [SVProgressHUD dismissWithDelay:1.0f];
-    }];
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
     
     [self.viewModel.requestDataCommand execute:nil];
 }

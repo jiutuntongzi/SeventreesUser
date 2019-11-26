@@ -7,10 +7,13 @@
 //
 
 #import "FMView.h"
+#import "FMSlashPriceModel.h"
 
 #define     FMSlashPricesViewHeight     160.f
 
 @interface FMSlashPricesView : FMView
+
+@property (nonatomic, strong) FMSlashPriceModel *priceEntity;
 
 @end
 

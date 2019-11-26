@@ -7,14 +7,14 @@
 //
 
 #import "FMModel.h"
-#import "FMCategoryGoodsModel.h"
+#import "FMSlashInGoodsModel.h"
 #import "FMGoodsSKUModel.h"
 
 @interface FMBargainDetailsModel : FMModel
 
 @property (nonatomic, copy) NSArray<FMGoodsSKUModel *> *goodsSKUEntitys;
 
-@property (nonatomic, strong) FMCategoryGoodsModel *goodsEntity;
+@property (nonatomic, copy) NSArray<FMSlashInGoodsModel *> *goodsEntitys;
 
 @end
 

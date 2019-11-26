@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, FMAftersaleDetailsControllerStyle) {
 
 @interface FMAftersaleDetailsController : FMViewController
 
-@property (nonatomic, assign) FMAftersaleDetailsControllerStyle style;
+@property (nonatomic, assign) FMAftersaleDetailsControllerStyle pageType;
 
 @end
 

@@ -162,7 +162,7 @@
                 <outlet property="statusImgView" destination="5Fx-7N-y1O" id="tcE-23-spd"/>
                 <outlet property="statusLabel" destination="lvT-jT-vlW" id="iik-zE-tNQ"/>
             </connections>
-            <point key="canvasLocation" x="10" y="103"/>
+            <point key="canvasLocation" x="-350" y="-57"/>
         </view>
     </objects>
     <resources>

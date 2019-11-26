@@ -7,14 +7,18 @@
 //
 
 #import "FMModel.h"
-#import "FMCategoryGoodsModel.h"
+#import "FMSlashInGoodsModel.h"
 #import "FMBargainUserModel.h"
+#import "FMSlashPriceModel.h"
 
 @interface FMSlashDetailsModel : FMModel
 
-@property (nonatomic, strong) FMCategoryGoodsModel *goodsEntity;
+@property (nonatomic, copy) NSArray<FMSlashInGoodsModel *> *goodsEntitys;
 
 @property (nonatomic, copy) NSArray<FMBargainUserModel *> *joinUserEntitys;
+
+/** 砍价价格实体（自定义属性） */
+@property (nonatomic, strong) FMSlashPriceModel *priceEntity;
 
 @end
 

@@ -230,8 +230,14 @@
         }];
     }
     
-    /// Bind viewModel
+    UIButton *afterSaleButton = _orderTypeButtons.lastObject;
+    [[afterSaleButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        showNextVCBlock(@"FMRefundPagingController");
+    }];
     
+    
+    /// Bind ViewModel
+        
     [self.viewModel.refreshUISubject subscribeNext:^(FMMeModel *profileEntity) {
         @strongify(self);
         [self->_headImgView sd_setImageWithURL:[NSURL URLWithString:profileEntity.headUrl] placeholderImage:[UIImage new]];
@@ -246,11 +252,7 @@
 //        self->_afterSaleLabel.text = [NSString stringWithFormat:@"退货/售后(%@)", profileEntity.];
     }];
     
-    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-        [SVProgressHUD dismissWithDelay:1.f];
-    }];
-    
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
 };
 
 - (FMMeViewModel *)viewModel {

@@ -28,7 +28,8 @@
             [self.showHintSubject sendNext:resultModel.statusMsg];
             return;
         }
-        RACTuple *tuple = [RACTuple tupleWithObjects:self.bargainDetailsEntity.goodsEntity.goodsId, self.bargainDetailsEntity.goodsEntity.activityId, nil];
+        FMSlashInGoodsModel *goodsEntity = self->_bargainDetailsEntity.goodsEntitys.firstObject;
+        RACTuple *tuple = [RACTuple tupleWithObjects:goodsEntity.goodsId, goodsEntity.activityId, nil];
         [self.nextVCSubject sendNext:tuple];
     }];
 }

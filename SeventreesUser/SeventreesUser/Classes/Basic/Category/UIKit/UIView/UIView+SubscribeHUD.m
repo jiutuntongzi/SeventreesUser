@@ -28,7 +28,7 @@
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
     [subject subscribeNext:^(NSString *status) {
         [SVProgressHUD showInfoWithStatus:status];
-        [SVProgressHUD dismissWithDelay:1.f];
+//        [SVProgressHUD dismissWithDelay:1.f];
     }];
 }
 

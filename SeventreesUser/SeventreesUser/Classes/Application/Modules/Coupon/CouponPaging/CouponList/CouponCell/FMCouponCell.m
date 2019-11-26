@@ -106,9 +106,7 @@
         [self->_viewModel.requestDataCommand execute:nil];
     }];
     
-    [self->_viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-    }];
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
 }
 
 @end

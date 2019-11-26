@@ -10,4 +10,6 @@
 
 @interface FMRefundGoodsListController : FMViewController
 
+@property (nonatomic, assign) NSInteger pageType;
+
 @end

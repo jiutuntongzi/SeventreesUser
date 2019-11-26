@@ -9,6 +9,8 @@
 #import "FMRefundPagingController.h"
 #import "MacroHeader.h"
 
+#import "FMRefundGoodsListController.h"
+
 #define     kClassNameVCKey      @"classNameVCKey"
 #define     kTitleKey            @"titleKey"
 
@@ -75,7 +77,8 @@
         NSDictionary *pageItem = self.pageItems[i];
         
         NSString *classNameVC = pageItem[kClassNameVCKey];
-        UIViewController *childController = [[NSClassFromString(classNameVC) alloc] init];
+        FMRefundGoodsListController *childController = [[NSClassFromString(classNameVC) alloc] init];
+        childController.pageType = i + 1;
         [mChildControllers addObject:childController];
         
         NSString *title = pageItem[kTitleKey];
@@ -118,7 +121,7 @@
 
 #pragma mark ——— <WMPageControllerDelegate, WMPageControllerDataSource>
 
-- (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info{
+- (void)pageController:(WMPageController *)pageController willEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info {
     
 }
 

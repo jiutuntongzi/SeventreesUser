@@ -104,9 +104,8 @@
                 <outlet property="lastPriceLabel" destination="KxF-7e-h6k" id="rv3-kn-kLG"/>
                 <outlet property="perchProgressView" destination="Bli-8g-8mX" id="zZR-nW-HPB"/>
                 <outlet property="progressView" destination="9SJ-u2-krl" id="eDf-M5-mPJ"/>
-                <outlet property="rightButton" destination="dgZ-Nc-LWc" id="u6J-or-8YZ"/>
             </connections>
-            <point key="canvasLocation" x="-1198" y="-73"/>
+            <point key="canvasLocation" x="-649" y="-31"/>
         </view>
     </objects>
 </document>

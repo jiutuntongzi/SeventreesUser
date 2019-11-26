@@ -65,10 +65,7 @@
         }
     }];
     
-    [self->_viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showErrorWithStatus:status];
-        [SVProgressHUD dismissWithDelay:1.f];
-    }];
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
     
     [self->_viewModel.updateCountUISubject subscribeNext:^(NSNumber *goodsNum) {
         self->_goodsCountLabel.text = goodsNum.stringValue;

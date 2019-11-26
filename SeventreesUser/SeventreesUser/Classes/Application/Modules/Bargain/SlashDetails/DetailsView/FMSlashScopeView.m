@@ -32,16 +32,12 @@
 - (void)fm_bindObserver {
     @weakify(self)
     
-    [RACObserve(self, curPrice) subscribeNext:^(id x) {
+    [RACObserve(self, priceEntity) subscribeNext:^(FMSlashPriceModel *priceEntity) {
         @strongify(self)
-        self->_curPriceLabel.text = [NSString stringWithFormat:@"当前价:￥%.2f", self->_curPrice];
-        self->_lastPriceLabel.text = [NSString stringWithFormat:@"当前价:￥%.2f", self->_lastPrice];
+        self->_curPriceLabel.text = [NSString stringWithFormat:@"当前价:￥%.2f", priceEntity.curPrice];
+        self->_lastPriceLabel.text = [NSString stringWithFormat:@"可砍至:￥%.2f", priceEntity.floorPrice];
 //        self->_progressView.progress =
 //        self->_perchProgressView.progress =
-    }];
-    
-    [RACObserve(self, lastPrice) subscribeNext:^(id x) {
-        @strongify(self)
     }];
 }
 
@@ -50,7 +46,6 @@
     
     [[_inviteFriendsButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        DLog(@"点了 邀请好友帮我砍价");
         if (self->_inviteFriendsCallback) self->_inviteFriendsCallback();
     }];
 }

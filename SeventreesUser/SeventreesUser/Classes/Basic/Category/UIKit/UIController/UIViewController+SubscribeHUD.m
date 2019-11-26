@@ -18,7 +18,7 @@
         if ([isExecuting isEqualToNumber:@(YES)]) {
             [SVProgressHUD showWithStatus:status];
         } else {
-            [SVProgressHUD dismissWithDelay:1.f];
+            [SVProgressHUD dismissWithDelay:1.0f];
         }
     }];
 }
@@ -26,7 +26,7 @@
 + (void)showStatusInfoBySubject:(RACSubject *)subject {
     [subject subscribeNext:^(NSString *status) {
         [SVProgressHUD showInfoWithStatus:status];
-        [SVProgressHUD dismissWithDelay:0.5f];
+//        [SVProgressHUD dismissWithDelay:1.0f];
     }];
 }
 

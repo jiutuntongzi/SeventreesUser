@@ -119,21 +119,23 @@
     [RACObserve(self.viewModel, slashEntity) subscribeNext:^(FMSlashDetailsModel *slashEntity) {
         @strongify(self)    if (!self) return;
         
+        self->_slashGoodsView.goodsEntity = slashEntity.goodsEntitys.firstObject;
         
+        self->_slashScopeView.priceEntity = slashEntity.priceEntity;
+        self->_slashPricesView.priceEntity = slashEntity.priceEntity;
+        
+        self->_recordListView.joinUserEntitys = slashEntity.joinUserEntitys;
     }];
 }
 
 - (void)fm_bindViewModel {
-    @weakify(self)
-    
+    MJWeakSelf
     _slashScopeView.inviteFriendsCallback = ^{
-//        self_weak_
+//        weakSelf
+        DLog(@"点了 邀请好友帮我砍价");
     };
     
-    [self.viewModel.showHintSubject subscribeNext:^(NSString *status) {
-        [SVProgressHUD showInfoWithStatus:status];
-        [SVProgressHUD dismissWithDelay:1.f];
-    }];
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
 }
 
 - (FMSlashDetailsViewModel *)viewModel {

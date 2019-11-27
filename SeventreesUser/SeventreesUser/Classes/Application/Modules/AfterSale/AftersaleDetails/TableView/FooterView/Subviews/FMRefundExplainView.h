@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMRefundExplainModel.h"
 
 #define      FMRefundExplainViewHeight    138.f
 
@@ -14,6 +15,6 @@
 
 @interface FMRefundExplainView : UIView
 
-@property (nonatomic, copy) NSString *infoText;
+@property (nonatomic, strong) FMRefundExplainModel *explainEntity;
 
 @end

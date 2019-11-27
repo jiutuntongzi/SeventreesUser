@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMRefundExplainModel.h"
 
 extern CGFloat FMRefundFooterView_height;
 
@@ -14,5 +15,7 @@ extern CGFloat FMRefundFooterView_height;
 
 /** 添加显示物流快递：1：六行  /  0：四行 */
 - (instancetype)initWithStyle:(UInt8)style;
+
+@property (nonatomic, strong) FMRefundExplainModel *explainEntity;
 
 @end

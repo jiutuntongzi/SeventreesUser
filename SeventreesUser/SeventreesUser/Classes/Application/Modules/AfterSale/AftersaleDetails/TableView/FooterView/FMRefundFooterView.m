@@ -43,6 +43,12 @@ CGFloat FMRefundFooterView_height = kSpaceValue + FMRefundExplainViewHeight + FM
     return self;
 }
 
+- (void)setExplainEntity:(FMRefundExplainModel *)explainEntity {
+    _explainEntity = explainEntity;
+    
+    _explainView.explainEntity = explainEntity;
+}
+
 - (void)setupSubviews {
     
     _explainView = FMRefundExplainView.cv_viewFromNibLoad();

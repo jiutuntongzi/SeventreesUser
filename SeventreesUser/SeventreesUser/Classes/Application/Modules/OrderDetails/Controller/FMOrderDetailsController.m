@@ -249,16 +249,6 @@
     [super fm_setupNavbar];
     
     self.navigationItem.title = @"订单详情";
-    
-    // test
-        __weak typeof(self) weakSelf = self;
-        UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-            DLog(@"点了导航栏右");
-            
-            UIViewController *nextVC = [[NSClassFromString(@"FMApplyRefundController") alloc] init];
-            weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-        });
-        self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (void)fm_refreshData {

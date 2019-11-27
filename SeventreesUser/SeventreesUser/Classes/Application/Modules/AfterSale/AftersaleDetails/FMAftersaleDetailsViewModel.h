@@ -11,13 +11,12 @@
 
 @interface FMAftersaleDetailsViewModel : FMViewModel
 
-@property (nonatomic, strong, readonly) FMAftersaleDetailsModel *aftersalemodel;
+@property (nonatomic, strong, readwrite) NSNumber *refundId;
 
-
-@property (nonatomic, strong, readonly) RACSubject *refreshUISubject;
-
-@property (nonatomic, strong, readonly) RACSubject *actionSubject;
+@property (nonatomic, strong) FMAftersaleDetailsModel *refundEntity;
 
 @property (nonatomic, strong, readonly) RACCommand *requestDataCommand;
+
+@property (nonatomic, strong, readonly) RACSubject *showHintSubject;
 
 @end

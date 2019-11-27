@@ -72,7 +72,7 @@
                 <outlet property="statusLabel" destination="1IM-qW-DiW" id="jZ5-jB-BEo"/>
                 <outlet property="timeLabel" destination="Ncu-Hz-lNR" id="o84-rb-Z3Y"/>
             </connections>
-            <point key="canvasLocation" x="-830" y="15"/>
+            <point key="canvasLocation" x="-263" y="14"/>
         </view>
     </objects>
     <resources>

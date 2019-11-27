@@ -45,6 +45,7 @@ CGFloat FMRefundHeaderView_height = 0.f;
         _style = style;
         
         [self setupSubviews];
+        [self addValueObserver];
     }
     return self;
 }
@@ -305,6 +306,16 @@ CGFloat FMRefundHeaderView_height = 0.f;
     }
 
     [super updateConstraints];
+}
+
+- (void)addValueObserver {
+    @weakify(self)
+    [RACObserve(self, refundEntity) subscribeNext:^(FMAftersaleDetailsModel *refundEntity) {
+        @strongify(self)
+        
+        self->_refundStatusView.statusTime = refundEntity.statusTime;
+        self->_refundStatusView.remainTime = refundEntity.remainTime;
+    }];
 }
 
 @end

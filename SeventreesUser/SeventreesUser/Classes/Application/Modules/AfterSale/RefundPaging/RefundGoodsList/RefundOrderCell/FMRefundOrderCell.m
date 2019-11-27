@@ -39,17 +39,20 @@
         if (refundEntity.status == nil) statusText = @"--";
         
         if (refundEntity.status.integerValue == 1) {
-            
+            statusText = @"已驳回";
         } else if (refundEntity.status.integerValue == 2) {
-            
+            statusText = @"退款审核通过";
         } else if (refundEntity.status.integerValue == 3) {
-            
+            statusText = @"退款中";
         } else if (refundEntity.status.integerValue == 4) {
-            
-        } else { // refundEntity.status == 0
-            
+            statusText = @"商家已验收";
+        } else if (refundEntity.status.integerValue == 5) {
+            statusText = @"已退款";
+        }  else { // refundEntity.status == 0
+            statusText = @"退款申请处理中";
         }
         self->_statusLabel.text = statusText;
+        
         [self->_tableView reloadData];
     }];
 }

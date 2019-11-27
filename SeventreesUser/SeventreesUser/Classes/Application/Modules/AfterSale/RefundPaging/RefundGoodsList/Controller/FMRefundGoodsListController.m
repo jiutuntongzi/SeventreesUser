@@ -38,11 +38,30 @@
         cell.refundEntity = refundEntitys[indexPath.row];
         return cell;
         
-    } cellDidSelectHandler:^(id rowEntity) {
-        DLog(@"rowEntity == %@", rowEntity);
-        FMAftersaleDetailsController *nextVC = [[FMAftersaleDetailsController alloc] init];
-        nextVC.pageType = FMAftersaleDetailsControllerStyleRefunding;
-        [self.navigationController pushViewController:nextVC animated:YES];
+    } cellDidSelectHandler:^(FMRefundOrderModel *refundEntity) {
+        DLog(@"refundEntity == %@", refundEntity);
+        
+        // status: 售后状态 (0等待处理, 1审核不通过, 2审核通过（退货中未填写物流）, 3审核通过（退款中/退货中已填写物流）,退款成功，4商家已验收)
+        /*
+         NSString *statusText = nil;
+         if (refundEntity.status == nil) statusText = @"--";
+         
+         if (refundEntity.status.integerValue == 1) {
+         statusText = @"已驳回";
+         } else if (refundEntity.status.integerValue == 2) {
+         statusText = @"退款审核通过";
+         } else if (refundEntity.status.integerValue == 3) {
+         statusText = @"退款中";
+         } else if (refundEntity.status.integerValue == 4) {
+         statusText = @"商家已验收";
+         } else if (refundEntity.status.integerValue == 5) {
+         statusText = @"已退款";
+         }  else { // refundEntity.status == 0
+         statusText = @"退款申请处理中";
+         }
+         self->_statusLabel.text = statusText;
+         */
+        [FMAftersaleDetailsController showByPageType:FMAftersaleDetailsControllerStyleRefunding refundId:@(298)];
     }];
     _pagingView = pagingView;
     pagingView.cv_backColorByHexString(@"#F7F7F7");

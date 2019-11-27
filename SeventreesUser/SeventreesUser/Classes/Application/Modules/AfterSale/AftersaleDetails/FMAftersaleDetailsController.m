@@ -7,6 +7,7 @@
 //
 
 #import "FMAftersaleDetailsController.h"
+#import "FMAftersaleDetailsViewModel.h"
 
 #import "FMRefundHeaderView.h"
 #import "FMAftersaleGoodsCell.h"
@@ -14,19 +15,23 @@
 
 @interface FMAftersaleDetailsController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, assign) FMAftersaleDetailsControllerStyle pageType;
+
 @property (nonatomic, strong) FMRefundHeaderView *headerView;
-
 @property (nonatomic, strong) UITableView *tableView;
-
 @property (nonatomic, strong) FMRefundFooterView *footerView;
+
+@property (nonatomic, strong) FMAftersaleDetailsViewModel *viewModel;
 
 @end
 
 @implementation FMAftersaleDetailsController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
++ (void)showByPageType:(FMAftersaleDetailsControllerStyle)type refundId:(NSNumber *)refundId {
+    FMAftersaleDetailsController *nextVC = self.cvc_controller();
+    nextVC.pageType = type;
+    nextVC.viewModel.refundId = refundId;
+    commonMgr.topViewController().cvc_pushViewController(nextVC);
 }
 
 - (void)fm_addSubviews {
@@ -55,53 +60,53 @@
     }];
 }
 
+- (void)fm_bindObserver {
+    @weakify(self)
+    [RACObserve(self.viewModel, refundEntity) subscribeNext:^(FMAftersaleDetailsModel *refundEntity) {
+        @strongify(self)
+        [self->_tableView reloadData];
+    }];
+    
+    [UIView showStatusInfoBySubject:self.viewModel.showHintSubject];
+}
+
 - (void)fm_bindViewModel {
-//    FMAftersaleDetailsModel KVO
+
 }
 
 - (void)fm_setupNavbar {
     [super fm_setupNavbar];
     
     self.navigationItem.title = @"售后详情";
-    
-    // test
-//    __weak typeof(self) weakSelf = self;
-    UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-        DLog(@"点了导航栏右");
-//        UIViewController *nextVC = [[NSClassFromString(@"FMApplyRefundController") alloc] init];
-//        weakSelf.navigationController.cnc_pushViewControllerDidAnimated(nextVC, YES);
-    });
-    self.navigationItem.cni_rightBarButtonItem(rightItem);
 }
 
 - (void)fm_refreshData {
-    //    self.viewModel
+    [self.viewModel.requestDataCommand execute:nil];
 }
 
 #pragma mark - <UITableViewDataSource, UITableViewDelegate>
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    
-    FMAftersaleGoodsCell *goodsCell = FMAftersaleGoodsCell.ctc_cellReuseNibLoadForTableView(tableView);
-    //    cell.goodsModel = model;
-    return goodsCell;
+    FMAftersaleGoodsCell *cell = FMAftersaleGoodsCell.ctc_cellReuseNibLoadForTableView(tableView);
+    cell.goodsEntity = self.viewModel.refundEntity.goodsEntitys[indexPath.row];
+    return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 1; // 写死一组
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return self.viewModel.refundEntity.goodsEntitys.count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    DLog(@"indexPath == %@", indexPath);
+    DLog(@"点了商品Cell：%@", self.viewModel.refundEntity.goodsEntitys);
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    self.headerView.refundEntity = self.viewModel.refundEntity;
     return self.headerView;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -109,14 +114,22 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    self.footerView.explainEntity = self.viewModel.refundEntity.explainEntity;
     return self.footerView;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return FMRefundFooterView_height;
 }
 
-
 #pragma mark - Lazyload
+
+- (FMAftersaleDetailsViewModel *)viewModel {
+    if (! _viewModel) {
+        _viewModel = [[FMAftersaleDetailsViewModel alloc] init];
+    }
+    return _viewModel;
+}
+
 - (FMRefundHeaderView *)headerView {
     if (! _headerView) {
         _headerView = [[FMRefundHeaderView alloc] initWithStyle:(FMRefundHeaderViewStyle)_pageType];
@@ -136,10 +149,6 @@
         _footerView = [[FMRefundFooterView alloc] initWithStyle:footerStyle];
     }
     return _footerView;
-}
-
-- (void)dealloc {
-    DLog(@"%@ VC销毁了", NSStringFromClass([self class]));
 }
 
 @end

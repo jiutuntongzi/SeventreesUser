@@ -90,7 +90,7 @@
 
 #define      kOrderListQueryURIPath               @"/api/poorder/queryOrderList"          // 查订单列表
 
-#define      kOrderDetialsQueryURIPath            @"/api/poorder/queryOrderListInfo"      // 查订单详情
+#define      kOrderDetialsQueryURIPath            @"/api/poorder/queryOrderListInfo"      // 查订单详情信息
 
 #define      kOrderCancelURIPath                  @"/api/poorder/cancelOrder"             // 取消订单
 

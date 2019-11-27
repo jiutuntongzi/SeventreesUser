@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMAftersaleDetailsModel.h"
 
 extern CGFloat FMRefundHeaderView_height;
 
@@ -23,5 +24,7 @@ typedef NS_ENUM(NSUInteger, FMRefundHeaderViewStyle) {
 @interface FMRefundHeaderView : UIView
 
 - (instancetype)initWithStyle:(FMRefundHeaderViewStyle)style;
+
+@property (nonatomic, strong) FMAftersaleDetailsModel *refundEntity;
 
 @end

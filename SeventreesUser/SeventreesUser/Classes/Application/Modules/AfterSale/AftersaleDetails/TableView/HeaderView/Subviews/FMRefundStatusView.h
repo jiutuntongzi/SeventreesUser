@@ -24,4 +24,8 @@ typedef NS_ENUM(NSUInteger, FMRefundStatusViewStyle) {
 
 @property (nonatomic, assign) FMRefundStatusViewStyle status;
 
+@property (nonatomic, copy) NSString *statusTime;
+
+@property (nonatomic, strong) NSNumber *remainTime;
+
 @end

@@ -11,6 +11,8 @@
 
 #import "FMRefundGoodsListController.h"
 
+#import "FMAftersaleDetailsController.h" // test
+
 #define     kClassNameVCKey      @"classNameVCKey"
 #define     kTitleKey            @"titleKey"
 
@@ -34,20 +36,10 @@
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
     [self setupNavbar];
-}
-
-- (void)updateViewConstraints {
-    
-    [super updateViewConstraints];
 }
 
 #pragma mark - Private Functions
@@ -100,8 +92,7 @@
     
     // test
     UIBarButtonItem *rightItem = UIBarButtonItem.cbi_initWithTitleStyleForTouchCallback(@"Next", 1, ^(UIBarButtonItem *rightItem) {
-//        FMAftersaleDetailsController *nextVC = [[FMAftersaleDetailsController alloc] init];
-//        [self.navigationController pushViewController:nextVC animated:YES];
+        [FMAftersaleDetailsController showByPageType:FMAftersaleDetailsControllerStyleSalesFailure refundId:@(298)];
     });
     self.navigationItem.cni_rightBarButtonItem(rightItem);
 }

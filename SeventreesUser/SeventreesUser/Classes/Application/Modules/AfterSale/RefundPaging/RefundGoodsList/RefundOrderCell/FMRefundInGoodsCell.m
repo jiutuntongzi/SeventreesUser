@@ -28,7 +28,7 @@
         
         [self->_imgView sd_setImageWithURL:[NSURL URLWithString:goodsEntity.goodsImage]];
         self->_titleLabel.text = goodsEntity.goodsName ?: @"--";
-        self->_totalLabel.text = goodsEntity.goodsNum.stringValue;
+        self->_totalLabel.text = [NSString stringWithFormat:@"x%@", goodsEntity.goodsNum];
     }];
 }
 

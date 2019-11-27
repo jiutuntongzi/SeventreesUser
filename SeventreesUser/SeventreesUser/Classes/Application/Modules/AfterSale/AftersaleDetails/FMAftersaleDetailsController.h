@@ -20,7 +20,8 @@ typedef NS_ENUM(NSUInteger, FMAftersaleDetailsControllerStyle) {
 
 @interface FMAftersaleDetailsController : FMViewController
 
-@property (nonatomic, assign) FMAftersaleDetailsControllerStyle pageType;
+/** status: 售后状态 (0等待处理, 1审核不通过, 2审核通过（退货中未填写物流）, 3审核通过（退款中/退货中已填写物流）,退款成功，4商家已验收) */
++ (void)showByPageType:(FMAftersaleDetailsControllerStyle)type refundId:(NSNumber *)refundId;
 
 @end
 

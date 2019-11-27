@@ -7,9 +7,12 @@
 //
 
 #import "FMTableViewCell.h"
+#import "FMRefundGoodsModel.h"
 
 #define      FMAftersaleGoodsCell_height      100.f
 
 @interface FMAftersaleGoodsCell : FMTableViewCell
+
+@property (nonatomic, strong) FMRefundGoodsModel *goodsEntity;
 
 @end

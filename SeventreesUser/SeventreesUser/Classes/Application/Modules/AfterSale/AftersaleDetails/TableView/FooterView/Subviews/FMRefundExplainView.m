@@ -12,26 +12,27 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
+@property (nonatomic, copy) NSString *infoText;
+
 @end
 
 @implementation FMRefundExplainView
 
-- (void)setInfoText:(NSString *)infoText {
-    _infoText = infoText;
+- (void)setExplainEntity:(FMRefundExplainModel *)explainEntity {
+    _explainEntity = explainEntity;
     
-    _textView.text = infoText;
+    NSString *applyMoney = @"--";
+    if (explainEntity.amount) [NSString stringWithFormat:@"￥%.2f", explainEntity.amount.floatValue];
+    
+    NSString *explainText = [NSString stringWithFormat:@"退款原因：%@ \n\n申请金额：%@ \n\n申请时间：%@ \n\n退款编号：%@ \n\n物流公司：%@ \n\n物流单号：%@",\
+                             explainEntity.reason ?: @"--", applyMoney, explainEntity.createdDateTime ?: @"--", explainEntity.serialNumber ?: @"--",
+                             explainEntity.logisticsCompany ?: @"--", explainEntity.logisticsCompany ?: @"--"];
+    self.infoText = explainText;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-//    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-//    paragraphStyle.lineSpacing = 0.5f;// 字体的行间距
-//    NSDictionary *attributes = @{
-//                                 NSFontAttributeName:[UIFont systemFontOfSize:12.f],
-//                                 NSParagraphStyleAttributeName:paragraphStyle
-//                                 };
-//    _textView.attributedText = [[NSAttributedString alloc] initWithString:_textView.text attributes:attributes];
+- (void)setInfoText:(NSString *)infoText {
+    _infoText = infoText;
+    _textView.text = infoText;
 }
 
 @end

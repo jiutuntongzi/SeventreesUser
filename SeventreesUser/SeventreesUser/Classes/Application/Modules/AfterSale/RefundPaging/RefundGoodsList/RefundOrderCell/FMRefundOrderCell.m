@@ -7,8 +7,9 @@
 //
 
 #import "FMRefundOrderCell.h"
+#import "FMRefundInGoodsCell.h"
 
-@interface FMRefundOrderCell ()
+@interface FMRefundOrderCell () <UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -48,9 +49,19 @@
         } else { // refundEntity.status == 0
             
         }
-        
+        self->_statusLabel.text = statusText;
         [self->_tableView reloadData];
     }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self->_refundEntity.goodsEntitys.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    FMRefundInGoodsCell *cell = FMRefundInGoodsCell.ctc_cellReuseNibLoadForTableView(tableView);
+    cell.goodsEntity = self->_refundEntity.goodsEntitys[indexPath.row];
+    return cell;
 }
 
 @end

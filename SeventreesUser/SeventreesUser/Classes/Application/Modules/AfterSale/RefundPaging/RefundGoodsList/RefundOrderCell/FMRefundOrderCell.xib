@@ -95,7 +95,7 @@
                 <outlet property="statusLabel" destination="Nmc-zM-Sap" id="WDq-pR-rTV"/>
                 <outlet property="tableView" destination="9wl-zA-yRZ" id="eER-P7-gnf"/>
             </connections>
-            <point key="canvasLocation" x="-1831.2" y="11.694152923538232"/>
+            <point key="canvasLocation" x="-2348" y="-39"/>
         </tableViewCell>
     </objects>
 </document>
